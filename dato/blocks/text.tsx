@@ -1,4 +1,4 @@
-import { internalLinkAttrs } from "~/dato/attrs/internalLink"
+import { internalLinkAttrs } from "~/dato/attrs/internalLink";
 
 export const textRecord = `
   __typename

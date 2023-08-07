@@ -2,10 +2,10 @@ import Text from '~/components/blocks/Text';
 
 const blocks = {
     Text,
-}
+};
 
 export const getBlock = (name:any) => {
-    return blocks[name?.replace('Record', '')]
+    return blocks[name?.replace('Record', '')];
 };
 
 export const ModularContent = ({ content }) => {
@@ -18,4 +18,4 @@ export const ModularContent = ({ content }) => {
         if (!Block) return null;
         return <Block key={block.id} {...block} />;
     });
-}
+};

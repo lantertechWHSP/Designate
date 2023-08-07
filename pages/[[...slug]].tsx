@@ -39,7 +39,7 @@ const Page : NextPage = ({layout, blocks}) : JSX.Element => {
             <ModularContent content={blocks} />
         </Layout>
     );
-}
+};
 
 
 export default Page;

@@ -9,7 +9,7 @@ export async function getStaticProps({ _params, preview }) {
     const page = {
         title: 'Error (404)',
         slug: '404'
-    }
+    };
     const layout = getLayoutData(site, page, preview);
     const blocks = {};
 
