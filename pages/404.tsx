@@ -2,7 +2,7 @@ import React from 'react';
 import type { NextPage } from 'next';
 import Layout from "~/components/layouts/layout";
 import { doQuery, queries } from "~/dato/api";
-import { getLayoutData, getBlocks } from '~/lib/utils';
+import { getLayoutData } from '~/lib/utils';
 
 export async function getStaticProps({ _params, preview }) {
     const site = await doQuery(queries.site);
