@@ -11,9 +11,8 @@ export async function getStaticProps({ _params, preview }) : Promise<any> {
         slug: '404'
     };
     const layout = getLayoutData(site, page, preview);
-    const blocks = {};
 
-    return { props: { layout, blocks } };
+    return { props: { layout } };
 }
 
 const ErrorPage : NextPage = ({layout}) : JSX.Element => {
