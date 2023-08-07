@@ -5,7 +5,7 @@ import { ModularContent } from '~/components/ModularContent';
 import { doQuery, queries } from '~/dato/api';
 import { getLayoutData, getBlocks } from '~/lib/utils';
 
-export async function getStaticPaths() : any {
+export async function getStaticPaths() : Promise<any> {
     const pages = await doQuery(queries.pages).then(({ pages }) => pages);
 
     const paths = pages
@@ -17,7 +17,7 @@ export async function getStaticPaths() : any {
     return { paths, fallback: false };
 }
 
-export async function getStaticProps({ params, preview }) : any {
+export async function getStaticProps({ params, preview }) : Promise<any> {
     const { slug: slugRaw } = params;
 
     const slug = slugRaw ? slugRaw.join('/') : 'home';
@@ -33,7 +33,6 @@ export async function getStaticProps({ params, preview }) : any {
 }
 
 const Page : NextPage = ({layout, blocks}) : JSX.Element => {
-
     return (
         <Layout layout={layout}>
             <ModularContent content={blocks} />
