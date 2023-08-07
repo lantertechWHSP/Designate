@@ -9,10 +9,10 @@ const StrucutredContent = ({ content }) => {
             renderLinkToRecord={({ record, children, transformedMeta }) => {
                 return <Link {...transformedMeta} href={record}>
                     {children}
-                </Link>
+                </Link>;
             }}
         />
     );
-}
+};
 
 export default StrucutredContent;

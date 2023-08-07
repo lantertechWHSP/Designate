@@ -16,11 +16,11 @@ const Header = ({ menu }) => {
             <Link href="/">Home</Link> |
             {
                 Array.isArray(menu) && menu.length > 0 && menu.map((item:IMenuItem, index:number) => {
-                    return <Link key={index} href={item.link.slug}>{item.link.title}</Link>
+                    return <Link key={index} href={item.link.slug}>{item.link.title}</Link>;
                 })
             }
         </nav>
-    </header>
-}
+    </header>;
+};
 
 export default Header;

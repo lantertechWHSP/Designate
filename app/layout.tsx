@@ -18,6 +18,6 @@ const RootLayout = ({ children } : { children:React.ReactNode }) : React.ReactNo
             </body>
         </html>
     );
-}
+};
 
 export default RootLayout;

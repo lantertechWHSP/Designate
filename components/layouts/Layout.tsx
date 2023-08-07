@@ -16,12 +16,12 @@ const Layout = ({ layout, children }:any) : JSX.Element => {
                     {
                         layout.title
                     }
-              </h1>
+                </h1>
             }
             {children}
             <Footer />
         </>
     );
-}
+};
 
 export default Layout;

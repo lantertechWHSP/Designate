@@ -1,7 +1,7 @@
 const Footer = () => {
     return <header>
         Footer
-    </header>
-}
+    </header>;
+};
 
 export default Footer;
