@@ -1,5 +1,5 @@
 import React from 'react';
-import Meta from '~/components/layouts/meta';
+import Meta from '~/components/layouts/Meta';
 import Header from '~/components/layouts/Header';
 import Footer from '~/components/layouts/Footer';
 
