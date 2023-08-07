@@ -4,7 +4,7 @@ const blocks = {
     Text,
 }
 
-export const getBlock = (name) => {
+export const getBlock = (name:any) => {
     return blocks[name?.replace('Record', '')]
 };
 
