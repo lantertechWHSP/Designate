@@ -22,4 +22,6 @@ export async function middleware(request: NextRequest) : Promise<NextResponse> {
         url.pathname = '/api/auth';
         return NextResponse.rewrite(url);
     }
+
+    return NextResponse.next();
 }
