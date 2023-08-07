@@ -18,7 +18,7 @@ export async function getStaticProps({ _params, preview }) : Promise<any> {
 const ErrorPage : NextPage = ({layout}:any) : JSX.Element => {
     return <Layout layout={layout}>
         <p>
-            Page Not Found!
+            Page Not Found
         </p>
     </Layout>;
 };
