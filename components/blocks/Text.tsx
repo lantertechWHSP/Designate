@@ -1,6 +1,6 @@
 import StructuredContent from 'components/StructuredContent';
 
-function TextBlock({ content }) {
+const TextBlock = ({ content }) => {
     return (
         <StructuredContent content={content} />
     );

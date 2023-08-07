@@ -1,9 +1,15 @@
-import Layout, {ILayout} from '~/components/layouts/layout';
+import React from 'react';
+import type { NextPage } from 'next';
+import Layout from '~/components/layouts/layout';
 import { getBlock, ModularContent } from '~/components/ModularContent';
 import { doQuery, queries } from '~/dato/api';
 
-const getLayoutData = (site, page, preview) : ILayout => {
+const getLayoutData = (site, page, preview) => {
+    const favicon = site?.site?.favicon || [];
+    const metatags = [...favicon, ...(page?.seo || [])];
+
     return {
+        metatags: metatags,
         slug: page?.slug || null,
         title: page?.title || null,
         preview: preview || false,
@@ -26,14 +32,13 @@ const getBlocks = async ({ blocks }) => {
     );
 };
 
-function Page({ layout, page, blocks }) {
-    // console.log(page)
-    console.log(blocks)
-
+const Page : NextPage = ({layout, blocks}) : JSX.Element => {
     return (
-        <Layout layout={layout}>
-            <ModularContent content={blocks} />
-        </Layout>
+        <>
+            <Layout layout={layout}>
+                <ModularContent content={blocks} />
+            </Layout>
+        </>
     );
 }
 
@@ -59,7 +64,7 @@ export async function getStaticProps({ params, preview }) {
     const layout = getLayoutData(site, page, preview);
     const blocks = await getBlocks(page);
 
-    return { props: { layout, page, blocks } };
+    return { props: { layout, blocks } };
 }
 
 export default Page;

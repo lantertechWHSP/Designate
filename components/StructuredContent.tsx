@@ -2,7 +2,7 @@ import React  from 'react';
 import { StructuredText } from 'react-datocms';
 import Link  from 'next/link';
 
-export function StrucutredContent({ content }) {
+const StrucutredContent = ({ content }) => {
     return (
         <StructuredText
             data={content}

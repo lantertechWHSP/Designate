@@ -1,6 +1,14 @@
 {
   "name": "whsp",
   "version": "0.1.0",
+  "author": "solutions@designate.com.au",
+  "contributors": [
+    {
+      "name": "Carl Rain",
+      "email": "carl.rain@rainfoundry.com",
+      "url": "rainfoundry.com"
+    }
+  ],
   "private": true,
   "scripts": {
     "dev": "next dev",
