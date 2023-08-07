@@ -1,6 +1,6 @@
 import Text from '~/components/blocks/Text';
 
-const blocks = {
+const blocks:any = {
     Text,
 };
 
