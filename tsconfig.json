@@ -18,6 +18,13 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "strictNullChecks": false,
+    "baseUrl": ".",
+    "paths": {
+      "~/*": [
+        "*"
+      ]
+    },
     "plugins": [
       {
         "name": "next"

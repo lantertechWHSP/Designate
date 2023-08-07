@@ -1,3 +1,44 @@
 {
-  "extends": "next/core-web-vitals"
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest": true
+  },
+  "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:@typescript-eslint/recommended", "next/core-web-vitals"],
+  "plugins": ["@typescript-eslint", "react"],
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "import/resolver": {
+      "alias": {
+        "map": [["~", "./src/"]],
+        "extensions": [".ts", ".js", ".tsx"]
+      }
+    }
+  },
+  "parser": "@typescript-eslint/parser",
+  "rules": {
+    "indent": ["error", 4, { "SwitchCase": 1 }],
+    "semi": ["error", "always"],
+    "no-debugger": "off",
+    "no-console": "off",
+    "no-non-null-assertion": "off",
+    "no-inferrable-types": "off",
+    "no-irregular-whitespace": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/ban-types": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-empty-interface": "off",
+    "@typescript-eslint/no-inferrable-types": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "@typescript-eslint/explicit-function-return-type": ["error", {
+      "allowExpressions": true
+    }],
+    "@next/next/no-img-element": "off"
+  }
 }
