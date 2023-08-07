@@ -7,7 +7,7 @@ const StrucutredContent = ({ content }) : any => {
         <StructuredText
             data={content}
             renderLinkToRecord={({ record, children, transformedMeta }:{
-                record:UrlObject,
+                record:any,
                 children:any,
                 transformedMeta:any
             }) => {
