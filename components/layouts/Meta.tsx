@@ -1,7 +1,8 @@
+import { ReactNode } from 'react';
 import Head from 'next/head';
 import { renderMetaTags } from 'react-datocms';
 
-const Meta = ({ tags, firstPublishedAt = null }) => {
+const Meta = ({ tags, firstPublishedAt = null }) : ReactNode => {
     return (
         <Head>
             {tags && renderMetaTags(tags)}

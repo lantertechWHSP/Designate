@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { ReactNode } from 'react';
 
 interface IMenuItem {
     link: {
@@ -7,7 +8,7 @@ interface IMenuItem {
     }
 }
 
-const Header = ({ menu }) => {
+const Header = ({ menu }) : ReactNode => {
     return <header>
         <div>
             Header

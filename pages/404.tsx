@@ -4,7 +4,7 @@ import Layout from "~/components/layouts/Layout";
 import { doQuery, queries } from "~/dato/api";
 import { getLayoutData } from '~/lib/utils';
 
-export async function getStaticProps({ _params, preview }) {
+export async function getStaticProps({ _params, preview }) : any {
     const site = await doQuery(queries.site);
     const page = {
         title: 'Error (404)',
