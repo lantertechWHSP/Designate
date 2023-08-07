@@ -19,4 +19,3 @@ export const ModularContent = ({ content }) => {
         return <Block key={block.id} {...block} />;
     });
 }
-
