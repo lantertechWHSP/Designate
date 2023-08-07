@@ -4,10 +4,13 @@ import Header from '~/components/layouts/Header';
 import Footer from '~/components/layouts/Footer';
 
 const Layout = ({ layout, children }:any) : JSX.Element => {
+    console.log(layout);
     return (
         <>
-            <Meta tags={layout.metatags} />
-            <Header />
+            {
+                layout?.metatags && <Meta tags={layout?.metatags} />
+            }
+            <Header menu={layout?.menu} />
             {
                 layout.title && <h1>
                     {

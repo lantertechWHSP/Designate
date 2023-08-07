@@ -1,3 +1,18 @@
+const menuItemFrag = `
+  fragment menuItemFrag on MenuItemRecord {
+    id
+    label
+    link {
+      ... on PageRecord {
+        __typename
+        id
+        title
+        slug
+      }
+    }
+  }
+`;
+
 export const site = `
   query site {
     site: _site {
@@ -7,5 +22,18 @@ export const site = `
         tag
       }
     }
-  }
+    menu: allMenuItems(
+      filter: { parent: { exists: "*" } }
+      orderBy: position_ASC
+    ) {
+      ...menuItemFrag
+      children {
+        ...menuItemFrag
+        children {
+          ...menuItemFrag
+        }
+      }
+    }
+  },
+  ${menuItemFrag}
 `;
