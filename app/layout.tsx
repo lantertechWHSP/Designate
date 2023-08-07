@@ -12,9 +12,9 @@ export default function RootLayout({ children }:{ children:React.ReactNode }) : 
             <meta name="format-detection" content="date=no" />
             <meta name="format-detection" content="address=no" />
             <meta name="format-detection" content="email=no" />
-            <meta name="version" content="3.10.2" />
+            <meta name="version" content="0.1.0" />
         </Head>
-        <body>{children}</body>
+            <body>{children}</body>
         </html>
     );
 }
