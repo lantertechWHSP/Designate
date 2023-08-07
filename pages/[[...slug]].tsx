@@ -1,6 +1,6 @@
 import React from 'react';
 import type { NextPage } from 'next';
-import Layout from '~/components/layouts/layout';
+import Layout from '~/components/layouts/Layout';
 import { ModularContent } from '~/components/ModularContent';
 import { doQuery, queries } from '~/dato/api';
 import { getLayoutData, getBlocks } from '~/lib/utils';
