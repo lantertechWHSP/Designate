@@ -1,20 +1,38 @@
-import Layout from '~/components/layouts/layout';
-import { ModularContent } from '~/components/ModularContent';
-import { doQuery, queries } from "~/dato/api";
-import { getBlocks } from '~/lib/utils';
+import Layout, {ILayout} from '~/components/layouts/layout';
+import { getBlock, ModularContent } from '~/components/ModularContent';
+import { doQuery, queries } from '~/dato/api';
 
-function Page({ layout, page }) {
-    console.log(page);
+const getLayoutData = (site, page, preview) : ILayout => {
+    return {
+        slug: page?.slug || null,
+        title: page?.title || null,
+        preview: preview || false,
+    };
+};
+
+const getBlocks = async ({ blocks }) => {
+    return (
+        blocks && Array.isArray(blocks) ? (
+            (await Promise.all(
+                blocks?.map(async (block) => {
+                    const b = getBlock(block.__typename);
+                    if (b?.getData instanceof Function) {
+                        block.data = await b?.getData(block);
+                    }
+                    return block;
+                })
+            )) || []
+        ) : []
+    );
+};
+
+function Page({ layout, page, blocks }) {
+    // console.log(page)
+    console.log(blocks)
+
     return (
         <Layout layout={layout}>
-            {
-                page.title && <h1>
-                    {
-                        page.title
-                    }
-                </h1>
-            }
-            <ModularContent content={page?.blocks} />
+            <ModularContent content={blocks} />
         </Layout>
     );
 }
@@ -33,17 +51,15 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params, preview }) {
     const { slug: slugRaw } = params;
     const slug = slugRaw ? slugRaw.join('/') : 'home';
-    const site = {}; //await doQuery(queries.site);
+    const site = await doQuery(queries.site);
     const page = await doQuery(queries.page, { slug }, preview).then(
         ({ page }) => page
     );
 
-    // console.log(page);
-    //
-    // const blocks = await getBlocks({ blocks: page });
-    // page.blocks = blocks;
-    // const blocks = {};
-    return { props: { layout: site, page } };
+    const layout = getLayoutData(site, page, preview);
+    const blocks = await getBlocks(page);
+
+    return { props: { layout, page, blocks } };
 }
 
 export default Page;
