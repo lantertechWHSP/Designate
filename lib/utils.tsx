@@ -1,6 +1,6 @@
 import { getBlock } from '~/components/ModularContent';
 
-export const getLayoutData = (site, page, preview) => {
+export const getLayoutData = (site, page, preview) : any => {
     const favicon = site?.site?.favicon || [];
     const metatags = [...favicon, ...(page?.seo || [])];
 
@@ -13,7 +13,7 @@ export const getLayoutData = (site, page, preview) => {
     };
 };
 
-export const getBlocks = async ({ blocks }) => {
+export const getBlocks = async ({ blocks }) : Promise<any> => {
     return (
         blocks && Array.isArray(blocks) ? (
             (await Promise.all(

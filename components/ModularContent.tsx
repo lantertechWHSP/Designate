@@ -4,11 +4,11 @@ const blocks = {
     Text,
 };
 
-export const getBlock = (name:any) => {
+export const getBlock = (name:any) : any => {
     return blocks[name?.replace('Record', '')];
 };
 
-export const ModularContent = ({ content }) => {
+export const ModularContent = ({ content }) : any => {
     if (!content || !Array.isArray(content)) {
         return null;
     }

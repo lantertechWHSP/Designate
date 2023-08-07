@@ -1,6 +1,7 @@
 import StructuredContent from 'components/StructuredContent';
+import { ReactNode } from 'react';
 
-const TextBlock = ({ content }) => {
+const TextBlock = ({ content }) : ReactNode => {
     return (
         <StructuredContent content={content} />
     );
