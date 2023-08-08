@@ -14,7 +14,7 @@ type AppPropsWithLayout = AppProps & {
     Component: NextPageWithLayout
 }
 
-export default function App({ Component, pageProps }: AppPropsWithLayout) {
+export default function App({ Component, pageProps }: AppPropsWithLayout) : ReactNode {
     return <ChakraProvider theme={theme}>
         <Head>
             <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -22,5 +22,5 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
         </Head>
         <Fonts />
         <Component {...pageProps} />
-    </ChakraProvider>
+    </ChakraProvider>;
 }
