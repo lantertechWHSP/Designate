@@ -61,6 +61,18 @@ export const theme = extendBaseTheme({
                 borderRadius: 0,
                 backgroundColor: '#f0f0f0',
             },
+        },
+        Container: {
+            baseStyle: {
+                maxW: '1180px',
+                margin: '0 auto',
+                px: ['16px'],
+            }
+        },
+        Link: {
+            baseStyle: {
+                color: '#966b4e'
+            }
         }
     }
 });
