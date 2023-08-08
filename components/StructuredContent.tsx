@@ -20,7 +20,7 @@ const StrucutredContent = ({ content }) : any => {
             }}
             customNodeRules={[
                 renderNodeRule(isHeading, ({ node, children, key }) => {
-                    const tag = `h${node.level}`;
+                    const tag:string = `h${node.level}`;
 
                     return <Heading as={tag} variant={tag} key={key}>
                         {children}
