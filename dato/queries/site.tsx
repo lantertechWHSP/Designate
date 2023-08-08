@@ -34,6 +34,15 @@ export const site = `
         }
       }
     }
+    footer {
+      id
+      email
+      address {
+        value
+      }
+      phone
+      fax
+    }
   },
   ${menuItemFrag}
 `;

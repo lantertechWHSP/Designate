@@ -26,7 +26,7 @@ const Default = ({ layout, children }:any) : ReactNode => {
                     {children}
                 </>
             </Box>
-            <Footer />
+            <Footer {...layout?.footer} />
         </Flex>
     );
 };
