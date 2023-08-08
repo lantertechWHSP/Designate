@@ -42,6 +42,7 @@ export const site = `
       }
       phone
       fax
+      linkedin
     }
   },
   ${menuItemFrag}

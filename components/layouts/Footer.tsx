@@ -1,8 +1,9 @@
 import { ReactNode } from 'react';
 import { Container, Flex, Box, Link } from '@chakra-ui/react';
 import StructuredContent from "~/components/StructuredContent";
+import { Icon, Icons } from "~/components/icon/icon";
 
-const Footer = ({ address, email, phone, fax }) : ReactNode => {
+const Footer = ({ address, email, phone, fax, linkedin }) : ReactNode => {
     return <Box as="footer" style={{
         borderTop: '1px solid #ccc',
         background: '#f0f0f0',
@@ -12,21 +13,30 @@ const Footer = ({ address, email, phone, fax }) : ReactNode => {
                 <Box width={200}>
                     <Link href="/">Home</Link>
                 </Box>
-                <Box>
+                <Box px={4}>
                     <StructuredContent content={address?.value} />
                     {
                         phone && <Box>
-                            Phone: {phone}
+                            Phone: <Link href={`tel:${phone}`}>{phone}</Link>
                         </Box>
                     }
                     {
                         fax && <Box>
-                            Fax: {fax}
+                            Fax: <Link href={`fax:${fax}`}>{fax}</Link>
                         </Box>
                     }
                     {
                         email && <Box>
-                            {email}
+                            <Link href={`mailto:${email}`}>{email}</Link>
+                        </Box>
+                    }
+                </Box>
+                <Box px={4}>
+                    {
+                        linkedin && <Box>
+                            <Link href={linkedin} style={{ display: 'inline-block' }}>
+                                <Icon icon={Icons.Linkedin} w={30} h={30} />
+                            </Link>
                         </Box>
                     }
                 </Box>
