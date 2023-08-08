@@ -3,7 +3,7 @@ import Meta from '~/components/layouts/Meta';
 import Header from '~/components/layouts/Header';
 import Footer from '~/components/layouts/Footer';
 
-const Layout = ({ layout, children }:any) : ReactNode => {
+const Default = ({ layout, children }:any) : ReactNode => {
     return (
         <>
             {
@@ -23,4 +23,4 @@ const Layout = ({ layout, children }:any) : ReactNode => {
     );
 };
 
-export default Layout;
+export default Default;
