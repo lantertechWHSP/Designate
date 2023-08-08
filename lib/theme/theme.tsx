@@ -1,7 +1,5 @@
 import { extendBaseTheme } from '@chakra-ui/react';
 
-// import chakraTheme from '@chakra-ui/theme';
-
 export const theme = extendBaseTheme({
     fonts: {
         heading: `'Arimado', sans-serif`,
@@ -53,6 +51,15 @@ export const theme = extendBaseTheme({
                     fontWeight: [900],
                     lineHeight: [1.35]
                 },
+            },
+        },
+        Code: {
+            baseStyle: {
+                fontFamily: `'Menlo', sans-serif`,
+                border: '1px dashed',
+                borderColor: '#ccc',
+                borderRadius: 0,
+                backgroundColor: '#f0f0f0',
             },
         }
     }
