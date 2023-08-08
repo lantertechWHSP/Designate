@@ -6,8 +6,7 @@ import { Heading, Container, Flex, Box } from '@chakra-ui/react';
 
 const Default = ({ layout, children }:any) : ReactNode => {
     return (
-        <Flex minHeight="100vh"
-              direction="column">
+        <Flex minHeight="100vh" direction="column">
             {
                 layout?.metatags && <Meta tags={layout?.metatags} />
             }
@@ -19,7 +18,7 @@ const Default = ({ layout, children }:any) : ReactNode => {
                             {
                                 layout.title
                             }
-                      </Heading>
+                        </Heading>
                     }
                 </Container>
                 <>
