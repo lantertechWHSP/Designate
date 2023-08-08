@@ -32,14 +32,14 @@ const Header = ({ menu }) : ReactNode => {
                                             item.children && <Box style={{ background: '#fff', border: '1px solid #ccc' }} p={4}>
                                                 {
                                                     item.children.map((child:IMenuItem, childIndex:number) => {
-                                                        return <Link href={`/${child.link.slug}`} px={2} key={childIndex}>{child.link.title}</Link>
+                                                        return <Link href={`/${child.link.slug}`} px={2} key={childIndex}>{child.link.title}</Link>;
                                                     })
                                                 }
-                                          </Box>
+                                            </Box>
                                         }
                                     </PopoverContent>
                                 </Portal>
-                            </Popover> : <Link href={`/${item.link.slug}`} px={2} key={index}>{item.link.title}</Link>
+                            </Popover> : <Link href={`/${item.link.slug}`} px={2} key={index}>{item.link.title}</Link>;
                         })
                     }
                 </Box>
