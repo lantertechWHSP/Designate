@@ -1,7 +1,9 @@
 import Text from '~/components/blocks/Text';
+import Image from '~/components/blocks/Image';
 
 const blocks:any = {
     Text,
+    Image,
 };
 
 export const getBlock = (name:any) : any => {

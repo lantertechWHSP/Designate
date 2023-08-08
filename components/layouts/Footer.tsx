@@ -7,7 +7,7 @@ const Footer = ({ address, email, phone, fax, linkedin }) : ReactNode => {
     return <Box as="footer" style={{
         borderTop: '1px solid #ccc',
         background: '#f0f0f0',
-    }} py={4} mt={4}>
+    }} py={4} h="160px">
         <Container>
             <Flex>
                 <Box width={200}>

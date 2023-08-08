@@ -67,6 +67,13 @@ export const theme = extendBaseTheme({
                 maxW: '1180px',
                 margin: '0 auto',
                 px: ['16px'],
+            },
+            variants: {
+                content: {
+                    maxW: '880px',
+                    margin: '0 auto',
+                    px: ['16px'],
+                }
             }
         },
         Link: {
