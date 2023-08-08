@@ -1,7 +1,10 @@
 import React from 'react';
 import Head from 'next/head';
+import { ChakraBaseProvider } from '@chakra-ui/react';
+import { theme } from '~/lib/theme/theme';
+import Fonts from "~/lib/theme/fonts";
 
-const RootLayout = ({ children } : { children:React.ReactNode }) : React.ReactNode => {
+const RootLayout = ({ children }) : React.ReactNode => {
     return (
         <html lang="en">
             <Head>
@@ -11,10 +14,14 @@ const RootLayout = ({ children } : { children:React.ReactNode }) : React.ReactNo
                 <meta name="format-detection" content="date=no" />
                 <meta name="format-detection" content="address=no" />
                 <meta name="format-detection" content="email=no" />
-                <meta name="version" content="0.1.0" />
+                <meta name="version" content="0.2.0" />
             </Head>
             <body>
-                {children}
+                <ChakraBaseProvider theme={theme}>
+                    <Fonts>
+                        {children}
+                    </Fonts>
+                </ChakraBaseProvider>
             </body>
         </html>
     );
