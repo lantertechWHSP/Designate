@@ -1,9 +1,9 @@
 export const pages = `
-  query pages {
-    pages: allPages {
-      id
-      title
-      slug
+    query pages {
+        pages: allPages {
+            id
+            title
+            slug
+        }
     }
-  }
 `;
