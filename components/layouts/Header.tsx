@@ -21,7 +21,7 @@ const Header = ({ menu }) : ReactNode => {
                 <Box as="nav">
                     {
                         Array.isArray(menu) && menu.length > 0 && menu.map((item:IMenuItem, index:number) => {
-                            return <Link href={item.link.slug} px={2} key={index}>{item.link.title}</Link>;
+                            return <Link href={`/${item.link.slug}`} px={2} key={index}>{item.link.title}</Link>;
                         })
                     }
                 </Box>
