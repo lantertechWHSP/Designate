@@ -22,16 +22,14 @@ const StrucutredContent = ({ content }) : any => {
                 renderNodeRule(isHeading, ({ node, children, key }) => {
                     const tag = `h${node.level}`;
 
-                    return (
-                        <>
-                            <Heading as={tag} variant={tag} key={key}>
-                                {children}
-                            </Heading>
-                        </>
-                    );
+                    return <Heading as={tag} variant={tag} key={key}>
+                        {children}
+                    </Heading>;
                 }),
                 renderNodeRule(isCode, ({ node, _children, key }) => {
-                    return <Code children={node.code} key={key} />
+                    return <Code key={key}>
+                        {node.code}
+                    </Code>;
                 })
             ]}
         />

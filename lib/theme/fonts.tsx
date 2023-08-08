@@ -1,6 +1,7 @@
+import { ReactNode } from 'react';
 import { Global } from '@emotion/react';
 
-const Fonts = () => (
+const Fonts = () : ReactNode => (
     <Global
         styles={`
             @font-face {
@@ -11,6 +12,6 @@ const Fonts = () => (
             }
       `}
     />
-)
+);
 
-export default Fonts
+export default Fonts;
