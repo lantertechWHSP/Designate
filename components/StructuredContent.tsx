@@ -19,14 +19,22 @@ const StrucutredContent = ({ content }) : any => {
                 </Link>;
             }}
             customNodeRules={[
-                renderNodeRule(isHeading, ({ node, children, key }) => {
-                    const tag:string = `h${node.level}`;
+                renderNodeRule(isHeading, ({ node, children, key }:{
+                    node:any,
+                    children:any,
+                    key:any
+                }) => {
+                    const tag:any = `h${node.level}`;
 
+                    // @ts-ignore
                     return <Heading as={tag} variant={tag} key={key}>
                         {children}
                     </Heading>;
                 }),
-                renderNodeRule(isCode, ({ node, _children, key }) => {
+                renderNodeRule(isCode, ({ node, key }:{
+                    node:any,
+                    key:any
+                }) => {
                     return <Code key={key}>
                         {node.code}
                     </Code>;
