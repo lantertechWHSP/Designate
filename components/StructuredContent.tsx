@@ -1,6 +1,9 @@
 import React  from 'react';
 import { StructuredText } from 'react-datocms';
 import Link  from 'next/link';
+import { isHeading } from 'datocms-structured-text-utils';
+import { renderNodeRule } from 'datocms-structured-text-to-html-string';
+import { Heading } from '@chakra-ui/react';
 
 const StrucutredContent = ({ content }) : any => {
     return (
@@ -15,6 +18,19 @@ const StrucutredContent = ({ content }) : any => {
                     {children}
                 </Link>;
             }}
+            customNodeRules={[
+                renderNodeRule(isHeading, ({ node, children, key }) => {
+                    const tag = `h${node.level}`;
+
+                    return (
+                        <>
+                            <Heading as={tag} variant={tag} key={key}>
+                                {children}
+                            </Heading>
+                        </>
+                    );
+                })
+            ]}
         />
     );
 };
