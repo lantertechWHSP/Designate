@@ -6,7 +6,7 @@ export const config = {
 
 export async function middleware(request: NextRequest) : Promise<NextResponse> {
     // Staging Environment
-    if(process.env.SITE_ENVIRONMENT === 'staging') {
+    if(process.env.SITE_ENVIRONMENT === 'staging' || process.env.SITE_ENVIRONMENT === 'production') {
         const basicAuth = request.headers.get('authorization');
         const url = request.nextUrl;
 
