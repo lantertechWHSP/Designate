@@ -8,7 +8,7 @@ const Fonts = () : ReactNode => (
                 font-family: 'Arimado';
                 font-style: normal;
                 font-weight: 200 900;
-                src: url('./fonts/Arimado-Variable.woff2') format('woff2')
+                src: url('/fonts/Arimado-Variable.woff2') format('woff2')
             }
       `}
     />

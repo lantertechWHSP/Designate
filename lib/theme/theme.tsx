@@ -18,7 +18,7 @@ export const theme = extendBaseTheme({
     components: {
         Heading: {
             baseStyle: {
-                fontWeight: 'bold'
+                fontWeight: 900
             },
             variants: {
                 h1: {
