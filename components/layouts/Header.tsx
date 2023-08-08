@@ -9,7 +9,10 @@ interface IMenuItem {
 }
 
 const Header = ({ menu }) : ReactNode => {
-    return <Box as="header" py={4}>
+    return <Box as="header" mb={4} py={4} style={{
+        borderBottom: '1px solid #ccc',
+        background: '#f0f0f0',
+    }}>
         <Container>
             <Flex>
                 <Box width={200}>
