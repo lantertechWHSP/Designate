@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import { ReactNode } from 'react';
+import { Container, Flex, Box, Link } from '@chakra-ui/react';
 
 interface IMenuItem {
     link: {
@@ -9,19 +9,22 @@ interface IMenuItem {
 }
 
 const Header = ({ menu }) : ReactNode => {
-    return <header>
-        <div>
-            Header
-        </div>
-        <nav>
-            <Link href="/">Home</Link> |
-            {
-                Array.isArray(menu) && menu.length > 0 && menu.map((item:IMenuItem, index:number) => {
-                    return <Link key={index} href={item.link.slug}>{item.link.title}</Link>;
-                })
-            }
-        </nav>
-    </header>;
+    return <Box as="header" py={4}>
+        <Container>
+            <Flex>
+                <Box width={200}>
+                    <Link href="/">Home</Link>
+                </Box>
+                <Box as="nav">
+                    {
+                        Array.isArray(menu) && menu.length > 0 && menu.map((item:IMenuItem, index:number) => {
+                            return <Link href={item.link.slug} px={2}>{item.link.title}</Link>
+                        })
+                    }
+                </Box>
+            </Flex>
+        </Container>
+    </Box>;
 };
 
 export default Header;
