@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { Container, Flex, Box, Link } from '@chakra-ui/react';
 import StructuredContent from "~/components/StructuredContent";
-import { Icon, Icons } from "~/components/icon/icon";
+import { Icon, Icons } from "~/components/elements/icon";
 
 const Footer = ({ address, email, phone, fax, linkedin }) : ReactNode => {
     return <Box as="footer" style={{
