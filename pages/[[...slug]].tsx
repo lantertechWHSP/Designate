@@ -6,9 +6,14 @@ import { doQuery, queries } from '~/dato/api';
 import { getLayoutData, getBlocks } from '~/lib/utils';
 
 export async function getStaticPaths() : Promise<any> {
+    const systemPages = [
+        'news',
+    ];
+
     const pages = await doQuery(queries.pages).then(({ pages }) => pages);
 
     const paths = pages
+        .filter((page) => !systemPages.includes(page.slug))
         .map((page) => {
             const slug = page.slug === 'home' ? [''] : page.slug.split('/');
             return { params: { slug } };

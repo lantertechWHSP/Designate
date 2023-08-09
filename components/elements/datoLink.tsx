@@ -23,7 +23,7 @@ export const DatoLink = forwardRef(({ title, link, externalLink, ...props }:any,
     };
 
     let href:string = '#';
-    let children:string = '';
+    let children = '';
     let target:string = '';
 
     // Link object
@@ -35,7 +35,6 @@ export const DatoLink = forwardRef(({ title, link, externalLink, ...props }:any,
         href = externalLink;
         target = '_blank';
     }
-
 
     if(link && link.title) {
         children = link.title;
