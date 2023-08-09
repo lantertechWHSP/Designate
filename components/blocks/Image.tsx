@@ -5,7 +5,7 @@ import { Box } from '@chakra-ui/react';
 
 const ImageBlock = ({ image }) : ReactNode => {
     return <ContentBlock>
-        <Box maxW={600} mx="auto">
+        <Box>
             <DatoImage data={image.responsiveImage} />
         </Box>
     </ContentBlock>;

@@ -1,5 +1,5 @@
 export const seoAttrs = `
-  attributes
-  content
-  tag
+    attributes
+    content
+    tag
 `;
