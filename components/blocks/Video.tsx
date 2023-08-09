@@ -1,7 +1,7 @@
 import ContentBlock from "~/components/blocks/ContentBlock";
 import { ReactNode, useState } from 'react';
 import { Text, AspectRatio } from '@chakra-ui/react';
-import dynamic from 'next/dynamic'
+import dynamic from 'next/dynamic';
 const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
 
 const VideoBlock = ({ title, video, videoEmbed, _coverImage }) : ReactNode => {
