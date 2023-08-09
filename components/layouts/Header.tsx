@@ -26,7 +26,7 @@ const Header = ({ menu }) : ReactNode => {
                         Array.isArray(menu) && menu.length > 0 && menu.map((item:IMenuItem, index:number) => {
                             return Array.isArray(item.children) && item.children.length > 0 ? <Popover trigger="hover" placement="bottom-start" key={index}>
                                 <PopoverTrigger>
-                                    <DatoLink {...item} px={2} key={index} />
+                                    <DatoLink {...item} px={2} />
                                 </PopoverTrigger>
                                 <Portal>
                                     <PopoverContent>
@@ -34,8 +34,8 @@ const Header = ({ menu }) : ReactNode => {
                                             item.children && <Box style={{ background: '#fff', border: '1px solid #ccc' }} py={2} px={4}>
                                                 {
                                                     item.children.map((child:IMenuItem, childIndex:number) => {
-                                                        return <Box py={2}>
-                                                            <DatoLink {...child} key={childIndex} />
+                                                        return <Box py={2} key={childIndex}>
+                                                            <DatoLink {...child} />
                                                         </Box>;
                                                     })
                                                 }
