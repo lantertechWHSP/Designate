@@ -1,5 +1,6 @@
 import { textRecord } from "~/dato/blocks/text";
 import { imageRecord } from "~/dato/blocks/image";
+import { videoRecord } from "~/dato/blocks/video";
 
 export const blocks = `
     blocks {
@@ -8,6 +9,9 @@ export const blocks = `
         }
         ... on ImageRecord {
             ${imageRecord}
+        }
+        ... on VideoRecord {
+            ${videoRecord}
         }
     }
 `;

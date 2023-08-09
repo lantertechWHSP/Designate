@@ -1,7 +1,7 @@
 export const internalLinkAttrs = `
-  ... on PageRecord {
-    id
-    title
-    slug
-  }
+    ... on PageRecord {
+        id
+        title
+        slug
+    }
 `;
