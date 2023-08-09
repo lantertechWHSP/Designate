@@ -1,9 +1,11 @@
 import Text from '~/components/blocks/Text';
 import Image from '~/components/blocks/Image';
+import Video from '~/components/blocks/Video';
 
 const blocks:any = {
     Text,
     Image,
+    Video,
 };
 
 export const getBlock = (name:any) : any => {
