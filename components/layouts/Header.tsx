@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
-import { Container, Flex, Box, Link, Popover, PopoverTrigger, PopoverContent, Portal } from '@chakra-ui/react';
+import { Container, Flex, Box, Popover, Link, PopoverTrigger, PopoverContent, Portal } from '@chakra-ui/react';
+import { DatoLink } from '~/components/elements/datoLink';
 
 interface IMenuItem {
     link: {
@@ -8,6 +9,7 @@ interface IMenuItem {
     },
     children?:IMenuItem[];
 }
+
 
 const Header = ({ menu }) : ReactNode => {
     return <Box as="header" py={4} style={{
@@ -24,22 +26,24 @@ const Header = ({ menu }) : ReactNode => {
                         Array.isArray(menu) && menu.length > 0 && menu.map((item:IMenuItem, index:number) => {
                             return Array.isArray(item.children) && item.children.length > 0 ? <Popover trigger="hover" placement="bottom-start" key={index}>
                                 <PopoverTrigger>
-                                    <Link href={`/${item.link.slug}`} px={2} key={index}>{item.link.title}</Link>
+                                    <DatoLink {...item} px={2} key={index} />
                                 </PopoverTrigger>
                                 <Portal>
                                     <PopoverContent>
                                         {
-                                            item.children && <Box style={{ background: '#fff', border: '1px solid #ccc' }} p={4}>
+                                            item.children && <Box style={{ background: '#fff', border: '1px solid #ccc' }} py={2} px={4}>
                                                 {
                                                     item.children.map((child:IMenuItem, childIndex:number) => {
-                                                        return <Link href={`/${child.link.slug}`} px={2} key={childIndex}>{child.link.title}</Link>;
+                                                        return <Box py={2}>
+                                                            <DatoLink {...child} key={childIndex} />
+                                                        </Box>;
                                                     })
                                                 }
                                             </Box>
                                         }
                                     </PopoverContent>
                                 </Portal>
-                            </Popover> : <Link href={`/${item.link.slug}`} px={2} key={index}>{item.link.title}</Link>;
+                            </Popover> : <DatoLink {...item} px={2} key={index} />;
                         })
                     }
                 </Box>

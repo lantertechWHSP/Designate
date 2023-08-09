@@ -1,15 +1,16 @@
 const menuItemFrag = `
     fragment menuItemFrag on MenuItemRecord {
         id
-        label
+        title
         link {
-        ... on PageRecord {
-            __typename
-            id
-            title
-            slug
+            ... on PageRecord {
+                __typename
+                id
+                title
+                slug
+            }
         }
-        }
+        externalLink
     }
 `;
 
