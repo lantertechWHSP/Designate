@@ -1,6 +1,6 @@
 import React from 'react';
 import type { NextPage } from 'next';
-import Default from '~/components/layouts/Default';
+import Layout from '~/components/layouts/Layout';
 import { doQuery, queries } from "~/dato/api";
 import { getLayoutData } from '~/lib/utils';
 
@@ -16,11 +16,11 @@ export async function getStaticProps({ _params, preview }) : Promise<any> {
 }
 
 const ErrorPage : NextPage = ({layout}:any) : JSX.Element => {
-    return <Default layout={layout}>
+    return <Layout layout={layout}>
         <p>
             Page Not Found
         </p>
-    </Default>;
+    </Layout>;
 };
 
 export default ErrorPage;

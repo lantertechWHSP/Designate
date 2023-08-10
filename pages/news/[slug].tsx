@@ -1,6 +1,6 @@
 import React from 'react';
 import type { NextPage } from 'next';
-import Default from '~/components/layouts/Default';
+import Layout from '~/components/layouts/Layout';
 import { ModularContent } from '~/components/ModularContent';
 import { doQuery, queries } from '~/dato/api';
 import { getLayoutData, getBlocks } from '~/lib/utils';
@@ -29,9 +29,9 @@ export async function getStaticProps({ params, preview }) : Promise<any> {
 
 const Post : NextPage = ({layout, blocks}:any)  : JSX.Element => {
     return (
-        <Default layout={layout}>
+        <Layout layout={layout}>
             <ModularContent content={blocks} />
-        </Default>
+        </Layout>
     );
 };
 
