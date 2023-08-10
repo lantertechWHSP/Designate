@@ -1,11 +1,11 @@
 import { ReactNode } from 'react';
 import { format, parseISO } from 'date-fns';
-import { Box, Heading, Text, SimpleGrid, Divider } from '@chakra-ui/react';
+import { Box, Heading, Text, SimpleGrid } from '@chakra-ui/react';
 import ContentBlock from "~/components/blocks/Content";
 import { doQuery, queries } from '~/dato/api';
-import {Icon, Icons} from "~/components/elements/icon";
+import { Icon, Icons } from "~/components/elements/icon";
 
-const LatestNewsItem = ({title, publishDate }) => {
+const LatestNewsItem = ({ title, publishDate }) => {
     const date = parseISO(publishDate);
 
     return <Box py={6} borderBottom="1px solid grey">
@@ -38,7 +38,6 @@ const LatestNewsBlock = ({ title, data: { posts } }) : ReactNode => {
             <Box>
                 {
                     (Array.isArray(posts) && posts.length > 0) && posts.map((post, index:number) => {
-                        console.log(post);
                         return <LatestNewsItem {...post} key={index} />
                     })
                 }
