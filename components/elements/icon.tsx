@@ -8,7 +8,7 @@ export enum Icons {
     Linkedin = 'linkedin',
 }
 
-export const Icon = ({icon, w = 30, h = 30}) : ReactNode => {
+export const Icon = ({icon, w = 30, h = 30, ...props}) : ReactNode => {
     return <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width={w} height={h} fill="currentColor">
         {
             (() => {
