@@ -2,10 +2,16 @@ import Text from '~/components/blocks/Text';
 import Image from '~/components/blocks/Image';
 import Video from '~/components/blocks/Video';
 
+import Card from '~/components/blocks/CardContainer/Card';
+import CardContainer from '~/components/blocks/CardContainer/CardContainer';
+
 const blocks:any = {
     Text,
     Image,
     Video,
+
+    Card,
+    CardContainer
 };
 
 export const getBlock = (name:any) : any => {

@@ -4,14 +4,13 @@ import {
     Flex,
     Box,
     Popover,
-    Link,
     Button,
     PopoverTrigger,
     PopoverContent,
     useDisclosure,
     Collapse
 } from '@chakra-ui/react';
-import {DatoLink} from '~/components/elements/datoLink';
+import { Link } from '~/components/elements/link';
 import {motion} from 'framer-motion';
 import useDocumentScroll from 'hooks/useDocumentScroll';
 import {
@@ -54,7 +53,7 @@ const Header = ({menu}): ReactNode => {
                     <Container>
                         <Flex h={height} py={4} align="center">
                             <Box width={200}>
-                                <Link href="/" variant="siteHeader" >Home</Link>
+                                <Link href="/" variant="siteHeader">Home</Link>
                             </Box>
                             <DesktopNav menu={menu}/>
                             <Flex display={['flex', , , 'none']} flex={1}>
@@ -81,7 +80,7 @@ const DesktopNav = ({menu}): ReactNode => {
                 return Array.isArray(item.children) && item.children.length > 0 ?
                     <Popover trigger="hover" placement="bottom-start" key={index}>
                         <PopoverTrigger>
-                            <DatoLink variant="siteHeader" {...item} px={2}/>
+                            <Link variant="siteHeader" link={item} px={2} />
                         </PopoverTrigger>
                         <PopoverContent>
                             {
@@ -89,14 +88,14 @@ const DesktopNav = ({menu}): ReactNode => {
                                     {
                                         item.children.map((child: IMenuItem, childIndex: number) => {
                                             return <Box py={2} key={childIndex}>
-                                                <DatoLink variant="siteHeader"  {...child} />
+                                                <Link variant="siteHeader" link={child} />
                                             </Box>;
                                         })
                                     }
                                 </Box>
                             }
                         </PopoverContent>
-                    </Popover> : <DatoLink variant="siteHeader"  {...item} px={2} key={index}/>;
+                    </Popover> : <Link variant="siteHeader" link={item} px={2} key={index} />;
             })
         }
     </Box>;
@@ -157,7 +156,7 @@ const MobileNavItem = ({item}): ReactNode => {
 
     return <Box>
         <Flex px={4} py={3}>
-            <DatoLink variant="siteHeader" {...item} />
+            <Link variant="siteHeader" link={item} />
             <Box flex={1}/>
             {
                 hasChildren && <Button onClick={handleClick} color="steelBlue">
@@ -175,7 +174,7 @@ const MobileNavItem = ({item}): ReactNode => {
             {
                 item.children.map((child: IMenuItem, childIndex: number) => {
                     return <Box px={4} py={2} key={childIndex}>
-                        <DatoLink variant="siteHeader" {...child} />
+                        <Link variant="siteHeader" link={child} />
                     </Box>;
                 })
             }

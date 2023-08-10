@@ -2,7 +2,6 @@ import { ReactNode } from 'react';
 import { Container, Box, Heading } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { resolveInternalLink } from 'lib/utils';
-import { DatoLink } from '~/components/elements/datoLink';
 
 const PageLinks = ({ current }) : ReactNode => {
     const router = useRouter();
@@ -22,11 +21,6 @@ const PageLinks = ({ current }) : ReactNode => {
                 {
                     links.map((link, index) => {
                         return <Box key={index} py={1}>
-                            <DatoLink
-                                {...link}
-                                fontSize={24}
-                                fontWeight={600}
-                                color="skyBlue" />
                         </Box>;
                     })
                 }
