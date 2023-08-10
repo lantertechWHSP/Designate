@@ -4,10 +4,10 @@ import Card from "~/components/blocks/CardContainer/Card";
 import ContentBlock from "~/components/blocks/ContentBlock";
 
 const CardContainerBlock = ({ title, cards }) : ReactNode => {
-    return <ContentBlock>
+    return <ContentBlock py={4}>
         {
-            title && <Heading>
-                title
+            title && <Heading variant="sectionHeading" mb={4}>
+                {title}
             </Heading>
         }
         {
