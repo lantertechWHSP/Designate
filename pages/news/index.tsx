@@ -1,6 +1,6 @@
 import React from 'react';
 import type { NextPage } from 'next';
-import Default from '~/components/layouts/Default';
+import Layout from '~/components/layouts/Layout';
 import { ModularContent } from '~/components/ModularContent';
 import { doQuery, queries } from '~/dato/api';
 import { getLayoutData, getBlocks } from '~/lib/utils';
@@ -24,7 +24,7 @@ export async function getStaticProps({ preview }) : Promise<any> {
 
 const NewsPage : NextPage = ({layout, blocks, latestPosts}:any) : JSX.Element => {
     return (
-        <Default layout={layout}>
+        <Layout layout={layout}>
             <Container>
                 <h1>News</h1>
             </Container>
@@ -40,7 +40,7 @@ const NewsPage : NextPage = ({layout, blocks, latestPosts}:any) : JSX.Element =>
                     </SimpleGrid>
                 }
             </Container>
-        </Default>
+        </Layout>
     );
 };
 

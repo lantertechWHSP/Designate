@@ -4,8 +4,9 @@ const colors = {
     black: '#121517',
     steelBlue: '#687083',
     ghostWhite: '#f2f4f6',
-    ghostWhite2: '#f9fafb'
-}
+    ghostWhite2: '#f9fafb',
+    skyBlue: '#4594f7'
+};
 
 export const theme = extendBaseTheme({
     fonts: {
@@ -61,6 +62,11 @@ export const theme = extendBaseTheme({
                     fontWeight: [900],
                     lineHeight: [1.35]
                 },
+                sectionHeading: {
+                    fontSize: [20],
+                    fontWeight: [600],
+                    lineHeight: [1.35]
+                }
             },
         },
         Code: {
@@ -74,7 +80,7 @@ export const theme = extendBaseTheme({
         },
         Container: {
             baseStyle: {
-                maxW: '1180px',
+                maxW: '1380px',
                 margin: '0 auto',
                 px: ['16px'],
             },

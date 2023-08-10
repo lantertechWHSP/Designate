@@ -1,27 +1,9 @@
 import { forwardRef } from 'react';
 import { Link } from '@chakra-ui/react';
 import { ReactNode } from 'react';
+import { resolveInternalLink } from '~/lib/utils';
 
 export const DatoLink = forwardRef(({ title, link, externalLink, ...props }:any, ref) : ReactNode => {
-    /**
-     * Link object from Dato
-     * @param link
-     */
-    const resolveInternalLink = (link) : string => {
-        if (!link) {
-            return null;
-        }
-
-        const { slug, __typename } = link;
-
-        switch (__typename) {
-            case 'PostRecord':
-                return `/news/${slug}`;
-        }
-
-        return `/${slug}`;
-    };
-
     let href:string = '#';
     let children = '';
     let target:string = '';
