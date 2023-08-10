@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import { Container, Box, Heading } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { resolveInternalLink } from 'lib/utils';
+import { Link } from '~/components/elements/link';
 
 const PageLinks = ({ current }) : ReactNode => {
     const router = useRouter();
@@ -15,12 +16,13 @@ const PageLinks = ({ current }) : ReactNode => {
     return (
         <Box py={[8, ,12]} background="ghostWhite2">
             <Container>
-                <Heading variant="sectionHeading" mb={4}>
+                <Heading variant="pageLinksHeading" mb={4}>
                     See Also
                 </Heading>
                 {
                     links.map((link, index) => {
                         return <Box key={index} py={1}>
+                            <Link link={{ link: link.link }} fontSize={24} fontWeight={600} />
                         </Box>;
                     })
                 }

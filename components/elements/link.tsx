@@ -11,6 +11,9 @@ interface IDatoLink {
     externalLink?:string
 }
 
+/**
+ * Wrapper for the Chakra link that integrates adding a dato link object
+ */
 export const Link = forwardRef(({ link, ...props }:{
     link: IDatoLink;
 }, ref) : ReactNode => {
@@ -23,7 +26,10 @@ export const Link = forwardRef(({ link, ...props }:{
     }
     else if(link?.externalLink) {
         href = link.externalLink;
-        target = '_blank';
+
+        if(!props.target) {
+            target = '_blank';
+        }
     }
 
     if(props.children) {
@@ -37,7 +43,7 @@ export const Link = forwardRef(({ link, ...props }:{
     }
 
     return (
-        <ChakraLink href={href} {...props} target={target} ref={ref}>{newChild}</ChakraLink>
+        <ChakraLink href={href} target={target} {...props} ref={ref}>{newChild}</ChakraLink>
     );
 });
 

@@ -63,8 +63,14 @@ export const theme = extendBaseTheme({
                     lineHeight: [1.35]
                 },
                 sectionHeading: {
-                    fontSize: [20],
+                    fontSize: [34],
                     fontWeight: [600],
+                    lineHeight: [1.35],
+                    color: 'skyBlue'
+                },
+                pageLinksHeading: {
+                    fontSize: [20],
+                    fontWeight: [700],
                     lineHeight: [1.35]
                 }
             },
