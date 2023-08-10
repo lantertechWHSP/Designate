@@ -13,7 +13,7 @@ export const post = `
             seo: _seoMetaTags {
                 ${seoAttrs}
             }
-            blocks: {
+            blocks {
                 ... on TextRecord {
                     ${textRecord}
                 }
