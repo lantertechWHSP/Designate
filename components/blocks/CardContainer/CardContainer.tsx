@@ -16,7 +16,7 @@ const CardContainerBlock = ({ title, cards }) : ReactNode => {
                     cards.map((card, index:number) => {
                         return <Box key={index}>
                             <Card {...card} />
-                        </Box>
+                        </Box>;
                     })
                 }
             </SimpleGrid>

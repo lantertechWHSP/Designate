@@ -1,14 +1,10 @@
 import { ReactNode } from 'react';
 import { Box, Container, Flex, Heading } from '@chakra-ui/react';
-import ContentBlock from "~/components/blocks/Content";
-import { AspectRatio } from '@chakra-ui/react'
+import { AspectRatio } from '@chakra-ui/react';
 import useDimensions from 'react-cool-dimensions';
 
 const HeroBlock = ({ title, video, image }) : ReactNode => {
     const { observe: contentWidthObserve, width: contentWidth } = useDimensions();
-
-    console.log(title);
-    console.log(video);
 
     return <Box
         position="relative"
@@ -33,15 +29,15 @@ const HeroBlock = ({ title, video, image }) : ReactNode => {
                                 </Box>
                             </>
                         </AspectRatio>
-                    </Box>
+                    </Box>;
                 }
                 else if(image && image?.url) {
                     return  <Box
-                                h={['428px', '800px', '840px']}
-                                backgroundImage={`url(${image?.url}?w=2400&h=930)`}
-                                backgroundPosition="center"
-                                backgroundSize="cover">
-                    </Box>
+                        h={['428px', '800px', '840px']}
+                        backgroundImage={`url(${image?.url}?w=2400&h=930)`}
+                        backgroundPosition="center"
+                        backgroundSize="cover">
+                    </Box>;
                 }
             })()
         }
@@ -57,7 +53,7 @@ const HeroBlock = ({ title, video, image }) : ReactNode => {
                 </Flex>
             </Container>
         </Flex>
-    </Box>
+    </Box>;
 };
 
 export default HeroBlock;

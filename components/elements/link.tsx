@@ -3,20 +3,10 @@ import { Link as ChakraLink } from '@chakra-ui/react';
 import { ReactNode } from 'react';
 import { resolveInternalLink } from '~/lib/utils';
 
-interface IDatoLink {
-    link:{
-        slug?:string
-    },
-    title?:string,
-    externalLink?:string
-}
-
 /**
  * Wrapper for the Chakra link that integrates adding a dato link object
  */
-export const Link = forwardRef(({ link, ...props }:{
-    link: IDatoLink;
-}, ref) : ReactNode => {
+export const Link = forwardRef(({ link, ...props }:any, ref) : ReactNode => {
     let href:string = '#';
     let newChild = '';
     let target:string = '';

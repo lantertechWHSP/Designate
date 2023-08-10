@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Box, Flex, Text, Heading, AspectRatio } from '@chakra-ui/react';
+import { Box, Text, Heading, AspectRatio } from '@chakra-ui/react';
 import { Icon, Icons } from '~/components/elements/icon';
 import { Link } from '~/components/elements/link';
 
@@ -17,7 +17,7 @@ const CardBlock = ({ link }) : ReactNode => {
                 </Box>
             </Box>
         </AspectRatio>
-    </Link>
+    </Link>;
 };
 
 export default CardBlock;

@@ -5,7 +5,7 @@ import ContentBlock from "~/components/blocks/Content";
 import { doQuery, queries } from '~/dato/api';
 import { Icon, Icons } from "~/components/elements/icon";
 
-const LatestNewsItem = ({ title, publishDate }) => {
+const LatestNewsItem = ({ title, publishDate }) : ReactNode => {
     const date = parseISO(publishDate);
 
     return <Box py={6} borderBottom="1px solid grey">
@@ -22,8 +22,8 @@ const LatestNewsItem = ({ title, publishDate }) => {
         <Box display="inline-flex" style={{ alignItems: 'center' }} borderBottom="1px" color="white" borderColor="white">
             <Text>View</Text><Icon w={12} h={12} icon={Icons.ChevronRight} />
         </Box>
-    </Box>
-}
+    </Box>;
+};
 
 const LatestNewsBlock = ({ title, data: { posts } }) : ReactNode => {
     return <ContentBlock py={8} background="mutedSteel">
@@ -32,13 +32,13 @@ const LatestNewsBlock = ({ title, data: { posts } }) : ReactNode => {
                 {
                     title && <Heading variant="sectionHeading" color="white" mb={4}>
                         {title}
-                  </Heading>
+                    </Heading>
                 }
             </Box>
             <Box>
                 {
                     (Array.isArray(posts) && posts.length > 0) && posts.map((post, index:number) => {
-                        return <LatestNewsItem {...post} key={index} />
+                        return <LatestNewsItem {...post} key={index} />;
                     })
                 }
             </Box>
