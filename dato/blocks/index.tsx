@@ -2,6 +2,7 @@ import { textRecord } from '~/dato/blocks/text';
 import { imageRecord } from '~/dato/blocks/image';
 import { videoRecord } from '~/dato/blocks/video';
 import { cardContainerRecord } from '~/dato/blocks/cardContainer';
+import { latestNewsRecord } from '~/dato/blocks/latestNews';
 
 export const blocks = `
     blocks {
@@ -16,6 +17,9 @@ export const blocks = `
         }
         ... on CardContainerRecord {
             ${cardContainerRecord}
+        }
+         ... on LatestNewsRecord {
+            ${latestNewsRecord}
         }
     }
 `;

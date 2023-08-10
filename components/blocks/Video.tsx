@@ -1,4 +1,4 @@
-import ContentBlock from "~/components/blocks/ContentBlock";
+import ContentBlock from "~/components/blocks/Content";
 import { ReactNode, useState } from 'react';
 import { Text, AspectRatio } from '@chakra-ui/react';
 import dynamic from 'next/dynamic';

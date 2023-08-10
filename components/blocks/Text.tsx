@@ -1,4 +1,4 @@
-import ContentBlock from "~/components/blocks/ContentBlock";
+import ContentBlock from "~/components/blocks/Content";
 import StructuredContent from 'components/StructuredContent';
 import { ReactNode } from 'react';
 

@@ -4,6 +4,7 @@ import Video from '~/components/blocks/Video';
 
 import Card from '~/components/blocks/CardContainer/Card';
 import CardContainer from '~/components/blocks/CardContainer/CardContainer';
+import LatestNews from '~/components/blocks/LatestNews';
 
 const blocks:any = {
     Text,
@@ -11,7 +12,8 @@ const blocks:any = {
     Video,
 
     Card,
-    CardContainer
+    CardContainer,
+    LatestNews
 };
 
 export const getBlock = (name:any) : any => {

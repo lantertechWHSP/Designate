@@ -1,4 +1,4 @@
-import ContentBlock from "~/components/blocks/ContentBlock";
+import ContentBlock from "~/components/blocks/Content";
 import { ReactNode } from 'react';
 import { Image as DatoImage } from 'react-datocms';
 import { Box } from '@chakra-ui/react';
