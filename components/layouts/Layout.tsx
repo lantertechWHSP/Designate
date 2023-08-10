@@ -12,7 +12,7 @@ const Layout = ({ layout, children }:any) : ReactNode => {
                 layout?.metatags && <Meta tags={layout?.metatags} />
             }
             <Header menu={layout?.menu} />
-            <Box py={8} minH={'calc(100vh - 212px)'}>
+            <Box minH={'calc(100vh - 212px)'}>
                 <>
                     {children}
                 </>

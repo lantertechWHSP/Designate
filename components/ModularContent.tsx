@@ -2,6 +2,7 @@ import Text from '~/components/blocks/Text';
 import Image from '~/components/blocks/Image';
 import Video from '~/components/blocks/Video';
 
+import Hero from '~/components/blocks/Hero';
 import Card from '~/components/blocks/CardContainer/Card';
 import CardContainer from '~/components/blocks/CardContainer/CardContainer';
 import LatestNews from '~/components/blocks/LatestNews';
@@ -11,6 +12,7 @@ const blocks:any = {
     Image,
     Video,
 
+    Hero,
     Card,
     CardContainer,
     LatestNews
