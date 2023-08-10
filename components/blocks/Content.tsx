@@ -6,9 +6,11 @@ const ContentBlock = ({ contain = true, children, ...props }) : ReactNode => {
         {
             contain ? <Container>
                 {children}
-            </Container> : {children}
+            </Container> : <Box>
+                {children}
+            </Box>
         }
-    </Box>
+    </Box>;
 };
 
 export default ContentBlock;
