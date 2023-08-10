@@ -3,8 +3,10 @@ import { extendBaseTheme } from '@chakra-ui/react';
 const colors = {
     black: '#121517',
     steelBlue: '#687083',
+    grey: '#c4c4c4',
     ghostWhite: '#f2f4f6',
     ghostWhite2: '#f9fafb',
+    mutedSteel: '#33373a',
     skyBlue: '#4594f7'
 };
 
@@ -63,8 +65,8 @@ export const theme = extendBaseTheme({
                     lineHeight: [1.35]
                 },
                 sectionHeading: {
-                    fontSize: [34],
-                    fontWeight: [600],
+                    fontSize: [40],
+                    fontWeight: [400],
                     lineHeight: [1.35],
                     color: 'skyBlue'
                 },
@@ -109,6 +111,13 @@ export const theme = extendBaseTheme({
                 siteFooter: {
                     color: 'steelBlue',
                 }
+            }
+        },
+        Divider: {
+            baseStyle: {
+                borderWidth: '1px',
+                borderStyle: 'solid',
+                borderColor: 'grey',
             }
         }
     },

@@ -1,10 +1,10 @@
 import { ReactNode } from 'react';
 import { Box, Heading, SimpleGrid } from '@chakra-ui/react';
 import Card from "~/components/blocks/CardContainer/Card";
-import ContentBlock from "~/components/blocks/ContentBlock";
+import ContentBlock from "~/components/blocks/Content";
 
 const CardContainerBlock = ({ title, cards }) : ReactNode => {
-    return <ContentBlock py={4}>
+    return <ContentBlock py={8}>
         {
             title && <Heading variant="sectionHeading" mb={4}>
                 {title}
