@@ -44,6 +44,7 @@ export const site = `
             phone
             fax
             linkedin
+            copyright
         }
     },
     ${menuItemFrag}
