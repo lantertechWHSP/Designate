@@ -6,6 +6,7 @@ import { doQuery, queries } from '~/dato/api';
 import { getLayoutData, getBlocks } from '~/lib/utils';
 import { LatestPostCard } from '~/components/elements/cards/latestPostCard';
 import { Container, SimpleGrid } from '@chakra-ui/react';
+import { Heading } from '@chakra-ui/react';
 
 export async function getStaticProps({ preview }) : Promise<any> {
     const slug = 'news';
@@ -26,7 +27,7 @@ const NewsPage : NextPage = ({layout, blocks, latestPosts}:any) : JSX.Element =>
     return (
         <Layout layout={layout}>
             <Container>
-                <h1>News</h1>
+                <Heading as="h1" variant="h1">News</Heading>
             </Container>
             <ModularContent content={blocks} />
             <Container>
