@@ -13,9 +13,9 @@ const Layout = ({ layout, children }:any) : ReactNode => {
             }
             <Header menu={layout?.menu} />
             <Box minH={'calc(100vh - 212px)'}>
-                <>
+                <Box py={8}>
                     {children}
-                </>
+                </Box>
             </Box>
             <PageLinks current={layout?.breadcrumbs[0]?.node}  />
             <Footer {...layout?.footer} />

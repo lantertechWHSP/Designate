@@ -4,6 +4,19 @@ const postFrag = `
         id
         slug
         title
+        image {
+            responsiveImage (imgixParams: { auto:format, w: "1380", h: "920", fit:crop }) {
+                aspectRatio
+                height
+                sizes
+                src
+                srcSet
+                webpSrcSet
+                width
+                alt
+                title
+            }    
+        }
         publishDate
         isFeatured
     }
