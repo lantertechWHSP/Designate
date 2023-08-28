@@ -25,7 +25,7 @@ export const getBlock = (name:any) : any => {
 };
 
 export const ModularContent = ({ content }) : any => {
-    if (!content || !Array.isArray(content)) {
+    if (!content || content === null || !Array.isArray(content)) {
         return null;
     }
 

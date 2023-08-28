@@ -1,12 +1,6 @@
 import { ReactNode } from 'react';
 
-interface IAudioBlock {
-    __typename?:string;
-    id?:string;
-    trackId?:string;
-}
-
-const AudioBlock = ({ trackId }:IAudioBlock) : ReactNode => {
+const AudioBlock = ({ trackId }:any) : ReactNode => {
     return <>
         {
             trackId && <iframe width="100%"
