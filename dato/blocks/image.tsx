@@ -4,6 +4,6 @@ export const imageRecord = `
     __typename
     id
     image {
-        ${imageAttrs}
+        ${imageAttrs({ width: 800, height: 800})}
     }
 `;

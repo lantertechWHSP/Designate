@@ -1,13 +1,21 @@
-export const imageAttrs = `
-    responsiveImage (imgixParams: { auto:format, w: "1380", fit:crop }) {
-        aspectRatio
-        height
-        sizes
-        src
-        srcSet
-        webpSrcSet
-        width
-        alt
-        title
-    }
-`
+interface Attrs {
+    width: number;
+    height: number;
+}
+
+export const imageAttrs = ({width, height}:Attrs = { width: 1380, height: null}) => {
+    return `
+        responsiveImage (imgixParams: { auto:format ${width ? `,w: "${width}"` : ''}${height ? `,h: "${height}"` : ''}, fit:crop }) {
+            aspectRatio
+            height
+            sizes
+            src
+            srcSet
+            webpSrcSet
+            width
+            alt
+            title
+        }
+    `
+}
+

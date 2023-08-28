@@ -27,7 +27,7 @@ export async function getStaticProps({ params, preview }) : Promise<any> {
     return { props: { post, layout, blocks } };
 }
 
-const Post : NextPage = ({layout, blocks}:any)  : JSX.Element => {
+const PostPage : NextPage = ({layout, blocks}:any)  : JSX.Element => {
     return (
         <Layout layout={layout}>
             <ModularContent content={blocks} />
@@ -35,4 +35,4 @@ const Post : NextPage = ({layout, blocks}:any)  : JSX.Element => {
     );
 };
 
-export default Post;
+export default PostPage;
