@@ -4,6 +4,8 @@ import Link  from 'next/link';
 import { isHeading, isCode } from 'datocms-structured-text-utils';
 import { renderNodeRule } from 'datocms-structured-text-to-html-string';
 import { Heading, Code } from '@chakra-ui/react';
+import Image from '~/components/blocks/Image';
+import Video from "~/components/blocks/Video";
 
 const StrucutredContent = ({ content }) : any => {
     return (
@@ -40,6 +42,17 @@ const StrucutredContent = ({ content }) : any => {
                     </Code>;
                 })
             ]}
+            renderBlock={({record}) => {
+                switch (record.__typename) {
+                    case 'ImageRecord':
+                        return <Image {...record} />;
+                    case 'VideoRecord':
+                        return <Video {...record} />;
+                    default:
+                        return null;
+                }
+                return null;
+            }}
         />
     );
 };
