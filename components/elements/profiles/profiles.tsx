@@ -5,9 +5,7 @@ import { Box, Flex, Container, SimpleGrid, Heading, Modal, ModalOverlay, ModalCo
 
 const ProfileCard = ({ image, name, companyPosition, onClick }) : ReactNode => {
     return <Box>
-        <Box onClick={onClick} >
-            <Image image={image} ratio={[1 / 1]} />
-        </Box>
+        <Image image={image} ratio={[1 / 1]} onClick={onClick} mb={4} />
         {
             name && <Heading as="h2" variant="h4" fontWeight={400}>
                 {name}
@@ -82,8 +80,9 @@ export const Profiles = ({ people }) : ReactNode => {
                                         </Box>
                                     }
                                 </Box>
-                                <Button pos="absolute" top={8} right={8} onClick={() => setModalOpen(false)}>
-                                    <Icon icon={Icons.Cross} />
+                                <Button pos="absolute" top={8} right={8} onClick={() => setModalOpen(false)}
+                                        borderRadius="50%" background="grey" w="44px" h="44px">
+                                    <Icon icon={Icons.Cross} w="24px" h="24px" />
                                 </Button>
                             </Flex>
                         </Container>
