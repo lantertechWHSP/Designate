@@ -1,8 +1,10 @@
 import { extendBaseTheme } from '@chakra-ui/react';
+import chakraTheme from '@chakra-ui/theme';
+const { Modal } = chakraTheme.components;
 
 const colors = {
     black: '#121517',
-    grey: '#c4c4c4',
+    // grey: '#c4c4c4',
     ghostWhite: '#f2f4f6',
     ghostWhite2: '#f9fafb',
     mutedSteel: '#33373a',
@@ -12,6 +14,7 @@ const colors = {
     steelBlue: '#353a3f',
     steelBlue2: '#3f4448',
     white: '#fff',
+    grey: '#c4c4c4',
 };
 
 export const theme = extendBaseTheme({
@@ -33,6 +36,7 @@ export const theme = extendBaseTheme({
         ...colors
     },
     components: {
+        Modal,
         Heading: {
             baseStyle: {
                 fontWeight: 900
@@ -127,6 +131,15 @@ export const theme = extendBaseTheme({
     },
     styles: {
         global: {
+            // '::selection': {
+            //     background: 'rgba(42, 67, 100, 0.3)',
+            // },
+            '*:focus': {
+                outline: 0,
+            },
+            '*:focus-visible': {
+                outline: 0
+            },
             body: {
                 color: 'black'
             }

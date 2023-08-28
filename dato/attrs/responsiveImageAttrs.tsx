@@ -3,7 +3,7 @@ interface Attrs {
     height: number;
 }
 
-export const imageAttrs = ({width, height}:Attrs = { width: 1380, height: null}) => {
+export const imageAttrs = ({width, height}:Attrs = { width: 1380, height: null}) : string => {
     return `
         responsiveImage (imgixParams: { auto:format ${width ? `,w: "${width}"` : ''}${height ? `,h: "${height}"` : ''}, fit:crop }) {
             aspectRatio
@@ -16,6 +16,6 @@ export const imageAttrs = ({width, height}:Attrs = { width: 1380, height: null})
             alt
             title
         }
-    `
-}
+    `;
+};
 

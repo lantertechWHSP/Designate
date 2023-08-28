@@ -44,6 +44,7 @@ const StrucutredContent = ({ content }) : any => {
                 })
             ]}
             renderBlock={({record}) => {
+                /* eslint-disable */
                 switch (record.__typename) {
                     case 'ImageRecord':
                         return <Image {...record} />;
@@ -52,9 +53,10 @@ const StrucutredContent = ({ content }) : any => {
                     case 'AudioRecord':
                         return <Audio {...record} />;
                     default:
-                        return null;
+                        return <></>;
                 }
-                return null;
+                return <></>;
+                /* eslint-enable */
             }}
         />
     );

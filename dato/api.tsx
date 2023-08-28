@@ -4,7 +4,7 @@ const ENVIRONMENT = process.env.NEXT_PUBLIC_DATO_ENVIRONMENT;
 import * as queries from '~/dato/queries';
 export { queries };
 
-export const doQuery = async (query:any, variables?:any, preview?:any) => {
+export const doQuery = async (query:any, variables?:any, preview?:any) : Promise<any> => {
     const endpoint = preview
         ? `https://graphql.datocms.com/environments/${ENVIRONMENT}/preview`
         : `https://graphql.datocms.com/environments/${ENVIRONMENT}`;
