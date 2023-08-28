@@ -23,8 +23,8 @@ const postFrag = `
 `;
 
 export const latestPosts = `
-    query posts($isFeatured: BooleanType, $first: IntType) {
-        posts: allPosts(filter: {isFeatured: {eq: $isFeatured}}, first: $first, orderBy: publishDate_DESC) {
+    query posts($isFeatured: BooleanType, $first: IntType, $skip: IntType) {
+        posts: allPosts(filter: {isFeatured: {eq: $isFeatured}}, first: $first, skip: $skip, orderBy: publishDate_DESC) {
             ...postFrag
         }
     }
@@ -38,4 +38,12 @@ export const posts = `
         }
     }
     ${postFrag}
+`;
+
+export const postsMeta = `
+  query posts {
+    postsMeta: _allPostsMeta {
+      count
+    }
+  }
 `;
