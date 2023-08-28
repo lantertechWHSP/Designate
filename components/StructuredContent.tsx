@@ -6,6 +6,7 @@ import { renderNodeRule } from 'datocms-structured-text-to-html-string';
 import { Heading, Code } from '@chakra-ui/react';
 import Image from '~/components/blocks/Image';
 import Video from "~/components/blocks/Video";
+import Audio from "~/components/blocks/Audio";
 
 const StrucutredContent = ({ content }) : any => {
     return (
@@ -48,6 +49,8 @@ const StrucutredContent = ({ content }) : any => {
                         return <Image {...record} />;
                     case 'VideoRecord':
                         return <Video {...record} />;
+                    case 'AudioRecord':
+                        return <Audio {...record} />;
                     default:
                         return null;
                 }

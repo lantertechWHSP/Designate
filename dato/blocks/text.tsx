@@ -1,6 +1,7 @@
 import { internalLinkAttrs } from "~/dato/attrs/internalLink";
 import { imageRecord } from '~/dato/blocks/image';
 import { videoRecord } from '~/dato/blocks/video';
+import { audioRecord } from '~/dato/blocks/audio';
 
 export const textRecord = `
     __typename
@@ -17,6 +18,9 @@ export const textRecord = `
             }
             ... on VideoRecord {
                 ${videoRecord}
+            }
+            ... on AudioRecord {
+                ${audioRecord}
             }
         }
     }
