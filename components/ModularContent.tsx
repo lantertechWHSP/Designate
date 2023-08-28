@@ -1,6 +1,7 @@
 import Text from '~/components/blocks/Text';
 import Image from '~/components/blocks/Image';
 import Video from '~/components/blocks/Video';
+import Audio from '~/components/blocks/Audio';
 
 import Hero from '~/components/blocks/Hero';
 import Card from '~/components/blocks/CardContainer/Card';
@@ -11,6 +12,7 @@ const blocks:any = {
     Text,
     Image,
     Video,
+    Audio,
 
     Hero,
     Card,
