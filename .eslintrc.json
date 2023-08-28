@@ -41,6 +41,8 @@
     "@typescript-eslint/explicit-function-return-type": ["error", {
       "allowExpressions": true
     }],
-    "@next/next/no-img-element": "off"
+    "@next/next/no-img-element": "off",
+    "jsx-a11y/alt-text": [0],
+    "jsx-a11y/img-has-alt": [0]
   }
 }

@@ -6,8 +6,10 @@ export const people = `
             id
             name
             image {
-                ${imageAttrs()}
+                ${imageAttrs({ width: 500, height: 500 })}
             }
+            companyPosition
+            description
         }
     }
 `;

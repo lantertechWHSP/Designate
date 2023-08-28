@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 import type { NextPage } from 'next';
 import Layout from '~/components/layouts/Layout';
 import { ModularContent } from '~/components/ModularContent';
@@ -23,17 +23,17 @@ export async function getStaticProps({ preview }) : Promise<any> {
     return { props: { layout, blocks, latestPosts, allPostsMeta } };
 }
 
-const LatestPosts = ({ latestPosts, postsMeta }) => {
+const LatestPosts = ({ latestPosts, postsMeta }) : ReactNode => {
     const [page, setPage] = useState(1);
     const [posts, setPosts] = useState(latestPosts); // Iniitial posts
     const [isLoading, setIsLoading] = useState(false);
     const [noMorePosts, setNoMorePosts] = useState(false);
     const [couldNotLoadPosts, setCouldNotLoadPosts] = useState(false);
 
-    const [totalPosts, _setTotalPosts] = useState(postsMeta.count || posts.length);
+    const [totalPosts] = useState(postsMeta.count || posts.length);
     const itemsPerPage = 1;
 
-    const loadMorePosts = () => {
+    const loadMorePosts = () : void => {
         setIsLoading(true);
 
         doQuery(queries.latestPosts, { isFeatured: true, first: itemsPerPage, skip: page * itemsPerPage }).then(({ posts }) => posts || []).then((newPosts) => {
@@ -48,30 +48,31 @@ const LatestPosts = ({ latestPosts, postsMeta }) => {
                 }, 250);
 
                 setTimeout(() => {
-                    setNoMorePosts(false)
+                    setNoMorePosts(false);
                 }, 5000);
             }
         }).catch(() => {
             setCouldNotLoadPosts(true);
             setTimeout(() => {
-                setCouldNotLoadPosts(false)
+                setCouldNotLoadPosts(false);
             }, 5000);
         }).finally(() => {
             setTimeout(() => {
                 setIsLoading(false);
             }, 250);
-        })
-    }
+        });
+    };
 
     return <>
         {
-            (Array.isArray(posts) && posts.length > 0) ? <><SimpleGrid columns={[1, 2, 3]} spacing={[0, 8]}>
-                {
-                    posts.map((post, index) => {
-                        return <LatestPostCard {...post} key={index}/>;
-                    })
-                }
-            </SimpleGrid>
+            (Array.isArray(posts) && posts.length > 0) ? <>
+                <SimpleGrid columns={[1, 2, 3]} spacing={[0, 8]}>
+                    {
+                        posts.map((post, index) => {
+                            return <LatestPostCard {...post} key={index}/>;
+                        })
+                    }
+                </SimpleGrid>
                 {
                     (noMorePosts || posts.length === totalPosts) && <Box>
                         <Text variant="caption" color="grey">No more Posts to load</Text>
@@ -84,20 +85,19 @@ const LatestPosts = ({ latestPosts, postsMeta }) => {
                 }
                 {
                     posts.length < totalPosts && <Button color="sunlight" onClick={loadMorePosts} px={0} rightIcon={isLoading && <Spinner size='sm' />}>
-                        <Text textDecoration="underline" d="inline-block">
+                        <Text textDecoration="underline">
                             Load Moar!
                         </Text>
                     </Button>
                 }
-
             </> : <>
                 <Box>
                     <Text variant="caption" color="grey">No Posts</Text>
                 </Box>
             </>
         }
-    </>
-}
+    </>;
+};
 
 const NewsPage : NextPage = ({layout, blocks, latestPosts, allPostsMeta}:any) : JSX.Element => {
     return (
