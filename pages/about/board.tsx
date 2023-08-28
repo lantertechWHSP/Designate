@@ -7,7 +7,7 @@ import { getLayoutData, getBlocks } from '~/lib/utils';
 import { Profiles } from '~/components/elements/profiles/profiles';
 
 export async function getStaticProps({ preview }) : Promise<any> {
-    const slug = 'about/management';
+    const slug = 'about/board';
     const site = await doQuery(queries.site);
     const page = await doQuery(queries.page, { slug }, preview).then(
         ({ page }) => page
@@ -15,14 +15,14 @@ export async function getStaticProps({ preview }) : Promise<any> {
 
     const layout = getLayoutData(site, page, preview);
     const blocks = await getBlocks(page);
-    const people = await doQuery(queries.people, { definition : 'Management' }, preview).then(
+    const people = await doQuery(queries.people, { definition : 'Board' }, preview).then(
         ({ people }) => people || []
     );
 
     return { props: { layout, blocks, people } };
 }
 
-const ManagementPage : NextPage = ({layout, blocks, people}:any)  : JSX.Element => {
+const BoardPage : NextPage = ({ layout, blocks, people }:any)  : JSX.Element => {
     return (
         <Layout layout={layout}>
             <ModularContent content={blocks} />
@@ -31,4 +31,4 @@ const ManagementPage : NextPage = ({layout, blocks, people}:any)  : JSX.Element 
     );
 };
 
-export default ManagementPage;
+export default BoardPage;

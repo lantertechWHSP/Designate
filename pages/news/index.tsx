@@ -4,7 +4,7 @@ import Layout from '~/components/layouts/Layout';
 import { ModularContent } from '~/components/ModularContent';
 import { doQuery, queries } from '~/dato/api';
 import { getLayoutData, getBlocks } from '~/lib/utils';
-import { LatestPostCard } from '~/components/elements/cards/latestPostCard';
+import { LatestPostCard } from '~/components/elements/news/latestPostCard';
 import { Heading, Button, Text, Container, SimpleGrid, Box, Spinner } from '@chakra-ui/react';
 
 export async function getStaticProps({ preview }) : Promise<any> {
