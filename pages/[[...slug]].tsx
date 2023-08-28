@@ -8,6 +8,7 @@ import { getLayoutData, getBlocks } from '~/lib/utils';
 export async function getStaticPaths() : Promise<any> {
     const systemPages = [
         'news',
+        'about/management'
     ];
 
     const pages = await doQuery(queries.pages).then(({ pages }) => pages);

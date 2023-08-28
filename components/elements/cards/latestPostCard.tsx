@@ -6,8 +6,7 @@ export const LatestPostCard = ({ title, image, date, slug }) : any => {
         <Box mb={2}>
             <Link href={`/news/${slug}`}>
                 {
-                    image ? <Image data={image.responsiveImage} /> :
-                        <AspectRatio ratio={[3 / 2]}><Box background="grey" /></AspectRatio>
+                    image ? <Image data={image.responsiveImage} /> : <AspectRatio ratio={[3 / 2]}><Box background="grey" /></AspectRatio>
                 }
             </Link>
         </Box>

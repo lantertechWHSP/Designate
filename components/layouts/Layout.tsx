@@ -3,7 +3,7 @@ import Meta from '~/components/layouts/Meta';
 import Header from '~/components/layouts/Header';
 import Footer from '~/components/layouts/Footer';
 import PageLinks from '~/components/layouts/PageLinks';
-import { Flex, Box } from '@chakra-ui/react';
+import { Heading, Container, Flex, Box } from '@chakra-ui/react';
 
 const Layout = ({ layout, children }:any) : ReactNode => {
     return (
@@ -13,9 +13,22 @@ const Layout = ({ layout, children }:any) : ReactNode => {
             }
             <Header menu={layout?.menu} />
             <Box minH={'calc(100vh - 212px)'}>
-                <Box py={8}>
-                    {children}
-                </Box>
+                <Flex background="steelBlue2" h={['350px']} direction="column" justify="flex-end">
+                    <Box>
+                        <Container>
+                            <Heading as="h1" variant="h1" color="white" fontWeight={400} mb={12}>
+                                {
+                                    layout.title
+                                }
+                            </Heading>
+                        </Container>
+                    </Box>
+                </Flex>
+                {
+                    children && <Box py={8}>
+                        {children}
+                    </Box>
+                }
             </Box>
             <PageLinks current={layout?.breadcrumbs[0]?.node}  />
             <Footer {...layout?.footer} />

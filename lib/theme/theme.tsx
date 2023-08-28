@@ -2,12 +2,16 @@ import { extendBaseTheme } from '@chakra-ui/react';
 
 const colors = {
     black: '#121517',
-    steelBlue: '#687083',
     grey: '#c4c4c4',
     ghostWhite: '#f2f4f6',
     ghostWhite2: '#f9fafb',
     mutedSteel: '#33373a',
-    skyBlue: '#4594f7'
+    skyBlue: '#4594f7',
+
+    // New
+    steelBlue: '#353a3f',
+    steelBlue2: '#3f4448',
+    white: '#fff',
 };
 
 export const theme = extendBaseTheme({

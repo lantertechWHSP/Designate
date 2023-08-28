@@ -12,6 +12,6 @@ export const videoRecord = `
         thumbnailUrl
     }
     coverImage {
-        ${imageAttrs}
+        ${imageAttrs()}
     }
 `;
