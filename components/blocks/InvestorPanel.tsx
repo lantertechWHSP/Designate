@@ -26,12 +26,19 @@ const InvestorPanelBlock = ({ title }:IInvestorPanelBlock) : ReactNode => {
                 </Link>
             </Box>
         </Flex>
-        <SimpleGrid columns={[1, 2, 2]} spacing={8}>
-            <Flex direction="column">
-                <Heading as="h3" variant="sectionSubheading" mb={4}>
-                    Share Price Performance
-                </Heading>
-                <Box as={YourIR}>
+        <Box as={YourIR}>
+            <SimpleGrid columns={[1, 2, 2]} spacing={8}>
+                <Flex direction="column">
+                    <Heading as="h3" variant="sectionSubheading" mb={4}>
+                        Share Price Performance
+                    </Heading>
+                    <span>
+                        <Text as="span" fontWeight={600} data-yourir="shortName"></Text>
+                        {'\u00A0'}
+                        <Text as="span" color="steelBlue3">
+                            <span data-yourir="market"></span>:<span data-yourir="symbol"></span>
+                        </Text>
+                    </span>
                     <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" height="0" width="0">
                         <defs>
                             <linearGradient id="priceGradient" gradientTransform="rotate(90)">
@@ -40,50 +47,50 @@ const InvestorPanelBlock = ({ title }:IInvestorPanelBlock) : ReactNode => {
                             </linearGradient>
                         </defs>
                     </svg>
-                        <Box w="100%"
-                             sx={{
-                                '.yourir-chart': {
-                                    padding: '40px 0',
-                                    borderBottomWidth: '1px',
-                                    borderStyle: 'solid',
-                                    borderColor: 'lightGrey2',
-                                    marginBottom: '30px'
-                                },
-                                '.yourir-chart-price-fill': {
-                                    fill: `url(#priceGradient)`
-                                },
-                                '.yourir-chart-price': {
-                                    stroke: 'black',
-                                    strokeWidth: '1px',
-                                },
-                                '.yourir-chart-yaxis-label': {
-                                    position: 'relative',
-                                    top: '-10px'
-                                },
-                                '.yourir-chart-yaxis-left .yourir-chart-yaxis-outside .yourir-chart-yaxis-label-container': {
-                                    right: 'calc(100% - 20px)',
-                                    marginRight: '0',
-                                    fontSize: '12px',
-                                    color: 'grey'
-                                },
-                                '.yourir-chart-xaxis-label': {
-                                    fontSize: '12px',
-                                    color: 'grey'
-                                },
-                                '.yourir-chart-panel-border-bottom': {
-                                    display: 'none'
-                                },
-                                '.yourir-chart-tick-bottom': {
-                                    display: 'none'
-                                },
-                                '.yourir-chart-xaxis-outside': {
-                                    position: 'relative',
-                                    top: '10px'
-                                },
-                                '.yourir-chart-yaxis-gridline': {
-                                    stroke: 'lightGrey2'
-                                }
-                            }}>
+                    <Box w="100%"
+                         sx={{
+                             '.yourir-chart': {
+                                 padding: '40px 0',
+                                 borderBottomWidth: '1px',
+                                 borderStyle: 'solid',
+                                 borderColor: 'lightGrey2',
+                                 marginBottom: '30px'
+                             },
+                             '.yourir-chart-price-fill': {
+                                 fill: `url(#priceGradient)`
+                             },
+                             '.yourir-chart-price': {
+                                 stroke: 'black',
+                                 strokeWidth: '1px',
+                             },
+                             '.yourir-chart-yaxis-label': {
+                                 position: 'relative',
+                                 top: '-10px'
+                             },
+                             '.yourir-chart-yaxis-left .yourir-chart-yaxis-outside .yourir-chart-yaxis-label-container': {
+                                 right: 'calc(100% - 20px)',
+                                 marginRight: '0',
+                                 fontSize: '12px',
+                                 color: 'grey'
+                             },
+                             '.yourir-chart-xaxis-label': {
+                                 fontSize: '12px',
+                                 color: 'grey'
+                             },
+                             '.yourir-chart-panel-border-bottom': {
+                                 display: 'none'
+                             },
+                             '.yourir-chart-tick-bottom': {
+                                 display: 'none'
+                             },
+                             '.yourir-chart-xaxis-outside': {
+                                 position: 'relative',
+                                 top: '10px'
+                             },
+                             '.yourir-chart-yaxis-gridline': {
+                                 stroke: 'lightGrey2'
+                             }
+                         }}>
                         <div data-yourir="priceChart1 range=6y ranges=6m,1y,5y,10y showTooltips=true">
                             <Box data-yourir="plots" />
                         </div>
@@ -99,13 +106,13 @@ const InvestorPanelBlock = ({ title }:IInvestorPanelBlock) : ReactNode => {
                                  lineHeight={['30px']}
                                  fontWeight={500}
                                  sx={{
-                                      '.yourir-positive': {
-                                          color: 'green'
-                                      },
-                                      'yourir-negative': {
-                                          color: 'red'
-                                      }
-                            }}>
+                                     '.yourir-positive': {
+                                         color: 'green'
+                                     },
+                                     'yourir-negative': {
+                                         color: 'red'
+                                     }
+                                 }}>
                                 <Flex align="baseline" data-yourir="changeSignCSS">
                                     <Box
                                         data-yourir="changeSignCSS"
@@ -137,58 +144,48 @@ const InvestorPanelBlock = ({ title }:IInvestorPanelBlock) : ReactNode => {
                         </Box>
                     </SimpleGrid>
                     <Divider />
+                    <Box flex="1" />
                     <Box py={8}>
                         <Link variant="sectionLink" href="#">
                             <Box as="span" mr={2}>See All</Box>
                             <Icon icon={Icons.ChevronRight} w={12} h={12} />
                         </Link>
                     </Box>
-                </Box>
-            </Flex>
-            <Flex direction="column">
-                <Heading as="h3" variant="sectionSubheading" mb={4}>
-                    Latest ASX Announcements
-                </Heading>
-                <Box as={YourIR}>
+                </Flex>
+                <Flex direction="column">
+                    <Heading as="h3" variant="sectionSubheading" mb={4}>
+                        Latest ASX Announcements
+                    </Heading>
                     <Box data-yourir="announcements pageSize=3">
                         <Box data-yourir="items">
-                            <Flex role="group"
-                                  direction="row"
-                                  alignItems="center"
-                                  justifyContent="space-between"
-                                  borderTop="1px solid"
-                                  borderColor="baseBorder"
-                                  py={[4, 4, 6]}
-                                  transition="color 200ms ease"
-                                  _hover={{
-                                      color: 'primary'
-                                  }}>
-                                <Box>
-                                    <Heading data-yourir="$cur.heading"
-                                             as="h3"
-                                             variant="listItem"
-                                             mb={[0.5, 0.5, 1]} />
-                                    <Text data-yourir="$cur.date format='DD/MM/YYYY'"
-                                          as="small"
-                                          variant="small"
-                                          color="lightGrey"
-                                    />
-                                </Box>
-                                <Box width="24px"
-                                     height="24px"
-                                     ml={4}>
-                                    {/*<IconArrowRight width="24px"*/}
-                                    {/*                height="24px"*/}
-                                    {/*                opacity="0"*/}
-                                    {/*                transition="opacity 200ms ease"*/}
-                                    {/*                _groupHover={{ opacity: "1" }} />*/}
-                                </Box>
-                            </Flex>
+                            <Box borderTop="1px solid"
+                                 borderColor="grey"
+                                 py={[4, 4, 6]}>
+                                <Heading data-yourir="$cur.date format='DD/MM/YYYY'"
+                                         as="span"
+                                         variant="label" />
+                                <Heading data-yourir="$cur.heading"
+                                         as="h3"
+                                         variant="listItem"
+                                         mb={[4, 4, 6]} />
+                                <Link variant="sectionLink" href="#" color="black">
+                                    <Box as="span" mr={2}>Read</Box>
+                                    <Icon icon={Icons.ChevronRight} w={12} h={12} />
+                                </Link>
+                            </Box>
                         </Box>
                     </Box>
-                </Box>
-            </Flex>
-        </SimpleGrid>
+                    <Divider />
+                    <Box flex="1" />
+                    <Box py={8}>
+                        <Link variant="sectionLink" href="#">
+                            <Box as="span" mr={2}>See All</Box>
+                            <Icon icon={Icons.ChevronRight} w={12} h={12} />
+                        </Link>
+                    </Box>
+                </Flex>
+            </SimpleGrid>
+        </Box>
     </ContentBlock>;
 };
 

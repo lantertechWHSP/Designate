@@ -13,6 +13,7 @@ const colors = {
     black: '#000000',
     steelBlue: '#353a3f',
     steelBlue2: '#3f4448',
+    steelBlue3: '#667085',
     white: '#fff',
     grey: '#999',
     lightGrey: '#c4c4c4',
@@ -48,48 +49,59 @@ export const theme = extendBaseTheme({
             variants: {
                 h1: {
                     fontSize: [50],
-                    fontWeight: [900],
-                    lineHeight: [1.35]
+                    lineHeight: [1.35],
+                    fontWeight: 900,
                 },
                 h2: {
                     fontSize: [40],
-                    fontWeight: [900],
-                    lineHeight: [1.35]
+                    lineHeight: [1.35],
+                    fontWeight: 900,
                 },
                 h3: {
                     fontSize: [30],
-                    fontWeight: [900],
-                    lineHeight: [1.35]
+                    lineHeight: [1.35],
+                    fontWeight: 900,
                 },
                 h4: {
                     fontSize: [20],
-                    fontWeight: [900],
-                    lineHeight: [1.35]
+                    lineHeight: [1.35],
+                    fontWeight: 900,
                 },
                 h5: {
                     fontSize: [16],
-                    fontWeight: [900],
-                    lineHeight: [1.35]
+                    lineHeight: [1.35],
+                    fontWeight: 900,
                 },
                 h6: {
                     fontSize: [14],
-                    fontWeight: [900],
-                    lineHeight: [1.35]
+                    lineHeight: [1.35],
+                    fontWeight: 900,
                 },
                 sectionHeading: {
                     fontSize: [40],
-                    fontWeight: [400],
                     lineHeight: [1.5],
+                    fontWeight: 400,
                 },
                 sectionSubheading: {
                     fontSize: [32],
-                    fontWeight: [450],
                     lineHeight: [1.5],
+                    fontWeight: 450,
                 },
                 pageLinksHeading: {
                     fontSize: [20],
-                    fontWeight: [700],
-                    lineHeight: [1.35]
+                    lineHeight: [1.35],
+                    fontWeight: 700,
+                },
+                listItem: {
+                    fontSize: [24],
+                    lineHeight: [1.35],
+                    fontWeight: 400
+                },
+                label: {
+                    fontSize: [16],
+                    lineHeight: [1.1],
+                    color: 'lightGrey',
+                    fontWeight: 400
                 }
             },
         },
@@ -122,10 +134,11 @@ export const theme = extendBaseTheme({
             },
             variants: {
                 siteHeader: {
-                    color: 'steelBlue',
+                    fontSize: [18],
+                    color: 'lightGrey2',
                 },
                 siteFooter: {
-                    color: 'steelBlue',
+                    color: 'lightGrey2',
                 },
                 sectionLink: {
                     fontSize: [16],
