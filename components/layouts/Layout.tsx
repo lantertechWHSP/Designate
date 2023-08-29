@@ -13,19 +13,21 @@ const Layout = ({ layout, children }:any) : ReactNode => {
             }
             <Header menu={layout?.menu} />
             <Box minH={'calc(100vh - 212px)'}>
-                <Flex background="steelBlue2" h={['350px']} direction="column" justify="flex-end">
-                    <Box>
-                        <Container>
-                            <Heading as="h1" variant="h1" color="white" fontWeight={400} mb={12}>
-                                {
-                                    layout.title
-                                }
-                            </Heading>
-                        </Container>
-                    </Box>
-                </Flex>
                 {
-                    children && <Box py={8}>
+                    !layout.isHomePage && <Flex background="steelBlue2" h={['350px']} direction="column" justify="flex-end">
+                        <Box>
+                            <Container>
+                                <Heading as="h1" variant="h1" color="white" fontWeight={400} mb={12}>
+                                    {
+                                        layout.title
+                                    }
+                                </Heading>
+                            </Container>
+                        </Box>
+                    </Flex>
+                }
+                {
+                    children && <Box>
                         {children}
                     </Box>
                 }

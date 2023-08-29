@@ -6,7 +6,7 @@ import ContentBlock from "~/components/blocks/Content";
 const CardContainerBlock = ({ title, cards }) : ReactNode => {
     return <ContentBlock py={8}>
         {
-            title && <Heading variant="sectionHeading" mb={4}>
+            title && <Heading variant="sectionHeading" as="h2" mb={4}>
                 {title}
             </Heading>
         }
