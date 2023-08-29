@@ -32,49 +32,91 @@ const InvestorPanelBlock = ({ title }:IInvestorPanelBlock) : ReactNode => {
                     Share Price Performance
                 </Heading>
                 <Box as={YourIR}>
+                    {/*<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">*/}
+                    {/*    <defs>*/}
+                    {/*        <linearGradient id="mygradient" >*/}
+                    {/*            <stop offset="0%" stopColor="red" />*/}
+                    {/*            <stop offset="100%" stopColor="black" />*/}
+                    {/*        </linearGradient>*/}
+                    {/*    </defs>*/}
+                    {/*</svg>*/}
+                    <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                        <defs>
+                            <linearGradient id="priceGradient" gradientTransform="rotate(90)">
+                                <stop offset="0%" stopColor="black" />
+                                <stop offset="100%" stopColor="white" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
                     <Box>
-                        <Heading as="h4" mb={0} data-yourir="price showCurrency=false minDecimals=2 maxDecimals=2" />
-                    </Box>
-                    <Flex direction="column"
-                          height="100%"
-                          justifyContent="space-between">
-                        <Text as="small" variant="small"
-                              position="relative"
-                              top="26px">
-                            $AUD
-                        </Text>
-                        <Box position="relative"
-                             top={['-22px', '-22px', '-10px']}>
-                            <Flex textStyle="label">
-                                <Box
-                                    data-yourir="changeSignCSS"
-                                    mr={3}
-                                    sx={{
-                                        '&.yourir-positive:before': {
-                                            color: 'green',
-                                            content: "'\\25b2'"
-                                        },
-                                        '&.yourir-negative:before': {
-                                            color: 'red',
-                                            content: "'\\25bc'"
-                                        },
-                                        '&.yourir-zero:before': { content: "'-'" }
-                                    }}
-                                />
-                                <Heading as="span"
-                                         data-yourir="pctChange"
-                                         sx={{
-                                             '.yourir-pct': {
-                                                 color: 'dark',
-                                                 fontSize: ['24px', ,'36px'],
-                                                 lineHeight: ['28px', ,'42px'],
-                                                 fontWeight: 500
-                                             }
-                                         }}
-                                />
-                            </Flex>
+                        <Box
+                            flex={2}
+                            w="100%"
+                            sx={{
+                                '.yourir-chart': {
+                                    p: ['10px', '10px', '15px', '35px']
+                                },
+                                '.yourir-chart-price-fill': {
+                                    fill: `url(#priceGradient)`
+                                },
+                                '.yourir-chart-price': {
+                                    stroke: 'black',
+                                    strokeWidth: '1px',
+                                }
+                                // '.yourir-chart': {
+                                //     p: 0,
+                                //     color: 'body',
+                                //     fontSize: '14px',
+                                //     lineHeight: '17px',
+                                //     textTransform: 'uppercase'
+                                // },
+                                // '.yourir-chart svg': {
+                                //     maxW: '100%'
+                                // },
+                                // '.yourir-chart-tooltip': {
+                                //     background: 'white',
+                                //     color: 'midnight'
+                                // },
+                                // '.yourir-chart-panel': {
+                                //     h: '360px'
+                                // },
+                                // '.yourir-chart-price': {
+                                //     stroke: 'primary',
+                                //     strokeWidth: '2px'
+                                // },
+                                // '.yourir-chart-price-fill': {
+                                //     fill: 'transparent'
+                                // },
+                                // '.yourir-chart-panel-border-bottom': {
+                                //     stroke: 'transparent',
+                                //     strokeWidth: '0'
+                                // },
+                                // '.yourir-chart-tick-bottom': {
+                                //     display: 'none'
+                                // },
+                                // '.yourir-chart-yaxis-gridline': {
+                                //     stroke: 'grey4'
+                                // },
+                                // '.yourir-chart-yaxis-left .yourir-chart-yaxis-outside .yourir-chart-yaxis-label-container': {
+                                //     marginRight: '10px'
+                                // },
+                                // '.yourir-chart-xaxis-bottom .yourir-chart-xaxis-outside .yourir-chart-xaxis-label-container': {
+                                //     top: 'calc(100% + 12px)'
+                                // },
+                                // '.yourir-chart-tooltip-marker-halo': {
+                                //     stroke: 'sunlight',
+                                //     fill: 'transparent'
+                                // },
+                                // '.yourir-chart-tooltip-marker': {
+                                //     stroke: 'sunlight',
+                                //     fill: 'sunlight'
+                                // }
+                            }}>
+                            <div data-yourir="priceChart1 range=6y ranges=6m,1y,5y,10y showTooltips=true">
+                                <Box data-yourir="plots" />
+                            </div>
                         </Box>
-                    </Flex>
+                    </Box>
                 </Box>
             </Flex>
             <Flex direction="column">
