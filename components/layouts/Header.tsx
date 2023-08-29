@@ -8,7 +8,9 @@ import {
     PopoverTrigger,
     PopoverContent,
     useDisclosure,
-    Collapse
+    usePopoverContext,
+    Collapse,
+    Text
 } from '@chakra-ui/react';
 import { Link } from '~/components/elements/link';
 import {motion} from 'framer-motion';
@@ -49,11 +51,11 @@ const Header = ({menu}): ReactNode => {
                 animate={{
                     opacity: !isOpen && isScrolledDown && isMinimumScrolled ? 0 : 1,
                 }}>
-                <Box background="ghostWhite">
+                <Box background="steelBlue">
                     <Container>
                         <Flex h={height} py={4} align="center">
                             <Box width={200}>
-                                <Link href="/" variant="siteHeader">Home</Link>
+                                <Link href="/" variant="siteHeader">WHSP</Link>
                             </Box>
                             <DesktopNav menu={menu}/>
                             <Flex display={['flex', , , 'none']} flex={1}>
@@ -73,18 +75,32 @@ const Header = ({menu}): ReactNode => {
     </Box>;
 };
 
+const DestopPopoverTrigger = ({item}) => {
+    const { isOpen } = usePopoverContext();
+
+    return <PopoverTrigger>
+        <Link variant="siteHeader" link={item} px={4} >
+            <Flex as="span" align="baseline">
+                <Text as="span" mr={2}>{item.link.title}</Text>
+                <Box transition="transform 300ms ease"
+                     transform={isOpen ? 'rotate(180deg)' : ''}>
+                    <Icon icon={Icons.ChevronDown} w={12} h={12} />
+                </Box>
+            </Flex>
+        </Link>
+    </PopoverTrigger>
+}
+
 const DesktopNav = ({menu}): ReactNode => {
-    return <Box as="nav" display={['none', , , 'block']}>
+    return <Flex as="nav" display={['none', , , 'flex']}>
         {
             Array.isArray(menu) && menu.length > 0 && menu.map((item: IMenuItem, index: number) => {
                 return Array.isArray(item.children) && item.children.length > 0 ?
                     <Popover trigger="hover" placement="bottom-start" key={index}>
-                        <PopoverTrigger>
-                            <Link variant="siteHeader" link={item} px={2} />
-                        </PopoverTrigger>
+                        <DestopPopoverTrigger item={item} />
                         <PopoverContent>
                             {
-                                item.children && <Box background="ghostWhite2" py={2} px={4}>
+                                item.children && <Box background="steelBlue" py={2} px={4}>
                                     {
                                         item.children.map((child: IMenuItem, childIndex: number) => {
                                             return <Box py={2} key={childIndex}>
@@ -98,7 +114,7 @@ const DesktopNav = ({menu}): ReactNode => {
                     </Popover> : <Link variant="siteHeader" link={item} px={2} key={index} />;
             })
         }
-    </Box>;
+    </Flex>;
 };
 
 const MobileNav = ({menu, isOpen}): ReactNode => {
