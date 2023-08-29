@@ -75,12 +75,12 @@ const LatestPosts = ({ latestPosts, postsMeta }) : ReactNode => {
                 </SimpleGrid>
                 {
                     (noMorePosts || posts.length === totalPosts) && <Box>
-                        <Text variant="caption" color="grey">No more Posts to load</Text>
+                        <Text variant="caption" color="lightGrey">No more Posts to load</Text>
                     </Box>
                 }
                 {
                     couldNotLoadPosts && <Box>
-                        <Text variant="caption" color="grey">Could not load Posts</Text>
+                        <Text variant="caption" color="lightGrey">Could not load Posts</Text>
                     </Box>
                 }
                 {
@@ -92,7 +92,7 @@ const LatestPosts = ({ latestPosts, postsMeta }) : ReactNode => {
                 }
             </> : <>
                 <Box>
-                    <Text variant="caption" color="grey">No Posts</Text>
+                    <Text variant="caption" color="lightGrey">No Posts</Text>
                 </Box>
             </>
         }

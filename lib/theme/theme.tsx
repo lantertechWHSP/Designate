@@ -3,7 +3,7 @@ import chakraTheme from '@chakra-ui/theme';
 const { Modal } = chakraTheme.components;
 
 const colors = {
-    // grey: '#c4c4c4',
+    // lightGrey: '#c4c4c4',
     ghostWhite: '#f2f4f6',
     ghostWhite2: '#f9fafb',
     mutedSteel: '#33373a',
@@ -14,7 +14,11 @@ const colors = {
     steelBlue: '#353a3f',
     steelBlue2: '#3f4448',
     white: '#fff',
-    grey: '#c4c4c4',
+    grey: '#999',
+    lightGrey: '#c4c4c4',
+    lightGrey2: '#ddd',
+    green: '#00ce7d',
+    red: '#df322f'
 };
 
 export const theme = extendBaseTheme({
@@ -128,7 +132,8 @@ export const theme = extendBaseTheme({
                     lineHeight: [1.2],
                     color: 'skyBlue',
                     display: 'flex',
-                    alignItems: 'center'
+                    alignItems: 'center',
+                    textDecoration: 'underline'
                 }
             }
         },
@@ -136,7 +141,7 @@ export const theme = extendBaseTheme({
             baseStyle: {
                 borderWidth: '1px',
                 borderStyle: 'solid',
-                borderColor: 'grey',
+                borderColor: 'lightGrey',
             }
         }
     },

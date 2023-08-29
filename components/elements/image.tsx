@@ -7,7 +7,7 @@ export const Image = ({ image, ratio, ...props }:any) : ReactNode => {
     return <Box {...props}>
         {
             image ? <DatoImage data={image.responsiveImage} /> : <AspectRatio ratio={ratio} >
-                <Box background="grey" />
+                <Box background="lightGrey" />
             </AspectRatio>
         }
     </Box>;

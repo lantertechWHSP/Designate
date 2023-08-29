@@ -65,7 +65,7 @@ export const Profiles = ({ people }) : ReactNode => {
                                                 </Heading>
                                             }
                                             {
-                                                activePerson?.companyPosition && <Heading as="h3" variant="h3" fontWeight={400} color="grey">
+                                                activePerson?.companyPosition && <Heading as="h3" variant="h3" fontWeight={400} color="lightGrey">
                                                     {activePerson.companyPosition}
                                                 </Heading>
                                             }
@@ -80,7 +80,7 @@ export const Profiles = ({ people }) : ReactNode => {
                                         </Box>
                                     }
                                 </Box>
-                                <Button pos="absolute" top={8} right={8} onClick={() => setModalOpen(false)} borderRadius="50%" background="grey" w="44px" h="44px">
+                                <Button pos="absolute" top={8} right={8} onClick={() => setModalOpen(false)} borderRadius="50%" background="lightGrey" w="44px" h="44px">
                                     <Icon icon={Icons.Cross} w={24} h={24} />
                                 </Button>
                             </Flex>
