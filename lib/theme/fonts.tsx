@@ -5,10 +5,17 @@ const Fonts = () : ReactNode => (
     <Global
         styles={`
             @font-face {
-                font-family: 'Arimado';
+                font-family: 'Untitled Sans';
+                font-weight: 400;
                 font-style: normal;
-                font-weight: 200 900;
-                src: url('/fonts/Arimado-Variable.woff2') format('woff2')
+                src: url('/fonts/UntitledSans-Regular.woff2') format('woff2')
+            }
+            
+            @font-face {
+                font-family: 'Untitled Sans';
+                font-weight: 500;
+                font-style: normal;
+                src: url('/fonts/UntitledSans-Medium.woff2') format('woff2')
             }
       `}
     />

@@ -8,7 +8,7 @@ const CardBlock = ({ link }) : ReactNode => {
         <AspectRatio ratio={[3 / 2]}>
             <Box bg="ghostWhite">
                 <Box position="absolute" bottom="20px" left="20px">
-                    <Heading fontSize={24} fontWeight={600} mb={2}>
+                    <Heading fontSize={24} fontWeight={500} mb={2}>
                         {link.title}
                     </Heading>
                     <Box display="inline-flex" style={{ alignItems: 'center' }} borderBottom="1px" borderColor="black">

@@ -22,7 +22,7 @@ const PageLinks = ({ current }) : ReactNode => {
                 {
                     links.map((link, index) => {
                         return <Box key={index} py={1}>
-                            <Link link={{ link: link.link }} fontSize={24} fontWeight={600} />
+                            <Link link={{ link: link.link }} fontSize={24} fontWeight={500} />
                         </Box>;
                     })
                 }
