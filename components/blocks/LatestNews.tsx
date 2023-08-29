@@ -8,9 +8,9 @@ import { Icon, Icons } from "~/components/elements/icon";
 const LatestNewsItem = ({ title, publishDate }) : ReactNode => {
     const date = parseISO(publishDate);
 
-    return <Box py={6} borderBottom="1px solid grey">
+    return <Box py={6} borderBottom="1px solid lightGrey">
         {
-            date && <Text color="grey" fontSize={18} fontWeight={400} mb={0.5}>
+            date && <Text color="lightGrey" fontSize={18} fontWeight={400} mb={0.5}>
                 {format(date, 'dd.MM.yy')}
             </Text>
         }
