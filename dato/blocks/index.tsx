@@ -5,6 +5,7 @@ import { audioRecord } from '~/dato/blocks/audio';
 import { heroRecord } from '~/dato/blocks/hero';
 import { cardContainerRecord } from '~/dato/blocks/cardContainer';
 import { latestNewsRecord } from '~/dato/blocks/latestNews';
+import { investorPanelRecord } from '~/dato/blocks/investorPanel';
 
 export const blocks = `
     blocks {
@@ -28,6 +29,9 @@ export const blocks = `
         }
         ... on LatestNewsRecord {
             ${latestNewsRecord}
+        }
+        ... on InvestorPanelRecord {
+            ${investorPanelRecord}
         }
     }
 `;

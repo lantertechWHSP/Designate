@@ -3,7 +3,6 @@ import chakraTheme from '@chakra-ui/theme';
 const { Modal } = chakraTheme.components;
 
 const colors = {
-    black: '#121517',
     // grey: '#c4c4c4',
     ghostWhite: '#f2f4f6',
     ghostWhite2: '#f9fafb',
@@ -11,6 +10,7 @@ const colors = {
     skyBlue: '#4594f7',
 
     // New
+    black: '#000000',
     steelBlue: '#353a3f',
     steelBlue2: '#3f4448',
     white: '#fff',
@@ -75,8 +75,12 @@ export const theme = extendBaseTheme({
                 sectionHeading: {
                     fontSize: [40],
                     fontWeight: [400],
-                    lineHeight: [1.35],
-                    color: 'skyBlue'
+                    lineHeight: [1.5],
+                },
+                sectionSubheading: {
+                    fontSize: [32],
+                    fontWeight: [450],
+                    lineHeight: [1.5],
                 },
                 pageLinksHeading: {
                     fontSize: [20],
@@ -118,6 +122,13 @@ export const theme = extendBaseTheme({
                 },
                 siteFooter: {
                     color: 'steelBlue',
+                },
+                sectionLink: {
+                    fontSize: [16],
+                    lineHeight: [1.2],
+                    color: 'skyBlue',
+                    display: 'flex',
+                    alignItems: 'center'
                 }
             }
         },

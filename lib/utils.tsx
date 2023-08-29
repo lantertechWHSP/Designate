@@ -69,6 +69,7 @@ export const getLayoutData = (site, page, preview) : any => {
         menu: site?.menu || [],
         footer: site?.footer,
         slug: page?.slug || null,
+        isHomePage: page?.slug ? page?.slug === 'home' : false,
         title: page?.title || null,
         preview: preview || false,
     };

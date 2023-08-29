@@ -7,6 +7,7 @@ import Hero from '~/components/blocks/Hero';
 import Card from '~/components/blocks/CardContainer/Card';
 import CardContainer from '~/components/blocks/CardContainer/CardContainer';
 import LatestNews from '~/components/blocks/LatestNews';
+import InvestorPanel from '~/components/blocks/InvestorPanel';
 
 const blocks:any = {
     Text,
@@ -17,7 +18,8 @@ const blocks:any = {
     Hero,
     Card,
     CardContainer,
-    LatestNews
+    LatestNews,
+    InvestorPanel
 };
 
 export const getBlock = (name:any) : any => {

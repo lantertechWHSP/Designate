@@ -37,7 +37,8 @@
     "react-cool-dimensions": "^3.0.1",
     "react-datocms": "^4.1.3",
     "react-dom": "18.2.0",
-    "react-player": "^2.12.0"
+    "react-player": "^2.12.0",
+    "yourir-next": "https://yourir.info/lib/npm/yourir-next.tgz"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.2.1",
