@@ -33,7 +33,7 @@ const InvestorPanelBlock = ({ title }:IInvestorPanelBlock) : ReactNode => {
                         Share Price Performance
                     </Heading>
                     <span>
-                        <Text as="span" fontWeight={600} data-yourir="shortName"></Text>
+                        <Text as="span" fontWeight={500} data-yourir="shortName"></Text>
                         {'\u00A0'}
                         <Text as="span" color="steelBlue3">
                             <span data-yourir="market"></span>:<span data-yourir="symbol"></span>
@@ -139,7 +139,7 @@ const InvestorPanelBlock = ({ title }:IInvestorPanelBlock) : ReactNode => {
                             <label>Market Cap</label>
                             <Text fontSize={['20px']}
                                   lineHeight={['26px']}
-                                  fontWeight={600}
+                                  fontWeight={500}
                                   data-yourir="marketCap showCurrency=true minDecimals=2 maxDecimals=2"></Text>
                         </Box>
                     </SimpleGrid>

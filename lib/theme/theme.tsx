@@ -24,8 +24,8 @@ const colors = {
 
 export const theme = extendBaseTheme({
     fonts: {
-        heading: `'Arimado', sans-serif`,
-        body: `'Arimado', sans-serif`,
+        heading: `'Untitled Sans', serif`,
+        body: `'Untitled Sans', serif`,
     },
     fontWeights: {
         extraLight: 200,
@@ -44,38 +44,38 @@ export const theme = extendBaseTheme({
         Modal,
         Heading: {
             baseStyle: {
-                fontWeight: 900
+                fontWeight: 500
             },
             variants: {
                 h1: {
                     fontSize: [50],
                     lineHeight: [1.35],
-                    fontWeight: 900,
+                    fontWeight: 500,
                 },
                 h2: {
                     fontSize: [40],
                     lineHeight: [1.35],
-                    fontWeight: 900,
+                    fontWeight: 500,
                 },
                 h3: {
                     fontSize: [30],
                     lineHeight: [1.35],
-                    fontWeight: 900,
+                    fontWeight: 500,
                 },
                 h4: {
                     fontSize: [20],
                     lineHeight: [1.35],
-                    fontWeight: 900,
+                    fontWeight: 500,
                 },
                 h5: {
                     fontSize: [16],
                     lineHeight: [1.35],
-                    fontWeight: 900,
+                    fontWeight: 500,
                 },
                 h6: {
                     fontSize: [14],
                     lineHeight: [1.35],
-                    fontWeight: 900,
+                    fontWeight: 500,
                 },
                 sectionHeading: {
                     fontSize: [40],
@@ -85,12 +85,12 @@ export const theme = extendBaseTheme({
                 sectionSubheading: {
                     fontSize: [32],
                     lineHeight: [1.5],
-                    fontWeight: 450,
+                    fontWeight: 400,
                 },
                 pageLinksHeading: {
                     fontSize: [20],
                     lineHeight: [1.35],
-                    fontWeight: 700,
+                    fontWeight: 500,
                 },
                 listItem: {
                     fontSize: [24],
