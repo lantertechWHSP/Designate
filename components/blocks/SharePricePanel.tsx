@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { YourIR, set } from 'yourir-next';
-import { Heading, Flex, Box, Grid, GridItem, Text, ButtonGroup, Button, Menu, MenuButton, Portal, MenuList, MenuItem, TableContainer, Table, Thead, Tr, Th, Tbody, Td } from '@chakra-ui/react';
+import { Heading, Container, Flex, Box, Grid, GridItem, Text, ButtonGroup, Button, Menu, MenuButton, Portal, MenuList, MenuItem, TableContainer, Table, Thead, Tr, Th, Tbody, Td } from '@chakra-ui/react';
 import ContentBlock from '~/components/blocks/Content';
 import { Icon, Icons } from '~/components/elements/icon';
 
@@ -22,236 +22,241 @@ const SharePricePanel = ({ _title }:any) : ReactNode => {
 
     let selectedSymbolLabel = '';
 
-    return <ContentBlock py={12} background="lightGrey3">
+    return <ContentBlock contain={false}>
         <Box as={YourIR}>
-            <Grid templateColumns='repeat(5, 1fr)'
-                gap={8}>
-                <GridItem colSpan={2}>
-                    <Box borderTop="1px solid"
-                         borderBottom="1px solid"
-                         borderColor="grey"
-                         py={4}
-                         mb={8}>
-                        <Text fontSize={['24px']}
-                              lineHeight={['26px']}
-                              mb={4}>
-                            <Text as="span" fontWeight={500} data-yourir="shortName"></Text>{'\u00A0'}
-                            <Text as="span" color="steelBlue3"><span data-yourir="market"></span>:<span data-yourir="symbol"></span></Text>
-                        </Text>
-                        <Text fontSize={['96px']}
-                              lineHeight={['106px']}
-                              fontWeight={500}
-                              data-yourir="price showCurrency=true minDecimals=2 maxDecimals=2" />
-                        <Box fontSize={['16px']}
-                             lineHeight={['30px']}
-                             fontWeight={500}
-                             sx={{
-                                 '.yourir-positive': {
-                                     color: 'green'
-                                 },
-                                 'yourir-negative': {
-                                     color: 'red'
-                                 }
-                             }}>
-                            <Flex align="baseline" data-yourir="changeSignCSS">
-                                <Box
-                                    data-yourir="changeSignCSS"
-                                    mr={1}
-                                    sx={{
-                                        '&.yourir-positive:before': {
-                                            color: 'green',
-                                            content: "'\\25b2'"
-                                        },
-                                        '&.yourir-negative:before': {
-                                            color: 'red',
-                                            content: "'\\25bc'"
-                                        },
-                                        '&.yourir-zero:before': { content: "'-'" }
-                                    }}
-                                />
-                                <Text as="span" data-yourir="change" />
-                                {'\u00A0'}
-                                (<Text as="span" data-yourir="pctChange" />)
-                            </Flex>
-                        </Box>
-                    </Box>
-                    <Box>
-                        <label>Market Cap</label>
-                        <Text fontSize={['20px']}
-                              lineHeight={['26px']}
-                              fontWeight={500}
-                              data-yourir="marketCap showCurrency=true minDecimals=2 maxDecimals=2"></Text>
-                    </Box>
-                </GridItem>
-                <GridItem colSpan={3}>
-                    <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" height="0" width="0">
-                        <defs>
-                            <linearGradient id="priceGradient" gradientTransform="rotate(90)">
-                                <stop offset="0%" stopColor="#fff" />
-                                <stop offset="80%" stopColor="#fff" />
-                                <stop offset="100%" stopColor="#fff" />
-                            </linearGradient>
-                        </defs>
-                    </svg>
-                    <Box w="100%"
-                         sx={{
-                             '.yourir-chart': {
-                                 padding: '40px 0',
-                                 borderBottomWidth: '1px',
-                                 borderStyle: 'solid',
-                                 borderColor: 'lightGrey2',
-                                 marginBottom: '30px'
-                             },
-                             '.yourir-chart-price-fill': {
-                                 fill: `url(#priceGradient)`
-                             },
-                             '.yourir-chart-price': {
-                                 stroke: 'black',
-                                 strokeWidth: '1px',
-                             },
-                             '.yourir-chart-yaxis-label': {
-                                 position: 'relative',
-                                 top: '-10px'
-                             },
-                             '.yourir-chart-yaxis-left .yourir-chart-yaxis-outside .yourir-chart-yaxis-label-container': {
-                                 left: '0',
-                                 marginRight: '0',
-                                 fontSize: '12px',
-                                 color: 'grey'
-                             },
-                             '.yourir-chart-xaxis-label': {
-                                 fontSize: '12px',
-                                 color: 'grey'
-                             },
-                             '.yourir-chart-panel-border-bottom': {
-                                 display: 'none'
-                             },
-                             '.yourir-chart-tick-bottom': {
-                                 display: 'none'
-                             },
-                             '.yourir-chart-xaxis-outside': {
-                                 position: 'relative',
-                                 top: '10px'
-                             },
-                             '.yourir-chart-yaxis-gridline': {
-                                 stroke: 'lightGrey2'
-                             }
-                         }}>
-                        <div id="priceComparisionChart" data-yourir="priceComparisonChart1 comparisonSymbol1=sol.asx volume.visible=false range=1d ranges=1d,1m,6m,1y,5y,10y showTooltips=true">
-                            <Flex>
-                                <Box>
-                                    <ButtonGroup
-                                        spacing={0}
-                                        sx={
-                                            {
-                                                '.yourir-active, button:focus': {
-                                                    color: 'white',
-                                                    background: 'black'
-                                                }
-                                            }
-                                        }>
-                                        <Button data-yourir="range" variant="sharePrice" value="1d">
-                                            1D
-                                        </Button>
-                                        <Button data-yourir="range" variant="sharePrice" value="5d">
-                                            5D
-                                        </Button>
-                                        <Button data-yourir="range" variant="sharePrice" value="1m">
-                                            1M
-                                        </Button>
-                                        <Button data-yourir="range" variant="sharePrice" value="1y">
-                                            1Y
-                                        </Button>
-                                        <Button data-yourir="range" variant="sharePrice" value="5y">
-                                            5Y
-                                        </Button>
-                                        <Button data-yourir="range" variant="sharePrice" value="all">
-                                            Max
-                                        </Button>
-                                    </ButtonGroup>
+            <Box py={12} background="lightGrey3">
+                <Container>
+                    <Grid templateColumns='repeat(5, 1fr)'
+                          gap={8}>
+                        <GridItem colSpan={2}>
+                            <Box borderTop="1px solid"
+                                 borderBottom="1px solid"
+                                 borderColor="grey"
+                                 py={4}
+                                 mb={8}>
+                                <Text fontSize={['24px']}
+                                      lineHeight={['26px']}
+                                      mb={4}>
+                                    <Text as="span" fontWeight={500} data-yourir="shortName"></Text>{'\u00A0'}
+                                    <Text as="span" color="steelBlue3"><span data-yourir="market"></span>:<span data-yourir="symbol"></span></Text>
+                                </Text>
+                                <Text fontSize={['96px']}
+                                      lineHeight={['106px']}
+                                      fontWeight={500}
+                                      data-yourir="price showCurrency=true minDecimals=2 maxDecimals=2" />
+                                <Box fontSize={['16px']}
+                                     lineHeight={['30px']}
+                                     fontWeight={500}
+                                     sx={{
+                                         '.yourir-positive': {
+                                             color: 'green'
+                                         },
+                                         'yourir-negative': {
+                                             color: 'red'
+                                         }
+                                     }}>
+                                    <Flex align="baseline" data-yourir="changeSignCSS">
+                                        <Box
+                                            data-yourir="changeSignCSS"
+                                            mr={1}
+                                            sx={{
+                                                '&.yourir-positive:before': {
+                                                    color: 'green',
+                                                    content: "'\\25b2'"
+                                                },
+                                                '&.yourir-negative:before': {
+                                                    color: 'red',
+                                                    content: "'\\25bc'"
+                                                },
+                                                '&.yourir-zero:before': { content: "'-'" }
+                                            }}
+                                        />
+                                        <Text as="span" data-yourir="change" />
+                                        {'\u00A0'}
+                                        (<Text as="span" data-yourir="pctChange" />)
+                                    </Flex>
                                 </Box>
-                                <Box flex={1} />
-                                <Box>
-                                    <Menu>
-                                        {({ isOpen }) => (
-                                            <>
-                                                <MenuButton as={Button}
-                                                            rightIcon={isOpen ? <Icon icons={Icons.ChevronRight} /> : <Icon icons={Icons.ChevronDown} /> }>
-                                                            variant="sharePrice">
-                                                    {selectedSymbolLabel ? selectedSymbolLabel : 'Compare…'}
-                                                </MenuButton>
-                                                <Portal>
-                                                    <MenuList>
-                                                        {
-                                                            comparisonSymbols.map((item, index) => {
-                                                                return <MenuItem key={index}
-                                                                                 as={Button}
-                                                                                 variant="menuItemFilter"
-                                                                                 onClick={() => {
-                                                                                     selectedSymbolLabel = item.name;
-                                                                                     set(`priceComparisionChart.comparisonSymbol2`, item.value);
-                                                                                 }}>
-                                                                    {item.name}
-                                                                </MenuItem>
-                                                            })
+                            </Box>
+                            <Box>
+                                <label>Market Cap</label>
+                                <Text fontSize={['20px']}
+                                      lineHeight={['26px']}
+                                      fontWeight={500}
+                                      data-yourir="marketCap showCurrency=true minDecimals=2 maxDecimals=2"></Text>
+                            </Box>
+                        </GridItem>
+                        <GridItem colSpan={3}>
+                            <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" height="0" width="0">
+                                <defs>
+                                    <linearGradient id="priceGradient" gradientTransform="rotate(90)">
+                                        <stop offset="0%" stopColor="#fff" />
+                                        <stop offset="80%" stopColor="#fff" />
+                                        <stop offset="100%" stopColor="#fff" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                            <Box w="100%"
+                                 sx={{
+                                     '.yourir-chart': {
+                                         padding: '40px 0',
+                                         borderBottomWidth: '1px',
+                                         borderStyle: 'solid',
+                                         borderColor: 'lightGrey2',
+                                         marginBottom: '30px'
+                                     },
+                                     '.yourir-chart-price-fill': {
+                                         fill: `url(#priceGradient)`
+                                     },
+                                     '.yourir-chart-price': {
+                                         stroke: 'black',
+                                         strokeWidth: '1px',
+                                     },
+                                     '.yourir-chart-yaxis-label': {
+                                         position: 'relative',
+                                         top: '-10px'
+                                     },
+                                     '.yourir-chart-yaxis-left .yourir-chart-yaxis-outside .yourir-chart-yaxis-label-container': {
+                                         left: '0',
+                                         marginRight: '0',
+                                         fontSize: '12px',
+                                         color: 'grey'
+                                     },
+                                     '.yourir-chart-xaxis-label': {
+                                         fontSize: '12px',
+                                         color: 'grey'
+                                     },
+                                     '.yourir-chart-panel-border-bottom': {
+                                         display: 'none'
+                                     },
+                                     '.yourir-chart-tick-bottom': {
+                                         display: 'none'
+                                     },
+                                     '.yourir-chart-xaxis-outside': {
+                                         position: 'relative',
+                                         top: '10px'
+                                     },
+                                     '.yourir-chart-yaxis-gridline': {
+                                         stroke: 'lightGrey2'
+                                     }
+                                 }}>
+                                <div id="priceComparisionChart" data-yourir="priceComparisonChart1 comparisonSymbol1=sol.asx volume.visible=false range=1d ranges=1d,1m,6m,1y,5y,10y showTooltips=true">
+                                    <Flex>
+                                        <Box>
+                                            <ButtonGroup
+                                                spacing={0}
+                                                sx={
+                                                    {
+                                                        '.yourir-active, button:focus': {
+                                                            color: 'white',
+                                                            background: 'black'
                                                         }
-                                                    </MenuList>
-                                                </Portal>
-                                            </>
-                                        )}
-                                    </Menu>
-                                </Box>
-                            </Flex>
-                            <Box data-yourir="plots" />
-                        </div>
-                    </Box>
-                </GridItem>
-            </Grid>
-            <Box>
-                <Heading as="h2" variant="h2">
-                    Quote Table
-                </Heading>
-                <TableContainer>
-                    <Table>
-                        <Thead>
-                            <Tr whiteSpace="nowrap">
-                                <Th fontWeight={500}>Price</Th>
-                                <Th fontWeight={500} >Movement +/-</Th>
-                                <Th fontWeight={500}>Volume</Th>
-                                <Th fontWeight={500}>Daily High</Th>
-                                <Th fontWeight={500}>Daily Low</Th>
-                                <Th fontWeight={500}>52 Week Range</Th>
-                                <Th fontWeight={500}>Market Cap.</Th>
-                            </Tr>
-                        </Thead>
-                        <Tbody>
-                            <Tr>
-                                <Td>
-                                    <span data-yourir="price"></span>
-                                </Td>
-                                <Td>
-                                    <span data-yourir="change"></span>
-                                </Td>
-                                <Td>
-                                    <span data-yourir="volume"></span>
-                                </Td>
-                                <Td>
-                                    <span data-yourir="high"></span>
-                                </Td>
-                                <Td>
-                                    <span data-yourir="low"></span>
-                                </Td>
-                                <Td>
-                                    <span data-yourir="yearLow"></span> /{' '}
-                                    <span data-yourir="yearHigh"></span>
-                                </Td>
-                                <Td>
-                                    <span data-yourir="marketCap scale=true"></span>
-                                </Td>
-                            </Tr>
-                        </Tbody>
-                    </Table>
-                </TableContainer>
+                                                    }
+                                                }>
+                                                <Button data-yourir="range" variant="sharePrice" value="1d">
+                                                    1D
+                                                </Button>
+                                                <Button data-yourir="range" variant="sharePrice" value="5d">
+                                                    5D
+                                                </Button>
+                                                <Button data-yourir="range" variant="sharePrice" value="1m">
+                                                    1M
+                                                </Button>
+                                                <Button data-yourir="range" variant="sharePrice" value="1y">
+                                                    1Y
+                                                </Button>
+                                                <Button data-yourir="range" variant="sharePrice" value="5y">
+                                                    5Y
+                                                </Button>
+                                                <Button data-yourir="range" variant="sharePrice" value="all">
+                                                    Max
+                                                </Button>
+                                            </ButtonGroup>
+                                        </Box>
+                                        <Box flex={1} />
+                                        <Box>
+                                            <Menu>
+                                                {({ isOpen }) => (
+                                                    <>
+                                                        <MenuButton as={Button}
+                                                                    rightIcon={isOpen ? <Icon icons={Icons.ChevronRight} /> : <Icon icons={Icons.ChevronDown} /> }>
+                                                            {selectedSymbolLabel ? selectedSymbolLabel : 'Compare…'}
+                                                        </MenuButton>
+                                                        <Portal>
+                                                            <MenuList>
+                                                                {
+                                                                    comparisonSymbols.map((item, index) => {
+                                                                        return <MenuItem key={index}
+                                                                                         as={Button}
+                                                                                         variant="menuItemFilter"
+                                                                                         onClick={() => {
+                                                                                             selectedSymbolLabel = item.name;
+                                                                                             set(`priceComparisionChart.comparisonSymbol2`, item.value);
+                                                                                         }}>
+                                                                            {item.name}
+                                                                        </MenuItem>
+                                                                    })
+                                                                }
+                                                            </MenuList>
+                                                        </Portal>
+                                                    </>
+                                                )}
+                                            </Menu>
+                                        </Box>
+                                    </Flex>
+                                    <Box data-yourir="plots" />
+                                </div>
+                            </Box>
+                        </GridItem>
+                    </Grid>
+                </Container>
+            </Box>
+            <Box py={12}>
+                <Container>
+                    <Heading as="h2" variant="h2">
+                        Quote Table
+                    </Heading>
+                    <TableContainer>
+                        <Table variant="sharePrice" w="100%">
+                            <Thead>
+                                <Tr whiteSpace="nowrap">
+                                    <Th>Price</Th>
+                                    <Th >Movement +/-</Th>
+                                    <Th>Volume</Th>
+                                    <Th>Daily High</Th>
+                                    <Th>Daily Low</Th>
+                                    <Th>52 Week Range</Th>
+                                    <Th>Market Cap.</Th>
+                                </Tr>
+                            </Thead>
+                            <Tbody>
+                                <Tr>
+                                    <Td>
+                                        <span data-yourir="price"></span>
+                                    </Td>
+                                    <Td>
+                                        <span data-yourir="change"></span>
+                                    </Td>
+                                    <Td>
+                                        <span data-yourir="volume"></span>
+                                    </Td>
+                                    <Td>
+                                        <span data-yourir="high"></span>
+                                    </Td>
+                                    <Td>
+                                        <span data-yourir="low"></span>
+                                    </Td>
+                                    <Td>
+                                        <span data-yourir="yearLow"></span> /{' '}
+                                        <span data-yourir="yearHigh"></span>
+                                    </Td>
+                                    <Td>
+                                        <span data-yourir="marketCap scale=true"></span>
+                                    </Td>
+                                </Tr>
+                            </Tbody>
+                        </Table>
+                    </TableContainer>
+                </Container>
             </Box>
         </Box>
     </ContentBlock>;
