@@ -34,7 +34,7 @@ export const blocks = `
         ... on InvestorPanelRecord {
             ${investorPanelRecord}
         }
-        ... on HomepageOverviewRecord {
+        ... on HomePageOverviewRecord {
             ${homePageOverviewRecord}
         }
     }

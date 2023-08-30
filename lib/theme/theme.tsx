@@ -18,6 +18,7 @@ const colors = {
     grey: '#999',
     lightGrey: '#c4c4c4',
     lightGrey2: '#ddd',
+    lightGrey3: '#f1f2f5',
     green: '#00ce7d',
     red: '#df322f'
 };
@@ -172,6 +173,13 @@ export const theme = extendBaseTheme({
             body: {
                 color: 'black'
             }
-        }
+        },
+        a: {
+            textDecoration: 'none',
+            color: 'skyBlue',
+            _focus: {
+                boxShadow: 'none',
+            },
+        },
     }
 });
