@@ -5,7 +5,7 @@ import ContentBlock from "~/components/blocks/Content";
 import { doQuery, queries } from '~/dato/api';
 import { Icon, Icons } from "~/components/elements/icon";
 
-const LatestNewsItem = ({ title, publishDate }) : ReactNode => {
+const LatestNewsItem = ({ title, publishDate }:any) : ReactNode => {
     const date = parseISO(publishDate);
 
     return <Box py={6} borderBottom="1px solid lightGrey">

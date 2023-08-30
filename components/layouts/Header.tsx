@@ -75,7 +75,7 @@ const Header = ({menu}): ReactNode => {
     </Box>;
 };
 
-const DestopPopoverTrigger = ({item}) => {
+const DestopPopoverTrigger = ({item}): ReactNode => {
     const { isOpen } = usePopoverContext();
 
     return <PopoverTrigger>
@@ -83,13 +83,13 @@ const DestopPopoverTrigger = ({item}) => {
             <Flex as="span" align="baseline">
                 <Text as="span" mr={2}>{item.link.title}</Text>
                 <Box transition="transform 300ms ease"
-                     transform={isOpen ? 'rotate(180deg)' : ''}>
+                    transform={isOpen ? 'rotate(180deg)' : ''}>
                     <Icon icon={Icons.ChevronDown} w={12} h={12} />
                 </Box>
             </Flex>
         </Link>
-    </PopoverTrigger>
-}
+    </PopoverTrigger>;
+};
 
 const DesktopNav = ({menu}): ReactNode => {
     return <Flex as="nav" display={['none', , , 'flex']}>

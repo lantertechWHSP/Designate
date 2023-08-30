@@ -38,9 +38,7 @@ export const site = `
         footer {
             id
             email
-            address {
-                value
-            }
+            address
             phone
             fax
             linkedin
