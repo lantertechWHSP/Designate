@@ -3,13 +3,7 @@ import { Box, Container, Flex, Heading } from '@chakra-ui/react';
 import { AspectRatio } from '@chakra-ui/react';
 import useDimensions from 'react-cool-dimensions';
 
-interface IHeroBlock {
-    title?:string;
-    video?:any;
-    image?:any;
-}
-
-const HeroBlock = ({ title, video, image }:IHeroBlock) : ReactNode => {
+const HeroBlock = ({ title, video, image }:any) : ReactNode => {
     const { observe: contentWidthObserve, width: contentWidth } = useDimensions();
 
     return <Box

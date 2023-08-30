@@ -6,6 +6,7 @@ import { heroRecord } from '~/dato/blocks/hero';
 import { cardContainerRecord } from '~/dato/blocks/cardContainer';
 import { latestNewsRecord } from '~/dato/blocks/latestNews';
 import { investorPanelRecord } from '~/dato/blocks/investorPanel';
+import { homePageOverviewRecord } from '~/dato/blocks/homePageOverview';
 
 export const blocks = `
     blocks {
@@ -32,6 +33,9 @@ export const blocks = `
         }
         ... on InvestorPanelRecord {
             ${investorPanelRecord}
+        }
+        ... on HomepageOverviewRecord {
+            ${homePageOverviewRecord}
         }
     }
 `;
