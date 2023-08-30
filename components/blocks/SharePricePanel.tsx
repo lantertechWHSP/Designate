@@ -20,7 +20,7 @@ const SharePricePanel = ({ _title }:any) : ReactNode => {
         }
     ];
 
-    let [selectedSymbol, setSelectedSymbol] = useState(null);
+    const [selectedSymbol, setSelectedSymbol] = useState(null);
 
     return <ContentBlock py={12} background="lightGrey3">
         <Box onClick={() => {
@@ -187,10 +187,8 @@ const SharePricePanel = ({ _title }:any) : ReactNode => {
                                         {({ isOpen }) => (
                                             <>
                                                 <MenuButton as={Button}
-                                                            variant="menuFilter"
-                                                            rightIcon={isOpen ? <Icon icon={Icons.ChevronRight} /> : <Icon icon={Icons.ChevronDown} /> }>
-                                                    {selectedSymbol?.name}
-                                                    {isOpen ? 'Close' : 'Open'}
+                                                            variant="menuFilter">
+                                                    {isOpen ? 'Open' : 'Close'}
                                                 </MenuButton>
                                                 <Portal>
                                                     <MenuList>
