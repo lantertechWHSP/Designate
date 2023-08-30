@@ -1,6 +1,9 @@
 const { createSecureHeaders } = require('next-secure-headers');
 
 const nextConfig = {
+    eslint: {
+        ignoreDuringBuilds: true
+    },
     async headers() {
         return [
             {

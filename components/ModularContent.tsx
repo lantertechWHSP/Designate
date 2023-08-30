@@ -9,6 +9,7 @@ import CardContainer from '~/components/blocks/CardContainer/CardContainer';
 import LatestNews from '~/components/blocks/LatestNews';
 import InvestorPanel from '~/components/blocks/InvestorPanel';
 import HomePageOverview from '~/components/blocks/HomePageOverview';
+import SharePricePanel from '~/components/blocks/SharePricePanel';
 
 const blocks:any = {
     Text,
@@ -21,7 +22,8 @@ const blocks:any = {
     CardContainer,
     LatestNews,
     InvestorPanel,
-    HomePageOverview
+    HomePageOverview,
+    SharePricePanel
 };
 
 export const getBlock = (name:any) : any => {

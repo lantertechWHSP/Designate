@@ -28,13 +28,13 @@ const InvestorPanelBlock = ({ title }:any) : ReactNode => {
                     <Heading as="h3" variant="sectionSubheading" mb={4}>
                         Share Price Performance
                     </Heading>
-                    <span>
+                    <Text>
                         <Text as="span" fontWeight={500} data-yourir="shortName"></Text>
                         {'\u00A0'}
                         <Text as="span" color="steelBlue3">
                             <span data-yourir="market"></span>:<span data-yourir="symbol"></span>
                         </Text>
-                    </span>
+                    </Text>
                     <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" height="0" width="0">
                         <defs>
                             <linearGradient id="priceGradient" gradientTransform="rotate(90)">
@@ -64,7 +64,7 @@ const InvestorPanelBlock = ({ title }:any) : ReactNode => {
                                 top: '-10px'
                             },
                             '.yourir-chart-yaxis-left .yourir-chart-yaxis-outside .yourir-chart-yaxis-label-container': {
-                                right: 'calc(100% - 20px)',
+                                left: '0',
                                 marginRight: '0',
                                 fontSize: '12px',
                                 color: 'grey'
@@ -94,7 +94,7 @@ const InvestorPanelBlock = ({ title }:any) : ReactNode => {
                     <SimpleGrid columns={[1, 1, 2]}>
                         <Box>
                             <label>Price</label>
-                            <Heading fontSize={['48px']}
+                            <Text fontSize={['48px']}
                                 lineHeight={['48px']}
                                 fontWeight={500}
                                 data-yourir="price showCurrency=true minDecimals=2 maxDecimals=2" />
