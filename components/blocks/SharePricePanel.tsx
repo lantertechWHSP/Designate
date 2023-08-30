@@ -20,9 +20,20 @@ const SharePricePanel = ({ _title }:any) : ReactNode => {
         }
     ];
 
-    const [selectedSymbol, setSelectedSymbol] = useState();
+    let [selectedSymbol, setSelectedSymbol] = useState(null);
 
     return <ContentBlock py={12} background="lightGrey3">
+        <Box onClick={() => {
+            setSelectedSymbol({
+                name: 'Carl',
+                value: 'reign'
+            })
+        }}>
+
+            Carl
+        </Box>
+        {selectedSymbol?.name}
+
         <Box as={YourIR}>
             <Grid templateColumns='repeat(5, 1fr)'
                 gap={8}>
@@ -137,70 +148,73 @@ const SharePricePanel = ({ _title }:any) : ReactNode => {
                                  stroke: 'lightGrey2'
                              }
                          }}>
-                        <div id="priceComparisionChart" data-yourir="priceComparisonChart1 range=5d comparisonSymbol1=sol.asx ranges=1d,1m,6m,1y,5y,10y showTooltips=true">
-                            <ButtonGroup
-                                spacing={0}
-                                sx={
-                                    {
-                                        '.yourir-active, button:focus': {
-                                            color: 'white',
-                                            background: 'black'
-                                        }
-                                    }
-                                }>
-                                <Button data-yourir="range" variant="sharePriceChart" value="1d">
-                                    1D
-                                </Button>
-                                <Button data-yourir="range" variant="sharePriceChart" value="5d">
-                                    5D
-                                </Button>
-                                <Button data-yourir="range" variant="sharePriceChart" value="1m">
-                                    1M
-                                </Button>
-                                <Button data-yourir="range" variant="sharePriceChart" value="1y">
-                                    1Y
-                                </Button>
-                                <Button data-yourir="range" variant="sharePriceChart" value="5y">
-                                    5Y
-                                </Button>
-                                <Button data-yourir="range" variant="sharePriceChart" value="all">
-                                    Max
-                                </Button>
-
-                                <Button data-yourir="comparisonSymbol2" variant="sharePriceChart" value="xao.asx">
-                                    Max
-                                </Button>
-                            </ButtonGroup>
-                            {/*<Menu >*/}
-                            {/*    {({ isOpen }) => (*/}
-                            {/*        <>*/}
-                            {/*            <MenuButton as={Button}*/}
-                            {/*                        variant="menuFilter"*/}
-                            {/*                        rightIcon={isOpen ? <Icon icon={Icons.ChevronRight} /> : <Icon icon={Icons.ChevronDown} /> }>*/}
-                            {/*                {selectedSymbol ? selectedSymbol.name : 'Compare…'}*/}
-                            {/*            </MenuButton>*/}
-                            {/*            <Portal>*/}
-                            {/*                <MenuList>*/}
-                            {/*                    {*/}
-                            {/*                        comparisonSymbols.map((item, index) => {*/}
-                            {/*                            return <MenuItem key={index}*/}
-                            {/*                                             as={Button}*/}
-                            {/*                                             variant="menuItemFilter"*/}
-                            {/*                                             onClick={() => {*/}
-                            {/*                                                 setSelectedSymbol(item)*/}
-                            {/*                                                 // alert(item.value);*/}
-                            {/*                                                 alert(item.value);*/}
-                            {/*                                                 set(`priceComparisionChart.comparisonSymbol2`, item.value);*/}
-                            {/*                                             }}>*/}
-                            {/*                                {item.name}*/}
-                            {/*                            </MenuItem>*/}
-                            {/*                        })*/}
-                            {/*                    }*/}
-                            {/*                </MenuList>*/}
-                            {/*            </Portal>*/}
-                            {/*        </>*/}
-                            {/*    )}*/}
-                            {/*</Menu>*/}
+                        <div id="priceComparisionChart" data-yourir="priceComparisonChart1 comparisonSymbol1=sol.asx volume.visible=false range=1d ranges=1d,1m,6m,1y,5y,10y showTooltips=true">
+                            <Flex>
+                                <Box>
+                                    <ButtonGroup
+                                        spacing={0}
+                                        sx={
+                                            {
+                                                '.yourir-active, button:focus': {
+                                                    color: 'white',
+                                                    background: 'black'
+                                                }
+                                            }
+                                        }>
+                                        <Button data-yourir="range" variant="sharePriceChart" value="1d">
+                                            1D
+                                        </Button>
+                                        <Button data-yourir="range" variant="sharePriceChart" value="5d">
+                                            5D
+                                        </Button>
+                                        <Button data-yourir="range" variant="sharePriceChart" value="1m">
+                                            1M
+                                        </Button>
+                                        <Button data-yourir="range" variant="sharePriceChart" value="1y">
+                                            1Y
+                                        </Button>
+                                        <Button data-yourir="range" variant="sharePriceChart" value="5y">
+                                            5Y
+                                        </Button>
+                                        <Button data-yourir="range" variant="sharePriceChart" value="all">
+                                            Max
+                                        </Button>
+                                    </ButtonGroup>
+                                </Box>
+                                <Box flex={1} />
+                                <Box>
+                                    <Menu>
+                                        {({ isOpen }) => (
+                                            <>
+                                                <MenuButton as={Button}
+                                                            variant="menuFilter"
+                                                            rightIcon={isOpen ? <Icon icon={Icons.ChevronRight} /> : <Icon icon={Icons.ChevronDown} /> }>
+                                                    {selectedSymbol?.name}
+                                                    {isOpen ? 'Close' : 'Open'}
+                                                </MenuButton>
+                                                <Portal>
+                                                    <MenuList>
+                                                        {
+                                                            comparisonSymbols.map((item, index) => {
+                                                                return <MenuItem key={index}
+                                                                                 as={Button}
+                                                                                 variant="menuItemFilter"
+                                                                                 onClick={() => {
+                                                                                     console.log(item);
+                                                                                     setSelectedSymbol(item)
+                                                                                     set(`priceComparisionChart.comparisonSymbol2`, item.value);
+                                                                                 }}>
+                                                                    {item.name}
+                                                                </MenuItem>
+                                                            })
+                                                        }
+                                                    </MenuList>
+                                                </Portal>
+                                            </>
+                                        )}
+                                    </Menu>
+                                </Box>
+                            </Flex>
                             <Box data-yourir="plots" />
                         </div>
                     </Box>
