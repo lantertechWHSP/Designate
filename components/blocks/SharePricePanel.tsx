@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode } from 'react';
 import { YourIR, set } from 'yourir-next';
 import { Flex, Box, Grid, GridItem, Text, ButtonGroup, Button, Menu, MenuButton, Portal, MenuList, MenuItem  } from '@chakra-ui/react';
 import ContentBlock from '~/components/blocks/Content';
@@ -20,20 +20,9 @@ const SharePricePanel = ({ _title }:any) : ReactNode => {
         }
     ];
 
-    const [selectedSymbol, setSelectedSymbol] = useState(null);
+    let selectedSymbolLabel = '';
 
     return <ContentBlock py={12} background="lightGrey3">
-        <Box onClick={() => {
-            setSelectedSymbol({
-                name: 'Carl',
-                value: 'reign'
-            })
-        }}>
-
-            Carl
-        </Box>
-        {selectedSymbol?.name}
-
         <Box as={YourIR}>
             <Grid templateColumns='repeat(5, 1fr)'
                 gap={8}>
@@ -161,22 +150,22 @@ const SharePricePanel = ({ _title }:any) : ReactNode => {
                                                 }
                                             }
                                         }>
-                                        <Button data-yourir="range" variant="sharePriceChart" value="1d">
+                                        <Button data-yourir="range" variant="sharePrice" value="1d">
                                             1D
                                         </Button>
-                                        <Button data-yourir="range" variant="sharePriceChart" value="5d">
+                                        <Button data-yourir="range" variant="sharePrice" value="5d">
                                             5D
                                         </Button>
-                                        <Button data-yourir="range" variant="sharePriceChart" value="1m">
+                                        <Button data-yourir="range" variant="sharePrice" value="1m">
                                             1M
                                         </Button>
-                                        <Button data-yourir="range" variant="sharePriceChart" value="1y">
+                                        <Button data-yourir="range" variant="sharePrice" value="1y">
                                             1Y
                                         </Button>
-                                        <Button data-yourir="range" variant="sharePriceChart" value="5y">
+                                        <Button data-yourir="range" variant="sharePrice" value="5y">
                                             5Y
                                         </Button>
-                                        <Button data-yourir="range" variant="sharePriceChart" value="all">
+                                        <Button data-yourir="range" variant="sharePrice" value="all">
                                             Max
                                         </Button>
                                     </ButtonGroup>
@@ -187,8 +176,9 @@ const SharePricePanel = ({ _title }:any) : ReactNode => {
                                         {({ isOpen }) => (
                                             <>
                                                 <MenuButton as={Button}
-                                                            variant="menuFilter">
-                                                    {isOpen ? 'Open' : 'Close'}
+                                                            rightIcon={isOpen ? <Icon icons={Icons.ChevronRight} /> : <Icon icons={Icons.ChevronDown} /> }>
+                                                            variant="sharePrice">
+                                                    {selectedSymbolLabel ? selectedSymbolLabel : 'Compare…'}
                                                 </MenuButton>
                                                 <Portal>
                                                     <MenuList>
@@ -198,8 +188,7 @@ const SharePricePanel = ({ _title }:any) : ReactNode => {
                                                                                  as={Button}
                                                                                  variant="menuItemFilter"
                                                                                  onClick={() => {
-                                                                                     console.log(item);
-                                                                                     setSelectedSymbol(item)
+                                                                                     selectedSymbolLabel = item.name;
                                                                                      set(`priceComparisionChart.comparisonSymbol2`, item.value);
                                                                                  }}>
                                                                     {item.name}

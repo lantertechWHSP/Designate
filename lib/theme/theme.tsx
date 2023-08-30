@@ -1,6 +1,6 @@
 import { extendBaseTheme } from '@chakra-ui/react';
 import chakraTheme from '@chakra-ui/theme';
-const { Modal } = chakraTheme.components;
+const { Modal, Menu } = chakraTheme.components;
 
 const colors = {
     // lightGrey: '#c4c4c4',
@@ -43,6 +43,7 @@ export const theme = extendBaseTheme({
     },
     components: {
         Modal,
+        Menu,
         Heading: {
             baseStyle: {
                 fontWeight: 500
@@ -153,14 +154,21 @@ export const theme = extendBaseTheme({
         },
         Button: {
             variants: {
-                sharePriceChart: {
+                sharePrice: {
                     background: 'white',
                     color: 'steelBlue3',
-                    width: '54px',
+                    minWidth: '54px',
                     height: '36px',
                     fontSize: '14px',
-                    fontWeight: 500
-                }
+                    fontWeight: 500,
+                    px: 2
+                },
+                // sharePriceMenu: {
+                //     background: 'white',
+                //     color: 'steelBlue3',
+                //     fontSize: '14px',
+                //     fontWeight: 500
+                // }
             }
         },
         Divider: {
