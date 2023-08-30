@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { YourIR, set } from 'yourir-next';
-import { Flex, Box, Grid, GridItem, Text, ButtonGroup, Button, Menu, MenuButton, Portal, MenuList, MenuItem  } from '@chakra-ui/react';
+import { Heading, Flex, Box, Grid, GridItem, Text, ButtonGroup, Button, Menu, MenuButton, Portal, MenuList, MenuItem, TableContainer, Table, Thead, Tr, Th, Tbody, Td } from '@chakra-ui/react';
 import ContentBlock from '~/components/blocks/Content';
 import { Icon, Icons } from '~/components/elements/icon';
 
@@ -207,6 +207,52 @@ const SharePricePanel = ({ _title }:any) : ReactNode => {
                     </Box>
                 </GridItem>
             </Grid>
+            <Box>
+                <Heading as="h2" variant="h2">
+                    Quote Table
+                </Heading>
+                <TableContainer>
+                    <Table>
+                        <Thead>
+                            <Tr whiteSpace="nowrap">
+                                <Th fontWeight={500}>Price</Th>
+                                <Th fontWeight={500} >Movement +/-</Th>
+                                <Th fontWeight={500}>Volume</Th>
+                                <Th fontWeight={500}>Daily High</Th>
+                                <Th fontWeight={500}>Daily Low</Th>
+                                <Th fontWeight={500}>52 Week Range</Th>
+                                <Th fontWeight={500}>Market Cap.</Th>
+                            </Tr>
+                        </Thead>
+                        <Tbody>
+                            <Tr>
+                                <Td>
+                                    <span data-yourir="price"></span>
+                                </Td>
+                                <Td>
+                                    <span data-yourir="change"></span>
+                                </Td>
+                                <Td>
+                                    <span data-yourir="volume"></span>
+                                </Td>
+                                <Td>
+                                    <span data-yourir="high"></span>
+                                </Td>
+                                <Td>
+                                    <span data-yourir="low"></span>
+                                </Td>
+                                <Td>
+                                    <span data-yourir="yearLow"></span> /{' '}
+                                    <span data-yourir="yearHigh"></span>
+                                </Td>
+                                <Td>
+                                    <span data-yourir="marketCap scale=true"></span>
+                                </Td>
+                            </Tr>
+                        </Tbody>
+                    </Table>
+                </TableContainer>
+            </Box>
         </Box>
     </ContentBlock>;
 };
