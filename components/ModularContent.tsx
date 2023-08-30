@@ -8,7 +8,7 @@ import Card from '~/components/blocks/CardContainer/Card';
 import CardContainer from '~/components/blocks/CardContainer/CardContainer';
 import LatestNews from '~/components/blocks/LatestNews';
 import InvestorPanel from '~/components/blocks/InvestorPanel';
-import HomePageOverview  from '~/components/blocks/HomePageOverview';
+import HomePageOverview from '~/components/blocks/HomePageOverview';
 
 const blocks:any = {
     Text,
