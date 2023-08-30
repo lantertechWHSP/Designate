@@ -22,6 +22,11 @@ const SharePricePanel = ({ _title }:any) : ReactNode => {
 
     let selectedSymbolLabel = '';
 
+    const scrollToHistoricPriceTable = () => {
+        const scrollDiv = document.getElementById("historicalPrice").offsetTop;
+        window.scrollTo({ top: scrollDiv - 120, behavior: 'smooth'});
+    }
+
     return <ContentBlock contain={false}>
         <Box as={YourIR}>
             <Box py={12} background="lightGrey3">
@@ -178,6 +183,7 @@ const SharePricePanel = ({ _title }:any) : ReactNode => {
                                                 {({ isOpen }) => (
                                                     <>
                                                         <MenuButton as={Button}
+                                                                    variant="sharePrice"
                                                                     rightIcon={isOpen ? <Icon icons={Icons.ChevronRight} /> : <Icon icons={Icons.ChevronDown} /> }>
                                                             {selectedSymbolLabel ? selectedSymbolLabel : 'Compare…'}
                                                         </MenuButton>
@@ -212,7 +218,7 @@ const SharePricePanel = ({ _title }:any) : ReactNode => {
             </Box>
             <Box py={12}>
                 <Container>
-                    <Heading as="h2" variant="h2">
+                    <Heading as="h2" variant="h2" mb={8}>
                         Quote Table
                     </Heading>
                     <TableContainer>
@@ -256,6 +262,82 @@ const SharePricePanel = ({ _title }:any) : ReactNode => {
                             </Tbody>
                         </Table>
                     </TableContainer>
+                </Container>
+            </Box>
+            <Box py={12} id="historicalPrice">
+                <Container>
+                    <Heading as="h2" variant="h2" mb={8}>
+                        Historical Prices
+                    </Heading>
+                    <Box data-yourir="historicalPrices pageSize=10">
+                        <Box overflowX="auto">
+                            <TableContainer>
+                                <Table variant="sharePrice" w="100%">
+                                    <Thead>
+                                        <Tr>
+                                            <Th>Date</Th>
+                                            <Th w={[, , , '15%']}>Volume</Th>
+                                            <Th w={[, , , '15%']}>Change</Th>
+                                            <Th w={[, , , '15%']}>Close</Th>
+                                        </Tr>
+                                    </Thead>
+                                    <Tbody data-yourir="items">
+                                        <Tr>
+                                            <Td data-yourir="$cur.date" />
+                                            <Td data-yourir="$cur.volume" />
+                                            <Td data-yourir="$cur.change" />
+                                            <Td data-yourir="$cur.close" />
+                                        </Tr>
+                                    </Tbody>
+                                </Table>
+                            </TableContainer>
+                        </Box>
+                        <Flex direction="row" justify="space-between" align="center" mt={8}>
+                            <Box>
+                                <Button variant="sharePrice"
+                                        data-yourir="prevPage"
+                                        onClick={scrollToHistoricPriceTable}>
+                                    Prev
+                                </Button>
+                            </Box>
+                            <Box>
+                                <ButtonGroup
+                                    sx={{ '.yourir-active': {
+                                            bg: 'ghostWhite',
+                                            borderRadius: 0
+                                        }}}>
+                                    <Button variant="sharePrice"
+                                            data-yourir="navPage1"
+                                            onClick={scrollToHistoricPriceTable}>
+                                    </Button>
+                                    <Button variant="sharePrice"
+                                            data-yourir="navPage2"
+                                            onClick={scrollToHistoricPriceTable}>
+                                    </Button>
+                                    <Button variant="sharePrice"
+                                            data-yourir="navPage3"
+                                            onClick={scrollToHistoricPriceTable}>
+                                    </Button>
+                                    <Button variant="sharePrice"
+                                            data-yourir="navPage4"
+                                            onClick={scrollToHistoricPriceTable}>
+                                    </Button>
+                                    <Button variant="sharePrice"
+                                            data-yourir="navPage5"
+                                            onClick={scrollToHistoricPriceTable}>
+                                    </Button>
+
+                                </ButtonGroup>
+                            </Box>
+                            <Box>
+                                <Button variant="sharePrice"
+                                        data-yourir="nextPage"
+                                        onClick={scrollToHistoricPriceTable}>
+                                    Next
+                                </Button>
+                            </Box>
+                        </Flex>
+                    </Box>
                 </Container>
             </Box>
         </Box>
