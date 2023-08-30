@@ -151,6 +151,18 @@ export const theme = extendBaseTheme({
                 }
             }
         },
+        Button: {
+            variants: {
+                sharePriceChart: {
+                    background: 'white',
+                    color: 'steelBlue3',
+                    width: '54px',
+                    height: '36px',
+                    fontSize: '14px',
+                    fontWeight: 500
+                }
+            }
+        },
         Divider: {
             baseStyle: {
                 borderWidth: '1px',
