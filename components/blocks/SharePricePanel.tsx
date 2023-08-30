@@ -184,7 +184,7 @@ const SharePricePanel = ({ _title }:any) : ReactNode => {
                                                     <>
                                                         <MenuButton as={Button}
                                                             variant="sharePrice"
-                                                            rightIcon={isOpen ? <Icon icons={Icons.ChevronRight} /> : <Icon icons={Icons.ChevronDown} /> }>
+                                                            rightIcon={isOpen ? <Icon icon={Icons.ChevronRight} /> : <Icon icon={Icons.ChevronDown} /> }>
                                                             {selectedSymbolLabel ? selectedSymbolLabel : 'Compare…'}
                                                         </MenuButton>
                                                         <Portal>
