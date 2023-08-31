@@ -1,6 +1,6 @@
 import { extendBaseTheme } from '@chakra-ui/react';
 import chakraTheme from '@chakra-ui/theme';
-const { Modal, Menu } = chakraTheme.components;
+const { Modal, Menu, Badge } = chakraTheme.components;
 
 const colors = {
     // lightGrey: '#c4c4c4',
@@ -175,6 +175,14 @@ export const theme = extendBaseTheme({
                     fontWeight: 500,
                     p: 0
                 },
+                tab: {
+                    background: 'white',
+                    color: 'steelBlue3',
+                    width: '54px',
+                    height: '36px',
+                    fontSize: '14px',
+                    fontWeight: 500
+                },
                 menuButton: {
                     background: 'white',
                     color: 'steelBlue3',
@@ -257,6 +265,11 @@ export const theme = extendBaseTheme({
                 }
             }
         },
+        Badge: {
+            defaultProps: {
+                background: 'lightGrey2',
+            }
+        }
     },
     styles: {
         global: {

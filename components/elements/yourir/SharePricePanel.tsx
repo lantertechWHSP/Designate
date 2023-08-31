@@ -1,10 +1,10 @@
 import React, { ReactNode } from 'react';
-import { YourIR } from 'yourir-next';
-// import { Icon, Icons } from '~/components/elements/icon';
-import { Container, Flex, Box, Grid, GridItem, Text, ButtonGroup, Button, Menu, MenuButton, Portal, MenuList, MenuItem } from '@chakra-ui/react';
+import { YourIR, set } from 'yourir-next';
 import { Icon, Icons } from '~/components/elements/icon';
+import { Container, Flex, Box, Grid, GridItem, Text, ButtonGroup, Button, Menu, MenuButton, Badge, Portal, MenuList, MenuItem } from '@chakra-ui/react';
 
 const SharePricePanel = () : ReactNode => {
+    const symbol = 'sol.asx';
     const comparisonSymbols = [
         {
             name: 'XAO All Ordinaries',
@@ -22,16 +22,13 @@ const SharePricePanel = () : ReactNode => {
 
     let selectedSymbolLabel = '';
 
-    return <Box as={YourIR}>
-        <Box background="lightGrey3">
+    return <Box background="lightGrey3" py={8}>
+        <Box as={YourIR}>
             <Container>
                 <Grid templateColumns='repeat(5, 1fr)'
                       gap={8}>
                     <GridItem colSpan={2}>
-                        <Box borderTop="1px solid"
-                             borderBottom="1px solid"
-                             borderColor="grey"
-                             py={4}
+                        <Box py={4}
                              mb={8}>
                             <Text fontSize={['24px']}
                                   lineHeight={['26px']}
@@ -39,6 +36,7 @@ const SharePricePanel = () : ReactNode => {
                                 <Text as="span" fontWeight={500} data-yourir="shortName"></Text>{'\u00A0'}
                                 <Text as="span" color="steelBlue3"><span data-yourir="market"></span>:<span data-yourir="symbol"></span></Text>
                             </Text>
+                            <Badge symbol={symbol} data-yourir="marketStatus" />
                             <Text fontSize={['96px']}
                                   lineHeight={['106px']}
                                   fontWeight={500}
@@ -151,22 +149,22 @@ const SharePricePanel = () : ReactNode => {
                                                     }
                                                 }
                                             }>
-                                            <Button data-yourir="range" variant="sharePrice" value="1d">
+                                            <Button data-yourir="range" variant="tab" value="1d">
                                                 1D
                                             </Button>
-                                            <Button data-yourir="range" variant="sharePrice" value="5d">
+                                            <Button data-yourir="range" variant="tab" value="5d">
                                                 5D
                                             </Button>
-                                            <Button data-yourir="range" variant="sharePrice" value="1m">
+                                            <Button data-yourir="range" variant="tab" value="1m">
                                                 1M
                                             </Button>
-                                            <Button data-yourir="range" variant="sharePrice" value="1y">
+                                            <Button data-yourir="range" variant="tab" value="1y">
                                                 1Y
                                             </Button>
-                                            <Button data-yourir="range" variant="sharePrice" value="5y">
+                                            <Button data-yourir="range" variant="tab" value="5y">
                                                 5Y
                                             </Button>
-                                            <Button data-yourir="range" variant="sharePrice" value="all">
+                                            <Button data-yourir="range" variant="tab" value="all">
                                                 Max
                                             </Button>
                                         </ButtonGroup>
@@ -177,7 +175,9 @@ const SharePricePanel = () : ReactNode => {
                                             {({ isOpen }) => (
                                                 <>
                                                     <MenuButton as={Button}
-                                                                variant="sharePrice"
+                                                                variant="menuButton"
+                                                                height="40px"
+                                                                lineHeight="40px"
                                                                 rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} w={12} h={12} /> : <Icon icon={Icons.ChevronDown} w={12} h={12} />}>
                                                         {selectedSymbolLabel ? selectedSymbolLabel : 'Compare…'}
                                                     </MenuButton>

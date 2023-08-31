@@ -66,8 +66,8 @@ const AsxAnnouncementsPanel = () : ReactNode => {
         window.scrollTo({ top: scrollDiv - 120, behavior: 'smooth'});
     };
 
-    return <Box as={YourIR}>
-        <Box id="asx-announcements-panel" background="lightGrey3">
+    return <Box id="asx-announcements-panel" background="lightGrey3">
+        <Box as={YourIR}>
             <Container>
                 <Box py={8}>
                     <ButtonGroup spacing={4}>
