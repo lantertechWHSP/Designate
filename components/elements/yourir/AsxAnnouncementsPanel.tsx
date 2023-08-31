@@ -43,7 +43,7 @@ const AsxAnnouncementsPanel = ({}:any) : ReactNode => {
 
     let filterName = filters[0].name;
 
-    const startYear = 1998;
+    const startYear = 2016;
     const currentYear = new Date().getFullYear();
 
     const years = [{
@@ -61,8 +61,13 @@ const AsxAnnouncementsPanel = ({}:any) : ReactNode => {
 
     let yearName = years[0].name;
 
+    const scrollToTable = () : void => {
+        const scrollDiv = document.getElementById("asx-announcements-panel").offsetTop;
+        window.scrollTo({ top: scrollDiv - 120, behavior: 'smooth'});
+    };
+
     return <Box as={YourIR}>
-        <Box background="lightGrey3">
+        <Box id="asx-announcements-panel" background="lightGrey3">
             <Container>
                 <Box py={8}>
                     <ButtonGroup spacing={4}>
@@ -72,11 +77,11 @@ const AsxAnnouncementsPanel = ({}:any) : ReactNode => {
                                     <MenuButton as={Button}
                                                 variant="menuButton"
                                                 minW="200px"
-                                                rightIcon={isOpen ? <Icon icon={Icons.ChevronRight} h={12} w={12} /> : <Icon icon={Icons.ChevronDown} h={12} w={12}  /> }>
+                                                rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} h={12} w={12} /> : <Icon icon={Icons.ChevronDown} h={12} w={12}  /> }>
                                         {filterName}
                                     </MenuButton>
                                     <Portal>
-                                        <MenuList>
+                                        <MenuList minW="200px">
                                             {
                                                 filters.map((item, index) => {
                                                     return <MenuItem key={index}
@@ -100,17 +105,17 @@ const AsxAnnouncementsPanel = ({}:any) : ReactNode => {
                                     <MenuButton as={Button}
                                                 variant="menuButton"
                                                 minW="200px"
-                                                rightIcon={isOpen ? <Icon icon={Icons.ChevronRight} h={12} w={12} /> : <Icon icon={Icons.ChevronDown} h={12} w={12} /> }>
+                                                rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} h={12} w={12} /> : <Icon icon={Icons.ChevronDown} h={12} w={12} /> }>
                                         {yearName}
                                     </MenuButton>
                                     <Portal>
-                                        <MenuList>
+                                        <MenuList minW="200px">
                                             {
                                                 years.map((item, index) => {
                                                     return <MenuItem key={index}
                                                                      as={Button}
                                                                      onClick={() => {
-                                                                         setYear(item);
+                                                                         yearName = item.name;
                                                                          set(`announcements.year`, item.value);
                                                                      }}>
                                                         {item.name}
@@ -123,7 +128,6 @@ const AsxAnnouncementsPanel = ({}:any) : ReactNode => {
                             )}
                         </Menu>
                     </ButtonGroup>
-
                 </Box>
                 <Box id={`announcements`} data-yourir={`announcements pageSize=10 symbol=${symbol}.asx`}>
                     <Box data-yourir="ifnot isEmpty">
@@ -149,75 +153,58 @@ const AsxAnnouncementsPanel = ({}:any) : ReactNode => {
                             </Box>
                         </Box>
                         <Box borderTop="1px solid" borderColor="lightGrey2" />
-                        <Flex justifyContent="center" mt={[8, ,12]} mb={[4, ,16]}>
-                            <ButtonGroup
-                                display={['flex', ,'inline-flex']}
-                                justifyContent={['space-between', ,'unset']}
-                                spacing={0}
-                                sx={{ '.yourir-active': {
-                                        bg: 'ghostWhite',
-                                        borderRadius: 0
-                                    }}}>
-                                <Button color="sunlight"
-                                        px={[3, 4]}
-                                        fontSize="16px"
-                                        data-yourir="prevPage">
-                                    <Text textDecoration="underline"
-                                          d="inline-block"
-                                          onClick={() => {
-                                              window.scrollTo(0, 0);
-                                          }}>
-                                        Prev
-                                    </Text>
+                        <Flex direction="row" justify="space-between" align="center" py={8}>
+                            <Box>
+                                <Button variant="pagination"
+                                        data-yourir="prevPage"
+                                        leftIcon={<Icon icon={Icons.ChevronLeft} w={12} h={12} />}
+                                        onClick={scrollToTable}>
+                                    Prev
                                 </Button>
-                                <Button color="sunlight"
-                                        px={[3, 4]}
-                                        data-yourir="navPage1"
-                                        onClick={() => {
-                                            window.scrollTo(0, 0);
-                                        }}>
+                            </Box>
+                            <Box>
+                                <ButtonGroup spacing={0}
+                                             sx={
+                                                {
+                                                    '.yourir-active': {
+                                                        bg: 'white',
+                                                        borderRadius: 0
+                                                    },
+                                                    '[disabled]': {
+                                                        display: 'none'
+                                                    }
+                                                }
+                                            }>
+                                    <Button variant="pagination"
+                                            data-yourir="navPage1"
+                                            onClick={scrollToTable}>
+                                    </Button>
+                                    <Button variant="pagination"
+                                            data-yourir="navPage2"
+                                            onClick={scrollToTable}>
+                                    </Button>
+                                    <Button variant="pagination"
+                                            data-yourir="navPage3"
+                                            onClick={scrollToTable}>
+                                    </Button>
+                                    <Button variant="pagination"
+                                            data-yourir="navPage4"
+                                            onClick={scrollToTable}>
+                                    </Button>
+                                    <Button variant="pagination"
+                                            data-yourir="navPage5"
+                                            onClick={scrollToTable}>
+                                    </Button>
+                                </ButtonGroup>
+                            </Box>
+                            <Box>
+                                <Button variant="pagination"
+                                        data-yourir="nextPage"
+                                        rightIcon={<Icon icon={Icons.ChevronRight} w={12} h={12} />}
+                                        onClick={scrollToTable}>
+                                    Next
                                 </Button>
-                                <Button color="sunlight"
-                                        px={[3, 4]}
-                                        data-yourir="navPage2"
-                                        onClick={() => {
-                                            window.scrollTo(0, 0);
-                                        }}>
-                                </Button>
-                                <Button color="sunlight"
-                                        px={[3, 4]}
-                                        data-yourir="navPage3"
-                                        onClick={() => {
-                                            window.scrollTo(0, 0);
-                                        }}>
-                                </Button>
-                                <Button color="sunlight"
-                                        px={[3, 4]}
-                                        data-yourir="navPage4"
-                                        onClick={() => {
-                                            window.scrollTo(0, 0);
-                                        }}>
-                                </Button>
-                                <Button color="sunlight"
-                                        px={[3, 4]}
-                                        data-yourir="navPage5"
-                                        onClick={() => {
-                                            window.scrollTo(0, 0);
-                                        }}>
-                                </Button>
-                                <Button color="sunlight"
-                                        px={[3, 4]}
-                                        fontSize="16px"
-                                        data-yourir="nextPage">
-                                    <Text textDecoration="underline"
-                                          d="inline-block"
-                                          onClick={() => {
-                                              window.scrollTo(0, 0);
-                                          }}>
-                                        Next
-                                    </Text>
-                                </Button>
-                            </ButtonGroup>
+                            </Box>
                         </Flex>
                     </Box>
                     <Box data-yourir="if isEmpty">

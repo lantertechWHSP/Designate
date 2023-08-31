@@ -166,15 +166,15 @@ export const theme = extendBaseTheme({
         },
         Button: {
             variants: {
-                // sharePrice: {
-                //     background: 'white',
-                //     color: 'steelBlue3',
-                //     minWidth: '54px',
-                //     height: '36px',
-                //     fontSize: '14px',
-                //     fontWeight: 500,
-                //     px: 2
-                // },
+                pagination: {
+                    background: 'transparent',
+                    color: 'steelBlue3',
+                    minWidth: '40px',
+                    height: '40px',
+                    fontSize: '14px',
+                    fontWeight: 500,
+                    p: 0
+                },
                 menuButton: {
                     background: 'white',
                     color: 'steelBlue3',

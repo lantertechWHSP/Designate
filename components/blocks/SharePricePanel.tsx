@@ -184,7 +184,7 @@ const SharePricePanel = ({ _title }:any) : ReactNode => {
                                                     <>
                                                         <MenuButton as={Button}
                                                             variant="sharePrice"
-                                                            rightIcon={isOpen ? <Icon icon={Icons.ChevronRight} /> : <Icon icon={Icons.ChevronDown} /> }>
+                                                            rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} w={12} h={12} /> : <Icon icon={Icons.ChevronDown} w={12} h={12} />}>
                                                             {selectedSymbolLabel ? selectedSymbolLabel : 'Compare…'}
                                                         </MenuButton>
                                                         <Portal>
@@ -294,8 +294,9 @@ const SharePricePanel = ({ _title }:any) : ReactNode => {
                         </Box>
                         <Flex direction="row" justify="space-between" align="center" mt={8}>
                             <Box>
-                                <Button variant="sharePrice"
+                                <Button variant="pagination"
                                     data-yourir="prevPage"
+                                    leftIcon={<Icon icon={Icons.ChevronLeft} w={12} h={12} />}
                                     onClick={scrollToHistoricPriceTable}>
                                     Prev
                                 </Button>
@@ -306,23 +307,23 @@ const SharePricePanel = ({ _title }:any) : ReactNode => {
                                         bg: 'ghostWhite',
                                         borderRadius: 0
                                     }}}>
-                                    <Button variant="sharePrice"
+                                    <Button variant="pagination"
                                         data-yourir="navPage1"
                                         onClick={scrollToHistoricPriceTable}>
                                     </Button>
-                                    <Button variant="sharePrice"
+                                    <Button variant="pagination"
                                         data-yourir="navPage2"
                                         onClick={scrollToHistoricPriceTable}>
                                     </Button>
-                                    <Button variant="sharePrice"
+                                    <Button variant="pagination"
                                         data-yourir="navPage3"
                                         onClick={scrollToHistoricPriceTable}>
                                     </Button>
-                                    <Button variant="sharePrice"
+                                    <Button variant="pagination"
                                         data-yourir="navPage4"
                                         onClick={scrollToHistoricPriceTable}>
                                     </Button>
-                                    <Button variant="sharePrice"
+                                    <Button variant="pagination"
                                         data-yourir="navPage5"
                                         onClick={scrollToHistoricPriceTable}>
                                     </Button>
@@ -330,8 +331,9 @@ const SharePricePanel = ({ _title }:any) : ReactNode => {
                                 </ButtonGroup>
                             </Box>
                             <Box>
-                                <Button variant="sharePrice"
+                                <Button variant="pagination"
                                     data-yourir="nextPage"
+                                    rightIcon={<Icon icon={Icons.ChevronRight} w={12} h={12} />}
                                     onClick={scrollToHistoricPriceTable}>
                                     Next
                                 </Button>
