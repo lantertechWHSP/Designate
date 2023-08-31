@@ -1,7 +1,7 @@
 import React, { ReactNode, useState } from 'react';
 import { Box } from '@chakra-ui/react';
-import { Heading, Container, Flex, Button, Input, Text } from '@chakra-ui/react'
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Heading, Container, Flex, Button, Input, Text, Alert } from '@chakra-ui/react'
+import { Formik, Form, Field } from 'formik';
 // import ReCAPTCHA from 'react-google-recaptcha';
 import * as yup from 'yup';
 
@@ -58,7 +58,7 @@ export const SubscriptionForm = () : ReactNode => {
                     submit(values, resetForm);
                 }}>
                 {
-                    (({handleSubmit, _errors, _touched }) => {
+                    (({handleSubmit, errors, _touched }) => {
                         return <Form onSubmit={(event) => {
                             event.preventDefault();
                             handleSubmit();
@@ -66,11 +66,6 @@ export const SubscriptionForm = () : ReactNode => {
                             <Flex justifyContent="center">
                                 {
                                     status !== 'success' ? <>
-                                        {/*<ReCAPTCHA*/}
-                                        {/*    size="normal"*/}
-                                        {/*    sitekey={RECAPTCHA_API_KEY}*/}
-                                        {/*    onChange={handleRecaptchaChange}*/}
-                                        {/*/>*/}
                                         <Flex minW="400px" direction="column">
                                             <Field as={Input}
                                                    type="email"
@@ -82,7 +77,9 @@ export const SubscriptionForm = () : ReactNode => {
                                                    name="email"
                                                    placeholder="Email Address"
                                                    autoComplete="off" />
-                                            <ErrorMessage className="text error" component="span" name="email" />
+                                            {
+                                                errors.email && <Text variant="error">{errors.email}</Text>
+                                            }
                                         </Flex>
                                         <Button type="submit"
                                                 background="skyBlue"

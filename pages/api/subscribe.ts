@@ -55,16 +55,16 @@ export default async function handler(request: NextApiRequest, response: NextApi
             // Validate Email
             validate(email);
 
-            mailchimp.setConfig({
-                apiKey: process.env.MAILCHIMP_API_KEY!,
-                server: process.env.MAILCHIMP_SERVER!,
-            });
-
-            // Add member
-            await mailchimp.lists.setListMember(process.env.MAILCHIMP_AUDIENCE_ID!, email, {
-                email_address: email,
-                status: 'subscribed'
-            });
+            // mailchimp.setConfig({
+            //     apiKey: process.env.MAILCHIMP_API_KEY!,
+            //     server: process.env.MAILCHIMP_SERVER!,
+            // });
+            //
+            // // Add member
+            // await mailchimp.lists.setListMember(process.env.MAILCHIMP_AUDIENCE_ID!, email, {
+            //     email_address: email,
+            //     status: 'subscribed'
+            // });
 
             return response.status(200).json({
                 success: true,
