@@ -4,10 +4,10 @@ import Layout from '~/components/layouts/Layout';
 import { ModularContent } from '~/components/ModularContent';
 import { doQuery, queries } from '~/dato/api';
 import { getLayoutData, getBlocks } from '~/lib/utils';
-import AsxAnnouncementsPanel from '~/components/elements/yourir/AsxAnnouncementsPanel';
+import SharePricePanel from '~/components/elements/yourir/SharePricePanel';
 
 export async function getStaticProps({ _params, preview }) : Promise<any> {
-    const slug = 'investors/asx-announcements';
+    const slug = 'investors/share-price-information';
     const site = await doQuery(queries.site);
     const page = await doQuery(queries.page, { slug }, preview).then(
         ({ page }) => page
@@ -23,7 +23,7 @@ const Page : NextPage = ({ layout, blocks }:any)  : JSX.Element => {
     return (
         <Layout layout={layout}>
             <ModularContent content={blocks} />
-            <AsxAnnouncementsPanel />
+            <SharePricePanel />
         </Layout>
     );
 };

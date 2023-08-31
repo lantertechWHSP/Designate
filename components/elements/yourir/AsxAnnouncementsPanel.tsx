@@ -1,9 +1,9 @@
 import React, { ReactNode } from 'react';
 import { Box, Container, Flex, Heading, Text, ButtonGroup, Button, Menu, MenuButton, Portal, MenuList, MenuItem, Link } from '@chakra-ui/react';
 import { YourIR, set } from 'yourir-next';
-import { Icon, Icons } from "~/components/elements/icon";
+import { Icon, Icons } from '~/components/elements/icon';
 
-const AsxAnnouncementsPanel = ({}:any) : ReactNode => {
+const AsxAnnouncementsPanel = () : ReactNode => {
     const symbol = 'sol';
 
     const filters = [
