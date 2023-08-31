@@ -4,6 +4,7 @@ import Header from '~/components/layouts/Header';
 import Footer from '~/components/layouts/Footer';
 import PageLinks from '~/components/layouts/PageLinks';
 import { Heading, Container, Flex, Box } from '@chakra-ui/react';
+import { SubscriptionForm } from '~/components/elements/mailchimp/subscriptionForm';
 
 const Layout = ({ layout, children }:any) : ReactNode => {
     return (
@@ -31,8 +32,12 @@ const Layout = ({ layout, children }:any) : ReactNode => {
                         {children}
                     </Box>
                 }
+
             </Box>
             <PageLinks current={layout?.breadcrumbs[0]?.node}  />
+            {
+                layout.isHomePage && <SubscriptionForm />
+            }
             <Footer {...layout?.footer} />
         </Flex>
     );
