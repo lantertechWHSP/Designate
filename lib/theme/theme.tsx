@@ -95,10 +95,11 @@ export const theme = extendBaseTheme({
                     fontWeight: 500,
                 },
                 listItem: {
-                    fontSize: [24],
+                    fontSize: [18],
                     lineHeight: [1.35],
                     fontWeight: 400
                 },
+
                 label: {
                     fontSize: [16],
                     lineHeight: [1.1],
@@ -107,11 +108,21 @@ export const theme = extendBaseTheme({
                 }
             },
         },
+        Text: {
+            variants: {
+                listItemDate: {
+                    fontSize: [18],
+                    lineHeight: [1.35],
+                    fontWeight: 400,
+                    color: 'steelBlue3'
+                },
+            }
+        },
         Code: {
             baseStyle: {
                 fontFamily: `'Menlo', sans-serif`,
                 border: '1px dashed',
-                borderColor: '#ccc',
+                borderColor: 'lightGrey2',
                 borderRadius: 0,
                 backgroundColor: '#f0f0f0',
             },
@@ -132,7 +143,8 @@ export const theme = extendBaseTheme({
         },
         Link: {
             baseStyle: {
-                color: '#966b4e'
+                color: 'skyBlue',
+                fontSize: 14
             },
             variants: {
                 siteHeader: {
@@ -154,28 +166,63 @@ export const theme = extendBaseTheme({
         },
         Button: {
             variants: {
-                sharePrice: {
-                    background: 'white',
-                    color: 'steelBlue3',
-                    minWidth: '54px',
-                    height: '36px',
-                    fontSize: '14px',
-                    fontWeight: 500,
-                    px: 2
-                },
-                // sharePriceMenu: {
+                // sharePrice: {
                 //     background: 'white',
                 //     color: 'steelBlue3',
+                //     minWidth: '54px',
+                //     height: '36px',
                 //     fontSize: '14px',
-                //     fontWeight: 500
-                // }
+                //     fontWeight: 500,
+                //     px: 2
+                // },
+                menuButton: {
+                    background: 'white',
+                    color: 'steelBlue3',
+                    px: 4,
+                    height: '50px',
+                    textAlign: 'unset'
+                },
             }
+        },
+        Menu: {
+            parts: ['list', 'item', 'button'],
+            baseStyle: {
+                list: {
+                    py: 1,
+                    px: 0,
+                    background: 'white'
+                },
+                item: {
+                    height: '50px',
+                    lineHeight: '50px',
+                    textAlign: 'unset',
+                    justifyContent: 'unset',
+                    px: 4,
+                    color: 'steelBlue3',
+                    _focus: {
+                        background: 'lightGrey3'
+                    },
+                    _active: {
+                        background: 'lightGrey3'
+                    }
+                }
+            }
+            // baseStyle: {
+            //
+            // }
+            // parts: ['MenuList'],
+            // baseStyle: {
+            //     MenuList: {
+            //         padding: 0,
+            //         background: 'white'
+            //     }
+            // }
         },
         Divider: {
             baseStyle: {
                 borderWidth: '1px',
                 borderStyle: 'solid',
-                borderColor: 'lightGrey',
+                borderColor: 'lightGrey2',
             }
         },
         Table: {
