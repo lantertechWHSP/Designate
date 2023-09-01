@@ -10,7 +10,7 @@ const QuoteTablePanel = () : ReactNode => {
                     Quote Table
                 </Heading>
                 <TableContainer>
-                    <Table variant="sharePrice" w="100%">
+                    <Table variant="basic" w="100%">
                         <Thead>
                             <Tr whiteSpace="nowrap">
                                 <Th>Price</Th>

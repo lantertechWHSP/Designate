@@ -222,7 +222,7 @@ const SharePricePanel = ({ _title }:any) : ReactNode => {
                         Quote Table
                     </Heading>
                     <TableContainer>
-                        <Table variant="sharePrice" w="100%">
+                        <Table variant="basic" w="100%">
                             <Thead>
                                 <Tr whiteSpace="nowrap">
                                     <Th>Price</Th>
@@ -272,7 +272,7 @@ const SharePricePanel = ({ _title }:any) : ReactNode => {
                     <Box data-yourir="historicalPrices pageSize=10">
                         <Box overflowX="auto">
                             <TableContainer>
-                                <Table variant="sharePrice" w="100%">
+                                <Table variant="basic" w="100%">
                                     <Thead>
                                         <Tr>
                                             <Th>Date</Th>

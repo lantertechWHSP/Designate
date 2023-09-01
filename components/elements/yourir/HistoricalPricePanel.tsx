@@ -18,7 +18,7 @@ const HistoricalPricePanel = () : ReactNode => {
                 <Box data-yourir="historicalPrices pageSize=10">
                     <Box overflowX="auto">
                         <TableContainer>
-                            <Table variant="sharePrice" w="100%">
+                            <Table variant="basic" w="100%">
                                 <Thead>
                                     <Tr>
                                         <Th>Date</Th>

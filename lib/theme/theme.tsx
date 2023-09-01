@@ -250,7 +250,7 @@ export const theme = extendBaseTheme({
                 }
             },
             variants: {
-                sharePrice: {
+                basic: {
                     th: {
                         fontSize: '16px',
                         fontWeight: 400,

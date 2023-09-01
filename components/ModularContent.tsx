@@ -9,7 +9,7 @@ import CardContainer from '~/components/blocks/CardContainer/CardContainer';
 import LatestNews from '~/components/blocks/LatestNews';
 import InvestorPanel from '~/components/blocks/InvestorPanel';
 import HomePageOverview from '~/components/blocks/HomePageOverview';
-import DividendsPanel from '~/components/blocks/DividendsPanel';
+import DividendsPanel from '~/components/blocks/DividendsPanel/DividendsPanel';
 
 const blocks:any = {
     Text,
