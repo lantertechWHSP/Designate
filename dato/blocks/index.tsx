@@ -7,6 +7,7 @@ import { cardContainerRecord } from '~/dato/blocks/cardContainer';
 import { latestNewsRecord } from '~/dato/blocks/latestNews';
 import { investorPanelRecord } from '~/dato/blocks/investorPanel';
 import { homePageOverviewRecord } from '~/dato/blocks/homePageOverview';
+import { dividendsPanelRecord } from '~/dato/blocks/dividendsPanel';
 
 export const blocks = `
     blocks {
@@ -36,6 +37,9 @@ export const blocks = `
         }
         ... on HomePageOverviewRecord {
             ${homePageOverviewRecord}
+        }
+        ... on DividendsPanelRecord {
+            ${dividendsPanelRecord}
         }
     }
 `;
