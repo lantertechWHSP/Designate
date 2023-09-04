@@ -15,7 +15,7 @@ export async function getStaticProps({ preview }) : Promise<any> {
 
     const layout = getLayoutData(site, page, preview);
 
-    const blocks = await getBlocks(page);
+    const blocks = []; //await getBlocks(page);
 
     const people = await doQuery(queries.people, { definition : 'Board' }, preview).then(
         ({ people }) => people || []
