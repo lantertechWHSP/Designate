@@ -75,7 +75,29 @@ export const getLayoutData = (site, page, preview) : any => {
     };
 };
 
-export const getBlocks = async ({ blocks }) => {
+// export const getBlocks = async ({ blocks = [] }) : Promise<any> => {
+//     console.log('0');
+//
+//     return ((Array.isArray(blocks) && Array.length > 0) ? (
+//         (await Promise.all(
+//             blocks?.map(async (block) => {
+//                 console.log('1');
+//                 console.log(block);
+//
+//                 const b = getBlock(block.__typename);
+//                 if (b?.getData instanceof Function) {
+//                     console.log('2');
+//                     console.log(block);
+//                     block.data = await b?.getData(block);
+//                 }
+//                 return block;
+//             })
+//         )) || []
+//     ) : []
+//     );
+// };
+
+export const getBlocks = async ({ blocks }): Promise<any> => {
     return (
         (await Promise.all(
             blocks?.map(async (block) => {
