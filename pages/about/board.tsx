@@ -14,7 +14,11 @@ export async function getStaticProps({ preview }) : Promise<any> {
     );
 
     const layout = getLayoutData(site, page, preview);
+    console.log('a');
+
     const blocks = await getBlocks(page);
+    console.log('b');
+    console.log(blocks);
 
     const people = await doQuery(queries.people, { definition : 'Board' }, preview).then(
         ({ people }) => people || []
