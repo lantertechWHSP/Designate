@@ -77,15 +77,15 @@ export const getLayoutData = (site, page, preview) : any => {
 
 export const getBlocks = async ({ blocks = [] }) : Promise<any> => {
     return ((Array.isArray(blocks) && Array.length > 0) ? (
-            (await Promise.all(
-                blocks?.map(async (block) => {
-                    const b = getBlock(block.__typename);
-                    if (b?.getData instanceof Function) {
-                        block.data = await b?.getData(block);
-                    }
-                    return block;
-                })
-            )) || []
-        ) : []
+        (await Promise.all(
+            blocks?.map(async (block) => {
+                const b = getBlock(block.__typename);
+                if (b?.getData instanceof Function) {
+                    block.data = await b?.getData(block);
+                }
+                return block;
+            })
+        )) || []
+    ) : []
     );
 };
