@@ -23,6 +23,8 @@ export async function getStaticProps({ preview }) : Promise<any> {
 }
 
 const BoardPage : NextPage = ({ layout, people }:any)  : JSX.Element => {
+    console.log(layout);
+
     return (
         <Layout layout={layout}>
             {/*<ModularContent content={blocks} />*/}

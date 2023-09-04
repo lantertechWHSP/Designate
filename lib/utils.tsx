@@ -66,7 +66,7 @@ export const getLayoutData = (site, page, preview) : any => {
     return {
         metatags: metatags,
         breadcrumbs: breadcrumbs,
-        page: page,
+        page: page ? page : null,
         menu: site?.menu || [],
         footer: site?.footer || null,
         slug: page?.slug || null,
