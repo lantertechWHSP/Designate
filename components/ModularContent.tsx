@@ -36,10 +36,12 @@ export const ModularContent = ({ content }) : any => {
     if(!_isNil(content) && Array.isArray(content) && content.length > 0) {
         return content.map((block) => {
             const Block = getBlock(block.__typename);
-            if (!Block) return null;
+            if (!Block) {
+                return <></>;
+            }
             return <Block key={block.id} {...block} />;
         });
     }
 
-    return null;
+    return <></>;
 };
