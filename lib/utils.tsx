@@ -40,19 +40,24 @@ export const treePath = (tree, breakCondition) : any => {
 };
 
 export const getBreadcrumbs = (menu, page) : any => {
+    let breadcrumbs = [];
+
     const path = treePath(menu, (node) => {
         return node.link?.slug === page?.slug;
     });
-    let breadcrumbs:any = path.map((node) => ({
-        title: 'carl', // node?.title ? node?.title : '',
-        path: node?.link?.slug ? `/${node?.link?.slug}` : '#',
-        isCurrentPage: node?.link?.slug === page?.slug,
-        node
-    }));
-    if (!breadcrumbs?.length) {
+
+    if(path) {
+        breadcrumbs = path.map((node) => ({
+            title: node?.title ? node?.title : '',
+            path: node?.link?.slug ? `/${node?.link?.slug}` : '#',
+            isCurrentPage: node?.link?.slug === page?.slug,
+            node
+        }));
+    }
+
+    if (breadcrumbs.length === 0 && page) {
         breadcrumbs = [
-            { title: '', path: '#', isCurrentPage: true }
-            // { title: page?.title, path: page?.slug ? page?.slug : null, isCurrentPage: true }
+            { title: page?.title, path: page?.slug ? page?.slug : null, isCurrentPage: true }
         ];
     }
     return breadcrumbs;
