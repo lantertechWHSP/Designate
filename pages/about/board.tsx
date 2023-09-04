@@ -34,7 +34,7 @@ const BoardPage : NextPage = ({ layout, blocks, people }:any)  : JSX.Element => 
 
     return (
         <Layout layout={layout}>
-            {/*<ModularContent content={blocks} />*/}
+            <ModularContent content={blocks} />
             <Profiles people={people} />
         </Layout>
     );
