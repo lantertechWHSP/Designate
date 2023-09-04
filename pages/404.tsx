@@ -10,6 +10,7 @@ export async function getStaticProps({ _params, preview }) : Promise<any> {
         title: 'Error (404)',
         slug: '404'
     };
+
     const layout = getLayoutData(site, page, preview);
 
     return { props: { layout } };

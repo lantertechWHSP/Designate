@@ -11,6 +11,8 @@ import InvestorPanel from '~/components/blocks/InvestorPanel';
 import HomePageOverview from '~/components/blocks/HomePageOverview';
 import DividendsPanel from '~/components/blocks/DividendsPanel/DividendsPanel';
 
+import { isNil as _isNil } from 'lodash';
+
 const blocks:any = {
     Text,
     Image,
@@ -31,7 +33,7 @@ export const getBlock = (name:any) : any => {
 };
 
 export const ModularContent = ({ content }) : any => {
-    if (!content || content === null || !Array.isArray(content) || (Array.isArray(content) && content.length === 0)) {
+    if (_isNil(content) || (Array.isArray(content) && content.length === 0)) {
         return null;
     }
 
