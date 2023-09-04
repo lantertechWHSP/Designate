@@ -75,9 +75,8 @@ export const getLayoutData = (site, page, preview) : any => {
     };
 };
 
-export const getBlocks = async ({ blocks }) : Promise<any> => {
-    return (
-        blocks && (Array.isArray(blocks) && Array.length > 0) ? (
+export const getBlocks = async ({ blocks = [] }) : Promise<any> => {
+    return ((Array.isArray(blocks) && Array.length > 0) ? (
             (await Promise.all(
                 blocks?.map(async (block) => {
                     const b = getBlock(block.__typename);
