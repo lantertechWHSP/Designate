@@ -1,12 +1,13 @@
 import React, { ReactNode, useState } from 'react';
 import { Box } from '@chakra-ui/react';
-import { Heading, Container, Flex, Button, Input, Text, Alert } from '@chakra-ui/react'
+import { Heading, Container, Flex, Button, Input, Text } from '@chakra-ui/react';
 import { Formik, Form, Field } from 'formik';
 // import ReCAPTCHA from 'react-google-recaptcha';
 import * as yup from 'yup';
 
+// @TODO Subscription form and ReCaptcha
 export const SubscriptionForm = () : ReactNode => {
-    const RECAPTCHA_API_KEY:string = process.env.NEXT_PUBLIC_RECAPTCHA_API_KEY;
+    // const RECAPTCHA_API_KEY:string = process.env.NEXT_PUBLIC_RECAPTCHA_API_KEY;
 
     // @ts-ignore
     const SCHEMA = yup.object({
@@ -17,8 +18,8 @@ export const SubscriptionForm = () : ReactNode => {
         email: ''
     };
 
-    const [status, setStatus] = useState();
-    const [message, setMessage] = useState();
+    const [status, setStatus] = useState<string>();
+    const [message, setMessage] = useState<string>();
 
     const submit = (values, resetForm) : void => {
         setStatus('');
@@ -39,12 +40,12 @@ export const SubscriptionForm = () : ReactNode => {
         }).catch((error) => {
             console.log(error);
             setStatus('error');
-        })
+        });
     };
 
-    const handleRecaptchaChange = () : void => {
-
-    }
+    // const handleRecaptchaChange = () : void => {
+    //
+    // };
 
     return <Box py={12}>
         <Container maxW="800px">
@@ -58,7 +59,7 @@ export const SubscriptionForm = () : ReactNode => {
                     submit(values, resetForm);
                 }}>
                 {
-                    (({handleSubmit, errors, _touched }) => {
+                    (({ handleSubmit, errors }) => {
                         return <Form onSubmit={(event) => {
                             event.preventDefault();
                             handleSubmit();
@@ -68,25 +69,25 @@ export const SubscriptionForm = () : ReactNode => {
                                     status !== 'success' ? <>
                                         <Flex minW="400px" direction="column">
                                             <Field as={Input}
-                                                   type="email"
-                                                   border="1px solid"
-                                                   borderColor="lightGrey2"
-                                                   px={4}
-                                                   h="60px"
-                                                   id="email"
-                                                   name="email"
-                                                   placeholder="Email Address"
-                                                   autoComplete="off" />
+                                                type="email"
+                                                border="1px solid"
+                                                borderColor="lightGrey2"
+                                                px={4}
+                                                h="60px"
+                                                id="email"
+                                                name="email"
+                                                placeholder="Email Address"
+                                                autoComplete="off" />
                                             {
                                                 errors.email && <Text variant="error">{errors.email}</Text>
                                             }
                                         </Flex>
                                         <Button type="submit"
-                                                background="skyBlue"
-                                                color="white"
-                                                py={0}
-                                                h="60px"
-                                                minW="120px">Subscribe</Button>
+                                            background="skyBlue"
+                                            color="white"
+                                            py={0}
+                                            h="60px"
+                                            minW="120px">Subscribe</Button>
                                     </> : <Text>{message}</Text>
                                 }
                             </Flex>

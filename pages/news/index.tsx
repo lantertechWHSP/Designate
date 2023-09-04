@@ -37,7 +37,6 @@ const LatestPosts = ({ latestPosts, postsMeta }) : ReactNode => {
         setIsLoading(true);
 
         doQuery(queries.latestPosts, { isFeatured: true, first: itemsPerPage, skip: page * itemsPerPage }).then(({ posts }) => posts || []).then((newPosts) => {
-            console.log(newPosts);
             if(newPosts.length > 0) {
                 setPosts([...posts, ...newPosts]);
                 setPage(page + 1);

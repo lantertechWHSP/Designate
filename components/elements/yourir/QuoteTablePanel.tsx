@@ -52,7 +52,7 @@ const QuoteTablePanel = () : ReactNode => {
                 </TableContainer>
             </Container>
         </Box>
-    </Box>
-}
+    </Box>;
+};
 
 export default QuoteTablePanel;

@@ -26,32 +26,32 @@ const SharePricePanel = () : ReactNode => {
         <Box as={YourIR}>
             <Container>
                 <Grid templateColumns='repeat(5, 1fr)'
-                      gap={8}>
+                    gap={8}>
                     <GridItem colSpan={2}>
                         <Box py={4}
-                             mb={8}>
+                            mb={8}>
                             <Text fontSize={['24px']}
-                                  lineHeight={['26px']}
-                                  mb={4}>
+                                lineHeight={['26px']}
+                                mb={4}>
                                 <Text as="span" fontWeight={500} data-yourir="shortName"></Text>{'\u00A0'}
                                 <Text as="span" color="steelBlue3"><span data-yourir="market"></span>:<span data-yourir="symbol"></span></Text>
                             </Text>
-                            <Badge symbol={symbol} data-yourir="marketStatus" />
+                            <Badge data-yourir="marketStatus">{symbol}</Badge>
                             <Text fontSize={['96px']}
-                                  lineHeight={['106px']}
-                                  fontWeight={500}
-                                  data-yourir="price showCurrency=true minDecimals=2 maxDecimals=2" />
+                                lineHeight={['106px']}
+                                fontWeight={500}
+                                data-yourir="price showCurrency=true minDecimals=2 maxDecimals=2" />
                             <Box fontSize={['16px']}
-                                 lineHeight={['30px']}
-                                 fontWeight={500}
-                                 sx={{
-                                     '.yourir-positive': {
-                                         color: 'green'
-                                     },
-                                     'yourir-negative': {
-                                         color: 'red'
-                                     }
-                                 }}>
+                                lineHeight={['30px']}
+                                fontWeight={500}
+                                sx={{
+                                    '.yourir-positive': {
+                                        color: 'green'
+                                    },
+                                    'yourir-negative': {
+                                        color: 'red'
+                                    }
+                                }}>
                                 <Flex align="baseline" data-yourir="changeSignCSS">
                                     <Box
                                         data-yourir="changeSignCSS"
@@ -77,9 +77,9 @@ const SharePricePanel = () : ReactNode => {
                         <Box>
                             <label>Market Cap</label>
                             <Text fontSize={['20px']}
-                                  lineHeight={['26px']}
-                                  fontWeight={500}
-                                  data-yourir="marketCap showCurrency=true minDecimals=2 maxDecimals=2"></Text>
+                                lineHeight={['26px']}
+                                fontWeight={500}
+                                data-yourir="marketCap showCurrency=true minDecimals=2 maxDecimals=2"></Text>
                         </Box>
                     </GridItem>
                     <GridItem colSpan={3}>
@@ -93,49 +93,49 @@ const SharePricePanel = () : ReactNode => {
                             </defs>
                         </svg>
                         <Box w="100%"
-                             sx={{
-                                 '.yourir-chart': {
-                                     padding: '40px 0',
-                                     borderBottomWidth: '1px',
-                                     borderStyle: 'solid',
-                                     borderColor: 'lightGrey2',
-                                     marginBottom: '30px'
-                                 },
-                                 '.yourir-chart-price-fill': {
-                                     fill: `url(#priceGradient)`
-                                 },
-                                 '.yourir-chart-price': {
-                                     stroke: 'black',
-                                     strokeWidth: '1px',
-                                 },
-                                 '.yourir-chart-yaxis-label': {
-                                     position: 'relative',
-                                     top: '-10px'
-                                 },
-                                 '.yourir-chart-yaxis-left .yourir-chart-yaxis-outside .yourir-chart-yaxis-label-container': {
-                                     left: '0',
-                                     marginRight: '0',
-                                     fontSize: '12px',
-                                     color: 'grey'
-                                 },
-                                 '.yourir-chart-xaxis-label': {
-                                     fontSize: '12px',
-                                     color: 'grey'
-                                 },
-                                 '.yourir-chart-panel-border-bottom': {
-                                     display: 'none'
-                                 },
-                                 '.yourir-chart-tick-bottom': {
-                                     display: 'none'
-                                 },
-                                 '.yourir-chart-xaxis-outside': {
-                                     position: 'relative',
-                                     top: '10px'
-                                 },
-                                 '.yourir-chart-yaxis-gridline': {
-                                     stroke: 'lightGrey2'
-                                 }
-                             }}>
+                            sx={{
+                                '.yourir-chart': {
+                                    padding: '40px 0',
+                                    borderBottomWidth: '1px',
+                                    borderStyle: 'solid',
+                                    borderColor: 'lightGrey2',
+                                    marginBottom: '30px'
+                                },
+                                '.yourir-chart-price-fill': {
+                                    fill: `url(#priceGradient)`
+                                },
+                                '.yourir-chart-price': {
+                                    stroke: 'black',
+                                    strokeWidth: '1px',
+                                },
+                                '.yourir-chart-yaxis-label': {
+                                    position: 'relative',
+                                    top: '-10px'
+                                },
+                                '.yourir-chart-yaxis-left .yourir-chart-yaxis-outside .yourir-chart-yaxis-label-container': {
+                                    left: '0',
+                                    marginRight: '0',
+                                    fontSize: '12px',
+                                    color: 'grey'
+                                },
+                                '.yourir-chart-xaxis-label': {
+                                    fontSize: '12px',
+                                    color: 'grey'
+                                },
+                                '.yourir-chart-panel-border-bottom': {
+                                    display: 'none'
+                                },
+                                '.yourir-chart-tick-bottom': {
+                                    display: 'none'
+                                },
+                                '.yourir-chart-xaxis-outside': {
+                                    position: 'relative',
+                                    top: '10px'
+                                },
+                                '.yourir-chart-yaxis-gridline': {
+                                    stroke: 'lightGrey2'
+                                }
+                            }}>
                             <div id="priceComparisionChart" data-yourir="priceComparisonChart1 comparisonSymbol1=sol.asx volume.visible=false range=1d ranges=1d,1m,6m,1y,5y,10y showTooltips=true">
                                 <Flex>
                                     <Box>
@@ -175,10 +175,10 @@ const SharePricePanel = () : ReactNode => {
                                             {({ isOpen }) => (
                                                 <>
                                                     <MenuButton as={Button}
-                                                                variant="menuButton"
-                                                                height="40px"
-                                                                lineHeight="40px"
-                                                                rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} w={12} h={12} /> : <Icon icon={Icons.ChevronDown} w={12} h={12} />}>
+                                                        variant="menuButton"
+                                                        height="40px"
+                                                        lineHeight="40px"
+                                                        rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} w={12} h={12} /> : <Icon icon={Icons.ChevronDown} w={12} h={12} />}>
                                                         {selectedSymbolLabel ? selectedSymbolLabel : 'Compare…'}
                                                     </MenuButton>
                                                     <Portal>
@@ -186,12 +186,12 @@ const SharePricePanel = () : ReactNode => {
                                                             {
                                                                 comparisonSymbols.map((item, index) => {
                                                                     return <MenuItem key={index}
-                                                                                     as={Button}
-                                                                                     variant="menuItemFilter"
-                                                                                     onClick={() => {
-                                                                                         selectedSymbolLabel = item.name;
-                                                                                         set(`priceComparisionChart.comparisonSymbol2`, item.value);
-                                                                                     }}>
+                                                                        as={Button}
+                                                                        variant="menuItemFilter"
+                                                                        onClick={() => {
+                                                                            selectedSymbolLabel = item.name;
+                                                                            set(`priceComparisionChart.comparisonSymbol2`, item.value);
+                                                                        }}>
                                                                         {item.name}
                                                                     </MenuItem>;
                                                                 })
@@ -210,7 +210,7 @@ const SharePricePanel = () : ReactNode => {
                 </Grid>
             </Container>
         </Box>
-    </Box>
-}
+    </Box>;
+};
 
 export default SharePricePanel;

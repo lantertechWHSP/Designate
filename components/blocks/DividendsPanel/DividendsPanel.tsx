@@ -4,11 +4,11 @@ import { Heading, Container, Box, Text } from '@chakra-ui/react';
 import BarChart from '~/components/blocks/DividendsPanel/BarChart/BarChart';
 import { groupBy as _groupBy, forOwn as _forOwn, sumBy as _sumBy } from 'lodash';
 import { DateTime } from 'luxon';
-import {DividendHistoryTable} from "~/components/blocks/DividendsPanel/Tables/DividendHistoryTable";
-import {LatestDividendTable} from "~/components/blocks/DividendsPanel/Tables/LatestDividendTable";
+import { DividendHistoryTable } from "~/components/blocks/DividendsPanel/Tables/DividendHistoryTable";
+import { LatestDividendTable } from "~/components/blocks/DividendsPanel/Tables/LatestDividendTable";
 
-const DividendsPanel = ({ description, latestDividendDescription, csv }) : ReactNode => {
-    function convertCSVToJSON(str, delimiter = ',') {
+const DividendsPanel = ({ description, latestDividendDescription, csv }:any) : ReactNode => {
+    function convertCSVToJSON(str, delimiter = ',') : any {
         const titles = str.slice(0, str.indexOf('\n')).trim();
         const titlesProps = titles.replace(/\s/g, '').split(delimiter);
         const titlesRaw = titles.split(delimiter);
@@ -23,10 +23,10 @@ const DividendsPanel = ({ description, latestDividendDescription, csv }) : React
                 return titlesProps.reduce((object, curr, i) => {
                     object[curr] = values[i];
                     return object;
-                }, {})
+                }, {});
             })
-        }
-    };
+        };
+    }
 
     useState(() => {
         fetch(csv.url).then((response) => response.text()).then((response) => {
@@ -42,18 +42,15 @@ const DividendsPanel = ({ description, latestDividendDescription, csv }) : React
                     value: _sumBy(row, (value) => {
                         return +value['Dividend'];
                     })
-                })
+                });
             });
-
-            console.log(data);
-
             setChartData(data);
         }).catch(() => {
             setTable(null);
         }).finally(() => {
             setIsTableLoaded(true);
         });
-    }, [])
+    });
 
     const [isTableLoaded, setIsTableLoaded] = useState(false);
     const [table, setTable] = useState(null);
@@ -71,14 +68,14 @@ const DividendsPanel = ({ description, latestDividendDescription, csv }) : React
                 }
                 {
                     latestDividendDescription && <>
-                    <Box maxW={['100%', '400px']} mb={8}>
-                      <Heading as="h2" variant="h3" mb={4}>Latest Dividend</Heading>
-                      <Text color="steelBlue3">
-                          {latestDividendDescription}
-                      </Text>
-                    </Box>
-                    <LatestDividendTable isLoaded={isTableLoaded} table={table} />
-                  </>
+                        <Box maxW={['100%', '400px']} mb={8}>
+                            <Heading as="h2" variant="h3" mb={4}>Latest Dividend</Heading>
+                            <Text color="steelBlue3">
+                                {latestDividendDescription}
+                            </Text>
+                        </Box>
+                        <LatestDividendTable isLoaded={isTableLoaded} table={table} />
+                    </>
                 }
             </Container>
         </Box>
@@ -97,6 +94,6 @@ const DividendsPanel = ({ description, latestDividendDescription, csv }) : React
             </Container>
         </Box>
     </ContentBlock>;
-}
+};
 
 export default DividendsPanel;

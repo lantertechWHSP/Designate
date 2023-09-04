@@ -1,4 +1,6 @@
-export const Bars = ({ data, height, scaleX, scaleY }) => {
+import { ReactNode } from 'react';
+
+export const Bars = ({ data, height, scaleX, scaleY }:any) : ReactNode =>  {
     return <>
         {
             (Array.isArray(data) && data.length > 0) &&  <g className="bars">
@@ -12,7 +14,7 @@ export const Bars = ({ data, height, scaleX, scaleY }) => {
                         height={height - scaleY(value)}
                     />
                 ))}
-          </g>
+            </g>
         }
-    </>
-}
+    </>;
+};

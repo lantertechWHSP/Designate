@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-const mailchimp = require('@mailchimp/mailchimp_marketing');
+// const mailchimp = require('@mailchimp/mailchimp_marketing');
 import '@mailchimp/mailchimp_marketing';
 import * as yup from 'yup';
 import { ObjectSchema } from 'yup';
@@ -9,13 +9,13 @@ export default async function handler(request: NextApiRequest, response: NextApi
         const yupObject:any = {
             email: yup.string().required().email(),
             name: yup.string().required()
-        }
+        };
 
         // @ts-ignore
         const schema:ObjectSchema<any> = yup.object(yupObject);
 
         return schema.validate({ email: email });
-    }
+    };
 
     // const validateCaptcha = (recaptcha_key) => {
     //     const secret_key = process.env.RECAPTCHA_SECRET;

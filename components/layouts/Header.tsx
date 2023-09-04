@@ -46,7 +46,7 @@ const Header = ({menu}): ReactNode => {
 
     return <Box as="header" h={height}>
         <Box pos="fixed" top={0} height={[height]} w="100%" zIndex={100}
-             pointerEvents={isScrolledDown && isMinimumScrolled ? 'none' : 'all'} >
+            pointerEvents={isScrolledDown && isMinimumScrolled ? 'none' : 'all'} >
             <MotionBox
                 animate={{
                     opacity: !isOpen && isScrolledDown && isMinimumScrolled ? 0 : 1,

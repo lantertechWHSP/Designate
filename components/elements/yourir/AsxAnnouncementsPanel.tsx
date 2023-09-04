@@ -39,7 +39,7 @@ const AsxAnnouncementsPanel = () : ReactNode => {
             name: 'Non-Procedural',
             value: 'nonProcedural'
         }
-    ]
+    ];
 
     let filterName = filters[0].name;
 
@@ -55,7 +55,7 @@ const AsxAnnouncementsPanel = () : ReactNode => {
             return {
                 value: currentYear - i,
                 name: currentYear - i,
-            }
+            };
         }
     )];
 
@@ -75,9 +75,9 @@ const AsxAnnouncementsPanel = () : ReactNode => {
                             {({ isOpen }) => (
                                 <>
                                     <MenuButton as={Button}
-                                                variant="menuButton"
-                                                minW="200px"
-                                                rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} h={12} w={12} /> : <Icon icon={Icons.ChevronDown} h={12} w={12}  /> }>
+                                        variant="menuButton"
+                                        minW="200px"
+                                        rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} h={12} w={12} /> : <Icon icon={Icons.ChevronDown} h={12} w={12}  /> }>
                                         {filterName}
                                     </MenuButton>
                                     <Portal>
@@ -85,11 +85,11 @@ const AsxAnnouncementsPanel = () : ReactNode => {
                                             {
                                                 filters.map((item, index) => {
                                                     return <MenuItem key={index}
-                                                                     as={Button}
-                                                                     onClick={() => {
-                                                                         filterName = item.name;
-                                                                         set(`announcements.filter`, item.value);
-                                                                     }}>
+                                                        as={Button}
+                                                        onClick={() => {
+                                                            filterName = item.name;
+                                                            set(`announcements.filter`, item.value);
+                                                        }}>
                                                         {item.name}
                                                     </MenuItem>;
                                                 })
@@ -103,9 +103,9 @@ const AsxAnnouncementsPanel = () : ReactNode => {
                             {({ isOpen }) => (
                                 <>
                                     <MenuButton as={Button}
-                                                variant="menuButton"
-                                                minW="200px"
-                                                rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} h={12} w={12} /> : <Icon icon={Icons.ChevronDown} h={12} w={12} /> }>
+                                        variant="menuButton"
+                                        minW="200px"
+                                        rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} h={12} w={12} /> : <Icon icon={Icons.ChevronDown} h={12} w={12} /> }>
                                         {yearName}
                                     </MenuButton>
                                     <Portal>
@@ -113,11 +113,11 @@ const AsxAnnouncementsPanel = () : ReactNode => {
                                             {
                                                 years.map((item, index) => {
                                                     return <MenuItem key={index}
-                                                                     as={Button}
-                                                                     onClick={() => {
-                                                                         yearName = item.name;
-                                                                         set(`announcements.year`, item.value);
-                                                                     }}>
+                                                        as={Button}
+                                                        onClick={() => {
+                                                            yearName = item.name;
+                                                            set(`announcements.year`, item.value);
+                                                        }}>
                                                         {item.name}
                                                     </MenuItem>;
                                                 })
@@ -135,16 +135,16 @@ const AsxAnnouncementsPanel = () : ReactNode => {
                             <Box borderTop="1px solid" borderColor="lightGrey2">
                                 <Flex py={4} direction={['row']}>
                                     <Heading as="h3"
-                                             data-yourir="$cur.heading"
-                                             flex={1}
-                                             variant="listItem" />
+                                        data-yourir="$cur.heading"
+                                        flex={1}
+                                        variant="listItem" />
                                     <Text data-yourir="$cur.date format='DD.MM.YYYY'"
-                                          variant="listItemDate"
-                                          textAlign={['left']}
-                                          minWidth={['140px']}
-                                          maxWidth={['140px']}
-                                          mb={0} />
-                                    <Flex d={['none', ,'flex']}>
+                                        variant="listItemDate"
+                                        textAlign={['left']}
+                                        minWidth={['140px']}
+                                        maxWidth={['140px']}
+                                        mb={0} />
+                                    <Flex display={['none', ,'flex']}>
                                         <Link data-yourir="viewAnnouncement">
                                             View
                                         </Link>
@@ -156,52 +156,52 @@ const AsxAnnouncementsPanel = () : ReactNode => {
                         <Flex direction="row" justify="space-between" align="center" py={8}>
                             <Box>
                                 <Button variant="pagination"
-                                        data-yourir="prevPage"
-                                        leftIcon={<Icon icon={Icons.ChevronLeft} w={12} h={12} />}
-                                        onClick={scrollToTable}>
+                                    data-yourir="prevPage"
+                                    leftIcon={<Icon icon={Icons.ChevronLeft} w={12} h={12} />}
+                                    onClick={scrollToTable}>
                                     Prev
                                 </Button>
                             </Box>
                             <Box>
                                 <ButtonGroup spacing={0}
-                                             sx={
-                                                {
-                                                    '.yourir-active': {
-                                                        bg: 'white',
-                                                        borderRadius: 0
-                                                    },
-                                                    '[disabled]': {
-                                                        display: 'none'
-                                                    }
-                                                }
-                                            }>
+                                    sx={
+                                        {
+                                            '.yourir-active': {
+                                                bg: 'white',
+                                                borderRadius: 0
+                                            },
+                                            '[disabled]': {
+                                                display: 'none'
+                                            }
+                                        }
+                                    }>
                                     <Button variant="pagination"
-                                            data-yourir="navPage1"
-                                            onClick={scrollToTable}>
+                                        data-yourir="navPage1"
+                                        onClick={scrollToTable}>
                                     </Button>
                                     <Button variant="pagination"
-                                            data-yourir="navPage2"
-                                            onClick={scrollToTable}>
+                                        data-yourir="navPage2"
+                                        onClick={scrollToTable}>
                                     </Button>
                                     <Button variant="pagination"
-                                            data-yourir="navPage3"
-                                            onClick={scrollToTable}>
+                                        data-yourir="navPage3"
+                                        onClick={scrollToTable}>
                                     </Button>
                                     <Button variant="pagination"
-                                            data-yourir="navPage4"
-                                            onClick={scrollToTable}>
+                                        data-yourir="navPage4"
+                                        onClick={scrollToTable}>
                                     </Button>
                                     <Button variant="pagination"
-                                            data-yourir="navPage5"
-                                            onClick={scrollToTable}>
+                                        data-yourir="navPage5"
+                                        onClick={scrollToTable}>
                                     </Button>
                                 </ButtonGroup>
                             </Box>
                             <Box>
                                 <Button variant="pagination"
-                                        data-yourir="nextPage"
-                                        rightIcon={<Icon icon={Icons.ChevronRight} w={12} h={12} />}
-                                        onClick={scrollToTable}>
+                                    data-yourir="nextPage"
+                                    rightIcon={<Icon icon={Icons.ChevronRight} w={12} h={12} />}
+                                    onClick={scrollToTable}>
                                     Next
                                 </Button>
                             </Box>
@@ -215,7 +215,7 @@ const AsxAnnouncementsPanel = () : ReactNode => {
                 </Box>
             </Container>
         </Box>
-    </Box>
-}
+    </Box>;
+};
 
 export default AsxAnnouncementsPanel;

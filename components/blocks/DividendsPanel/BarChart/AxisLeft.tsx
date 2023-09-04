@@ -1,12 +1,12 @@
-import { useMemo } from 'react';
+import { useMemo, ReactNode } from 'react';
 
-export const AxisLeft = ({ scale, width }:any) => {
+export const AxisLeft = ({ scale, width }:any) : ReactNode => {
     const ticks = useMemo(() => {
         return scale.ticks().map((value) => ({
             value,
             offset: scale(value),
-        }))
-    }, [scale])
+        }));
+    }, [scale]);
 
     return <g className="y-axis">
         {
@@ -18,8 +18,8 @@ export const AxisLeft = ({ scale, width }:any) => {
                     shapeRendering={"crispEdges"}
                 >
                     <text key={value}
-                          fill="currentColor"
-                          transform="translate(0, -10)">
+                        fill="currentColor"
+                        transform="translate(0, -10)">
                         {value}
                     </text>
                     <line
@@ -28,8 +28,8 @@ export const AxisLeft = ({ scale, width }:any) => {
                         stroke="currentColor"
                         strokeWidth={0.5}
                     />
-                </g>
+                </g>;
             })
         }
     </g>;
-}
+};
