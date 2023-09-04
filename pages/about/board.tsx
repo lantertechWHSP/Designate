@@ -1,9 +1,9 @@
 import React from 'react';
 import type { NextPage } from 'next';
 import Layout from '~/components/layouts/Layout';
-import { ModularContent } from '~/components/ModularContent';
+// import { ModularContent } from '~/components/ModularContent';
 import { doQuery, queries } from '~/dato/api';
-import { getLayoutData, getBlocks } from '~/lib/utils';
+import { getLayoutData } from '~/lib/utils';
 import { Profiles } from '~/components/elements/profiles/profiles';
 
 export async function getStaticProps({ preview }) : Promise<any> {
@@ -14,18 +14,18 @@ export async function getStaticProps({ preview }) : Promise<any> {
     );
 
     const layout = getLayoutData(site, page, preview);
-    const blocks = await getBlocks(page);
+    // const blocks = await getBlocks(page);
     const people = await doQuery(queries.people, { definition : 'Board' }, preview).then(
         ({ people }) => people || []
     );
 
-    return { props: { layout, people, blocks } };
+    return { props: { layout, people } };
 }
 
-const BoardPage : NextPage = ({ layout, people, blocks }:any)  : JSX.Element => {
+const BoardPage : NextPage = ({ layout, people }:any)  : JSX.Element => {
     return (
         <Layout layout={layout}>
-            <ModularContent content={blocks} />
+            {/*<ModularContent content={blocks} />*/}
             <Profiles people={people} />
         </Layout>
     );
