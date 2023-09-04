@@ -44,7 +44,7 @@ export const getBreadcrumbs = (menu, page) : any => {
         return node.link?.slug === page?.slug;
     });
     let breadcrumbs:any = path.map((node) => ({
-        title: node?.label ? node.label : null,
+        title: node?.label,
         path: node?.link?.slug ? `/${node?.link?.slug}` : null,
         isCurrentPage: node?.link?.slug === page?.slug,
         node
