@@ -1,6 +1,6 @@
 import { extendBaseTheme } from '@chakra-ui/react';
 import chakraTheme from '@chakra-ui/theme';
-const { Modal, Menu } = chakraTheme.components;
+const { Modal, Menu, Tabs } = chakraTheme.components;
 
 const colors = {
     // lightGrey: '#c4c4c4',
@@ -194,6 +194,21 @@ export const theme = extendBaseTheme({
                 },
             }
         },
+        Tabs: {
+            parts: ['tab', 'tabpanel', 'tabs'],
+            baseStyle: {
+                tab: {
+                    py: 2,
+                    fontSize: '24px',
+                    lineHeight: '26px',
+                    mr: 4,
+                    mb: 4,
+                    _selected: {
+                        fontWeight: 500
+                    }
+                }
+            }
+        },
         Menu: {
             ...Menu,
             parts: ['list', 'item', 'button'],
@@ -218,16 +233,6 @@ export const theme = extendBaseTheme({
                     }
                 }
             }
-            // baseStyle: {
-            //
-            // }
-            // parts: ['MenuList'],
-            // baseStyle: {
-            //     MenuList: {
-            //         padding: 0,
-            //         background: 'white'
-            //     }
-            // }
         },
         Divider: {
             baseStyle: {
