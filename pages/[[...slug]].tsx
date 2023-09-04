@@ -15,12 +15,12 @@ export async function getStaticPaths() : Promise<any> {
     ];
 
     const pages = await doQuery(queries.pages).then(({ pages }) => pages);
-    const paths = pages
+    const paths = Array.isArray(pages) && pages.length > 0 ? pages
         .filter((page) => !systemPages.includes(page.slug))
         .map((page) => {
             const slug = page.slug === 'home' ? [''] : page.slug.split('/');
             return { params: { slug } };
-        });
+        }) : [];
 
     return { paths, fallback: false };
 }
