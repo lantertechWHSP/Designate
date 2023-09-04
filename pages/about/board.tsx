@@ -14,7 +14,13 @@ export async function getStaticProps({ preview }) : Promise<any> {
     );
 
     const layout = getLayoutData(site, page, preview);
+
+    console.log(page.blocks);
     const blocks = await getBlocks(page);
+
+    console.log('1');
+    console.log(blocks);
+
     const people = await doQuery(queries.people, { definition : 'Board' }, preview).then(
         ({ people }) => people || []
     );
@@ -23,6 +29,9 @@ export async function getStaticProps({ preview }) : Promise<any> {
 }
 
 const BoardPage : NextPage = ({ layout, blocks, people }:any)  : JSX.Element => {
+    console.log('2');
+    console.log(blocks);
+
     return (
         <Layout layout={layout}>
             <ModularContent content={blocks} />
