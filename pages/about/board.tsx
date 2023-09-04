@@ -3,7 +3,7 @@ import type { NextPage } from 'next';
 import Layout from '~/components/layouts/Layout';
 // import { ModularContent } from '~/components/ModularContent';
 import { doQuery, queries } from '~/dato/api';
-import { getLayoutData, getBlocks } from '~/lib/utils';
+import { getLayoutData } from '~/lib/utils';
 import { Profiles } from '~/components/elements/profiles/profiles';
 
 export async function getStaticProps({ preview }) : Promise<any> {
