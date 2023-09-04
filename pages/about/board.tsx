@@ -13,6 +13,8 @@ export async function getStaticProps({ preview }) : Promise<any> {
         ({ page }) => page
     );
 
+    console.log(page);
+
     const layout = getLayoutData(site, page, preview);
 
     const blocks = []; //await getBlocks(page);
@@ -25,6 +27,7 @@ export async function getStaticProps({ preview }) : Promise<any> {
 }
 
 const BoardPage : NextPage = ({ layout, blocks, people }:any)  : JSX.Element => {
+    console.log(layout);
     console.log(blocks);
 
     return (
