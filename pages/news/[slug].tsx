@@ -22,7 +22,7 @@ export async function getStaticProps({ params, preview }) : Promise<any> {
 
     const site = await doQuery(queries.site);
     const layout = getLayoutData(site, post, preview);
-    const blocks = await getBlocks(post);
+    const blocks = await getBlocks(post?.blocks);
 
     return { props: { post, layout, blocks } };
 }

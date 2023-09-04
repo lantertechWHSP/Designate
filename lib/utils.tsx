@@ -103,16 +103,20 @@ export const getLayoutData = (site, page, preview) : any => {
 //     );
 // };
 
-export const getBlocks = async ({ blocks }): Promise<any> => {
-    return (
-        (await Promise.all(
-            blocks?.map(async (block) => {
-                const b = getBlock(block.__typename);
-                if (b?.getData instanceof Function) {
-                    block.data = await b?.getData(block);
-                }
-                return block;
-            })
-        )) || []
-    );
+export const getBlocks = async (blocks): Promise<any> => {
+    if(blocks) {
+        return (
+            (await Promise.all(
+                blocks?.map(async (block) => {
+                    const b = getBlock(block.__typename);
+                    if (b?.getData instanceof Function) {
+                        block.data = await b?.getData(block);
+                    }
+                    return block;
+                })
+            )) || []
+        );
+    }
+
+    return [];
 };

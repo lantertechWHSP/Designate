@@ -18,7 +18,7 @@ export async function getStaticProps({ preview }) : Promise<any> {
     const allPostsMeta = await doQuery(queries.postsMeta).then(({ postsMeta }) => postsMeta || {});
 
     const layout = getLayoutData(site, page, preview);
-    const blocks = await getBlocks(page);
+    const blocks = await getBlocks(page?.blocks);
 
     return { props: { layout, blocks, latestPosts, allPostsMeta } };
 }

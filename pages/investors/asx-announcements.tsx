@@ -14,7 +14,7 @@ export async function getStaticProps({ _params, preview }) : Promise<any> {
     );
 
     const layout = getLayoutData(site, page, preview);
-    const blocks = await getBlocks(page);
+    const blocks = await getBlocks(page?.blocks);
 
     return { props: { layout, blocks } };
 }
