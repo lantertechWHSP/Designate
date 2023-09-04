@@ -1,7 +1,9 @@
 import ContentBlock from '~/components/blocks/Content';
 import { ReactNode, useState } from 'react';
 import { Heading, Container, Box, Text, TableContainer, Table, Thead, Tr, Th, Tbody, Td } from '@chakra-ui/react';
-import DividendHistoryChart from '~/components/blocks/DividendsPanel/Chart/DividendHistoryChart';
+import BarChart from '~/components/blocks/DividendsPanel/BarChart/BarChart';
+import { groupBy as _groupBy, forOwn as _forOwn, sumBy as _sumBy } from 'lodash';
+import { DateTime } from 'luxon';
 
 const DividendsPanel = ({ description, latestDividendDescription, csv }) : ReactNode => {
     function convertCSVToJSON(str, delimiter = ',') {
@@ -24,17 +26,36 @@ const DividendsPanel = ({ description, latestDividendDescription, csv }) : React
         }
     };
 
-    fetch(csv.url).then((response) => response.text()).then((data) => {
-        const table = convertCSVToJSON(data, ',');
-        setTable(table);
-    }).catch(() => {
-        setTable(null);
-    }).finally(() => {
-        setIsTableLoaded(true);
-    });
+    useState(() => {
+        fetch(csv.url).then((response) => response.text()).then((response) => {
+            const table = convertCSVToJSON(response, ',');
+            setTable(table);
+
+            const data = [];
+            _forOwn(_groupBy(table.rows, (row) => {
+                return DateTime.fromFormat(row['PaymentDate'], "d/M/yyyy").toFormat('yyyy');
+            }), (row, key) => {
+                data.push({
+                    label: DateTime.utc(+key, 1, 1).toFormat('yyyy'),
+                    value: _sumBy(row, (value) => {
+                        return +value['Dividend'];
+                    })
+                })
+            });
+
+            console.log(data);
+
+            setChartData(data);
+        }).catch(() => {
+            setTable(null);
+        }).finally(() => {
+            setIsTableLoaded(true);
+        });
+    }, [])
 
     const [isTableLoaded, setIsTableLoaded] = useState(false);
     const [table, setTable] = useState(null);
+    const [chartData, setChartData] = useState(null);
 
     return <ContentBlock contain={false}>
         <Box py={12} background="lightGrey3">
@@ -185,11 +206,11 @@ const DividendsPanel = ({ description, latestDividendDescription, csv }) : React
             </Container>
         </Box>
         <Box>
-            <Heading as="h2" variant="h3">
-                Dividend History
-            </Heading>
             <Container>
-                <DividendHistoryChart />
+                <Heading as="h2" variant="h3">
+                    Dividend History
+                </Heading>
+                <BarChart data={chartData} />
             </Container>
         </Box>
     </ContentBlock>;
