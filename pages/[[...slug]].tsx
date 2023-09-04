@@ -8,8 +8,8 @@ import { getLayoutData, getBlocks } from '~/lib/utils';
 export async function getStaticPaths() : Promise<any> {
     const systemPages = [
         'news',
-        'about/management',
         'about/board',
+        'about/management',
         'investors/asx-announcements',
         'investors/share-price-information'
     ];
