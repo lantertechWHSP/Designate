@@ -33,13 +33,13 @@ export const getBlock = (name:any) : any => {
 };
 
 export const ModularContent = ({ content }) : any => {
-    if (_isNil(content) || (Array.isArray(content) && content.length === 0)) {
-        return null;
+    if(!_isNil(content) && Array.isArray(content) && content.length > 0) {
+        return content.map((block) => {
+            const Block = getBlock(block.__typename);
+            if (!Block) return null;
+            return <Block key={block.id} {...block} />;
+        });
     }
 
-    return content.map((block) => {
-        const Block = getBlock(block.__typename);
-        if (!Block) return null;
-        return <Block key={block.id} {...block} />;
-    });
+    return null;
 };
