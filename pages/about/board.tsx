@@ -19,7 +19,7 @@ export async function getStaticProps({ preview }) : Promise<any> {
         ({ people }) => people || []
     );
 
-    return { props: { layout, blocks: blocks ? blocks : [], people } };
+    return { props: { layout, blocks, people } };
 }
 
 const BoardPage : NextPage = ({ layout, blocks, people }:any)  : JSX.Element => {
