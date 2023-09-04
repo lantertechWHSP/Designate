@@ -51,7 +51,8 @@ export const getBreadcrumbs = (menu, page) : any => {
     }));
     if (!breadcrumbs?.length) {
         breadcrumbs = [
-            { title: page?.title, path: page?.slug ? page?.slug : null, isCurrentPage: true }
+            { title: '', path: '#', isCurrentPage: true }
+            // { title: page?.title, path: page?.slug ? page?.slug : null, isCurrentPage: true }
         ];
     }
     return breadcrumbs;
