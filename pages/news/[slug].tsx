@@ -7,9 +7,9 @@ import { getLayoutData, getBlocks } from '~/lib/utils';
 
 export async function getStaticPaths() : Promise<any> {
     const posts = await doQuery(queries.posts).then(({ posts }) => posts);
-    const paths = (Array.isArray(posts) && posts.length > 0) ? posts.map((post) => ({
+    const paths = posts.map((post) => ({
         params: { slug: post.slug }
-    })) : [];
+    }));
 
     return { paths, fallback: false };
 }
