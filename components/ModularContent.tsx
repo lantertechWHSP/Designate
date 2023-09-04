@@ -24,7 +24,6 @@ const blocks:any = {
     InvestorPanel,
     HomePageOverview,
     DividendsPanel
-
 };
 
 export const getBlock = (name:any) : any => {
@@ -32,7 +31,7 @@ export const getBlock = (name:any) : any => {
 };
 
 export const ModularContent = ({ content }) : any => {
-    if (!content || content === null || !Array.isArray(content)) {
+    if (!content || content === null || !Array.isArray(content) || (Array.isArray(content) && content.length === 0)) {
         return null;
     }
 
