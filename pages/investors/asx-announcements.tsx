@@ -14,12 +14,11 @@ export async function getStaticProps({ _params, preview }) : Promise<any> {
     );
 
     const layout = getLayoutData(site, page, preview);
-    const blocks = await getBlocks(page);
 
-    return { props: { layout, blocks } };
+    return { props: { layout } };
 }
 
-const Page : NextPage = ({ layout, _blocks }:any)  : JSX.Element => {
+const Page : NextPage = ({ layout }:any)  : JSX.Element => {
     return (
         <Layout layout={layout}>
             {/*<ModularContent content={blocks} />*/}
