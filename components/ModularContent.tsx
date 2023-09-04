@@ -34,12 +34,12 @@ export const getBlock = (name:any) : any => {
 
 export const ModularContent = ({ content }) : any => {
     if(!_isNil(content) && Array.isArray(content) && content.length > 0) {
-        return content.map((block) => {
+        return content.map((block, index) => {
             const Block = getBlock(block.__typename);
             if (!Block) {
                 return <></>;
             }
-            return <Block key={block.id} {...block} />;
+            return <Block key={index} {...block} />;
         });
     }
 
