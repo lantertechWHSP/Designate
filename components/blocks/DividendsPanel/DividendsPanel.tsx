@@ -1,9 +1,11 @@
 import ContentBlock from '~/components/blocks/Content';
 import { ReactNode, useState } from 'react';
-import { Heading, Container, Box, Text, TableContainer, Table, Thead, Tr, Th, Tbody, Td } from '@chakra-ui/react';
+import { Heading, Container, Box, Text } from '@chakra-ui/react';
 import BarChart from '~/components/blocks/DividendsPanel/BarChart/BarChart';
 import { groupBy as _groupBy, forOwn as _forOwn, sumBy as _sumBy } from 'lodash';
 import { DateTime } from 'luxon';
+import {DividendHistoryTable} from "~/components/blocks/DividendsPanel/Tables/DividendHistoryTable";
+import {LatestDividendTable} from "~/components/blocks/DividendsPanel/Tables/LatestDividendTable";
 
 const DividendsPanel = ({ description, latestDividendDescription, csv }) : ReactNode => {
     function convertCSVToJSON(str, delimiter = ',') {
@@ -62,10 +64,10 @@ const DividendsPanel = ({ description, latestDividendDescription, csv }) : React
             <Container>
                 {
                     description && <Box maxW={['100%', '400px']} mb={8}>
-                    <Text color="steelBlue3">
-                        {description}
-                    </Text>
-                  </Box>
+                        <Text color="steelBlue3">
+                            {description}
+                        </Text>
+                    </Box>
                 }
                 {
                     latestDividendDescription && <>
@@ -75,134 +77,15 @@ const DividendsPanel = ({ description, latestDividendDescription, csv }) : React
                           {latestDividendDescription}
                       </Text>
                     </Box>
-                        {
-                            (isTableLoaded && table) && <TableContainer>
-                                <Table variant="basic" w="100%">
-                                    <>
-                                        {
-                                            (Array.isArray(table?.titles) && table.titles.length > 0) && <Thead>
-                                                <Tr>
-                                                    {
-                                                        table.titles.map((th, index) => {
-                                                            return <Th key={index} w="20%">{th}</Th>
-                                                        })
-                                                    }
-                                                </Tr>
-                                            </Thead>
-                                        }
-                                    </>
-                                    <>
-                                        {
-                                            (Array.isArray(table?.rows) && table.rows.length > 0) && <Tbody>
-                                                {
-                                                    (() => {
-                                                        const row = table.rows[0];
-                                                        return <Tr>
-                                                            <Td>
-                                                                {
-                                                                    row.Dividend || '-'
-                                                                }
-                                                            </Td>
-                                                            <Td>
-                                                                {
-                                                                    row.ExpiryDate || '-'
-                                                                }
-                                                            </Td>
-                                                            <Td>
-                                                                {
-                                                                    row.Franking || '-'
-                                                                }
-                                                            </Td>
-                                                            <Td>
-                                                                {
-                                                                    row.Type || '-'
-                                                                }
-                                                            </Td>
-                                                            <Td>
-                                                                {
-                                                                    row.PaymentDate || '-'
-                                                                }
-                                                            </Td>
-                                                        </Tr>
-                                                    })()
-                                                }
-                                            </Tbody>
-                                        }
-                                    </>
-                                </Table>
-                            </TableContainer>
-                        }
+                    <LatestDividendTable isLoaded={isTableLoaded} table={table} />
                   </>
                 }
             </Container>
         </Box>
         <Box py={12} background="white">
             <Container>
-                {
-                    isTableLoaded && <>
-                        {
-                            table ? <Box>
-                                <Heading as="h2" variant="h3" mb={8}>Dividend History</Heading>
-                                <TableContainer>
-                                    <Table variant="basic" w="100%">
-                                        <>
-                                            {
-                                                (Array.isArray(table?.titles) && table.titles.length > 0) && <Thead>
-                                                <Tr>
-                                                    {
-                                                        table.titles.map((th, index) => {
-                                                            return <Th key={index} w="20%">{th}</Th>
-                                                        })
-                                                    }
-                                                </Tr>
-                                              </Thead>
-                                            }
-                                        </>
-                                        <>
-                                            {
-                                                (Array.isArray(table?.rows) && table.rows.length > 0) && <Tbody>
-                                                    {
-                                                        table.rows.map((row, index) => {
-                                                            return <Tr key={index}>
-                                                                <Td>
-                                                                    {
-                                                                        row.Dividend || '-'
-                                                                    }
-                                                                </Td>
-                                                                <Td>
-                                                                    {
-                                                                        row.ExpiryDate || '-'
-                                                                    }
-                                                                </Td>
-                                                                <Td>
-                                                                    {
-                                                                        row.Franking || '-'
-                                                                    }
-                                                                </Td>
-                                                                <Td>
-                                                                    {
-                                                                        row.Type || '-'
-                                                                    }
-                                                                </Td>
-                                                                <Td>
-                                                                    {
-                                                                        row.PaymentDate || '-'
-                                                                    }
-                                                                </Td>
-                                                            </Tr>
-                                                        })
-                                                    }
-                                              </Tbody>
-                                            }
-                                        </>
-                                    </Table>
-                                </TableContainer>
-                            </Box> : <Box>
-                                Could not load Dividend History table…
-                            </Box>
-                        }
-                  </>
-                }
+                <Heading as="h2" variant="h3" mb={8}>Dividend History</Heading>
+                <DividendHistoryTable isLoaded={isTableLoaded} table={table} />
             </Container>
         </Box>
         <Box>

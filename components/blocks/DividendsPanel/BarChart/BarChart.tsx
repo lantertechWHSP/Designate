@@ -1,18 +1,24 @@
-import { scaleLinear, scaleBand } from 'd3';
-import React, { useMemo }  from 'react';
+import React, { useEffect, useMemo, useRef, useState }  from 'react';
 import { Box } from '@chakra-ui/react';
-import { AxisBottom } from "~/components/blocks/DividendsPanel/BarChart/AxisBottom";
-import { AxisLeft } from "~/components/blocks/DividendsPanel/BarChart/AxisLeft";
-import {Bars} from "~/components/blocks/DividendsPanel/BarChart/Bars";
-import { maxBy as _maxBy } from 'lodash';
+import { scaleLinear, scaleBand } from 'd3';
+import { AxisBottom } from '~/components/blocks/DividendsPanel/BarChart/AxisBottom';
+import { AxisLeft } from '~/components/blocks/DividendsPanel/BarChart/AxisLeft';
+import { Bars } from '~/components/blocks/DividendsPanel/BarChart/Bars';
+import { maxBy as _maxBy, throttle as _throttle } from 'lodash';
 
 const BarChart = ({ data }) => {
-    const width = 1300;
-    const height = 700;
+    const [width, setWidth] = useState(null);
+    const [height, setHeight] = useState(null);
     const margin = { top: 30, right: 30, bottom: 50, left: 0 };
+    const elementRef = useRef();
 
-    const boundsWidth = width - margin.right - margin.left;
-    const boundsHeight = height - margin.top - margin.bottom;
+    const boundsWidth = useMemo(() => {
+        return width - margin.right - margin.left;
+    }, [width]);
+
+    const boundsHeight = useMemo(() => {
+        return height - margin.top - margin.bottom;
+    }, [height]);
 
     const scaleY = useMemo(() => {
         if(data) {
@@ -22,7 +28,7 @@ const BarChart = ({ data }) => {
                 }).value])
                 .range([boundsHeight, 0])
         }
-    }, [data]);
+    }, [data, height]);
 
     const scaleX = useMemo(() => {
         if(data) {
@@ -31,9 +37,34 @@ const BarChart = ({ data }) => {
                 .range([0, width])
                 .padding(0.5);
         }
-    }, [data])
+    }, [data, width])
 
-    return <Box sx={{
+
+    useEffect(() => {
+        const setDimension = () => {
+            if(elementRef.current) {
+                const newWidth = elementRef.current.getBoundingClientRect().width;
+                setWidth(newWidth);
+                setHeight(newWidth * 0.66);
+            }
+        }
+
+        const handleResize = _throttle(() => {
+            setDimension();
+        }, 100);
+
+        window.addEventListener("resize", handleResize);
+
+        setDimension();
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        }
+    }, [])
+
+    return <Box
+        ref={elementRef}
+        sx={{
             '.tick': {
                 fontSize: '14px',
                 fontFamily: 'Untitled Sans',
@@ -52,20 +83,22 @@ const BarChart = ({ data }) => {
                 fill: 'steelBlue3'
             }
         }}>
-            <svg width={width} height={height} shapeRendering={"crispEdges"}>
-            {
-                data && <g
-                width={boundsWidth}
-                height={boundsHeight}
-                transform={`translate(${[margin.left, margin.top].join(",")})`}
-                overflow={"visible"}
-              >
+        {
+            (boundsWidth && boundsHeight) && <svg width="100%" width={width} height={height} shapeRendering={"crispEdges"}>
+                {
+                    data && <g
+                    width={boundsWidth}
+                    height={boundsHeight}
+                    transform={`translate(${[margin.left, margin.top].join(",")})`}
+                    overflow={"visible"}
+                  >
                     <AxisLeft scale={scaleY} width={width} />
                     <AxisBottom scale={scaleX} transform={`translate(0, ${boundsHeight})`} />
                     <Bars data={data} scaleX={scaleX} scaleY={scaleY} height={boundsHeight} />
-              </g>
-            }
-        </svg>
+                  </g>
+                }
+          </svg>
+        }
     </Box>
 };
 
