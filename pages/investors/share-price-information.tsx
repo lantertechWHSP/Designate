@@ -4,7 +4,6 @@ import Layout from '~/components/layouts/Layout';
 import { ModularContent } from '~/components/ModularContent';
 import { doQuery, queries } from '~/dato/api';
 import { getLayoutData, getBlocks } from '~/lib/utils';
-import SharePricePanel from '~/components/elements/yourir/SharePricePanel';
 import QuoteTablePanel from '~/components/elements/yourir/QuoteTablePanel';
 import HistoricalPricePanel from '~/components/elements/yourir/HistoricalPricePanel';
 
@@ -25,7 +24,6 @@ const Page : NextPage = ({ layout, blocks }:any)  : JSX.Element => {
     return (
         <Layout layout={layout}>
             <ModularContent content={blocks} />
-            <SharePricePanel />
             <QuoteTablePanel />
             <HistoricalPricePanel />
         </Layout>

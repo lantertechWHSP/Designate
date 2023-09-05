@@ -8,6 +8,7 @@ import { latestNewsRecord } from '~/dato/blocks/latestNews';
 import { investorPanelRecord } from '~/dato/blocks/investorPanel';
 import { homePageOverviewRecord } from '~/dato/blocks/homePageOverview';
 import { dividendsPanelRecord } from '~/dato/blocks/dividendsPanel';
+import { sharePricePanelRecord } from '~/dato/blocks/sharePricePanel';
 
 export const blocks = `
     blocks {
@@ -40,6 +41,9 @@ export const blocks = `
         }
         ... on DividendsPanelRecord {
             ${dividendsPanelRecord}
+        }
+        ... on SharePricePanelRecord {
+            ${sharePricePanelRecord}
         }
     }
 `;

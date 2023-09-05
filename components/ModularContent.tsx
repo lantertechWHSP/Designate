@@ -10,8 +10,7 @@ import LatestNews from '~/components/blocks/LatestNews';
 import InvestorPanel from '~/components/blocks/InvestorPanel';
 import HomePageOverview from '~/components/blocks/HomePageOverview';
 import DividendsPanel from '~/components/blocks/DividendsPanel/DividendsPanel';
-
-import { isNil as _isNil } from 'lodash';
+import SharePricePanel from '~/components/blocks/SharePricePanel/SharePricePanel';
 
 const blocks:any = {
     Text,
@@ -25,7 +24,8 @@ const blocks:any = {
     LatestNews,
     InvestorPanel,
     HomePageOverview,
-    DividendsPanel
+    DividendsPanel,
+    SharePricePanel
 };
 
 export const getBlock = (name:any) : any => {
@@ -33,16 +33,13 @@ export const getBlock = (name:any) : any => {
 };
 
 export const ModularContent = ({ content }) : any => {
-    if(!_isNil(content) && Array.isArray(content) && content.length > 0) {
-        return content.map((block, _index) => {
-            const Block = getBlock(block.__typename);
-            if (!Block) {
-                return <></>;
-            }
-            return <></>;
-            // return <Block key={index} {...block} />;
-        });
+    if (!content || content === null || !Array.isArray(content)) {
+        return null;
     }
 
-    return <></>;
+    return content.map((block) => {
+        const Block = getBlock(block.__typename);
+        if (!Block) return null;
+        return <Block key={block.id} {...block} />;
+    });
 };

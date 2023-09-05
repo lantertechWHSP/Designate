@@ -1,11 +1,11 @@
 import ContentBlock from '~/components/blocks/Content';
 import { ReactNode, useState } from 'react';
 import { Heading, Container, Box, Text } from '@chakra-ui/react';
-import BarChart from '~/components/blocks/DividendsPanel/BarChart/BarChart';
 import { groupBy as _groupBy, forOwn as _forOwn, sumBy as _sumBy } from 'lodash';
 import { DateTime } from 'luxon';
-import { DividendHistoryTable } from "~/components/blocks/DividendsPanel/Tables/DividendHistoryTable";
-import { LatestDividendTable } from "~/components/blocks/DividendsPanel/Tables/LatestDividendTable";
+import { DividendHistoryTable } from '~/components/blocks/DividendsPanel/Tables/DividendHistoryTable';
+import { LatestDividendTable } from '~/components/blocks/DividendsPanel/Tables/LatestDividendTable';
+import DividendHistoryChart from '~/components/blocks/DividendsPanel/charts/DividendHistoryChart/DividendHistoryChart';
 
 const DividendsPanel = ({ description, latestDividendDescription, csv }:any) : ReactNode => {
     function convertCSVToJSON(str, delimiter = ',') : any {
@@ -90,7 +90,7 @@ const DividendsPanel = ({ description, latestDividendDescription, csv }:any) : R
                 <Heading as="h2" variant="h3">
                     Dividend History
                 </Heading>
-                <BarChart data={chartData} />
+                <DividendHistoryChart data={chartData} />
             </Container>
         </Box>
     </ContentBlock>;

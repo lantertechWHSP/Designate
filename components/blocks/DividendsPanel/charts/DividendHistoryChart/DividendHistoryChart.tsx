@@ -1,9 +1,9 @@
 import React, { useEffect, useMemo, useRef, useState, ReactNode }  from 'react';
 import { Box } from '@chakra-ui/react';
 import { scaleLinear, scaleBand } from 'd3';
-import { AxisBottom } from '~/components/blocks/DividendsPanel/BarChart/AxisBottom';
-import { AxisLeft } from '~/components/blocks/DividendsPanel/BarChart/AxisLeft';
-import { Bars } from '~/components/blocks/DividendsPanel/BarChart/Bars';
+import { AxisBottom } from '~/components/blocks/DividendsPanel/charts/DividendHistoryChart/components/AxisBottom';
+import { AxisLeft } from '~/components/blocks/DividendsPanel/charts/DividendHistoryChart/components/AxisLeft';
+import { Bars } from '~/components/blocks/DividendsPanel/charts/DividendHistoryChart/components/Bars';
 import { maxBy as _maxBy, throttle as _throttle } from 'lodash';
 
 interface IBarChart {
@@ -15,7 +15,7 @@ interface IDatum {
     label:string;
 }
 
-const BarChart = ({ data }:IBarChart) : ReactNode => {
+const DividendHistoryChart = ({ data }:IBarChart) : ReactNode => {
     const [width, setWidth] = useState<number>(null);
     const [height, setHeight] = useState<number>(null);
     const margin = { top: 30, right: 30, bottom: 50, left: 0 };
@@ -113,4 +113,4 @@ const BarChart = ({ data }:IBarChart) : ReactNode => {
     </Box>;
 };
 
-export default BarChart;
+export default DividendHistoryChart;
