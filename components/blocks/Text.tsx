@@ -4,7 +4,7 @@ import { ReactNode } from 'react';
 
 interface ITextBlockProps {
     id?:string;
-    __typename?:String;
+    __typename?:string;
     content?:any;
 }
 

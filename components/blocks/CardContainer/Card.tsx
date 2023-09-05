@@ -4,8 +4,8 @@ import { Icon, Icons } from '~/components/elements/icon';
 import { DatoLink } from '~/components/elements/datoLink';
 import { IDatoLink } from "~/interfaces";
 
-interface ICardBlockProps {
-    link:IDatoLink;
+export interface ICardBlockProps {
+    link?:IDatoLink;
 }
 
 const CardBlock = ({ link }:ICardBlockProps) : ReactNode => {

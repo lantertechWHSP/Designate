@@ -1,9 +1,14 @@
 import { ReactNode } from 'react';
 import { Box, Heading, SimpleGrid } from '@chakra-ui/react';
-import Card from "~/components/blocks/CardContainer/Card";
+import CardBlock, { ICardBlockProps } from '~/components/blocks/CardContainer/Card';
 import ContentBlock from "~/components/blocks/Content";
 
-const CardContainerBlock = ({ title, cards }) : ReactNode => {
+interface ICardContainerBlockProps {
+    title?:string;
+    cards?:ICardBlockProps[];
+}
+
+const CardContainerBlock = ({ title, cards }:ICardContainerBlockProps) : ReactNode => {
     return <ContentBlock py={8}>
         {
             title && <Heading variant="sectionHeading" as="h2" mb={4}>
@@ -13,9 +18,9 @@ const CardContainerBlock = ({ title, cards }) : ReactNode => {
         {
             (Array.isArray(cards) && cards.length > 0) && <SimpleGrid columns={[1, 2, 3]} spacing={[0, 8]}>
                 {
-                    cards.map((card, index:number) => {
+                    cards.map((card:ICardBlockProps, index:number) => {
                         return <Box key={index}>
-                            <Card {...card} />
+                            <CardBlock {...card} />
                         </Box>;
                     })
                 }
