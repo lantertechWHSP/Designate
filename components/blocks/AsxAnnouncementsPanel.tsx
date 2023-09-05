@@ -5,7 +5,6 @@ import { Icon, Icons } from '~/components/elements/icon';
 import { symbol } from '~/consts/yourir';
 
 const AsxAnnouncementsPanel = () : ReactNode => {
-
     const filters = [
         {
             name: 'All Document Types',

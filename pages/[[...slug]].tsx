@@ -10,7 +10,6 @@ export async function getStaticPaths() : Promise<any> {
         'news',
         'about/board',
         'about/management',
-        'investors/asx-announcements',
     ];
 
     const pages = await doQuery(queries.pages).then(({ pages }) => pages);

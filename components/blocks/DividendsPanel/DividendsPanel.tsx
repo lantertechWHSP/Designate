@@ -3,8 +3,8 @@ import { ReactNode, useState } from 'react';
 import { Heading, Container, Box, Text } from '@chakra-ui/react';
 import { groupBy as _groupBy, forOwn as _forOwn, sumBy as _sumBy } from 'lodash';
 import { DateTime } from 'luxon';
-import { DividendHistoryTable } from '~/components/blocks/DividendsPanel/Tables/DividendHistoryTable';
-import { LatestDividendTable } from '~/components/blocks/DividendsPanel/Tables/LatestDividendTable';
+import { DividendHistoryTable } from '~/components/blocks/DividendsPanel/tables/DividendHistoryTable';
+import { LatestDividendTable } from '~/components/blocks/DividendsPanel/tables/LatestDividendTable';
 import DividendHistoryChart from '~/components/blocks/DividendsPanel/charts/DividendHistoryChart/DividendHistoryChart';
 
 const DividendsPanel = ({ description, latestDividendDescription, csv }:any) : ReactNode => {

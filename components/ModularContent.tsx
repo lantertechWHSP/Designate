@@ -3,12 +3,14 @@ import Image from '~/components/blocks/Image';
 import Video from '~/components/blocks/Video';
 import Audio from '~/components/blocks/Audio';
 
-import Hero from '~/components/blocks/Hero';
 import Card from '~/components/blocks/CardContainer/Card';
 import CardContainer from '~/components/blocks/CardContainer/CardContainer';
+
+import Hero from '~/components/blocks/Hero';
+import HomePageOverview from '~/components/blocks/HomePageOverview';
 import LatestNews from '~/components/blocks/LatestNews';
 import InvestorPanel from '~/components/blocks/InvestorPanel';
-import HomePageOverview from '~/components/blocks/HomePageOverview';
+import AsxAnnouncementsPanel from '~/components/blocks/AsxAnnouncementsPanel';
 import DividendsPanel from '~/components/blocks/DividendsPanel/DividendsPanel';
 import SharePricePanel from '~/components/blocks/SharePricePanel/SharePricePanel';
 import ShareQuoteTable from '~/components/blocks/ShareQuoteTable';
@@ -19,13 +21,14 @@ const blocks:any = {
     Image,
     Video,
     Audio,
-
-    Hero,
     Card,
     CardContainer,
+
+    Hero,
+    HomePageOverview,
     LatestNews,
     InvestorPanel,
-    HomePageOverview,
+    AsxAnnouncementsPanel,
     DividendsPanel,
     SharePricePanel,
     ShareQuoteTable,

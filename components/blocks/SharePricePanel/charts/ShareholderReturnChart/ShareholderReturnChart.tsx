@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState, ReactNode, Fragment }  from 'react';
-import { scaleLinear, scaleTime, line, DataPoint } from 'd3';
+import { scaleLinear, scaleTime, line } from 'd3';
 import { Box } from '@chakra-ui/react';
 import { AxisLeft } from '~/components/blocks/SharePricePanel/charts/ShareholderReturnChart/components/AxisLeft';
 import { AxisBottom } from '~/components/blocks/SharePricePanel/charts/ShareholderReturnChart/components/AxisBottom';
@@ -8,7 +8,9 @@ import { DateTime } from 'luxon';
 import { ColorGenerator } from '~/lib/colorGenerator/colorGenerator';
 
 interface IShareholderReturnChart {
-    lines: Array<Array<IData>>;
+    data: {
+        lines: Array<Array<IData>>;
+    }
 }
 
 interface IData {
@@ -57,7 +59,7 @@ const ShareholderReturnChart = ({data}:IShareholderReturnChart) : ReactNode => {
         }
     }, [data, width]);
 
-    const lineBuilder = line<DataPoint>()
+    const lineBuilder = line<IData>()
         .x((data:IData) => xScale(data.date))
         .y((data:IData) => yScale(data.value));
 
@@ -74,7 +76,7 @@ const ShareholderReturnChart = ({data}:IShareholderReturnChart) : ReactNode => {
         });
 
         return newLines;
-    });
+    }, [data]);
 
     useEffect(() => {
         const setDimension = () : void => {

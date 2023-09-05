@@ -6,6 +6,7 @@ export const AxisBottom = ({ scale, transform }:any) : ReactNode => {
 
     useEffect(() => {
         if (ref.current) {
+            // @ts-ignore
             select(ref.current).call(axisBottom(scale).ticks(timeYear.every(1)).tickFormat(timeFormat("%Y")));
         }
     }, [scale]);

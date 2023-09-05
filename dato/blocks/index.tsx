@@ -11,6 +11,7 @@ import { dividendsPanelRecord } from '~/dato/blocks/dividendsPanel';
 import { sharePricePanelRecord } from '~/dato/blocks/sharePricePanel';
 import { shareQuoteTableRecord } from '~/dato/blocks/shareQuoteTable';
 import { shareHistoricalPricesTableRecord } from '~/dato/blocks/shareHistoricalPricesTable';
+import { asxAnnouncementsPanelRecord } from '~/dato/blocks/asxAnnouncementsPanel';
 
 export const blocks = `
     blocks {
@@ -52,6 +53,9 @@ export const blocks = `
         }
         ... on ShareHistoricalPricesTableRecord {
             ${shareHistoricalPricesTableRecord}
+        }
+        ... on AsxAnnouncementsPanelRecord {
+            ${asxAnnouncementsPanelRecord}
         }
     }
 `;
