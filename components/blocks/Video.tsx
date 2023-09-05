@@ -13,7 +13,7 @@ interface IVideoBlockProps {
     videoEmbed?:IDatoVideo;
 }
 
-const VideoBlock = ({ title, video, videoEmbed }:IVideoBlockProps) : ReactNode => {
+const VideoBlock:Function = ({ title, video, videoEmbed }:IVideoBlockProps) : ReactNode => {
     const [currentVideo] = useState<IDatoVideo>(video ? video : videoEmbed);
 
     return <ContentBlock>

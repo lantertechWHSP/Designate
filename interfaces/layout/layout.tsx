@@ -12,4 +12,4 @@ export interface ILayout {
     isHomePage: boolean;
     title: string;
     preview: boolean;
-};
+}

@@ -10,7 +10,7 @@ interface IBarsProps {
     yScale:any;
 }
 
-export const Bars = ({ data, height, xScale, yScale }:IBarsProps) : ReactNode =>  {
+export const Bars:Function = ({ data, height, xScale, yScale }:IBarsProps) : ReactNode =>  {
     return <>
         {
             (Array.isArray(data) && data.length > 0) &&  <g className="bars">

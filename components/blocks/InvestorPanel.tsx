@@ -8,7 +8,7 @@ interface IInvestorPanelBlockProps {
     title?:string;
 }
 
-const InvestorPanelBlock = ({ title }:IInvestorPanelBlockProps) : ReactNode => {
+const InvestorPanelBlock:Function = ({ title }:IInvestorPanelBlockProps) : ReactNode => {
     return <ContentBlock>
         <Flex mb={4} align="flex-end">
             <Box flex="1">

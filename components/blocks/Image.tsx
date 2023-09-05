@@ -2,13 +2,13 @@ import ContentBlock from "~/components/blocks/Content";
 import { ReactNode } from 'react';
 import { Image as DatoImage } from 'react-datocms';
 import { Box } from '@chakra-ui/react';
-import { IImage } from '~/interfaces';
+import { IDatoImage } from '~/interfaces';
 
 interface IImageBlockProps {
-    image:IImage;
+    image:IDatoImage;
 }
 
-const ImageBlock = ({ image }:IImageBlockProps) : ReactNode => {
+const ImageBlock:Function = ({ image }:IImageBlockProps) : ReactNode => {
     return <ContentBlock>
         <Box>
             <DatoImage data={image.responsiveImage} />

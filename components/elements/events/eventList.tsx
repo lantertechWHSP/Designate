@@ -5,7 +5,7 @@ const EventList = ({}) : ReactNode => {
     return <Box>
         <Container>
         </Container>
-    </Box>
-}
+    </Box>;
+};
 
 export default EventList;

@@ -35,17 +35,17 @@ const blocks:any = {
     ShareHistoricalPricesTable
 };
 
-export const getBlock = (name:any) : any => {
+export const getBlock:Function = (name:any) : any => {
     return blocks[name?.replace('Record', '')];
 };
 
-export const ModularContent = ({ content }) : any => {
+export const ModularContent:Function = ({ content }) : any => {
     if (!content || content === null || !Array.isArray(content)) {
         return null;
     }
 
     return content.map((block) => {
-        const Block = getBlock(block.__typename);
+        const Block:any = getBlock(block.__typename);
         if (!Block) return null;
         return <Block key={block.id} {...block} />;
     });

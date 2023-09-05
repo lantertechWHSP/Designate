@@ -7,7 +7,7 @@ interface ILatestDividendTableProps {
     table:IDividendsTable;
 }
 
-export const LatestDividendTable = ({ isLoaded, table }:ILatestDividendTableProps) : ReactNode => {
+export const LatestDividendTable:Function = ({ isLoaded, table }:ILatestDividendTableProps) : ReactNode => {
     return <>
         {
             isLoaded && <> {

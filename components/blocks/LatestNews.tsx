@@ -17,7 +17,7 @@ interface ILatestNewsBlockProps {
     }
 }
 
-const LatestNewsItem = ({ title, publishDate }:ILatestNewsItemProps) : ReactNode => {
+const LatestNewsItem:Function = ({ title, publishDate }:ILatestNewsItemProps) : ReactNode => {
     const date = parseISO(publishDate);
 
     return <Box py={6} borderBottom="1px solid lightGrey">

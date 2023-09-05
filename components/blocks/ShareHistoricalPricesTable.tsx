@@ -3,7 +3,7 @@ import { Icon, Icons } from '~/components/elements/icon';
 import { YourIR } from 'yourir-next';
 import { Heading, Container, Flex, Box, ButtonGroup, Button, TableContainer, Table, Thead, Tr, Th, Tbody, Td } from '@chakra-ui/react';
 
-const ShareHistoricalPricesTable = () : ReactNode => {
+const ShareHistoricalPricesTable:Function = () : ReactNode => {
     const scrollToTable:Function = () : void => {
         const scrollDiv = document.getElementById("historical-price").offsetTop;
         window.scrollTo({ top: scrollDiv - 120, behavior: 'smooth'});

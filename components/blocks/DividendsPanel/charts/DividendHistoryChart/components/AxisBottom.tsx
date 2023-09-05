@@ -6,7 +6,7 @@ interface IAxisBottomProps {
     transform:string;
 }
 
-export const AxisBottom = ({ scale, transform }:IAxisBottomProps) : ReactNode => {
+export const AxisBottom:Function = ({ scale, transform }:IAxisBottomProps) : ReactNode => {
     const ref = useRef<SVGGElement>(null);
 
     useEffect(() => {

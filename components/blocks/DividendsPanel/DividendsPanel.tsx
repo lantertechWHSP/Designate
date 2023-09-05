@@ -14,7 +14,7 @@ interface IDividendsPanelBlockProps {
     csv?:IDatoFile;
 }
 
-const DividendsPanelBlock = ({ description, latestDividendDescription, csv }:IDividendsPanelBlockProps) : ReactNode => {
+const DividendsPanelBlock:Function = ({ description, latestDividendDescription, csv }:IDividendsPanelBlockProps) : ReactNode => {
     function convertCSVToJSON(str, delimiter = ',') : IDividendsTable {
         const titles:string = str.slice(0, str.indexOf('\n')).trim();
         const titlesProps:string[] = titles.replace(/\s/g, '').split(delimiter);
@@ -26,7 +26,7 @@ const DividendsPanelBlock = ({ description, latestDividendDescription, csv }:IDi
             titles: titlesRaw.map((titleRaw:string) => {
                 return {
                     title: titleRaw
-                }
+                };
             }),
             rows: rows.map((row:string) => {
                 const values = row.trim().split(delimiter);

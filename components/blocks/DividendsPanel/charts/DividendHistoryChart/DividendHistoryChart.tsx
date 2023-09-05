@@ -22,7 +22,7 @@ interface IMargin {
     left:number;
 }
 
-const DividendHistoryChart = ({ data }:IDividendHistoryChart) : ReactNode => {
+const DividendHistoryChart:Function = ({ data }:IDividendHistoryChart) : ReactNode => {
     const [width, setWidth] = useState<number>(null);
     const [height, setHeight] = useState<number>(null);
     const margin:IMargin = { top: 30, right: 30, bottom: 50, left: 0 };

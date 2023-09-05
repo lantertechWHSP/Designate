@@ -5,7 +5,7 @@ import SharePriceChart from '~/components/blocks/SharePricePanel/charts/SharePri
 import ShareholderReturnChart from '~/components/blocks/SharePricePanel/charts/ShareholderReturnChart/ShareholderReturnChart';
 import { DateTime } from 'luxon';
 
-const SharePricePanel = () : ReactNode => {
+const SharePricePanel:Function = () : ReactNode => {
     const data = {
         lines: [
             [

@@ -18,7 +18,7 @@ export async function getStaticPaths() : Promise<any> {
     const paths:any = Array.isArray(pages) && pages.length > 0 ? pages
         .filter((page) => !systemPages.includes(page.slug))
         .map((page) => {
-            const slug = page.slug === 'home' ? [''] : page.slug.split('/');
+            const slug:string = page.slug === 'home' ? [''] : page.slug.split('/');
             return { params: { slug } };
         }) : [];
 

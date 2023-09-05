@@ -1,4 +1,4 @@
-import React  from 'react';
+import React, { ReactNode }  from 'react';
 import { StructuredText } from 'react-datocms';
 import Link  from 'next/link';
 import { isHeading, isCode } from 'datocms-structured-text-utils';
@@ -8,7 +8,7 @@ import ImageBlock from '~/components/blocks/Image';
 import VideoBlock from "~/components/blocks/Video";
 import AudioBlock from "~/components/blocks/Audio";
 
-const StrucutredContent = ({ content }) : any => {
+const StrucutredContent:Function = ({ content }) : ReactNode => {
     return (
         <StructuredText
             data={content}

@@ -23,7 +23,7 @@ interface ILineDataSVG {
     stroke:string;
 }
 
-const ShareholderReturnChart = ({data}:IShareholderReturnChart) : ReactNode => {
+const ShareholderReturnChart:Function = ({data}:IShareholderReturnChart) : ReactNode => {
     const [width, setWidth] = useState<number>(null);
     const [height, setHeight] = useState<number>(null);
     const margin = { top: 30, right: 30, bottom: 50, left: 0 };

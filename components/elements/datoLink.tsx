@@ -11,7 +11,7 @@ interface IDatoLinkProps extends ChakraProps {
 }
 
 export const DatoLink = forwardRef(({ id, __typename, title, slug,  ...props }:IDatoLinkProps, ref) : ReactNode => {
-    let href:string = resolveInternalLink({
+    const href:string = resolveInternalLink({
         id,
         __typename,
         title,
@@ -27,7 +27,7 @@ export const DatoLink = forwardRef(({ id, __typename, title, slug,  ...props }:I
         newChild = props.title;
     }
 
-    return <ChakraLink href={href} {...props} ref={ref}>{newChild}</ChakraLink>
+    return <ChakraLink href={href} {...props} ref={ref}>{newChild}</ChakraLink>;
 });
 
 DatoLink.displayName = 'DatoLink';

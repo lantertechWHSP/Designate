@@ -6,34 +6,35 @@ import { doQuery, queries } from '~/dato/api';
 import { getLayoutData, getBlocks } from '~/lib/utils';
 import { LatestPostCard } from '~/components/elements/news/latestPostCard';
 import { Heading, Button, Text, Container, SimpleGrid, Box, Spinner } from '@chakra-ui/react';
+import { ILayout, IPage, ISite } from '~/interfaces';
 
 export async function getStaticProps({ preview }) : Promise<any> {
-    const slug = 'news';
-    const site = await doQuery(queries.site);
-    const page = await doQuery(queries.page, { slug }, preview).then(
+    const slug:string = 'news';
+    const site:ISite = await doQuery(queries.site);
+    const page:IPage = await doQuery(queries.page, { slug }, preview).then(
         ({ page }) => page
     );
 
-    const latestPosts = await doQuery(queries.latestPosts, { first: 1 }).then(({ posts }) => posts || []);
-    const allPostsMeta = await doQuery(queries.postsMeta).then(({ postsMeta }) => postsMeta || {});
+    const latestPosts:any = await doQuery(queries.latestPosts, { first: 1 }).then(({ posts }) => posts || []);
+    const allPostsMeta:any = await doQuery(queries.postsMeta).then(({ postsMeta }) => postsMeta || {});
 
-    const layout = getLayoutData(site, page, preview);
-    const blocks = await getBlocks(page?.blocks);
+    const layout:ILayout = getLayoutData(site, page, preview);
+    const blocks:any = await getBlocks(page?.blocks);
 
     return { props: { layout, blocks, latestPosts, allPostsMeta } };
 }
 
-const LatestPosts = ({ latestPosts, postsMeta }) : ReactNode => {
-    const [page, setPage] = useState(1);
-    const [posts, setPosts] = useState(latestPosts); // Iniitial posts
-    const [isLoading, setIsLoading] = useState(false);
-    const [noMorePosts, setNoMorePosts] = useState(false);
-    const [couldNotLoadPosts, setCouldNotLoadPosts] = useState(false);
+const LatestPosts:Function = ({ latestPosts, postsMeta }:any) : ReactNode => {
+    const [page, setPage] = useState<number>(1);
+    const [posts, setPosts] = useState<any>(latestPosts); // Iniitial posts
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [noMorePosts, setNoMorePosts] = useState<boolean>(false);
+    const [couldNotLoadPosts, setCouldNotLoadPosts] = useState<boolean>(false);
 
-    const [totalPosts] = useState(postsMeta.count || posts.length);
-    const itemsPerPage = 1;
+    const [totalPosts] = useState<number>(postsMeta.count || posts.length);
+    const itemsPerPage:number = 1;
 
-    const loadMorePosts = () : void => {
+    const loadMorePosts:Function = () : void => {
         setIsLoading(true);
 
         doQuery(queries.latestPosts, { isFeatured: true, first: itemsPerPage, skip: page * itemsPerPage }).then(({ posts }) => posts || []).then((newPosts) => {
@@ -67,7 +68,7 @@ const LatestPosts = ({ latestPosts, postsMeta }) : ReactNode => {
             (Array.isArray(posts) && posts.length > 0) ? <>
                 <SimpleGrid columns={[1, 2, 3]} spacing={[0, 8]}>
                     {
-                        posts.map((post, index) => {
+                        posts.map((post:any, index:number) => {
                             return <LatestPostCard {...post} key={index}/>;
                         })
                     }

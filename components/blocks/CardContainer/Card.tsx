@@ -8,7 +8,7 @@ export interface ICardBlockProps {
     link?:IDatoLink;
 }
 
-const CardBlock = ({ link }:ICardBlockProps) : ReactNode => {
+const CardBlock:Function = ({ link }:ICardBlockProps) : ReactNode => {
     return <DatoLink {...link} color="black">
         <AspectRatio ratio={[3 / 2]}>
             <Box bg="ghostWhite">

@@ -5,7 +5,7 @@ interface IAxisLeftProps {
     width:number;
 }
 
-export const AxisLeft = ({ scale, width }:IAxisLeftProps) : ReactNode => {
+export const AxisLeft:Function = ({ scale, width }:IAxisLeftProps) : ReactNode => {
     const ticks = useMemo(() => {
         return scale.ticks().map((value) => ({
             value,

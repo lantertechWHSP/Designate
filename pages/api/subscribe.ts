@@ -5,7 +5,7 @@ import * as yup from 'yup';
 import { ObjectSchema } from 'yup';
 
 export default async function handler(request: NextApiRequest, response: NextApiResponse) : Promise<any> {
-    const validate = (email :string) : any => {
+    const validate:any = (email :string) : any => {
         const yupObject:any = {
             email: yup.string().required().email(),
             name: yup.string().required()

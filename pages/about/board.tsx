@@ -5,17 +5,18 @@ import { ModularContent } from '~/components/ModularContent';
 import { doQuery, queries } from '~/dato/api';
 import { getLayoutData, getBlocks } from '~/lib/utils';
 import { Profiles } from '~/components/elements/profiles/profiles';
+import { ILayout, IPage, ISite } from '~/interfaces';
 
-export async function getStaticProps({ preview }) : Promise<any> {
-    const slug = 'about/board';
-    const site = await doQuery(queries.site);
-    const page = await doQuery(queries.page, { slug }, preview).then(
+export async function getStaticProps({ preview }:any) : Promise<any> {
+    const slug:string = 'about/board';
+    const site:ISite = await doQuery(queries.site);
+    const page:IPage = await doQuery(queries.page, { slug }, preview).then(
         ({ page }) => page
     );
 
-    const layout = getLayoutData(site, page, preview);
-    const blocks = await getBlocks(page?.blocks);
-    const people = await doQuery(queries.people, { definition : 'Board' }, preview).then(
+    const layout:ILayout = getLayoutData(site, page, preview);
+    const blocks:any = await getBlocks(page?.blocks);
+    const people:any = await doQuery(queries.people, { definition : 'Board' }, preview).then(
         ({ people }) => people || []
     );
 

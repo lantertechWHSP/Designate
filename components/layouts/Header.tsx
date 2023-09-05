@@ -81,9 +81,9 @@ const DestopPopoverTrigger = ({item}): ReactNode => {
 
     return <PopoverTrigger>
         <MenuItemLink variant="siteHeader"
-                      title={item.title}
-                      link={item.link}
-                      externalLink={item.externalLink} px={4}>
+            title={item.title}
+            link={item.link}
+            externalLink={item.externalLink} px={4}>
             <Flex as="span" align="baseline">
                 <Text as="span" mr={2}>{item.link.title}</Text>
                 <Box transition="transform 300ms ease"
@@ -109,9 +109,9 @@ const DesktopNav = ({menu}): ReactNode => {
                                         item.children.map((child: IMenuItem, childIndex: number) => {
                                             return <Box py={2} key={childIndex}>
                                                 <MenuItemLink variant="siteHeader"
-                                                              title={child.title}
-                                                              link={child.link}
-                                                              externalLink={child.externalLink} />
+                                                    title={child.title}
+                                                    link={child.link}
+                                                    externalLink={child.externalLink} />
                                             </Box>;
                                         })
                                     }
@@ -119,10 +119,10 @@ const DesktopNav = ({menu}): ReactNode => {
                             }
                         </PopoverContent>
                     </Popover> : <MenuItemLink variant="siteHeader"
-                                               px={2}
-                                               key={index} title={item.title}
-                                               link={item.link}
-                                               externalLink={item.externalLink} />;
+                        px={2}
+                        key={index} title={item.title}
+                        link={item.link}
+                        externalLink={item.externalLink} />;
             })
         }
     </Flex>;
@@ -184,9 +184,9 @@ const MobileNavItem = ({item}): ReactNode => {
     return <Box>
         <Flex px={4} py={3}>
             <MenuItemLink variant="siteHeader"
-                          title={item.title}
-                          link={item.link}
-                          externalLink={item.externalLink} />
+                title={item.title}
+                link={item.link}
+                externalLink={item.externalLink} />
             <Box flex={1}/>
             {
                 hasChildren && <Button onClick={handleClick} color="steelBlue">
@@ -205,9 +205,9 @@ const MobileNavItem = ({item}): ReactNode => {
                 item.children.map((child: IMenuItem, childIndex: number) => {
                     return <Box px={4} py={2} key={childIndex}>
                         <MenuItemLink variant="siteHeader"
-                                      title={child.title}
-                                      link={child.link}
-                                      externalLink={child.externalLink} />
+                            title={child.title}
+                            link={child.link}
+                            externalLink={child.externalLink} />
                     </Box>;
                 })
             }

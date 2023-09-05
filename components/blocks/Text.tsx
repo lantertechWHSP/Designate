@@ -8,7 +8,7 @@ interface ITextBlockProps {
     content?:any;
 }
 
-const TextBlock = ({ content }:ITextBlockProps) : ReactNode => {
+const TextBlock:Function = ({ content }:ITextBlockProps) : ReactNode => {
     return <ContentBlock>
         <StructuredContent content={content} />
     </ContentBlock>;

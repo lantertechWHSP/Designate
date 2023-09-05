@@ -8,7 +8,7 @@ interface ICardContainerBlockProps {
     cards?:ICardBlockProps[];
 }
 
-const CardContainerBlock = ({ title, cards }:ICardContainerBlockProps) : ReactNode => {
+const CardContainerBlock:Function = ({ title, cards }:ICardContainerBlockProps) : ReactNode => {
     return <ContentBlock py={8}>
         {
             title && <Heading variant="sectionHeading" as="h2" mb={4}>

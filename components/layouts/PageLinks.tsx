@@ -23,10 +23,10 @@ const PageLinks = ({ current }) : ReactNode => {
                     links.map((link, index) => {
                         return <Box key={index} py={1}>
                             <MenuItemLink title={link.title}
-                                          link={link.link}
-                                          externalLink={link.externalLink}
-                                          fontSize={24}
-                                          fontWeight={500} />
+                                link={link.link}
+                                externalLink={link.externalLink}
+                                fontSize={24}
+                                fontWeight={500} />
                         </Box>;
                     })
                 }

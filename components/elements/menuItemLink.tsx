@@ -36,7 +36,7 @@ export const MenuItemLink = forwardRef(({ title, link, externalLink,  ...props }
         newChild = title;
     }
 
-    return <ChakraLink href={href} {...props} ref={ref}>{newChild}</ChakraLink>
+    return <ChakraLink href={href} {...props} ref={ref}>{newChild}</ChakraLink>;
 });
 
 MenuItemLink.displayName = 'MenuItemLink';
