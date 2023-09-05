@@ -6,22 +6,33 @@ import { DateTime } from 'luxon';
 import { DividendHistoryTable } from '~/components/blocks/DividendsPanel/tables/DividendHistoryTable';
 import { LatestDividendTable } from '~/components/blocks/DividendsPanel/tables/LatestDividendTable';
 import DividendHistoryChart from '~/components/blocks/DividendsPanel/charts/DividendHistoryChart/DividendHistoryChart';
+import { IDividendsTable, IDividendsTableRow } from '~/components/blocks/DividendsPanel/interfaces';
 
-const DividendsPanel = ({ description, latestDividendDescription, csv }:any) : ReactNode => {
-    function convertCSVToJSON(str, delimiter = ',') : any {
-        const titles = str.slice(0, str.indexOf('\n')).trim();
-        const titlesProps = titles.replace(/\s/g, '').split(delimiter);
-        const titlesRaw = titles.split(delimiter);
+interface IDividendsPanelBlockProps {
+    description?:string;
+    latestDividendDescription?:string;
+    csv?:IDatoFile;
+}
 
-        const rows = str.slice(str.indexOf('\n') + 1).split('\n');
+const DividendsPanelBlock = ({ description, latestDividendDescription, csv }:IDividendsPanelBlockProps) : ReactNode => {
+    function convertCSVToJSON(str, delimiter = ',') : IDividendsTable {
+        const titles:string = str.slice(0, str.indexOf('\n')).trim();
+        const titlesProps:string[] = titles.replace(/\s/g, '').split(delimiter);
+        const titlesRaw:string[] = titles.split(delimiter);
+
+        const rows:string = str.slice(str.indexOf('\n') + 1).split('\n');
 
         return {
-            titles: titlesRaw,
-            rows: rows.map(row => {
+            titles: titlesRaw.map((titleRaw:string) => {
+                return {
+                    title: titleRaw
+                }
+            }),
+            rows: rows.map((row:string) => {
                 const values = row.trim().split(delimiter);
 
-                return titlesProps.reduce((object, curr, i) => {
-                    object[curr] = values[i];
+                return titlesProps.reduce((object:any, curr:string, index:number) => {
+                    object[curr] = values[index];
                     return object;
                 }, {});
             })
@@ -29,17 +40,18 @@ const DividendsPanel = ({ description, latestDividendDescription, csv }:any) : R
     }
 
     useState(() => {
-        fetch(csv.url).then((response) => response.text()).then((response) => {
+        fetch(csv.url).then((response) => response.text()).then((response:any) => {
             const table = convertCSVToJSON(response, ',');
+
             setTable(table);
 
             const data = [];
-            _forOwn(_groupBy(table.rows, (row) => {
-                return DateTime.fromFormat(row['PaymentDate'], "d/M/yyyy").toFormat('yyyy');
-            }), (row, key) => {
+            _forOwn(_groupBy(table.rows, (row:IDividendsTableRow) => {
+                return DateTime.fromFormat(row.PaymentDate, "d/M/yyyy").toFormat('yyyy');
+            }), (row:IDividendsTableRow, key:string) => {
                 data.push({
                     label: DateTime.utc(+key, 1, 1).toFormat('yyyy'),
-                    value: _sumBy(row, (value) => {
+                    value: _sumBy(row, (value:string) => {
                         return +value['Dividend'];
                     })
                 });
@@ -52,9 +64,9 @@ const DividendsPanel = ({ description, latestDividendDescription, csv }:any) : R
         });
     });
 
-    const [isTableLoaded, setIsTableLoaded] = useState(false);
-    const [table, setTable] = useState(null);
-    const [chartData, setChartData] = useState(null);
+    const [isTableLoaded, setIsTableLoaded] = useState<boolean>(false);
+    const [table, setTable] = useState<IDividendsTable>(null);
+    const [chartData, setChartData] = useState<any>(null);
 
     return <ContentBlock contain={false}>
         <Box py={12} background="lightGrey3">
@@ -96,4 +108,4 @@ const DividendsPanel = ({ description, latestDividendDescription, csv }:any) : R
     </ContentBlock>;
 };
 
-export default DividendsPanel;
+export default DividendsPanelBlock;

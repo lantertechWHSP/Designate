@@ -1,0 +1,3 @@
+interface IDatoFile {
+    url?:string;
+}

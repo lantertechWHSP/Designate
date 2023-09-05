@@ -1,7 +1,13 @@
 import { ReactNode } from 'react';
 import { Box, TableContainer, Table, Thead, Tr, Th, Tbody, Td } from '@chakra-ui/react';
+import { IDividendsTable, IDividendsTableRow, IDividendsTableTitle } from '~/components/blocks/DividendsPanel/interfaces';
 
-export const LatestDividendTable = ({ isLoaded, table }:any) : ReactNode => {
+interface ILatestDividendTableProps {
+    isLoaded?:boolean;
+    table:IDividendsTable;
+}
+
+export const LatestDividendTable = ({ isLoaded, table }:ILatestDividendTableProps) : ReactNode => {
     return <>
         {
             isLoaded && <> {
@@ -12,8 +18,8 @@ export const LatestDividendTable = ({ isLoaded, table }:any) : ReactNode => {
                                 (Array.isArray(table?.titles) && table.titles.length > 0) && <Thead>
                                     <Tr>
                                         {
-                                            table.titles.map((th, index) => {
-                                                return <Th key={index} w="20%">{th}</Th>;
+                                            table.titles.map((th:IDividendsTableTitle, index:number) => {
+                                                return <Th key={index} w="20%">{th.title}</Th>;
                                             })
                                         }
                                     </Tr>
@@ -25,7 +31,7 @@ export const LatestDividendTable = ({ isLoaded, table }:any) : ReactNode => {
                                 (Array.isArray(table?.rows) && table.rows.length > 0) && <Tbody>
                                     {
                                         (() => {
-                                            const row = table.rows[0];
+                                            const row:IDividendsTableRow = table.rows[0];
                                             return <Tr>
                                                 <Td>
                                                     {

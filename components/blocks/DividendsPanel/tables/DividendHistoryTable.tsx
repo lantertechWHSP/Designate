@@ -14,7 +14,7 @@ export const DividendHistoryTable = ({ isLoaded, table }:any) : ReactNode => {
                                         <Tr>
                                             {
                                                 table.titles.map((th, index) => {
-                                                    return <Th key={index} w="20%">{th}</Th>;
+                                                    return <Th key={index} w="20%">{th.title}</Th>;
                                                 })
                                             }
                                         </Tr>
