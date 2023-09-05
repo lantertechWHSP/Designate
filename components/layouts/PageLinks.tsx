@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { Container, Box, Heading } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { resolveInternalLink } from 'lib/utils';
-import { DatoLink } from '~/components/elements/datoLink';
+import { MenuItemLink } from "~/components/elements/menuItemLink";
 
 const PageLinks = ({ current }) : ReactNode => {
     const router = useRouter();
@@ -22,7 +22,11 @@ const PageLinks = ({ current }) : ReactNode => {
                 {
                     links.map((link, index) => {
                         return <Box key={index} py={1}>
-                            <DatoLink link={link} fontSize={24} fontWeight={500} />
+                            <MenuItemLink title={link.title}
+                                          link={link.link}
+                                          externalLink={link.externalLink}
+                                          fontSize={24}
+                                          fontWeight={500} />
                         </Box>;
                     })
                 }

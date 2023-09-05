@@ -28,7 +28,7 @@ export const Profiles = ({ people }) : ReactNode => {
         setModalOpen(true);
     };
 
-    return <Box>
+    return <Box py={8}>
         <Container>
             <SimpleGrid columns={[1, 2, 4]} spacing={8}>
                 {
