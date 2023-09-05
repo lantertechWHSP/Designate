@@ -1,10 +1,14 @@
 import { ReactNode } from 'react';
 import { Box, Text, Heading, AspectRatio } from '@chakra-ui/react';
 import { Icon, Icons } from '~/components/elements/icon';
-import { Link } from '~/components/elements/link';
+import { DatoLink } from '~/components/elements/datoLink';
 
-const CardBlock = ({ link }) : ReactNode => {
-    return <Link link={{ link: link }} color="black">
+interface ICardBlockProps {
+    link:IDatoLink;
+}
+
+const CardBlock = ({ link }:ICardBlockProps) : ReactNode => {
+    return <DatoLink link={link} color="black">
         <AspectRatio ratio={[3 / 2]}>
             <Box bg="ghostWhite">
                 <Box position="absolute" bottom="20px" left="20px">
@@ -17,7 +21,7 @@ const CardBlock = ({ link }) : ReactNode => {
                 </Box>
             </Box>
         </AspectRatio>
-    </Link>;
+    </DatoLink>;
 };
 
 export default CardBlock;

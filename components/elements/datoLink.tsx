@@ -2,13 +2,15 @@ import { forwardRef } from 'react';
 import { Link as ChakraLink } from '@chakra-ui/react';
 import { ReactNode } from 'react';
 import { resolveInternalLink } from '~/lib/utils';
+import { ChakraProps } from '@chakra-ui/system';
 
-/**
- * Wrapper for the Chakra link that integrates adding a dato link object
- */
-export const Link = forwardRef(({ link, ...props }:any, ref) : ReactNode => {
+interface IDatoLinkProps extends ChakraProps {
+    link:IDatoLink;
+}
+
+export const DatoLink = forwardRef(({ link, ...props }:IDatoLinkProps, ref) : ReactNode => {
     let href:string = '#';
-    let newChild = '';
+    let newChild:string = '';
     let target:string = '';
 
     if(link?.link) {
@@ -37,4 +39,4 @@ export const Link = forwardRef(({ link, ...props }:any, ref) : ReactNode => {
     );
 });
 
-Link.displayName = 'DatoLink';
+DatoLink.displayName = 'DatoLink';

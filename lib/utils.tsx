@@ -1,6 +1,6 @@
 import { getBlock } from '~/components/ModularContent';
 
-export const resolveInternalLink = (link) : string => {
+export const resolveInternalLink = (link:IDatoLink) : string => {
     if (!link) {
         return null;
     }

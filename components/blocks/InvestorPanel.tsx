@@ -1,11 +1,15 @@
 import { ReactNode } from 'react';
 import { Box, Heading, Text, Flex, SimpleGrid, Divider } from '@chakra-ui/react';
-import { Link } from "~/components/elements/link";
+import { DatoLink } from "~/components/elements/datoLink";
 import ContentBlock from '~/components/blocks/Content';
 import { YourIR } from 'yourir-next';
 import { Icon, Icons } from "~/components/elements/icon";
 
-const InvestorPanelBlock = ({ title }:any) : ReactNode => {
+interface IInvestorPanelBlockProps {
+    title?:string;
+}
+
+const InvestorPanelBlock = ({ title }:IInvestorPanelBlockProps) : ReactNode => {
     return <ContentBlock>
         <Flex mb={4} align="flex-end">
             <Box flex="1">
@@ -16,10 +20,10 @@ const InvestorPanelBlock = ({ title }:any) : ReactNode => {
                 }
             </Box>
             <Box>
-                <Link variant="sectionLink" href="/investor-overview">
+                <DatoLink variant="sectionLink" href="/investor-overview">
                     <Box as="span" mr={2}>Investor Overview</Box>
                     <Icon icon={Icons.ChevronRight} w={12} h={12} />
-                </Link>
+                </DatoLink>
             </Box>
         </Flex>
         <Box as={YourIR}>
@@ -142,10 +146,10 @@ const InvestorPanelBlock = ({ title }:any) : ReactNode => {
                     <Divider />
                     <Box flex="1" />
                     <Box py={8}>
-                        <Link variant="sectionLink" href="#">
+                        <DatoLink variant="sectionLink" href="#">
                             <Box as="span" mr={2}>See All</Box>
                             <Icon icon={Icons.ChevronRight} w={12} h={12} />
-                        </Link>
+                        </DatoLink>
                     </Box>
                 </Flex>
                 <Flex direction="column">
@@ -164,20 +168,20 @@ const InvestorPanelBlock = ({ title }:any) : ReactNode => {
                                     as="h3"
                                     variant="listItem"
                                     mb={[4, 4, 6]} />
-                                <Link variant="sectionLink" href="#" color="black">
+                                <DatoLink variant="sectionLink" href="#" color="black">
                                     <Box as="span" mr={2}>Read</Box>
                                     <Icon icon={Icons.ChevronRight} w={12} h={12} />
-                                </Link>
+                                </DatoLink>
                             </Box>
                         </Box>
                     </Box>
                     <Divider />
                     <Box flex="1" />
                     <Box py={8}>
-                        <Link variant="sectionLink" href="#">
+                        <DatoLink variant="sectionLink" href="#">
                             <Box as="span" mr={2}>See All</Box>
                             <Icon icon={Icons.ChevronRight} w={12} h={12} />
-                        </Link>
+                        </DatoLink>
                     </Box>
                 </Flex>
             </SimpleGrid>

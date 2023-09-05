@@ -1,7 +1,7 @@
 import ContentBlock from "~/components/blocks/Content";
 import { ReactNode } from 'react';
 import { Box, Heading, Grid, GridItem } from '@chakra-ui/react';
-import { Link } from '~/components/elements/link';
+import { DatoLink } from '~/components/elements/datoLink';
 import { Image } from '~/components/elements/image';
 import { IImage } from '~/interfaces';
 
@@ -21,7 +21,7 @@ const HomePageOverviewBlock = ({ description, imageMain, imageSide, imageSide2 }
                 </Heading>
             }
             {
-                <Link href="/our-history">Our Company</Link>
+                <DatoLink href="/our-history">Our Company</DatoLink>
             }
         </Box>
         <Grid templateRows='repeat(2, 1fr)'

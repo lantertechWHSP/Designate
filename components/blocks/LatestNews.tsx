@@ -5,7 +5,19 @@ import ContentBlock from "~/components/blocks/Content";
 import { doQuery, queries } from '~/dato/api';
 import { Icon, Icons } from "~/components/elements/icon";
 
-const LatestNewsItem = ({ title, publishDate }:any) : ReactNode => {
+interface ILatestNewsItemProps {
+    title?:string;
+    publishDate?:string;
+}
+
+interface ILatestNewsBlockProps {
+    title?:string;
+    data: {
+        posts:ILatestNewsItemProps[];
+    }
+}
+
+const LatestNewsItem = ({ title, publishDate }:ILatestNewsItemProps) : ReactNode => {
     const date = parseISO(publishDate);
 
     return <Box py={6} borderBottom="1px solid lightGrey">
@@ -25,7 +37,7 @@ const LatestNewsItem = ({ title, publishDate }:any) : ReactNode => {
     </Box>;
 };
 
-const LatestNewsBlock = ({ title, data: { posts } }) : ReactNode => {
+const LatestNewsBlock = ({ title, data: { posts } }:ILatestNewsBlockProps) : ReactNode => {
     return <ContentBlock py={8} background="mutedSteel">
         <SimpleGrid columns={[1, ,2]}>
             <Box>
@@ -37,7 +49,7 @@ const LatestNewsBlock = ({ title, data: { posts } }) : ReactNode => {
             </Box>
             <Box>
                 {
-                    (Array.isArray(posts) && posts.length > 0) && posts.map((post, index:number) => {
+                    (Array.isArray(posts) && posts.length > 0) && posts.map((post:ILatestNewsItemProps, index:number) => {
                         return <LatestNewsItem {...post} key={index} />;
                     })
                 }
