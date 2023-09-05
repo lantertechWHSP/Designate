@@ -6,7 +6,7 @@ import { AxisLeft } from '~/components/blocks/DividendsPanel/charts/DividendHist
 import { Bars } from '~/components/blocks/DividendsPanel/charts/DividendHistoryChart/components/Bars';
 import { maxBy as _maxBy, throttle as _throttle } from 'lodash';
 
-interface IBarChart {
+interface IDividendHistoryChart {
     data: IDatum[];
 }
 
@@ -15,7 +15,7 @@ interface IDatum {
     label:string;
 }
 
-const DividendHistoryChart = ({ data }:IBarChart) : ReactNode => {
+const DividendHistoryChart = ({ data }:IDividendHistoryChart) : ReactNode => {
     const [width, setWidth] = useState<number>(null);
     const [height, setHeight] = useState<number>(null);
     const margin = { top: 30, right: 30, bottom: 50, left: 0 };
@@ -29,7 +29,7 @@ const DividendHistoryChart = ({ data }:IBarChart) : ReactNode => {
         return height - margin.top - margin.bottom;
     }, [height]);
 
-    const scaleY = useMemo(() => {
+    const yScale = useMemo(() => {
         if(data) {
             return scaleLinear()
                 .domain([0, _maxBy(data, (datum:IDatum) => {
@@ -39,7 +39,7 @@ const DividendHistoryChart = ({ data }:IBarChart) : ReactNode => {
         }
     }, [data, height]);
 
-    const scaleX = useMemo(() => {
+    const xScale = useMemo(() => {
         if(data) {
             return scaleBand()
                 .domain(data.map((datum:IDatum) => {
@@ -49,7 +49,6 @@ const DividendHistoryChart = ({ data }:IBarChart) : ReactNode => {
                 .padding(0.5);
         }
     }, [data, width]);
-
 
     useEffect(() => {
         const setDimension = () : void => {
@@ -103,9 +102,9 @@ const DividendHistoryChart = ({ data }:IBarChart) : ReactNode => {
                         transform={`translate(${[margin.left, margin.top].join(",")})`}
                         overflow={"visible"}
                     >
-                        <AxisLeft scale={scaleY} width={width} />
-                        <AxisBottom scale={scaleX} transform={`translate(0, ${boundsHeight})`} />
-                        <Bars data={data} scaleX={scaleX} scaleY={scaleY} height={boundsHeight} />
+                        <AxisLeft scale={yScale} width={width} />
+                        <AxisBottom scale={xScale} transform={`translate(0, ${boundsHeight})`} />
+                        <Bars data={data} xScale={xScale} yScale={yScale} height={boundsHeight} />
                     </g>
                 }
             </svg>
