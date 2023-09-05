@@ -2,9 +2,10 @@ import { ReactNode } from 'react';
 import { YourIR, set } from 'yourir-next';
 import { Icon, Icons } from '~/components/elements/icon';
 import { Flex, Box, ButtonGroup, Button, Menu, MenuButton, Portal, MenuList, MenuItem } from '@chakra-ui/react';
+import { IFilter } from '~/interfaces';
 
 const SharePriceChart = () : ReactNode => {
-    const comparisonSymbols = [
+    const comparisonSymbols:IFilter[] = [
         {
             name: 'XAO All Ordinaries',
             value: 'xao.asx'
@@ -19,7 +20,7 @@ const SharePriceChart = () : ReactNode => {
         }
     ];
 
-    let selectedSymbolLabel = '';
+    let selectedSymbolLabel:string = '';
 
     return <Box as={YourIR}>
         <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" height="0" width="0">
@@ -123,7 +124,7 @@ const SharePriceChart = () : ReactNode => {
                                     <Portal>
                                         <MenuList>
                                             {
-                                                comparisonSymbols.map((item, index) => {
+                                                comparisonSymbols.map((item:IFilter, index:number) => {
                                                     return <MenuItem key={index}
                                                         as={Button}
                                                         variant="menuItemFilter"

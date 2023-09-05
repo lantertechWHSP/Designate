@@ -36,7 +36,7 @@ const DividendHistoryChart = ({ data }:IDividendHistoryChart) : ReactNode => {
         return height - margin.top - margin.bottom;
     }, [height]);
 
-    const yScale:ScaleLinear = useMemo<ScaleLinear>(() => {
+    const yScale:any = useMemo<ScaleLinear>(() => {
         if(data) {
             return scaleLinear()
                 .domain([0, _maxBy(data, (item:IDividendItem) => {
@@ -46,7 +46,7 @@ const DividendHistoryChart = ({ data }:IDividendHistoryChart) : ReactNode => {
         }
     }, [data, height]);
 
-    const xScale:ScaleBand = useMemo<ScaleBand>(() => {
+    const xScale:any = useMemo<ScaleBand>(() => {
         if(data) {
             return scaleBand()
                 .domain(data.map((item:IDividendItem) => {

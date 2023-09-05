@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState, ReactNode, Fragment }  from 'react';
-import { scaleLinear, scaleTime, line } from 'd3';
+import { scaleLinear, scaleTime, line, ScaleLinear, ScaleTime } from 'd3';
 import { Box } from '@chakra-ui/react';
 import { AxisLeft } from '~/components/blocks/SharePricePanel/charts/ShareholderReturnChart/components/AxisLeft';
 import { AxisBottom } from '~/components/blocks/SharePricePanel/charts/ShareholderReturnChart/components/AxisBottom';
@@ -29,15 +29,15 @@ const ShareholderReturnChart = ({data}:IShareholderReturnChart) : ReactNode => {
     const margin = { top: 30, right: 30, bottom: 50, left: 0 };
     const elementRef = useRef<any>();
 
-    const boundsWidth:number = useMemo(() => {
+    const boundsWidth:number = useMemo<number>(() => {
         return width - margin.right - margin.left;
     }, [width]);
 
-    const boundsHeight:number = useMemo(() => {
+    const boundsHeight:number = useMemo<number>(() => {
         return height - margin.top - margin.bottom;
     }, [height]);
 
-    const yScale = useMemo(() => {
+    const yScale:any = useMemo<ScaleLinear>(() => {
         if(data) {
             return scaleLinear()
                 .domain([0, _max(_map(_flatten(data.lines), (data) => {
@@ -47,7 +47,7 @@ const ShareholderReturnChart = ({data}:IShareholderReturnChart) : ReactNode => {
         }
     }, [data, height]);
 
-    const xScale = useMemo(() => {
+    const xScale:any = useMemo<ScaleTime>(() => {
         if(data) {
             return scaleTime()
                 .domain([_min(_map(_flatten(data.lines), (data) => {
