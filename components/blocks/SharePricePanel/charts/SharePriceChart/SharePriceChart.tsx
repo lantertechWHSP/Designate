@@ -32,49 +32,49 @@ const SharePriceChart = () : ReactNode => {
             </defs>
         </svg>
         <Box w="100%"
-             sx={{
-                 '.yourir-chart': {
-                     padding: '40px 0',
-                     borderBottomWidth: '1px',
-                     borderStyle: 'solid',
-                     borderColor: 'lightGrey2',
-                     marginBottom: '30px'
-                 },
-                 '.yourir-chart-price-fill': {
-                     fill: `url(#priceGradient)`
-                 },
-                 '.yourir-chart-price': {
-                     stroke: 'black',
-                     strokeWidth: '1px',
-                 },
-                 '.yourir-chart-yaxis-label': {
-                     position: 'relative',
-                     top: '-10px'
-                 },
-                 '.yourir-chart-yaxis-left .yourir-chart-yaxis-outside .yourir-chart-yaxis-label-container': {
-                     left: '0',
-                     marginRight: '0',
-                     fontSize: '12px',
-                     color: 'grey'
-                 },
-                 '.yourir-chart-xaxis-label': {
-                     fontSize: '12px',
-                     color: 'grey'
-                 },
-                 '.yourir-chart-panel-border-bottom': {
-                     display: 'none'
-                 },
-                 '.yourir-chart-tick-bottom': {
-                     display: 'none'
-                 },
-                 '.yourir-chart-xaxis-outside': {
-                     position: 'relative',
-                     top: '10px'
-                 },
-                 '.yourir-chart-yaxis-gridline': {
-                     stroke: 'lightGrey2'
-                 }
-             }}>
+            sx={{
+                '.yourir-chart': {
+                    padding: '40px 0',
+                    borderBottomWidth: '1px',
+                    borderStyle: 'solid',
+                    borderColor: 'lightGrey2',
+                    marginBottom: '30px'
+                },
+                '.yourir-chart-price-fill': {
+                    fill: `url(#priceGradient)`
+                },
+                '.yourir-chart-price': {
+                    stroke: 'black',
+                    strokeWidth: '1px',
+                },
+                '.yourir-chart-yaxis-label': {
+                    position: 'relative',
+                    top: '-10px'
+                },
+                '.yourir-chart-yaxis-left .yourir-chart-yaxis-outside .yourir-chart-yaxis-label-container': {
+                    left: '0',
+                    marginRight: '0',
+                    fontSize: '12px',
+                    color: 'grey'
+                },
+                '.yourir-chart-xaxis-label': {
+                    fontSize: '12px',
+                    color: 'grey'
+                },
+                '.yourir-chart-panel-border-bottom': {
+                    display: 'none'
+                },
+                '.yourir-chart-tick-bottom': {
+                    display: 'none'
+                },
+                '.yourir-chart-xaxis-outside': {
+                    position: 'relative',
+                    top: '10px'
+                },
+                '.yourir-chart-yaxis-gridline': {
+                    stroke: 'lightGrey2'
+                }
+            }}>
             <Box id="priceComparisionChart" data-yourir="priceComparisonChart1 comparisonSymbol1=sol.asx volume.visible=false range=1d ranges=1d,1m,6m,1y,5y,10y showTooltips=true">
                 <Flex>
                     <Box>
@@ -114,10 +114,10 @@ const SharePriceChart = () : ReactNode => {
                             {({ isOpen }) => (
                                 <>
                                     <MenuButton as={Button}
-                                                variant="menuButton"
-                                                height="40px"
-                                                lineHeight="40px"
-                                                rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} w={12} h={12} /> : <Icon icon={Icons.ChevronDown} w={12} h={12} />}>
+                                        variant="menuButton"
+                                        height="40px"
+                                        lineHeight="40px"
+                                        rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} w={12} h={12} /> : <Icon icon={Icons.ChevronDown} w={12} h={12} />}>
                                         {selectedSymbolLabel ? selectedSymbolLabel : 'Compare…'}
                                     </MenuButton>
                                     <Portal>
@@ -125,12 +125,12 @@ const SharePriceChart = () : ReactNode => {
                                             {
                                                 comparisonSymbols.map((item, index) => {
                                                     return <MenuItem key={index}
-                                                                     as={Button}
-                                                                     variant="menuItemFilter"
-                                                                     onClick={() => {
-                                                                         selectedSymbolLabel = item.name;
-                                                                         set(`priceComparisionChart.comparisonSymbol2`, item.value);
-                                                                     }}>
+                                                        as={Button}
+                                                        variant="menuItemFilter"
+                                                        onClick={() => {
+                                                            selectedSymbolLabel = item.name;
+                                                            set(`priceComparisionChart.comparisonSymbol2`, item.value);
+                                                        }}>
                                                         {item.name}
                                                     </MenuItem>;
                                                 })
@@ -145,7 +145,7 @@ const SharePriceChart = () : ReactNode => {
                 <Box data-yourir="plots" />
             </Box>
         </Box>
-    </Box>
-}
+    </Box>;
+};
 
 export default SharePriceChart;

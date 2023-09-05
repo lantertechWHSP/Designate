@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState, ReactNode }  from 'react';
+import React, { useEffect, useMemo, useRef, useState, ReactNode, Fragment }  from 'react';
 import { scaleLinear, scaleTime, line, DataPoint } from 'd3';
 import { Box } from '@chakra-ui/react';
 import { AxisLeft } from '~/components/blocks/SharePricePanel/charts/ShareholderReturnChart/components/AxisLeft';
@@ -53,7 +53,7 @@ const ShareholderReturnChart = ({data}:IShareholderReturnChart) : ReactNode => {
                 })), _max(_map(_flatten(data.lines), (data) => {
                     return data.date.valueOf();
                 }))])
-                .range([0, width])
+                .range([0, width]);
         }
     }, [data, width]);
 
@@ -70,7 +70,7 @@ const ShareholderReturnChart = ({data}:IShareholderReturnChart) : ReactNode => {
             newLines.push({
                 d: lineBuilder(lineData),
                 stroke: colorGenerator.next()
-            })
+            });
         });
 
         return newLines;
@@ -134,14 +134,16 @@ const ShareholderReturnChart = ({data}:IShareholderReturnChart) : ReactNode => {
                             {
                                 (Array.isArray(lines) && lines.length > 0) && <>
                                     {
-                                        lines.map((line:ILineDataSVG) => {
-                                            return <path
-                                                d={line.d}
-                                                opacity={1}
-                                                stroke={line.stroke}
-                                                fill="none"
-                                                strokeWidth={2}
-                                            />
+                                        lines.map((line:ILineDataSVG, index:number) => {
+                                            return <Fragment key={index}>
+                                                <path
+                                                    d={line.d}
+                                                    opacity={1}
+                                                    stroke={line.stroke}
+                                                    fill="none"
+                                                    strokeWidth={2}
+                                                />
+                                            </Fragment>;
                                         })
                                     }
                                 </>
@@ -152,6 +154,6 @@ const ShareholderReturnChart = ({data}:IShareholderReturnChart) : ReactNode => {
             </svg>
         }
     </Box>;
-}
+};
 
 export default ShareholderReturnChart;

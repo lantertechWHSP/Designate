@@ -60,12 +60,12 @@ const SharePricePanel = () : ReactNode => {
                 }
             ]
         ]
-    }
+    };
 
     return <Box background="lightGrey3" py={8}>
         <Container>
             <Grid templateColumns='repeat(5, 1fr)'
-                  gap={8}>
+                gap={8}>
                 <GridItem colSpan={2}>
                     <SharePriceOverview />
                 </GridItem>

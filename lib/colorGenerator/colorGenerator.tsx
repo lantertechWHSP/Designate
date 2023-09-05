@@ -8,7 +8,7 @@ export class ColorGenerator {
         '#e8b231',
         '#861cc3'
     ];
-    private index:number = 0
+    private index:number = 0;
     private cycleIndex:number = 0;
     private goldenRatioConjugate:number = 1.618;
 
@@ -33,19 +33,19 @@ export class ColorGenerator {
     }
 
     public next() : string {
-        let hslToRgb = (object) => {
+        const hslToRgb : any = (object) => {
             let r;
             let g;
             let b;
-            let h = object.h;
-            let s = object.s;
-            let l = object.l;
+            const h = object.h;
+            const s = object.s;
+            const l = object.l;
 
             if(s === 0) {
                 r = g = b = l; // achromatic
             }
             else {
-                let hue2rgb = (p, q, t) => {
+                const hue2rgb = (p, q, t) : any => {
                     if(t < 0) t += 1;
                     if(t > 1) t -= 1;
                     if(t < 1/6) return p + (q - p) * 6 * t;
@@ -54,8 +54,8 @@ export class ColorGenerator {
                     return p;
                 };
 
-                let q = l < 0.5 ? l * (1 + s) : l + s - l * s;
-                let p = 2 * l - q;
+                const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+                const p = 2 * l - q;
                 r = hue2rgb(p, q, h + 1/3);
                 g = hue2rgb(p, q, h);
                 b = hue2rgb(p, q, h - 1/3);
@@ -68,7 +68,7 @@ export class ColorGenerator {
             };
         };
 
-        let rgbToHsl = (object) => {
+        const rgbToHsl = (object) : any => {
             let r = object.r;
             let g = object.g;
             let b = object.b;
@@ -76,8 +76,8 @@ export class ColorGenerator {
             r /= 255;
             g /= 255;
             b /= 255;
-            let max = Math.max(r, g, b);
-            let min = Math.min(r, g, b);
+            const max = Math.max(r, g, b);
+            const min = Math.min(r, g, b);
             let h;
             let s;
             let l;
@@ -87,7 +87,7 @@ export class ColorGenerator {
                 h = s = 0; // achromatic
             }
             else {
-                let d = max - min;
+                const d = max - min;
                 s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
                 switch (max) {
                     case r: h = (g - b) / d + (g < b ? 6 : 0); break;
@@ -104,12 +104,12 @@ export class ColorGenerator {
             };
         };
 
-        let hexColorToRgbObject = (hexColor) => {
-            let regex = new RegExp('^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$');
+        const hexColorToRgbObject = (hexColor) : any => {
+            const regex = new RegExp('^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$');
             if(regex.test(hexColor)) {
-                let r = parseInt(hexColor.substr(1, 2), 16);
-                let g = parseInt(hexColor.substr(3, 2), 16);
-                let b = parseInt(hexColor.substr(5, 2), 16);
+                const r = parseInt(hexColor.substr(1, 2), 16);
+                const g = parseInt(hexColor.substr(3, 2), 16);
+                const b = parseInt(hexColor.substr(5, 2), 16);
 
                 return {
                     r: r,
@@ -120,9 +120,9 @@ export class ColorGenerator {
             return null;
         };
 
-        let rgbToHex = (object) => {
-            let componentToHex = (color) => {
-                let hex = color.toString(16);
+        const rgbToHex = (object) : any => {
+            const componentToHex = (color) : any => {
+                const hex = color.toString(16);
                 return hex.length == 1 ? '0' + hex : hex;
             };
 
@@ -141,11 +141,11 @@ export class ColorGenerator {
                 this.cycleIndex++;
             }
 
-            let selectedColor = this.colors[this.index % this.colors.length];
-            let hsl = rgbToHsl(hexColorToRgbObject(selectedColor));
+            const selectedColor = this.colors[this.index % this.colors.length];
+            const hsl = rgbToHsl(hexColorToRgbObject(selectedColor));
 
             // Retrieves a new hue relative to the predefined hue with a ±30° color angle.
-            let getNewHue = (oldHue) => {
+            const getNewHue = (oldHue) : any => {
                 let hueWheel = oldHue * 360; // Hue converted into degrees
                 let offset = (this.goldenRatioConjugate * this.cycleIndex); // Multipliy the goldenRatioConjugate with the cycleIncrement
                 offset %= 1; // Modulo operator that fits between 0–1
@@ -161,20 +161,20 @@ export class ColorGenerator {
             };
 
             // Gets a new saturation that ranges between 20% to 100%
-            let getNewSaturation = () => {
+            const getNewSaturation = () : any => {
                 let offset = (this.goldenRatioConjugate * this.index);
                 offset %= 1;
 
-                let value = 0.20 + (offset * 0.8);
+                const value = 0.20 + (offset * 0.8);
                 return value;
             };
 
             // Gets a new value that ranges between 25% to 75%
-            let getNewLumination = () => {
+            const getNewLumination = () : any => {
                 let offset = (this.goldenRatioConjugate * this.index);
                 offset %= 1;
 
-                let value = 0.25 + (offset * 0.5);
+                const value = 0.25 + (offset * 0.5);
                 return value;
             };
 
@@ -182,7 +182,7 @@ export class ColorGenerator {
             hsl.s = getNewSaturation();
             hsl.l = getNewLumination();
 
-            let color = rgbToHex(hslToRgb(hsl));
+            const color = rgbToHex(hslToRgb(hsl));
             this.index++;
             return color;
         }
