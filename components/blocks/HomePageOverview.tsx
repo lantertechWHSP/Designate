@@ -1,15 +1,14 @@
 import ContentBlock from "~/components/blocks/Content";
 import { ReactNode } from 'react';
-import { Box, Heading, Grid, GridItem } from '@chakra-ui/react';
-import { DatoLink } from '~/components/elements/datoLink';
+import { Box, Heading, Grid, GridItem, Link } from '@chakra-ui/react';
 import { Image } from '~/components/elements/image';
-import { IImage } from '~/interfaces';
+import { IDatoImage } from '~/interfaces';
 
 interface IHomePageOverviewBlockProps {
     description?:string;
-    imageMain?:IImage;
-    imageSide?:IImage;
-    imageSide2?:IImage;
+    imageMain?:IDatoImage;
+    imageSide?:IDatoImage;
+    imageSide2?:IDatoImage;
 }
 
 const HomePageOverviewBlock = ({ description, imageMain, imageSide, imageSide2 }:IHomePageOverviewBlockProps) : ReactNode => {
@@ -21,7 +20,7 @@ const HomePageOverviewBlock = ({ description, imageMain, imageSide, imageSide2 }
                 </Heading>
             }
             {
-                <DatoLink href="/our-history">Our Company</DatoLink>
+                <Link href="/our-history">Our Company</Link>
             }
         </Box>
         <Grid templateRows='repeat(2, 1fr)'

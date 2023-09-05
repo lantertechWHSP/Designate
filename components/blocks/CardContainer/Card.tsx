@@ -2,13 +2,14 @@ import { ReactNode } from 'react';
 import { Box, Text, Heading, AspectRatio } from '@chakra-ui/react';
 import { Icon, Icons } from '~/components/elements/icon';
 import { DatoLink } from '~/components/elements/datoLink';
+import { IDatoLink } from "~/interfaces";
 
 interface ICardBlockProps {
     link:IDatoLink;
 }
 
 const CardBlock = ({ link }:ICardBlockProps) : ReactNode => {
-    return <DatoLink link={link} color="black">
+    return <DatoLink {...link} color="black">
         <AspectRatio ratio={[3 / 2]}>
             <Box bg="ghostWhite">
                 <Box position="absolute" bottom="20px" left="20px">
