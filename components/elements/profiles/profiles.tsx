@@ -3,7 +3,7 @@ import { Image } from "~/components/elements/image";
 import { Icon, Icons } from "~/components/elements/icon";
 import { Box, Flex, Container, SimpleGrid, Heading, Modal, ModalOverlay, ModalContent, Button } from '@chakra-ui/react';
 
-const ProfileCard = ({ image, name, companyPosition, onClick }) : ReactNode => {
+const ProfileCard:any = ({ image, name, companyPosition, onClick }) : ReactNode => {
     return <Box>
         <Image image={image} ratio={[1 / 1]} onClick={onClick} mb={4} />
         {
@@ -19,11 +19,11 @@ const ProfileCard = ({ image, name, companyPosition, onClick }) : ReactNode => {
     </Box>;
 };
 
-export const Profiles = ({ people }) : ReactNode => {
-    const [modalOpen, setModalOpen] = useState(false);
-    const [activePerson, setActivePerson] = useState(null);
+export const Profiles:any = ({ people }) : ReactNode => {
+    const [modalOpen, setModalOpen] = useState<boolean>(false);
+    const [activePerson, setActivePerson] = useState<boolean>(null);
 
-    const onProfileClick = (index) : void => {
+    const onProfileClick:any = (index) : void => {
         setActivePerson(people[index]);
         setModalOpen(true);
     };

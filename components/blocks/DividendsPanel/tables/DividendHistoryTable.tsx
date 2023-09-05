@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { Box, TableContainer, Table, Thead, Tr, Th, Tbody, Td } from '@chakra-ui/react';
 
-export const DividendHistoryTable:Function = ({ isLoaded, table }:any) : ReactNode => {
+export const DividendHistoryTable:any = ({ isLoaded, table }:any) : ReactNode => {
     return <>
         {
             isLoaded && <>

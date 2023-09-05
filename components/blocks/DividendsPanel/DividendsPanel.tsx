@@ -14,7 +14,7 @@ interface IDividendsPanelBlockProps {
     csv?:IDatoFile;
 }
 
-const DividendsPanelBlock:Function = ({ description, latestDividendDescription, csv }:IDividendsPanelBlockProps) : ReactNode => {
+const DividendsPanelBlock:any = ({ description, latestDividendDescription, csv }:IDividendsPanelBlockProps) : ReactNode => {
     function convertCSVToJSON(str, delimiter = ',') : IDividendsTable {
         const titles:string = str.slice(0, str.indexOf('\n')).trim();
         const titlesProps:string[] = titles.replace(/\s/g, '').split(delimiter);
@@ -29,7 +29,7 @@ const DividendsPanelBlock:Function = ({ description, latestDividendDescription, 
                 };
             }),
             rows: rows.map((row:string) => {
-                const values = row.trim().split(delimiter);
+                const values:string[] = row.trim().split(delimiter);
 
                 return titlesProps.reduce((object:any, curr:string, index:number) => {
                     object[curr] = values[index];
@@ -41,11 +41,11 @@ const DividendsPanelBlock:Function = ({ description, latestDividendDescription, 
 
     useState(() => {
         fetch(csv.url).then((response) => response.text()).then((response:any) => {
-            const table = convertCSVToJSON(response, ',');
+            const table:IDividendsTable = convertCSVToJSON(response, ',');
 
             setTable(table);
 
-            const data = [];
+            const data:any = [];
             _forOwn(_groupBy(table.rows, (row:IDividendsTableRow) => {
                 return DateTime.fromFormat(row.PaymentDate, "d/M/yyyy").toFormat('yyyy');
             }), (row:IDividendsTableRow, key:string) => {

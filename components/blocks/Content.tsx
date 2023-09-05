@@ -7,7 +7,7 @@ interface IContentBlockProps extends ChakraProps {
     children?:any;
 }
 
-const ContentBlock:Function = ({ contain = true, children, ...props }:IContentBlockProps) : ReactNode => {
+const ContentBlock:any = ({ contain = true, children, ...props }:IContentBlockProps) : ReactNode => {
     return <Box {...props}>
         {
             contain ? <Container>

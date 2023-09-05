@@ -5,7 +5,7 @@ import { Icon, Icons } from '~/components/elements/icon';
 import { symbol } from '~/consts/yourir';
 import { IFilter } from '~/interfaces';
 
-const AsxAnnouncementsPanelBlock:Function = () : ReactNode => {
+const AsxAnnouncementsPanelBlock:any = () : ReactNode => {
     const filters:IFilter[] = [
         {
             name: 'All Document Types',
@@ -61,7 +61,7 @@ const AsxAnnouncementsPanelBlock:Function = () : ReactNode => {
 
     let yearName:string = years[0].name;
 
-    const scrollToTable:Function = () : void => {
+    const scrollToTable:any = () : void => {
         const scrollDiv:number = document.getElementById("asx-announcements-panel").offsetTop;
         window.scrollTo({ top: scrollDiv - 120, behavior: 'smooth'});
     };

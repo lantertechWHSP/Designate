@@ -6,16 +6,16 @@ interface IAxisBottomProps {
     transform:string;
 }
 
-export const AxisBottom:Function = ({ scale, transform }:IAxisBottomProps) : ReactNode => {
-    const ref = useRef<SVGGElement>(null);
+export const AxisBottom:any = ({ scale, transform }:IAxisBottomProps) : ReactNode => {
+    const elementRef:any = useRef<SVGGElement>(null);
 
     useEffect(() => {
-        if (ref.current) {
-            select(ref.current).call(axisBottom(scale));
+        if (elementRef.current) {
+            select(elementRef.current).call(axisBottom(scale));
         }
     }, [scale]);
 
     return <g className="x-axis">
-        <g ref={ref} transform={transform} />
+        <g ref={elementRef} transform={transform} />
     </g>;
 };

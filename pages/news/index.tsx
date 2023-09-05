@@ -24,7 +24,7 @@ export async function getStaticProps({ preview }) : Promise<any> {
     return { props: { layout, blocks, latestPosts, allPostsMeta } };
 }
 
-const LatestPosts:Function = ({ latestPosts, postsMeta }:any) : ReactNode => {
+const LatestPosts:any = ({ latestPosts, postsMeta }:any) : ReactNode => {
     const [page, setPage] = useState<number>(1);
     const [posts, setPosts] = useState<any>(latestPosts); // Iniitial posts
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -34,7 +34,7 @@ const LatestPosts:Function = ({ latestPosts, postsMeta }:any) : ReactNode => {
     const [totalPosts] = useState<number>(postsMeta.count || posts.length);
     const itemsPerPage:number = 1;
 
-    const loadMorePosts:Function = () : void => {
+    const loadMorePosts:any = () : void => {
         setIsLoading(true);
 
         doQuery(queries.latestPosts, { isFeatured: true, first: itemsPerPage, skip: page * itemsPerPage }).then(({ posts }) => posts || []).then((newPosts) => {

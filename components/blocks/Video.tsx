@@ -3,7 +3,7 @@ import { ReactNode, useState } from 'react';
 import { Text, AspectRatio } from '@chakra-ui/react';
 import dynamic from 'next/dynamic';
 import { IDatoVideo } from '~/interfaces';
-const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
+const ReactPlayer:any = dynamic(() => import("react-player"), { ssr: false });
 
 interface IVideoBlockProps {
     id?:string;
@@ -13,7 +13,7 @@ interface IVideoBlockProps {
     videoEmbed?:IDatoVideo;
 }
 
-const VideoBlock:Function = ({ title, video, videoEmbed }:IVideoBlockProps) : ReactNode => {
+const VideoBlock:any = ({ title, video, videoEmbed }:IVideoBlockProps) : ReactNode => {
     const [currentVideo] = useState<IDatoVideo>(video ? video : videoEmbed);
 
     return <ContentBlock>

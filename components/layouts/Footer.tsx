@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { Container, Flex, Text, Box, Link } from '@chakra-ui/react';
 
-const Footer = ({ address, email, phone, _fax, _linkedin, copyright }) : ReactNode => {
+const Footer:any = ({ address, email, phone, _fax, _linkedin, copyright }:any) : ReactNode => {
     return <Box as="footer" background="ghostWhite" py={8}>
         <Container>
             <Flex h="60px" align="center">

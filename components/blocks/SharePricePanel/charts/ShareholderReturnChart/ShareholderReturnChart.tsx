@@ -23,11 +23,18 @@ interface ILineDataSVG {
     stroke:string;
 }
 
-const ShareholderReturnChart:Function = ({data}:IShareholderReturnChart) : ReactNode => {
+interface IMargin {
+    top:number;
+    right:number;
+    bottom:number;
+    left:number;
+}
+
+const ShareholderReturnChart:any = ({data}:IShareholderReturnChart) : ReactNode => {
     const [width, setWidth] = useState<number>(null);
     const [height, setHeight] = useState<number>(null);
-    const margin = { top: 30, right: 30, bottom: 50, left: 0 };
-    const elementRef = useRef<any>();
+    const margin:IMargin = { top: 30, right: 30, bottom: 50, left: 0 };
+    const elementRef:any = useRef<ReactNode>();
 
     const boundsWidth:number = useMemo<number>(() => {
         return width - margin.right - margin.left;
@@ -59,13 +66,12 @@ const ShareholderReturnChart:Function = ({data}:IShareholderReturnChart) : React
         }
     }, [data, width]);
 
-    const lineBuilder = line<IData>()
+    const lineBuilder:any = line<IData>()
         .x((data:IData) => xScale(data.date))
         .y((data:IData) => yScale(data.value));
 
-    const lines = useMemo(() => {
-        const colorGenerator = new ColorGenerator();
-
+    const lines:any = useMemo(() => {
+        const colorGenerator:ColorGenerator = new ColorGenerator();
         const newLines:ILineDataSVG[] = [];
 
         data.lines.map((lineData:IData[]) => {
@@ -79,15 +85,15 @@ const ShareholderReturnChart:Function = ({data}:IShareholderReturnChart) : React
     }, [data]);
 
     useEffect(() => {
-        const setDimension = () : void => {
+        const setDimension:any = () : void => {
             if(elementRef.current) {
-                const newWidth = elementRef.current.getBoundingClientRect().width;
+                const newWidth:number = elementRef.current.getBoundingClientRect().width;
                 setWidth(newWidth);
                 setHeight(newWidth * 0.66);
             }
         };
 
-        const handleResize = _throttle(() => {
+        const handleResize:any = _throttle(() => {
             setDimension();
         }, 100);
 

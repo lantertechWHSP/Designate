@@ -6,17 +6,17 @@ interface IAxisBottomProps {
     transform:string;
 }
 
-export const AxisBottom:Function = ({ scale, transform }:IAxisBottomProps) : ReactNode => {
-    const ref = useRef<SVGGElement>(null);
+export const AxisBottom:any = ({ scale, transform }:IAxisBottomProps) : ReactNode => {
+    const elementRef:any = useRef<SVGGElement>(null);
 
     useEffect(() => {
-        if (ref.current) {
+        if (elementRef.current) {
             // @ts-ignore
-            select(ref.current).call(axisBottom(scale).ticks(timeYear.every(1)).tickFormat(timeFormat("%Y")));
+            select(elementRef.current).call(axisBottom(scale).ticks(timeYear.every(1)).tickFormat(timeFormat("%Y")));
         }
     }, [scale]);
 
     return <g className="x-axis">
-        <g ref={ref} transform={transform} />
+        <g ref={elementRef} transform={transform} />
     </g>;
 };

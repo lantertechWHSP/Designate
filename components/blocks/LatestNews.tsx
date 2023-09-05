@@ -17,8 +17,8 @@ interface ILatestNewsBlockProps {
     }
 }
 
-const LatestNewsItem:Function = ({ title, publishDate }:ILatestNewsItemProps) : ReactNode => {
-    const date = parseISO(publishDate);
+const LatestNewsItem:any = ({ title, publishDate }:ILatestNewsItemProps) : ReactNode => {
+    const date:Date = parseISO(publishDate);
 
     return <Box py={6} borderBottom="1px solid lightGrey">
         {
@@ -37,7 +37,7 @@ const LatestNewsItem:Function = ({ title, publishDate }:ILatestNewsItemProps) : 
     </Box>;
 };
 
-const LatestNewsBlock = ({ title, data: { posts } }:ILatestNewsBlockProps) : ReactNode => {
+const LatestNewsBlock:any = ({ title, data: { posts } }:ILatestNewsBlockProps) : ReactNode => {
     return <ContentBlock py={8} background="mutedSteel">
         <SimpleGrid columns={[1, ,2]}>
             <Box>
@@ -59,7 +59,7 @@ const LatestNewsBlock = ({ title, data: { posts } }:ILatestNewsBlockProps) : Rea
 };
 
 LatestNewsBlock.getData = async () => {
-    const result = await doQuery(queries.latestPosts, {
+    const result:any = await doQuery(queries.latestPosts, {
         first: 3,
         isFeatured: true
     });

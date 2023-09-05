@@ -11,7 +11,7 @@ interface IHomePageOverviewBlockProps {
     imageSide2?:IDatoImage;
 }
 
-const HomePageOverviewBlock:Function = ({ description, imageMain, imageSide, imageSide2 }:IHomePageOverviewBlockProps) : ReactNode => {
+const HomePageOverviewBlock:any = ({ description, imageMain, imageSide, imageSide2 }:IHomePageOverviewBlockProps) : ReactNode => {
     return <ContentBlock background="lightGrey3" py={12}>
         <Box maxW="900" mx="auto" textAlign="center" mb={8}>
             {

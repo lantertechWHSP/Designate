@@ -31,9 +31,9 @@ interface IMenuItem {
     children?: IMenuItem[];
 }
 
-const MotionBox = motion(Box);
+const MotionBox:any = motion(Box);
 
-const Header = ({menu}): ReactNode => {
+const Header:any = ({menu}): ReactNode => {
     const {isOpen, onToggle} = useDisclosure();
     const height:string = '120px';
 
@@ -76,7 +76,7 @@ const Header = ({menu}): ReactNode => {
     </Box>;
 };
 
-const DestopPopoverTrigger = ({item}): ReactNode => {
+const DestopPopoverTrigger:any  = ({item}): ReactNode => {
     const { isOpen } = usePopoverContext();
 
     return <PopoverTrigger>
@@ -95,7 +95,7 @@ const DestopPopoverTrigger = ({item}): ReactNode => {
     </PopoverTrigger>;
 };
 
-const DesktopNav = ({menu}): ReactNode => {
+const DesktopNav:any = ({menu}): ReactNode => {
     return <Flex as="nav" display={['none', , , 'flex']}>
         {
             Array.isArray(menu) && menu.length > 0 && menu.map((item: IMenuItem, index: number) => {
@@ -128,8 +128,8 @@ const DesktopNav = ({menu}): ReactNode => {
     </Flex>;
 };
 
-const MobileNav = ({menu, isOpen}): ReactNode => {
-    const scrollRef = useRef();
+const MobileNav:any = ({menu, isOpen}): ReactNode => {
+    const scrollRef:any = useRef<ReactNode>();
 
     useEffect(() => {
         if (scrollRef.current) {
@@ -171,10 +171,10 @@ const MobileNav = ({menu, isOpen}): ReactNode => {
     </MotionBox>;
 };
 
-const MobileNavItem = ({item}): ReactNode => {
+const MobileNavItem:any = ({item}): ReactNode => {
     const {isOpen, onToggle} = useDisclosure();
-    const hasChildren = Array.isArray(item.children) && item.children.length > 0;
-    const handleClick = (hasChildren) : void => {
+    const hasChildren:boolean = Array.isArray(item.children) && item.children.length > 0;
+    const handleClick:any = (hasChildren) : void => {
         if (hasChildren) {
             onToggle();
         }

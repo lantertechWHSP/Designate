@@ -6,22 +6,22 @@ import { Formik, Form, Field } from 'formik';
 import * as yup from 'yup';
 
 // @TODO Subscription form and ReCaptcha
-export const SubscriptionForm = () : ReactNode => {
+export const SubscriptionForm:any = () : ReactNode => {
     // const RECAPTCHA_API_KEY:string = process.env.NEXT_PUBLIC_RECAPTCHA_API_KEY;
 
     // @ts-ignore
-    const SCHEMA = yup.object({
+    const SCHEMA:any = yup.object({
         email: yup.string().required("Please enter an Email Address").email("Please enter a valid Email Address")
     });
 
-    const INITIAL_VALUES = {
+    const INITIAL_VALUES:any = {
         email: ''
     };
 
     const [status, setStatus] = useState<string>();
     const [message, setMessage] = useState<string>();
 
-    const submit = (values, resetForm) : void => {
+    const submit:any = (values, resetForm) : void => {
         setStatus('');
 
         fetch('api/subscribe', {

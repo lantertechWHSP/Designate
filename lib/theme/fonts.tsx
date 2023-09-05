@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { Global } from '@emotion/react';
 
-const Fonts = () : ReactNode => (
+const Fonts:any = () : ReactNode => (
     <Global
         styles={`
             @font-face {

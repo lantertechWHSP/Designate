@@ -3,7 +3,7 @@ import { YourIR } from 'yourir-next';
 import { Flex, Box, Text, Badge } from '@chakra-ui/react';
 import { symbol } from '~/consts/yourir';
 
-const SharePriceOverview:Function = () : ReactNode => {
+const SharePriceOverview:any = () : ReactNode => {
     return <Box as={YourIR}>
         <Box py={4}
             mb={8}>

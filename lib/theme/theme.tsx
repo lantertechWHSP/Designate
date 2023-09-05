@@ -2,7 +2,7 @@ import { extendBaseTheme } from '@chakra-ui/react';
 import chakraTheme from '@chakra-ui/theme';
 const { Modal, Menu } = chakraTheme.components;
 
-const colors = {
+const colors:any = {
     // lightGrey: '#c4c4c4',
     ghostWhite: '#f2f4f6',
     ghostWhite2: '#f9fafb',
@@ -23,7 +23,7 @@ const colors = {
     red: '#df322f'
 };
 
-export const theme = extendBaseTheme({
+export const theme:any = extendBaseTheme({
     fonts: {
         heading: `'Untitled Sans', serif`,
         body: `'Untitled Sans', serif`,

@@ -1,6 +1,6 @@
 import { getBlock } from '~/components/ModularContent';
 
-export const resolveInternalLink = (link:IDatoLink) : string => {
+export const resolveInternalLink:any = (link:IDatoLink) : string => {
     if (!link) {
         return null;
     }
@@ -16,33 +16,33 @@ export const resolveInternalLink = (link:IDatoLink) : string => {
 };
 
 // https://github.com/ifakejs/tree-path
-export const treePath = (tree, breakCondition) : any => {
-    const len = tree?.length;
+export const treePath:any = (tree, breakCondition) : any => {
+    const len:number = tree?.length;
     if (len === 0) return [];
-    const result = [];
+    const result:any[] = [];
 
     function loop(treeNode) : any {
         result.push(treeNode);
         if (breakCondition && breakCondition(treeNode)) throw 'Found.';
-        const childLen = treeNode.children?.length;
-        for (let j = 0; j < childLen; j++) {
+        const childLen:number = treeNode.children?.length;
+        for (let j:number = 0; j < childLen; j++) {
             loop(treeNode.children[j]);
         }
         result.pop();
     }
 
     try {
-        for (let i = 0; i < len; i++) loop(tree[i]);
+        for (let i:number = 0; i < len; i++) loop(tree[i]);
     } catch (e) {
         return result;
     }
     return result;
 };
 
-export const getBreadcrumbs = (menu, page) : any => {
-    let breadcrumbs = [];
+export const getBreadcrumbs:any = (menu, page) : any => {
+    let breadcrumbs:any[] = [];
 
-    const path = treePath(menu, (node) => {
+    const path:any = treePath(menu, (node) => {
         return node.link?.slug === page?.slug;
     });
 
@@ -63,10 +63,10 @@ export const getBreadcrumbs = (menu, page) : any => {
     return breadcrumbs;
 };
 
-export const getLayoutData = (site, page, preview) : any => {
-    const favicon = site?.site?.favicon || [];
-    const metatags = [...favicon, ...(page?.seo || [])];
-    const breadcrumbs = getBreadcrumbs(site?.menu, page);
+export const getLayoutData:any = (site, page, preview) : any => {
+    const favicon:any = site?.site?.favicon || [];
+    const metatags:any = [...favicon, ...(page?.seo || [])];
+    const breadcrumbs:any = getBreadcrumbs(site?.menu, page);
 
     return {
         metatags: metatags,
@@ -81,12 +81,12 @@ export const getLayoutData = (site, page, preview) : any => {
     };
 };
 
-export const getBlocks = async (blocks): Promise<any> => {
+export const getBlocks:any = async (blocks): Promise<any> => {
     if(blocks) {
         return (
             (await Promise.all(
                 blocks?.map(async (block) => {
-                    const b = getBlock(block.__typename);
+                    const b:any = getBlock(block.__typename);
                     if (b?.getData instanceof Function) {
                         block.data = await b?.getData(block);
                     }

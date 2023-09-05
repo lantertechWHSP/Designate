@@ -4,12 +4,12 @@ import { useRouter } from 'next/router';
 import { resolveInternalLink } from 'lib/utils';
 import { MenuItemLink } from "~/components/elements/menuItemLink";
 
-const PageLinks = ({ current }) : ReactNode => {
-    const router = useRouter();
+const PageLinks:any = ({ current }:any) : ReactNode => {
+    const router:any = useRouter();
 
     if (!current?.children.length) return null;
 
-    const links = current.children.filter(
+    const links:any = current.children.filter(
         (link) => resolveInternalLink(link.href) !== router.asPath
     );
 

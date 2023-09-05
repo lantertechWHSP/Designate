@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import { YourIR } from 'yourir-next';
 import { Heading, Container, Box, TableContainer, Table, Thead, Tr, Th, Tbody, Td } from '@chakra-ui/react';
 
-const ShareQuoteTable:Function = () : ReactNode => {
+const ShareQuoteTable:any = () : ReactNode => {
     return <Box py={12}>
         <Box as={YourIR}>
             <Container>

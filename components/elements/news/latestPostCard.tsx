@@ -1,7 +1,7 @@
 import { Box, AspectRatio, Text, Link } from '@chakra-ui/react';
 import { Image } from 'react-datocms';
 
-export const LatestPostCard = ({ title, image, date, slug }) : any => {
+export const LatestPostCard:any = ({ title, image, date, slug }:any) : any => {
     return <Box>
         <Box mb={2}>
             <Link href={`/news/${slug}`}>

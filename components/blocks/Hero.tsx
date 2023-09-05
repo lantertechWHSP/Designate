@@ -10,7 +10,7 @@ interface IHeroBlockProps {
     image?:IDatoImage;
 }
 
-const HeroBlock:Function = ({ title, video, image }:IHeroBlockProps) : ReactNode => {
+const HeroBlock:any = ({ title, video, image }:IHeroBlockProps) : ReactNode => {
     const { observe: contentWidthObserve, width: contentWidth } = useDimensions();
 
     return <Box

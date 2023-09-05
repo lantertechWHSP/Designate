@@ -22,11 +22,11 @@ interface IMargin {
     left:number;
 }
 
-const DividendHistoryChart:Function = ({ data }:IDividendHistoryChart) : ReactNode => {
+const DividendHistoryChart:any = ({ data }:IDividendHistoryChart) : ReactNode => {
     const [width, setWidth] = useState<number>(null);
     const [height, setHeight] = useState<number>(null);
     const margin:IMargin = { top: 30, right: 30, bottom: 50, left: 0 };
-    const elementRef = useRef<any>();
+    const elementRef:any = useRef<ReactNode>();
 
     const boundsWidth:number = useMemo<number>(() => {
         return width - margin.right - margin.left;
@@ -58,15 +58,15 @@ const DividendHistoryChart:Function = ({ data }:IDividendHistoryChart) : ReactNo
     }, [data, width]);
 
     useEffect(() => {
-        const setDimension:Function = () : void => {
+        const setDimension:any = () : void => {
             if(elementRef.current) {
-                const newWidth = elementRef.current.getBoundingClientRect().width;
+                const newWidth:number = elementRef.current.getBoundingClientRect().width;
                 setWidth(newWidth);
                 setHeight(newWidth * 0.66);
             }
         };
 
-        const handleResize:Function = _throttle(() => {
+        const handleResize:any = _throttle(() => {
             setDimension();
         }, 100);
 

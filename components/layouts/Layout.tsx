@@ -6,7 +6,7 @@ import PageLinks from '~/components/layouts/PageLinks';
 import { Heading, Container, Flex, Box } from '@chakra-ui/react';
 import { SubscriptionForm } from '~/components/elements/mailchimp/subscriptionForm';
 
-const Layout = ({ layout, children }:any) : ReactNode => {
+const Layout:any = ({ layout, children }:any) : ReactNode => {
     return (
         <Flex minHeight="100vh" direction="column">
             {

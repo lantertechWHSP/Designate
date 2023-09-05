@@ -6,7 +6,7 @@ interface IAudioBlockProps {
     trackId?:string;
 }
 
-const AudioBlock:Function = ({ trackId }:IAudioBlockProps) : ReactNode => {
+const AudioBlock:any = ({ trackId }:IAudioBlockProps) : ReactNode => {
     return <>
         {
             trackId && <iframe width="100%"

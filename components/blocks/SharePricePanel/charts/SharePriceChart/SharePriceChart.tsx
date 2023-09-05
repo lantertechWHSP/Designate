@@ -4,7 +4,7 @@ import { Icon, Icons } from '~/components/elements/icon';
 import { Flex, Box, ButtonGroup, Button, Menu, MenuButton, Portal, MenuList, MenuItem } from '@chakra-ui/react';
 import { IFilter } from '~/interfaces';
 
-const SharePriceChart:Function = () : ReactNode => {
+const SharePriceChart:any = () : ReactNode => {
     const comparisonSymbols:IFilter[] = [
         {
             name: 'XAO All Ordinaries',

@@ -8,7 +8,7 @@ import ImageBlock from '~/components/blocks/Image';
 import VideoBlock from "~/components/blocks/Video";
 import AudioBlock from "~/components/blocks/Audio";
 
-const StrucutredContent:Function = ({ content }) : ReactNode => {
+const StrucutredContent:any = ({ content }) : ReactNode => {
     return (
         <StructuredText
             data={content}

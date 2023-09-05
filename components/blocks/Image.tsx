@@ -8,7 +8,7 @@ interface IImageBlockProps {
     image:IDatoImage;
 }
 
-const ImageBlock:Function = ({ image }:IImageBlockProps) : ReactNode => {
+const ImageBlock:any = ({ image }:IImageBlockProps) : ReactNode => {
     return <ContentBlock>
         <Box>
             <DatoImage data={image.responsiveImage} />
