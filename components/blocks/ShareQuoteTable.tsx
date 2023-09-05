@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import { YourIR } from 'yourir-next';
 import { Heading, Container, Box, TableContainer, Table, Thead, Tr, Th, Tbody, Td } from '@chakra-ui/react';
 
-const QuoteTablePanel = () : ReactNode => {
+const ShareQuoteTable = () : ReactNode => {
     return <Box py={12}>
         <Box as={YourIR}>
             <Container>
@@ -55,4 +55,4 @@ const QuoteTablePanel = () : ReactNode => {
     </Box>;
 };
 
-export default QuoteTablePanel;
+export default ShareQuoteTable;

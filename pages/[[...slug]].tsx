@@ -11,7 +11,6 @@ export async function getStaticPaths() : Promise<any> {
         'about/board',
         'about/management',
         'investors/asx-announcements',
-        'investors/share-price-information'
     ];
 
     const pages = await doQuery(queries.pages).then(({ pages }) => pages);

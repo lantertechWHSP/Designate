@@ -11,6 +11,8 @@ import InvestorPanel from '~/components/blocks/InvestorPanel';
 import HomePageOverview from '~/components/blocks/HomePageOverview';
 import DividendsPanel from '~/components/blocks/DividendsPanel/DividendsPanel';
 import SharePricePanel from '~/components/blocks/SharePricePanel/SharePricePanel';
+import ShareQuoteTable from '~/components/blocks/ShareQuoteTable';
+import ShareHistoricalPricesTable from '~/components/blocks/ShareHistoricalPricesTable';
 
 const blocks:any = {
     Text,
@@ -25,7 +27,9 @@ const blocks:any = {
     InvestorPanel,
     HomePageOverview,
     DividendsPanel,
-    SharePricePanel
+    SharePricePanel,
+    ShareQuoteTable,
+    ShareHistoricalPricesTable
 };
 
 export const getBlock = (name:any) : any => {
