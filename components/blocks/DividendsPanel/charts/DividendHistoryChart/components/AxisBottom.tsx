@@ -1,7 +1,12 @@
 import { useEffect, useRef, ReactNode } from 'react';
 import { select, axisBottom } from 'd3';
 
-export const AxisBottom = ({ scale, transform }:any) : ReactNode => {
+interface IAxisBottomProps {
+    scale:any;
+    transform:string;
+}
+
+export const AxisBottom = ({ scale, transform }:IAxisBottomProps) : ReactNode => {
     const ref = useRef<SVGGElement>(null);
 
     useEffect(() => {

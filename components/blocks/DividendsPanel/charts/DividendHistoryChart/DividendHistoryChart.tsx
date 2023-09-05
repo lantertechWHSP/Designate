@@ -1,49 +1,56 @@
 import React, { useEffect, useMemo, useRef, useState, ReactNode }  from 'react';
 import { Box } from '@chakra-ui/react';
-import { scaleLinear, scaleBand } from 'd3';
+import { scaleLinear, scaleBand, ScaleLinear, ScaleBand } from 'd3';
 import { AxisBottom } from '~/components/blocks/DividendsPanel/charts/DividendHistoryChart/components/AxisBottom';
 import { AxisLeft } from '~/components/blocks/DividendsPanel/charts/DividendHistoryChart/components/AxisLeft';
 import { Bars } from '~/components/blocks/DividendsPanel/charts/DividendHistoryChart/components/Bars';
 import { maxBy as _maxBy, throttle as _throttle } from 'lodash';
 
 interface IDividendHistoryChart {
-    data: IDatum[];
+    data: IDividendItem[];
 }
 
-interface IDatum {
+interface IDividendItem {
     value:number;
     label:string;
+}
+
+interface IMargin {
+    top:number;
+    right:number;
+    bottom:number;
+    left:number;
 }
 
 const DividendHistoryChart = ({ data }:IDividendHistoryChart) : ReactNode => {
     const [width, setWidth] = useState<number>(null);
     const [height, setHeight] = useState<number>(null);
-    const margin = { top: 30, right: 30, bottom: 50, left: 0 };
+    const margin:IMargin = { top: 30, right: 30, bottom: 50, left: 0 };
     const elementRef = useRef<any>();
 
-    const boundsWidth:number = useMemo(() => {
+    const boundsWidth:number = useMemo<number>(() => {
         return width - margin.right - margin.left;
     }, [width]);
 
-    const boundsHeight:number = useMemo(() => {
+    const boundsHeight:number = useMemo<number>(() => {
         return height - margin.top - margin.bottom;
     }, [height]);
 
-    const yScale = useMemo(() => {
+    const yScale:ScaleLinear = useMemo<ScaleLinear>(() => {
         if(data) {
             return scaleLinear()
-                .domain([0, _maxBy(data, (datum:IDatum) => {
-                    return datum.value;
+                .domain([0, _maxBy(data, (item:IDividendItem) => {
+                    return item.value;
                 }).value])
                 .range([boundsHeight, 0]);
         }
     }, [data, height]);
 
-    const xScale = useMemo(() => {
+    const xScale:ScaleBand = useMemo<ScaleBand>(() => {
         if(data) {
             return scaleBand()
-                .domain(data.map((datum:IDatum) => {
-                    return datum.label;
+                .domain(data.map((item:IDividendItem) => {
+                    return item.label;
                 }))
                 .range([0, width])
                 .padding(0.5);
@@ -51,7 +58,7 @@ const DividendHistoryChart = ({ data }:IDividendHistoryChart) : ReactNode => {
     }, [data, width]);
 
     useEffect(() => {
-        const setDimension = () : void => {
+        const setDimension:Function = () : void => {
             if(elementRef.current) {
                 const newWidth = elementRef.current.getBoundingClientRect().width;
                 setWidth(newWidth);
@@ -59,7 +66,7 @@ const DividendHistoryChart = ({ data }:IDividendHistoryChart) : ReactNode => {
             }
         };
 
-        const handleResize = _throttle(() => {
+        const handleResize:Function = _throttle(() => {
             setDimension();
         }, 100);
 

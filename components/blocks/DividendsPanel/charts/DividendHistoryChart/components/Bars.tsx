@@ -1,6 +1,16 @@
 import { ReactNode } from 'react';
 
-export const Bars = ({ data, height, xScale, yScale }:any) : ReactNode =>  {
+interface IBarsProps {
+    data: {
+        value:number;
+        label:string;
+    };
+    height:number;
+    xScale:any;
+    yScale:any;
+}
+
+export const Bars = ({ data, height, xScale, yScale }:IBarsProps) : ReactNode =>  {
     return <>
         {
             (Array.isArray(data) && data.length > 0) &&  <g className="bars">
