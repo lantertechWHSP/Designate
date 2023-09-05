@@ -4,17 +4,18 @@ import Layout from '~/components/layouts/Layout';
 import { ModularContent } from '~/components/ModularContent';
 import { doQuery, queries } from '~/dato/api';
 import { getLayoutData, getBlocks } from '~/lib/utils';
+import { ISite, ILayout, IPage } from '~/interfaces';
 
 export async function getStaticPaths() : Promise<any> {
-    const systemPages = [
+    const systemPages:string[] = [
         'news',
         'about/board',
         'about/management',
         'investors/key-dates'
     ];
 
-    const pages = await doQuery(queries.pages).then(({ pages }) => pages);
-    const paths = Array.isArray(pages) && pages.length > 0 ? pages
+    const pages:IPage = await doQuery(queries.pages).then(({ pages }) => pages);
+    const paths:any = Array.isArray(pages) && pages.length > 0 ? pages
         .filter((page) => !systemPages.includes(page.slug))
         .map((page) => {
             const slug = page.slug === 'home' ? [''] : page.slug.split('/');
@@ -27,14 +28,14 @@ export async function getStaticPaths() : Promise<any> {
 export async function getStaticProps({ params, preview }) : Promise<any> {
     const { slug: slugRaw } = params;
 
-    const slug = slugRaw ? slugRaw.join('/') : 'home';
-    const site = await doQuery(queries.site);
-    const page = await doQuery(queries.page, { slug }, preview).then(
+    const slug:string = slugRaw ? slugRaw.join('/') : 'home';
+    const site:ISite = await doQuery(queries.site);
+    const page:IPage = await doQuery(queries.page, { slug }, preview).then(
         ({ page }) => page
     );
 
-    const layout = getLayoutData(site, page, preview);
-    const blocks = await getBlocks(page?.blocks);
+    const layout:ILayout = getLayoutData(site, page, preview);
+    const blocks:any = await getBlocks(page?.blocks);
 
     return { props: { layout, blocks } };
 }

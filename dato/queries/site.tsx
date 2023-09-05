@@ -34,7 +34,7 @@ export const site = `
                     ...menuItemFrag
                 }
             }
-            }
+        }
         footer {
             id
             email

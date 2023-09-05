@@ -1,3 +1,3 @@
-interface IDatoFile {
+export interface IDatoFile {
     url?:string;
 }
