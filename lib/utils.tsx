@@ -1,4 +1,5 @@
 import { getBlock } from '~/components/ModularContent';
+import { IDatoLink } from '~/interfaces';
 
 export const resolveInternalLink:any = (link:IDatoLink) : string => {
     if (!link) {

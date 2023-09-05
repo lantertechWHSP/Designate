@@ -7,10 +7,11 @@ import { forwardRef, ReactNode } from 'react';
 interface IMenuItemLinkProps extends ChakraProps {
     title?:string;
     link?:IDatoLink;
+    children?:any;
     externalLink?:string;
 }
 
-export const MenuItemLink:any = forwardRef(({ title, link, externalLink,  ...props }:IMenuItemLinkProps, ref) : ReactNode => {
+export const MenuItemLink:any = forwardRef(({ title, link, externalLink,  ...props }:IMenuItemLinkProps, ref:any) : ReactNode => {
     let href:string = '#';
     let newChild:string = '';
 

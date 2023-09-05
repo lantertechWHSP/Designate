@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState, ReactNode, Fragment }  from 'react';
-import { scaleLinear, scaleTime, line, ScaleLinear, ScaleTime } from 'd3';
+import { scaleLinear, scaleTime, line } from 'd3';
 import { Box } from '@chakra-ui/react';
 import { AxisLeft } from '~/components/blocks/SharePricePanel/charts/ShareholderReturnChart/components/AxisLeft';
 import { AxisBottom } from '~/components/blocks/SharePricePanel/charts/ShareholderReturnChart/components/AxisBottom';
@@ -44,7 +44,7 @@ const ShareholderReturnChart:any = ({data}:IShareholderReturnChart) : ReactNode 
         return height - margin.top - margin.bottom;
     }, [height]);
 
-    const yScale:any = useMemo<ScaleLinear>(() => {
+    const yScale:any = useMemo<any>(() => {
         if(data) {
             return scaleLinear()
                 .domain([0, _max(_map(_flatten(data.lines), (data) => {
@@ -54,7 +54,7 @@ const ShareholderReturnChart:any = ({data}:IShareholderReturnChart) : ReactNode 
         }
     }, [data, height]);
 
-    const xScale:any = useMemo<ScaleTime>(() => {
+    const xScale:any = useMemo<any>(() => {
         if(data) {
             return scaleTime()
                 .domain([_min(_map(_flatten(data.lines), (data) => {

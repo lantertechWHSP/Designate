@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState, ReactNode }  from 'react';
 import { Box } from '@chakra-ui/react';
-import { scaleLinear, scaleBand, ScaleLinear, ScaleBand } from 'd3';
+import { scaleLinear, scaleBand } from 'd3';
 import { AxisBottom } from '~/components/blocks/DividendsPanel/charts/DividendHistoryChart/components/AxisBottom';
 import { AxisLeft } from '~/components/blocks/DividendsPanel/charts/DividendHistoryChart/components/AxisLeft';
 import { Bars } from '~/components/blocks/DividendsPanel/charts/DividendHistoryChart/components/Bars';
@@ -36,7 +36,7 @@ const DividendHistoryChart:any = ({ data }:IDividendHistoryChart) : ReactNode =>
         return height - margin.top - margin.bottom;
     }, [height]);
 
-    const yScale:any = useMemo<ScaleLinear>(() => {
+    const yScale:any = useMemo<any>(() => {
         if(data) {
             return scaleLinear()
                 .domain([0, _maxBy(data, (item:IDividendItem) => {
@@ -46,7 +46,7 @@ const DividendHistoryChart:any = ({ data }:IDividendHistoryChart) : ReactNode =>
         }
     }, [data, height]);
 
-    const xScale:any = useMemo<ScaleBand>(() => {
+    const xScale:any = useMemo<any>(() => {
         if(data) {
             return scaleBand()
                 .domain(data.map((item:IDividendItem) => {

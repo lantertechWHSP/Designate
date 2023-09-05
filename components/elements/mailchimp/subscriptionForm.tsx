@@ -79,7 +79,7 @@ export const SubscriptionForm:any = () : ReactNode => {
                                                 placeholder="Email Address"
                                                 autoComplete="off" />
                                             {
-                                                errors.email && <Text variant="error">{errors.email}</Text>
+                                                errors.email && <Text variant="error">{errors.email.toString()}</Text>
                                             }
                                         </Flex>
                                         <Button type="submit"

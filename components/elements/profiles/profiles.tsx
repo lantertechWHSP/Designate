@@ -21,7 +21,7 @@ const ProfileCard:any = ({ image, name, companyPosition, onClick }) : ReactNode 
 
 export const Profiles:any = ({ people }) : ReactNode => {
     const [modalOpen, setModalOpen] = useState<boolean>(false);
-    const [activePerson, setActivePerson] = useState<boolean>(null);
+    const [activePerson, setActivePerson] = useState<any>(null);
 
     const onProfileClick:any = (index) : void => {
         setActivePerson(people[index]);

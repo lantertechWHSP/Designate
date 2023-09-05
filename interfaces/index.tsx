@@ -1,11 +1,11 @@
-export { ISite } from '~/interfaces/site/site';
+export type { ISite } from '~/interfaces/site/site';
 
-export { IPage } from '~/interfaces/page/page';
+export type { IPage } from '~/interfaces/page/page';
 
-export { ILayout } from '~/interfaces/layout/layout';
+export type { ILayout } from '~/interfaces/layout/layout';
 
-export { IDatoFile } from '~/interfaces/datoFile';
-export { IDatoImage } from '~/interfaces/datoImage';
-export { IDatoLink } from '~/interfaces/datoLink';
-export { IDatoVideo } from '~/interfaces/datoVideo';
-export { IFilter } from '~/interfaces/filter';
+export type { IDatoFile } from '~/interfaces/datoFile';
+export type { IDatoImage } from '~/interfaces/datoImage';
+export type { IDatoLink } from '~/interfaces/datoLink';
+export type { IDatoVideo } from '~/interfaces/datoVideo';
+export type { IFilter } from '~/interfaces/filter';

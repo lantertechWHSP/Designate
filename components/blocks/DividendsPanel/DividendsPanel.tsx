@@ -7,6 +7,7 @@ import { DividendHistoryTable } from '~/components/blocks/DividendsPanel/tables/
 import { LatestDividendTable } from '~/components/blocks/DividendsPanel/tables/LatestDividendTable';
 import DividendHistoryChart from '~/components/blocks/DividendsPanel/charts/DividendHistoryChart/DividendHistoryChart';
 import { IDividendsTable, IDividendsTableRow } from '~/components/blocks/DividendsPanel/interfaces';
+import { IDatoFile } from '~/interfaces';
 
 interface IDividendsPanelBlockProps {
     description?:string;
@@ -20,7 +21,7 @@ const DividendsPanelBlock:any = ({ description, latestDividendDescription, csv }
         const titlesProps:string[] = titles.replace(/\s/g, '').split(delimiter);
         const titlesRaw:string[] = titles.split(delimiter);
 
-        const rows:string = str.slice(str.indexOf('\n') + 1).split('\n');
+        const rows:string[] = str.slice(str.indexOf('\n') + 1).split('\n');
 
         return {
             titles: titlesRaw.map((titleRaw:string) => {
@@ -48,7 +49,7 @@ const DividendsPanelBlock:any = ({ description, latestDividendDescription, csv }
             const data:any = [];
             _forOwn(_groupBy(table.rows, (row:IDividendsTableRow) => {
                 return DateTime.fromFormat(row.PaymentDate, "d/M/yyyy").toFormat('yyyy');
-            }), (row:IDividendsTableRow, key:string) => {
+            }), (row:any, key:string) => {
                 data.push({
                     label: DateTime.utc(+key, 1, 1).toFormat('yyyy'),
                     value: _sumBy(row, (value:string) => {
