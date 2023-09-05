@@ -1,9 +1,16 @@
 import { ReactNode } from 'react';
 import { Image as DatoImage } from 'react-datocms';
 import { Box, AspectRatio } from '@chakra-ui/react';
+import { ChakraProps } from '@chakra-ui/system';
+import { IImage } from '~/interfaces';
 
-// Wrapper of image with fallback background
-export const Image = ({ image, ratio, ...props }:any) : ReactNode => {
+interface IImageProps extends ChakraProps {
+    image?:IImage;
+    ratio?:number[];
+    onClick?:() => any;
+}
+
+export const Image = ({ image, ratio, ...props }:IImageProps) : ReactNode => {
     return <Box {...props}>
         {
             image ? <DatoImage data={image.responsiveImage} /> : <AspectRatio ratio={ratio} >

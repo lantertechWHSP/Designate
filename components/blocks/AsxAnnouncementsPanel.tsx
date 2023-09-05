@@ -3,9 +3,10 @@ import { Box, Container, Flex, Heading, Text, ButtonGroup, Button, Menu, MenuBut
 import { YourIR, set } from 'yourir-next';
 import { Icon, Icons } from '~/components/elements/icon';
 import { symbol } from '~/consts/yourir';
+import { IFilter } from '~/interfaces';
 
-const AsxAnnouncementsPanel = () : ReactNode => {
-    const filters = [
+const AsxAnnouncementsPanelBlock = () : ReactNode => {
+    const filters:IFilter[] = [
         {
             name: 'All Document Types',
             value: 'none'
@@ -40,27 +41,27 @@ const AsxAnnouncementsPanel = () : ReactNode => {
         }
     ];
 
-    let filterName = filters[0].name;
+    let filterName:string = filters[0].name;
 
-    const startYear = 2016;
-    const currentYear = new Date().getFullYear();
+    const startYear:number = 2016;
+    const currentYear:number = new Date().getFullYear();
 
-    const years = [{
+    const years:IFilter[] = [{
         value: 'none',
         name: 'All Years'
     }, ...Array.from(
         { length: currentYear - startYear + 1 },
         (v, i) => {
             return {
+                name: (currentYear - i).toString(),
                 value: currentYear - i,
-                name: currentYear - i,
             };
         }
     )];
 
-    let yearName = years[0].name;
+    let yearName:string = years[0].name;
 
-    const scrollToTable = () : void => {
+    const scrollToTable:Function = () : void => {
         const scrollDiv = document.getElementById("asx-announcements-panel").offsetTop;
         window.scrollTo({ top: scrollDiv - 120, behavior: 'smooth'});
     };
@@ -82,7 +83,7 @@ const AsxAnnouncementsPanel = () : ReactNode => {
                                     <Portal>
                                         <MenuList minW="200px">
                                             {
-                                                filters.map((item, index) => {
+                                                filters.map((item:IFilter, index:number) => {
                                                     return <MenuItem key={index}
                                                         as={Button}
                                                         onClick={() => {
@@ -217,4 +218,4 @@ const AsxAnnouncementsPanel = () : ReactNode => {
     </Box>;
 };
 
-export default AsxAnnouncementsPanel;
+export default AsxAnnouncementsPanelBlock;

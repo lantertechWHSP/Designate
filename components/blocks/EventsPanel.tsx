@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { Box, Container } from '@chakra-ui/react';
 
-const EventsPanelBlock = ({}:any) : ReactNode => {
+const EventsPanelBlock = () : ReactNode => {
     return <Box>
         <Container>
 

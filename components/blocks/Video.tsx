@@ -2,9 +2,18 @@ import ContentBlock from "~/components/blocks/Content";
 import { ReactNode, useState } from 'react';
 import { Text, AspectRatio } from '@chakra-ui/react';
 import dynamic from 'next/dynamic';
+import { IVideo } from '~/interfaces';
 const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
 
-const VideoBlock = ({ title, video, videoEmbed, _coverImage }:any) : ReactNode => {
+interface IVideoBlockProps {
+    id?:string;
+    __typename?:string;
+    title?:string;
+    video?:IVideo;
+    videoEmbed?:IVideo;
+}
+
+const VideoBlock = ({ title, video, videoEmbed }:IVideoBlockProps) : ReactNode => {
     const [currentVideo] = useState(video ? video : videoEmbed);
 
     return <ContentBlock>

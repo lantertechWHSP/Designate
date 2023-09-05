@@ -3,8 +3,16 @@ import { ReactNode } from 'react';
 import { Box, Heading, Grid, GridItem } from '@chakra-ui/react';
 import { Link } from '~/components/elements/link';
 import { Image } from '~/components/elements/image';
+import { IImage } from '~/interfaces';
 
-const HomePageOverviewBlock = ({ description, _imageMain, _imageSide, _imageSide2 }:any) : ReactNode => {
+interface IHomePageOverviewBlockProps {
+    description?:string;
+    imageMain?:IImage;
+    imageSide?:IImage;
+    imageSide2?:IImage;
+}
+
+const HomePageOverviewBlock = ({ description, imageMain, imageSide, imageSide2 }:IHomePageOverviewBlockProps) : ReactNode => {
     return <ContentBlock background="lightGrey3" py={12}>
         <Box maxW="900" mx="auto" textAlign="center" mb={8}>
             {
@@ -20,13 +28,13 @@ const HomePageOverviewBlock = ({ description, _imageMain, _imageSide, _imageSide
             templateColumns='repeat(2, 1fr)'
             gap={8}>
             <GridItem rowSpan={2}>
-                <Image ratio={[ 1 / 1 ]} />
+                <Image image={imageMain} ratio={[ 1 / 1 ]} />
             </GridItem>
             <GridItem>
-                <Image ratio={[ 2.1 / 1]} />
+                <Image image={imageSide} ratio={[ 2.1 / 1]} />
             </GridItem>
             <GridItem>
-                <Image ratio={[ 2.1 / 1]}  />
+                <Image image={imageSide2}  ratio={[ 2.1 / 1]}  />
             </GridItem>
         </Grid>
     </ContentBlock>;

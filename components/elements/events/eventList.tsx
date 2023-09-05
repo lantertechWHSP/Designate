@@ -1,9 +1,10 @@
 import { ReactNode } from 'react';
-import { Box } from '@chakra-ui/react';
+import { Box, Container } from '@chakra-ui/react';
 
 const EventList = ({}) : ReactNode => {
     return <Box>
-        <Container />
+        <Container>
+        </Container>
     </Box>
 }
 

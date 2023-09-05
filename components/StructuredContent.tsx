@@ -4,9 +4,9 @@ import Link  from 'next/link';
 import { isHeading, isCode } from 'datocms-structured-text-utils';
 import { renderNodeRule } from 'datocms-structured-text-to-html-string';
 import { Heading, Code } from '@chakra-ui/react';
-import Image from '~/components/blocks/Image';
-import Video from "~/components/blocks/Video";
-import Audio from "~/components/blocks/Audio";
+import ImageBlock from '~/components/blocks/Image';
+import VideoBlock from "~/components/blocks/Video";
+import AudioBlock from "~/components/blocks/Audio";
 
 const StrucutredContent = ({ content }) : any => {
     return (
@@ -47,11 +47,11 @@ const StrucutredContent = ({ content }) : any => {
                 /* eslint-disable */
                 switch (record.__typename) {
                     case 'ImageRecord':
-                        return <Image {...record} />;
+                        return <ImageBlock {...record} />;
                     case 'VideoRecord':
-                        return <Video {...record} />;
+                        return <VideoBlock {...record} />;
                     case 'AudioRecord':
-                        return <Audio {...record} />;
+                        return <AudioBlock {...record} />;
                     default:
                         return <></>;
                 }
