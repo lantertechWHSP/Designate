@@ -64,7 +64,7 @@ const DocumentList:any = ({ latestDocuments, documentsMeta }:IDocumentListProps)
                         <Box borderBottom="1px solid" borderColor="lightGrey2" />
                     </Box>
                     {
-                        (noMoreDocuments && documents.length === totalDocuments) && <Box>
+                        (noMoreDocuments && documents.length >= totalDocuments) && <Box>
                         <Text variant="caption" color="lightGrey">No more Documents to load</Text>
                       </Box>
                     }

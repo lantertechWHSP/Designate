@@ -60,7 +60,7 @@ const PostList:any = ({ latestPosts, postsMeta }:IPostsListProps) : ReactNode =>
                     }
                 </SimpleGrid>
                 {
-                    (noMorePosts || posts.length === totalPosts) && <Box>
+                    (noMorePosts && posts.length >= totalPosts) && <Box>
                         <Text variant="caption" color="lightGrey">No more Posts to load</Text>
                     </Box>
                 }
