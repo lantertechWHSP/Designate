@@ -15,7 +15,7 @@ const EventList:any = ({ events }:IEventListProps) : ReactNode => {
                     {
                         events.map((event:IEvent, index:number) => {
                             return <Box borderTop="1px solid" borderColor="lightGrey2" key={index}>
-                                <EventCard />
+                                <EventCard {...event} />
                             </Box>;
                         })
                     }
