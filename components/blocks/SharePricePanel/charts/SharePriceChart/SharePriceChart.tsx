@@ -156,7 +156,7 @@ const SharePriceChart:any = () : ReactNode => {
                                                         variant="menuItemFilter"
                                                         onClick={() => {
                                                             // Wanting to know what value to use here…
-                                                            set('{{relativePrice3}}.visible', true)
+                                                            // set('{{relativePrice3}}.visible', true)
 
                                                             // Set the other prices visibility to false
                                                         }}>
