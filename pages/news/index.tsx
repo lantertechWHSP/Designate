@@ -11,13 +11,13 @@ import { GetStaticPropsContext, GetStaticPropsResult } from 'next';
 import { IBlock } from '~/interfaces/util/block';
 import { IPost } from '~/interfaces/models/post';
 import { IPostsMeta } from '~/interfaces/models/postsMeta';
-import LatestPosts from "~/components/elements/news/latestPosts";
+import PostList from "~/components/elements/news/PostList";
 
 interface INextPageProps {
     layout?:ILayout;
     blocks?:IBlock[];
-    latestPosts?:IPost[];
-    allPostsMeta?:any;
+    posts?:IPost[];
+    postsMeta?:any;
 }
 
 export async function getStaticProps({ preview }:GetStaticPropsContext) : Promise<GetStaticPropsResult<INextPageProps>> {
@@ -27,16 +27,16 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
         ({ page }) => page
     );
 
-    const latestPosts:IPost[] = await doQuery(queries.latestPosts, { first: 1 }).then(({ posts }) => posts || []);
-    const allPostsMeta:IPostsMeta = await doQuery(queries.postsMeta).then(({ postsMeta }) => postsMeta || {});
+    const posts:IPost[] = await doQuery(queries.latestPosts, { first: 1 }).then(({ posts }) => posts || []);
+    const postsMeta:IPostsMeta = await doQuery(queries.postsMeta).then(({ postsMeta }) => postsMeta || {});
 
     const layout:ILayout = getLayoutData(site, page, preview);
     const blocks:IBlock[] = await getBlocks(page?.blocks);
 
-    return { props: { layout, blocks, latestPosts, allPostsMeta } };
+    return { props: { layout, blocks, posts, postsMeta } };
 }
 
-const NewsPage : NextPage = ({layout, blocks, latestPosts, allPostsMeta}:INextPageProps) : JSX.Element => {
+const NewsPage : NextPage = ({layout, blocks, posts, postsMeta}:INextPageProps) : JSX.Element => {
     return (
         <Layout layout={layout}>
             <Container>
@@ -44,7 +44,7 @@ const NewsPage : NextPage = ({layout, blocks, latestPosts, allPostsMeta}:INextPa
             </Container>
             <ModularContent content={blocks} />
             <Container>
-                <LatestPosts latestPosts={latestPosts} postsMeta={allPostsMeta} />
+                <PostList posts={posts} postsMeta={postsMeta} />
             </Container>
         </Layout>
     );

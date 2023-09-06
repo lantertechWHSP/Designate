@@ -21,7 +21,8 @@ export async function getStaticPaths() : Promise<GetStaticPathsResult<any>> {
         'news',
         'about/board',
         'about/management',
-        'investors/key-dates'
+        'investors/key-dates',
+        'investors/reports'
     ];
 
     const pages:IPage = await doQuery(queries.pages).then(({ pages }) => pages);

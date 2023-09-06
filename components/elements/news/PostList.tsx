@@ -1,16 +1,16 @@
 import { useState, ReactNode } from 'react';
 import { doQuery, queries } from '~/dato/api';
-import { LatestPostCard } from '~/components/elements/news/latestPostCard';
+import PostCard from '~/components/elements/news/PostCard';
 import { SimpleGrid, Box, Button, Spinner, Text } from '@chakra-ui/react';
 import { IPost } from '~/interfaces/models/post';
 import { IPostsMeta } from '~/interfaces/models/postsMeta';
 
-interface ILatestPostsProps {
+interface IPostsListProps {
     latestPosts:IPost[];
     postsMeta:IPostsMeta;
 }
 
-const LatestPosts:any = ({ latestPosts, postsMeta }:ILatestPostsProps) : ReactNode => {
+const PostList:any = ({ latestPosts, postsMeta }:IPostsListProps) : ReactNode => {
     const [page, setPage] = useState<number>(1);
     const [posts, setPosts] = useState<IPost[]>(latestPosts);
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -20,7 +20,7 @@ const LatestPosts:any = ({ latestPosts, postsMeta }:ILatestPostsProps) : ReactNo
     const [totalPosts] = useState<number>(postsMeta.count || posts.length);
     const itemsPerPage:number = 1;
 
-    const loadMorePosts:any = () : void => {
+    const loadMore:any = () : void => {
         setIsLoading(true);
 
         doQuery(queries.latestPosts, { isFeatured: true, first: itemsPerPage, skip: page * itemsPerPage }).then(({ posts }) => posts || []).then((newPosts) => {
@@ -55,7 +55,7 @@ const LatestPosts:any = ({ latestPosts, postsMeta }:ILatestPostsProps) : ReactNo
                 <SimpleGrid columns={[1, 2, 3]} spacing={[0, 8]}>
                     {
                         posts.map((post:any, index:number) => {
-                            return <LatestPostCard {...post} key={index}/>;
+                            return <PostCard {...post} key={index}/>;
                         })
                     }
                 </SimpleGrid>
@@ -70,7 +70,7 @@ const LatestPosts:any = ({ latestPosts, postsMeta }:ILatestPostsProps) : ReactNo
                     </Box>
                 }
                 {
-                    posts.length < totalPosts && <Button color="sunlight" onClick={loadMorePosts} px={0} rightIcon={isLoading && <Spinner size='sm' />}>
+                    posts.length < totalPosts && <Button color="sunlight" onClick={loadMore} px={0} rightIcon={isLoading && <Spinner size='sm' />}>
                         <Text textDecoration="underline">
                             Load Moar!
                         </Text>
@@ -85,4 +85,4 @@ const LatestPosts:any = ({ latestPosts, postsMeta }:ILatestPostsProps) : ReactNo
     </>;
 };
 
-export default LatestPosts;
+export default PostList;
