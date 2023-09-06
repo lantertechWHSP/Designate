@@ -41,9 +41,9 @@ export const posts = `
 `;
 
 export const postsMeta = `
-  query posts {
-    postsMeta: _allPostsMeta {
-      count
+    query posts {
+        postsMeta: _allPostsMeta {
+            count
+        }
     }
-  }
 `;

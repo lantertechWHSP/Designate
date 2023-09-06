@@ -2,5 +2,6 @@ export interface IPage {
     id?:string;
     title?:string;
     slug?:string;
-    blocks?:any;
+    seo?: ISEO;
+    blocks?:any[];
 }
