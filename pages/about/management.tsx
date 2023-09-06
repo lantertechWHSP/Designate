@@ -10,12 +10,12 @@ import { ISite } from '~/interfaces/layout/site';
 import { IPage } from '~/interfaces/models/page';
 import { ILayout } from '~/interfaces/layout/layout';
 import { IBlock } from '~/interfaces/util/block';
+import { IPerson } from '~/interfaces/models/person';
 
-// @TODO add types
 interface INextPageProps {
     layout?:ILayout;
     blocks?:IBlock;
-    people?:any;
+    people?:IPerson[];
 }
 
 export async function getStaticProps({ preview }:GetStaticPropsContext) : Promise<GetStaticPropsResult<INextPageProps>> {
@@ -34,7 +34,7 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
     return { props: { layout, blocks, people } };
 }
 
-const ManagementPage : NextPage = ({layout, blocks, people}:INextPageProps)  : JSX.Element => {
+const ManagementPage : NextPage = ({ layout, blocks, people }:INextPageProps)  : JSX.Element => {
     return (
         <Layout layout={layout}>
             <ModularContent content={blocks} />
