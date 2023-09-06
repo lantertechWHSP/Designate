@@ -13,7 +13,7 @@ interface INextPageProps {
     layout?:ILayout;
 }
 
-export async function getStaticProps({ _params, preview }:GetStaticPropsContext) : Promise<GetStaticPropsResult<INextPageProps>> {
+export async function getStaticProps({ preview }:GetStaticPropsContext) : Promise<GetStaticPropsResult<INextPageProps>> {
     const site:ISite = await doQuery(queries.site);
     const page:IPage = {
         title: 'Error (404)',

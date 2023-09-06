@@ -13,12 +13,12 @@ const ProfileCard:any = ({ image, name, companyPosition, onClick }:IProfileCardP
         {
             name && <Heading as="h2" variant="h4" fontWeight={400}>
                 {name}
-          </Heading>
+            </Heading>
         }
         {
             companyPosition && <Heading as="h3" variant="h5" color="steelBlue2" fontWeight={400}>
                 {companyPosition}
-          </Heading>
+            </Heading>
         }
     </Box>;
 };

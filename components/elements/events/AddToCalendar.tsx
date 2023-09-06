@@ -1,12 +1,11 @@
 import { ReactNode } from 'react';
-import { google, outlook, office365, yahoo, ics } from 'calendar-link';
+import { google, outlook, office365, yahoo, ics, CalendarEvent } from 'calendar-link';
 import { Portal, Button, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react';
-import { IEvent } from '~/interfaces/models/event';
 
 interface IAddToCalendarProps {
     isOpen?:boolean;
     onClose?:() => any;
-    event?:IEvent;
+    event?:CalendarEvent;
 }
 
 const AddToCalendar:any = ({ event }:IAddToCalendarProps) : ReactNode => {
@@ -16,7 +15,7 @@ const AddToCalendar:any = ({ event }:IAddToCalendarProps) : ReactNode => {
 
     return (
         <Menu placement="bottom-end">
-            {({ _isOpen }) => (
+            {({ }) => (
                 <>
                     <MenuButton as={Button}
                         variant="menuButton"
@@ -34,7 +33,6 @@ const AddToCalendar:any = ({ event }:IAddToCalendarProps) : ReactNode => {
                     </Portal>
                 </>
             )}
-
         </Menu>
     );
 };

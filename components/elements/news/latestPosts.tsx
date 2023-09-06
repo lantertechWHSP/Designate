@@ -1,7 +1,7 @@
 import { useState, ReactNode } from 'react';
 import { doQuery, queries } from '~/dato/api';
 import { LatestPostCard } from '~/components/elements/news/latestPostCard';
-import { SimpleGrid, Box, Button, Spinner } from '@chakra-ui/react';
+import { SimpleGrid, Box, Button, Spinner, Text } from '@chakra-ui/react';
 import { IPost } from '~/interfaces/models/post';
 import { IPostsMeta } from '~/interfaces/models/postsMeta';
 
@@ -61,20 +61,20 @@ const LatestPosts:any = ({ latestPosts, postsMeta }:ILatestPostsProps) : ReactNo
                 </SimpleGrid>
                 {
                     (noMorePosts || posts.length === totalPosts) && <Box>
-                    <Text variant="caption" color="lightGrey">No more Posts to load</Text>
-                  </Box>
+                        <Text variant="caption" color="lightGrey">No more Posts to load</Text>
+                    </Box>
                 }
                 {
                     couldNotLoadPosts && <Box>
-                    <Text variant="caption" color="lightGrey">Could not load Posts</Text>
-                  </Box>
+                        <Text variant="caption" color="lightGrey">Could not load Posts</Text>
+                    </Box>
                 }
                 {
                     posts.length < totalPosts && <Button color="sunlight" onClick={loadMorePosts} px={0} rightIcon={isLoading && <Spinner size='sm' />}>
-                    <Text textDecoration="underline">
-                      Load Moar!
-                    </Text>
-                  </Button>
+                        <Text textDecoration="underline">
+                            Load Moar!
+                        </Text>
+                    </Button>
                 }
             </> : <>
                 <Box>

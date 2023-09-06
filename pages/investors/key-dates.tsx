@@ -9,7 +9,7 @@ import { ISite } from '~/interfaces/layout/site';
 import { IPage } from '~/interfaces/models/page';
 import { ILayout } from '~/interfaces/layout/layout';
 import { IBlock } from '~/interfaces/util/block';
-import EventList from "~/components/elements/events/eventList";
+import EventList from "~/components/elements/events/EventList";
 import { IEvent } from '~/interfaces/models/event';
 
 interface INextPageProps {

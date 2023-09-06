@@ -16,11 +16,11 @@ import LatestPosts from "~/components/elements/news/latestPosts";
 interface INextPageProps {
     layout?:ILayout;
     blocks?:IBlock[];
-    latestPosts?:IPost;
+    latestPosts?:IPost[];
     allPostsMeta?:any;
 }
 
-export async function getStaticProps({ _params, preview }:GetStaticPropsContext) : Promise<GetStaticPropsResult<INextPageProps>> {
+export async function getStaticProps({ preview }:GetStaticPropsContext) : Promise<GetStaticPropsResult<INextPageProps>> {
     const slug:string = 'news';
     const site:ISite = await doQuery(queries.site);
     const page:IPage = await doQuery(queries.page, { slug }, preview).then(
@@ -35,7 +35,6 @@ export async function getStaticProps({ _params, preview }:GetStaticPropsContext)
 
     return { props: { layout, blocks, latestPosts, allPostsMeta } };
 }
-
 
 const NewsPage : NextPage = ({layout, blocks, latestPosts, allPostsMeta}:INextPageProps) : JSX.Element => {
     return (

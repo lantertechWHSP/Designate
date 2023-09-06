@@ -1,17 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-export const config = {
+export const config:any = {
     matcher: ['/', '/:path*'],
 };
 
 export async function middleware(request: NextRequest) : Promise<NextResponse> {
     // Staging Environment
     if(process.env.SITE_ENVIRONMENT === 'staging' || process.env.SITE_ENVIRONMENT === 'production') {
-        const basicAuth = request.headers.get('authorization');
-        const url = request.nextUrl;
+        const basicAuth:any = request.headers.get('authorization');
+        const url:any = request.nextUrl;
 
         if (basicAuth) {
-            const authValue = basicAuth.split(' ')[1];
+            const authValue:any = basicAuth.split(' ')[1];
             const [user, pwd] = atob(authValue).split(':');
 
             if ((user === 'designate' && pwd === 'GVvAqUNXjpex0N6RgBYl')) {

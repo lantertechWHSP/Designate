@@ -7,14 +7,16 @@ import { getLayoutData, getBlocks } from '~/lib/utils';
 import { ISite } from '~/interfaces/layout/site';
 import { ILayout } from '~/interfaces/layout/layout';
 import { IBlock } from '~/interfaces/util/block';
-import { GetStaticPropsContext, GetStaticPropsResult, GetStaticPathsResult, Params } from 'next';
+import { IPage } from '~/interfaces/models/page';
+import { GetStaticPropsContext, GetStaticPropsResult, GetStaticPathsResult } from 'next';
+import slug from "~/pages/news/[slug]";
 
 interface INextPageProps {
     layout?:ILayout;
     blocks?:IBlock[];
 }
 
-export async function getStaticPaths() : Promise<GetStaticPathsResult<Params>> {
+export async function getStaticPaths() : Promise<GetStaticPathsResult<any>> {
     const systemPages:string[] = [
         'news',
         'about/board',
@@ -36,7 +38,7 @@ export async function getStaticPaths() : Promise<GetStaticPathsResult<Params>> {
 export async function getStaticProps({ params, preview }:GetStaticPropsContext) : Promise<GetStaticPropsResult<INextPageProps>> {
     const { slug: slugRaw } = params;
 
-    const slug:string = slugRaw ? slugRaw.join('/') : 'home';
+    const slug:string = slugRaw && Array.isArray(slugRaw) ? slugRaw.join('/') : 'home';
     const site:ISite = await doQuery(queries.site);
     const page:IPage = await doQuery(queries.page, { slug }, preview).then(
         ({ page }) => page
