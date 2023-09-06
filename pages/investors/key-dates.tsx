@@ -4,10 +4,21 @@ import Layout from '~/components/layouts/Layout';
 import { ModularContent } from '~/components/ModularContent';
 import { doQuery, queries } from '~/dato/api';
 import { getLayoutData, getBlocks } from '~/lib/utils';
-import { ILayout, IPage, ISite } from '~/interfaces';
+import { GetStaticPropsContext, GetStaticPropsResult } from 'next';
+import { ISite } from '~/interfaces/layout/site';
+import { IPage } from '~/interfaces/models/page';
+import { ILayout } from '~/interfaces/layout/layout';
+import { IBlock } from '~/interfaces/util/block';
 import EventList from "~/components/elements/events/eventList";
+import { IEvent } from '~/interfaces/models/event';
 
-export async function getStaticProps({ preview }:any) : Promise<any> {
+interface INextPageProps {
+    layout?:ILayout;
+    blocks?:IBlock[];
+    events?:IEvent[];
+}
+
+export async function getStaticProps({ preview }:GetStaticPropsContext) : Promise<GetStaticPropsResult<INextPageProps>> {
     const slug:string = 'investors/key-dates';
     const site:ISite = await doQuery(queries.site);
     const page:IPage = await doQuery(queries.page, { slug }, preview).then(
@@ -16,14 +27,14 @@ export async function getStaticProps({ preview }:any) : Promise<any> {
 
     const layout:ILayout = getLayoutData(site, page, preview);
     const blocks:any = await getBlocks(page?.blocks);
-    const events:any = await doQuery(queries.events, preview).then(
+    const events:IEvent[] = await doQuery(queries.events, preview).then(
         ({ events }) => events || []
     );
 
     return { props: { layout, blocks, events } };
 }
 
-const KeyDatesPage : NextPage = ({ layout, blocks, events }:any)  : JSX.Element => {
+const KeyDatesPage : NextPage = ({ layout, blocks, events }:INextPageProps)  : JSX.Element => {
     return (
         <Layout layout={layout}>
             <ModularContent content={blocks} />

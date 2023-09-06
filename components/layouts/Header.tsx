@@ -22,14 +22,7 @@ import {
 import { Icon, Icons } from '~/components/elements/icon';
 import { MenuItemLink } from "~/components/elements/menuItemLink";
 import { Link } from '@chakra-ui/react';
-import { IDatoLink } from '~/interfaces';
-
-interface IMenuItem {
-    title?:string;
-    link?:IDatoLink;
-    externalLink?:string;
-    children?: IMenuItem[];
-}
+import { IMenuLink } from '~/interfaces/models/menuLink';
 
 const MotionBox:any = motion(Box);
 
@@ -98,7 +91,7 @@ const DestopPopoverTrigger:any  = ({item}): ReactNode => {
 const DesktopNav:any = ({menu}): ReactNode => {
     return <Flex as="nav" display={['none', , , 'flex']}>
         {
-            Array.isArray(menu) && menu.length > 0 && menu.map((item: IMenuItem, index: number) => {
+            Array.isArray(menu) && menu.length > 0 && menu.map((item: IMenuLink, index: number) => {
                 return Array.isArray(item.children) && item.children.length > 0 ?
                     <Popover trigger="hover" placement="bottom-start" key={index}>
                         <DestopPopoverTrigger item={item} />
@@ -106,7 +99,7 @@ const DesktopNav:any = ({menu}): ReactNode => {
                             {
                                 item.children && <Box background="steelBlue" py={2} px={4}>
                                     {
-                                        item.children.map((child: IMenuItem, childIndex: number) => {
+                                        item.children.map((child: IMenuLink, childIndex: number) => {
                                             return <Box py={2} key={childIndex}>
                                                 <MenuItemLink variant="siteHeader"
                                                     title={child.title}
@@ -162,7 +155,7 @@ const MobileNav:any = ({menu, isOpen}): ReactNode => {
         <Box ref={scrollRef} overflowY="auto" h="100%">
             <Box>
                 {
-                    Array.isArray(menu) && menu.length > 0 && menu.map((item: IMenuItem, index: number) => {
+                    Array.isArray(menu) && menu.length > 0 && menu.map((item: IMenuLink, index: number) => {
                         return <MobileNavItem item={item} key={index}/>;
                     })
                 }
@@ -202,7 +195,7 @@ const MobileNavItem:any = ({item}): ReactNode => {
         </Flex>
         <Collapse in={isOpen} animateOpacity>
             {
-                item.children.map((child: IMenuItem, childIndex: number) => {
+                item.children.map((child: IMenuLink, childIndex: number) => {
                     return <Box px={4} py={2} key={childIndex}>
                         <MenuItemLink variant="siteHeader"
                             title={child.title}

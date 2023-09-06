@@ -2,13 +2,13 @@ import ContentBlock from "~/components/blocks/Content";
 import { ReactNode } from 'react';
 import { Box, Heading, Grid, GridItem, Link } from '@chakra-ui/react';
 import { Image } from '~/components/elements/image';
-import { IDatoImage } from '~/interfaces';
+import { IImage } from '~/interfaces/util/image';
 
 interface IHomePageOverviewBlockProps {
     description?:string;
-    imageMain?:IDatoImage;
-    imageSide?:IDatoImage;
-    imageSide2?:IDatoImage;
+    imageMain?:IImage;
+    imageSide?:IImage;
+    imageSide2?:IImage;
 }
 
 const HomePageOverviewBlock:any = ({ description, imageMain, imageSide, imageSide2 }:IHomePageOverviewBlockProps) : ReactNode => {

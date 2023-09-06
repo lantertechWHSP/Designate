@@ -5,9 +5,20 @@ import { ModularContent } from '~/components/ModularContent';
 import { doQuery, queries } from '~/dato/api';
 import { getLayoutData, getBlocks } from '~/lib/utils';
 import { Profiles } from '~/components/elements/profiles/profiles';
-import { ILayout, IPage, ISite } from '~/interfaces';
+import { GetStaticPropsContext, GetStaticPropsResult } from 'next';
+import { ISite } from '~/interfaces/layout/site';
+import { IPage } from '~/interfaces/models/page';
+import { ILayout } from '~/interfaces/layout/layout';
+import { IBlock } from '~/interfaces/util/block';
 
-export async function getStaticProps({ preview }:any) : Promise<any> {
+// @TODO add types
+interface INextPageProps {
+    layout?:ILayout;
+    blocks?:IBlock;
+    people?:any;
+}
+
+export async function getStaticProps({ preview }:GetStaticPropsContext) : Promise<GetStaticPropsResult<INextPageProps>> {
     const slug:string = 'about/board';
     const site:ISite = await doQuery(queries.site);
     const page:IPage = await doQuery(queries.page, { slug }, preview).then(
@@ -23,7 +34,7 @@ export async function getStaticProps({ preview }:any) : Promise<any> {
     return { props: { layout, blocks, people } };
 }
 
-const BoardPage : NextPage = ({ layout, blocks, people }:any)  : JSX.Element => {
+const BoardPage : NextPage = ({ layout, blocks, people }:INextPageProps)  : JSX.Element => {
     return (
         <Layout layout={layout}>
             <ModularContent content={blocks} />

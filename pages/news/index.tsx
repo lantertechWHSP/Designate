@@ -6,9 +6,21 @@ import { doQuery, queries } from '~/dato/api';
 import { getLayoutData, getBlocks } from '~/lib/utils';
 import { LatestPostCard } from '~/components/elements/news/latestPostCard';
 import { Heading, Button, Text, Container, SimpleGrid, Box, Spinner } from '@chakra-ui/react';
-import { ILayout, IPage, ISite } from '~/interfaces';
+import { ILayout } from '~/interfaces/layout/layout';
+import { ISite } from '~/interfaces/layout/site';
+import { IPage } from '~/interfaces/models/page';
+import { GetStaticPropsContext, GetStaticPropsResult } from 'next';
+import { IBlock } from '~/interfaces/util/block';
 
-export async function getStaticProps({ preview }) : Promise<any> {
+// @TODO add types to latestPosts and allPosts Meta
+interface INextPageProps {
+    layout?:ILayout;
+    blocks?:IBlock[];
+    latestPosts?:any;
+    allPostsMeta?:any;
+}
+
+export async function getStaticProps({ _params, preview }:GetStaticPropsContext) : Promise<GetStaticPropsResult<INextPageProps>> {
     const slug:string = 'news';
     const site:ISite = await doQuery(queries.site);
     const page:IPage = await doQuery(queries.page, { slug }, preview).then(
@@ -24,6 +36,7 @@ export async function getStaticProps({ preview }) : Promise<any> {
     return { props: { layout, blocks, latestPosts, allPostsMeta } };
 }
 
+// @TODO convert into an element
 const LatestPosts:any = ({ latestPosts, postsMeta }:any) : ReactNode => {
     const [page, setPage] = useState<number>(1);
     const [posts, setPosts] = useState<any>(latestPosts); // Iniitial posts
@@ -99,7 +112,7 @@ const LatestPosts:any = ({ latestPosts, postsMeta }:any) : ReactNode => {
     </>;
 };
 
-const NewsPage : NextPage = ({layout, blocks, latestPosts, allPostsMeta}:any) : JSX.Element => {
+const NewsPage : NextPage = ({layout, blocks, latestPosts, allPostsMeta}:INextPageProps) : JSX.Element => {
     return (
         <Layout layout={layout}>
             <Container>

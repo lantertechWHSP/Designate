@@ -1,7 +1,8 @@
 import { getBlock } from '~/components/ModularContent';
-import { IDatoLink } from '~/interfaces';
+import { ILink } from '~/interfaces/util/link';
+import { IBlock } from '~/interfaces/util/block';
 
-export const resolveInternalLink:any = (link:IDatoLink) : string => {
+export const resolveInternalLink:any = (link:ILink) : string => {
     if (!link) {
         return null;
     }
@@ -82,7 +83,7 @@ export const getLayoutData:any = (site, page, preview) : any => {
     };
 };
 
-export const getBlocks:any = async (blocks): Promise<any> => {
+export const getBlocks:any = async (blocks:IBlock[]): Promise<any> => {
     if(blocks) {
         return (
             (await Promise.all(

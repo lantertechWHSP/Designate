@@ -1,12 +1,12 @@
 import { Link as ChakraLink } from '@chakra-ui/react';
 import { resolveInternalLink } from '~/lib/utils';
 import { ChakraProps } from '@chakra-ui/system';
-import { IDatoLink } from '~/interfaces';
+import { ILink } from '~/interfaces/util/link';
 import { forwardRef, ReactNode } from 'react';
 
 interface IMenuItemLinkProps extends ChakraProps {
     title?:string;
-    link?:IDatoLink;
+    link?:ILink;
     children?:any;
     externalLink?:string;
 }

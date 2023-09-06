@@ -4,9 +4,17 @@ import Layout from '~/components/layouts/Layout';
 import { ModularContent } from '~/components/ModularContent';
 import { doQuery, queries } from '~/dato/api';
 import { getLayoutData, getBlocks } from '~/lib/utils';
-import { ISite, ILayout, IPage } from '~/interfaces';
+import { ISite } from '~/interfaces/layout/site';
+import { ILayout } from '~/interfaces/layout/layout';
+import { IBlock } from '~/interfaces/util/block';
+import { GetStaticPropsContext, GetStaticPropsResult, GetStaticPathsResult, Params } from 'next';
 
-export async function getStaticPaths() : Promise<any> {
+interface INextPageProps {
+    layout?:ILayout;
+    blocks?:IBlock[];
+}
+
+export async function getStaticPaths() : Promise<GetStaticPathsResult<Params>> {
     const systemPages:string[] = [
         'news',
         'about/board',
@@ -25,7 +33,7 @@ export async function getStaticPaths() : Promise<any> {
     return { paths, fallback: false };
 }
 
-export async function getStaticProps({ params, preview }) : Promise<any> {
+export async function getStaticProps({ params, preview }:GetStaticPropsContext) : Promise<GetStaticPropsResult<INextPageProps>> {
     const { slug: slugRaw } = params;
 
     const slug:string = slugRaw ? slugRaw.join('/') : 'home';
@@ -35,12 +43,12 @@ export async function getStaticProps({ params, preview }) : Promise<any> {
     );
 
     const layout:ILayout = getLayoutData(site, page, preview);
-    const blocks:any = await getBlocks(page?.blocks);
+    const blocks:IBlock[] = await getBlocks(page?.blocks);
 
     return { props: { layout, blocks } };
 }
 
-const Page : NextPage = ({layout, blocks}:any)  : JSX.Element => {
+const Page : NextPage = ({ layout, blocks }:INextPageProps) : JSX.Element => {
     return (
         <Layout layout={layout}>
             <ModularContent content={blocks} />

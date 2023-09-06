@@ -2,12 +2,13 @@ import { ReactNode } from 'react';
 import { Box, Container, Flex, Heading } from '@chakra-ui/react';
 import { AspectRatio } from '@chakra-ui/react';
 import useDimensions from 'react-cool-dimensions';
-import { IDatoImage, IDatoVideo } from '~/interfaces';
+import { IVideo } from '~/interfaces/util/video';
+import { IImage } from '~/interfaces/util/image';
 
 interface IHeroBlockProps {
     title?:string;
-    video?:IDatoVideo;
-    image?:IDatoImage;
+    video?:IVideo;
+    image?:IImage;
 }
 
 const HeroBlock:any = ({ title, video, image }:IHeroBlockProps) : ReactNode => {

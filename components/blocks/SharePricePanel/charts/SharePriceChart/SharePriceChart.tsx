@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { YourIR, set } from 'yourir-next';
 import { Icon, Icons } from '~/components/elements/icon';
 import { Flex, Box, ButtonGroup, Button, Menu, MenuButton, Portal, MenuList, MenuItem } from '@chakra-ui/react';
-import { IFilter } from '~/interfaces';
+import { IFilter } from '~/interfaces/util/filter';
 
 const SharePriceChart:any = () : ReactNode => {
     const comparisonSymbols:IFilter[] = [

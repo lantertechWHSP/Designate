@@ -2,10 +2,10 @@ import { ReactNode } from 'react';
 import { Box, Text, Heading, AspectRatio } from '@chakra-ui/react';
 import { Icon, Icons } from '~/components/elements/icon';
 import { DatoLink } from '~/components/elements/datoLink';
-import { IDatoLink } from "~/interfaces";
+import { ILink } from "~/interfaces/util/link";
 
 export interface ICardBlockProps {
-    link?:IDatoLink;
+    link?:ILink;
 }
 
 const CardBlock:any = ({ link }:ICardBlockProps) : ReactNode => {

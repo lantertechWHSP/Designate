@@ -7,12 +7,12 @@ import { DividendHistoryTable } from '~/components/blocks/DividendsPanel/tables/
 import { LatestDividendTable } from '~/components/blocks/DividendsPanel/tables/LatestDividendTable';
 import DividendHistoryChart from '~/components/blocks/DividendsPanel/charts/DividendHistoryChart/DividendHistoryChart';
 import { IDividendsTable, IDividendsTableRow } from '~/components/blocks/DividendsPanel/interfaces';
-import { IDatoFile } from '~/interfaces';
+import { IFile } from '~/interfaces/util/file';
 
 interface IDividendsPanelBlockProps {
     description?:string;
     latestDividendDescription?:string;
-    csv?:IDatoFile;
+    csv?:IFile;
 }
 
 const DividendsPanelBlock:any = ({ description, latestDividendDescription, csv }:IDividendsPanelBlockProps) : ReactNode => {

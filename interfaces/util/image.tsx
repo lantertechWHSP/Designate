@@ -1,4 +1,4 @@
-export interface IDatoImage {
+export interface IImage {
     url?:string;
     responsiveImage?:any;
 }

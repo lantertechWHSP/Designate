@@ -1,4 +1,4 @@
-import { IDatoImage } from '~/interfaces';
+import { IImage } from '~/interfaces/util/image';
 
 interface IPerson {
     id?:string;
@@ -6,5 +6,5 @@ interface IPerson {
     definition?:string;
     companyPosition?:string;
     description?:string;
-    image:IDatoImage;
+    image:IImage;
 }

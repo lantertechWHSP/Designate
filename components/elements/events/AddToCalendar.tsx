@@ -2,7 +2,6 @@ import { ReactNode } from 'react';
 import { google, outlook, office365, yahoo, ics } from 'calendar-link';
 import { Portal, Button, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react';
 import { IEvent } from '~/interfaces/models/event';
-import { Icon, Icons } from '~/components/elements/icon';
 
 interface IAddToCalendarProps {
     isOpen?:boolean;

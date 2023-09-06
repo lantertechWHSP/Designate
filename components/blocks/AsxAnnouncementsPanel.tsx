@@ -3,7 +3,7 @@ import { Box, Container, Flex, Heading, Text, ButtonGroup, Button, Menu, MenuBut
 import { YourIR, set } from 'yourir-next';
 import { Icon, Icons } from '~/components/elements/icon';
 import { symbol } from '~/consts/yourir';
-import { IFilter } from '~/interfaces';
+import { IFilter } from '~/interfaces/util/filter';
 
 const AsxAnnouncementsPanelBlock:any = () : ReactNode => {
     const filters:IFilter[] = [
