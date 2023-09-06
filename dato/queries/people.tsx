@@ -1,6 +1,6 @@
 import { imageAttrs } from '~/dato/attrs/responsiveImageAttrs';
 
-export const people = `
+export const people:string = `
     query people($definition: String!) {
         people: allPeople(filter: {definition: {eq: $definition}}) {
             id

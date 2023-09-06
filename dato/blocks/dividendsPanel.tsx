@@ -1,4 +1,4 @@
-export const dividendsPanelRecord = `
+export const dividendsPanelRecord:string = `
     __typename
     id
     description

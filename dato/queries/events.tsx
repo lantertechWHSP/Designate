@@ -1,4 +1,4 @@
-const eventFrag = `
+const eventFrag:string = `
     fragment eventFrag on EventRecord {
         __typename
         id
@@ -11,7 +11,7 @@ const eventFrag = `
     }
 `;
 
-export const events = `
+export const events:string = `
     query events ($limit: IntType) {
         events: allEvents(first: $limit, orderBy: startDate_DESC) {
             ...eventFrag

@@ -1,6 +1,6 @@
 import { cardRecord } from '~/dato/blocks/card';
 
-export const cardContainerRecord = `
+export const cardContainerRecord:string = `
     __typename
     id
     title 

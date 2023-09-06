@@ -1,6 +1,6 @@
 import { imageAttrs } from '~/dato/attrs/responsiveImageAttrs';
 
-export const videoRecord = `
+export const videoRecord:string = `
     __typename
     id
     title

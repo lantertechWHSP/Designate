@@ -3,7 +3,7 @@ import { textRecord } from '~/dato/blocks/text';
 import { imageRecord } from '~/dato/blocks/image';
 import { videoRecord } from '~/dato/blocks/video';
 
-export const post = `
+export const post:string = `
     query post ($slug: String!) {
         post(filter: {slug: {eq: $slug}}) {
             id

@@ -12,18 +12,18 @@ const EventCard:any = ({ title, allDay, startDate, endDate, details, location }:
     return <Flex py={4} direction={['row']} alignItems={['center']}>
         {
             title && <Heading as="h3"
-                              flex={1}
-                              variant="listItem">
+                flex={1}
+                variant="listItem">
                 {title}
             </Heading>
         }
         {
             startDate && <Text variant="listItemDate"
-                               textAlign={['left', ,'right']}
-                               ml={4}
-                               mb={0}>
+                textAlign={['left', ,'right']}
+                ml={4}
+                mb={0}>
                 {DateTime.fromISO(startDate).toFormat('d/M/yyyy')}
-             </Text>
+            </Text>
         }
         <Box ml={4}>
             <AddToCalendar

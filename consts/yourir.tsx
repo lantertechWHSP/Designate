@@ -1,1 +1,1 @@
-export const symbol = 'sol.asx';
+export const symbol:string = 'sol.asx';

@@ -10,12 +10,12 @@ import { ISite } from '~/interfaces/layout/site';
 import { IPage } from '~/interfaces/models/page';
 import { ILayout } from '~/interfaces/layout/layout';
 import { IBlock } from '~/interfaces/util/block';
+import { IPerson } from '~/interfaces/models/person';
 
-// @TODO add types
 interface INextPageProps {
     layout?:ILayout;
     blocks?:IBlock;
-    people?:any;
+    people?:IPerson[];
 }
 
 export async function getStaticProps({ preview }:GetStaticPropsContext) : Promise<GetStaticPropsResult<INextPageProps>> {

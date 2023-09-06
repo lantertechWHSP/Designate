@@ -19,8 +19,8 @@ const AddToCalendar:any = ({ event }:IAddToCalendarProps) : ReactNode => {
             {({ _isOpen }) => (
                 <>
                     <MenuButton as={Button}
-                                variant="menuButton"
-                                textAlign="center">
+                        variant="menuButton"
+                        textAlign="center">
                         Add To Calendar
                     </MenuButton>
                     <Portal>
@@ -42,5 +42,5 @@ const AddToCalendar:any = ({ event }:IAddToCalendarProps) : ReactNode => {
 export default AddToCalendar;
 
 const CalendarLink:any = ({ ...props }:any) : ReactNode => {
-    return <MenuItem as="a" target="_blank" {...props} />
+    return <MenuItem as="a" target="_blank" {...props} />;
 };

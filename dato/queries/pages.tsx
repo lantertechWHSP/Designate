@@ -1,4 +1,4 @@
-export const pages = `
+export const pages:string = `
     query pages {
         pages: allPages {
             id

@@ -1,4 +1,4 @@
-export const asxAnnouncementsPanelRecord = `
+export const asxAnnouncementsPanelRecord:string = `
     __typename
     id
 `;

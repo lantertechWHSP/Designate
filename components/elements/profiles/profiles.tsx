@@ -2,28 +2,18 @@ import React, { ReactNode, useState } from 'react';
 import { Image } from "~/components/elements/image";
 import { Icon, Icons } from "~/components/elements/icon";
 import { Box, Flex, Container, SimpleGrid, Heading, Modal, ModalOverlay, ModalContent, Button } from '@chakra-ui/react';
+import { IPerson } from '~/interfaces/models/person';
+import ProfileCard from '~/components/elements/profiles/profileCard';
 
-const ProfileCard:any = ({ image, name, companyPosition, onClick }) : ReactNode => {
-    return <Box>
-        <Image image={image} ratio={[1 / 1]} onClick={onClick} mb={4} />
-        {
-            name && <Heading as="h2" variant="h4" fontWeight={400}>
-                {name}
-            </Heading>
-        }
-        {
-            companyPosition && <Heading as="h3" variant="h5" color="steelBlue2" fontWeight={400}>
-                {companyPosition}
-            </Heading>
-        }
-    </Box>;
-};
+interface IProfileProps {
+    people:IPerson[];
+}
 
-export const Profiles:any = ({ people }) : ReactNode => {
+export const Profiles:any = ({ people }:IProfileProps) : ReactNode => {
     const [modalOpen, setModalOpen] = useState<boolean>(false);
-    const [activePerson, setActivePerson] = useState<any>(null);
+    const [activePerson, setActivePerson] = useState<IPerson>(null);
 
-    const onProfileClick:any = (index) : void => {
+    const onProfileClick:any = (index:number) : void => {
         setActivePerson(people[index]);
         setModalOpen(true);
     };
@@ -32,7 +22,7 @@ export const Profiles:any = ({ people }) : ReactNode => {
         <Container>
             <SimpleGrid columns={[1, 2, 4]} spacing={8}>
                 {
-                    (Array.isArray(people) && people.length > 0) && people.map((person, index:number) => {
+                    (Array.isArray(people) && people.length > 0) && people.map((person:IPerson, index:number) => {
                         return (
                             <ProfileCard
                                 key={index}

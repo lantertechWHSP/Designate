@@ -1,4 +1,4 @@
-const menuItemFrag = `
+const menuItemFrag:string = `
     fragment menuItemFrag on MenuItemRecord {
         id
         title
@@ -14,7 +14,7 @@ const menuItemFrag = `
     }
 `;
 
-export const site = `
+export const site:string = `
     query site {
         site: _site {
             favicon: faviconMetaTags {

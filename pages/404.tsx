@@ -23,7 +23,7 @@ export async function getStaticProps({ _params, preview }:GetStaticPropsContext)
     const layout:ILayout = getLayoutData(site, page, preview);
 
     return { props: { layout } };
-};
+}
 
 const ErrorPage : NextPage = ({ layout }:INextPageProps) : JSX.Element => {
     return <Layout layout={layout}>

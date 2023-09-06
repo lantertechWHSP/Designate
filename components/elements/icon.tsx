@@ -15,7 +15,7 @@ interface IIconProps {
     icon:Icons;
     w:number;
     h:number
-};
+}
 
 export const Icon:any = ({icon, w = 16, h = 16}:IIconProps) : JSX.Element => {
     return <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width={w} height={h} fill="currentColor">

@@ -1,4 +1,4 @@
-export const shareHistoricalPricesTableRecord = `
+export const shareHistoricalPricesTableRecord:string = `
     __typename
     id
 `;

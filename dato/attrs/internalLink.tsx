@@ -1,4 +1,4 @@
-export const internalLinkAttrs = `
+export const internalLinkAttrs:string = `
     ... on PageRecord {
         id
         title

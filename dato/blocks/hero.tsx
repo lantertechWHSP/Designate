@@ -1,4 +1,4 @@
-export const heroRecord = `
+export const heroRecord:string = `
     __typename
     id
     title

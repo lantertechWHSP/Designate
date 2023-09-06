@@ -1,4 +1,4 @@
-export const investorPanelRecord = `
+export const investorPanelRecord:string = `
     __typename
     id
     title

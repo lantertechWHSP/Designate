@@ -1,4 +1,4 @@
-const postFrag = `
+const postFrag:string = `
     fragment postFrag on PostRecord {
         __typename
         id
@@ -22,7 +22,7 @@ const postFrag = `
     }
 `;
 
-export const latestPosts = `
+export const latestPosts:string = `
     query posts($isFeatured: BooleanType, $first: IntType, $skip: IntType) {
         posts: allPosts(filter: {isFeatured: {eq: $isFeatured}}, first: $first, skip: $skip, orderBy: publishDate_DESC) {
             ...postFrag
@@ -31,7 +31,7 @@ export const latestPosts = `
     ${postFrag}
 `;
 
-export const posts = `
+export const posts:string = `
     query posts {
         posts: allPosts {
             ...postFrag
@@ -40,7 +40,7 @@ export const posts = `
     ${postFrag}
 `;
 
-export const postsMeta = `
+export const postsMeta:string = `
     query posts {
         postsMeta: _allPostsMeta {
             count

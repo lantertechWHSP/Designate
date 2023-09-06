@@ -13,7 +13,7 @@ import { shareQuoteTableRecord } from '~/dato/blocks/shareQuoteTable';
 import { shareHistoricalPricesTableRecord } from '~/dato/blocks/shareHistoricalPricesTable';
 import { asxAnnouncementsPanelRecord } from '~/dato/blocks/asxAnnouncementsPanel';
 
-export const blocks = `
+export const blocks:string = `
     blocks {
         ... on TextRecord {
             ${textRecord}
