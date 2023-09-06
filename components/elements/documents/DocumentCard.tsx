@@ -7,7 +7,7 @@ import { DateTime } from 'luxon';
 interface IDocumentCardProps extends IDocument, ChakraProps {
 }
 
-const DocumentCard:any = ({ title, date }:IDocumentCardProps) : ReactNode => {
+const DocumentCard:any = ({ title, date, document }:IDocumentCardProps) : ReactNode => {
     return <Flex py={4} direction={['row']} alignItems={['center']}>
         {
             title && <Heading as="h3"
@@ -24,11 +24,15 @@ const DocumentCard:any = ({ title, date }:IDocumentCardProps) : ReactNode => {
                 {DateTime.fromISO(date).toFormat('d/M/yyyy')}
             </Text>
         }
-        <Box ml={4}>
-            <Link href="#">
-                View
-            </Link>
-        </Box>
+        {
+            (document && document.url) && <Box ml={4}>
+                <Link href={document?.url}
+                      as="a"
+                      target="_blank">
+                    View
+                </Link>
+            </Box>
+        }
     </Flex>;
 };
 
