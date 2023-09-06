@@ -1,9 +1,29 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import { YourIR } from 'yourir-next';
 import { Flex, Box, Text, Badge } from '@chakra-ui/react';
 import { symbol } from '~/consts/yourir';
 
+// enum MarketStatus
+//     PRE_OPEN,
+//     OPEN,
+//     CLOSED
+// }
+
 const SharePriceOverview:any = () : ReactNode => {
+    const statusRef = useRef<HTMLElement>();
+    const [status, setStatus] = useState<any>({});
+
+    useEffect(() => {
+        if(statusRef.current) {
+            debugger;
+
+            // statusRef.current.innerHTML === 'OPEN' ? 'green' : 'steelBlue3'
+            setStatus({
+                color: 'red'
+            });
+        }
+    }, [statusRef.current])
+
     return <Box as={YourIR}>
         <Box py={4}
             mb={8}>
@@ -13,7 +33,10 @@ const SharePriceOverview:any = () : ReactNode => {
                 <Text as="span" fontWeight={500} data-yourir="shortName"></Text>{'\u00A0'}
                 <Text as="span" color="steelBlue3"><span data-yourir="market"></span>:<span data-yourir="symbol"></span></Text>
             </Text>
-            <Badge data-yourir="marketStatus">{symbol}</Badge>
+            <div id={status.color}>
+                <span>{status.color}</span>
+            </div>
+            <span ref={statusRef} data-yourir="status" />
             <Text fontSize={['96px']}
                 lineHeight={['106px']}
                 fontWeight={500}

@@ -1,8 +1,9 @@
 import { ReactNode } from 'react';
-import { YourIR, set } from 'yourir-next';
+import { YourIR } from 'yourir-next';
 import { Icon, Icons } from '~/components/elements/icon';
 import { Flex, Box, ButtonGroup, Button, Menu, MenuButton, Portal, MenuList, MenuItem } from '@chakra-ui/react';
 import { IFilter } from '~/interfaces/util/filter';
+import { ColorGenerator } from "~/lib/colorGenerator/colorGenerator";
 
 const SharePriceChart:any = () : ReactNode => {
     const comparisonSymbols:IFilter[] = [
@@ -21,6 +22,8 @@ const SharePriceChart:any = () : ReactNode => {
     ];
 
     let selectedSymbolLabel:string = '';
+
+    const predefinedColors = new ColorGenerator().getPredefinedColors();
 
     return <Box as={YourIR}>
         <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" height="0" width="0">
@@ -74,9 +77,21 @@ const SharePriceChart:any = () : ReactNode => {
                 },
                 '.yourir-chart-yaxis-gridline': {
                     stroke: 'lightGrey2'
+                },
+                '.yourir-chart-symbol-label': {
+                    display: 'none'
+                },
+                '.yourir-chart-relative-price1': {
+                    stroke: predefinedColors.blue,
+                },
+                '.yourir-chart-relative-price2': {
+                    stroke: predefinedColors.red
+                },
+                '.yourir-chart-relative-price3': {
+                    stroke: predefinedColors.green
                 }
             }}>
-            <Box id="priceComparisionChart" data-yourir="priceComparisonChart1 comparisonSymbol1=sol.asx volume.visible=false range=1d ranges=1d,1m,6m,1y,5y,10y showTooltips=true">
+            <Box id="priceComparisionChart" data-yourir="priceComparisonChart1 volume.visible=false relativePrice1.visible=false relativePrice2.visible=false relativePrice3.visible=false range=1m ranges=1d,1m,6m,1y,5y,10y showTooltips=true">
                 <Flex>
                     <Box>
                         <ButtonGroup
@@ -108,6 +123,17 @@ const SharePriceChart:any = () : ReactNode => {
                                 Max
                             </Button>
                         </ButtonGroup>
+                        <ButtonGroup>
+                            <Button data-yourir="relativePrice1.visible">
+                                XAO
+                            </Button>
+                            <Button data-yourir="relativePrice2.visible">
+                                XJO
+                            </Button>
+                            <Button data-yourir="relativePrice3.visible">
+                                XKO
+                            </Button>
+                        </ButtonGroup>
                     </Box>
                     <Box flex={1} />
                     <Box>
@@ -129,8 +155,10 @@ const SharePriceChart:any = () : ReactNode => {
                                                         as={Button}
                                                         variant="menuItemFilter"
                                                         onClick={() => {
-                                                            selectedSymbolLabel = item.name;
-                                                            set(`priceComparisionChart.comparisonSymbol2`, item.value);
+                                                            // Wanting to know what value to use here…
+                                                            set('{{relativePrice3}}.visible', true)
+
+                                                            // Set the other prices visibility to false
                                                         }}>
                                                         {item.name}
                                                     </MenuItem>;

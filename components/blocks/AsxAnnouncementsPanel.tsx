@@ -145,7 +145,7 @@ const AsxAnnouncementsPanelBlock:any = () : ReactNode => {
                                         maxWidth={['140px']}
                                         mb={0} />
                                     <Flex display={['none', ,'flex']}>
-                                        <Link data-yourir="viewAnnouncement">
+                                        <Link data-yourir="viewAnnouncementOnMobile {$cur.symbol} {$cur.fileID}">
                                             View
                                         </Link>
                                     </Flex>
