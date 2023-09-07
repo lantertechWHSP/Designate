@@ -27,12 +27,22 @@ export const documentsMeta:string = `
         documentsMeta: _allDocumentsMeta(filter: $filter) {
             count
         }
-        firstDate: allDocuments(orderBy: date_ASC, first: 1) {
-            date
-        }
-        lastDate: allDocuments(orderBy: date_DESC, first: 1) {
-            date
-        }
     }
 `;
 
+export const documentsFilters:string = `
+    query documents($filter: DocumentModelFilter) {
+        firstDate: allDocuments(filter: $filter, orderBy: date_ASC, first: 1) {
+            date
+        }
+        lastDate: allDocuments(filter: $filter, orderBy: date_DESC, first: 1) {
+            date
+        }
+        tags: allDocuments(filter: $filter) {
+            tags {
+                id
+                label
+            }
+        }
+    }
+`;

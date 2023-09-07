@@ -1,4 +1,5 @@
 import { IFile } from '~/interfaces/util/file';
+import { IFilter } from '~/interfaces/util/filter';
 
 interface IDocumentCategory {
     id?:string;
@@ -20,6 +21,9 @@ export interface IDocument {
 
 export interface IDocumentsMeta {
     count?:number;
-    firstDate?:string;
-    lastDate?:string;
+}
+
+export interface IDocumentsFilters {
+    yearFilters:IFilter[];
+    tagFilters:IFilter[];
 }

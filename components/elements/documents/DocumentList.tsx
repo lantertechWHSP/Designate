@@ -1,8 +1,8 @@
 import { useState, ReactNode, useEffect } from 'react';
 import { doQuery, queries } from '~/dato/api';
 import DocumentCard from '~/components/elements/documents/DocumentCard';
-import { Box, Button, Spinner, Text, Container, Heading, Menu, MenuButton, Portal, MenuList, MenuItem  } from '@chakra-ui/react';
-import { IDocument } from '~/interfaces/models/document';
+import { Box, Button, Spinner, Text, Container, Heading, Menu, MenuButton, Portal, MenuList, MenuItem, ButtonGroup  } from '@chakra-ui/react';
+import {IDocument, IDocumentsFilters} from '~/interfaces/models/document';
 import { IDocumentsMeta } from '~/interfaces/models/document';
 import { groupBy as _groupBy, forOwn as _forOwn } from 'lodash';
 import { DateTime } from 'luxon';
@@ -12,6 +12,7 @@ import { IFilter } from '~/interfaces/util/filter';
 interface IDocumentListProps {
     latestDocuments:IDocument[];
     latestDocumentsMeta:IDocumentsMeta;
+    documentsFilters:IDocumentsFilters;
 }
 
 interface IDocumentBundle {
@@ -19,31 +20,31 @@ interface IDocumentBundle {
     documents:IDocument[];
 }
 
-export const ITEMS_PER_PAGE = 2;
-export const ORDER_BY = 'date_DESC';
-export const CATEGORY_ID = '190260513'; // Category ID from DatoCMS
+export const DATO_QUERY_VALUES = {
+    ITEMS_PER_PAGE : 2,
+    ORDER_BY : 'date_DESC',
+    CATEGORY_ID : '190260513'
+}
 
-const DocumentList:any = ({ latestDocuments, latestDocumentsMeta }:IDocumentListProps) : ReactNode => {
+const DocumentList:any = ({ latestDocuments, documentsMeta, documentsFilters }:IDocumentListProps) : ReactNode => {
     const [page, setPage] = useState<number>(1);
     const [documents, setDocuments] = useState<IDocument[]>(latestDocuments);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [couldNotLoadDocuments, setCouldNotLoadDocuments] = useState<boolean>(false);
     const [documentBundles, setDocumentBundles] = useState<IDocumentBundle[]>([]);
 
-    const [yearFilters, setYearFilters] = useState<IFilter[]>([{
-        value: 'none',
-        label: 'All'
-    }])
+    const [tagFilters] = useState<IFilter[]>(documentsFilters.tagFilters);
+    const [yearFilters] = useState<IFilter[]>(documentsFilters.yearFilters);
 
-    const [selectedYear, setSelectedYear] = useState<IFilter>(yearFilters[0])
-    const [totalDocumentCount, setTotalDocumentCount] = useState<number>(latestDocumentsMeta?.count);
+    const [selectedYear, setSelectedYear] = useState<IFilter>(yearFilters[0]);
+    const [selectedTag, setSelectedTag] = useState<IFilter>(tagFilters[0]);
+    const [totalDocumentCount, setTotalDocumentCount] = useState<number>(documentsMeta?.count);
 
-    const loadMore:any = () : void => {
-        setIsLoading(true);
 
+    const getDatoFilterObject:any = () : void => {
         const filter:any = {
             categories: {
-                eq: CATEGORY_ID
+                eq: DATO_QUERY_VALUES.CATEGORY_ID
             }
         };
 
@@ -54,11 +55,24 @@ const DocumentList:any = ({ latestDocuments, latestDocumentsMeta }:IDocumentList
                 lte: `${selectedYear.value}-12-31`
             }
         }
+        if(selectedTag.value !== 'none') {
+            filter['tags'] = {
+                eq: selectedTag.value
+            }
+        }
+
+        return filter;
+    }
+
+    const loadMore:any = () : void => {
+        setIsLoading(true);
+
+        const filter:any = getDatoFilterObject();
 
         doQuery(queries.documents, {
-            first: ITEMS_PER_PAGE,
-            skip: page * ITEMS_PER_PAGE,
-            orderBy: ORDER_BY,
+            first: DATO_QUERY_VALUES.ITEMS_PER_PAGE,
+            skip: page * DATO_QUERY_VALUES.ITEMS_PER_PAGE,
+            orderBy: DATO_QUERY_VALUES.ORDER_BY,
             filter: filter
         }).then(({ documents }) => documents || []).then((newDocuments) => {
             if(newDocuments.length > 0) {
@@ -76,31 +90,6 @@ const DocumentList:any = ({ latestDocuments, latestDocumentsMeta }:IDocumentList
             }, 250);
         });
     };
-
-    useEffect(() => {
-        debugger;
-        if(latestDocumentsMeta) {
-            debugger;
-            const endYear:number = +(DateTime.fromFormat(latestDocumentsMeta.lastDate, 'yyyy-mm-dd').toFormat('yyyy'));
-            const startYear:number = +(DateTime.fromFormat(latestDocumentsMeta.firstDate, 'yyyy-mm-dd').toFormat('yyyy'));
-            const newYearFilters:IFilter[] = [
-                {
-                    value: 'none',
-                    label: 'All'
-                },
-                ...Array.from(
-                    { length: endYear - startYear + 1 },
-                    (v, i) => {
-                        return {
-                            label: (endYear - i).toString(),
-                            value: endYear - i,
-                        }
-                    }
-                )];
-
-            setYearFilters(newYearFilters);
-        }
-    }, [latestDocumentsMeta])
 
     useEffect(() => {
         const newSortedDocumentBundles:IDocumentBundle[] = [];
@@ -121,70 +110,90 @@ const DocumentList:any = ({ latestDocuments, latestDocumentsMeta }:IDocumentList
         // Reset to the first page when filtering…
         setPage(1);
 
-        const filter:any = {
-            categories: {
-                eq: CATEGORY_ID
-            }
-        };
+        const filter:any = getDatoFilterObject();
 
-        if(selectedYear.value !== 'none') {
-            filter['date'] = {
-                gte: `${selectedYear.value}-01-01`,
-                lte: `${selectedYear.value}-12-31`
-            }
-        }
-
+        // Reset documents
         doQuery(queries.documents, {
-            first: ITEMS_PER_PAGE,
-            orderBy: ORDER_BY,
+            first: DATO_QUERY_VALUES.ITEMS_PER_PAGE,
+            orderBy: DATO_QUERY_VALUES.ORDER_BY,
             filter,
         }).then(({ documents }) => documents || []).then((newDocuments) => {
             setDocuments(newDocuments);
         });
 
+        // Reset document count
         doQuery(queries.documentsMeta, {
             filter,
         }).then(({ documentsMeta }) => documentsMeta || {}).then((documentsMeta) => {
             setTotalDocumentCount(documentsMeta.count);
         });
-    }, [selectedYear])
+    }, [selectedYear, selectedTag])
 
     return <Box bg="lightGrey3">
         <Container>
             <Box py={8}>
-                <Menu>
-
-                </Menu>
-                <Menu>
-                    {({ isOpen }) => (
-                        <>
-                            <MenuButton as={Button}
-                                        variant="menuButton"
-                                        height="40px"
-                                        lineHeight="40px"
-                                        minW="200px"
-                                        rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} w={12} h={12} /> : <Icon icon={Icons.ChevronDown} w={12} h={12} />}>
-                                {selectedYear.label ? selectedYear.label : 'Compare…'}
-                            </MenuButton>
-                            <Portal>
-                                <MenuList>
-                                    {
-                                        yearFilters.map((item:IFilter, index:number) => {
-                                            return <MenuItem key={index}
-                                                             as={Button}
-                                                             variant="menuItemFilter"
-                                                             onClick={() => {
-                                                                 setSelectedYear(item);
-                                                             }}>
-                                                {item.label}
-                                            </MenuItem>;
-                                        })
-                                    }
-                                </MenuList>
-                            </Portal>
-                        </>
-                    )}
-                </Menu>
+                <ButtonGroup>
+                    <Menu>
+                        {({ isOpen }) => (
+                            <>
+                                <MenuButton as={Button}
+                                            variant="menuButton"
+                                            height="40px"
+                                            lineHeight="40px"
+                                            minW="200px"
+                                            rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} w={12} h={12} /> : <Icon icon={Icons.ChevronDown} w={12} h={12} />}>
+                                    {selectedTag.label ? selectedTag.label : 'Compare…'}
+                                </MenuButton>
+                                <Portal>
+                                    <MenuList>
+                                        {
+                                            tagFilters.map((item:IFilter, index:number) => {
+                                                return <MenuItem key={index}
+                                                                 as={Button}
+                                                                 variant="menuItemFilter"
+                                                                 onClick={() => {
+                                                                     setSelectedTag(item);
+                                                                 }}>
+                                                    {item.label}
+                                                </MenuItem>;
+                                            })
+                                        }
+                                    </MenuList>
+                                </Portal>
+                            </>
+                        )}
+                    </Menu>
+                    <Menu>
+                        {({ isOpen }) => (
+                            <>
+                                <MenuButton as={Button}
+                                            variant="menuButton"
+                                            height="40px"
+                                            lineHeight="40px"
+                                            minW="200px"
+                                            rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} w={12} h={12} /> : <Icon icon={Icons.ChevronDown} w={12} h={12} />}>
+                                    {selectedYear.label ? selectedYear.label : 'Compare…'}
+                                </MenuButton>
+                                <Portal>
+                                    <MenuList>
+                                        {
+                                            yearFilters.map((item:IFilter, index:number) => {
+                                                return <MenuItem key={index}
+                                                                 as={Button}
+                                                                 variant="menuItemFilter"
+                                                                 onClick={() => {
+                                                                     setSelectedYear(item);
+                                                                 }}>
+                                                    {item.label}
+                                                </MenuItem>;
+                                            })
+                                        }
+                                    </MenuList>
+                                </Portal>
+                            </>
+                        )}
+                    </Menu>
+                </ButtonGroup>
             </Box>
             {
                 (Array.isArray(documents) && documents.length > 0) ? <>
