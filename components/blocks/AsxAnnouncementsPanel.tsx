@@ -8,58 +8,58 @@ import { IFilter } from '~/interfaces/util/filter';
 const AsxAnnouncementsPanelBlock:any = () : ReactNode => {
     const filters:IFilter[] = [
         {
-            name: 'All Document Types',
+            label: 'All Document Types',
             value: 'none'
         },
         {
-            name: 'Share Holder Notices',
+            label: 'Share Holder Notices',
             value: 'securityHolder'
         },
         {
-            name: 'Annual Reports',
+            label: 'Annual Reports',
             value: 'annualReports'
         },
         {
-            name: 'Periodic Reports',
+            label: 'Periodic Reports',
             value: 'periodicReports'
         },
         {
-            name: 'Dividend Notices',
+            label: 'Dividend Notices',
             value: 'dividendNotices'
         },
         {
-            name: 'Change of Director’s Address',
+            label: 'Change of Director’s Address',
             value: 'companyAdministration'
         },
         {
-            name: 'Price Sensitive',
+            label: 'Price Sensitive',
             value: 'priceSensitive'
         },
         {
-            name: 'Non-Procedural',
+            label: 'Non-Procedural',
             value: 'nonProcedural'
         }
     ];
 
-    let filterName:string = filters[0].name;
+    let filterName:string = filters[0].label;
 
     const startYear:number = 2016;
     const currentYear:number = new Date().getFullYear();
 
     const years:IFilter[] = [{
         value: 'none',
-        name: 'All Years'
+        label: 'All Years'
     }, ...Array.from(
         { length: currentYear - startYear + 1 },
         (v, i) => {
             return {
-                name: (currentYear - i).toString(),
+                label: (currentYear - i).toString(),
                 value: currentYear - i,
             };
         }
     )];
 
-    let yearName:string = years[0].name;
+    let yearName:string = years[0].label;
 
     const scrollToTable:any = () : void => {
         const scrollDiv:number = document.getElementById("asx-announcements-panel").offsetTop;
@@ -87,10 +87,10 @@ const AsxAnnouncementsPanelBlock:any = () : ReactNode => {
                                                     return <MenuItem key={index}
                                                         as={Button}
                                                         onClick={() => {
-                                                            filterName = item.name;
+                                                            filterName = item.label;
                                                             set(`announcements.filter`, item.value);
                                                         }}>
-                                                        {item.name}
+                                                        {item.label}
                                                     </MenuItem>;
                                                 })
                                             }
@@ -115,10 +115,10 @@ const AsxAnnouncementsPanelBlock:any = () : ReactNode => {
                                                     return <MenuItem key={index}
                                                         as={Button}
                                                         onClick={() => {
-                                                            yearName = item.name;
+                                                            yearName = item.label;
                                                             set(`announcements.year`, item.value);
                                                         }}>
-                                                        {item.name}
+                                                        {item.label}
                                                     </MenuItem>;
                                                 })
                                             }

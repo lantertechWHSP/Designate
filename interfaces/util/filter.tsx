@@ -1,4 +1,4 @@
 export interface IFilter {
-    name?:string;
+    label?:string;
     value?:string|number;
 }

@@ -17,3 +17,12 @@ export interface IDocument {
     tags?:IDocumentTags[];
     document?:IFile;
 }
+
+export interface IDocumentsMeta {
+    count?:number;
+}
+
+export interface IDocumentsFirstLastDate {
+    firstDate?:string;
+    lastDate?:string;
+}

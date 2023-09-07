@@ -17,7 +17,7 @@ const PostList:any = ({ latestPosts, postsMeta }:IPostsListProps) : ReactNode =>
     const [noMorePosts, setNoMorePosts] = useState<boolean>(false);
     const [couldNotLoadPosts, setCouldNotLoadPosts] = useState<boolean>(false);
 
-    const [totalPosts] = useState<number>(postsMeta.count || posts.length);
+    const [totalPostsCount] = useState<number>(postsMeta?.count);
     const itemsPerPage:number = 1;
 
     const loadMore:any = () : void => {
@@ -60,7 +60,7 @@ const PostList:any = ({ latestPosts, postsMeta }:IPostsListProps) : ReactNode =>
                     }
                 </SimpleGrid>
                 {
-                    (noMorePosts && posts.length >= totalPosts) && <Box>
+                    (noMorePosts && posts.length >= totalPostsCount) && <Box>
                         <Text variant="caption" color="lightGrey">No more Posts to load</Text>
                     </Box>
                 }
@@ -70,7 +70,7 @@ const PostList:any = ({ latestPosts, postsMeta }:IPostsListProps) : ReactNode =>
                     </Box>
                 }
                 {
-                    posts.length < totalPosts && <Button color="sunlight" onClick={loadMore} px={0} rightIcon={isLoading && <Spinner size='sm' />}>
+                    posts.length < totalPostsCount && <Button color="sunlight" onClick={loadMore} px={0} rightIcon={isLoading && <Spinner size='sm' />}>
                         <Text textDecoration="underline">
                             Load Moar!
                         </Text>

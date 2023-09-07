@@ -1,6 +1,6 @@
 export const documents:string = `
-    query documents ($limit: IntType, $skip: IntType, $orderBy: [DocumentModelOrderBy]) {
-        documents: allDocuments(first: $limit, skip: $skip, orderBy: $orderBy) {
+    query documents ($first: IntType, $skip: IntType, $filter: DocumentModelFilter, $orderBy: [DocumentModelOrderBy]) {
+        documents: allDocuments(first: $first, skip: $skip, filter: $filter, orderBy: $orderBy) {
             __typename
             id
             title
@@ -22,9 +22,20 @@ export const documents:string = `
     }
 `;
 
-export const documentsMeta:string = `
+export const documentFirstLastDates = `
     query documents {
-        documentsMeta: _allDocumentsMeta {
+        firstDate: allDocuments(orderBy: date_ASC, first: 1) {
+            date
+        }
+        lastDate: allDocuments(orderBy: date_DESC, first: 1) {
+            date
+        }
+    }
+`
+
+export const documentsMeta:string = `
+    query documents($filter: DocumentModelFilter) {
+        documentsMeta: _allDocumentsMeta(filter: $filter) {
             count
         }
     }

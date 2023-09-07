@@ -8,15 +8,15 @@ import { ColorGenerator } from "~/lib/colorGenerator/colorGenerator";
 const SharePriceChart:any = () : ReactNode => {
     const comparisonSymbols:IFilter[] = [
         {
-            name: 'XAO All Ordinaries',
+            label: 'XAO All Ordinaries',
             value:  'relativePrice1' // Relative Price 1 is XAO (xao.asx)
         },
         {
-            name: 'XJO S&P/ASX 200',
+            label: 'XJO S&P/ASX 200',
             value: 'relativePrice2', // Relative Price 2 is XJO  (xjo.asx)
         },
         {
-            name: 'XKO S&P/ASX 300',
+            label: 'XKO S&P/ASX 300',
             value: 'relativePrice3' /// Relative Price 3 is XKO (xko.asx)
         }
     ];
@@ -144,7 +144,7 @@ const SharePriceChart:any = () : ReactNode => {
                                                         as={Button}
                                                         variant="menuItemFilter"
                                                         onClick={() => {
-                                                            selectedSymbolLabel = item.name;
+                                                            selectedSymbolLabel = item.label;
                                                             comparisonSymbols.map((innerItem:IFilter) => {
                                                                 if(innerItem.value === item.value) {
                                                                     set(`priceComparisionChart.${innerItem.value}.visible`, true);
@@ -154,7 +154,7 @@ const SharePriceChart:any = () : ReactNode => {
                                                                 }
                                                             });
                                                         }}>
-                                                        {item.name}
+                                                        {item.label}
                                                     </MenuItem>;
                                                 })
                                             }

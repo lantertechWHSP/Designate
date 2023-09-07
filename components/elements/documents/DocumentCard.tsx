@@ -24,15 +24,15 @@ const DocumentCard:any = ({ title, date, document }:IDocumentCardProps) : ReactN
                 {DateTime.fromISO(date).toFormat('d/M/yyyy')}
             </Text>
         }
-        {
-            (document && document.url) && <Box ml={4}>
-                <Link href={document?.url}
-                      as="a"
-                      target="_blank">
+        <Box ml={4} minWidth="40px" textAlign="right">
+            {
+                (document && document.url) && <Link href={document?.url}
+                                                    as="a"
+                                                    target="_blank">
                     View
                 </Link>
-            </Box>
-        }
+            }
+        </Box>
     </Flex>;
 };
 

@@ -9,15 +9,15 @@ import { ISite } from '~/interfaces/layout/site';
 import { IPage } from '~/interfaces/models/page';
 import { ILayout } from '~/interfaces/layout/layout';
 import { IBlock } from '~/interfaces/util/block';
-import { IDocument } from '~/interfaces/models/document';
-import DocumentList from '~/components/elements/documents/DocumentList';
-import { IDocumentsMeta } from '~/interfaces/models/documentsMeta';
+import { IDocument, IDocumentsMeta, IDocumentsFirstLastDate } from '~/interfaces/models/document';
+import DocumentList, { ITEMS_PER_PAGE, ORDER_BY } from '~/components/elements/documents/DocumentList';
 
 interface INextPageProps {
     layout?:ILayout;
     blocks?:IBlock[];
     documents?:IDocument[];
     doucmentsMeta?:IDocumentsMeta;
+    documentFirstLastDates?:IDocumentsFirstLastDate;
 }
 
 export async function getStaticProps({ preview }:GetStaticPropsContext) : Promise<GetStaticPropsResult<INextPageProps>> {
@@ -29,20 +29,30 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
 
     const layout:ILayout = getLayoutData(site, page, preview);
     const blocks:any = await getBlocks(page?.blocks);
-    const documents:IDocument[] = await doQuery(queries.documents, { first: 1 }, preview).then(
+    const documents:IDocument[] = await doQuery(queries.documents, {
+        first: ITEMS_PER_PAGE,
+        orderBy: ORDER_BY
+    }, preview).then(
         ({ documents }) => documents || []
     );
 
-    const doucmentsMeta:IDocumentsMeta = await doQuery(queries.documentsMeta).then(({ postsMeta }) => postsMeta || {});
+    const documentFirstLastDates:IDocumentsFirstLastDate = await doQuery(queries.documentFirstLastDates).then(({ firstDate, lastDate }) => {
+        return {
+            firstDate: firstDate[0].date,
+            lastDate: lastDate[0].date
+        };
+    });
 
-    return { props: { layout, blocks, documents, doucmentsMeta } };
+    const doucmentsMeta:IDocumentsMeta = await doQuery(queries.documentsMeta).then(({ documentsMeta }) => documentsMeta || {});
+
+    return { props: { layout, blocks, documents, doucmentsMeta, documentFirstLastDates } };
 }
 
-const ReportsPage : NextPage = ({ layout, blocks, documents, doucmentsMeta }:INextPageProps) : JSX.Element => {
+const ReportsPage : NextPage = ({ layout, blocks, documents, doucmentsMeta, documentFirstLastDates }:INextPageProps) : JSX.Element => {
     return (
         <Layout layout={layout}>
             <ModularContent content={blocks} />
-            <DocumentList latestDocuments={documents} documentsMeta={doucmentsMeta} />
+            <DocumentList latestDocuments={documents} latestDocumentsMeta={doucmentsMeta} documentFirstLastDates={documentFirstLastDates} />
         </Layout>
     );
 };
