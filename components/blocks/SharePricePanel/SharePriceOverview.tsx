@@ -1,26 +1,15 @@
-import React, { ReactNode, useEffect, useRef, useState } from 'react';
+import React, { ReactNode, useEffect, useRef } from 'react';
 import { YourIR } from 'yourir-next';
 import { Flex, Box, Text, Badge } from '@chakra-ui/react';
-import { symbol } from '~/consts/yourir';
-
-// enum MarketStatus
-//     PRE_OPEN,
-//     OPEN,
-//     CLOSED
-// }
 
 const SharePriceOverview:any = () : ReactNode => {
     const statusRef = useRef<HTMLElement>();
-    const [status, setStatus] = useState<any>({});
+    let status;
 
+    // @TO-DO figure this out…
     useEffect(() => {
         if(statusRef.current) {
-            debugger;
-
-            // statusRef.current.innerHTML === 'OPEN' ? 'green' : 'steelBlue3'
-            setStatus({
-                color: 'red'
-            });
+            status = statusRef.current.innerText;
         }
     }, [statusRef.current])
 
@@ -33,10 +22,10 @@ const SharePriceOverview:any = () : ReactNode => {
                 <Text as="span" fontWeight={500} data-yourir="shortName"></Text>{'\u00A0'}
                 <Text as="span" color="steelBlue3"><span data-yourir="market"></span>:<span data-yourir="symbol"></span></Text>
             </Text>
-            <div id={status.color}>
-                <span>{status.color}</span>
-            </div>
-            <span ref={statusRef} data-yourir="status" />
+            <Box ref={statusRef} data-yourir="status" display="none" />
+            <Badge>
+                <Text as="span" data-yourir="statusName"></Text>
+            </Badge>
             <Text fontSize={['96px']}
                 lineHeight={['106px']}
                 fontWeight={500}
