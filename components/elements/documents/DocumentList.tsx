@@ -22,6 +22,7 @@ interface IDocumentBundle {
 
 export const ITEMS_PER_PAGE = 2;
 export const ORDER_BY = 'date_DESC';
+export const CATEGORY_ID = '190260513'; // Category ID from Dato
 
 const DocumentList:any = ({ latestDocuments, latestDocumentsMeta, documentFirstLastDates }:IDocumentListProps) : ReactNode => {
     const [page, setPage] = useState<number>(1);
@@ -41,7 +42,11 @@ const DocumentList:any = ({ latestDocuments, latestDocumentsMeta, documentFirstL
     const loadMore:any = () : void => {
         setIsLoading(true);
 
-        const filter:any = {};
+        const filter:any = {
+            categories: {
+                eq: CATEGORY_ID
+            }
+        };
 
         // Filter by Date
         if(selectedYear.value !== 'none') {
@@ -115,7 +120,11 @@ const DocumentList:any = ({ latestDocuments, latestDocumentsMeta, documentFirstL
         // Reset to the first page when filtering…
         setPage(1);
 
-        const filter:any = {};
+        const filter:any = {
+            categories: {
+                eq: CATEGORY_ID
+            }
+        };
 
         if(selectedYear.value !== 'none') {
             filter['date'] = {
