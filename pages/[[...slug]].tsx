@@ -18,10 +18,10 @@ interface INextPageProps {
 export async function getStaticPaths() : Promise<GetStaticPathsResult<any>> {
     const systemPages:string[] = [
         'news',
-        'about/board',
-        'about/management',
+        'people-and-governance/board-of-directors',
+        'people-and-governance/leadership-team',
         'investors/key-dates',
-        'investors/reports'
+        'investors/financial-reports'
     ];
 
     const pages:IPage = await doQuery(queries.pages).then(({ pages }) => pages);

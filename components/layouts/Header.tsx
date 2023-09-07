@@ -78,7 +78,7 @@ const DestopPopoverTrigger:any  = ({item}): ReactNode => {
             link={item.link}
             externalLink={item.externalLink} px={4}>
             <Flex as="span" align="baseline">
-                <Text as="span" mr={2}>{item.link.title}</Text>
+                <Text as="span" mr={2}>{item.title}</Text>
                 <Box transition="transform 300ms ease"
                     transform={isOpen ? 'rotate(180deg)' : ''}>
                     <Icon icon={Icons.ChevronDown} w={12} h={12} />

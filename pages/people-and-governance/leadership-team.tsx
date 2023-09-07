@@ -4,22 +4,22 @@ import Layout from '~/components/layouts/Layout';
 import { ModularContent } from '~/components/ModularContent';
 import { doQuery, queries } from '~/dato/api';
 import { getLayoutData, getBlocks } from '~/lib/utils';
+import { Profiles } from '~/components/elements/profiles/profiles';
 import { GetStaticPropsContext, GetStaticPropsResult } from 'next';
 import { ISite } from '~/interfaces/layout/site';
 import { IPage } from '~/interfaces/models/page';
 import { ILayout } from '~/interfaces/layout/layout';
 import { IBlock } from '~/interfaces/util/block';
-import EventList from "~/components/elements/events/EventList";
-import { IEvent } from '~/interfaces/models/event';
+import { IPerson } from '~/interfaces/models/person';
 
 interface INextPageProps {
     layout?:ILayout;
-    blocks?:IBlock[];
-    events?:IEvent[];
+    blocks?:IBlock;
+    people?:IPerson[];
 }
 
 export async function getStaticProps({ preview }:GetStaticPropsContext) : Promise<GetStaticPropsResult<INextPageProps>> {
-    const slug:string = 'investors/key-dates';
+    const slug:string = 'people-and-governance/leadership-team';
     const site:ISite = await doQuery(queries.site);
     const page:IPage = await doQuery(queries.page, { slug }, preview).then(
         ({ page }) => page
@@ -27,20 +27,20 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
 
     const layout:ILayout = getLayoutData(site, page, preview);
     const blocks:any = await getBlocks(page?.blocks);
-    const events:IEvent[] = await doQuery(queries.events, preview).then(
-        ({ events }) => events || []
+    const people:any = await doQuery(queries.people, { definition : 'Management' }, preview).then(
+        ({ people }) => people || []
     );
 
-    return { props: { layout, blocks, events } };
+    return { props: { layout, blocks, people } };
 }
 
-const KeyDatesPage : NextPage = ({ layout, blocks, events }:INextPageProps)  : JSX.Element => {
+const ManagementPage : NextPage = ({ layout, blocks, people }:INextPageProps)  : JSX.Element => {
     return (
         <Layout layout={layout}>
             <ModularContent content={blocks} />
-            <EventList events={events} />
+            <Profiles people={people} />
         </Layout>
     );
 };
 
-export default KeyDatesPage;
+export default ManagementPage;

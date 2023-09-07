@@ -3,6 +3,7 @@ import { resolveInternalLink } from '~/lib/utils';
 import { ChakraProps } from '@chakra-ui/system';
 import { ILink } from '~/interfaces/util/link';
 import { forwardRef, ReactNode } from 'react';
+import Link from 'next/link';
 
 interface IMenuItemLinkProps extends ChakraProps {
     title?:string;
@@ -37,7 +38,7 @@ export const MenuItemLink:any = forwardRef(({ title, link, externalLink,  ...pro
         newChild = title;
     }
 
-    return <ChakraLink href={href} {...props} ref={ref}>{newChild}</ChakraLink>;
+    return <ChakraLink as={Link} href={href} {...props} ref={ref}>{newChild}</ChakraLink>;
 });
 
 MenuItemLink.displayName = 'MenuItemLink';
