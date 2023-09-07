@@ -9,7 +9,6 @@ import { ILayout } from '~/interfaces/layout/layout';
 import { IBlock } from '~/interfaces/util/block';
 import { IPage } from '~/interfaces/models/page';
 import { GetStaticPropsContext, GetStaticPropsResult, GetStaticPathsResult } from 'next';
-import slug from "~/pages/news/[slug]";
 
 interface INextPageProps {
     layout?:ILayout;

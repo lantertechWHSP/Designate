@@ -23,7 +23,7 @@ const SharePriceChart:any = () : ReactNode => {
 
     let selectedSymbolLabel:string = '';
 
-    const predefinedColors = new ColorGenerator().getPredefinedColors();
+    const predefinedColors:any = new ColorGenerator().getPredefinedColors();
 
     return <Box as={YourIR} id="blah">
         <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" height="0" width="0">

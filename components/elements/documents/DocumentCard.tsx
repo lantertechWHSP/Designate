@@ -27,8 +27,8 @@ const DocumentCard:any = ({ title, date, document }:IDocumentCardProps) : ReactN
         <Box ml={4} minWidth="40px" textAlign="right">
             {
                 (document && document.url) && <Link href={document?.url}
-                                                    as="a"
-                                                    target="_blank">
+                    as="a"
+                    target="_blank">
                     View
                 </Link>
             }

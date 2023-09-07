@@ -3,15 +3,15 @@ import { YourIR } from 'yourir-next';
 import { Flex, Box, Text, Badge } from '@chakra-ui/react';
 
 const SharePriceOverview:any = () : ReactNode => {
-    const statusRef = useRef<HTMLElement>();
-    let status;
+    const statusRef:any = useRef<HTMLElement>();
+    let status:any = '';
 
-    // @TO-DO figure this out…
+    // @TODO figure this out…
     useEffect(() => {
         if(statusRef.current) {
             status = statusRef.current.innerText;
         }
-    }, [statusRef.current])
+    }, [statusRef.current]);
 
     return <Box as={YourIR}>
         <Box py={4}
@@ -22,6 +22,7 @@ const SharePriceOverview:any = () : ReactNode => {
                 <Text as="span" fontWeight={500} data-yourir="shortName"></Text>{'\u00A0'}
                 <Text as="span" color="steelBlue3"><span data-yourir="market"></span>:<span data-yourir="symbol"></span></Text>
             </Text>
+            <span>{status}</span>
             <Box ref={statusRef} data-yourir="status" display="none" />
             <Badge>
                 <Text as="span" data-yourir="statusName"></Text>

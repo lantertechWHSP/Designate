@@ -48,7 +48,7 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
     }).then(({ documentsMeta }) => {
         return {
             count: documentsMeta.count,
-        }
+        };
     });
 
     const documentsFilters:IDocumentsFilters = await doQuery(queries.documentsFilters, {
@@ -66,7 +66,7 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
             label: 'All'
         }];
 
-        for(let date = endYear; date >= startYear; date--) {
+        for(let date:number = endYear; date >= startYear; date--) {
             yearFilters.push({
                 value: date.toString(),
                 label: date.toString()
@@ -91,21 +91,19 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
             return {
                 value: tag?.id,
                 label: tag?.label
-            }
+            };
         });
 
         return {
             yearFilters: yearFilters,
             tagFilters: tagFilters
-        }
+        };
     });
 
     return { props: { layout, blocks, documents, doucmentsMeta, documentsFilters } };
 }
 
 const ReportsPage : NextPage = ({ layout, blocks, documents, doucmentsMeta, documentsFilters }:INextPageProps) : JSX.Element => {
-    console.log(documentsFilters);
-
     return (
         <Layout layout={layout}>
             <ModularContent content={blocks} />

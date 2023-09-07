@@ -15,7 +15,7 @@ const AddToCalendar:any = ({ event }:IAddToCalendarProps) : ReactNode => {
 
     return (
         <Menu placement="bottom-end">
-            {({ }) => (
+            {() => (
                 <>
                     <MenuButton as={Button}
                         variant="menuButton"

@@ -11,7 +11,7 @@ import { IFilter } from '~/interfaces/util/filter';
 
 interface IDocumentListProps {
     latestDocuments:IDocument[];
-    latestDocumentsMeta:IDocumentsMeta;
+    documentsMeta:IDocumentsMeta;
     documentsFilters:IDocumentsFilters;
 }
 
@@ -20,11 +20,11 @@ interface IDocumentBundle {
     documents:IDocument[];
 }
 
-export const DATO_QUERY_VALUES = {
+export const DATO_QUERY_VALUES:any = {
     ITEMS_PER_PAGE : 2,
     ORDER_BY : 'date_DESC',
     CATEGORY_ID : '190260513'
-}
+};
 
 const DocumentList:any = ({ latestDocuments, documentsMeta, documentsFilters }:IDocumentListProps) : ReactNode => {
     const [page, setPage] = useState<number>(1);
@@ -53,16 +53,16 @@ const DocumentList:any = ({ latestDocuments, documentsMeta, documentsFilters }:I
             filter['date'] = {
                 gte: `${selectedYear.value}-01-01`,
                 lte: `${selectedYear.value}-12-31`
-            }
+            };
         }
         if(selectedTag.value !== 'none') {
             filter['tags'] = {
                 eq: selectedTag.value
-            }
+            };
         }
 
         return filter;
-    }
+    };
 
     const loadMore:any = () : void => {
         setIsLoading(true);
@@ -100,11 +100,11 @@ const DocumentList:any = ({ latestDocuments, documentsMeta, documentsFilters }:I
             newSortedDocumentBundles.push({
                 title: key,
                 documents: document
-           })
+            });
         });
 
         setDocumentBundles(newSortedDocumentBundles.reverse());
-    }, [documents])
+    }, [documents]);
 
     useEffect(() => {
         // Reset to the first page when filtering…
@@ -127,7 +127,7 @@ const DocumentList:any = ({ latestDocuments, documentsMeta, documentsFilters }:I
         }).then(({ documentsMeta }) => documentsMeta || {}).then((documentsMeta) => {
             setTotalDocumentCount(documentsMeta.count);
         });
-    }, [selectedYear, selectedTag])
+    }, [selectedYear, selectedTag]);
 
     return <Box bg="lightGrey3">
         <Container>
@@ -137,11 +137,11 @@ const DocumentList:any = ({ latestDocuments, documentsMeta, documentsFilters }:I
                         {({ isOpen }) => (
                             <>
                                 <MenuButton as={Button}
-                                            variant="menuButton"
-                                            height="40px"
-                                            lineHeight="40px"
-                                            minW="200px"
-                                            rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} w={12} h={12} /> : <Icon icon={Icons.ChevronDown} w={12} h={12} />}>
+                                    variant="menuButton"
+                                    height="40px"
+                                    lineHeight="40px"
+                                    minW="200px"
+                                    rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} w={12} h={12} /> : <Icon icon={Icons.ChevronDown} w={12} h={12} />}>
                                     {selectedTag.label ? selectedTag.label : 'Compare…'}
                                 </MenuButton>
                                 <Portal>
@@ -149,11 +149,11 @@ const DocumentList:any = ({ latestDocuments, documentsMeta, documentsFilters }:I
                                         {
                                             tagFilters.map((item:IFilter, index:number) => {
                                                 return <MenuItem key={index}
-                                                                 as={Button}
-                                                                 variant="menuItemFilter"
-                                                                 onClick={() => {
-                                                                     setSelectedTag(item);
-                                                                 }}>
+                                                    as={Button}
+                                                    variant="menuItemFilter"
+                                                    onClick={() => {
+                                                        setSelectedTag(item);
+                                                    }}>
                                                     {item.label}
                                                 </MenuItem>;
                                             })
@@ -167,11 +167,11 @@ const DocumentList:any = ({ latestDocuments, documentsMeta, documentsFilters }:I
                         {({ isOpen }) => (
                             <>
                                 <MenuButton as={Button}
-                                            variant="menuButton"
-                                            height="40px"
-                                            lineHeight="40px"
-                                            minW="200px"
-                                            rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} w={12} h={12} /> : <Icon icon={Icons.ChevronDown} w={12} h={12} />}>
+                                    variant="menuButton"
+                                    height="40px"
+                                    lineHeight="40px"
+                                    minW="200px"
+                                    rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} w={12} h={12} /> : <Icon icon={Icons.ChevronDown} w={12} h={12} />}>
                                     {selectedYear.label ? selectedYear.label : 'Compare…'}
                                 </MenuButton>
                                 <Portal>
@@ -179,11 +179,11 @@ const DocumentList:any = ({ latestDocuments, documentsMeta, documentsFilters }:I
                                         {
                                             yearFilters.map((item:IFilter, index:number) => {
                                                 return <MenuItem key={index}
-                                                                 as={Button}
-                                                                 variant="menuItemFilter"
-                                                                 onClick={() => {
-                                                                     setSelectedYear(item);
-                                                                 }}>
+                                                    as={Button}
+                                                    variant="menuItemFilter"
+                                                    onClick={() => {
+                                                        setSelectedYear(item);
+                                                    }}>
                                                     {item.label}
                                                 </MenuItem>;
                                             })
@@ -214,7 +214,7 @@ const DocumentList:any = ({ latestDocuments, documentsMeta, documentsFilters }:I
                                             <Box borderBottom="1px solid" borderColor="lightGrey2" />
                                         </>
                                     }
-                                </Box>
+                                </Box>;
                             })
                         }
                     </Box>
