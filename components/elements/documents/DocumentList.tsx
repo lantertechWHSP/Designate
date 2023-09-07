@@ -2,7 +2,7 @@ import { useState, ReactNode, useEffect } from 'react';
 import { doQuery, queries } from '~/dato/api';
 import DocumentCard from '~/components/elements/documents/DocumentCard';
 import { Box, Button, Spinner, Text, Container, Heading, Menu, MenuButton, Portal, MenuList, MenuItem  } from '@chakra-ui/react';
-import {IDocument, IDocumentsFirstLastDate} from '~/interfaces/models/document';
+import { IDocument } from '~/interfaces/models/document';
 import { IDocumentsMeta } from '~/interfaces/models/document';
 import { groupBy as _groupBy, forOwn as _forOwn } from 'lodash';
 import { DateTime } from 'luxon';
@@ -12,7 +12,6 @@ import { IFilter } from '~/interfaces/util/filter';
 interface IDocumentListProps {
     latestDocuments:IDocument[];
     latestDocumentsMeta:IDocumentsMeta;
-    documentFirstLastDates:IDocumentsFirstLastDate;
 }
 
 interface IDocumentBundle {
@@ -22,9 +21,9 @@ interface IDocumentBundle {
 
 export const ITEMS_PER_PAGE = 2;
 export const ORDER_BY = 'date_DESC';
-export const CATEGORY_ID = '190260513'; // Category ID from Dato
+export const CATEGORY_ID = '190260513'; // Category ID from DatoCMS
 
-const DocumentList:any = ({ latestDocuments, latestDocumentsMeta, documentFirstLastDates }:IDocumentListProps) : ReactNode => {
+const DocumentList:any = ({ latestDocuments, latestDocumentsMeta }:IDocumentListProps) : ReactNode => {
     const [page, setPage] = useState<number>(1);
     const [documents, setDocuments] = useState<IDocument[]>(latestDocuments);
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -79,9 +78,11 @@ const DocumentList:any = ({ latestDocuments, latestDocumentsMeta, documentFirstL
     };
 
     useEffect(() => {
-        if(documentFirstLastDates) {
-            const endYear:number = +(DateTime.fromFormat(documentFirstLastDates.lastDate, 'yyyy-mm-dd').toFormat('yyyy'));
-            const startYear:number = +(DateTime.fromFormat(documentFirstLastDates.firstDate, 'yyyy-mm-dd').toFormat('yyyy'));
+        debugger;
+        if(latestDocumentsMeta) {
+            debugger;
+            const endYear:number = +(DateTime.fromFormat(latestDocumentsMeta.lastDate, 'yyyy-mm-dd').toFormat('yyyy'));
+            const startYear:number = +(DateTime.fromFormat(latestDocumentsMeta.firstDate, 'yyyy-mm-dd').toFormat('yyyy'));
             const newYearFilters:IFilter[] = [
                 {
                     value: 'none',
@@ -99,7 +100,7 @@ const DocumentList:any = ({ latestDocuments, latestDocumentsMeta, documentFirstL
 
             setYearFilters(newYearFilters);
         }
-    }, [documentFirstLastDates])
+    }, [latestDocumentsMeta])
 
     useEffect(() => {
         const newSortedDocumentBundles:IDocumentBundle[] = [];

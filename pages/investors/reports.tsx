@@ -9,7 +9,7 @@ import { ISite } from '~/interfaces/layout/site';
 import { IPage } from '~/interfaces/models/page';
 import { ILayout } from '~/interfaces/layout/layout';
 import { IBlock } from '~/interfaces/util/block';
-import { IDocument, IDocumentsMeta, IDocumentsFirstLastDate } from '~/interfaces/models/document';
+import { IDocument, IDocumentsMeta } from '~/interfaces/models/document';
 import DocumentList, {CATEGORY_ID, ITEMS_PER_PAGE, ORDER_BY} from '~/components/elements/documents/DocumentList';
 
 interface INextPageProps {
@@ -17,7 +17,6 @@ interface INextPageProps {
     blocks?:IBlock[];
     documents?:IDocument[];
     doucmentsMeta?:IDocumentsMeta;
-    documentFirstLastDates?:IDocumentsFirstLastDate;
 }
 
 export async function getStaticProps({ preview }:GetStaticPropsContext) : Promise<GetStaticPropsResult<INextPageProps>> {
@@ -39,23 +38,24 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
         ({ documents }) => documents || []
     );
 
-    const documentFirstLastDates:IDocumentsFirstLastDate = await doQuery(queries.documentFirstLastDates).then(({ firstDate, lastDate }) => {
+    const doucmentsMeta:IDocumentsMeta = await doQuery(queries.documentsMeta).then(({ documentsMeta, firstDate, lastDate }) => {
         return {
+            count: documentsMeta.count,
             firstDate: firstDate[0].date,
             lastDate: lastDate[0].date
-        };
+        }
     });
 
-    const doucmentsMeta:IDocumentsMeta = await doQuery(queries.documentsMeta).then(({ documentsMeta }) => documentsMeta || {});
-
-    return { props: { layout, blocks, documents, doucmentsMeta, documentFirstLastDates } };
+    return { props: { layout, blocks, documents, doucmentsMeta } };
 }
 
-const ReportsPage : NextPage = ({ layout, blocks, documents, doucmentsMeta, documentFirstLastDates }:INextPageProps) : JSX.Element => {
+const ReportsPage : NextPage = ({ layout, blocks, documents, doucmentsMeta }:INextPageProps) : JSX.Element => {
+    console.log(doucmentsMeta);
+
     return (
         <Layout layout={layout}>
             <ModularContent content={blocks} />
-            <DocumentList latestDocuments={documents} latestDocumentsMeta={doucmentsMeta} documentFirstLastDates={documentFirstLastDates} />
+            <DocumentList latestDocuments={documents} latestDocumentsMeta={doucmentsMeta}  />
         </Layout>
     );
 };

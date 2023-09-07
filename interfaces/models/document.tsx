@@ -20,9 +20,6 @@ export interface IDocument {
 
 export interface IDocumentsMeta {
     count?:number;
-}
-
-export interface IDocumentsFirstLastDate {
     firstDate?:string;
     lastDate?:string;
 }

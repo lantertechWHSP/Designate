@@ -22,21 +22,16 @@ export const documents:string = `
     }
 `;
 
-export const documentFirstLastDates = `
-    query documents {
+export const documentsMeta:string = `
+    query documents($filter: DocumentModelFilter) {
+        documentsMeta: _allDocumentsMeta(filter: $filter) {
+            count
+        }
         firstDate: allDocuments(orderBy: date_ASC, first: 1) {
             date
         }
         lastDate: allDocuments(orderBy: date_DESC, first: 1) {
             date
-        }
-    }
-`
-
-export const documentsMeta:string = `
-    query documents($filter: DocumentModelFilter) {
-        documentsMeta: _allDocumentsMeta(filter: $filter) {
-            count
         }
     }
 `;
