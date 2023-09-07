@@ -1,7 +1,7 @@
 import { useState, ReactNode, useEffect } from 'react';
 import { doQuery, queries } from '~/dato/api';
 import DocumentCard from '~/components/elements/documents/DocumentCard';
-import { Box, Button, Spinner, Text, Container, Heading, Menu, MenuButton, Portal, MenuList, MenuItem, ButtonGroup  } from '@chakra-ui/react';
+import { Box, Flex, Button, Spinner, Text, Container, Heading, Menu, MenuButton, Portal, MenuList, MenuItem, ButtonGroup  } from '@chakra-ui/react';
 import {IDocument, IDocumentsFilters} from '~/interfaces/models/document';
 import { IDocumentsMeta } from '~/interfaces/models/document';
 import { groupBy as _groupBy, forOwn as _forOwn } from 'lodash';
@@ -224,11 +224,11 @@ const DocumentList:any = ({ latestDocuments, documentsMeta, documentsFilters }:I
                         </Box>
                     }
                     {
-                        documents.length < totalDocumentCount && <Button color="sunlight" onClick={loadMore} px={0} rightIcon={isLoading && <Spinner size='sm' />}>
-                            <Text textDecoration="underline">
-                                Load Moar!
-                            </Text>
-                        </Button>
+                        documents.length < totalDocumentCount && <Flex py={8} justify="center">
+                            <Button variant="button" onClick={loadMore} rightIcon={isLoading && <Spinner size='sm' />} minWidth="200px">
+                                Load More
+                            </Button>
+                        </Flex>
                     }
                 </> : <>
                     <Box>

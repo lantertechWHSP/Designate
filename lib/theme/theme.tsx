@@ -167,7 +167,19 @@ export const theme:any = extendBaseTheme({
             }
         },
         Button: {
+            baseStyle: {
+
+            },
             variants: {
+                button: {
+                    background: 'white',
+                    color: 'steelBlue3',
+                    height: '50px',
+                    lineHeight: '50px',
+                    px: 4,
+                    fontSize: '14px',
+                    fontWeight: 500
+                },
                 pagination: {
                     background: 'transparent',
                     color: 'steelBlue3',

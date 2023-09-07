@@ -37,6 +37,8 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
 }
 
 const NewsPage : NextPage = ({layout, blocks, posts, postsMeta}:INextPageProps) : JSX.Element => {
+    console.log(posts);
+
     return (
         <Layout layout={layout}>
             <Container>
