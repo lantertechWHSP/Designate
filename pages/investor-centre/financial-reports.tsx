@@ -23,7 +23,7 @@ interface INextPageProps {
 }
 
 export async function getStaticProps({ preview }:GetStaticPropsContext) : Promise<GetStaticPropsResult<INextPageProps>> {
-    const slug:string = 'investors/reports';
+    const slug:string = 'investor-centre/financial-reports';
     const site:ISite = await doQuery(queries.site);
     const page:IPage = await doQuery(queries.page, { slug }, preview).then(
         ({ page }) => page
@@ -63,7 +63,7 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
 
         const yearFilters:IFilter[] = [{
             value: 'none',
-            label: 'All'
+            label: 'All Document Types'
         }];
 
         for(let date:number = endYear; date >= startYear; date--) {
@@ -76,7 +76,7 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
         // Tag Filters
         let tagFilters:any[] = [{
             id: 'none',
-            label: 'All'
+            label: 'All Years'
         }];
 
         tags.map((tag:any) => {

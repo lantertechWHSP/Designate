@@ -19,7 +19,7 @@ interface INextPageProps {
 }
 
 export async function getStaticProps({ preview }:GetStaticPropsContext) : Promise<GetStaticPropsResult<INextPageProps>> {
-    const slug:string = 'investors/key-dates';
+    const slug:string = 'investor-centre/key-dates';
     const site:ISite = await doQuery(queries.site);
     const page:IPage = await doQuery(queries.page, { slug }, preview).then(
         ({ page }) => page
