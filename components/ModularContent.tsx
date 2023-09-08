@@ -10,7 +10,7 @@ import Overview from '~/components/blocks/Overview';
 
 import Hero from '~/components/blocks/Hero';
 import HomePageOverview from '~/components/blocks/HomePageOverview';
-import LatestNews from '~/components/blocks/LatestNews';
+import LatestNews from '~/components/blocks/LatestNews/LatestNews';
 import InvestorPanel from '~/components/blocks/InvestorPanel';
 import AsxAnnouncementsPanel from '~/components/blocks/AsxAnnouncementsPanel';
 import DividendsPanel from '~/components/blocks/DividendsPanel/DividendsPanel';

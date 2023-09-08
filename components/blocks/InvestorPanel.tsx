@@ -6,16 +6,16 @@ import { Icon, Icons } from "~/components/elements/icon";
 import {SectionLink} from "~/components/elements/sectionLink";
 
 interface IInvestorPanelBlockProps {
-    title?:string;
+    displayHeadline?:boolean;
 }
 
-const InvestorPanelBlock:any = ({ title }:IInvestorPanelBlockProps) : ReactNode => {
+const InvestorPanelBlock:any = ({ displayHeadline }:IInvestorPanelBlockProps) : ReactNode => {
     return <ContentBlock>
         {
-            title && <Flex mb={4} align="flex-end">
+            <Flex mb={4} align="flex-end">
                 <Box flex="1">
                     <Heading variant="sectionHeading" as="h2" mb={0}>
-                        {title}
+                        Investors
                     </Heading>
                 </Box>
                 <Box>
@@ -24,6 +24,17 @@ const InvestorPanelBlock:any = ({ title }:IInvestorPanelBlockProps) : ReactNode 
                         <Icon icon={Icons.ChevronRight} w={12} h={12} />
                     </Link>
                 </Box>
+            </Flex>
+        }
+        {
+            displayHeadline && <Flex align="center" mb={8}>
+                <Heading as="h2" variant="sectionHeading">
+                    Investors
+                </Heading>
+                <Box flex="1" />
+                <SectionLink href="/news">
+                    Investor Overview
+                </SectionLink>
             </Flex>
         }
         <Box py={8}>
