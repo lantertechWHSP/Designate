@@ -100,9 +100,13 @@ export const theme:any = extendBaseTheme({
                     fontWeight: 500,
                 },
                 listItem: {
+                    color: 'black',
                     fontSize: ['18px'],
                     lineHeight: ['26px'],
-                    fontWeight: 400
+                    fontWeight: 500,
+                    a: {
+                        color: 'black'
+                    }
                 },
 
                 label: {
