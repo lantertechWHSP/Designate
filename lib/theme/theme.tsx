@@ -320,6 +320,19 @@ export const theme:any = extendBaseTheme({
             },
             p: {
                 mb: 4
+            },
+            blockquote: {
+                borderLeft: `4px solid ${colors.skyBlue}`,
+                pl: 8,
+                mb: 4
+            },
+            ul: {
+                ml: 4,
+                mb: 4
+            },
+            ol: {
+                ml: 4,
+                mb: 4
             }
         },
     }
