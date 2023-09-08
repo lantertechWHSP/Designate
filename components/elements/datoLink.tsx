@@ -4,7 +4,7 @@ import { ChakraProps } from '@chakra-ui/system';
 import { forwardRef, ReactNode } from 'react';
 import Link from 'next/link';
 
-interface IDatoLinkProps extends ChakraProps {
+export interface IDatoLinkProps extends ChakraProps {
     id?:string;
     __typename?:string;
     title?:string;
@@ -29,7 +29,9 @@ export const DatoLink:any = forwardRef(({ id, __typename, title, slug,  ...props
         newChild = title;
     }
 
-    return <ChakraLink as={Link} href={href} {...props} ref={ref}>{newChild}</ChakraLink>;
+    return <ChakraLink as={Link} href={href} {...props} ref={ref}>
+        {newChild}
+    </ChakraLink>;
 });
 
 DatoLink.displayName = 'DatoLink';

@@ -4,6 +4,7 @@ import { videoRecord } from '~/dato/blocks/video';
 import { audioRecord } from '~/dato/blocks/audio';
 import { heroRecord } from '~/dato/blocks/hero';
 import { cardContainerRecord } from '~/dato/blocks/cardContainer';
+import { overviewRecord } from '~/dato/blocks/overview';
 import { latestNewsRecord } from '~/dato/blocks/latestNews';
 import { investorPanelRecord } from '~/dato/blocks/investorPanel';
 import { homePageOverviewRecord } from '~/dato/blocks/homePageOverview';
@@ -32,6 +33,9 @@ export const blocks:string = `
         }
         ... on CardContainerRecord {
             ${cardContainerRecord}
+        }
+        ... on OverviewRecord {
+            ${overviewRecord}
         }
         ... on LatestNewsRecord {
             ${latestNewsRecord}

@@ -6,6 +6,8 @@ import Audio from '~/components/blocks/Audio';
 import Card from '~/components/blocks/CardContainer/Card';
 import CardContainer from '~/components/blocks/CardContainer/CardContainer';
 
+import Overview from '~/components/blocks/Overview';
+
 import Hero from '~/components/blocks/Hero';
 import HomePageOverview from '~/components/blocks/HomePageOverview';
 import LatestNews from '~/components/blocks/LatestNews';
@@ -23,6 +25,7 @@ const blocks:any = {
     Audio,
     Card,
     CardContainer,
+    Overview,
 
     Hero,
     HomePageOverview,
