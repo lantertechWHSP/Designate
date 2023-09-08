@@ -20,8 +20,8 @@ export async function getStaticPaths() : Promise<GetStaticPathsResult<any>> {
         'news',
         'people-and-governance/board-of-directors',
         'people-and-governance/leadership-team',
-        'investors/key-dates',
-        'investors/financial-reports'
+        'investor-centre/key-dates',
+        'investor-centre/financial-reports'
     ];
 
     const pages:IPage = await doQuery(queries.pages).then(({ pages }) => pages);
