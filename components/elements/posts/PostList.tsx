@@ -27,7 +27,7 @@ const PostList:any = ({ latestPosts, postsMeta }:IPostsListProps) : ReactNode =>
     const loadMore:any = () : void => {
         setIsLoading(true);
 
-        doQuery(queries.latestPosts, { isFeatured: true, first: DATO_QUERY_VALUES.ITEMS_PER_PAGE, skip: page * DATO_QUERY_VALUES.ITEMS_PER_PAGE }).then(({ posts }) => posts || []).then((newPosts) => {
+        doQuery(queries.posts, { first: DATO_QUERY_VALUES.ITEMS_PER_PAGE, skip: page * DATO_QUERY_VALUES.ITEMS_PER_PAGE }).then(({ posts }) => posts || []).then((newPosts) => {
             if(newPosts.length > 0) {
                 setPosts([...posts, ...newPosts]);
                 setPage(page + 1);
@@ -62,10 +62,10 @@ const PostList:any = ({ latestPosts, postsMeta }:IPostsListProps) : ReactNode =>
                     }
                     {
                         posts.length < totalPostsCount && <Flex py={8} justify="center">
-                        <Button variant="button" onClick={loadMore} rightIcon={isLoading && <Spinner size='sm' />} minWidth="200px">
-                          Load More
-                        </Button>
-                      </Flex>
+                            <Button variant="button" onClick={loadMore} rightIcon={isLoading && <Spinner size='sm' />} minWidth="200px">
+                                Load More
+                            </Button>
+                        </Flex>
                     }
                 </> : <>
                     <Box>

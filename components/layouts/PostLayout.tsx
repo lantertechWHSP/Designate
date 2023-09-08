@@ -4,6 +4,7 @@ import Header from '~/components/site/Header';
 import Footer from '~/components/site/Footer';
 import { Flex, Box, Heading, Container, Text } from '@chakra-ui/react';
 import { DateTime } from 'luxon';
+import SocialShare from '~/components/elements/socialShare';
 
 const PostLayout:any = ({ layout, children }:any) : ReactNode => {
     const date:string = DateTime.fromFormat(layout?.page?.publishDate, 'yyyy-mm-dd').toFormat('DDD');
@@ -44,6 +45,11 @@ const PostLayout:any = ({ layout, children }:any) : ReactNode => {
                         {children}
                     </Box>
                 }
+            </Box>
+            <Box mb={16}>
+                <Container maxW="container.narrow">
+                    <SocialShare />
+                </Container>
             </Box>
             <Footer {...layout?.footer} />
         </Flex>
