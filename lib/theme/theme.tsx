@@ -41,6 +41,13 @@ export const theme:any = extendBaseTheme({
     colors: {
         ...colors
     },
+    sizes: {
+        container: {
+            narrow: '1000px', // Text Content
+            wide: '1200px', // Images
+            default: '1400px',  // General Blocks
+        }
+    },
     components: {
         Modal,
         Heading: {

@@ -129,9 +129,9 @@ const DocumentList:any = ({ latestDocuments, documentsMeta, documentsFilters }:I
         });
     }, [selectedYear, selectedTag]);
 
-    return <Box bg="lightGrey3">
+    return <Box bg="lightGrey3" py={12}>
         <Container>
-            <Box py={8}>
+            <Box pb={4}>
                 <ButtonGroup>
                     <Menu>
                         {({ isOpen }) => (

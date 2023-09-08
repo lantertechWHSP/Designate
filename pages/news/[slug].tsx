@@ -9,6 +9,7 @@ import { ILayout } from '~/interfaces/layout/layout';
 import { ISite } from '~/interfaces/layout/site';
 import { IBlock } from '~/interfaces/util/block';
 import { IPost } from '~/interfaces/models/post';
+import { ContainerWidth } from '~/components/blocks/Content';
 
 interface INextPageProps {
     post?:IPost;
@@ -39,6 +40,15 @@ export async function getStaticProps({ params, preview }:GetStaticPropsContext) 
 }
 
 const PostPage : NextPage = ({layout, blocks}:any)  : JSX.Element => {
+    // Format the Container Width…
+
+    console.log(blocks);
+    blocks.map((block:IBlock) => {
+        block.containerWidth = ContainerWidth.Narrow;
+    });
+
+    console.log(blocks);
+
     return (
         <Layout layout={layout}>
             <ModularContent content={blocks} />

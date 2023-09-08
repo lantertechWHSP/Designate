@@ -28,6 +28,9 @@ const Layout:any = ({ layout, children }:any) : ReactNode => {
                     </Flex>
                 }
                 {
+
+                }
+                {
                     children && <Box>
                         {children}
                     </Box>

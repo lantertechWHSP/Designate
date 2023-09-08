@@ -37,17 +37,10 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
 }
 
 const NewsPage : NextPage = ({layout, blocks, posts, postsMeta}:INextPageProps) : JSX.Element => {
-    console.log(posts);
-
     return (
         <Layout layout={layout}>
-            <Container>
-                <Heading as="h1" variant="h1">News</Heading>
-            </Container>
             <ModularContent content={blocks} />
-            <Container>
-                <PostList posts={posts} postsMeta={postsMeta} />
-            </Container>
+            <PostList latestPosts={posts} postsMeta={postsMeta} />
         </Layout>
     );
 };
