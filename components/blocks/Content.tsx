@@ -3,9 +3,9 @@ import { Box, Container } from '@chakra-ui/react';
 import { ChakraProps } from '@chakra-ui/system';
 
 export enum ContainerWidth {
+    Default = null,
     Narrow = 'narrow',
     Wide = 'wide',
-    Default = 'default'
 }
 
 interface IContentBlockProps extends ChakraProps {
@@ -17,7 +17,7 @@ interface IContentBlockProps extends ChakraProps {
 const ContentBlock:any = ({ contain = true, containerWidth = ContainerWidth.Default, children, ...props }:IContentBlockProps) : ReactNode => {
     return <Box {...props}>
         {
-            contain ? <Container maxW={`container.${containerWidth.toString()}`}>
+            contain ? <Container maxW={containerWidth}>
                 {children}
             </Container> : <Box>
                 {children}

@@ -45,7 +45,6 @@ export const theme:any = extendBaseTheme({
         container: {
             narrow: '900px', // Text Content
             wide: '1100px', // Images
-            default: '1300px',  // General Blocks
         }
     },
     components: {

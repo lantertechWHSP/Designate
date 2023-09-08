@@ -9,18 +9,19 @@ interface IOverviewBlockProps extends ChakraProps {
 }
 
 const OverviewBlock:any = ({ subtitle, description }:IOverviewBlockProps) : ReactNode => {
-    return <ContentBlock>
-        {
-            subtitle && <Heading as="h2" variant="h2">
-                {subtitle}
-            </Heading>
-        }
-        {
-            description && <Box>
-                {description}
-            </Box>
-        }
-
+    return <ContentBlock background="lightGrey3" py={8}>
+        <Box maxW="900px">
+            {
+                subtitle && <Heading as="h2" variant="h2">
+                    {subtitle}
+              </Heading>
+            }
+            {
+                description && <Box>
+                    {description}
+              </Box>
+            }
+        </Box>
     </ContentBlock>;
 };
 
