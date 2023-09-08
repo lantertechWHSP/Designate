@@ -6,14 +6,14 @@ import PageLinks from '~/components/site/PageLinks';
 import { Heading, Container, Flex, Box } from '@chakra-ui/react';
 import { SubscriptionForm } from '~/components/elements/mailchimp/subscriptionForm';
 
-const Layout:any = ({ layout, children }:any) : ReactNode => {
+const DefaultLayout:any = ({ layout, children }:any) : ReactNode => {
     return (
         <Flex minHeight="100vh" direction="column">
             {
                 layout?.metatags && <Meta tags={layout?.metatags} />
             }
             <Header menu={layout?.menu} />
-            <Box minH={'calc(100vh - 212px)'}>
+            <Box flex="1">
                 {
                     !layout.isHomePage && <Flex background="steelBlue2" h={['350px']} direction="column" justify="flex-end">
                         <Box>
@@ -32,7 +32,6 @@ const Layout:any = ({ layout, children }:any) : ReactNode => {
                         {children}
                     </Box>
                 }
-
             </Box>
             <PageLinks current={layout?.breadcrumbs[0]?.node}  />
             {
@@ -43,4 +42,4 @@ const Layout:any = ({ layout, children }:any) : ReactNode => {
     );
 };
 
-export default Layout;
+export default DefaultLayout;

@@ -4,6 +4,7 @@ const postFrag:string = `
         id
         slug
         title
+        excerpt
         author
         image {
             responsiveImage {

@@ -43,9 +43,9 @@ export const theme:any = extendBaseTheme({
     },
     sizes: {
         container: {
-            narrow: '1000px', // Text Content
-            wide: '1200px', // Images
-            default: '1400px',  // General Blocks
+            narrow: '900px', // Text Content
+            wide: '1100px', // Images
+            default: '1300px',  // General Blocks
         }
     },
     components: {
@@ -56,65 +56,69 @@ export const theme:any = extendBaseTheme({
             },
             variants: {
                 h1: {
-                    fontSize: [50],
-                    lineHeight: [1.35],
+                    fontSize: ['50px'],
+                    lineHeight: ['60px'],
                     fontWeight: 500,
                 },
                 h2: {
-                    fontSize: [40],
-                    lineHeight: [1.35],
+                    fontSize: ['40px'],
+                    lineHeight: ['50px'],
                     fontWeight: 500,
                 },
                 h3: {
-                    fontSize: [30],
-                    lineHeight: [1.35],
+                    fontSize: ['30px'],
+                    lineHeight: ['40px'],
                     fontWeight: 500,
                 },
                 h4: {
-                    fontSize: [20],
-                    lineHeight: [1.35],
+                    fontSize: ['20px'],
+                    lineHeight: ['30px'],
                     fontWeight: 500,
                 },
                 h5: {
-                    fontSize: [16],
-                    lineHeight: [1.35],
+                    fontSize: ['16px'],
+                    lineHeight: ['24px'],
                     fontWeight: 500,
                 },
                 h6: {
-                    fontSize: [14],
-                    lineHeight: [1.35],
+                    fontSize: ['14px'],
+                    lineHeight: ['18px'],
                     fontWeight: 500,
                 },
                 sectionHeading: {
-                    fontSize: [40],
-                    lineHeight: [1.5],
+                    fontSize: ['40px'],
+                    lineHeight: ['60px'],
                     fontWeight: 400,
                 },
                 sectionSubheading: {
-                    fontSize: [32],
-                    lineHeight: [1.5],
+                    fontSize: ['32px'],
+                    lineHeight: ['48px'],
                     fontWeight: 400,
                 },
                 pageLinksHeading: {
-                    fontSize: [20],
-                    lineHeight: [1.35],
+                    fontSize: ['20px'],
+                    lineHeight: ['30px'],
                     fontWeight: 500,
                 },
                 listItem: {
-                    fontSize: [18],
-                    lineHeight: [1.35],
+                    fontSize: ['18px'],
+                    lineHeight: ['26px'],
                     fontWeight: 400
                 },
 
                 label: {
-                    fontSize: [16],
-                    lineHeight: [1.1],
+                    fontSize: ['16px'],
+                    lineHeight: ['18px'],
                     color: 'lightGrey',
                     fontWeight: 400
                 }
             },
         },
         Text: {
+            baseStyle: {
+                fontSize: ['16px'],
+                lineHeight: ['26px']
+            },
             variants: {
                 listItemDate: {
                     fontSize: [18],
@@ -309,6 +313,7 @@ export const theme:any = extendBaseTheme({
             },
             body: {
                 fontSize: '16px',
+                lineHeight: '26px',
                 color: 'black'
             },
             a: {
