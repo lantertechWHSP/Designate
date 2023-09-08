@@ -10,12 +10,12 @@ interface IFeaturedPostsCarousel {
 
 const FeaturedPostsCarousel:any = ({ posts }:IFeaturedPostsCarousel) : any => {
     const [sliderRef, instanceRef] = useKeenSlider();
-    
+
 
     return <Box className="keen-slider" ref={sliderRef}>
         {
-            (Array.isArray(posts) && posts.length > 0) && posts.map((post:IPost) => {
-                return <Box className="keen-slider__slide">
+            (Array.isArray(posts) && posts.length > 0) && posts.map((post:IPost, index:number) => {
+                return <Box className="keen-slider__slide" key={index}>
                     <Box minH={"calc(100vh - 120px)"}>
                         <Flex position="absolute"
                               top="0"

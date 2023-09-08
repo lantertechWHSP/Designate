@@ -15,7 +15,7 @@ import FeaturedPostsCarousel from "~/components/elements/posts/FeaturedPostsCaro
 interface INextPageProps {
     layout?:ILayout;
     blocks?:IBlock[];
-    featuredPosts?:IPost;
+    featuredPosts?:IPost[];
     posts?:IPost[];
     postsMeta?:any;
 }

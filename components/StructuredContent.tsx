@@ -37,17 +37,14 @@ const StrucutredContent:any = ({ content }) : ReactNode => {
                     }) => {
                         const tag:any = `h${node.level}`;
 
-                        // @ts-ignore
                         return <Heading as={tag} variant={tag} key={key} mb={4}>
                             {children}
                         </Heading>;
                     }),
-                    renderNodeRule(isParagraph, ({ _node, children, key }:{
-                        _node:any,
+                    renderNodeRule(isParagraph, ({ children, key }:{
                         children:any,
                         key:any
                     }) => {
-                        console.log(children);
                         return <Text as="p" key={key}>
                             {children}
                         </Text>

@@ -59,9 +59,14 @@ const LatestNewsBlock:any = ({ title, data: { posts } }:ILatestNewsBlockProps) :
 };
 
 LatestNewsBlock.getData = async () => {
-    const result:any = await doQuery(queries.latestPosts, {
+    const result:any = await doQuery(queries.posts, {
         first: 3,
-        isFeatured: true
+        filter: {
+            isFeatured: {
+                'eq': true
+            }
+        },
+        orderBy: 'publishDate_DESC'
     });
 
     return result;

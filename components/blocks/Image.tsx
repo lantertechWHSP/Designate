@@ -10,7 +10,8 @@ interface IImageBlockProps extends ChakraProps {
 
 const ImageBlock:any = ({ image, ...props }:IImageBlockProps) : ReactNode => {
     return <ContentBlock {...props} mb={8}>
-        <DatoImage data={image.responsiveImage} width="100%" style={{
+        <DatoImage data={image.responsiveImage} style={{
+            width: '100%',
             maxWidth: 'unset'
         }} />
     </ContentBlock>;

@@ -5,6 +5,7 @@ import { IImage } from '~/interfaces/util/image';
 export interface IPost {
     id?:string
     title?:string;
+    excerpt?:string;
     image?:IImage;
     publishDate?:string;
     isFeatured?:boolean;
