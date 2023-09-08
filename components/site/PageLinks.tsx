@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { Container, Box, Heading } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import { resolveInternalLink } from 'lib/utils';
+import { resolveInternalLink } from '~/lib/utils';
 import { MenuItemLink } from "~/components/elements/menuItemLink";
 
 const PageLinks:any = ({ current }:any) : ReactNode => {

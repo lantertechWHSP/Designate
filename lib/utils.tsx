@@ -1,6 +1,8 @@
 import { getBlock } from '~/components/ModularContent';
 import { ILink } from '~/interfaces/util/link';
 import { IBlock } from '~/interfaces/util/block';
+import { ISite } from '~/interfaces/layout/site';
+import { IPage } from '~/interfaces/models/page';
 
 export const resolveInternalLink:any = (link:ILink) : string => {
     if (!link) {
@@ -65,7 +67,7 @@ export const getBreadcrumbs:any = (menu, page) : any => {
     return breadcrumbs;
 };
 
-export const getLayoutData:any = (site, page, preview) : any => {
+export const getLayoutData:any = (site:ISite, page:IPage, preview:boolean) : any => {
     const favicon:any = site?.site?.favicon || [];
     const metatags:any = [...favicon, ...(page?.seo || [])];
     const breadcrumbs:any = getBreadcrumbs(site?.menu, page);

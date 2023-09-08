@@ -1,6 +1,6 @@
 import { useState, ReactNode } from 'react';
 import { doQuery, queries } from '~/dato/api';
-import PostCard from '~/components/elements/news/PostCard';
+import PostCard from '~/components/elements/posts/PostCard';
 import { SimpleGrid, Box, Flex, Button, Spinner, Text, Container } from '@chakra-ui/react';
 import { IPost } from '~/interfaces/models/post';
 import { IPostsMeta } from '~/interfaces/models/postsMeta';
@@ -10,6 +10,12 @@ interface IPostsListProps {
     postsMeta:IPostsMeta;
 }
 
+
+export const DATO_QUERY_VALUES:any = {
+    ITEMS_PER_PAGE : 3,
+    ORDER_BY : 'date_DESC',
+};
+
 const PostList:any = ({ latestPosts, postsMeta }:IPostsListProps) : ReactNode => {
     const [page, setPage] = useState<number>(1);
     const [posts, setPosts] = useState<IPost[]>(latestPosts);
@@ -17,12 +23,11 @@ const PostList:any = ({ latestPosts, postsMeta }:IPostsListProps) : ReactNode =>
     const [couldNotLoadPosts, setCouldNotLoadPosts] = useState<boolean>(false);
 
     const [totalPostsCount] = useState<number>(postsMeta?.count);
-    const itemsPerPage:number = 1;
 
     const loadMore:any = () : void => {
         setIsLoading(true);
 
-        doQuery(queries.latestPosts, { isFeatured: true, first: itemsPerPage, skip: page * itemsPerPage }).then(({ posts }) => posts || []).then((newPosts) => {
+        doQuery(queries.latestPosts, { isFeatured: true, first: DATO_QUERY_VALUES.ITEMS_PER_PAGE, skip: page * DATO_QUERY_VALUES.ITEMS_PER_PAGE }).then(({ posts }) => posts || []).then((newPosts) => {
             if(newPosts.length > 0) {
                 setPosts([...posts, ...newPosts]);
                 setPage(page + 1);

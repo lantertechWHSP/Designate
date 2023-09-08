@@ -13,7 +13,7 @@ import {
     Text
 } from '@chakra-ui/react';
 import {motion} from 'framer-motion';
-import useDocumentScroll from 'hooks/useDocumentScroll';
+import useDocumentScroll from '~/hooks/useDocumentScroll';
 import {
     enableBodyScroll,
     disableBodyScroll,

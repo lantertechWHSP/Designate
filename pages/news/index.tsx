@@ -3,7 +3,6 @@ import Layout from '~/components/layouts/Layout';
 import { ModularContent } from '~/components/ModularContent';
 import { doQuery, queries } from '~/dato/api';
 import { getLayoutData, getBlocks } from '~/lib/utils';
-import { Heading, Container } from '@chakra-ui/react';
 import { ILayout } from '~/interfaces/layout/layout';
 import { ISite } from '~/interfaces/layout/site';
 import { IPage } from '~/interfaces/models/page';
@@ -11,7 +10,7 @@ import { GetStaticPropsContext, GetStaticPropsResult } from 'next';
 import { IBlock } from '~/interfaces/util/block';
 import { IPost } from '~/interfaces/models/post';
 import { IPostsMeta } from '~/interfaces/models/postsMeta';
-import PostList from "~/components/elements/news/PostList";
+import PostList, { DATO_QUERY_VALUES } from "~/components/elements/posts/PostList";
 
 interface INextPageProps {
     layout?:ILayout;
@@ -27,7 +26,7 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
         ({ page }) => page
     );
 
-    const posts:IPost[] = await doQuery(queries.latestPosts, { first: 1 }).then(({ posts }) => posts || []);
+    const posts:IPost[] = await doQuery(queries.posts, { first: DATO_QUERY_VALUES.ITEMS_PER_PAGE }).then(({ posts }) => posts || []);
     const postsMeta:IPostsMeta = await doQuery(queries.postsMeta).then(({ postsMeta }) => postsMeta || {});
 
     const layout:ILayout = getLayoutData(site, page, preview);

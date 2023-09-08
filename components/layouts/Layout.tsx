@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react';
-import Meta from '~/components/layouts/Meta';
-import Header from '~/components/layouts/Header';
-import Footer from '~/components/layouts/Footer';
-import PageLinks from '~/components/layouts/PageLinks';
+import Meta from '~/components/site/Meta';
+import Header from '~/components/site/Header';
+import Footer from '~/components/site/Footer';
+import PageLinks from '~/components/site/PageLinks';
 import { Heading, Container, Flex, Box } from '@chakra-ui/react';
 import { SubscriptionForm } from '~/components/elements/mailchimp/subscriptionForm';
 
@@ -26,9 +26,6 @@ const Layout:any = ({ layout, children }:any) : ReactNode => {
                             </Container>
                         </Box>
                     </Flex>
-                }
-                {
-
                 }
                 {
                     children && <Box>

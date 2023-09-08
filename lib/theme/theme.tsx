@@ -308,15 +308,19 @@ export const theme:any = extendBaseTheme({
                 outline: 0
             },
             body: {
+                fontSize: '16px',
                 color: 'black'
-            }
-        },
-        a: {
-            textDecoration: 'none',
-            color: 'skyBlue',
-            _focus: {
-                boxShadow: 'none',
             },
+            a: {
+                textDecoration: 'none',
+                color: 'skyBlue',
+                _focus: {
+                    boxShadow: 'none',
+                },
+            },
+            p: {
+                mb: 4
+            }
         },
     }
 });

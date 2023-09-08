@@ -1,15 +1,16 @@
 import ContentBlock from "~/components/blocks/Content";
 import StructuredContent from 'components/StructuredContent';
 import { ReactNode } from 'react';
+import { ChakraProps } from '@chakra-ui/system';
 
-interface ITextBlockProps {
+interface ITextBlockProps extends ChakraProps {
     id?:string;
     __typename?:string;
     content?:any;
 }
 
-const TextBlock:any = ({ content }:ITextBlockProps) : ReactNode => {
-    return <ContentBlock>
+const TextBlock:any = ({ content, ...props }:ITextBlockProps) : ReactNode => {
+    return <ContentBlock {...props}>
         <StructuredContent content={content} />
     </ContentBlock>;
 };

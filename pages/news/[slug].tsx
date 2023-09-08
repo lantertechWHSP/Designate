@@ -1,6 +1,5 @@
 import React from 'react';
 import type { NextPage } from 'next';
-import Layout from '~/components/layouts/Layout';
 import { ModularContent } from '~/components/ModularContent';
 import { doQuery, queries } from '~/dato/api';
 import { getLayoutData, getBlocks } from '~/lib/utils';
@@ -10,6 +9,7 @@ import { ISite } from '~/interfaces/layout/site';
 import { IBlock } from '~/interfaces/util/block';
 import { IPost } from '~/interfaces/models/post';
 import { ContainerWidth } from '~/components/blocks/Content';
+import PostLayout from '~/components/layouts/PostLayout';
 
 interface INextPageProps {
     post?:IPost;
@@ -39,20 +39,19 @@ export async function getStaticProps({ params, preview }:GetStaticPropsContext) 
     return { props: { post, layout, blocks } };
 }
 
-const PostPage : NextPage = ({layout, blocks}:any)  : JSX.Element => {
+const PostPage : NextPage = ({ post, layout, blocks}:any)  : JSX.Element => {
     // Format the Container Width…
-
-    console.log(blocks);
     blocks.map((block:IBlock) => {
+        if(block.__typename) {
+            debugger;
+        }
         block.containerWidth = ContainerWidth.Narrow;
     });
 
-    console.log(blocks);
-
     return (
-        <Layout layout={layout}>
+        <PostLayout layout={layout}>
             <ModularContent content={blocks} />
-        </Layout>
+        </PostLayout>
     );
 };
 

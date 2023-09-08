@@ -7,9 +7,22 @@ export const post:string = `
     query post ($slug: String!) {
         post(filter: {slug: {eq: $slug}}) {
             id
-            title
-            isFeatured
             slug
+            title
+            image {
+                responsiveImage (imgixParams: { auto:format, w: "1380", h: "920", fit:crop }) {
+                    aspectRatio
+                    height
+                    sizes
+                    src
+                    srcSet
+                    webpSrcSet
+                    width
+                    alt
+                    title
+                }    
+            }
+            publishDate
             seo: _seoMetaTags {
                 ${seoAttrs}
             }
