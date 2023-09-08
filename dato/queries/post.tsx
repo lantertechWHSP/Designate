@@ -9,6 +9,7 @@ export const post:string = `
             id
             slug
             title
+            author
             image {
                 responsiveImage (imgixParams: { auto:format, w: "1380", h: "920", fit:crop }) {
                     aspectRatio

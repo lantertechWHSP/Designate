@@ -42,9 +42,6 @@ export async function getStaticProps({ params, preview }:GetStaticPropsContext) 
 const PostPage : NextPage = ({ post, layout, blocks}:any)  : JSX.Element => {
     // Format the Container Width…
     blocks.map((block:IBlock) => {
-        if(block.__typename) {
-            debugger;
-        }
         block.containerWidth = ContainerWidth.Narrow;
     });
 

@@ -16,7 +16,7 @@ interface IVideoBlockProps {
 const VideoBlock:any = ({ title, video, videoEmbed, ...props }:IVideoBlockProps) : ReactNode => {
     const [currentVideo] = useState<IVideo>(video ? video : videoEmbed);
 
-    return <ContentBlock {...props} >
+    return <ContentBlock {...props} mb={8}>
         {
             currentVideo && <AspectRatio ratio={[29 / 18, 21 / 10, ,21 / 9]}>
                 <ReactPlayer

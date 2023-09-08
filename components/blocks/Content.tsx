@@ -17,7 +17,7 @@ interface IContentBlockProps extends ChakraProps {
 const ContentBlock:any = ({ contain = true, containerWidth = ContainerWidth.Default, children, ...props }:IContentBlockProps) : ReactNode => {
     return <Box {...props}>
         {
-            contain ? <Container maxW={`container.narrow`}>
+            contain ? <Container maxW={`container.${containerWidth.toString()}`}>
                 {children}
             </Container> : <Box>
                 {children}

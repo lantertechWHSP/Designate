@@ -9,7 +9,7 @@ interface IAudioBlockProps extends ChakraProps {
 }
 
 const AudioBlock:any = ({ trackId, ...props }:IAudioBlockProps) : ReactNode => {
-    return <ContentBlock {...props}>
+    return <ContentBlock {...props} mb={8}>
         {
             trackId && <iframe width="100%"
                 height="150px"
