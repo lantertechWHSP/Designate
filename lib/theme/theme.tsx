@@ -160,7 +160,6 @@ export const theme:any = extendBaseTheme({
         Link: {
             baseStyle: {
                 color: 'skyBlue',
-                fontSize: 14
             },
             variants: {
                 siteHeader: {

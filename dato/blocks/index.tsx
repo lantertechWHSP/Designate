@@ -14,6 +14,7 @@ import { shareQuoteTableRecord } from '~/dato/blocks/shareQuoteTable';
 import { shareHistoricalPricesTableRecord } from '~/dato/blocks/shareHistoricalPricesTable';
 import { asxAnnouncementsPanelRecord } from '~/dato/blocks/asxAnnouncementsPanel';
 import { keyDatesPanelRecord } from '~/dato/blocks/keyDatesPanel';
+import { contactsPanelRecord } from '~/dato/blocks/contactsPanel';
 
 export const blocks:string = `
     blocks {
@@ -64,6 +65,9 @@ export const blocks:string = `
         }
         ... on KeyDatesPanelRecord {
             ${keyDatesPanelRecord}
+        }
+        ... on ContactsPanelRecord {
+            ${contactsPanelRecord}
         }
     }
 `;

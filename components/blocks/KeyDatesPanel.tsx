@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
 import { IEvent } from '~/interfaces/models/event';
 import { doQuery, queries } from '~/dato/api';
-import EventList from "~/components/elements/events/EventList";
-import ContentBlock from "~/components/blocks/Content";
+import EventList from '~/components/elements/events/EventList';
+import ContentBlock from '~/components/blocks/Content';
 import { Box, Heading } from '@chakra-ui/react';
 
 const KeyDatesPanelBlock:any = ({ data: { events } }) : ReactNode => {
