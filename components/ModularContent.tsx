@@ -13,6 +13,9 @@ import HomePageOverview from '~/components/blocks/HomePageOverview';
 import LatestNews from '~/components/blocks/LatestNews/LatestNews';
 import InvestorPanel from '~/components/blocks/InvestorPanel';
 import AsxAnnouncementsPanel from '~/components/blocks/AsxAnnouncementsPanel';
+
+import KeyDatesPanel from "~/components/blocks/KeyDatesPanel";
+
 import DividendsPanel from '~/components/blocks/DividendsPanel/DividendsPanel';
 import SharePricePanel from '~/components/blocks/SharePricePanel/SharePricePanel';
 import ShareQuoteTable from '~/components/blocks/ShareQuoteTable';
@@ -32,6 +35,7 @@ const blocks:any = {
     LatestNews,
     InvestorPanel,
     AsxAnnouncementsPanel,
+    KeyDatesPanel,
     DividendsPanel,
     SharePricePanel,
     ShareQuoteTable,

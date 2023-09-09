@@ -1,31 +1,16 @@
 import { ReactNode } from 'react';
-import { Box, Heading, Text, Flex, SimpleGrid, Divider, Link } from '@chakra-ui/react';
+import { Box, Heading, Text, Flex, SimpleGrid, Divider } from '@chakra-ui/react';
 import ContentBlock from '~/components/blocks/Content';
 import { YourIR } from 'yourir-next';
-import { Icon, Icons } from "~/components/elements/icon";
-import {SectionLink} from "~/components/elements/sectionLink";
+import { Icon, Icons } from '~/components/elements/icon';
+import { SectionLink } from '~/components/elements/sectionLink';
 
 interface IInvestorPanelBlockProps {
     displayHeadline?:boolean;
 }
 
 const InvestorPanelBlock:any = ({ displayHeadline }:IInvestorPanelBlockProps) : ReactNode => {
-    return <ContentBlock>
-        {
-            <Flex mb={4} align="flex-end">
-                <Box flex="1">
-                    <Heading variant="sectionHeading" as="h2" mb={0}>
-                        Investors
-                    </Heading>
-                </Box>
-                <Box>
-                    <Link variant="sectionLink" href="/investor-overview">
-                        <Box as="span" mr={2}>Investor Overview</Box>
-                        <Icon icon={Icons.ChevronRight} w={12} h={12} />
-                    </Link>
-                </Box>
-            </Flex>
-        }
+    return <ContentBlock py={8}>
         {
             displayHeadline && <Flex align="center" mb={8}>
                 <Heading as="h2" variant="sectionHeading">

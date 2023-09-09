@@ -87,12 +87,12 @@ export const theme:any = extendBaseTheme({
                 sectionHeading: {
                     fontSize: ['40px'],
                     lineHeight: ['60px'],
-                    fontWeight: 400,
+                    fontWeight: 500,
                 },
                 sectionSubheading: {
                     fontSize: ['32px'],
                     lineHeight: ['48px'],
-                    fontWeight: 400,
+                    fontWeight: 500,
                 },
                 pageLinksHeading: {
                     fontSize: ['20px'],
