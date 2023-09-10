@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, Fragment } from 'react';
 import { IEvent } from '~/interfaces/models/event';
 import { doQuery, queries } from '~/dato/api';
 import ContentBlock from '~/components/blocks/Content';
@@ -23,8 +23,8 @@ const ContactsPanelBlock:any = ({ data: { contacts } }:IContactsPanelBlockProps)
         {
             (Array.isArray(contacts) && contacts.length > 0) && <SimpleGrid columns={[1, , 3]}>
                 {
-                    contacts.map((contact:IContact) => {
-                        return <ContactCard {...contact} />
+                    contacts.map((contact:IContact, index:number) => {
+                        return <Fragment key={index}><ContactCard {...contact} /></Fragment>
                     })
                 }
             </SimpleGrid>

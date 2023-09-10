@@ -5,6 +5,7 @@ import Audio from '~/components/blocks/Audio';
 
 import Card from '~/components/blocks/CardContainer/Card';
 import CardContainer from '~/components/blocks/CardContainer/CardContainer';
+import RectangleCard from '~/components/blocks/RectangleCard';
 
 import Overview from '~/components/blocks/Overview';
 
@@ -16,7 +17,7 @@ import LatestNews from '~/components/blocks/LatestNews/LatestNews';
 import InvestorPanel from '~/components/blocks/InvestorPanel';
 import AsxAnnouncementsPanel from '~/components/blocks/AsxAnnouncementsPanel';
 
-import KeyDatesPanel from "~/components/blocks/KeyDatesPanel";
+import KeyDatesPanel from '~/components/blocks/KeyDatesPanel';
 
 import ContactsPanel from '~/components/blocks/ContactsPanel/ContactsPanel';
 
@@ -33,6 +34,7 @@ const blocks:any = {
     Audio,
     Card,
     CardContainer,
+    RectangleCard,
     Overview,
     Accordion,
 
