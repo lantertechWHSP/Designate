@@ -22,7 +22,7 @@ import {
 import { Icon, Icons } from '~/components/elements/icon';
 import { MenuItemLink } from '~/components/elements/menuItemLink';
 import { IMenuLink } from '~/interfaces/models/menuLink';
-import { DatoLink } from '~/components/elements/datoLink';
+import { DatoLink } from '~/components/elements/DatoLink';
 
 const MotionBox:any = motion(Box);
 
