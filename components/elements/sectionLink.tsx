@@ -1,4 +1,4 @@
-import { DatoLink, IDatoLinkProps } from "~/components/elements/datoLink";
+import { DatoLink, IDatoLinkProps } from "~/components/elements/DatoLink";
 import { Flex, Text } from '@chakra-ui/react';
 import { Icon, Icons } from '~/components/elements/icon';
 

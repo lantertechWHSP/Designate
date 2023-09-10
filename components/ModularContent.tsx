@@ -8,6 +8,8 @@ import CardContainer from '~/components/blocks/CardContainer/CardContainer';
 
 import Overview from '~/components/blocks/Overview';
 
+import Accordion from '~/components/blocks/Accordion/Accordion';
+
 import Hero from '~/components/blocks/Hero';
 import HomePageOverview from '~/components/blocks/HomePageOverview';
 import LatestNews from '~/components/blocks/LatestNews/LatestNews';
@@ -32,6 +34,7 @@ const blocks:any = {
     Card,
     CardContainer,
     Overview,
+    Accordion,
 
     Hero,
     HomePageOverview,

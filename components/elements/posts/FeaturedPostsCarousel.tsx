@@ -2,7 +2,7 @@ import { IPost } from '~/interfaces/models/post';
 import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
 import { Flex, Button, Container, Heading, Text, Box } from '@chakra-ui/react';
-import { DatoLink } from '~/components/elements/datoLink';
+import { DatoLink } from '~/components/elements/DatoLink';
 
 interface IFeaturedPostsCarousel {
     posts:IPost[];

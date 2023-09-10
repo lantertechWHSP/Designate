@@ -5,6 +5,7 @@ import { audioRecord } from '~/dato/blocks/audio';
 import { heroRecord } from '~/dato/blocks/hero';
 import { cardContainerRecord } from '~/dato/blocks/cardContainer';
 import { overviewRecord } from '~/dato/blocks/overview';
+import { accordionRecord } from '~/dato/blocks/accordion';
 import { latestNewsRecord } from '~/dato/blocks/latestNews';
 import { investorPanelRecord } from '~/dato/blocks/investorPanel';
 import { homePageOverviewRecord } from '~/dato/blocks/homePageOverview';
@@ -38,6 +39,9 @@ export const blocks:string = `
         }
         ... on OverviewRecord {
             ${overviewRecord}
+        }
+        ... on AccordionRecord {
+            ${accordionRecord}
         }
         ... on LatestNewsRecord {
             ${latestNewsRecord}

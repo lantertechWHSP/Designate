@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { Box, Text, Heading, AspectRatio } from '@chakra-ui/react';
 import { Icon, Icons } from '~/components/elements/icon';
-import { DatoLink } from '~/components/elements/datoLink';
+import { DatoLink } from '~/components/elements/DatoLink';
 import { ILink } from "~/interfaces/util/link";
 
 export interface ICardBlockProps {

@@ -2,7 +2,7 @@ import { Box, AspectRatio, Text, Heading } from '@chakra-ui/react';
 import { Image } from 'react-datocms';
 import { IPost } from "~/interfaces/models/post";
 import { ChakraProps } from '@chakra-ui/system';
-import { DatoLink } from '~/components/elements/datoLink';
+import { DatoLink } from '~/components/elements/DatoLink';
 
 interface IPostCardProps extends IPost, ChakraProps {
 }
