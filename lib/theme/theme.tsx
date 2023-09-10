@@ -167,7 +167,7 @@ export const theme:any = extendBaseTheme({
                     color: 'lightGrey2',
                 },
                 siteFooter: {
-                    color: 'steelBlue',
+                    color: 'steelBlue3',
                 },
                 sectionLink: {
                     fontSize: [16],

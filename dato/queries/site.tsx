@@ -42,6 +42,7 @@ export const site:string = `
             phone
             fax
             linkedin
+            youtube
             copyright
         }
     },

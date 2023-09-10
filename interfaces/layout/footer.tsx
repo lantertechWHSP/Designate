@@ -4,5 +4,6 @@ export interface IFooter {
     phone?:string
     fax?:string
     linkedin?:string;
+    youtube?:string;
     copyright?:string
 }

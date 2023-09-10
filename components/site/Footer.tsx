@@ -1,39 +1,72 @@
 import { ReactNode } from 'react';
-import { Container, Flex, Text, Box, Link } from '@chakra-ui/react';
+import { Container, Flex, Text, Box } from '@chakra-ui/react';
+import { DatoLink } from '~/components/elements/DatoLink';
 
-const Footer:any = ({ address, email, phone, _fax, _linkedin, copyright }:any) : ReactNode => {
-    return <Box as="footer" background="ghostWhite" py={8}>
+const Footer:any = ({ address, email, phone, fax, linkedin, youtube, copyright }:any) : ReactNode => {
+    return <Box as="footer" background="ghostWhite" color="steelBlue3" py={8}>
         <Container>
-            <Flex h="60px" align="center">
+            <Box>
+                <DatoLink href="/" width="130px" display="block"  mb={8}>
+                    <img src="/images/logo.svg" alt="Logo" />
+                </DatoLink>
+            </Box>
+            <Flex>
                 <Box>
-                    <Link href="/" variant="siteFooter">WHSP</Link>
+
                     {
                         copyright && <Box>
-                            <Text color="steelBlue">
+                            <Text as="span">
                                 {copyright}
                             </Text>
                         </Box>
                     }
-                    Website by <Link href="https://designate.com.au">Designate</Link>
+                    <Box>
+                        Website by <DatoLink href="https://designate.com.au" variant="siteFooter">Designate</DatoLink>
+                    </Box>
                 </Box>
                 <Box flex={1} />
-                <Box>
+                <Box minWidth={['100%', '200px']}>
                     {
                         phone && <Box>
-                            <Link href={`tel:${phone}`} variant="siteFooter">
+                            <DatoLink href={`tel:${phone}`} variant="siteFooter">
                                 {phone}
-                            </Link>
+                            </DatoLink>
+                        </Box>
+                    }
+                    {
+                        fax && <Box>
+                            <DatoLink href={`tel:${fax}`} variant="siteFooter">
+                                {fax}
+                            </DatoLink>
                         </Box>
                     }
                     {
                         email && <Box>
-                            <Link href={`mailto:${email}`} variant="siteFooter">
+                            <DatoLink href={`mailto:${email}`} variant="siteFooter">
                                 {email}
-                            </Link>
+                            </DatoLink>
                         </Box>
                     }
+                    {
+                        (linkedin || youtube) && <Flex w={['100%', '250px']} mx={-2}>
+                            {
+                                linkedin && <Box px={2}>
+                                    <DatoLink {...linkedin} variant="siteFooter">
+                                        Linkedin
+                                    </DatoLink>
+                                </Box>
+                            }
+                            {
+                                youtube && <Box px={2}>
+                                    <DatoLink {...youtube} variant="siteFooter">
+                                        YouTube
+                                    </DatoLink>
+                                </Box>
+                            }
+                        </Flex>
+                    }
                 </Box>
-                <Box>
+                <Box w={['100%', '250px']}>
                     {
                         address && <Box>
                             {address}

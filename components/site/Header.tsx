@@ -20,9 +20,9 @@ import {
     clearAllBodyScrollLocks
 } from 'body-scroll-lock';
 import { Icon, Icons } from '~/components/elements/icon';
-import { MenuItemLink } from "~/components/elements/menuItemLink";
-import { Link } from '@chakra-ui/react';
+import { MenuItemLink } from '~/components/elements/menuItemLink';
 import { IMenuLink } from '~/interfaces/models/menuLink';
+import { DatoLink } from '~/components/elements/datoLink';
 
 const MotionBox:any = motion(Box);
 
@@ -49,7 +49,9 @@ const Header:any = ({menu}): ReactNode => {
                     <Container>
                         <Flex h={height} py={4} align="center">
                             <Box width={200}>
-                                <Link href="/" variant="siteHeader">WHSP</Link>
+                                <DatoLink width="130px" display="block" href="/">
+                                    <img src="/images/logo-white.svg" alt="Logo" />
+                                </DatoLink>
                             </Box>
                             <DesktopNav menu={menu}/>
                             <Flex display={['flex', , , 'none']} flex={1}>
