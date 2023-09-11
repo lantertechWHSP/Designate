@@ -17,7 +17,7 @@ const SharePriceOverview:any = () : ReactNode => {
         <Box py={4}
             mb={8}>
             <Text fontSize={['24px']}
-                lineHeight={['26px']}
+                lineHeight={['20px']}
                 mb={4}>
                 <Text as="span" fontWeight={500} data-yourir="shortName"></Text>{'\u00A0'}
                 <Text as="span" color="steelBlue3"><span data-yourir="market"></span>:<span data-yourir="symbol"></span></Text>

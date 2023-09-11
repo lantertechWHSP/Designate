@@ -9,19 +9,20 @@ const SharePriceChart:any = () : ReactNode => {
     const comparisonSymbols:IFilter[] = [
         {
             label: 'XAO All Ordinaries',
-            value:  'relativePrice1' // Relative Price 1 is XAO (xao.asx)
+            value:  'relativePrice1', // Relative Price 1 is XAO (xao.asx)
+            isActive: false
         },
         {
             label: 'XJO S&P/ASX 200',
             value: 'relativePrice2', // Relative Price 2 is XJO  (xjo.asx)
+            isActive: false
         },
         {
             label: 'XKO S&P/ASX 300',
-            value: 'relativePrice3' /// Relative Price 3 is XKO (xko.asx)
+            value: 'relativePrice3', /// Relative Price 3 is XKO (xko.asx)
+            isActive: false
         }
     ];
-
-    let selectedSymbolLabel:string = '';
 
     const predefinedColors:any = new ColorGenerator().getPredefinedColors();
 
@@ -134,7 +135,7 @@ const SharePriceChart:any = () : ReactNode => {
                                         height="40px"
                                         lineHeight="40px"
                                         rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} w={12} h={12} /> : <Icon icon={Icons.ChevronDown} w={12} h={12} />}>
-                                        {selectedSymbolLabel ? selectedSymbolLabel : 'Compare…'}
+                                        Compare…
                                     </MenuButton>
                                     <Portal>
                                         <MenuList>
@@ -143,14 +144,22 @@ const SharePriceChart:any = () : ReactNode => {
                                                     return <MenuItem key={index}
                                                         as={Button}
                                                         variant="menuItemFilter"
+                                                        style={{
+                                                            background: item.isActive ? 'black' : '',
+                                                            color: item.isActive ? 'white' : ''
+                                                        }}
                                                         onClick={() => {
-                                                            selectedSymbolLabel = item.label;
-                                                            comparisonSymbols.map((innerItem:IFilter) => {
-                                                                if(innerItem.value === item.value) {
-                                                                    set(`priceComparisionChart.${innerItem.value}.visible`, true);
+                                                            comparisonSymbols.map((symbol) => {
+                                                                let isToggled = false;
+                                                                if(symbol.value === item.value) {
+                                                                    symbol.isActive = !symbol.isActive;
+                                                                    isToggled = true;
                                                                 }
-                                                                else {
-                                                                    set(`priceComparisionChart.${innerItem.value}.visible`, false);
+
+                                                                debugger;
+
+                                                                if(isToggled) {
+                                                                    set(`priceComparisionChart.${symbol.value}.visible`, symbol.isActive);
                                                                 }
                                                             });
                                                         }}>
