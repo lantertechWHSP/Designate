@@ -2,7 +2,6 @@ const { createSecureHeaders } = require('next-secure-headers');
 
 const nextConfig = {
     eslint: {
-        // dirs: ["components", "dato", "hooks", "lib", " pages"],
         ignoreDuringBuilds: true
     },
     async headers() {
