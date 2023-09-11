@@ -49,9 +49,12 @@ const Header:any = ({menu}): ReactNode => {
                     <Container>
                         <Flex h={height} py={4} align="center">
                             <Box width={200}>
-                                <DatoLink width="130px" display="block" href="/">
+                                <a href="/" style={{
+                                    display: 'block',
+                                    width: '130px'
+                                }}>
                                     <img src="/images/logo-white.svg" alt="Logo" />
-                                </DatoLink>
+                                </a>
                             </Box>
                             <DesktopNav menu={menu}/>
                             <Flex display={['flex', , , 'none']} flex={1}>

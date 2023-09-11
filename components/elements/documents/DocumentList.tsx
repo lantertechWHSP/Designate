@@ -2,7 +2,7 @@ import { useState, ReactNode, useEffect } from 'react';
 import { doQuery, queries } from '~/dato/api';
 import DocumentCard from '~/components/elements/documents/DocumentCard';
 import { Box, Flex, Button, Spinner, Text, Container, Heading, Menu, MenuButton, Portal, MenuList, MenuItem, ButtonGroup  } from '@chakra-ui/react';
-import {IDocument, IDocumentsFilters} from '~/interfaces/models/document';
+import { IDocument, IDocumentsFilters, IDocumentBundle } from '~/interfaces/models/document';
 import { IDocumentsMeta } from '~/interfaces/models/document';
 import { groupBy as _groupBy, forOwn as _forOwn } from 'lodash';
 import { DateTime } from 'luxon';
@@ -15,15 +15,10 @@ interface IDocumentListProps {
     documentsFilters:IDocumentsFilters;
 }
 
-interface IDocumentBundle {
-    title:string;
-    documents:IDocument[];
-}
-
 export const DATO_QUERY_VALUES:any = {
     ITEMS_PER_PAGE : 2,
     ORDER_BY : 'date_DESC',
-    CATEGORY_ID : '190260513'
+    REPORTS_CATEGORY_ID : '190260513'
 };
 
 const DocumentList:any = ({ latestDocuments, documentsMeta, documentsFilters }:IDocumentListProps) : ReactNode => {
@@ -44,7 +39,7 @@ const DocumentList:any = ({ latestDocuments, documentsMeta, documentsFilters }:I
     const getDatoFilterObject:any = () : void => {
         const filter:any = {
             categories: {
-                eq: DATO_QUERY_VALUES.CATEGORY_ID
+                eq: DATO_QUERY_VALUES.REPORTS_CATEGORY_ID
             }
         };
 

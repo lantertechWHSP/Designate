@@ -18,28 +18,26 @@ interface IReactangleCardBlockProps extends ChakraProps {
 const RectangleCardBlock:any = ({ annotation, title, description, link, image, ...props }:IReactangleCardBlockProps) : ReactNode => {
     return <ContentBlock {...props} py={8}>
         <SimpleGrid columns={[1, ,2]} spacing={[0]}>
-            <Flex direction="column" background="lightGrey3">
-                <Box p={8}>
-                    {
-                        annotation && <Box mb={12} fontWeight={500}>
-                            {annotation}
-                      </Box>
-                    }
-                    {
-                        title && <Heading as="h2" variant="h3" mb={4}>
-                            {title}
-                      </Heading>
-                    }
-                    {
-                        description && <Box color="steelBlue3">
-                            {description}
-                      </Box>
-                    }
-                    <Box flex="1" />
-                    <SectionLink {...link}>
-                        Read More
-                    </SectionLink>
-                </Box>
+            <Flex direction="column" background="lightGrey3" p={8}>
+                {
+                    annotation && <Box mb={12} fontWeight={500}>
+                        {annotation}
+                  </Box>
+                }
+                {
+                    title && <Heading as="h2" variant="h3" mb={4}>
+                        {title}
+                  </Heading>
+                }
+                {
+                    description && <Box color="steelBlue3">
+                        {description}
+                  </Box>
+                }
+                <Box flex="1" />
+                <SectionLink {...link}>
+                    Read More
+                </SectionLink>
             </Flex>
             <Box>
                 <Image image={image} ratio={[650 / 500]} />

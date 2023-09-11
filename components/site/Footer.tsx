@@ -6,13 +6,16 @@ const Footer:any = ({ address, email, phone, fax, linkedin, youtube, copyright }
     return <Box as="footer" background="ghostWhite" color="steelBlue3" py={8}>
         <Container>
             <Box>
-                <DatoLink href="/" width="130px" display="block"  mb={8}>
+                <a href="/" style={{
+                    display: 'block',
+                    width: '130px',
+                    marginBottom: '16px'
+                }}>
                     <img src="/images/logo.svg" alt="Logo" />
-                </DatoLink>
+                </a>
             </Box>
             <Flex>
                 <Box>
-
                     {
                         copyright && <Box>
                             <Text as="span">

@@ -34,8 +34,10 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
     const documents:IDocument[] = await doQuery(queries.documents, {
         first: DATO_QUERY_VALUES.ITEMS_PER_PAGE,
         orderBy: DATO_QUERY_VALUES.ORDER_BY,
-        categories: {
-            eq: DATO_QUERY_VALUES.CATEGORY_ID
+        filter: {
+            categories: {
+                eq: DATO_QUERY_VALUES.REPORTS_CATEGORY_ID
+            }
         }
     }, preview).then(
         ({ documents }) => documents || []
@@ -43,7 +45,7 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
 
     const doucmentsMeta:IDocumentsMeta = await doQuery(queries.documentsMeta, {
         categories: {
-            eq: DATO_QUERY_VALUES.CATEGORY_ID
+            eq: DATO_QUERY_VALUES.REPORTS_CATEGORY_ID
         }
     }).then(({ documentsMeta }) => {
         return {
@@ -53,13 +55,13 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
 
     const documentsFilters:IDocumentsFilters = await doQuery(queries.documentsFilters, {
         categories: {
-            eq: DATO_QUERY_VALUES.CATEGORY_ID
+            eq: DATO_QUERY_VALUES.REPORTS_CATEGORY_ID
         }
     }).then(({ firstDate, lastDate, tags }) => {
         // Date Filters
 
-        const startYear:number = +(firstDate[0].date.split('-')[0]);
-        const endYear:number = +(lastDate[0].date.split('-')[0]);
+        const startYear:number = +(firstDate[0].date?.split('-')[0]);
+        const endYear:number = +(lastDate[0].date?.split('-')[0]);
 
         const yearFilters:IFilter[] = [{
             value: 'none',

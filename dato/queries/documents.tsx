@@ -9,6 +9,10 @@ export const documents:string = `
                 id
                 label
             }
+            subcategories {
+                id
+                label
+            }
             tags {
                 id
                 label
