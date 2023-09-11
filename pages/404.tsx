@@ -6,7 +6,7 @@ import { getLayoutData } from '~/lib/utils';
 import { ISite } from '~/interfaces/layout/site';
 import { IPage } from '~/interfaces/models/page';
 import { ILayout } from '~/interfaces/layout/layout';
-import { Container } from '@chakra-ui/react';
+import { Container, Box } from '@chakra-ui/react';
 import { GetStaticPropsContext, GetStaticPropsResult } from 'next';
 
 interface INextPageProps {
@@ -28,9 +28,9 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
 const ErrorPage : NextPage = ({ layout }:INextPageProps) : JSX.Element => {
     return <DefaultLayout layout={layout}>
         <Container>
-            <p>
+            <Box py={8}>
                 Page Not Found
-            </p>
+            </Box>
         </Container>
     </DefaultLayout>;
 };

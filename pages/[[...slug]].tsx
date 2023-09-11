@@ -20,6 +20,7 @@ export async function getStaticPaths() : Promise<GetStaticPathsResult<any>> {
         'news',
         'people-and-governance/board-of-directors',
         'people-and-governance/leadership-team',
+        'people-and-governance/policies-and-standards',
         'investor-centre/key-dates',
         'investor-centre/financial-reports'
     ];
