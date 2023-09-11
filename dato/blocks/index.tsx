@@ -17,6 +17,7 @@ import { asxAnnouncementsPanelRecord } from '~/dato/blocks/asxAnnouncementsPanel
 import { keyDatesPanelRecord } from '~/dato/blocks/keyDatesPanel';
 import { contactsPanelRecord } from '~/dato/blocks/contactsPanel';
 import { rectangleCardRecord } from '~/dato/blocks/rectangleCard';
+import { companyValuesPanelRecord } from '~/dato/blocks/companyValuesPanel';
 
 export const blocks:string = `
     blocks {
@@ -73,6 +74,9 @@ export const blocks:string = `
         }
         ... on ContactsPanelRecord {
             ${contactsPanelRecord}
+        }
+        ... on CompanyValuesPanelRecord {
+            ${companyValuesPanelRecord}
         }
         ... on RectangleCardRecord {
             ${rectangleCardRecord}
