@@ -21,11 +21,10 @@ const CompanyValuesPanelBlock:any = ({ items, ...props }:ICompanyValuesProps) : 
             (Array.isArray(items) && items.length > 0) && <SimpleGrid columns={[2, , 4]} spacing={[0, 8]}>
                 {
                     items.map((item:ICompanyValue, index:number) => {
-                        debugger;
                         return <Box key={index}>
                             {
                                 item.icon && <Box mb={4}>
-                                    <Image image={item.icon.url} width="30px" height="30px" ratio={[1 / 1]} />
+                                    <Image image={item.icon} width="30px" height="30px" ratio={[1 / 1]} />
                                 </Box>
                             }
                             {

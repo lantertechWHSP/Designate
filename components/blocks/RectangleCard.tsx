@@ -42,7 +42,7 @@ const RectangleCardBlock:any = ({ annotation, title, description, link, image, .
                 </Box>
             </Flex>
             <Box>
-                <Image {...image} ratio={[650 / 500]} />
+                <Image image={image} ratio={[650 / 500]} />
             </Box>
         </SimpleGrid>
     </ContentBlock>
