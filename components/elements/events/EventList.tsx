@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Box, Container } from '@chakra-ui/react';
+import { Box, Container, Text } from '@chakra-ui/react';
 import EventCard from '~/components/elements/events/EventCard';
 import { IEvent } from '~/interfaces/models/event';
 
