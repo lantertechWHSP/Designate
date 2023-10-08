@@ -21,7 +21,7 @@ const DocumentBasicList:any = ({latestDocuments}:IDocumentBasicListProps) : Reac
         const newSortedDocumentBundles:IDocumentBundle[] = [];
 
         _forOwn(_groupBy(documents, (document:IDocument) => {
-            return document.subcategories[0].label;
+            return document.subcategory.label;
         }), (document:IDocument[], key:string) => {
             newSortedDocumentBundles.push({
                 title: key,

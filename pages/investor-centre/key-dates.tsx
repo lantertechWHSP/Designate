@@ -11,6 +11,7 @@ import { ILayout } from '~/interfaces/layout/layout';
 import { IBlock } from '~/interfaces/util/block';
 import EventList from '~/components/elements/events/EventList';
 import { IEvent } from '~/interfaces/models/event';
+import { Container } from '@chakra-ui/react';
 
 interface INextPageProps {
     layout?:ILayout;

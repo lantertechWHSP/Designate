@@ -17,8 +17,6 @@ import LatestNews from '~/components/blocks/LatestNews/LatestNews';
 import InvestorPanel from '~/components/blocks/InvestorPanel';
 import AsxAnnouncementsPanel from '~/components/blocks/AsxAnnouncementsPanel';
 
-import KeyDatesPanel from '~/components/blocks/KeyDatesPanel';
-
 import ContactsPanel from '~/components/blocks/ContactsPanel/ContactsPanel';
 import CompanyValuesPanel from '~/components/blocks/CompanyValuesPanel';
 
@@ -44,7 +42,6 @@ const blocks:any = {
     LatestNews,
     InvestorPanel,
     AsxAnnouncementsPanel,
-    KeyDatesPanel,
     ContactsPanel,
     CompanyValuesPanel,
     DividendsPanel,

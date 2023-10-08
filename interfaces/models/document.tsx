@@ -4,7 +4,7 @@ import { IFilter } from '~/interfaces/util/filter';
 export interface IDocumentCategory {
     id?:string;
     label?:string;
-    subcategories?:IDocumentSubcategory[];
+    subcategory?:IDocumentSubcategory;
 }
 
 export interface IDocumentSubcategory {
@@ -20,8 +20,8 @@ export interface IDocumentTags {
 export interface IDocument {
     title?:string;
     date?:string;
-    categories?:IDocumentCategory[];
-    subcategories?:IDocumentCategory[];
+    category?:IDocumentCategory;
+    subcategory?:IDocumentSubcategory;
     tags?:IDocumentTags[];
     document?:IFile;
 }

@@ -14,7 +14,6 @@ import { sharePricePanelRecord } from '~/dato/blocks/sharePricePanel';
 import { shareQuoteTableRecord } from '~/dato/blocks/shareQuoteTable';
 import { shareHistoricalPricesTableRecord } from '~/dato/blocks/shareHistoricalPricesTable';
 import { asxAnnouncementsPanelRecord } from '~/dato/blocks/asxAnnouncementsPanel';
-import { keyDatesPanelRecord } from '~/dato/blocks/keyDatesPanel';
 import { contactsPanelRecord } from '~/dato/blocks/contactsPanel';
 import { rectangleCardRecord } from '~/dato/blocks/rectangleCard';
 import { companyValuesPanelRecord } from '~/dato/blocks/companyValuesPanel';
@@ -68,9 +67,6 @@ export const blocks:string = `
         }
         ... on AsxAnnouncementsPanelRecord {
             ${asxAnnouncementsPanelRecord}
-        }
-        ... on KeyDatesPanelRecord {
-            ${keyDatesPanelRecord}
         }
         ... on ContactsPanelRecord {
             ${contactsPanelRecord}

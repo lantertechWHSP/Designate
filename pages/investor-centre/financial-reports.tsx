@@ -35,7 +35,7 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
         first: DATO_QUERY_VALUES.ITEMS_PER_PAGE,
         orderBy: DATO_QUERY_VALUES.ORDER_BY,
         filter: {
-            categories: {
+            category: {
                 eq: DATO_QUERY_VALUES.REPORTS_CATEGORY_ID
             }
         }
@@ -44,8 +44,10 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
     );
 
     const doucmentsMeta:IDocumentsMeta = await doQuery(queries.documentsMeta, {
-        categories: {
-            eq: DATO_QUERY_VALUES.REPORTS_CATEGORY_ID
+        filter: {
+            category: {
+                eq: DATO_QUERY_VALUES.REPORTS_CATEGORY_ID
+            }
         }
     }).then(({ documentsMeta }) => {
         return {
@@ -54,8 +56,10 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
     });
 
     const documentsFilters:IDocumentsFilters = await doQuery(queries.documentsFilters, {
-        categories: {
-            eq: DATO_QUERY_VALUES.REPORTS_CATEGORY_ID
+        filter: {
+            category: {
+                eq: DATO_QUERY_VALUES.REPORTS_CATEGORY_ID
+            }
         }
     }).then(({ firstDate, lastDate, tags }) => {
         // Date Filters
@@ -65,7 +69,7 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
 
         const yearFilters:IFilter[] = [{
             value: 'none',
-            label: 'All Document Types'
+            label: 'All Years'
         }];
 
         for(let date:number = endYear; date >= startYear; date--) {
@@ -78,7 +82,7 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
         // Tag Filters
         let tagFilters:any[] = [{
             id: 'none',
-            label: 'All Years'
+            label: 'All Tags'
         }];
 
         tags.map((tag:any) => {
@@ -106,6 +110,9 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
 }
 
 const ReportsPage : NextPage = ({ layout, blocks, documents, doucmentsMeta, documentsFilters }:INextPageProps) : JSX.Element => {
+
+    console.log(documentsFilters);
+
     return (
         <DefaultLayout layout={layout}>
             <ModularContent content={blocks} />

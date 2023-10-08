@@ -5,11 +5,11 @@ export const documents:string = `
             id
             title
             date
-            categories {
+            category {
                 id
                 label
             }
-            subcategories {
+            subcategory {
                 id
                 label
             }

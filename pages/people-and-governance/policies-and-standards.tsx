@@ -29,7 +29,7 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
 
     const documents:IDocument[] = await doQuery(queries.documents, {
         filter: {
-            categories: {
+            category: {
                 eq: DATO_QUERY_VALUES.POLICIES_AND_STANDARDS_CATEGORY_ID
             }
         }

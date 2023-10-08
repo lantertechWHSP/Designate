@@ -38,7 +38,7 @@ const DocumentList:any = ({ latestDocuments, documentsMeta, documentsFilters }:I
 
     const getDatoFilterObject:any = () : void => {
         const filter:any = {
-            categories: {
+            category: {
                 eq: DATO_QUERY_VALUES.REPORTS_CATEGORY_ID
             }
         };
