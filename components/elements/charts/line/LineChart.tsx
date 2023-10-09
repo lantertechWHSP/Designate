@@ -1,20 +1,19 @@
 import React, { useEffect, useMemo, useRef, useState, ReactNode, Fragment }  from 'react';
 import { scaleLinear, scaleTime, line } from 'd3';
 import { Box } from '@chakra-ui/react';
-import { max as _max, min as _min, map as _map, throttle as _throttle, flatten as _flatten } from 'lodash';
+import { max as _max, min as _min, throttle as _throttle, isNil as _isNil } from 'lodash';
 import { DateTime } from 'luxon';
 import { ColorGenerator } from '~/lib/colorGenerator/colorGenerator';
 import { AxisLeft } from "~/components/elements/charts/line/modules/AxisLeft";
 import { AxisBottom } from "~/components/elements/charts/line/modules/AxisBottom";
 
 interface ILineChart {
-    data: {
-        lines: ILine[]
-    }
+    lines: ILine[];
 }
 
 interface ILine {
     data:IData[];
+    display:boolean;
 }
 
 interface IData {
@@ -25,6 +24,7 @@ interface IData {
 interface ILineDataSVG {
     d:any;
     stroke:string;
+    display:boolean;
 }
 
 interface IMargin {
@@ -34,7 +34,7 @@ interface IMargin {
     left:number;
 }
 
-const LineChart:any = ({ data }:ILineChart) : ReactNode => {
+const LineChart:any = ({ lines }:ILineChart) : ReactNode => {
     const [width, setWidth] = useState<number>(null);
     const [height, setHeight] = useState<number>(null);
     const margin:IMargin = { top: 30, right: 30, bottom: 50, left: 0 };
@@ -49,13 +49,15 @@ const LineChart:any = ({ data }:ILineChart) : ReactNode => {
     }, [height]);
 
     const yScale:any = useMemo<any>(() => {
-        if(data) {
+        if(lines) {
             const flattendValues:number[] = [];
 
-            data.lines.map((line:ILine) => {
-                line.data.map((datum:IData) => {
-                    flattendValues.push(datum.value);
-                });
+            lines.map((line:ILine) => {
+                if(line.data) {
+                    line.data.map((datum:IData) => {
+                        flattendValues.push(datum.value);
+                    });
+                }
             });
 
             let max = _max(flattendValues);
@@ -64,16 +66,18 @@ const LineChart:any = ({ data }:ILineChart) : ReactNode => {
                 .domain([0, max])
                 .range([boundsHeight, 0]);
         }
-    }, [data, height]);
+    }, [lines, height]);
 
     const xScale:any = useMemo<any>(() => {
-        if(data) {
+        if(lines) {
             const flattendDates:DateTime[] = [];
 
-            data.lines.map((line:ILine) => {
-                line.data.map((datum:IData) => {
-                    flattendDates.push(datum.date.valueOf());
-                });
+            lines.map((line:ILine) => {
+                if(line.data) {
+                    line.data.map((datum:IData) => {
+                        flattendDates.push(datum.date.valueOf());
+                    });
+                }
             });
 
             let min = _min(flattendDates);
@@ -83,26 +87,28 @@ const LineChart:any = ({ data }:ILineChart) : ReactNode => {
                 .domain([min, max])
                 .range([0, width]);
         }
-    }, [data, width]);
+    }, [lines, width]);
 
     const lineBuilder:any = line<IData>()
         .x((datum:IData) => xScale(datum.date))
         .y((datum:IData) => yScale(datum.value));
 
-    const lines:any = useMemo(() => {
+    const linesSVG:any = useMemo(() => {
         const colorGenerator:ColorGenerator = new ColorGenerator();
         const newLines:ILineDataSVG[] = [];
 
-        data.lines.map((line:ILine) => {
-            debugger;
-            newLines.push({
-                d: lineBuilder(line.data),
-                stroke: colorGenerator.next()
-            });
+        lines.map((line:ILine) => {
+            if(line.data) {
+                newLines.push({
+                    d: lineBuilder(line.data),
+                    stroke: colorGenerator.next(),
+                    display: line.display
+                });
+            }
         });
 
         return newLines;
-    }, [data]);
+    }, [lines]);
 
     useEffect(() => {
         const setDimension:any = () : void => {
@@ -117,12 +123,12 @@ const LineChart:any = ({ data }:ILineChart) : ReactNode => {
             setDimension();
         }, 100);
 
-        window.addEventListener("resize", handleResize);
+        window.addEventListener('resize', handleResize);
 
         setDimension();
 
         return () => {
-            window.removeEventListener("resize", handleResize);
+            window.removeEventListener('resize', handleResize);
         };
     }, []);
 
@@ -150,7 +156,7 @@ const LineChart:any = ({ data }:ILineChart) : ReactNode => {
         {
             (boundsWidth && boundsHeight) && <svg width={width} height={height} shapeRendering={"crispEdges"}>
                 {
-                    data && <g
+                    lines && <g
                         width={boundsWidth}
                         height={boundsHeight}
                         transform={`translate(${[margin.left, margin.top].join(",")})`}
@@ -160,18 +166,22 @@ const LineChart:any = ({ data }:ILineChart) : ReactNode => {
                         <g transform="translate(30, 0)">
                             <AxisBottom scale={xScale} transform={`translate(0, ${boundsHeight})`} />
                             {
-                                (Array.isArray(lines) && lines.length > 0) && <>
+                                (Array.isArray(linesSVG) && linesSVG.length > 0) && <>
                                     {
-                                        lines.map((line:ILineDataSVG, index:number) => {
-                                            return <Fragment key={index}>
-                                                <path
-                                                    d={line.d}
-                                                    opacity={1}
-                                                    stroke={line.stroke}
-                                                    fill="none"
-                                                    strokeWidth={2}
-                                                />
-                                            </Fragment>;
+                                        linesSVG.map((line:ILineDataSVG, index:number) => {
+                                            {
+                                                return <Fragment key={index}>
+                                                    {
+                                                        (_isNil(line.display) || line.display) && <path
+                                                            d={line.d}
+                                                            opacity={1}
+                                                            stroke={line.stroke}
+                                                            fill="none"
+                                                            strokeWidth={2}
+                                                        />
+                                                    }
+                                                </Fragment>
+                                            }
                                         })
                                     }
                                 </>

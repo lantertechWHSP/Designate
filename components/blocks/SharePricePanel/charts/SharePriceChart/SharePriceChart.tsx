@@ -156,8 +156,6 @@ const SharePriceChart:any = () : ReactNode => {
                                                                     isToggled = true;
                                                                 }
 
-                                                                debugger;
-
                                                                 if(isToggled) {
                                                                     set(`priceComparisionChart.${symbol.value}.visible`, symbol.isActive);
                                                                 }
