@@ -1,5 +1,4 @@
-export const shareholderReturnsTableRecord:string = `
+export const shareholderReturnsChartRecord:string = `
     __typename
     id
-    table
 `;

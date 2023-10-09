@@ -49,12 +49,7 @@ const Header:any = ({menu}): ReactNode => {
                     <Container>
                         <Flex h={height} py={4} align="center">
                             <Box width={200}>
-                                <a href="/" style={{
-                                    display: 'block',
-                                    width: '130px'
-                                }}>
-                                    {/*<img src="/images/logo-white.svg" alt="Logo" />*/}
-                                </a>
+
                             </Box>
                             <DesktopNav menu={menu}/>
                             <Flex display={['flex', , , 'none']} flex={1}>

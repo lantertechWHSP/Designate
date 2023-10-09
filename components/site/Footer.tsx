@@ -6,13 +6,7 @@ const Footer:any = ({ address, email, phone, fax, linkedin, youtube, copyright }
     return <Box as="footer" background="ghostWhite" color="steelBlue3" py={8}>
         <Container>
             <Box>
-                <a href="/" style={{
-                    display: 'block',
-                    width: '130px',
-                    marginBottom: '16px'
-                }}>
-                    {/*<img src="/images/logo.svg" alt="Logo" />*/}
-                </a>
+
             </Box>
             <Flex>
                 <Box>

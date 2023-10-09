@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import ContentBlock from '~/components/blocks/Content';
-import Chart from '~/components/blocks/DividendHistory/chart/Chart';
+import BarChart from '~/components/elements/charts/bar/BarChart';
 
 interface ITableData {
     Year:string;
@@ -22,7 +22,9 @@ const DividendHistoryBlock:any = ({ table }:IDividendHistoryBlock) : ReactNode =
     });
 
     return <ContentBlock mb={8}>
-        <Chart data={chartData} />
+        <BarChart data={{
+            values: chartData
+        }} />
     </ContentBlock>;
 };
 

@@ -20,7 +20,10 @@ import AsxAnnouncementsPanel from '~/components/blocks/AsxAnnouncementsPanel';
 import ContactsPanel from '~/components/blocks/ContactsPanel/ContactsPanel';
 import CompanyValuesPanel from '~/components/blocks/CompanyValuesPanel';
 
-import DividendHistory from '~/components/blocks/DividendHistory/DividendHistory';
+import DividendHistory from '~/components/blocks/DividendHistory';
+import ShareholderReturnsTable from '~/components/blocks/ShareholderReturnsTable';
+import ShareholderReturnsChart from '~/components/blocks/ShareholderReturnsChart';
+
 import DividendsPanel from '~/components/blocks/DividendsPanel/DividendsPanel';
 import SharePricePanel from '~/components/blocks/SharePricePanel/SharePricePanel';
 import ShareQuoteTable from '~/components/blocks/ShareQuoteTable';
@@ -44,7 +47,11 @@ const blocks:any = {
     AsxAnnouncementsPanel,
     ContactsPanel,
     CompanyValuesPanel,
+
     DividendHistory,
+    ShareholderReturnsTable,
+    ShareholderReturnsChart,
+
     DividendsPanel,
     SharePricePanel,
     ShareQuoteTable,

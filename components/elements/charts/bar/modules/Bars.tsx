@@ -1,27 +1,29 @@
 import { ReactNode } from 'react';
 
 interface IBarsProps {
-    data: {
-        value:number;
-        label:string;
-    };
+    values: IData[];
     height:number;
     xScale:any;
     yScale:any;
 }
 
-export const Bars:any = ({ data, height, xScale, yScale }:IBarsProps) : ReactNode =>  {
+interface IData {
+    value:number;
+    label:string;
+}
+
+export const Bars:any = ({ values, height, xScale, yScale }:IBarsProps) : ReactNode =>  {
     return <>
         {
-            (Array.isArray(data) && data.length > 0) &&  <g className="bars">
-                {data.map(({ value, label }) => (
+            (Array.isArray(values) && values.length > 0) &&  <g className="bars">
+                {values.map(({ value, label }) => (
                     <rect
                         className="bar"
                         key={`bar-${label}`}
                         x={xScale(label)}
                         y={yScale(value)}
                         width={xScale.bandwidth()}
-                        height={height - yScale(value)}
+                        height={Math.max(height - yScale(value), 0)}
                     />
                 ))}
             </g>
