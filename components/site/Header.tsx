@@ -53,7 +53,7 @@ const Header:any = ({menu}): ReactNode => {
                                     display: 'block',
                                     width: '130px'
                                 }}>
-                                    <img src="/images/logo-white.svg" alt="Logo" />
+                                    {/*<img src="/images/logo-white.svg" alt="Logo" />*/}
                                 </a>
                             </Box>
                             <DesktopNav menu={menu}/>

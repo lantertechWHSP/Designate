@@ -17,6 +17,7 @@ import { asxAnnouncementsPanelRecord } from '~/dato/blocks/asxAnnouncementsPanel
 import { contactsPanelRecord } from '~/dato/blocks/contactsPanel';
 import { rectangleCardRecord } from '~/dato/blocks/rectangleCard';
 import { companyValuesPanelRecord } from '~/dato/blocks/companyValuesPanel';
+import { dividendHistoryRecord } from "~/dato/blocks/dividendHistory";
 
 export const blocks:string = `
     blocks {
@@ -52,6 +53,9 @@ export const blocks:string = `
         }
         ... on HomePageOverviewRecord {
             ${homePageOverviewRecord}
+        }
+        ... on DividendHistoryRecord {
+            ${dividendHistoryRecord}
         }
         ... on DividendsPanelRecord {
             ${dividendsPanelRecord}

@@ -20,11 +20,11 @@ import AsxAnnouncementsPanel from '~/components/blocks/AsxAnnouncementsPanel';
 import ContactsPanel from '~/components/blocks/ContactsPanel/ContactsPanel';
 import CompanyValuesPanel from '~/components/blocks/CompanyValuesPanel';
 
+import DividendHistory from '~/components/blocks/DividendHistory/DividendHistory';
 import DividendsPanel from '~/components/blocks/DividendsPanel/DividendsPanel';
 import SharePricePanel from '~/components/blocks/SharePricePanel/SharePricePanel';
 import ShareQuoteTable from '~/components/blocks/ShareQuoteTable';
 import ShareHistoricalPricesTable from '~/components/blocks/ShareHistoricalPricesTable';
-
 
 const blocks:any = {
     Text,
@@ -44,6 +44,7 @@ const blocks:any = {
     AsxAnnouncementsPanel,
     ContactsPanel,
     CompanyValuesPanel,
+    DividendHistory,
     DividendsPanel,
     SharePricePanel,
     ShareQuoteTable,

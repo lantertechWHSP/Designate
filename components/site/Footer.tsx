@@ -11,7 +11,7 @@ const Footer:any = ({ address, email, phone, fax, linkedin, youtube, copyright }
                     width: '130px',
                     marginBottom: '16px'
                 }}>
-                    <img src="/images/logo.svg" alt="Logo" />
+                    {/*<img src="/images/logo.svg" alt="Logo" />*/}
                 </a>
             </Box>
             <Flex>

@@ -25,9 +25,10 @@ const StrucutredContent:any = ({ content }) : ReactNode => {
                     children:any,
                     transformedMeta:any
                 }) => {
-                    return <Link {...transformedMeta} href={record}>
-                        {children}
-                    </Link>;
+                    // return <Link {...transformedMeta} href={record}>
+                    //     {children}
+                    // </Link>;
+                    return <></>;
                 }}
                 customNodeRules={[
                     renderNodeRule(isHeading, ({ node, children, key }:{

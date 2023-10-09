@@ -33,7 +33,9 @@ const DefaultLayout:any = ({ layout, children }:any) : ReactNode => {
                     </Box>
                 }
             </Box>
-            <PageLinks current={layout?.breadcrumbs[0]?.node}  />
+            {
+                layout.isHomePage && <PageLinks current={layout?.breadcrumbs[0]?.node} />
+            }
             {
                 layout.isHomePage && <SubscriptionForm />
             }
