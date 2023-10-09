@@ -1,5 +1,5 @@
 import { useEffect, useRef, ReactNode } from 'react';
-import { select, axisBottom } from 'd3';
+import { select, axisBottom, timeFormat, timeYear } from 'd3';
 
 interface IAxisBottomProps {
     scale:any;
@@ -11,7 +11,8 @@ export const AxisBottom:any = ({ scale, transform }:IAxisBottomProps) : ReactNod
 
     useEffect(() => {
         if (elementRef.current) {
-            select(elementRef.current).call(axisBottom(scale));
+            // @ts-ignore
+            select(elementRef.current).call(axisBottom(scale).ticks(timeYear.every(1)).tickFormat(timeFormat("%Y")));
         }
     }, [scale]);
 

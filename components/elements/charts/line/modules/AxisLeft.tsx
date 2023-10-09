@@ -28,8 +28,8 @@ export const AxisLeft:any = ({ scale, width }:IAxisLeftProps) : ReactNode => {
                         {value}
                     </text>
                     <line
-                        x1={-3}
-                        x2={width + 3}
+                        x1={0}
+                        x2={width}
                         stroke="currentColor"
                         strokeWidth={0.5}
                     />
