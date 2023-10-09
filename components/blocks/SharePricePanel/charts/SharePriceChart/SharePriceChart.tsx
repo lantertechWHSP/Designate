@@ -150,7 +150,7 @@ const SharePriceChart:any = () : ReactNode => {
                                                         }}
                                                         onClick={() => {
                                                             comparisonSymbols.map((symbol) => {
-                                                                let isToggled = false;
+                                                                let isToggled:boolean = false;
                                                                 if(symbol.value === item.value) {
                                                                     symbol.isActive = !symbol.isActive;
                                                                     isToggled = true;

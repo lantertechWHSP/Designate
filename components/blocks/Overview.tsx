@@ -14,12 +14,12 @@ const OverviewBlock:any = ({ subtitle, description }:IOverviewBlockProps) : Reac
             {
                 subtitle && <Heading as="h2" variant="h2" fontWeight={400} mb={4}>
                     {subtitle}
-              </Heading>
+                </Heading>
             }
             {
                 description && <Box color="steelBlue">
                     {description}
-              </Box>
+                </Box>
             }
         </Box>
     </ContentBlock>;

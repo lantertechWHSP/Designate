@@ -6,9 +6,9 @@ import { Flex, Box, Heading, Container, Text } from '@chakra-ui/react';
 import { DateTime } from 'luxon';
 import SocialShare from '~/components/elements/socialShare';
 
-const PostLayout:any = ({ layout, children }:any) : ReactNode => {
+const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
     const date:string = DateTime.fromFormat(layout?.page?.publishDate, 'yyyy-mm-dd').toFormat('DDD');
-    const annotation:string = [layout.page?.author, date].join(', ');
+    const annotation:string = [post?.author, date].join(', ');
 
     return (
         <Flex minHeight="100vh" direction="column">
@@ -24,8 +24,8 @@ const PostLayout:any = ({ layout, children }:any) : ReactNode => {
                 <Box>
                     <Container maxW="container.narrow">
                         {
-                            layout.page?.title && <Heading as="h1" color="white" fontSize="46px" lineHeight="60px">
-                                {layout.page?.title}
+                            post?.title && <Heading as="h1" color="white" fontSize="46px" lineHeight="60px">
+                                {post?.title}
                             </Heading>
                         }
 

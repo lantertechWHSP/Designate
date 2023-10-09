@@ -37,7 +37,7 @@ const CompanyValuesPanelBlock:any = ({ items, ...props }:ICompanyValuesProps) : 
                                     {item.content}
                                 </Box>
                             }
-                        </Box>
+                        </Box>;
                     })
                 }
             </SimpleGrid>

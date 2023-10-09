@@ -5,8 +5,8 @@ import { isHeading, isParagraph, isCode } from 'datocms-structured-text-utils';
 import { renderNodeRule } from 'datocms-structured-text-to-html-string';
 import { Heading, Code, Box, Text } from '@chakra-ui/react';
 import ImageBlock from '~/components/blocks/Image';
-import VideoBlock from "~/components/blocks/Video";
-import AudioBlock from "~/components/blocks/Audio";
+import VideoBlock from '~/components/blocks/Video';
+import AudioBlock from '~/components/blocks/Audio';
 
 const StrucutredContent:any = ({ content }) : ReactNode => {
     return (
@@ -25,10 +25,9 @@ const StrucutredContent:any = ({ content }) : ReactNode => {
                     children:any,
                     transformedMeta:any
                 }) => {
-                    // return <Link {...transformedMeta} href={record}>
-                    //     {children}
-                    // </Link>;
-                    return <></>;
+                    return <Link {...transformedMeta} href={record}>
+                        {children}
+                    </Link>;
                 }}
                 customNodeRules={[
                     renderNodeRule(isHeading, ({ node, children, key }:{
@@ -48,7 +47,7 @@ const StrucutredContent:any = ({ content }) : ReactNode => {
                     }) => {
                         return <Text as="p" key={key}>
                             {children}
-                        </Text>
+                        </Text>;
                     }),
                     renderNodeRule(isCode, ({ node, key }:{
                         node:any,

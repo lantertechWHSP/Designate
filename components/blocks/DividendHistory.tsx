@@ -18,7 +18,7 @@ const DividendHistoryBlock:any = ({ table }:IDividendHistoryBlock) : ReactNode =
         chartData.push({
             label: value.Year,
             value: value.Value
-        })
+        });
     });
 
     return <ContentBlock mb={8}>

@@ -24,13 +24,13 @@ const ContactsPanelBlock:any = ({ data: { contacts } }:IContactsPanelBlockProps)
             (Array.isArray(contacts) && contacts.length > 0) && <SimpleGrid columns={[1, , 3]}>
                 {
                     contacts.map((contact:IContact, index:number) => {
-                        return <Fragment key={index}><ContactCard {...contact} /></Fragment>
+                        return <Fragment key={index}><ContactCard {...contact} /></Fragment>;
                     })
                 }
             </SimpleGrid>
         }
     </ContentBlock>;
-}
+};
 
 ContactsPanelBlock.getData = async () => {
     const result:IEvent[] = await doQuery(queries.contacts);

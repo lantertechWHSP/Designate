@@ -46,7 +46,7 @@ const PostPage : NextPage = ({ post, layout, blocks}:any)  : JSX.Element => {
     });
 
     return (
-        <PostLayout layout={layout}>
+        <PostLayout layout={layout} post={post}>
             <ModularContent content={blocks} />
         </PostLayout>
     );

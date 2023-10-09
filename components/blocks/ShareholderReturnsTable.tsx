@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import ContentBlock from "~/components/blocks/Content";
-import { TableContainer, Table, Thead, Tr, Th, Tbody, Td } from '@chakra-ui/react';
+import { TableContainer, Table, Thead, Tr, Th, Tbody, Td, Text } from '@chakra-ui/react';
 
 interface IShareholderReturnsTableBlock {
     table:IDatoTable<any>;
@@ -15,10 +15,10 @@ const ShareholderReturnsTableBlock:any = ({ table }:IShareholderReturnsTableBloc
                         Array.isArray(table.columns) && table.columns.length > 0 && <Thead>
                             <Tr>
                                 {
-                                    table.columns.map((column:string) => {
-                                        return <Th>
+                                    table.columns.map((column:string, index:number) => {
+                                        return <Th key={index}>
                                             {column}
-                                        </Th>
+                                        </Th>;
                                     })
                                 }
                             </Tr>
@@ -27,16 +27,16 @@ const ShareholderReturnsTableBlock:any = ({ table }:IShareholderReturnsTableBloc
                     {
                         (Array.isArray(table?.data) && table.data.length > 0) && <Tbody>
                             {
-                                table.data.map((row) => {
-                                    return <Tr>
+                                table.data.map((row:any, rowIndex:number) => {
+                                    return <Tr key={rowIndex}>
                                         {
-                                            table.columns.map((column) => {
-                                                return <Td>
+                                            table.columns.map((column:string, columnIndex:number) => {
+                                                return <Td key={columnIndex}>
                                                     {row[column]}
-                                                </Td>
+                                                </Td>;
                                             })
                                         }
-                                    </Tr>
+                                    </Tr>;
                                 })
                             }
                         </Tbody>
@@ -45,6 +45,6 @@ const ShareholderReturnsTableBlock:any = ({ table }:IShareholderReturnsTableBloc
             </TableContainer> : <Text variant="caption" color="lightGrey">No Data Availiable</Text>
         }
     </ContentBlock>;
-}
+};
 
 export default ShareholderReturnsTableBlock;

@@ -23,8 +23,8 @@ export const AxisLeft:any = ({ scale, width }:IAxisLeftProps) : ReactNode => {
                     shapeRendering={"crispEdges"}
                 >
                     <text key={value}
-                          fill="currentColor"
-                          transform="translate(0, -10)">
+                        fill="currentColor"
+                        transform="translate(0, -10)">
                         {value}
                     </text>
                     <line

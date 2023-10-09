@@ -1,11 +1,12 @@
+import { ReactNode } from 'react';
 import { IContact } from '~/interfaces/models/contact';
 import { Heading, Box } from '@chakra-ui/react';
-import { DatoLink } from "~/components/elements/DatoLink";
+import { Link } from "~/components/elements/link";
 
 interface IContactCardProps extends IContact {
 }
 
-const ContactCard = ({ title, address, contactName, phone, phone2, email, email2, website }:IContactCardProps) => {
+const ContactCard:any = ({ title, address, contactName, phone, phone2, email, email2, website }:IContactCardProps) : ReactNode => {
     return <Box>
         {
             title && <Heading as="h3" variant="h4" mb={4}>
@@ -39,16 +40,16 @@ const ContactCard = ({ title, address, contactName, phone, phone2, email, email2
                 </Heading>
                 {
                     phone && <Box>
-                        <DatoLink href={`tel:${phone}`} color="steelBlue2">
+                        <Link href={`tel:${phone}`} color="steelBlue2">
                             {phone}
-                        </DatoLink>
+                        </Link>
                     </Box>
                 }
                 {
                     phone2 && <Box>
-                        <DatoLink href={`tel:${phone2}`} color="steelBlue2">
+                        <Link href={`tel:${phone2}`} color="steelBlue2">
                             {phone2}
-                        </DatoLink>
+                        </Link>
                     </Box>
                 }
             </Box>
@@ -60,16 +61,16 @@ const ContactCard = ({ title, address, contactName, phone, phone2, email, email2
                 </Heading>
                 {
                     email && <Box>
-                    <DatoLink href={`mailto:${email}`} color="steelBlue2">
-                        {email}
-                    </DatoLink>
-                  </Box>
+                        <Link href={`mailto:${email}`} color="steelBlue2">
+                            {email}
+                        </Link>
+                    </Box>
                 }
                 {
                     email2 && <Box>
-                        <DatoLink href={`mailto:${email2}`} color="steelBlue2">
+                        <Link href={`mailto:${email2}`} color="steelBlue2">
                             {email2}
-                        </DatoLink>
+                        </Link>
                     </Box>
                 }
             </Box>
@@ -80,13 +81,13 @@ const ContactCard = ({ title, address, contactName, phone, phone2, email, email2
                     Website
                 </Heading>
                 <Box>
-                    <DatoLink href={website} color="steelBlue2">
+                    <Link href={website} color="steelBlue2">
                         {website}
-                    </DatoLink>
+                    </Link>
                 </Box>
             </Box>
         }
-    </Box>
-}
+    </Box>;
+};
 
 export default ContactCard;

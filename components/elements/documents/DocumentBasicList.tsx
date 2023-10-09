@@ -1,8 +1,7 @@
 import { ReactNode, useState, useEffect } from 'react';
 import { Heading, Box, Container } from '@chakra-ui/react';
-import { IDocument, IDocumentCategory, IDocumentBundle } from '~/interfaces/models/document';
-import { IFilter } from '~/interfaces/util/filter';
-import { find as _find, forOwn as _forOwn, groupBy as _groupBy } from 'lodash';
+import { IDocument, IDocumentBundle } from '~/interfaces/models/document';
+import { forOwn as _forOwn, groupBy as _groupBy } from 'lodash';
 import DocumentCard from "~/components/elements/documents/DocumentCard";
 
 export const DATO_QUERY_VALUES:any = {
@@ -49,16 +48,16 @@ const DocumentBasicList:any = ({latestDocuments}:IDocumentBasicListProps) : Reac
                                                 </Box>;
                                             })
                                         }
-                                    <Box borderBottom="1px solid" borderColor="lightGrey2" />
-                                  </>
+                                        <Box borderBottom="1px solid" borderColor="lightGrey2" />
+                                    </>
                                 }
                             </Box>;
                         })
                     }
-              </Box>
+                </Box>
             }
         </Container>
-    </Box>
-}
+    </Box>;
+};
 
 export default DocumentBasicList;

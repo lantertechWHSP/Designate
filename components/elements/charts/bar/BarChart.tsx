@@ -42,7 +42,7 @@ const BarChart:any = ({ data }:IBarChart) : ReactNode => {
     const yScale:any = useMemo<any>(() => {
         if(data) {
             return scaleLinear()
-                .domain([0, _maxBy(data.values, (item:IDividendItem) => {
+                .domain([0, _maxBy(data.values, (item:IData) => {
                     return item.value;
                 }).value])
                 .range([boundsHeight, 0]);
@@ -52,7 +52,7 @@ const BarChart:any = ({ data }:IBarChart) : ReactNode => {
     const xScale:any = useMemo<any>(() => {
         if(data) {
             return scaleBand()
-                .domain(data.values.map((item:IDividendItem) => {
+                .domain(data.values.map((item:IData) => {
                     return item.label;
                 }))
                 .range([0, width])

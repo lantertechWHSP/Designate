@@ -28,7 +28,7 @@ const LatestNewsBlock:any = ({ data: { posts } }:ILatestNewsBlockProps) : ReactN
             (Array.isArray(posts) && posts.length > 0) && <SimpleGrid columns={[1, ,3]}>
                 {
                     posts.map((post:IPost, index:number) => {
-                        return <LatestNewsItem {...post} key={index} />
+                        return <LatestNewsItem {...post} key={index} />;
                     })
                 }
             </SimpleGrid>

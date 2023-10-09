@@ -2,7 +2,7 @@ import { Link as ChakraLink } from '@chakra-ui/react';
 import { resolveInternalLink } from '~/lib/utils';
 import { ChakraProps } from '@chakra-ui/system';
 import { forwardRef, ReactNode } from 'react';
-import Link from 'next/link';
+let NextLink = require('next/link');
 
 export interface IDatoLinkProps extends ChakraProps {
     id?:string;
@@ -12,7 +12,7 @@ export interface IDatoLinkProps extends ChakraProps {
     slug:string;
 }
 
-export const DatoLink:any = forwardRef(({ id, __typename, title, slug,  ...props }:IDatoLinkProps, ref:any) : ReactNode => {
+export const Link:any = forwardRef(({ id, __typename, title, slug,  ...props }:IDatoLinkProps, ref:any) : ReactNode => {
     const href:string = resolveInternalLink({
         id,
         __typename,
@@ -29,9 +29,9 @@ export const DatoLink:any = forwardRef(({ id, __typename, title, slug,  ...props
         newChild = title;
     }
 
-    return <ChakraLink as={Link} href={href} {...props} ref={ref}>
+    return <ChakraLink as={NextLink} href={href} {...props} ref={ref}>
         {newChild}
     </ChakraLink>;
 });
 
-DatoLink.displayName = 'DatoLink';
+Link.displayName = 'Link';

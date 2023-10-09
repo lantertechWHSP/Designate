@@ -60,7 +60,7 @@ const LineChart:any = ({ lines }:ILineChart) : ReactNode => {
                 }
             });
 
-            let max = _max(flattendValues);
+            const max:number = _max(flattendValues);
 
             return scaleLinear()
                 .domain([0, max])
@@ -70,7 +70,7 @@ const LineChart:any = ({ lines }:ILineChart) : ReactNode => {
 
     const xScale:any = useMemo<any>(() => {
         if(lines) {
-            const flattendDates:DateTime[] = [];
+            const flattendDates:number[] = [];
 
             lines.map((line:ILine) => {
                 if(line.data) {
@@ -80,8 +80,8 @@ const LineChart:any = ({ lines }:ILineChart) : ReactNode => {
                 }
             });
 
-            let min = _min(flattendDates);
-            let max = _max(flattendDates);
+            const min:number = _min(flattendDates);
+            const max:number = _max(flattendDates);
 
             return scaleTime()
                 .domain([min, max])
@@ -180,7 +180,7 @@ const LineChart:any = ({ lines }:ILineChart) : ReactNode => {
                                                             strokeWidth={2}
                                                         />
                                                     }
-                                                </Fragment>
+                                                </Fragment>;
                                             }
                                         })
                                     }

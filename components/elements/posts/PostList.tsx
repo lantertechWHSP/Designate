@@ -57,8 +57,8 @@ const PostList:any = ({ latestPosts, postsMeta }:IPostsListProps) : ReactNode =>
                     </SimpleGrid>
                     {
                         couldNotLoadPosts && <Box>
-                        <Text variant="caption" color="lightGrey">Could not load Posts</Text>
-                      </Box>
+                            <Text variant="caption" color="lightGrey">Could not load Posts</Text>
+                        </Box>
                     }
                     {
                         posts.length < totalPostsCount && <Flex py={8} justify="center">

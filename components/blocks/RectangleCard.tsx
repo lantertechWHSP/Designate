@@ -22,17 +22,17 @@ const RectangleCardBlock:any = ({ annotation, title, description, link, image, .
                 {
                     annotation && <Box mb={12} fontWeight={500}>
                         {annotation}
-                  </Box>
+                    </Box>
                 }
                 {
                     title && <Heading as="h2" variant="h3" mb={4}>
                         {title}
-                  </Heading>
+                    </Heading>
                 }
                 {
                     description && <Box color="steelBlue3">
                         {description}
-                  </Box>
+                    </Box>
                 }
                 <Box flex="1" />
                 <SectionLink {...link}>
@@ -43,7 +43,7 @@ const RectangleCardBlock:any = ({ annotation, title, description, link, image, .
                 <Image image={image} ratio={[650 / 500]} />
             </Box>
         </SimpleGrid>
-    </ContentBlock>
-}
+    </ContentBlock>;
+};
 
 export default RectangleCardBlock;

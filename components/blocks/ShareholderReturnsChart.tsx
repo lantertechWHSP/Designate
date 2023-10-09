@@ -10,39 +10,39 @@ interface IShareholderReturnsChartBlock {
     australianSharesTable:IDatoTable<any>;
     internationalSharesTable:IDatoTable<any>;
     australianListedTable:IDatoTable<any>;
-    australianBonds:IDatoTable<any>;
+    australianBondsTable:IDatoTable<any>;
 }
 
 const ShareholderReturnsChartBlock:any = ({ australianSharesTable, internationalSharesTable, australianListedTable, australianBondsTable }:IShareholderReturnsChartBlock) : ReactNode => {
-    const australianShares = australianSharesTable.data.map((datum) => {
+    const australianShares:any = australianSharesTable.data.map((datum) => {
         return {
             value: +datum.Value,
             date: DateTime.fromFormat(datum.Date, "d/M/yyyy")
-        }
+        };
     });
 
-    const internationalShares = internationalSharesTable.data.map((datum) => {
+    const internationalShares:any = internationalSharesTable.data.map((datum) => {
         return {
             value: +datum.Value,
             date: DateTime.fromFormat(datum.Date, "d/M/yyyy")
-        }
+        };
     });
 
-    const australianListed = australianListedTable.data.map((datum) => {
+    const australianListed:any = australianListedTable.data.map((datum) => {
         return {
             value: +datum.Value,
             date: DateTime.fromFormat(datum.Date, "d/M/yyyy")
-        }
+        };
     });
 
-    const australianBonds = australianBondsTable.data.map((datum) => {
+    const australianBonds:any = australianBondsTable.data.map((datum) => {
         return {
             value: +datum.Value,
             date: DateTime.fromFormat(datum.Date, "d/M/yyyy")
-        }
+        };
     });
 
-    const [filters, setFilters] = useState([
+    const [filters, setFilters] = useState<IFilter[]>([
         {
             label: 'Australian Shares',
             value: 'australian',
@@ -67,12 +67,12 @@ const ShareholderReturnsChartBlock:any = ({ australianSharesTable, international
 
     const [lines, setLines] = useState([]);
 
-    const updateLines = () => {
-        const newLines = [];
+    const updateLines:any = () : void => {
+        const newLines:any = [];
         newLines.push({
             data: australianShares,
             display: filters[0].isActive,
-        })
+        });
         newLines.push({
             data: internationalShares,
             display: filters[1].isActive,
@@ -87,11 +87,11 @@ const ShareholderReturnsChartBlock:any = ({ australianSharesTable, international
         });
 
         setLines(newLines);
-    }
+    };
 
     useEffect(() => {
         updateLines();
-    }, [])
+    }, []);
 
     return <ContentBlock mb={8} py={8}>
         <Flex justify="space-between">
@@ -103,9 +103,9 @@ const ShareholderReturnsChartBlock:any = ({ australianSharesTable, international
                     {({ isOpen }) => (
                         <>
                             <MenuButton as={Button}
-                                        variant="menuButton"
-                                        minW="200px"
-                                        rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} h={12} w={12} /> : <Icon icon={Icons.ChevronDown} h={12} w={12}  /> }>
+                                variant="menuButton"
+                                minW="200px"
+                                rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} h={12} w={12} /> : <Icon icon={Icons.ChevronDown} h={12} w={12}  /> }>
                                 Compare
                             </MenuButton>
                             <Portal>
@@ -113,30 +113,30 @@ const ShareholderReturnsChartBlock:any = ({ australianSharesTable, international
                                     {
                                         filters.map((item:IFilter, index:number) => {
                                             return <MenuItem key={index}
-                                                             as={Button}
-                                                             variant="menuItemFilter"
-                                                             style={{
-                                                                 background: item.isActive ? 'black' : '',
-                                                                 color: item.isActive ? 'white' : ''
-                                                             }}
-                                                             onClick={() => {
-                                                                 let isToggled:boolean = false;
+                                                as={Button}
+                                                variant="menuItemFilter"
+                                                style={{
+                                                    background: item.isActive ? 'black' : '',
+                                                    color: item.isActive ? 'white' : ''
+                                                }}
+                                                onClick={() => {
+                                                    let isToggled:boolean = false;
 
-                                                                 const newFilters = [...filters];
+                                                    const newFilters:IFilter[] = [...filters];
 
-                                                                 newFilters.map((innerFilter) => {
-                                                                     if(innerFilter.value === item.value) {
-                                                                         innerFilter.isActive = !innerFilter.isActive;
+                                                    newFilters.map((innerFilter) => {
+                                                        if(innerFilter.value === item.value) {
+                                                            innerFilter.isActive = !innerFilter.isActive;
 
-                                                                         isToggled = true;
-                                                                     }
-                                                                 })
+                                                            isToggled = true;
+                                                        }
+                                                    });
 
-                                                                 if(isToggled) {
-                                                                     setFilters(newFilters);
-                                                                     updateLines();
-                                                                 }
-                                                             }}>
+                                                    if(isToggled) {
+                                                        setFilters(newFilters);
+                                                        updateLines();
+                                                    }
+                                                }}>
                                                 {item.label}
                                             </MenuItem>;
                                         })
@@ -149,7 +149,7 @@ const ShareholderReturnsChartBlock:any = ({ australianSharesTable, international
             </Box>
         </Flex>
         <LineChart lines={lines} />
-    </ContentBlock>
-}
+    </ContentBlock>;
+};
 
 export default ShareholderReturnsChartBlock;

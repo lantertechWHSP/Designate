@@ -27,24 +27,24 @@ const AccordionBlock:any = ({ title, items, ...props }:IAccordionBlock) : ReactN
                     items.map((item:IAccordionItem, index:number) => {
                         return <AccordionItem key={index}>
                             <AccordionButton py={4}
-                                             borderTop="1px solid"
-                                             borderColor="white">
+                                borderTop="1px solid"
+                                borderColor="white">
                                 <Heading as="h3"
-                                         variant="h4"
-                                         fontWeight={400}>
+                                    variant="h4"
+                                    fontWeight={400}>
                                     {item?.title}
                                 </Heading>
                             </AccordionButton>
                             <AccordionPanel borderTop="1px solid"
-                                            py={4}>
+                                py={4}>
                                 {item?.content}
                             </AccordionPanel>
-                        </AccordionItem>
+                        </AccordionItem>;
                     })
                 }
             </Accordion>
         }
-    </ContentBlock>
-}
+    </ContentBlock>;
+};
 
 export default AccordionBlock;

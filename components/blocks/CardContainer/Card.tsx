@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { Box, Text, Heading, AspectRatio } from '@chakra-ui/react';
 import { Icon, Icons } from '~/components/elements/icon';
-import { DatoLink } from '~/components/elements/DatoLink';
+import { Link } from '~/components/elements/link';
 import { ILink } from "~/interfaces/util/link";
 
 export interface ICardBlockProps {
@@ -9,7 +9,7 @@ export interface ICardBlockProps {
 }
 
 const CardBlock:any = ({ link }:ICardBlockProps) : ReactNode => {
-    return <DatoLink {...link} color="black">
+    return <Link {...link} color="black">
         <AspectRatio ratio={[3 / 2]}>
             <Box bg="ghostWhite">
                 <Box position="absolute" bottom="20px" left="20px">
@@ -22,7 +22,7 @@ const CardBlock:any = ({ link }:ICardBlockProps) : ReactNode => {
                 </Box>
             </Box>
         </AspectRatio>
-    </DatoLink>;
+    </Link>;
 };
 
 export default CardBlock;

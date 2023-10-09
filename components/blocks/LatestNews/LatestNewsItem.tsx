@@ -27,7 +27,7 @@ const LatestNewsItem:any = ({ title, publishDate, slug }:ILatestNewsItem) : Reac
                 View
             </SectionLink>
         }
-    </Flex>
-}
+    </Flex>;
+};
 
 export default LatestNewsItem;
