@@ -18,7 +18,7 @@ interface ICompanyValue {
 const CompanyValuesPanelBlock:any = ({ items, ...props }:ICompanyValuesProps) : ReactNode => {
     return <ContentBlock {...props} background="lightGrey3" py={8}>
         {
-            (Array.isArray(items) && items.length > 0) && <SimpleGrid columns={[2, , 4]} spacing={[0, 8]}>
+            (Array.isArray(items) && items.length > 0) && <SimpleGrid columns={[1, , 3]} spacing={[0, 8]}>
                 {
                     items.map((item:ICompanyValue, index:number) => {
                         return <Box key={index}>

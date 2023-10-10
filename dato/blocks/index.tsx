@@ -15,6 +15,9 @@ import { homePageOverviewRecord } from '~/dato/blocks/homePageOverview';
 import { investorPanelRecord } from '~/dato/blocks/investorPanel';
 import { asxAnnouncementsPanelRecord } from '~/dato/blocks/asxAnnouncementsPanel';
 
+// About/Our Company
+import { companyValuesPanelRecord } from '~/dato/blocks/companyValuesPanel';
+
 //
 import { latestNewsRecord } from '~/dato/blocks/latestNews';
 import { dividendsPanelRecord } from '~/dato/blocks/dividendsPanel';
@@ -22,7 +25,6 @@ import { sharePricePanelRecord } from '~/dato/blocks/sharePricePanel';
 import { shareQuoteTableRecord } from '~/dato/blocks/shareQuoteTable';
 import { shareHistoricalPricesTableRecord } from '~/dato/blocks/shareHistoricalPricesTable';
 import { contactsPanelRecord } from '~/dato/blocks/contactsPanel';
-import { companyValuesPanelRecord } from '~/dato/blocks/companyValuesPanel';
 import { dividendHistoryRecord } from '~/dato/blocks/dividendHistory';
 import { shareholderReturnsTableRecord } from '~/dato/blocks/shareholderReturnsTable';
 import { shareholderReturnsChartRecord } from '~/dato/blocks/shareholderReturnsChart';
@@ -71,6 +73,10 @@ export const blocks:string = `
         ... on AsxAnnouncementsPanelRecord {
             ${asxAnnouncementsPanelRecord}
         }
+        
+        ... on CompanyValuesPanelRecord {
+            ${companyValuesPanelRecord}
+        }
 
         ... on LatestNewsRecord {
             ${latestNewsRecord}
@@ -104,9 +110,6 @@ export const blocks:string = `
         }
         ... on ContactsPanelRecord {
             ${contactsPanelRecord}
-        }
-        ... on CompanyValuesPanelRecord {
-            ${companyValuesPanelRecord}
         }
     }
 `;

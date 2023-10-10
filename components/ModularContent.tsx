@@ -16,10 +16,15 @@ import HomePageOverviewBlock from '~/components/blocks/HomePageOverview';
 import InvestorPanelBlock from '~/components/blocks/InvestorPanel';
 import AsxAnnouncementsPanelBlock from '~/components/blocks/AsxAnnouncementsPanel';
 
+// About/Our Company
+import CompanyValuesPanelBlock from '~/components/blocks/CompanyValuesPanel';
+
+
+
+
 import LatestNewsBlock from '~/components/blocks/LatestNews/LatestNews';
 
 import ContactsPanelBlock from '~/components/blocks/ContactsPanel/ContactsPanel';
-import CompanyValuesPanelBlock from '~/components/blocks/CompanyValuesPanel';
 
 import InvestmentPhilosophyBlock from '~/components/blocks/InvestmentPhilosophy';
 import InvestmentPortfolioTableBlock from "~/components/blocks/InvestmentPortfolioTable";
@@ -46,19 +51,19 @@ const blocks:any = {
 
     HeroBlock,
     HomePageOverviewBlock,
-    LatestNewsBlock,
     InvestorPanelBlock,
     AsxAnnouncementsPanelBlock,
-    ContactsPanelBlock,
+
     CompanyValuesPanelBlock,
 
+
+    LatestNewsBlock,
+    ContactsPanelBlock,
     InvestmentPhilosophyBlock,
     InvestmentPortfolioTableBlock,
-
     DividendHistoryBlock,
     ShareholderReturnsTableBlock,
     ShareholderReturnsChartBlock,
-
     DividendsPanelBlock,
     SharePricePanelBlock,
     ShareQuoteTableBlock,

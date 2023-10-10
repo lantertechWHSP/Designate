@@ -10,7 +10,7 @@ interface ITextBlockProps extends ChakraProps {
 }
 
 const TextBlock:any = ({ content, ...props }:ITextBlockProps) : ReactNode => {
-    return <ContentBlock {...props}>
+    return <ContentBlock {...props} my={8}>
         <StructuredContent content={content} />
     </ContentBlock>;
 };
