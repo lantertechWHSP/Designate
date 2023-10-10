@@ -9,13 +9,13 @@ import DividendHistoryChart from '~/components/blocks/DividendsPanel/charts/Divi
 import { IDividendsTable, IDividendsTableRow } from '~/components/blocks/DividendsPanel/interfaces';
 import { IFile } from '~/interfaces/util/file';
 
-interface IDividendsPanelBlockProps {
+interface IDividendsPanelBlock {
     description?:string;
     latestDividendDescription?:string;
     csv?:IFile;
 }
 
-const DividendsPanelBlock:any = ({ description, latestDividendDescription, csv }:IDividendsPanelBlockProps) : ReactNode => {
+const DividendsPanelBlock:any = ({ description, latestDividendDescription, csv }:IDividendsPanelBlock) : ReactNode => {
     function convertCSVToJSON(str, delimiter = ',') : IDividendsTable {
         const titles:string = str.slice(0, str.indexOf('\n')).trim();
         const titlesProps:string[] = titles.replace(/\s/g, '').split(delimiter);

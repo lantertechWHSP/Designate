@@ -5,7 +5,7 @@ import { IImage } from '~/interfaces/util/image';
 import { Heading, Box, SimpleGrid } from '@chakra-ui/react';
 import { Image } from '~/components/elements/image';
 
-interface ICompanyValuesProps extends ChakraProps {
+interface ICompanyValuesPanelBlock extends ChakraProps {
     items:ICompanyValue;
 }
 
@@ -15,7 +15,7 @@ interface ICompanyValue {
     icon?:IImage;
 }
 
-const CompanyValuesPanelBlock:any = ({ items, ...props }:ICompanyValuesProps) : ReactNode => {
+const CompanyValuesPanelBlock:any = ({ items, ...props }:ICompanyValuesPanelBlock) : ReactNode => {
     return <ContentBlock {...props} background="lightGrey3" py={8}>
         {
             (Array.isArray(items) && items.length > 0) && <SimpleGrid columns={[1, , 4]} spacing={[0, 8]}>

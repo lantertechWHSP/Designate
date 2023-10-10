@@ -2,13 +2,13 @@ import { ReactNode } from 'react';
 import { google, outlook, office365, yahoo, ics, CalendarEvent } from 'calendar-link';
 import { Portal, Button, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react';
 
-interface IAddToCalendarProps {
+interface IAddToCalendar {
     isOpen?:boolean;
     onClose?:() => any;
     event?:CalendarEvent;
 }
 
-const AddToCalendar:any = ({ event }:IAddToCalendarProps) : ReactNode => {
+const AddToCalendar:any = ({ event }:IAddToCalendar) : ReactNode => {
     if (!event) {
         return null;
     }

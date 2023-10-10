@@ -4,14 +4,14 @@ import { Box, Heading, Grid, GridItem, Link } from '@chakra-ui/react';
 import { Image } from '~/components/elements/image';
 import { IImage } from '~/interfaces/util/image';
 
-interface IHomePageOverviewBlockProps {
+interface IHomePageOverviewBlock {
     description?:string;
     imageMain?:IImage;
     imageSide?:IImage;
     imageSide2?:IImage;
 }
 
-const HomePageOverviewBlock:any = ({ description, imageMain, imageSide, imageSide2 }:IHomePageOverviewBlockProps) : ReactNode => {
+const HomePageOverviewBlock:any = ({ description, imageMain, imageSide, imageSide2 }:IHomePageOverviewBlock) : ReactNode => {
     return <ContentBlock background="lightGrey3" py={12}>
         <Box maxW="900" mx="auto" textAlign="center" mb={8}>
             {

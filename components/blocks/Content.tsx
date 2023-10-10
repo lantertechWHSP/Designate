@@ -8,13 +8,13 @@ export enum ContainerWidth {
     Wide = 'wide',
 }
 
-interface IContentBlockProps extends ChakraProps {
+interface IContentBlock extends ChakraProps {
     contain?:boolean;
     children?:any;
     containerWidth?:ContainerWidth;
 }
 
-const ContentBlock:any = ({ contain = true, containerWidth = ContainerWidth.Default, children, ...props }:IContentBlockProps) : ReactNode => {
+const ContentBlock:any = ({ contain = true, containerWidth = ContainerWidth.Default, children, ...props }:IContentBlock) : ReactNode => {
     return <Box {...props}>
         {
             contain ? <Container maxW={containerWidth}>

@@ -11,11 +11,11 @@ interface InvestmentPhilosophyItem {
     icon?:IImage;
 }
 
-interface IInvestmentPhilosophyBlockProps extends ChakraProps {
+interface IInvestmentPhilosophyBlock extends ChakraProps {
     items:InvestmentPhilosophyItem[];
 }
 
-const InvestmentPhilosophyBlock:any = ({ items, ...props }:IInvestmentPhilosophyBlockProps) : ReactNode => {
+const InvestmentPhilosophyBlock:any = ({ items, ...props }:IInvestmentPhilosophyBlock) : ReactNode => {
     return <ContentBlock {...props} py={8}>
         {
             (Array.isArray(items) && items.length > 0) && <SimpleGrid columns={[1, , 3]} spacing={[0, 8]}>

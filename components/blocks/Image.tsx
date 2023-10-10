@@ -4,11 +4,11 @@ import { Image as DatoImage } from 'react-datocms';
 import { IImage } from '~/interfaces/util/image';
 import { ChakraProps } from '@chakra-ui/system';
 
-interface IImageBlockProps extends ChakraProps {
+interface IImageBlock extends ChakraProps {
     image:IImage;
 }
 
-const ImageBlock:any = ({ image, ...props }:IImageBlockProps) : ReactNode => {
+const ImageBlock:any = ({ image, ...props }:IImageBlock) : ReactNode => {
     return <ContentBlock {...props} mb={8}>
         <DatoImage data={image.responsiveImage} style={{
             width: '100%',

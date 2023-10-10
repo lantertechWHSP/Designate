@@ -9,7 +9,7 @@ import { DateTime } from 'luxon';
 import { Icon, Icons } from '~/components/elements/icon';
 import { IFilter } from '~/interfaces/util/filter';
 
-interface IDocumentListProps {
+interface IDocumentList {
     latestDocuments:IDocument[];
     documentsMeta:IDocumentsMeta;
     documentsFilters:IDocumentsFilters;
@@ -21,7 +21,7 @@ export const DATO_QUERY_VALUES:any = {
     REPORTS_CATEGORY_ID : '190260513'
 };
 
-const DocumentList:any = ({ latestDocuments, documentsMeta, documentsFilters }:IDocumentListProps) : ReactNode => {
+const DocumentList:any = ({ latestDocuments, documentsMeta, documentsFilters }:IDocumentList) : ReactNode => {
     const [page, setPage] = useState<number>(1);
     const [documents, setDocuments] = useState<IDocument[]>(latestDocuments);
     const [isLoading, setIsLoading] = useState<boolean>(false);

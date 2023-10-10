@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 import { IVideo } from '~/interfaces/util/video';
 const ReactPlayer:any = dynamic(() => import("react-player"), { ssr: false });
 
-interface IVideoBlockProps {
+interface IVideoBlock {
     id?:string;
     __typename?:string;
     title?:string;
@@ -13,7 +13,7 @@ interface IVideoBlockProps {
     videoEmbed?:IVideo;
 }
 
-const VideoBlock:any = ({ title, video, videoEmbed, ...props }:IVideoBlockProps) : ReactNode => {
+const VideoBlock:any = ({ title, video, videoEmbed, ...props }:IVideoBlock) : ReactNode => {
     const [currentVideo] = useState<IVideo>(video ? video : videoEmbed);
 
     return <ContentBlock {...props} mb={8}>

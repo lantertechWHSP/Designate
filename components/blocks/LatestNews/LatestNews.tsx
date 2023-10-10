@@ -6,14 +6,14 @@ import { IPost } from '~/interfaces/models/post';
 import LatestNewsItem from '~/components/blocks/LatestNews/LatestNewsItem';
 import {SectionLink} from "~/components/elements/sectionLink";
 
-interface ILatestNewsBlockProps {
+interface ILatestNewsBlock {
     title:string;
     data: {
         posts:IPost[];
     }
 }
 
-const LatestNewsBlock:any = ({ data: { posts } }:ILatestNewsBlockProps) : ReactNode => {
+const LatestNewsBlock:any = ({ data: { posts } }:ILatestNewsBlock) : ReactNode => {
     return <ContentBlock py={8} background="lightGrey3">
         <Flex align="center" mb={8}>
             <Heading as="h2" variant="sectionHeading">

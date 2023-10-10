@@ -1,18 +1,18 @@
 import { ReactNode } from 'react';
 import ContentBlock from '~/components/blocks/Content';
 import BarChart from '~/components/elements/charts/bar/BarChart';
-import { IDatoTable } from '~/interfaces/util/table';
+import { ITable } from '~/interfaces/util/table';
 
 interface ITableData {
     Year:string;
     Value:string;
 }
 
-interface ITrackRecordDividendBlockProps {
-    table: IDatoTable<ITableData>;
+interface ITrackRecordDividendBlock {
+    table: ITable<ITableData>;
 }
 
-const TrackRecordDividendBlock:any = ({ table }:ITrackRecordDividendBlockProps) : ReactNode => {
+const TrackRecordDividendBlock:any = ({ table }:ITrackRecordDividendBlock) : ReactNode => {
     const chartData:any = [];
 
     table.data.map((value:ITableData) => {

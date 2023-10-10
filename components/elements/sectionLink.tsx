@@ -1,11 +1,11 @@
-import { Link, IDatoLinkProps } from "~/components/elements/link";
+import { Link, IDatoLink } from "~/components/elements/link";
 import { Flex, Text } from '@chakra-ui/react';
 import { Icon, Icons } from '~/components/elements/icon';
 
-interface ISectionLinkProps extends IDatoLinkProps {
+interface ISectionLink extends IDatoLink {
 }
 
-export const SectionLink:any = ({ ...props }:ISectionLinkProps) => {
+export const SectionLink:any = ({ ...props }:ISectionLink) => {
     return <Link {...props}>
         <Flex align="center"
             display="inline-flex"

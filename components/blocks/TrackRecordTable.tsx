@@ -1,13 +1,13 @@
 import { ReactNode } from 'react';
 import ContentBlock from '~/components/blocks/Content';
 import { TableContainer, Table, Thead, Tr, Th, Tbody, Td, Text } from '@chakra-ui/react';
-import { IDatoTable } from '~/interfaces/util/table';
+import { ITable } from '~/interfaces/util/table';
 
-interface ITrackRecordTableBlockProps {
-    table:IDatoTable<any>;
+interface ITrackRecordTableBlock {
+    table:ITable<any>;
 }
 
-const TrackRecordTableBlock:any = ({ table }:ITrackRecordTableBlockProps) : ReactNode => {
+const TrackRecordTableBlock:any = ({ table }:ITrackRecordTableBlock) : ReactNode => {
     return <ContentBlock py={8}>
         {
             table.data && table.data.length > 0 ? <TableContainer>

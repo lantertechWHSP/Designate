@@ -5,11 +5,11 @@ import { YourIR } from 'yourir-next';
 import { Icon, Icons } from '~/components/elements/icon';
 import { SectionLink } from '~/components/elements/sectionLink';
 
-interface IInvestorPanelBlockProps {
+interface IInvestorPanelBlock {
     displayHeadline?:boolean;
 }
 
-const InvestorPanelBlock:any = ({ displayHeadline }:IInvestorPanelBlockProps) : ReactNode => {
+const InvestorPanelBlock:any = ({ displayHeadline }:IInvestorPanelBlock) : ReactNode => {
     return <ContentBlock py={8}>
         {
             displayHeadline && <Flex align="center" mb={8}>

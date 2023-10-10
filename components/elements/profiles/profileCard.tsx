@@ -3,11 +3,11 @@ import { Image } from '~/components/elements/image';
 import { IPerson } from "~/interfaces/models/person";
 import { Box, Heading } from '@chakra-ui/react';
 
-interface IProfileCardProps extends IPerson {
+interface IProfileCard extends IPerson {
     onClick:() => any;
 }
 
-const ProfileCard:any = ({ image, name, companyPosition, onClick }:IProfileCardProps) : ReactNode => {
+const ProfileCard:any = ({ image, name, companyPosition, onClick }:IProfileCard) : ReactNode => {
     return <Box>
         <Image image={image} ratio={[1 / 1]} onClick={onClick} mb={4} />
         {

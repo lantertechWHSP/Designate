@@ -4,7 +4,7 @@ import { ChakraProps } from '@chakra-ui/system';
 import { forwardRef, ReactNode } from 'react';
 const NextLink:any = require('next/link');
 
-export interface IDatoLinkProps extends ChakraProps {
+export interface IDatoLink extends ChakraProps {
     id?:string;
     __typename?:string;
     title?:string;
@@ -12,7 +12,7 @@ export interface IDatoLinkProps extends ChakraProps {
     slug:string;
 }
 
-export const Link:any = forwardRef(({ id, __typename, title, slug,  ...props }:IDatoLinkProps, ref:any) : ReactNode => {
+export const Link:any = forwardRef(({ id, __typename, title, slug,  ...props }:IDatoLink, ref:any) : ReactNode => {
     const href:string = resolveInternalLink({
         id,
         __typename,

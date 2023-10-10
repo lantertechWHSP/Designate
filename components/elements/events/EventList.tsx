@@ -3,11 +3,11 @@ import { Box, Container, Text } from '@chakra-ui/react';
 import EventCard from '~/components/elements/events/EventCard';
 import { IEvent } from '~/interfaces/models/event';
 
-interface IEventListProps {
+interface IEventList {
     events:IEvent[];
 }
 
-const EventList:any = ({ events }:IEventListProps) : ReactNode => {
+const EventList:any = ({ events }:IEventList) : ReactNode => {
     return <Box>
         <Container>
             {

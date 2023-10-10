@@ -5,13 +5,13 @@ import useDimensions from 'react-cool-dimensions';
 import { IVideo } from '~/interfaces/util/video';
 import { IImage } from '~/interfaces/util/image';
 
-interface IHeroBlockProps {
+interface IHeroBlock {
     title?:string;
     video?:IVideo;
     image?:IImage;
 }
 
-const HeroBlock:any = ({ title, video, image }:IHeroBlockProps) : ReactNode => {
+const HeroBlock:any = ({ title, video, image }:IHeroBlock) : ReactNode => {
     const { observe: contentWidthObserve, width: contentWidth } = useDimensions();
 
     return <Box

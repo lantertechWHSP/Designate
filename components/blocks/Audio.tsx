@@ -2,13 +2,13 @@ import { ReactNode } from 'react';
 import { ChakraProps } from '@chakra-ui/system';
 import ContentBlock from "~/components/blocks/Content";
 
-interface IAudioBlockProps extends ChakraProps {
+interface IAudioBlock extends ChakraProps {
     id?:string;
     __typename?:string;
     trackId?:string;
 }
 
-const AudioBlock:any = ({ trackId, ...props }:IAudioBlockProps) : ReactNode => {
+const AudioBlock:any = ({ trackId, ...props }:IAudioBlock) : ReactNode => {
     return <ContentBlock {...props} mb={8}>
         {
             trackId && <iframe width="100%"

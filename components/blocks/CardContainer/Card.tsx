@@ -4,11 +4,11 @@ import { Icon, Icons } from '~/components/elements/icon';
 import { Link } from '~/components/elements/link';
 import { ILink } from "~/interfaces/util/link";
 
-export interface ICardBlockProps {
+export interface ICardBlock {
     link?:ILink;
 }
 
-const CardBlock:any = ({ link }:ICardBlockProps) : ReactNode => {
+const CardBlock:any = ({ link }:ICardBlock) : ReactNode => {
     return <Link {...link} color="black">
         <AspectRatio ratio={[3 / 2]}>
             <Box bg="ghostWhite">

@@ -1,12 +1,12 @@
 import { useEffect, useRef, ReactNode } from 'react';
 import { select, axisBottom, timeFormat, timeYear } from 'd3';
 
-interface IAxisBottomProps {
+interface IAxisBottom {
     scale:any;
     transform:string;
 }
 
-export const AxisBottom:any = ({ scale, transform }:IAxisBottomProps) : ReactNode => {
+export const AxisBottom:any = ({ scale, transform }:IAxisBottom) : ReactNode => {
     const elementRef:any = useRef<SVGGElement>(null);
 
     useEffect(() => {

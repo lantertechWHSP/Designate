@@ -1,11 +1,11 @@
 import { useMemo, ReactNode } from 'react';
 
-interface IAxisLeftProps {
+interface IAxisLeft {
     scale:any;
     width:number;
 }
 
-export const AxisLeft:any = ({ scale, width }:IAxisLeftProps) : ReactNode => {
+export const AxisLeft:any = ({ scale, width }:IAxisLeft) : ReactNode => {
     const ticks:any = useMemo(() => {
         return scale.ticks().map((value) => ({
             value,

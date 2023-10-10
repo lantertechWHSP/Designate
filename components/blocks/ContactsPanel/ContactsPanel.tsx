@@ -7,13 +7,13 @@ import { IContact } from '~/interfaces/models/contact';
 import { ChakraProps } from '@chakra-ui/system';
 import ContactCard from '~/components/blocks/ContactsPanel/ContactCard';
 
-interface IContactsPanelBlockProps extends ChakraProps {
+interface IContactsPanelBlock extends ChakraProps {
     data: {
         contacts:IContact[];
     }
 }
 
-const ContactsPanelBlock:any = ({ data: { contacts } }:IContactsPanelBlockProps) : ReactNode => {
+const ContactsPanelBlock:any = ({ data: { contacts } }:IContactsPanelBlock) : ReactNode => {
     return <ContentBlock py={8}>
         <Box mb={8}>
             <Heading as="h2" variant="sectionHeading">

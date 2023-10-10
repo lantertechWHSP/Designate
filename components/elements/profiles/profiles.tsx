@@ -5,11 +5,11 @@ import { Box, Flex, Container, SimpleGrid, Heading, Modal, ModalOverlay, ModalCo
 import { IPerson } from '~/interfaces/models/person';
 import ProfileCard from '~/components/elements/profiles/profileCard';
 
-interface IProfileProps {
+interface IProfile {
     people:IPerson[];
 }
 
-export const Profiles:any = ({ people }:IProfileProps) : ReactNode => {
+export const Profiles:any = ({ people }:IProfile) : ReactNode => {
     const [modalOpen, setModalOpen] = useState<boolean>(false);
     const [activePerson, setActivePerson] = useState<IPerson>(null);
 

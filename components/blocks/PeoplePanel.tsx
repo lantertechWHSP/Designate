@@ -4,11 +4,11 @@ import { SimpleGrid, Box, Heading, Text } from '@chakra-ui/react';
 import { IPerson } from '~/interfaces/models/person';
 import { Image } from '~/components/elements/image';
 
-interface IPeoplePanelBlockProps {
+interface IPeoplePanelBlock {
     people:IPerson[];
 }
 
-const PeoplePanelBlock:any = ({ people }:IPeoplePanelBlockProps) : ReactNode => {
+const PeoplePanelBlock:any = ({ people }:IPeoplePanelBlock) : ReactNode => {
     return <ContentBlock py={8}>
         {
             (Array.isArray(people) && people.length > 0) && <SimpleGrid columns={[1, , 3]} spacing={[0, 8]}>

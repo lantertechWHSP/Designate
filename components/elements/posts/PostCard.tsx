@@ -4,10 +4,10 @@ import { ChakraProps } from '@chakra-ui/system';
 import { Link } from '~/components/elements/link';
 import { Image } from '~/components/elements/image';
 
-interface IPostCardProps extends IPost, ChakraProps {
+interface IPostCard extends IPost, ChakraProps {
 }
 
-const PostCard:any = ({ title, image, publishDate, slug }:IPostCardProps) : any => {
+const PostCard:any = ({ title, image, publishDate, slug }:IPostCard) : any => {
     return <Box>
         <Box mb={2}>
             <Link href={`/news/${slug}`}>

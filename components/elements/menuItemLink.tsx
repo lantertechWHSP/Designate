@@ -5,14 +5,14 @@ import { ILink } from '~/interfaces/util/link';
 import { forwardRef, ReactNode } from 'react';
 import Link from 'next/link';
 
-interface IMenuItemLinkProps extends ChakraProps {
+interface IMenuItemLink extends ChakraProps {
     title?:string;
     link?:ILink;
     children?:any;
     externalLink?:string;
 }
 
-export const MenuItemLink:any = forwardRef(({ title, link, externalLink,  ...props }:IMenuItemLinkProps, ref:any) : ReactNode => {
+export const MenuItemLink:any = forwardRef(({ title, link, externalLink,  ...props }:IMenuItemLink, ref:any) : ReactNode => {
     let href:string = '#';
     let newChild:string = '';
 

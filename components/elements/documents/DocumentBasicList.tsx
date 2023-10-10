@@ -8,11 +8,11 @@ export const DATO_QUERY_VALUES:any = {
     POLICIES_AND_STANDARDS_CATEGORY_ID : '191742372'
 };
 
-interface IDocumentBasicListProps {
+interface IDocumentBasicList {
     latestDocuments?:IDocument[];
 }
 
-const DocumentBasicList:any = ({latestDocuments}:IDocumentBasicListProps) : ReactNode => {
+const DocumentBasicList:any = ({latestDocuments}:IDocumentBasicList) : ReactNode => {
     const [documents] = useState(latestDocuments);
     const [documentBundles, setDocumentBundles] = useState<IDocumentBundle[]>([]);
 

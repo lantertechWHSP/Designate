@@ -4,10 +4,10 @@ import { Flex, Heading, Text, Box, Link } from '@chakra-ui/react';
 import { ChakraProps } from '@chakra-ui/system';
 import { DateTime } from 'luxon';
 
-interface IDocumentCardProps extends IDocument, ChakraProps {
+interface IDocumentCard extends IDocument, ChakraProps {
 }
 
-const DocumentCard:any = ({ title, date, document }:IDocumentCardProps) : ReactNode => {
+const DocumentCard:any = ({ title, date, document }:IDocumentCard) : ReactNode => {
     return <Flex py={4} direction={['row']} alignItems={['center']}>
         {
             title && <Heading as="h3"

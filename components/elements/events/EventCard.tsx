@@ -5,10 +5,10 @@ import { ChakraProps } from '@chakra-ui/system';
 import { DateTime } from 'luxon';
 import AddToCalendar from '~/components/elements/events/AddToCalendar';
 
-interface IEventCardProps extends IEvent, ChakraProps {
+interface IEventCard extends IEvent, ChakraProps {
 }
 
-const EventCard:any = ({ title, allDay, startDate, endDate, details, location }:IEventCardProps) : ReactNode => {
+const EventCard:any = ({ title, allDay, startDate, endDate, details, location }:IEventCard) : ReactNode => {
     return <Flex py={4} direction={['row']} alignItems={['center']}>
         {
             title && <Heading as="h3"

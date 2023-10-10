@@ -3,12 +3,12 @@ import ContentBlock from '~/components/blocks/Content';
 import { ChakraProps } from '@chakra-ui/system';
 import { Box, Heading } from '@chakra-ui/react';
 
-interface IOverviewBlockProps extends ChakraProps {
+interface IOverviewBlock extends ChakraProps {
     subtitle?:string;
     description?:string;
 }
 
-const OverviewBlock:any = ({ subtitle, description }:IOverviewBlockProps) : ReactNode => {
+const OverviewBlock:any = ({ subtitle, description }:IOverviewBlock) : ReactNode => {
     return <ContentBlock background="lightGrey3" py={12}>
         <Box maxW="900px">
             {

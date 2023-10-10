@@ -4,19 +4,19 @@ import { ChakraProps } from '@chakra-ui/system';
 import { Box, Heading, Text, TableContainer, Table, Thead, Tr, Th, Tbody, Td, Progress } from '@chakra-ui/react';
 import { sumBy as _sumBy, round as _round } from 'lodash';
 import { DateTime } from 'luxon';
-import { IDatoTable } from '~/interfaces/util/table';
+import { ITable } from '~/interfaces/util/table';
 
 interface ITableData {
     Portfolio:string;
     NetAssetValue:string;
 }
 
-interface InvestmentPortfolioTableBlockProps extends ChakraProps {
-    table:IDatoTable<ITableData>;
+interface InvestmentPortfolioTableBlock extends ChakraProps {
+    table:ITable<ITableData>;
     lastUpdated:any;
 }
 
-const InvestmentPortfolioTableBlock:any = ({ table, lastUpdated }:InvestmentPortfolioTableBlockProps) : ReactNode => {
+const InvestmentPortfolioTableBlock:any = ({ table, lastUpdated }:InvestmentPortfolioTableBlock) : ReactNode => {
     const total:number = _sumBy(table.data, (datum:ITableData) => {
         const value:number = +datum.NetAssetValue;
         return value;

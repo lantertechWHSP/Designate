@@ -5,16 +5,16 @@ import { DateTime } from 'luxon';
 import { Heading, Flex, Box, Menu, MenuButton, Button, Portal, MenuList, MenuItem } from '@chakra-ui/react';
 import { Icon, Icons } from '~/components/elements/icon';
 import { IFilter } from '~/interfaces/util/filter';
-import { IDatoTable } from '~/interfaces/util/table';
+import { ITable } from '~/interfaces/util/table';
 
-interface ITrackRecordChartBlockProps {
-    australianSharesTable:IDatoTable<any>;
-    internationalSharesTable:IDatoTable<any>;
-    australianListedTable:IDatoTable<any>;
-    australianBondsTable:IDatoTable<any>;
+interface ITrackRecordChartBlock {
+    australianSharesTable:ITable<any>;
+    internationalSharesTable:ITable<any>;
+    australianListedTable:ITable<any>;
+    australianBondsTable:ITable<any>;
 }
 
-const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesTable, australianListedTable, australianBondsTable }:ITrackRecordChartBlockProps) : ReactNode => {
+const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesTable, australianListedTable, australianBondsTable }:ITrackRecordChartBlock) : ReactNode => {
     const australianShares:any = australianSharesTable.data.map((datum) => {
         return {
             value: +datum.Value,

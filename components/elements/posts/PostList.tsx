@@ -5,7 +5,7 @@ import { SimpleGrid, Box, Flex, Button, Spinner, Text, Container } from '@chakra
 import { IPost } from '~/interfaces/models/post';
 import { IPostsMeta } from '~/interfaces/models/postsMeta';
 
-interface IPostsListProps {
+interface IPostsList {
     latestPosts:IPost[];
     postsMeta:IPostsMeta;
 }
@@ -16,7 +16,7 @@ export const DATO_QUERY_VALUES:any = {
     ORDER_BY : 'date_DESC',
 };
 
-const PostList:any = ({ latestPosts, postsMeta }:IPostsListProps) : ReactNode => {
+const PostList:any = ({ latestPosts, postsMeta }:IPostsList) : ReactNode => {
     const [page, setPage] = useState<number>(1);
     const [posts, setPosts] = useState<IPost[]>(latestPosts);
     const [isLoading, setIsLoading] = useState<boolean>(false);
