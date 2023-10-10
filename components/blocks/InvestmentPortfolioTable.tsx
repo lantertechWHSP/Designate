@@ -4,6 +4,7 @@ import { ChakraProps } from '@chakra-ui/system';
 import { Box, Heading, Text, TableContainer, Table, Thead, Tr, Th, Tbody, Td, Progress } from '@chakra-ui/react';
 import { sumBy as _sumBy, round as _round } from 'lodash';
 import { DateTime } from 'luxon';
+import { IDatoTable } from '~/interfaces/util/table';
 
 interface ITableData {
     Portfolio:string;
@@ -19,7 +20,7 @@ const InvestmentPortfolioTableBlock:any = ({ table, lastUpdated }:InvestmentPort
     const total:number = _sumBy(table.data, (datum:ITableData) => {
         const value:number = +datum.NetAssetValue;
         return value;
-    })
+    });
 
     return <ContentBlock py={8}>
         <Box mb={8}>
@@ -68,7 +69,7 @@ const InvestmentPortfolioTableBlock:any = ({ table, lastUpdated }:InvestmentPort
                                     <Td>
                                         <Progress size='sm' value={percentage} />
                                     </Td>
-                                </Tr>
+                                </Tr>;
                             })
                         }
                     </Tbody>
@@ -80,7 +81,7 @@ const InvestmentPortfolioTableBlock:any = ({ table, lastUpdated }:InvestmentPort
                 Last updated at {DateTime.fromFormat(lastUpdated, "yyyy-mm-dd").toFormat('d/MM/yyyy')}
             </Text>
         }
-    </ContentBlock>
-}
+    </ContentBlock>;
+};
 
 export default InvestmentPortfolioTableBlock;

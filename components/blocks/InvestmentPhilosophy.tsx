@@ -43,6 +43,6 @@ const InvestmentPhilosophyBlock:any = ({ items, ...props }:IInvestmentPhilosophy
             </SimpleGrid>
         }
     </ContentBlock>;
-}
+};
 
 export default InvestmentPhilosophyBlock;
