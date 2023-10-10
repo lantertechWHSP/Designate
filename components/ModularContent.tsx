@@ -1,65 +1,65 @@
-import Text from '~/components/blocks/Text';
-import Image from '~/components/blocks/Image';
-import Video from '~/components/blocks/Video';
-import Audio from '~/components/blocks/Audio';
+import TextBlock from '~/components/blocks/Text';
+import ImageBlock from '~/components/blocks/Image';
+import VideoBlock from '~/components/blocks/Video';
+import AudioBlock from '~/components/blocks/Audio';
 
-import Card from '~/components/blocks/CardContainer/Card';
-import CardContainer from '~/components/blocks/CardContainer/CardContainer';
-import RectangleCard from '~/components/blocks/RectangleCard';
+import CardBlock from '~/components/blocks/CardContainer/Card';
+import CardContainerBlock from '~/components/blocks/CardContainer/CardContainer';
+import RectangleCardBlock from '~/components/blocks/RectangleCard';
 
-import Overview from '~/components/blocks/Overview';
+import OverviewBlock from '~/components/blocks/Overview';
 
-import Accordion from '~/components/blocks/Accordion/Accordion';
+import AccordionBlock from '~/components/blocks/Accordion';
 
-import Hero from '~/components/blocks/Hero';
-import HomePageOverview from '~/components/blocks/HomePageOverview';
-import LatestNews from '~/components/blocks/LatestNews/LatestNews';
-import InvestorPanel from '~/components/blocks/InvestorPanel';
-import AsxAnnouncementsPanel from '~/components/blocks/AsxAnnouncementsPanel';
+import HeroBlock from '~/components/blocks/Hero';
+import HomePageOverviewBlock from '~/components/blocks/HomePageOverview';
+import LatestNewsBlock from '~/components/blocks/LatestNews/LatestNews';
+import InvestorPanelBlock from '~/components/blocks/InvestorPanel';
+import AsxAnnouncementsPanelBlock from '~/components/blocks/AsxAnnouncementsPanel';
 
-import ContactsPanel from '~/components/blocks/ContactsPanel/ContactsPanel';
-import CompanyValuesPanel from '~/components/blocks/CompanyValuesPanel';
+import ContactsPanelBlock from '~/components/blocks/ContactsPanel/ContactsPanel';
+import CompanyValuesPanelBlock from '~/components/blocks/CompanyValuesPanel';
 
-import DividendHistory from '~/components/blocks/DividendHistory';
-import ShareholderReturnsTable from '~/components/blocks/ShareholderReturnsTable';
-import ShareholderReturnsChart from '~/components/blocks/ShareholderReturnsChart';
+import DividendHistoryBlock from '~/components/blocks/DividendHistory';
+import ShareholderReturnsTableBlock from '~/components/blocks/ShareholderReturnsTable';
+import ShareholderReturnsChartBlock from '~/components/blocks/ShareholderReturnsChart';
 
-import DividendsPanel from '~/components/blocks/DividendsPanel/DividendsPanel';
-import SharePricePanel from '~/components/blocks/SharePricePanel/SharePricePanel';
-import ShareQuoteTable from '~/components/blocks/ShareQuoteTable';
-import ShareHistoricalPricesTable from '~/components/blocks/ShareHistoricalPricesTable';
+import DividendsPanelBlock from '~/components/blocks/DividendsPanel/DividendsPanel';
+import SharePricePanelBlock from '~/components/blocks/SharePricePanel/SharePricePanel';
+import ShareQuoteTableBlock from '~/components/blocks/ShareQuoteTable';
+import ShareHistoricalPricesTableBlock from '~/components/blocks/ShareHistoricalPricesTable';
 
 const blocks:any = {
-    Text,
-    Image,
-    Video,
-    Audio,
-    Card,
-    CardContainer,
-    RectangleCard,
-    Overview,
-    Accordion,
+    TextBlock,
+    ImageBlock,
+    VideoBlock,
+    AudioBlock,
+    CardBlock,
+    CardContainerBlock,
+    RectangleCardBlock,
+    OverviewBlock,
+    AccordionBlock,
 
-    Hero,
-    HomePageOverview,
-    LatestNews,
-    InvestorPanel,
-    AsxAnnouncementsPanel,
-    ContactsPanel,
-    CompanyValuesPanel,
+    HeroBlock,
+    HomePageOverviewBlock,
+    LatestNewsBlock,
+    InvestorPanelBlock,
+    AsxAnnouncementsPanelBlock,
+    ContactsPanelBlock,
+    CompanyValuesPanelBlock,
 
-    DividendHistory,
-    ShareholderReturnsTable,
-    ShareholderReturnsChart,
+    DividendHistoryBlock,
+    ShareholderReturnsTableBlock,
+    ShareholderReturnsChartBlock,
 
-    DividendsPanel,
-    SharePricePanel,
-    ShareQuoteTable,
-    ShareHistoricalPricesTable
+    DividendsPanelBlock,
+    SharePricePanelBlock,
+    ShareQuoteTableBlock,
+    ShareHistoricalPricesTableBlock
 };
 
 export const getBlock:any = (name:any) : any => {
-    return blocks[name?.replace('Record', '')];
+    return blocks[name?.replace('Record', 'Block')];
 };
 
 export const ModularContent:any = ({ content }) : any => {
