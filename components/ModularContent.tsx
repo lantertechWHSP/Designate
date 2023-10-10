@@ -7,16 +7,17 @@ import CardContainerBlock from '~/components/blocks/CardContainer/CardContainer'
 import OverviewBlock from '~/components/blocks/Overview';
 import AccordionBlock from '~/components/blocks/Accordion';
 import CarouselBlock from '~/components/blocks/Carousel';
+
 import DocumentHeroPanelBlock from '~/components/blocks/DocumentHeroPanel';
+import CompanyValuesPanelBlock from '~/components/blocks/CompanyValuesPanel';
+import LatestNewsBlock from '~/components/blocks/LatestNews/LatestNews';
+import ContactsPanelBlock from '~/components/blocks/ContactsPanel/ContactsPanel';
+import InvestorPanelBlock from '~/components/blocks/InvestorPanel';
 
 // Home
 import HeroBlock from '~/components/blocks/Hero';
 import HomePageOverviewBlock from '~/components/blocks/HomePageOverview';
-import InvestorPanelBlock from '~/components/blocks/InvestorPanel';
 import AsxAnnouncementsPanelBlock from '~/components/blocks/AsxAnnouncementsPanel';
-
-// About/Our Company
-import CompanyValuesPanelBlock from '~/components/blocks/CompanyValuesPanel';
 
 // About/Track Record
 import ShareholderReturnsTableBlock from '~/components/blocks/ShareholderReturnsTable';
@@ -30,16 +31,14 @@ import InvestmentPortfolioTableBlock from '~/components/blocks/InvestmentPortfol
 // About/Investment Portfolio
 import PeoplePanelBlock from '~/components/blocks/PeoplePanel';
 
-// About/Sustainability
 
-import LatestNewsBlock from '~/components/blocks/LatestNews/LatestNews';
-import ContactsPanelBlock from '~/components/blocks/ContactsPanel/ContactsPanel';
 import DividendsPanelBlock from '~/components/blocks/DividendsPanel/DividendsPanel';
 import SharePricePanelBlock from '~/components/blocks/SharePricePanel/SharePricePanel';
 import ShareQuoteTableBlock from '~/components/blocks/ShareQuoteTable';
 import ShareHistoricalPricesTableBlock from '~/components/blocks/ShareHistoricalPricesTable';
 
 const blocks:any = {
+    // General
     TextBlock,
     ImageBlock,
     VideoBlock,
@@ -48,26 +47,30 @@ const blocks:any = {
     OverviewBlock,
     AccordionBlock,
     CarouselBlock,
-    DocumentHeroPanelBlock,
 
+    DocumentHeroPanelBlock,
+    CompanyValuesPanelBlock,
+    LatestNewsBlock,
+    ContactsPanelBlock,
+    InvestorPanelBlock,
+
+    // Home
     HeroBlock,
     HomePageOverviewBlock,
-    InvestorPanelBlock,
     AsxAnnouncementsPanelBlock,
 
-    CompanyValuesPanelBlock,
-
+    // About/Track Record
     ShareholderReturnsTableBlock,
     ShareholderReturnsChartBlock,
     DividendHistoryBlock,
 
+    // About/Investment Approach
     InvestmentPhilosophyBlock,
     InvestmentPortfolioTableBlock,
 
+    // About/Investment Portfolio
     PeoplePanelBlock,
 
-    LatestNewsBlock,
-    ContactsPanelBlock,
     DividendsPanelBlock,
     SharePricePanelBlock,
     ShareQuoteTableBlock,
