@@ -19,20 +19,16 @@ import AsxAnnouncementsPanelBlock from '~/components/blocks/AsxAnnouncementsPane
 // About/Our Company
 import CompanyValuesPanelBlock from '~/components/blocks/CompanyValuesPanel';
 
-
+// About/Track Record
+import ShareholderReturnsTableBlock from '~/components/blocks/ShareholderReturnsTable';
+import ShareholderReturnsChartBlock from '~/components/blocks/ShareholderReturnsChart';
+import DividendHistoryBlock from '~/components/blocks/DividendHistory';
 
 
 import LatestNewsBlock from '~/components/blocks/LatestNews/LatestNews';
-
 import ContactsPanelBlock from '~/components/blocks/ContactsPanel/ContactsPanel';
-
 import InvestmentPhilosophyBlock from '~/components/blocks/InvestmentPhilosophy';
 import InvestmentPortfolioTableBlock from "~/components/blocks/InvestmentPortfolioTable";
-
-import DividendHistoryBlock from '~/components/blocks/DividendHistory';
-import ShareholderReturnsTableBlock from '~/components/blocks/ShareholderReturnsTable';
-import ShareholderReturnsChartBlock from '~/components/blocks/ShareholderReturnsChart';
-
 import DividendsPanelBlock from '~/components/blocks/DividendsPanel/DividendsPanel';
 import SharePricePanelBlock from '~/components/blocks/SharePricePanel/SharePricePanel';
 import ShareQuoteTableBlock from '~/components/blocks/ShareQuoteTable';
@@ -56,14 +52,15 @@ const blocks:any = {
 
     CompanyValuesPanelBlock,
 
+    ShareholderReturnsTableBlock,
+    ShareholderReturnsChartBlock,
+    DividendHistoryBlock,
+
 
     LatestNewsBlock,
     ContactsPanelBlock,
     InvestmentPhilosophyBlock,
     InvestmentPortfolioTableBlock,
-    DividendHistoryBlock,
-    ShareholderReturnsTableBlock,
-    ShareholderReturnsChartBlock,
     DividendsPanelBlock,
     SharePricePanelBlock,
     ShareQuoteTableBlock,

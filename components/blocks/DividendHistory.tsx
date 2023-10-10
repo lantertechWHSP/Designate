@@ -21,7 +21,7 @@ const DividendHistoryBlock:any = ({ table }:IDividendHistoryBlock) : ReactNode =
         });
     });
 
-    return <ContentBlock mb={8}>
+    return <ContentBlock py={8}>
         <BarChart data={{
             values: chartData
         }} />

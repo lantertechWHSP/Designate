@@ -7,7 +7,7 @@ interface IShareholderReturnsTableBlock {
 }
 
 const ShareholderReturnsTableBlock:any = ({ table }:IShareholderReturnsTableBlock) : ReactNode => {
-    return <ContentBlock mb={8}>
+    return <ContentBlock py={8}>
         {
             table.data && table.data.length > 0 ? <TableContainer>
                 <Table variant="basic" w="100%">

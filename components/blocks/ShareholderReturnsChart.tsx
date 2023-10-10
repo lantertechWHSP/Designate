@@ -93,7 +93,7 @@ const ShareholderReturnsChartBlock:any = ({ australianSharesTable, international
         updateLines();
     }, []);
 
-    return <ContentBlock mb={8} py={8}>
+    return <ContentBlock py={8}>
         <Flex justify="space-between">
             <Heading as="h2">
                 20 Year Total Shareholder Return

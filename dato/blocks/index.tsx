@@ -18,16 +18,19 @@ import { asxAnnouncementsPanelRecord } from '~/dato/blocks/asxAnnouncementsPanel
 // About/Our Company
 import { companyValuesPanelRecord } from '~/dato/blocks/companyValuesPanel';
 
-//
+// About/Track Record
+import { shareholderReturnsTableRecord } from '~/dato/blocks/shareholderReturnsTable';
+import { shareholderReturnsChartRecord } from '~/dato/blocks/shareholderReturnsChart';
+import { dividendHistoryRecord } from '~/dato/blocks/dividendHistory';
+
+
+
 import { latestNewsRecord } from '~/dato/blocks/latestNews';
 import { dividendsPanelRecord } from '~/dato/blocks/dividendsPanel';
 import { sharePricePanelRecord } from '~/dato/blocks/sharePricePanel';
 import { shareQuoteTableRecord } from '~/dato/blocks/shareQuoteTable';
 import { shareHistoricalPricesTableRecord } from '~/dato/blocks/shareHistoricalPricesTable';
 import { contactsPanelRecord } from '~/dato/blocks/contactsPanel';
-import { dividendHistoryRecord } from '~/dato/blocks/dividendHistory';
-import { shareholderReturnsTableRecord } from '~/dato/blocks/shareholderReturnsTable';
-import { shareholderReturnsChartRecord } from '~/dato/blocks/shareholderReturnsChart';
 import { investmentPhilosophyRecord } from '~/dato/blocks/investmentPhilosophy';
 import { investmentPortfolioTableRecord } from '~/dato/blocks/investmentPortfolioTable';
 
@@ -78,26 +81,35 @@ export const blocks:string = `
             ${companyValuesPanelRecord}
         }
 
-        ... on LatestNewsRecord {
-            ${latestNewsRecord}
-        }
-        ... on DividendHistoryRecord {
-            ${dividendHistoryRecord}
-        }
         ... on ShareholderReturnsTableRecord {
             ${shareholderReturnsTableRecord}
         }
         ... on ShareholderReturnsChartRecord {
             ${shareholderReturnsChartRecord}
         }
+        ... on DividendHistoryRecord {
+            ${dividendHistoryRecord}
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        ... on DividendsPanelRecord {
+            ${dividendsPanelRecord}
+        }
+        ... on LatestNewsRecord {
+            ${latestNewsRecord}
+        }
         ... on InvestmentPhilosophyRecord {
             ${investmentPhilosophyRecord}
         }
         ... on InvestmentPortfolioTableRecord {
             ${investmentPortfolioTableRecord}
-        }
-        ... on DividendsPanelRecord {
-            ${dividendsPanelRecord}
         }
         ... on SharePricePanelRecord {
             ${sharePricePanelRecord}
