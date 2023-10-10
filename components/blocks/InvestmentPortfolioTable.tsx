@@ -1,31 +1,35 @@
 import ContentBlock from '~/components/blocks/Content';
 import { ReactNode } from 'react';
 import { ChakraProps } from '@chakra-ui/system';
-import { Heading, Text, TableContainer, Table, Thead, Tr, Th, Tbody, Td, Progress } from '@chakra-ui/react';
+import { Box, Heading, Text, TableContainer, Table, Thead, Tr, Th, Tbody, Td, Progress } from '@chakra-ui/react';
 import { sumBy as _sumBy, round as _round } from 'lodash';
+import { DateTime } from 'luxon';
 
 interface ITableData {
     Portfolio:string;
-    NetAssetValue:number;
+    NetAssetValue:string;
 }
 
 interface InvestmentPortfolioTableBlockProps extends ChakraProps {
-    table:IDatoTable<ITableData>
+    table:IDatoTable<ITableData>;
+    lastUpdated:any;
 }
 
-const InvestmentPortfolioTableBlock:any = ({ table }:InvestmentPortfolioTableBlockProps) : ReactNode => {
-    const total = _sumBy(table.data, (datum:ITableData) => {
+const InvestmentPortfolioTableBlock:any = ({ table, lastUpdated }:InvestmentPortfolioTableBlockProps) : ReactNode => {
+    const total:number = _sumBy(table.data, (datum:ITableData) => {
         const value:number = +datum.NetAssetValue;
         return value;
     })
 
     return <ContentBlock py={8}>
-        <Heading as="h2">
-            Our Portfolio
-        </Heading>
-        <Text>
-            Total Value: ${_round(total / 1000, 2)} Billion
-        </Text>
+        <Box mb={8}>
+            <Heading as="h2">
+                Our Portfolio
+            </Heading>
+            <Text>
+                Total Value: ${_round(total / 1000, 2)} Billion
+            </Text>
+        </Box>
         <TableContainer>
             <Table variant="basic" w="100%">
                 {
@@ -71,6 +75,11 @@ const InvestmentPortfolioTableBlock:any = ({ table }:InvestmentPortfolioTableBlo
                 }
             </Table>
         </TableContainer>
+        {
+            lastUpdated && <Text mt={4}>
+                Last updated at {DateTime.fromFormat(lastUpdated, "yyyy-mm-dd").toFormat('d/MM/yyyy')}
+            </Text>
+        }
     </ContentBlock>
 }
 
