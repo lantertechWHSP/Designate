@@ -1,21 +1,22 @@
+
+// General
 import TextBlock from '~/components/blocks/Text';
 import ImageBlock from '~/components/blocks/Image';
 import VideoBlock from '~/components/blocks/Video';
 import AudioBlock from '~/components/blocks/Audio';
-
-import CardBlock from '~/components/blocks/CardContainer/Card';
 import CardContainerBlock from '~/components/blocks/CardContainer/CardContainer';
 import RectangleCardBlock from '~/components/blocks/RectangleCard';
-
 import OverviewBlock from '~/components/blocks/Overview';
-
 import AccordionBlock from '~/components/blocks/Accordion';
+import CarouselBlock from '~/components/blocks/Carousel';
 
+// Home
 import HeroBlock from '~/components/blocks/Hero';
 import HomePageOverviewBlock from '~/components/blocks/HomePageOverview';
-import LatestNewsBlock from '~/components/blocks/LatestNews/LatestNews';
 import InvestorPanelBlock from '~/components/blocks/InvestorPanel';
 import AsxAnnouncementsPanelBlock from '~/components/blocks/AsxAnnouncementsPanel';
+
+import LatestNewsBlock from '~/components/blocks/LatestNews/LatestNews';
 
 import ContactsPanelBlock from '~/components/blocks/ContactsPanel/ContactsPanel';
 import CompanyValuesPanelBlock from '~/components/blocks/CompanyValuesPanel';
@@ -37,11 +38,11 @@ const blocks:any = {
     ImageBlock,
     VideoBlock,
     AudioBlock,
-    CardBlock,
     CardContainerBlock,
     RectangleCardBlock,
     OverviewBlock,
     AccordionBlock,
+    CarouselBlock,
 
     HeroBlock,
     HomePageOverviewBlock,
