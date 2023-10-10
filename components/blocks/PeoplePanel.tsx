@@ -26,12 +26,12 @@ const PeoplePanelBlock:any = ({ people }:IPeoplePanelBlock) : ReactNode => {
                                     {person.companyPosition}
                                 </Text>
                             }
-                        </Box>
+                        </Box>;
                     })
                 }
             </SimpleGrid>
         }
-    </ContentBlock>
-}
+    </ContentBlock>;
+};
 
 export default PeoplePanelBlock;

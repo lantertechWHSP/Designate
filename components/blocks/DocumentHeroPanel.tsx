@@ -40,7 +40,7 @@ const DocumentHeroPanelBlock:any = ({ coverImage, document, description }:IDocum
                 <Image image={coverImage} />
             </Box>
         </Flex>
-    </ContentBlock>
-}
+    </ContentBlock>;
+};
 
 export default DocumentHeroPanelBlock;

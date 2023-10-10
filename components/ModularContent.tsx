@@ -20,9 +20,9 @@ import HomePageOverviewBlock from '~/components/blocks/HomePageOverview';
 import AsxAnnouncementsPanelBlock from '~/components/blocks/AsxAnnouncementsPanel';
 
 // About/Track Record
-import TrackRecordTable from '~/components/blocks/TrackRecordTable';
-import TrackRecordChart from '~/components/blocks/TrackRecordChart';
-import TrackRecordDividend from '~/components/blocks/TrackRecordDividend';
+import TrackRecordTableBlock from '~/components/blocks/TrackRecordTable';
+import TrackRecordChartBlock from '~/components/blocks/TrackRecordChart';
+import TrackRecordDividendBlock from '~/components/blocks/TrackRecordDividend';
 
 // About/Investment Approach
 import InvestmentPhilosophyBlock from '~/components/blocks/InvestmentPhilosophy';
@@ -32,7 +32,7 @@ import InvestmentPortfolioTableBlock from '~/components/blocks/InvestmentPortfol
 import PeoplePanelBlock from '~/components/blocks/PeoplePanel';
 
 // Investor Center/Dividends
-
+import DividendHistoryTableBlock from '~/components/blocks/DividendHistoryTable';
 
 import DividendsPanelBlock from '~/components/blocks/DividendsPanel/DividendsPanel';
 import SharePricePanelBlock from '~/components/blocks/SharePricePanel/SharePricePanel';
@@ -62,9 +62,9 @@ const blocks:any = {
     AsxAnnouncementsPanelBlock,
 
     // About/Track Record
-    TrackRecordTable,
-    TrackRecordChart,
-    TrackRecordDividend,
+    TrackRecordTableBlock,
+    TrackRecordChartBlock,
+    TrackRecordDividendBlock,
 
     // About/Investment Approach
     InvestmentPhilosophyBlock,
@@ -72,6 +72,9 @@ const blocks:any = {
 
     // About/Investment Portfolio
     PeoplePanelBlock,
+
+    // Investor Center/Dividends
+    DividendHistoryTableBlock,
 
     DividendsPanelBlock,
     SharePricePanelBlock,

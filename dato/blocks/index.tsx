@@ -31,6 +31,8 @@ import { investmentPortfolioTableRecord } from '~/dato/blocks/investmentPortfoli
 // About/Investment Portfolio
 import { peoplePanelRecord } from '~/dato/blocks/peoplePanel';
 
+// Investor Center/Dividends
+import { dividendHistoryTableRecord } from '~/dato/blocks/dividendHistoryTable';
 
 import { dividendsPanelRecord } from '~/dato/blocks/dividendsPanel';
 import { sharePricePanelRecord } from '~/dato/blocks/sharePricePanel';
@@ -113,9 +115,11 @@ export const blocks:string = `
         ... on PeoplePanelRecord {
             ${peoplePanelRecord}
         }
-        
-        
-        
+
+        ... on DividendHistoryTableRecord {
+            ${dividendHistoryTableRecord}
+        }
+
         ... on DividendsPanelRecord {
             ${dividendsPanelRecord}
         }
@@ -128,6 +132,5 @@ export const blocks:string = `
         ... on ShareHistoricalPricesTableRecord {
             ${shareHistoricalPricesTableRecord}
         }
-        
     }
 `;

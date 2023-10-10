@@ -6,19 +6,19 @@ import { sumBy as _sumBy, round as _round } from 'lodash';
 import { DateTime } from 'luxon';
 import { ITable } from '~/interfaces/util/table';
 
-interface ITableData {
+interface ITableRow {
     Portfolio:string;
     NetAssetValue:string;
 }
 
 interface InvestmentPortfolioTableBlock extends ChakraProps {
-    table:ITable<ITableData>;
+    table:ITable<ITableRow>;
     lastUpdated:any;
 }
 
 const InvestmentPortfolioTableBlock:any = ({ table, lastUpdated }:InvestmentPortfolioTableBlock) : ReactNode => {
-    const total:number = _sumBy(table.data, (datum:ITableData) => {
-        const value:number = +datum.NetAssetValue;
+    const total:number = _sumBy(table.data, (row:ITableRow) => {
+        const value:number = +row.NetAssetValue;
         return value;
     });
 
@@ -53,21 +53,23 @@ const InvestmentPortfolioTableBlock:any = ({ table, lastUpdated }:InvestmentPort
                 {
                     (Array.isArray(table?.data) && table.data.length > 0) && <Tbody>
                         {
-                            table.data.map((row:ITableData, index:number) => {
+                            table.data.map((row:ITableRow, index:number) => {
                                 const percentage:number = _round(((+row.NetAssetValue / total) * 100), 1);
 
                                 return <Tr key={index}>
                                     <Td>
-                                        {row.Portfolio}
+                                        {row.Portfolio || '-'}
                                     </Td>
                                     <Td>
-                                        {row.NetAssetValue}
+                                        {row.NetAssetValue || '-'}
                                     </Td>
                                     <Td>
-                                        {percentage}%
+                                        {percentage ? `${percentage}%` : '-'}
                                     </Td>
                                     <Td>
-                                        <Progress size='sm' value={percentage} />
+                                        {
+                                            percentage ? <Progress size='sm' value={percentage} /> : <>-</>
+                                        }
                                     </Td>
                                 </Tr>;
                             })

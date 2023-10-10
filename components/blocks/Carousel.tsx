@@ -22,16 +22,17 @@ const CarouselBlock:any = ({ items }:ICarousel) : ReactNode => {
                 (Array.isArray(items) && items.length > 0) && items.map((item:ICarouselItem, index:number) => {
                     return <Box className="keen-slider__slide" key={index}>
                         <AspectRatio ratio={[3 / 2]}>
-                            <Box backgroundImage={item.image?.responsiveImage?.src}
-                                 backgroundSize="cover"
-                                 backgroundPosition="center">
+                            <Box
+                                backgroundImage={item.image?.responsiveImage?.src}
+                                backgroundSize="cover"
+                                backgroundPosition="center">
                             </Box>
                         </AspectRatio>
-                    </Box>
+                    </Box>;
                 })
             }
         </Box>
     </ContentBlock>;
-}
+};
 
 export default CarouselBlock;
