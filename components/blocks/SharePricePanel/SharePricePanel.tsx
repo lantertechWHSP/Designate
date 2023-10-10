@@ -1,9 +1,9 @@
 import React, { ReactNode } from 'react';
 import { Container, Box, Grid, GridItem, Heading } from '@chakra-ui/react';
 import SharePriceOverview from '~/components/blocks/SharePricePanel/SharePriceOverview';
-import SharePriceChart from '~/components/blocks/SharePricePanel/charts/SharePriceChart/SharePriceChart';
+import SharePriceChart from '~/components/blocks/SharePricePanel/SharePriceChart';
 
-const SharePricePanel:any = () : ReactNode => {
+const SharePricePanelBlock:any = () : ReactNode => {
     return <Box background="lightGrey3" py={8}>
         <Container>
             <Grid templateColumns='repeat(5, 1fr)' gap={8}>
@@ -21,4 +21,4 @@ const SharePricePanel:any = () : ReactNode => {
     </Box>;
 };
 
-export default SharePricePanel;
+export default SharePricePanelBlock;
