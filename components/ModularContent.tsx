@@ -35,7 +35,6 @@ import PeoplePanelBlock from '~/components/blocks/PeoplePanel';
 import DividendHistoryTableBlock from '~/components/blocks/DividendHistoryTable';
 import DividendLatestTableBlock from "~/components/blocks/DividendLatestTable";
 
-import DividendsPanelBlock from '~/components/blocks/DividendsPanel/DividendsPanel';
 import SharePricePanelBlock from '~/components/blocks/SharePricePanel/SharePricePanel';
 import ShareQuoteTableBlock from '~/components/blocks/ShareQuoteTable';
 import ShareHistoricalPricesTableBlock from '~/components/blocks/ShareHistoricalPricesTable';
@@ -78,7 +77,6 @@ const blocks:any = {
     DividendHistoryTableBlock,
     DividendLatestTableBlock,
 
-    DividendsPanelBlock,
     SharePricePanelBlock,
     ShareQuoteTableBlock,
     ShareHistoricalPricesTableBlock

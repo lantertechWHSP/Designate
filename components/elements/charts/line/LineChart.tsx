@@ -138,7 +138,7 @@ const LineChart:any = ({ lines }:ILineChart) : ReactNode => {
             '.tick': {
                 fontSize: '14px',
                 fontFamily: 'Untitled Sans',
-                color: 'steelBlue3',
+                color: 'steelBlue3'
             },
             '.x-axis .domain': {
                 display: 'none'

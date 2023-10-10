@@ -23,9 +23,7 @@ const TrackRecordDividendBlock:any = ({ table }:ITrackRecordDividendBlock) : Rea
     });
 
     return <ContentBlock py={8}>
-        <BarChart data={{
-            values: chartData
-        }} />
+        <BarChart bar={chartData} />
     </ContentBlock>;
 };
 
