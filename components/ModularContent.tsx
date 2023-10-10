@@ -26,10 +26,13 @@ import DividendHistoryBlock from '~/components/blocks/DividendHistory';
 
 // About/Investment Approach
 import InvestmentPhilosophyBlock from '~/components/blocks/InvestmentPhilosophy';
-import InvestmentPortfolioTableBlock from "~/components/blocks/InvestmentPortfolioTable";
+import InvestmentPortfolioTableBlock from '~/components/blocks/InvestmentPortfolioTable';
 
 // About/Investment Portfolio
-import PeoplePanelBlock from "~/components/blocks/PeoplePanel";
+import PeoplePanelBlock from '~/components/blocks/PeoplePanel';
+
+// About/Sustainability
+import DocumentHeroPanelBlock from '~/components/blocks/DocumentHeroPanel';
 
 import LatestNewsBlock from '~/components/blocks/LatestNews/LatestNews';
 import ContactsPanelBlock from '~/components/blocks/ContactsPanel/ContactsPanel';
@@ -64,6 +67,8 @@ const blocks:any = {
     InvestmentPortfolioTableBlock,
 
     PeoplePanelBlock,
+
+    DocumentHeroPanelBlock,
 
     LatestNewsBlock,
     ContactsPanelBlock,

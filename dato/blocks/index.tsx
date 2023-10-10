@@ -30,6 +30,9 @@ import { investmentPortfolioTableRecord } from '~/dato/blocks/investmentPortfoli
 // About/Investment Portfolio
 import { peoplePanelRecord } from '~/dato/blocks/peoplePanel';
 
+// About/Sustainability
+import { documentHeroPanelRecord } from '~/dato/blocks/documentHeroPanel';
+
 
 import { latestNewsRecord } from '~/dato/blocks/latestNews';
 import { dividendsPanelRecord } from '~/dato/blocks/dividendsPanel';
@@ -103,11 +106,14 @@ export const blocks:string = `
             ${investmentPortfolioTableRecord}
         }
         
-        
         ... on PeoplePanelRecord {
             ${peoplePanelRecord}
         }
-       
+        
+        ... on DocumentHeroPanelRecord {
+            ${documentHeroPanelRecord}
+        }
+        
         
         
         
@@ -117,7 +123,6 @@ export const blocks:string = `
         ... on LatestNewsRecord {
             ${latestNewsRecord}
         }
-        
         ... on SharePricePanelRecord {
             ${sharePricePanelRecord}
         }
