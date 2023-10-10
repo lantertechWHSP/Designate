@@ -20,6 +20,8 @@ import AsxAnnouncementsPanelBlock from '~/components/blocks/AsxAnnouncementsPane
 import ContactsPanelBlock from '~/components/blocks/ContactsPanel/ContactsPanel';
 import CompanyValuesPanelBlock from '~/components/blocks/CompanyValuesPanel';
 
+import InvestmentPhilosophyBlock from '~/components/blocks/InvestmentPhilosophy';
+
 import DividendHistoryBlock from '~/components/blocks/DividendHistory';
 import ShareholderReturnsTableBlock from '~/components/blocks/ShareholderReturnsTable';
 import ShareholderReturnsChartBlock from '~/components/blocks/ShareholderReturnsChart';
@@ -47,6 +49,8 @@ const blocks:any = {
     AsxAnnouncementsPanelBlock,
     ContactsPanelBlock,
     CompanyValuesPanelBlock,
+
+    InvestmentPhilosophyBlock,
 
     DividendHistoryBlock,
     ShareholderReturnsTableBlock,

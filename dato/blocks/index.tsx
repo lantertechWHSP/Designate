@@ -17,9 +17,10 @@ import { asxAnnouncementsPanelRecord } from '~/dato/blocks/asxAnnouncementsPanel
 import { contactsPanelRecord } from '~/dato/blocks/contactsPanel';
 import { rectangleCardRecord } from '~/dato/blocks/rectangleCard';
 import { companyValuesPanelRecord } from '~/dato/blocks/companyValuesPanel';
-import { dividendHistoryRecord } from "~/dato/blocks/dividendHistory";
-import { shareholderReturnsTableRecord } from "~/dato/blocks/shareholderReturnsTable";
-import { shareholderReturnsChartRecord } from "~/dato/blocks/shareholderReturnsChart";
+import { dividendHistoryRecord } from '~/dato/blocks/dividendHistory';
+import { shareholderReturnsTableRecord } from '~/dato/blocks/shareholderReturnsTable';
+import { shareholderReturnsChartRecord } from '~/dato/blocks/shareholderReturnsChart';
+import { investmentPhilosophyRecord } from '~/dato/blocks/investmentPhilosophy';
 
 export const blocks:string = `
     blocks {
@@ -64,6 +65,9 @@ export const blocks:string = `
         }
         ... on ShareholderReturnsChartRecord {
             ${shareholderReturnsChartRecord}
+        }
+        ... on InvestmentPhilosophyRecord {
+            ${investmentPhilosophyRecord}
         }
         ... on DividendsPanelRecord {
             ${dividendsPanelRecord}
