@@ -1,14 +1,13 @@
-
 // General
 import TextBlock from '~/components/blocks/Text';
 import ImageBlock from '~/components/blocks/Image';
 import VideoBlock from '~/components/blocks/Video';
 import AudioBlock from '~/components/blocks/Audio';
 import CardContainerBlock from '~/components/blocks/CardContainer/CardContainer';
-import RectangleCardBlock from '~/components/blocks/RectangleCard';
 import OverviewBlock from '~/components/blocks/Overview';
 import AccordionBlock from '~/components/blocks/Accordion';
 import CarouselBlock from '~/components/blocks/Carousel';
+import DocumentHeroPanelBlock from '~/components/blocks/DocumentHeroPanel';
 
 // Home
 import HeroBlock from '~/components/blocks/Hero';
@@ -32,7 +31,6 @@ import InvestmentPortfolioTableBlock from '~/components/blocks/InvestmentPortfol
 import PeoplePanelBlock from '~/components/blocks/PeoplePanel';
 
 // About/Sustainability
-import DocumentHeroPanelBlock from '~/components/blocks/DocumentHeroPanel';
 
 import LatestNewsBlock from '~/components/blocks/LatestNews/LatestNews';
 import ContactsPanelBlock from '~/components/blocks/ContactsPanel/ContactsPanel';
@@ -47,10 +45,10 @@ const blocks:any = {
     VideoBlock,
     AudioBlock,
     CardContainerBlock,
-    RectangleCardBlock,
     OverviewBlock,
     AccordionBlock,
     CarouselBlock,
+    DocumentHeroPanelBlock,
 
     HeroBlock,
     HomePageOverviewBlock,
@@ -67,8 +65,6 @@ const blocks:any = {
     InvestmentPortfolioTableBlock,
 
     PeoplePanelBlock,
-
-    DocumentHeroPanelBlock,
 
     LatestNewsBlock,
     ContactsPanelBlock,

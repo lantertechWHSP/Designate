@@ -7,9 +7,9 @@ import { Image } from '~/components/elements/image';
 import { SectionLink } from "~/components/elements/sectionLink";
 
 interface IDocumentHeroPanelBlock {
-    coverImage:IImage;
-    document:IDocument;
-    description:string;
+    coverImage?:IImage;
+    document?:IDocument;
+    description?:string;
 }
 
 const DocumentHeroPanelBlock:any = ({ coverImage, document, description }:IDocumentHeroPanelBlock) : ReactNode => {
@@ -29,7 +29,7 @@ const DocumentHeroPanelBlock:any = ({ coverImage, document, description }:IDocum
                     }
                     <Box flex="1" />
                     {
-                        <SectionLink href={document.document.url} download={document.document.title} target="_blank">
+                        document?.document?.url && <SectionLink href={document?.document?.url} download={document?.document?.title} target="_blank">
                             Download
                         </SectionLink>
                     }

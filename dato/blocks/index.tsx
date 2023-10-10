@@ -4,7 +4,6 @@ import { imageRecord } from '~/dato/blocks/image';
 import { videoRecord } from '~/dato/blocks/video';
 import { audioRecord } from '~/dato/blocks/audio';
 import { cardContainerRecord } from '~/dato/blocks/cardContainer';
-import { rectangleCardRecord } from '~/dato/blocks/rectangleCard';
 import { overviewRecord } from '~/dato/blocks/overview';
 import { accordionRecord } from '~/dato/blocks/accordion';
 import { carouselRecord } from '~/dato/blocks/carousel';
@@ -59,9 +58,6 @@ export const blocks:string = `
         ... on CardContainerRecord {
             ${cardContainerRecord}
         }
-        ... on RectangleCardRecord {
-            ${rectangleCardRecord}
-        }
         ... on OverviewRecord {
             ${overviewRecord}
         }
@@ -70,6 +66,9 @@ export const blocks:string = `
         }
         ... on CarouselRecord {
             ${carouselRecord}
+        }
+        ... on DocumentHeroPanelRecord {
+            ${documentHeroPanelRecord}
         }
 
         ... on HeroRecord {
@@ -109,11 +108,6 @@ export const blocks:string = `
         ... on PeoplePanelRecord {
             ${peoplePanelRecord}
         }
-        
-        ... on DocumentHeroPanelRecord {
-            ${documentHeroPanelRecord}
-        }
-        
         
         
         
