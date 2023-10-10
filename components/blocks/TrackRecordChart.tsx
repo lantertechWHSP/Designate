@@ -5,40 +5,41 @@ import { DateTime } from 'luxon';
 import { Heading, Flex, Box, Menu, MenuButton, Button, Portal, MenuList, MenuItem } from '@chakra-ui/react';
 import { Icon, Icons } from '~/components/elements/icon';
 import { IFilter } from '~/interfaces/util/filter';
+import { IDatoTable } from '~/interfaces/util/table';
 
-interface IShareholderReturnsChartBlock {
+interface ITrackRecordChartBlockProps {
     australianSharesTable:IDatoTable<any>;
     internationalSharesTable:IDatoTable<any>;
     australianListedTable:IDatoTable<any>;
     australianBondsTable:IDatoTable<any>;
 }
 
-const ShareholderReturnsChartBlock:any = ({ australianSharesTable, internationalSharesTable, australianListedTable, australianBondsTable }:IShareholderReturnsChartBlock) : ReactNode => {
+const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesTable, australianListedTable, australianBondsTable }:ITrackRecordChartBlockProps) : ReactNode => {
     const australianShares:any = australianSharesTable.data.map((datum) => {
         return {
             value: +datum.Value,
-            date: DateTime.fromFormat(datum.Date, "d/M/yyyy")
+            date: DateTime.fromFormat(datum.Date, 'd/M/yyyy')
         };
     });
 
     const internationalShares:any = internationalSharesTable.data.map((datum) => {
         return {
             value: +datum.Value,
-            date: DateTime.fromFormat(datum.Date, "d/M/yyyy")
+            date: DateTime.fromFormat(datum.Date, 'd/M/yyyy')
         };
     });
 
     const australianListed:any = australianListedTable.data.map((datum) => {
         return {
             value: +datum.Value,
-            date: DateTime.fromFormat(datum.Date, "d/M/yyyy")
+            date: DateTime.fromFormat(datum.Date, 'd/M/yyyy')
         };
     });
 
     const australianBonds:any = australianBondsTable.data.map((datum) => {
         return {
             value: +datum.Value,
-            date: DateTime.fromFormat(datum.Date, "d/M/yyyy")
+            date: DateTime.fromFormat(datum.Date, 'd/M/yyyy')
         };
     });
 
@@ -152,4 +153,4 @@ const ShareholderReturnsChartBlock:any = ({ australianSharesTable, international
     </ContentBlock>;
 };
 
-export default ShareholderReturnsChartBlock;
+export default TrackRecordChartBlock;

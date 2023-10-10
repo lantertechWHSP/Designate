@@ -20,9 +20,9 @@ import { homePageOverviewRecord } from '~/dato/blocks/homePageOverview';
 import { asxAnnouncementsPanelRecord } from '~/dato/blocks/asxAnnouncementsPanel';
 
 // About/Track Record
-import { shareholderReturnsTableRecord } from '~/dato/blocks/shareholderReturnsTable';
-import { shareholderReturnsChartRecord } from '~/dato/blocks/shareholderReturnsChart';
-import { dividendHistoryRecord } from '~/dato/blocks/dividendHistory';
+import { trackRecordTableRecord } from '~/dato/blocks/trackRecordTable';
+import { trackRecordChartRecord } from '~/dato/blocks/trackRecordChart';
+import { trackRecordDividendRecord } from '~/dato/blocks/trackRecordDividend';
 
 // About/Investment Approach
 import { investmentPhilosophyRecord } from '~/dato/blocks/investmentPhilosophy';
@@ -36,7 +36,6 @@ import { dividendsPanelRecord } from '~/dato/blocks/dividendsPanel';
 import { sharePricePanelRecord } from '~/dato/blocks/sharePricePanel';
 import { shareQuoteTableRecord } from '~/dato/blocks/shareQuoteTable';
 import { shareHistoricalPricesTableRecord } from '~/dato/blocks/shareHistoricalPricesTable';
-
 
 export const blocks:string = `
     blocks {
@@ -94,14 +93,14 @@ export const blocks:string = `
         
 
 
-        ... on ShareholderReturnsTableRecord {
-            ${shareholderReturnsTableRecord}
+        ... on TrackRecordChartRecord {
+            ${trackRecordChartRecord}
         }
-        ... on ShareholderReturnsChartRecord {
-            ${shareholderReturnsChartRecord}
+        ... on TrackRecordTableRecord {
+            ${trackRecordTableRecord}
         }
-        ... on DividendHistoryRecord {
-            ${dividendHistoryRecord}
+        ... on TrackRecordDividendRecord {
+            ${trackRecordDividendRecord}
         }
         
         ... on InvestmentPhilosophyRecord {

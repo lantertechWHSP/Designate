@@ -1,17 +1,18 @@
 import { ReactNode } from 'react';
 import ContentBlock from '~/components/blocks/Content';
 import BarChart from '~/components/elements/charts/bar/BarChart';
+import { IDatoTable } from '~/interfaces/util/table';
 
 interface ITableData {
     Year:string;
     Value:string;
 }
 
-interface IDividendHistoryBlock {
+interface ITrackRecordDividendBlockProps {
     table: IDatoTable<ITableData>;
 }
 
-const DividendHistoryBlock:any = ({ table }:IDividendHistoryBlock) : ReactNode => {
+const TrackRecordDividendBlock:any = ({ table }:ITrackRecordDividendBlockProps) : ReactNode => {
     const chartData:any = [];
 
     table.data.map((value:ITableData) => {
@@ -28,4 +29,4 @@ const DividendHistoryBlock:any = ({ table }:IDividendHistoryBlock) : ReactNode =
     </ContentBlock>;
 };
 
-export default DividendHistoryBlock;
+export default TrackRecordDividendBlock;
