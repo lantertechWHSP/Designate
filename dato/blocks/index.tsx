@@ -21,6 +21,7 @@ import { dividendHistoryRecord } from '~/dato/blocks/dividendHistory';
 import { shareholderReturnsTableRecord } from '~/dato/blocks/shareholderReturnsTable';
 import { shareholderReturnsChartRecord } from '~/dato/blocks/shareholderReturnsChart';
 import { investmentPhilosophyRecord } from '~/dato/blocks/investmentPhilosophy';
+import { investmentPortfolioTableRecord } from '~/dato/blocks/investmentPortfolioTable';
 
 export const blocks:string = `
     blocks {
@@ -68,6 +69,9 @@ export const blocks:string = `
         }
         ... on InvestmentPhilosophyRecord {
             ${investmentPhilosophyRecord}
+        }
+        ... on InvestmentPortfolioTableRecord {
+            ${investmentPortfolioTableRecord}
         }
         ... on DividendsPanelRecord {
             ${dividendsPanelRecord}

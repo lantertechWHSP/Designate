@@ -21,6 +21,7 @@ import ContactsPanelBlock from '~/components/blocks/ContactsPanel/ContactsPanel'
 import CompanyValuesPanelBlock from '~/components/blocks/CompanyValuesPanel';
 
 import InvestmentPhilosophyBlock from '~/components/blocks/InvestmentPhilosophy';
+import InvestmentPortfolioTableBlock from "~/components/blocks/InvestmentPortfolioTable";
 
 import DividendHistoryBlock from '~/components/blocks/DividendHistory';
 import ShareholderReturnsTableBlock from '~/components/blocks/ShareholderReturnsTable';
@@ -51,6 +52,7 @@ const blocks:any = {
     CompanyValuesPanelBlock,
 
     InvestmentPhilosophyBlock,
+    InvestmentPortfolioTableBlock,
 
     DividendHistoryBlock,
     ShareholderReturnsTableBlock,

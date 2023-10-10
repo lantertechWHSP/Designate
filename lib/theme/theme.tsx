@@ -1,6 +1,6 @@
 import { extendBaseTheme } from '@chakra-ui/react';
 import chakraTheme from '@chakra-ui/theme';
-const { Modal, Menu, Badge } = chakraTheme.components;
+const { Modal, Menu, Badge, Progress } = chakraTheme.components;
 
 const colors:any = {
     // lightGrey: '#c4c4c4',
@@ -300,6 +300,9 @@ export const theme:any = extendBaseTheme({
         },
         Badge: {
             ...Badge
+        },
+        Progress: {
+            ...Progress
         }
     },
     styles: {
