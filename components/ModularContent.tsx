@@ -24,11 +24,15 @@ import ShareholderReturnsTableBlock from '~/components/blocks/ShareholderReturns
 import ShareholderReturnsChartBlock from '~/components/blocks/ShareholderReturnsChart';
 import DividendHistoryBlock from '~/components/blocks/DividendHistory';
 
+// About/Investment Approach
+import InvestmentPhilosophyBlock from '~/components/blocks/InvestmentPhilosophy';
+import InvestmentPortfolioTableBlock from "~/components/blocks/InvestmentPortfolioTable";
+
+// About/Investment Portfolio
+import PeoplePanelBlock from "~/components/blocks/PeoplePanel";
 
 import LatestNewsBlock from '~/components/blocks/LatestNews/LatestNews';
 import ContactsPanelBlock from '~/components/blocks/ContactsPanel/ContactsPanel';
-import InvestmentPhilosophyBlock from '~/components/blocks/InvestmentPhilosophy';
-import InvestmentPortfolioTableBlock from "~/components/blocks/InvestmentPortfolioTable";
 import DividendsPanelBlock from '~/components/blocks/DividendsPanel/DividendsPanel';
 import SharePricePanelBlock from '~/components/blocks/SharePricePanel/SharePricePanel';
 import ShareQuoteTableBlock from '~/components/blocks/ShareQuoteTable';
@@ -56,11 +60,13 @@ const blocks:any = {
     ShareholderReturnsChartBlock,
     DividendHistoryBlock,
 
+    InvestmentPhilosophyBlock,
+    InvestmentPortfolioTableBlock,
+
+    PeoplePanelBlock,
 
     LatestNewsBlock,
     ContactsPanelBlock,
-    InvestmentPhilosophyBlock,
-    InvestmentPortfolioTableBlock,
     DividendsPanelBlock,
     SharePricePanelBlock,
     ShareQuoteTableBlock,

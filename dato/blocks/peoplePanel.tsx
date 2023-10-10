@@ -1,6 +1,6 @@
 import { imageAttrs } from '~/dato/attrs/responsiveImageAttrs';
 
-export const peoplePanel:string = `
+export const peoplePanelRecord:string = `
     __typename
     id
     people {

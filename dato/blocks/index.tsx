@@ -23,6 +23,12 @@ import { shareholderReturnsTableRecord } from '~/dato/blocks/shareholderReturnsT
 import { shareholderReturnsChartRecord } from '~/dato/blocks/shareholderReturnsChart';
 import { dividendHistoryRecord } from '~/dato/blocks/dividendHistory';
 
+// About/Investment Approach
+import { investmentPhilosophyRecord } from '~/dato/blocks/investmentPhilosophy';
+import { investmentPortfolioTableRecord } from '~/dato/blocks/investmentPortfolioTable';
+
+// About/Investment Portfolio
+import { peoplePanelRecord } from '~/dato/blocks/peoplePanel';
 
 
 import { latestNewsRecord } from '~/dato/blocks/latestNews';
@@ -31,8 +37,7 @@ import { sharePricePanelRecord } from '~/dato/blocks/sharePricePanel';
 import { shareQuoteTableRecord } from '~/dato/blocks/shareQuoteTable';
 import { shareHistoricalPricesTableRecord } from '~/dato/blocks/shareHistoricalPricesTable';
 import { contactsPanelRecord } from '~/dato/blocks/contactsPanel';
-import { investmentPhilosophyRecord } from '~/dato/blocks/investmentPhilosophy';
-import { investmentPortfolioTableRecord } from '~/dato/blocks/investmentPortfolioTable';
+
 
 export const blocks:string = `
     blocks {
@@ -91,11 +96,18 @@ export const blocks:string = `
             ${dividendHistoryRecord}
         }
         
+        ... on InvestmentPhilosophyRecord {
+            ${investmentPhilosophyRecord}
+        }
+        ... on InvestmentPortfolioTableRecord {
+            ${investmentPortfolioTableRecord}
+        }
         
         
-        
-        
-        
+        ... on PeoplePanelRecord {
+            ${peoplePanelRecord}
+        }
+       
         
         
         
@@ -105,12 +117,7 @@ export const blocks:string = `
         ... on LatestNewsRecord {
             ${latestNewsRecord}
         }
-        ... on InvestmentPhilosophyRecord {
-            ${investmentPhilosophyRecord}
-        }
-        ... on InvestmentPortfolioTableRecord {
-            ${investmentPortfolioTableRecord}
-        }
+        
         ... on SharePricePanelRecord {
             ${sharePricePanelRecord}
         }
