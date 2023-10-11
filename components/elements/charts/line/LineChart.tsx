@@ -8,7 +8,9 @@ import { AxisLeft } from "~/components/elements/charts/line/modules/AxisLeft";
 import { AxisBottom } from "~/components/elements/charts/line/modules/AxisBottom";
 
 interface ILineChart {
-    lines: ILine[];
+    data: {
+        lines: ILine[];
+    }
 }
 
 interface ILine {
@@ -34,7 +36,7 @@ interface IMargin {
     left:number;
 }
 
-const LineChart:any = ({ lines }:ILineChart) : ReactNode => {
+const LineChart:any = ({ data }:ILineChart) : ReactNode => {
     const [width, setWidth] = useState<number>(null);
     const [height, setHeight] = useState<number>(null);
     const margin:IMargin = { top: 30, right: 30, bottom: 50, left: 0 };
@@ -49,10 +51,10 @@ const LineChart:any = ({ lines }:ILineChart) : ReactNode => {
     }, [height]);
 
     const yScale:any = useMemo<any>(() => {
-        if(lines) {
+        if(data && data.lines) {
             const flattendValues:number[] = [];
 
-            lines.map((line:ILine) => {
+            data.lines.map((line:ILine) => {
                 if(line.data) {
                     line.data.map((datum:IData) => {
                         flattendValues.push(datum.value);
@@ -66,13 +68,13 @@ const LineChart:any = ({ lines }:ILineChart) : ReactNode => {
                 .domain([0, max])
                 .range([boundsHeight, 0]);
         }
-    }, [lines, height]);
+    }, [data, height]);
 
     const xScale:any = useMemo<any>(() => {
-        if(lines) {
+        if(data && data.lines) {
             const flattendDates:number[] = [];
 
-            lines.map((line:ILine) => {
+            data.lines.map((line:ILine) => {
                 if(line.data) {
                     line.data.map((datum:IData) => {
                         flattendDates.push(datum.date.valueOf());
@@ -87,7 +89,7 @@ const LineChart:any = ({ lines }:ILineChart) : ReactNode => {
                 .domain([min, max])
                 .range([0, width]);
         }
-    }, [lines, width]);
+    }, [data, width]);
 
     const lineBuilder:any = line<IData>()
         .x((datum:IData) => xScale(datum.date))
@@ -97,7 +99,7 @@ const LineChart:any = ({ lines }:ILineChart) : ReactNode => {
         const colorGenerator:ColorGenerator = new ColorGenerator();
         const newLines:ILineDataSVG[] = [];
 
-        lines.map((line:ILine) => {
+        data.lines.map((line:ILine) => {
             if(line.data) {
                 newLines.push({
                     d: lineBuilder(line.data),
@@ -108,7 +110,7 @@ const LineChart:any = ({ lines }:ILineChart) : ReactNode => {
         });
 
         return newLines;
-    }, [lines]);
+    }, [data]);
 
     useEffect(() => {
         const setDimension:any = () : void => {
@@ -156,7 +158,7 @@ const LineChart:any = ({ lines }:ILineChart) : ReactNode => {
         {
             (boundsWidth && boundsHeight) && <svg width={width} height={height} shapeRendering={"crispEdges"}>
                 {
-                    lines && <g
+                    (data && data.lines) && <g
                         width={boundsWidth}
                         height={boundsHeight}
                         transform={`translate(${[margin.left, margin.top].join(",")})`}

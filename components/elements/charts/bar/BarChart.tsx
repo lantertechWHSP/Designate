@@ -8,7 +8,9 @@ import { Bars } from "~/components/elements/charts/bar/modules/Bars";
 import { maxBy as _maxBy, throttle as _throttle } from 'lodash';
 
 interface IBarChart {
-    bar: IData[];
+    data: {
+        bars: IData[];
+    }
 }
 
 interface IData {
@@ -23,7 +25,7 @@ interface IMargin {
     left:number;
 }
 
-const BarChart:any = ({ bar }:IBarChart) : ReactNode => {
+const BarChart:any = ({ data }:IBarChart) : ReactNode => {
     const [width, setWidth] = useState<number>(null);
     const [height, setHeight] = useState<number>(null);
     const margin:IMargin = { top: 30, right: 30, bottom: 50, left: 0 };
@@ -38,25 +40,25 @@ const BarChart:any = ({ bar }:IBarChart) : ReactNode => {
     }, [height]);
 
     const yScale:any = useMemo<any>(() => {
-        if(bar) {
+        if(data && data.bars) {
             return scaleLinear()
-                .domain([0, _maxBy(bar, (datum:IData) => {
+                .domain([0, _maxBy(data.bars, (datum:IData) => {
                     return datum.value;
                 }).value])
                 .range([boundsHeight, 0]);
         }
-    }, [bar, height]);
+    }, [data, height]);
 
     const xScale:any = useMemo<any>(() => {
-        if(bar) {
+        if(data && data.bars) {
             return scaleBand()
-                .domain(bar.map((datum:IData) => {
+                .domain(data.bars.map((datum:IData) => {
                     return datum.label;
                 }))
                 .range([0, width])
                 .padding(0.5);
         }
-    }, [bar, width]);
+    }, [data, width]);
 
     useEffect(() => {
         const setDimension:any = () : void => {
@@ -104,7 +106,7 @@ const BarChart:any = ({ bar }:IBarChart) : ReactNode => {
         {
             (boundsWidth && boundsHeight) && <svg width={width} height={height} shapeRendering={"crispEdges"}>
                 {
-                    bar && <g
+                    (data && data.bars) && <g
                         width={boundsWidth}
                         height={boundsHeight}
                         transform={`translate(${[margin.left, margin.top].join(",")})`}
@@ -112,7 +114,7 @@ const BarChart:any = ({ bar }:IBarChart) : ReactNode => {
                     >
                         <AxisLeft scale={yScale} width={width} />
                         <AxisBottom scale={xScale} transform={`translate(0, ${boundsHeight})`} />
-                        <Bars values={bar} xScale={xScale} yScale={yScale} height={boundsHeight} />
+                        <Bars values={data.bars} xScale={xScale} yScale={yScale} height={boundsHeight} />
                     </g>
                 }
             </svg>

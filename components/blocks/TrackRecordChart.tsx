@@ -149,7 +149,7 @@ const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesT
                 </Menu>
             </Box>
         </Flex>
-        <LineChart lines={lines} />
+        <LineChart data={{ lines: lines }} />
     </ContentBlock>;
 };
 
