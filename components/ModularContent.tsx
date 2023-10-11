@@ -85,7 +85,7 @@ const blocks:any = {
 };
 
 export const getBlock:any = (name:any) : any => {
-    return blocks[name?.replace('Record', 'Block')];
+    return blocks[name?.replace(/Record$/, 'Block')];
 };
 
 export const ModularContent:any = ({ content }) : any => {

@@ -93,14 +93,12 @@ export const blocks:string = `
         ... on AsxAnnouncementsPanelRecord {
             ${asxAnnouncementsPanelRecord}
         }
-        
 
-
-        ... on TrackRecordChartRecord {
-            ${trackRecordChartRecord}
-        }
         ... on TrackRecordTableRecord {
             ${trackRecordTableRecord}
+        }
+        ... on TrackRecordChartRecord {
+            ${trackRecordChartRecord}
         }
         ... on TrackRecordDividendRecord {
             ${trackRecordDividendRecord}
