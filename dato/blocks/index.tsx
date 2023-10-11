@@ -34,6 +34,7 @@ import { peoplePanelRecord } from '~/dato/blocks/peoplePanel';
 // Investor Center/Dividends
 import { dividendHistoryTableRecord } from '~/dato/blocks/dividendHistoryTable';
 import { dividendLatestTableRecord } from '~/dato/blocks/dividendLatestTable';
+import { dividendGrowthChartRecord } from '~/dato/blocks/dividendGrowthChart';
 
 import { sharePricePanelRecord } from '~/dato/blocks/sharePricePanel';
 import { shareQuoteTableRecord } from '~/dato/blocks/shareQuoteTable';
@@ -122,7 +123,10 @@ export const blocks:string = `
         ... on DividendLatestTableRecord {
             ${dividendLatestTableRecord}
         }
-        
+        ... on DividendGrowthChartRecord {
+            ${dividendGrowthChartRecord}
+        }
+
         ... on SharePricePanelRecord {
             ${sharePricePanelRecord}
         }
