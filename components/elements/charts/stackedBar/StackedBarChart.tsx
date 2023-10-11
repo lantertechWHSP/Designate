@@ -1,8 +1,17 @@
 import React, { useEffect, useMemo, useRef, useState, ReactNode, Fragment }  from 'react';
 import { Box } from '@chakra-ui/react';
-import { throttle as _throttle } from 'lodash';
+import { scaleLinear, scaleBand } from 'd3';
+import { throttle as _throttle, maxBy as _maxBy, sum as _sum } from 'lodash';
+import { AxisLeft } from '~/components/elements/charts/stackedBar/modules/AxisLeft';
+import { AxisBottom } from '~/components/elements/charts/stackedBar/modules/AxisBottom';
 
 interface IStackedBarChart {
+    stackedBar:IData[];
+}
+
+interface IData {
+    label:string;
+    values:number[];
 }
 
 interface IMargin {
@@ -12,7 +21,7 @@ interface IMargin {
     left:number;
 }
 
-const StackedBarChart:any = ({  }:IStackedBarChart) : ReactNode => {
+const StackedBarChart:any = ({  stackedBar }:IStackedBarChart) : ReactNode => {
     const [width, setWidth] = useState<number>(null);
     const [height, setHeight] = useState<number>(null);
     const margin:IMargin = { top: 30, right: 30, bottom: 50, left: 0 };
@@ -25,6 +34,27 @@ const StackedBarChart:any = ({  }:IStackedBarChart) : ReactNode => {
     const boundsHeight:number = useMemo<number>(() => {
         return height - margin.top - margin.bottom;
     }, [height]);
+
+    const yScale:any = useMemo<any>(() => {
+        if(stackedBar) {
+            return scaleLinear()
+                .domain([0, _sum(_maxBy(stackedBar, (datum:IData) => {
+                    return _sum(datum.values);
+                }).values)])
+                .range([boundsHeight, 0]);
+        }
+    }, [stackedBar, height]);
+
+    const xScale:any = useMemo<any>(() => {
+        if(stackedBar) {
+            return scaleBand()
+                .domain(stackedBar.map((datum:IData) => {
+                    return datum.label;
+                }))
+                .range([0, width])
+                .padding(0.5);
+        }
+    }, [stackedBar, width]);
 
     useEffect(() => {
         const setDimension:any = () : void => {
@@ -78,10 +108,10 @@ const StackedBarChart:any = ({  }:IStackedBarChart) : ReactNode => {
                         transform={`translate(${[margin.left, margin.top].join(",")})`}
                         overflow={"visible"}
                     >
-                        {/*<AxisLeft scale={yScale} width={width} />*/}
-                        {/*<g transform="translate(30, 0)">*/}
-                        {/*    <AxisBottom scale={xScale} transform={`translate(0, ${boundsHeight})`} />*/}
-                        {/*</g>*/}
+                        <AxisLeft scale={yScale} width={width} />
+                        <g transform="translate(30, 0)">
+                            <AxisBottom scale={xScale} transform={`translate(0, ${boundsHeight})`} />
+                        </g>
                     </g>
                 }
             </svg>
