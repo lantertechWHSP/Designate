@@ -8,7 +8,7 @@ import { ColorGenerator } from '~/lib/colorGenerator/colorGenerator';
 
 interface IStackedBarChart {
     data: {
-        groups:string;
+        groups:string[];
         rows:IRow[];
     }
 }
@@ -31,10 +31,6 @@ interface IMargin {
 }
 
 const StackedBarChart:any = ({ data }:IStackedBarChart) : ReactNode => {
-    if(!data) {
-        return;
-    }
-
     const [width, setWidth] = useState<number>(null);
     const [height, setHeight] = useState<number>(null);
     const margin:IMargin = { top: 30, right: 30, bottom: 50, left: 0 };
@@ -50,7 +46,7 @@ const StackedBarChart:any = ({ data }:IStackedBarChart) : ReactNode => {
 
     const yScale:any = useMemo<any>(() => {
         if(data && data.rows) {
-            let max = _maxBy(_flatMap(data.rows, (row:IRow) => {
+            let max:number = _maxBy(_flatMap(data.rows, (row:IRow) => {
                 return _sum(_flatMap((row.values), (datum:IData) => {
                     return datum.value;
                 }));
@@ -78,12 +74,12 @@ const StackedBarChart:any = ({ data }:IStackedBarChart) : ReactNode => {
 
     const stacked:any = useMemo<any>(() => {
         if(data.groups && data.rows) {
-            const values = [];
+            const values:any[] = [];
 
             data.rows.map((row:IRow) => {
-                let object = {
+                const object:any = {
                     label: row.label + '​',  // Add ZWSP (number casting issue in d3)
-                }
+                };
 
                 row.values.map((datum:IData) => {
                     object[datum.key] = datum.value;
@@ -95,12 +91,12 @@ const StackedBarChart:any = ({ data }:IStackedBarChart) : ReactNode => {
             return stack().keys(data.groups)(values);
         }
         return [];
-    });
+    }, [data]);
 
     const colors:any = useMemo<any>(() => {
         if(data.groups) {
             const colorGenerator:ColorGenerator = new ColorGenerator();
-            const values = [];
+            const values:any = [];
 
             data.groups.map(() => {
                 values.push(colorGenerator.next());
@@ -108,7 +104,7 @@ const StackedBarChart:any = ({ data }:IStackedBarChart) : ReactNode => {
 
             return scaleOrdinal().domain(data.groups).range(values);
         }
-    }, [data])
+    }, [data]);
 
     useEffect(() => {
         const setDimension:any = () : void => {
@@ -169,11 +165,11 @@ const StackedBarChart:any = ({ data }:IStackedBarChart) : ReactNode => {
                                 return (
                                     <g key={`group-${index}`} fill={colors(data.key)}>
                                         {data.map((d:any, innerIndex:number) => {
-                                            const label = String(d.data.label);
-                                            const y0 = yScale(d[0]);
-                                            const y1 = yScale(d[1]);
+                                            const label:string = String(d.data.label);
+                                            const y0:number = yScale(d[0]);
+                                            const y1:number = yScale(d[1]);
 
-                                            const height = Math.max(y0 - y1, 0);
+                                            const height:number = Math.max(y0 - y1, 0);
 
                                             return (
                                                 <rect

@@ -110,9 +110,6 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
 }
 
 const ReportsPage : NextPage = ({ layout, blocks, documents, doucmentsMeta, documentsFilters }:INextPageProps) : JSX.Element => {
-
-    console.log(documentsFilters);
-
     return (
         <DefaultLayout layout={layout}>
             <ModularContent content={blocks} />

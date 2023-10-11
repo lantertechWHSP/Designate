@@ -2,10 +2,10 @@ import { ReactNode } from 'react';
 import { Image as DatoImage } from 'react-datocms';
 import { Box, AspectRatio } from '@chakra-ui/react';
 import { ChakraProps } from '@chakra-ui/system';
-import { IImage } from '~/interfaces/util/image';
+import { IImage as IDatoImage } from '~/interfaces/util/image';
 
 interface IImage extends ChakraProps {
-    image?:IImage;
+    image?:IDatoImage;
     ratio?:number[];
     onClick?:() => any;
 }

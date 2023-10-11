@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import ContentBlock from '~/components/blocks/Content';
 import { ITable } from '~/interfaces/util/table';
-import { TableContainer, Table, Thead, Tr, Th, Tbody, Td } from '@chakra-ui/react';
+import { TableContainer, Table, Thead, Tr, Th, Tbody, Td, Text } from '@chakra-ui/react';
 
 interface ITableRow {
     Dividend:string;

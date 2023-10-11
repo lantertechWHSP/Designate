@@ -41,15 +41,15 @@ const DividendGrowthChart:any = ({ table }:IDividendGrowthChart) : ReactNode => 
                             value: specialDividend
                         }
                     ]
-                })
-            })
+                });
+            });
         }
 
         return {
             groups: ['InterimDividend', 'FinalDividend', 'SpecialDividend'],
             rows: values
         };
-    }
+    };
 
     const [data] = useState(getValues());
 
@@ -58,7 +58,7 @@ const DividendGrowthChart:any = ({ table }:IDividendGrowthChart) : ReactNode => 
             Continued Dividend Growth
         </Heading>
         <StackedBarChart data={data} />
-    </ContentBlock>
-}
+    </ContentBlock>;
+};
 
 export default DividendGrowthChart;
