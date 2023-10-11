@@ -31,14 +31,15 @@ import InvestmentPortfolioTableBlock from '~/components/blocks/InvestmentPortfol
 // About/Investment Portfolio
 import PeoplePanelBlock from '~/components/blocks/PeoplePanel';
 
+// Investor Center/Share Price
+import SharePricePanelBlock from '~/components/blocks/SharePricePanel/SharePricePanel';
+import ShareQuoteTableBlock from '~/components/blocks/ShareQuoteTable';
+import ShareHistoricalPricesTableBlock from '~/components/blocks/ShareHistoricalPricesTable';
+
 // Investor Center/Dividends
 import DividendHistoryTableBlock from '~/components/blocks/DividendHistoryTable';
 import DividendLatestTableBlock from '~/components/blocks/DividendLatestTable';
 import DividendGrowthChartBlock from '~/components/blocks/DividendGrowthChart';
-
-import SharePricePanelBlock from '~/components/blocks/SharePricePanel/SharePricePanel';
-import ShareQuoteTableBlock from '~/components/blocks/ShareQuoteTable';
-import ShareHistoricalPricesTableBlock from '~/components/blocks/ShareHistoricalPricesTable';
 
 const blocks:any = {
     // General
@@ -74,14 +75,15 @@ const blocks:any = {
     // About/Investment Portfolio
     PeoplePanelBlock,
 
+    // Investor Center/SharePrice
+    SharePricePanelBlock,
+    ShareQuoteTableBlock,
+    ShareHistoricalPricesTableBlock,
+
     // Investor Center/Dividends
     DividendHistoryTableBlock,
     DividendLatestTableBlock,
-    DividendGrowthChartBlock,
-
-    SharePricePanelBlock,
-    ShareQuoteTableBlock,
-    ShareHistoricalPricesTableBlock
+    DividendGrowthChartBlock
 };
 
 export const getBlock:any = (name:any) : any => {

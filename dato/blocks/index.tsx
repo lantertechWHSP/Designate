@@ -31,14 +31,15 @@ import { investmentPortfolioTableRecord } from '~/dato/blocks/investmentPortfoli
 // About/Investment Portfolio
 import { peoplePanelRecord } from '~/dato/blocks/peoplePanel';
 
+// Investor Center/Share Price
+import { sharePricePanelRecord } from '~/dato/blocks/sharePricePanel';
+import { shareQuoteTableRecord } from '~/dato/blocks/shareQuoteTable';
+import { shareHistoricalPricesTableRecord } from '~/dato/blocks/shareHistoricalPricesTable';
+
 // Investor Center/Dividends
 import { dividendHistoryTableRecord } from '~/dato/blocks/dividendHistoryTable';
 import { dividendLatestTableRecord } from '~/dato/blocks/dividendLatestTable';
 import { dividendGrowthChartRecord } from '~/dato/blocks/dividendGrowthChart';
-
-import { sharePricePanelRecord } from '~/dato/blocks/sharePricePanel';
-import { shareQuoteTableRecord } from '~/dato/blocks/shareQuoteTable';
-import { shareHistoricalPricesTableRecord } from '~/dato/blocks/shareHistoricalPricesTable';
 
 export const blocks:string = `
     blocks {
@@ -115,16 +116,6 @@ export const blocks:string = `
             ${peoplePanelRecord}
         }
 
-        ... on DividendHistoryTableRecord {
-            ${dividendHistoryTableRecord}
-        }
-        ... on DividendLatestTableRecord {
-            ${dividendLatestTableRecord}
-        }
-        ... on DividendGrowthChartRecord {
-            ${dividendGrowthChartRecord}
-        }
-
         ... on SharePricePanelRecord {
             ${sharePricePanelRecord}
         }
@@ -133,6 +124,16 @@ export const blocks:string = `
         }
         ... on ShareHistoricalPricesTableRecord {
             ${shareHistoricalPricesTableRecord}
+        }
+        
+        ... on DividendHistoryTableRecord {
+            ${dividendHistoryTableRecord}
+        }
+        ... on DividendLatestTableRecord {
+            ${dividendLatestTableRecord}
+        }
+        ... on DividendGrowthChartRecord {
+            ${dividendGrowthChartRecord}
         }
     }
 `;
