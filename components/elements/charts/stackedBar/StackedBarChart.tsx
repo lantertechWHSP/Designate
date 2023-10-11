@@ -1,21 +1,26 @@
 import React, { useEffect, useMemo, useRef, useState, ReactNode }  from 'react';
 import { Box } from '@chakra-ui/react';
 import { scaleLinear, scaleBand, scaleOrdinal, stack } from 'd3';
-import { throttle as _throttle, maxBy as _maxBy, sum as _sum, map as _map } from 'lodash';
+import { throttle as _throttle, maxBy as _maxBy, sum as _sum, flatMap as _flatMap } from 'lodash';
 import { AxisLeft } from '~/components/elements/charts/stackedBar/modules/AxisLeft';
 import { AxisBottom } from '~/components/elements/charts/stackedBar/modules/AxisBottom';
 import { ColorGenerator } from '~/lib/colorGenerator/colorGenerator';
 
 interface IStackedBarChart {
-    stackedBar: {
-        subgroups: string[]
-        data: IData[],
-    };
+    data: {
+        groups:string;
+        rows:IRow[];
+    }
+}
+
+interface IRow {
+    label:string;
+    values:IData[];
 }
 
 interface IData {
-    label:string;
-    values:number[];
+    key:string;
+    value:number;
 }
 
 interface IMargin {
@@ -25,8 +30,8 @@ interface IMargin {
     left:number;
 }
 
-const StackedBarChart:any = ({  stackedBar }:IStackedBarChart) : ReactNode => {
-    if(!stackedBar) {
+const StackedBarChart:any = ({ data }:IStackedBarChart) : ReactNode => {
+    if(!data) {
         return;
     }
 
@@ -44,69 +49,66 @@ const StackedBarChart:any = ({  stackedBar }:IStackedBarChart) : ReactNode => {
     }, [height]);
 
     const yScale:any = useMemo<any>(() => {
-        if(stackedBar.data) {
-            const max:number = _sum(_maxBy(stackedBar.data, (datum:IData) => {
-                return _sum(datum.values);
-            }).values);
+        if(data && data.rows) {
+            let max = _maxBy(_flatMap(data.rows, (row:IRow) => {
+                return _sum(_flatMap((row.values), (datum:IData) => {
+                    return datum.value;
+                }));
+            }));
+
+            // Bump up the value for aesthetics
+            max *= 1.2;
 
             return scaleLinear()
                 .domain([0, max])
                 .range([boundsHeight, 0]);
         }
-    }, [stackedBar, height]);
+    }, [data, height]);
 
     const xScale:any = useMemo<any>(() => {
-        if(stackedBar.data)  {
+        if(data && data.rows)  {
             return scaleBand()
-                .domain(stackedBar.data.map((datum:IData) => {
-                    return datum.label + '​'; // Add ZWSP (number casting issue in d3)
+                .domain(data.rows.map((row:IRow) => {
+                    return row.label + '​'; // Add ZWSP (number casting issue in d3)
                 }))
                 .range([0, width])
                 .padding(0.5);
         }
-    }, [stackedBar, width]);
+    }, [data, width]);
 
     const stacked:any = useMemo<any>(() => {
-        if(stackedBar.subgroups) {
-            const keys = [];
-
-            keys.push(..._map(stackedBar.subgroups, (value:string, index:number) => {
-                return `value${index + 1}`;
-            }))
-
+        if(data.groups && data.rows) {
             const values = [];
 
-            stackedBar.data.map((datum:IData) => {
+            data.rows.map((row:IRow) => {
                 let object = {
-                    label: datum.label + '​',  // Add ZWSP (number casting issue in d3)
+                    label: row.label + '​',  // Add ZWSP (number casting issue in d3)
                 }
-                datum.values.map((value, index:number) => {
-                    object[`value${index + 1}`] = value;
+
+                row.values.map((datum:IData) => {
+                    object[datum.key] = datum.value;
                 });
 
                 values.push(object);
             });
 
-            return stack().keys(keys)(values);
+            return stack().keys(data.groups)(values);
         }
-    }, [stackedBar]);
+        return [];
+    });
 
     const colors:any = useMemo<any>(() => {
-        const colorGenerator:ColorGenerator = new ColorGenerator();
+        if(data.groups) {
+            const colorGenerator:ColorGenerator = new ColorGenerator();
+            const values = [];
 
-        const values = [];
+            data.groups.map(() => {
+                values.push(colorGenerator.next());
+            });
 
-        stackedBar.subgroups.map(() => {
-            values.push(colorGenerator.next());
-        });
-
-        const x =  scaleOrdinal().domain(['value1', 'value2', 'value3']).range(values);
-
-        // console.log(values);
-        // console.log(x);
-
-        return x;
-    })
+            return scaleOrdinal().domain(data.groups).range(values);
+        }
+    }, [data])
 
     useEffect(() => {
         const setDimension:any = () : void => {
@@ -171,13 +173,15 @@ const StackedBarChart:any = ({  stackedBar }:IStackedBarChart) : ReactNode => {
                                             const y0 = yScale(d[0]);
                                             const y1 = yScale(d[1]);
 
+                                            const height = Math.max(y0 - y1, 0);
+
                                             return (
                                                 <rect
                                                     key={`rect-${innerIndex}`}
                                                     x={xScale(label)}
                                                     y={y1}
                                                     width={xScale.bandwidth()}
-                                                    height={y0 - y1 || 0}
+                                                    height={height}
                                                 />
                                             );
                                         })}

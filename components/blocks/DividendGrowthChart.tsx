@@ -27,24 +27,37 @@ const DividendGrowthChart:any = ({ table }:IDividendGrowthChart) : ReactNode => 
 
                 values.push({
                     label: row.Year,
-                    values: [interimDividend, finalDividend, specialDividend]
+                    values: [
+                        {
+                            key: 'InterimDividend',
+                            value: interimDividend,
+                        },
+                        {
+                            key: 'FinalDividend',
+                            value: finalDividend,
+                        },
+                        {
+                            key: 'SpecialDividend',
+                            value: specialDividend
+                        }
+                    ]
                 })
             })
         }
 
         return {
-            subgroups: ['Interim Dividend', 'Finial Dividend', 'Special Dividend'],
-            data: values
+            groups: ['InterimDividend', 'FinalDividend', 'SpecialDividend'],
+            rows: values
         };
     }
 
-    const [stackedBar] = useState(getValues());
+    const [data] = useState(getValues());
 
     return <ContentBlock py={8}>
         <Heading as="h2" mb={8}>
             Continued Dividend Growth
         </Heading>
-        <StackedBarChart stackedBar={stackedBar} />
+        <StackedBarChart data={data} />
     </ContentBlock>
 }
 
