@@ -29,6 +29,8 @@ export const Link:any = forwardRef(({ id, __typename, title, slug,  ...props }:I
         newChild = title;
     }
 
+
+
     return <ChakraLink as={NextLink} href={href} {...props} ref={ref}>
         {newChild}
     </ChakraLink>;

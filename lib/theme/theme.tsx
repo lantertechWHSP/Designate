@@ -3,13 +3,22 @@ import chakraTheme from '@chakra-ui/theme';
 const { Modal, Menu, Badge, Progress } = chakraTheme.components;
 
 const colors:any = {
-    // lightGrey: '#c4c4c4',
+    // New
+    darkGreen: '#527535',
+    highlightGreen: '#B0E70F',
+
+    black: '#1C1C1C',
+
+    darkBrown: '#50513C',
+    sand: '#E4DDC1',
+
+
+    // Legacy
     ghostWhite: '#f2f4f6',
     ghostWhite2: '#f9fafb',
     mutedSteel: '#33373a',
     skyBlue: '#4594f7',
 
-    // New
     black: '#000000',
     steelBlue: '#353a3f',
     steelBlue2: '#3f4448',
@@ -25,8 +34,8 @@ const colors:any = {
 
 export const theme:any = extendBaseTheme({
     fonts: {
-        heading: `'Untitled Sans', serif`,
-        body: `'Untitled Sans', serif`,
+        heading: `'Gramatika', serif`,
+        body: `'Gramatika', serif`,
     },
     fontWeights: {
         extraLight: 200,

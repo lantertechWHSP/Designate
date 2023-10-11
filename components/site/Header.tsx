@@ -22,6 +22,8 @@ import {
 import { Icon, Icons } from '~/components/elements/icon';
 import { MenuItemLink } from '~/components/elements/menuItemLink';
 import { IMenuLink } from '~/interfaces/models/menuLink';
+import Logo from "~/components/site/Logo";
+import { Link } from '~/components/elements/link';
 
 const MotionBox:any = motion(Box);
 
@@ -48,12 +50,12 @@ const Header:any = ({menu}): ReactNode => {
                     <Container>
                         <Flex h={height} py={4} align="center">
                             <Box width={200}>
-                                <a href="/" style={{
+                                <Link href="/" style={{
                                     display: 'block',
-                                    width: '130px'
+                                    width: '188px'
                                 }}>
-                                    <img src="/images/logo-white.svg" alt="Logo" />
-                                </a>
+                                    <Logo />
+                                </Link>
                             </Box>
                             <DesktopNav menu={menu}/>
                             <Flex display={['flex', , , 'none']} flex={1}>
