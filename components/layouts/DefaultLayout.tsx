@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import Meta from '~/components/site/Meta';
-import Header from '~/components/site/Header';
-import Footer from '~/components/site/Footer';
+import SiteHeader from '~/components/site/SiteHeader';
+import SiteFooter from '~/components/site/SiteFooter';
 import PageLinks from '~/components/site/PageLinks';
 import { Heading, Container, Flex, Box } from '@chakra-ui/react';
 import { SubscriptionForm } from '~/components/elements/mailchimp/subscriptionForm';
@@ -12,7 +12,7 @@ const DefaultLayout:any = ({ layout, children }:any) : ReactNode => {
             {
                 layout?.metatags && <Meta tags={layout?.metatags} />
             }
-            <Header menu={layout?.menu} />
+            <SiteHeader darkTheme={layout.darkTheme} menu={layout?.menu} />
             <Box flex="1">
                 {
                     !layout.isHomePage && <Flex background="steelBlue2" h={['350px']} direction="column" justify="flex-end">
@@ -39,7 +39,7 @@ const DefaultLayout:any = ({ layout, children }:any) : ReactNode => {
             {
                 layout.isHomePage && <SubscriptionForm />
             }
-            <Footer {...layout?.footer} />
+            <SiteFooter {...layout?.footer} />
         </Flex>
     );
 };

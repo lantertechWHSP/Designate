@@ -11,6 +11,7 @@ export const page:string = `
                 ${seoAttrs}
             }
             ${blocks}
+            darkTheme
         }
     }
 `;

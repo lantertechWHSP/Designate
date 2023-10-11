@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import Meta from '~/components/site/Meta';
-import Header from '~/components/site/Header';
-import Footer from '~/components/site/Footer';
+import SiteHeader from '~/components/site/SiteHeader';
+import SiteFooter from '~/components/site/SiteFooter';
 import { Flex, Box, Heading, Container, Text } from '@chakra-ui/react';
 import { DateTime } from 'luxon';
 import SocialShare from '~/components/elements/socialShare';
@@ -15,7 +15,7 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
             {
                 layout?.metatags && <Meta tags={layout?.metatags} />
             }
-            <Header menu={layout?.menu} />
+            <SiteHeader menu={layout?.menu} />
             <Flex background="steelBlue2" h={['600px']} direction="column" textAlign="center" align="center" justify="center" sx={{
                 backgroundImage: layout?.page?.image?.responsiveImage?.src,
                 backgroundSize: 'cover',
@@ -51,7 +51,7 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
                     <SocialShare />
                 </Container>
             </Box>
-            <Footer {...layout?.footer} />
+            <SiteFooter {...layout?.footer} />
         </Flex>
     );
 };

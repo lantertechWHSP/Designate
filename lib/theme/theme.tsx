@@ -12,6 +12,7 @@ const colors:any = {
     darkBrown: '#50513C',
     sand: '#E4DDC1',
 
+    white: '#fff',
 
     // Legacy
     ghostWhite: '#f2f4f6',

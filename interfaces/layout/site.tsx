@@ -3,7 +3,7 @@ import { IFooter } from '~/interfaces/layout/footer';
 
 export interface ISite {
     site: ISiteMeta,
-    menu: IMenuLink;
+    menu: IMenuLink[];
     footer: IFooter;
 }
 

@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { Container, Flex, Text, Box } from '@chakra-ui/react';
 import { Link } from '~/components/elements/link';
 
-const Footer:any = ({ address, email, phone, fax, linkedin, youtube, copyright }:any) : ReactNode => {
+const SiteFooter:any = ({ address, email, phone, fax, linkedin, youtube, copyright }:any) : ReactNode => {
     return <Box as="footer" background="ghostWhite" color="steelBlue3" py={8}>
         <Container>
             <Box>
@@ -81,4 +81,4 @@ const Footer:any = ({ address, email, phone, fax, linkedin, youtube, copyright }
     </Box>;
 };
 
-export default Footer;
+export default SiteFooter;

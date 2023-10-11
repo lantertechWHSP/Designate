@@ -24,10 +24,14 @@ import { MenuItemLink } from '~/components/elements/menuItemLink';
 import { IMenuLink } from '~/interfaces/models/menuLink';
 import Logo from "~/components/site/Logo";
 import { Link } from '~/components/elements/link';
+import { IHeader } from "~/interfaces/layout/header";
 
 const MotionBox:any = motion(Box);
 
-const Header:any = ({menu}): ReactNode => {
+interface ISiteHeader extends IHeader {
+}
+
+const SiteHeader:any = ({ menu, darkTheme }:ISiteHeader): ReactNode => {
     const {isOpen, onToggle} = useDisclosure();
     const height:string = '120px';
 
@@ -39,22 +43,60 @@ const Header:any = ({menu}): ReactNode => {
         setIsMinimumScrolled(currentScrollTop > 80);
     });
 
-    return <Box as="header" h={height}>
+
+    let getBackground = () => {
+        if(isOpen || (!isScrolledDown && isMinimumScrolled)) {
+            return 'white';
+        }
+        else {
+            if(darkTheme) {
+                return 'rgba(0, 0, 0, 0)';
+            }
+            else {
+                return 'white';
+            }
+        }
+    }
+
+    let getColor = () => {
+        if(isOpen || (!isScrolledDown && isMinimumScrolled)) {
+            return 'black'
+        }
+        else {
+            if(darkTheme) {
+                return 'white';
+            }
+            else {
+                return 'black'
+            }
+        }
+    }
+
+    // const [color, setColor] = useState(darkTheme ? )
+
+    return <Box as="header">
         <Box pos="fixed" top={0} height={[height]} w="100%" zIndex={100}
             pointerEvents={isScrolledDown && isMinimumScrolled ? 'none' : 'all'} >
             <MotionBox
                 animate={{
                     opacity: !isOpen && isScrolledDown && isMinimumScrolled ? 0 : 1,
                 }}>
-                <Box background="steelBlue">
+                <Box background={getBackground()}
+                     transition="background 300ms linear">
                     <Container>
                         <Flex h={height} py={4} align="center">
                             <Box width={200}>
-                                <Link href="/" style={{
-                                    display: 'block',
-                                    width: '188px'
-                                }}>
-                                    <Logo />
+                                <Link
+                                    href="/"
+                                    style={{
+                                        display: 'block',
+                                        width: '188px'
+                                    }}>
+                                    <Box as="span"
+                                         transition="color 300ms linear"
+                                         color={getColor()}>
+                                        <Logo />
+                                    </Box>
                                 </Link>
                             </Box>
                             <DesktopNav menu={menu}/>
@@ -214,4 +256,4 @@ const MobileNavItem:any = ({item}): ReactNode => {
     </Box>;
 };
 
-export default Header;
+export default SiteHeader;

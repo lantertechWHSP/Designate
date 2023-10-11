@@ -3,6 +3,7 @@ import { ILink } from '~/interfaces/util/link';
 import { IBlock } from '~/interfaces/util/block';
 import { ISite } from '~/interfaces/layout/site';
 import { IPage } from '~/interfaces/models/page';
+import { isNil as _isNil } from 'lodash';
 
 export const resolveInternalLink:any = (link:ILink) : string => {
     if (!link) {
@@ -82,6 +83,7 @@ export const getLayoutData:any = (site:ISite, page:IPage, preview:boolean) : any
         isHomePage: page?.slug ? page?.slug === 'home' : false,
         title: page?.title || null,
         preview: preview || false,
+        darkTheme: !_isNil(page.darkTheme) ? page.darkTheme : false
     };
 };
 
