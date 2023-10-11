@@ -3,6 +3,7 @@ import ContentBlock from '~/components/blocks/Content';
 import StackedBarChart from '~/components/elements/charts/stackedBar/StackedBarChart';
 import { ITable } from '~/interfaces/util/table';
 import { isFinite as _isFinite } from 'lodash';
+import { Heading } from '@chakra-ui/react';
 
 interface ITableRow {
     Year:string;
@@ -31,12 +32,18 @@ const DividendGrowthChart:any = ({ table }:IDividendGrowthChart) : ReactNode => 
             })
         }
 
-        return values;
+        return {
+            subgroups: ['Interim Dividend', 'Finial Dividend', 'Special Dividend'],
+            data: values
+        };
     }
 
     const [stackedBar] = useState(getValues());
 
     return <ContentBlock py={8}>
+        <Heading as="h2" mb={8}>
+            Continued Dividend Growth
+        </Heading>
         <StackedBarChart stackedBar={stackedBar} />
     </ContentBlock>
 }

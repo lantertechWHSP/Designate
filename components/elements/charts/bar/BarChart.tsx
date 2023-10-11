@@ -24,6 +24,10 @@ interface IMargin {
 }
 
 const BarChart:any = ({ bar }:IBarChart) : ReactNode => {
+    if(!bar) {
+        return;
+    }
+
     const [width, setWidth] = useState<number>(null);
     const [height, setHeight] = useState<number>(null);
     const margin:IMargin = { top: 30, right: 30, bottom: 50, left: 0 };
@@ -63,7 +67,7 @@ const BarChart:any = ({ bar }:IBarChart) : ReactNode => {
             if(elementRef.current) {
                 const newWidth:number = elementRef.current.getBoundingClientRect().width;
                 setWidth(newWidth);
-                setHeight(newWidth * 0.66);
+                setHeight(newWidth * 0.4);
             }
         };
 
