@@ -1,6 +1,6 @@
 import ContentBlock from "~/components/blocks/Content";
 import { ReactNode } from 'react';
-import { Box, Heading, Grid, GridItem, Link } from '@chakra-ui/react';
+import { Box, Heading, Grid, GridItem, Link, Flex } from '@chakra-ui/react';
 import { Image } from '~/components/elements/image';
 import { IImage } from '~/interfaces/util/image';
 import {SectionLink} from "~/components/elements/sectionLink";
@@ -24,19 +24,19 @@ const HomePageOverviewBlock:any = ({ description, imageMain, imageSide, imageSid
                 </SectionLink>
             </Box>
         }
-        <Grid templateRows='repeat(2, 1fr)'
-            templateColumns='repeat(2, 1fr)'
-            gap={8}>
-            <GridItem rowSpan={2}>
-                <Image image={imageMain} ratio={[ 1 / 1 ]} />
-            </GridItem>
-            <GridItem>
-                <Image image={imageSide} ratio={[ 2.1 / 1]} />
-            </GridItem>
-            <GridItem>
-                <Image image={imageSide2}  ratio={[ 2.1 / 1]}  />
-            </GridItem>
-        </Grid>
+        <Flex direction="row" mx={[-2, -2, -4]} overflow="hidden">
+            <Box px={[2, 2, 4]}>
+                <Image image={imageMain} ratio={[1]} />
+            </Box>
+            <Box px={[2, 2, 4]} my={[-4, -4, -8]}>
+                <Box py={[2, 2, 4]}>
+                    <Image image={imageSide} ratio={[ 2 / 1 ]} />
+                </Box>
+                <Box py={[2, 2, 4]}>
+                    <Image image={imageSide2}  ratio={[ 2 / 1 ]}  />
+                </Box>
+            </Box>
+        </Flex>
     </ContentBlock>;
 };
 
