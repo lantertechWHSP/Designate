@@ -9,11 +9,11 @@ interface ICarouselItem {
     image:IImage;
 }
 
-interface ICarousel {
+interface ICarouselBlock {
     items:ICarouselItem[];
 }
 
-const CarouselBlock:any = ({ items }:ICarousel) : ReactNode => {
+const CarouselBlock:any = ({ items }:ICarouselBlock) : ReactNode => {
     const [sliderRef] = useKeenSlider();
 
     return <ContentBlock py={8}>

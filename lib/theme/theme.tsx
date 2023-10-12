@@ -25,25 +25,26 @@ const colors:any = {
 
     success: '#e8f1c8',
     positive: '#e8f1c8',
+
     // negative: '#'
 
     // Legacy
     // ghostWhite: '#f2f4f6',
-    ghostWhite2: '#f9fafb',
-    mutedSteel: '#33373a',
-    skyBlue: '#4594f7',
+    // ghostWhite2: '#f9fafb',
+    // mutedSteel: '#33373a',
+    // skyBlue: '#4594f7',
 
-    black: '#000000',
-    steelBlue: '#353a3f',
-    steelBlue2: '#3f4448',
-    steelBlue3: '#667085',
+    // black: '#000000',
+    // steelBlue: '#353a3f',
+    // steelBlue2: '#3f4448',
+    // steelBlue3: '#667085',
     // white: '#fff',
     // grey: '#999',
     // lightGrey: '#c4c4c4',
-    lightGrey2: '#ddd',
-    lightGrey3: '#f1f2f5',
-    green: '#00ce7d',
-    red: '#df322f'
+    // lightGrey2: '#ddd',
+    // lightGrey3: '#f1f2f5',
+    // green: '#00ce7d',
+    // red: '#df322f'
 
 };
 
@@ -180,15 +181,19 @@ export const theme:any = extendBaseTheme({
                 lineHeight: ['26px']
             },
             variants: {
-                listItemDate: {
-                    fontSize: [18],
-                    lineHeight: [1.35],
-                    fontWeight: 400,
-                    color: 'steelBlue3'
-                },
-                error: {
-                    color: 'red'
+                sectionDescription: {
+                    fontSize: ['18px'],
+                    color: 'darkBrown'
                 }
+                // listItemDate: {
+                //     fontSize: [18],
+                //     lineHeight: [1.35],
+                //     fontWeight: 400,
+                //     color: 'steelBlue3'
+                // },
+                // error: {
+                //     color: 'red'
+                // }
             }
         },
         Code: {
@@ -397,7 +402,7 @@ export const theme:any = extendBaseTheme({
                 mb: 4
             },
             blockquote: {
-                borderLeft: `4px solid ${colors.skyBlue}`,
+                // borderLeft: `4px solid ${colors.skyBlue}`,
                 pl: 8,
                 mb: 4
             },

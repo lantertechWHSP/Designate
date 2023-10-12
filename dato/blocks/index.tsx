@@ -3,8 +3,8 @@ import { textRecord } from '~/dato/blocks/text';
 import { imageRecord } from '~/dato/blocks/image';
 import { videoRecord } from '~/dato/blocks/video';
 import { audioRecord } from '~/dato/blocks/audio';
-import { cardContainerRecord } from '~/dato/blocks/cardContainer';
 import { overviewRecord } from '~/dato/blocks/overview';
+import { cardPanelRecord } from '~/dato/blocks/cardPanel';
 import { accordionRecord } from '~/dato/blocks/accordion';
 import { carouselRecord } from '~/dato/blocks/carousel';
 
@@ -55,11 +55,11 @@ export const blocks:string = `
         ... on AudioRecord {
             ${audioRecord}
         }
-        ... on CardContainerRecord {
-            ${cardContainerRecord}
-        }
         ... on OverviewRecord {
             ${overviewRecord}
+        }
+        ... on CardPanelRecord {
+            ${cardPanelRecord}
         }
         ... on AccordionRecord {
             ${accordionRecord}

@@ -10,8 +10,8 @@ export const page:string = `
             seo: _seoMetaTags {
                 ${seoAttrs}
             }
-            ${blocks}
             darkTheme
+            ${blocks}
         }
     }
 `;

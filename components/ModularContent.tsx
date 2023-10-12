@@ -3,8 +3,8 @@ import TextBlock from '~/components/blocks/Text';
 import ImageBlock from '~/components/blocks/Image';
 import VideoBlock from '~/components/blocks/Video';
 import AudioBlock from '~/components/blocks/Audio';
-import CardContainerBlock from '~/components/blocks/CardContainer/CardContainer';
 import OverviewBlock from '~/components/blocks/Overview';
+import CardPanelBlock from '~/components/blocks/CardPanel';
 import AccordionBlock from '~/components/blocks/Accordion';
 import CarouselBlock from '~/components/blocks/Carousel';
 
@@ -47,8 +47,8 @@ const blocks:any = {
     ImageBlock,
     VideoBlock,
     AudioBlock,
-    CardContainerBlock,
     OverviewBlock,
+    CardPanelBlock,
     AccordionBlock,
     CarouselBlock,
 
