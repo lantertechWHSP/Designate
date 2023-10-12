@@ -74,10 +74,12 @@ const SiteHeader:any = ({ menu, darkTheme }:ISiteHeader): ReactNode => {
         }
     }
 
+    const [background, setBackground] = useState(getBackground());
     const [color, setColor] = useState(getColor());
 
     useEffect(() => {
         setColor(getColor());
+        setBackground(getBackground());
     }, [isOpen, isScrolledDown, isMinimumScrolled])
 
     return <Box as="header">
@@ -87,12 +89,12 @@ const SiteHeader:any = ({ menu, darkTheme }:ISiteHeader): ReactNode => {
                 animate={{
                     opacity: !isOpen && isScrolledDown && isMinimumScrolled ? 0 : 1,
                 }}>
-                <Box background={getBackground()}
+                <Box background={background}
                      transition="background 300ms linear">
                     <Container>
                         <Flex h={height} py={4} align="center">
                             <Grid templateColumns='repeat(12, 1fr)' width="100%">
-                                <GridItem colSpan={3}>
+                                <GridItem colSpan={[3]}>
                                     <Flex height="48px" align="center">
                                         <Link
                                             href="/"
@@ -110,18 +112,17 @@ const SiteHeader:any = ({ menu, darkTheme }:ISiteHeader): ReactNode => {
                                         </Link>
                                     </Flex>
                                 </GridItem>
-                                <GridItem colSpan={7}>
+                                <GridItem colSpan={7} display={['none', , , 'flex']}>
                                     <DesktopNav menu={menu} color={color}/>
                                 </GridItem>
-                                <GridItem colSpan={2}>
+                                <GridItem colSpan={[9, , ,2]}>
                                     <Link href="/contact" sx={{
                                         color: color,
-                                        borderColor: color,
                                         fontWeight: 700,
                                         padding: '0 20px',
                                         lineHeight: '48px',
                                         height: '48px',
-                                        border: '1px solid',
+                                        border: `1px solid ${color === 'white' ? `rgba(255, 255, 255, 0.5)` : `rgba(0, 0, 0, 0.5)`}`,
                                         borderRadius: '24px',
                                         display: 'block',
                                         textAlign: 'center'
@@ -171,7 +172,7 @@ const DestopPopoverTrigger:any  = ({item, color}): ReactNode => {
 };
 
 const DesktopNav:any = ({menu, color}): ReactNode => {
-    return <Flex as="nav" display={['none', , , 'flex']} height="48px" align="center">
+    return <Flex as="nav"  height="48px" align="center">
         {
             Array.isArray(menu) && menu.length > 0 && menu.map((item: IMenuLink, index: number) => {
                 return Array.isArray(item.children) && item.children.length > 0 ?
