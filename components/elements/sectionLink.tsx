@@ -11,8 +11,7 @@ export const SectionLink:any = ({ ...props }:ISectionLink) => {
               display="inline-flex"
               borderBottom="1px solid"
               borderColor="darkBrownBlur"
-              fontWeight={700}
-              py="3px">
+              fontWeight={700}>
             <Text as="span" mr={2}>
                 {props.children}
             </Text>

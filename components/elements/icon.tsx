@@ -18,6 +18,7 @@ interface IIcon {
     icon:Icons;
     w:number;
     h:number
+    fill?:string;
 }
 
 export const Icon:any = ({icon, w = 16, h = 16}:IIcon) : JSX.Element => {

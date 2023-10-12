@@ -1,9 +1,9 @@
 import { ReactNode } from 'react';
-import { Box, Heading, Text, Flex, SimpleGrid, Divider } from '@chakra-ui/react';
+import { Box, Heading, Text, Flex, SimpleGrid, Divider, Badge, Link as ChakraLink } from '@chakra-ui/react';
 import ContentBlock from '~/components/blocks/Content';
 import { YourIR } from 'yourir-next';
 import { Icon, Icons } from '~/components/elements/icon';
-import { SectionLink } from '~/components/elements/sectionLink';
+import { SectionLink, SectionLinkButton } from '~/components/elements/sectionLink';
 
 interface IInvestorPanelBlock {
     displayHeadline?:boolean;
@@ -12,14 +12,14 @@ interface IInvestorPanelBlock {
 const InvestorPanelBlock:any = ({ displayHeadline }:IInvestorPanelBlock) : ReactNode => {
     return <ContentBlock py={8}>
         {
-            displayHeadline && <Flex align="center" mb={8}>
+            displayHeadline && <Flex align="center" mb={4}>
                 <Heading as="h2" variant="sectionHeading">
                     Investors
                 </Heading>
                 <Box flex="1" />
-                <SectionLink href="/news">
+                <SectionLinkButton href="/news">
                     Investor Overview
-                </SectionLink>
+                </SectionLinkButton>
             </Flex>
         }
         <Box py={8}>
@@ -29,35 +29,82 @@ const InvestorPanelBlock:any = ({ displayHeadline }:IInvestorPanelBlock) : React
                         <Heading as="h3" variant="sectionSubheading" mb={4}>
                             Share Price Performance
                         </Heading>
-                        <Text>
-                            <Text as="span" fontWeight={500} data-yourir="shortName"></Text>
-                            {'\u00A0'}
-                            <Text as="span" fontWeight={500} color="steelBlue3">
-                                <span data-yourir="market"></span>:<span data-yourir="symbol"></span>
-                            </Text>
-                        </Text>
+                        <Box borderTop="1px solid" borderColor="lightGrey2" py={4}>
+                            <Text fontSize={['72px']}
+                                  lineHeight={['80px']}
+                                  fontWeight={500}
+                                  color="darkBrown"
+                                  data-yourir="price showCurrency=true minDecimals=2 maxDecimals=2" />
+                        </Box>
+                        <Box sx={{
+                            '.chakra-badge.yourir-positive': {
+                                background: 'positive'
+                            },
+                            '.chakra-badge.yourir-negative': {
+                                background: 'negative',
+                            },
+                            '.yourir-change .yourir-positive': {
+                                 color: 'darkBrown'
+                            },
+                            '.yourir-change .yourir-negative': {
+                                color: 'darkBrown'
+                            },
+                            '.yourir-pct-symbol .yourir-positive': {
+                                color: 'darkBrown'
+                            },
+                            '.yourir-pct-symbol .yourir-negative': {
+                                color: 'darkBrown'
+                            },
+                            '.yourir-pct-change .yourir-positive': {
+                                color: 'darkBrown'
+                            },
+                            '.yourir-pct-change .yourir-negative': {
+                                color: 'darkBrown'
+                            }
+                        }}>
+                            <Badge align="baseline" data-yourir="changeSignCSS" color="darkBrown">
+                                <Box as="span"
+                                     data-yourir="changeSignCSS"
+                                     mr={1}
+                                     sx={{
+                                        '&.yourir-positive:before': {
+                                            color: 'darkBrown',
+                                            content: "'\\2197'"
+                                        },
+                                        '&.yourir-negative:before': {
+                                            color: 'darkBrown',
+                                            content: "'\\2198'"
+                                        },
+                                        '&.yourir-zero:before': { content: "'-'" }
+                                    }}
+                                />
+                                <Text as="span" color="darkBrown" data-yourir="change maxDecimals=2" />
+                                {'\u00A0'}
+                                (<Text as="span" color="darkBrown" data-yourir="pctChange" />)
+                            </Badge>
+                        </Box>
                         <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" height="0" width="0">
                             <defs>
                                 <linearGradient id="priceGradient" gradientTransform="rotate(90)">
-                                    <stop offset="0%" stopColor="black" />
-                                    <stop offset="100%" stopColor="white" />
+                                    <stop offset="0%" stopColor="rgba(80, 81, 60, 0.2)" />
+                                    <stop offset="100%" stopColor="rgba(80, 81, 60, 0.2)" />
                                 </linearGradient>
                             </defs>
                         </svg>
                         <Box w="100%"
                             sx={{
                                 '.yourir-chart': {
-                                    padding: '40px 0',
+                                    padding: '40px 0 0',
                                     borderBottomWidth: '1px',
                                     borderStyle: 'solid',
-                                    borderColor: 'lightGrey2',
-                                    marginBottom: '30px'
+                                    borderColor: 'darkBrown',
+                                    color: 'darkBrown'
                                 },
                                 '.yourir-chart-price-fill': {
                                     fill: `url(#priceGradient)`
                                 },
                                 '.yourir-chart-price': {
-                                    stroke: 'black',
+                                    stroke: 'darkBrown',
                                     strokeWidth: '1px',
                                 },
                                 '.yourir-chart-yaxis-label': {
@@ -68,11 +115,15 @@ const InvestorPanelBlock:any = ({ displayHeadline }:IInvestorPanelBlock) : React
                                     left: '0',
                                     marginRight: '0',
                                     fontSize: '12px',
-                                    color: 'grey'
+                                    color: 'darkGrey'
+                                },
+                                '.yourir-chart-xaxis': {
+                                    position: 'relative',
+                                    top: '-40px'
                                 },
                                 '.yourir-chart-xaxis-label': {
                                     fontSize: '12px',
-                                    color: 'grey'
+                                    color: 'darkGrey'
                                 },
                                 '.yourir-chart-panel-border-bottom': {
                                     display: 'none'
@@ -92,55 +143,6 @@ const InvestorPanelBlock:any = ({ displayHeadline }:IInvestorPanelBlock) : React
                                 <Box data-yourir="plots" />
                             </div>
                         </Box>
-                        <SimpleGrid columns={[1, 1, 2]} mb={8}>
-                            <Box>
-                                <label>Price</label>
-                                <Text fontSize={['48px']}
-                                    lineHeight={['48px']}
-                                    fontWeight={500}
-                                    data-yourir="price showCurrency=true minDecimals=2 maxDecimals=2" />
-                                <Box fontSize={['16px']}
-                                    lineHeight={['30px']}
-                                    fontWeight={500}
-                                    sx={{
-                                        '.yourir-positive': {
-                                            color: 'green'
-                                        },
-                                        'yourir-negative': {
-                                            color: 'red'
-                                        }
-                                    }}>
-                                    <Flex align="baseline" data-yourir="changeSignCSS">
-                                        <Box
-                                            data-yourir="changeSignCSS"
-                                            mr={1}
-                                            sx={{
-                                                '&.yourir-positive:before': {
-                                                    color: 'green',
-                                                    content: "'\\25b2'"
-                                                },
-                                                '&.yourir-negative:before': {
-                                                    color: 'red',
-                                                    content: "'\\25bc'"
-                                                },
-                                                '&.yourir-zero:before': { content: "'-'" }
-                                            }}
-                                        />
-                                        <Text as="span" data-yourir="change" />
-                                        {'\u00A0'}
-                                        (<Text as="span" data-yourir="pctChange" />)
-                                    </Flex>
-                                </Box>
-                            </Box>
-                            <Box>
-                                <label>Market Cap</label>
-                                <Text fontSize={['20px']}
-                                    lineHeight={['26px']}
-                                    fontWeight={500}
-                                    data-yourir="marketCap showCurrency=true minDecimals=2 maxDecimals=2"></Text>
-                            </Box>
-                        </SimpleGrid>
-                        <Divider />
                         <Box flex="1" />
                         <Box py={8}>
                             <SectionLink href="/investor-centre/share-price-information">
@@ -150,29 +152,30 @@ const InvestorPanelBlock:any = ({ displayHeadline }:IInvestorPanelBlock) : React
                     </Flex>
                     <Flex direction="column">
                         <Heading as="h3" variant="sectionSubheading" mb={4}>
-                            Latest ASX Announcements
+                            ASX Announcements
                         </Heading>
-                        <Box data-yourir="announcements pageSize=3">
+                        <Box data-yourir="announcements pageSize=5" borderBottom="1px solid" borderColor="darkBrown">
                             <Box data-yourir="items">
-                                <Flex borderTop="1px solid"
-                                    borderColor="lightGrey2"
-                                    direction="row"
-                                    align="center"
-                                    py={[2, 2, 3]}>
-                                    <Box>
-                                        <Heading data-yourir="$cur.heading"
-                                            as="h3"
-                                            variant="listItem" />
-                                        <Heading data-yourir="$cur.date format='DD/MM/YYYY'"
-                                            as="span"
-                                            variant="label" />
-                                    </Box>
-                                    <Box flex="1" />
-                                    <Icon icon={Icons.ChevronRight} />
+                                <Flex role="group"
+                                      borderTop="1px solid"
+                                      borderColor="lightGrey2"
+                                      direction="row"
+                                      color="darkBrownBlur"
+                                      align="center"
+                                      py={[4, 4, '27px']}>
+                                    <Heading data-yourir="$cur.heading"
+                                        as="h3"
+                                        variant="listItem" mr={2} />
+                                    <Heading data-yourir="$cur.date format='DD.MM.YY'"
+                                        as="span"
+                                        variant="listLabel" mr={2} />
+                                    <Box flex={1} />
+                                    <ChakraLink data-yourir="linkAnnouncement" cursor="pointer" color="darkBrownBlur">
+                                        <Icon icon={Icons.ChevronRight} />
+                                    </ChakraLink>
                                 </Flex>
                             </Box>
                         </Box>
-                        <Divider />
                         <Box flex="1" />
                         <Box py={8}>
                             <SectionLink href="investor-centre/asx-announcements">

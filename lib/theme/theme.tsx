@@ -15,13 +15,20 @@ const colors:any = {
     sand: '#E4DDC1',
 
     white: '#fff',
+    ghostWhite: '#f8f8f8',
 
+    darkGrey: '#969696',
     grey: '#CBCBC5',
 
     lightGrey: '#c4c4c4',
+    lightGrey2: '#DEE2E6',
+
+    success: '#e8f1c8',
+    positive: '#e8f1c8',
+    // negative: '#'
 
     // Legacy
-    ghostWhite: '#f2f4f6',
+    // ghostWhite: '#f2f4f6',
     ghostWhite2: '#f9fafb',
     mutedSteel: '#33373a',
     skyBlue: '#4594f7',
@@ -37,6 +44,7 @@ const colors:any = {
     lightGrey3: '#f1f2f5',
     green: '#00ce7d',
     red: '#df322f'
+
 };
 
 export const theme:any = extendBaseTheme({
@@ -82,70 +90,88 @@ export const theme:any = extendBaseTheme({
                     lineHeight: ['48px'],
                     fontWeight: 700,
                 },
+                sectionSubheading: {
+                    fontSize: ['28px'],
+                    lineHeight: ['32px']
+                },
+
+                listItem: {
+                    fontSize: ['21px'],
+                    fontWeight: 500,
+                    color: 'darkBrown',
+                    a: {
+                        color: 'darkBrown'
+                    }
+                },
+                listLabel: {
+                    color: 'darkBrownBlur',
+                    fontSize: ['21px'],
+                    fontWeight: 500,
+                }
 
 
                 /// Legacy
-                h1: {
-                    fontSize: ['50px'],
-                    lineHeight: ['60px'],
-                    fontWeight: 500,
-                },
-                h2: {
-                    fontSize: ['40px'],
-                    lineHeight: ['50px'],
-                    fontWeight: 500,
-                },
-                h3: {
-                    fontSize: ['30px'],
-                    lineHeight: ['40px'],
-                    fontWeight: 500,
-                },
-                h4: {
-                    fontSize: ['20px'],
-                    lineHeight: ['30px'],
-                    fontWeight: 500,
-                },
-                h5: {
-                    fontSize: ['16px'],
-                    lineHeight: ['24px'],
-                    fontWeight: 500,
-                },
-                h6: {
-                    fontSize: ['14px'],
-                    lineHeight: ['18px'],
-                    fontWeight: 500,
-                },
+                // h1: {
+                //     fontSize: ['50px'],
+                //     lineHeight: ['60px'],
+                //     fontWeight: 500,
+                // },
+                // h2: {
+                //     fontSize: ['40px'],
+                //     lineHeight: ['50px'],
+                //     fontWeight: 500,
+                // },
+                // h3: {
+                //     fontSize: ['30px'],
+                //     lineHeight: ['40px'],
+                //     fontWeight: 500,
+                // },
+                // h4: {
+                //     fontSize: ['20px'],
+                //     lineHeight: ['30px'],
+                //     fontWeight: 500,
+                // },
+                // h5: {
+                //     fontSize: ['16px'],
+                //     lineHeight: ['24px'],
+                //     fontWeight: 500,
+                // },
+                // h6: {
+                //     fontSize: ['14px'],
+                //     lineHeight: ['18px'],
+                //     fontWeight: 500,
+                // },
                 // sectionHeading: {
                 //     fontSize: ['40px'],
                 //     lineHeight: ['60px'],
                 //     fontWeight: 500,
                 // },
-                sectionSubheading: {
-                    fontSize: ['32px'],
-                    lineHeight: ['48px'],
-                    fontWeight: 500,
-                },
-                pageLinksHeading: {
-                    fontSize: ['20px'],
-                    lineHeight: ['30px'],
-                    fontWeight: 500,
-                },
-                listItem: {
-                    color: 'black',
-                    fontSize: ['18px'],
-                    lineHeight: ['26px'],
-                    fontWeight: 500,
-                    a: {
-                        color: 'black'
-                    }
-                },
-
-                label: {
-                    fontSize: ['16px'],
-                    lineHeight: ['18px'],
-                    color: 'lightGrey',
-                    fontWeight: 400
-                }
+                // sectionSubheading: {
+                //     fontSize: ['32px'],
+                //     lineHeight: ['48px'],
+                //     fontWeight: 500,
+                // },
+                // pageLinksHeading: {
+                //     fontSize: ['20px'],
+                //     lineHeight: ['30px'],
+                //     fontWeight: 500,
+                // },
+                // listItem: {
+                //     color: 'black',
+                //     fontSize: ['18px'],
+                //     lineHeight: ['26px'],
+                //     fontWeight: 500,
+                //     a: {
+                //         color: 'black'
+                //     }
+                // },
+                //
+                // label: {
+                //     fontSize: ['16px'],
+                //     lineHeight: ['18px'],
+                //     color: 'lightGrey',
+                //     fontWeight: 400
+                // }
             },
         },
         Text: {
@@ -331,7 +357,14 @@ export const theme:any = extendBaseTheme({
             }
         },
         Badge: {
-            ...Badge
+            ...Badge,
+            baseStyle: {
+                height: '30px',
+                lineHeight: '30px',
+                borderRadius: '15px',
+                px: 2,
+                background: 'sand'
+            },
         },
         Progress: {
             ...Progress
