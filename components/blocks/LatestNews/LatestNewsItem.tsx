@@ -3,7 +3,8 @@ import { IPost } from '~/interfaces/models/post';
 import { Flex, Box, Heading } from '@chakra-ui/react';
 import { DateTime } from 'luxon';
 import { SectionLink } from '~/components/elements/sectionLink';
-import {Image} from "~/components/elements/image";
+import { Image } from '~/components/elements/image';
+import { Link } from '~/components/elements/link';
 
 interface ILatestNewsItem extends IPost {
 }
@@ -13,10 +14,18 @@ const LatestNewsItem:any = ({ title, image, publishDate, slug }:ILatestNewsItem)
 
     return <Flex direction="column" py={4}>
         {
-            <Image image={image} ratio={2/1} mb={4} />
+            slug ? <Link href={`news/${slug}`}>
+                <Image image={image} ratio={2/1} mb={4} />
+            </Link> : <>
+                <Image image={image} ratio={2/1} mb={4} />
+            </>
         }
         {
-            title && <Heading as="h3" fontSize={['21px']} lineHeight={['30px']}>
+            slug && title ? <Link color="black" href={`/news/${slug}`}>
+                <Heading as="h3" fontSize={['21px']} lineHeight={['30px']}>
+                    {title}
+                </Heading>
+            </Link> : title && <Heading as="h3" fontSize={['21px']} lineHeight={['30px']}>
                 {title}
             </Heading>
         }

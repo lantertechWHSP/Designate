@@ -43,7 +43,13 @@ const CardPanelBlock:any = ({ annotation, title, description, image, link, align
                 }
             </Flex>
             <Box width="50%">
-                <Image image={image} ratio={[3 / 2]} />
+                {
+                    link ? <Link {...link}>
+                        <Image image={image} ratio={[3 / 2]} />
+                    </Link> : <>
+                        <Image image={image} ratio={[3 / 2]} />
+                    </>
+                }
             </Box>
         </Flex>
     </ContentBlock>

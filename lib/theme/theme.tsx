@@ -9,12 +9,14 @@ const colors:any = {
 
     black: '#1C1C1C',
     blackBlur: 'rgba(28, 28, 28, 0.4)',
+    black2: '#1B2024',
 
     darkBrown: '#50513C',
     darkBrownBlur: 'rgba(80, 81, 60, 0.2)',
     sand: '#E4DDC1',
 
     white: '#fff',
+    whiteBlur: 'rgba(255, 255, 255, 0.7)',
     ghostWhite: '#f8f8f8',
 
     darkGrey: '#969696',
@@ -25,6 +27,9 @@ const colors:any = {
 
     success: '#e8f1c8',
     positive: '#e8f1c8',
+    negative: '#f9c9c8',
+
+    error: '#f17674',
 
     // negative: '#'
 
@@ -184,16 +189,16 @@ export const theme:any = extendBaseTheme({
                 sectionDescription: {
                     fontSize: ['18px'],
                     color: 'darkBrown'
-                }
+                },
                 // listItemDate: {
                 //     fontSize: [18],
                 //     lineHeight: [1.35],
                 //     fontWeight: 400,
                 //     color: 'steelBlue3'
                 // },
-                // error: {
-                //     color: 'red'
-                // }
+                error: {
+                    color: 'error'
+                }
             }
         },
         Code: {

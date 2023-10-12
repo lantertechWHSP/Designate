@@ -1,8 +1,12 @@
 import { ReactNode } from 'react';
 import { Container, Flex, Text, Box } from '@chakra-ui/react';
 import { Link } from '~/components/elements/link';
+import { IFooter } from '~/interfaces/layout/footer';
 
-const SiteFooter:any = ({ address, email, phone, fax, linkedin, youtube, copyright }:any) : ReactNode => {
+interface ISiteFooter extends IFooter {
+}
+
+const SiteFooter:any = ({ address, email, phone, fax, linkedin, youtube, copyright }:ISiteFooter) : ReactNode => {
     return <Box as="footer" background="ghostWhite" color="steelBlue3" py={8}>
         <Container>
             <Box>

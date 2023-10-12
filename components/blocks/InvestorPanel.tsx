@@ -37,6 +37,9 @@ const InvestorPanelBlock:any = ({ displayHeadline }:IInvestorPanelBlock) : React
                                   color="darkBrown"
                                   data-yourir="price showCurrency=true minDecimals=2 maxDecimals=2" />
                             <Box sx={{
+                                '.chakra-badge.yourir-zero': {
+                                    background: 'lightGrey'
+                                },
                                 '.chakra-badge.yourir-positive': {
                                     background: 'positive'
                                 },
@@ -60,6 +63,9 @@ const InvestorPanelBlock:any = ({ displayHeadline }:IInvestorPanelBlock) : React
                                 },
                                 '.yourir-pct-change .yourir-negative': {
                                     color: 'darkBrown'
+                                },
+                                '.yourir-zero .percent': {
+                                    display: 'none'
                                 }
                             }}>
                                 <Badge align="baseline" data-yourir="changeSignCSS" color="darkBrown">
@@ -74,13 +80,14 @@ const InvestorPanelBlock:any = ({ displayHeadline }:IInvestorPanelBlock) : React
                                              '&.yourir-negative:before': {
                                                  color: 'darkBrown',
                                                  content: "'\\2198'"
-                                             },
-                                             '&.yourir-zero:before': { content: "'-'" }
+                                             }
                                          }}
                                     />
                                     <Text as="span" color="darkBrown" data-yourir="change maxDecimals=2" />
                                     {'\u00A0'}
-                                    (<Text as="span" color="darkBrown" data-yourir="pctChange" />)
+                                    <Text as="span" className="percent">
+                                        (<Text as="span" color="darkBrown" data-yourir="pctChange" />)
+                                    </Text>
                                 </Badge>
                             </Box>
                         </Box>

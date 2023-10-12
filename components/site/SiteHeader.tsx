@@ -116,6 +116,13 @@ const SiteHeader:any = ({ menu, darkTheme }:ISiteHeader): ReactNode => {
                                     <DesktopNav menu={menu} color={color}/>
                                 </GridItem>
                                 <GridItem colSpan={[9, , ,2]}>
+                                    <Flex display={['flex', , , 'none']} flex={1}>
+                                        <Button onClick={onToggle} color="steelBlue">
+                                            {
+                                                isOpen ? <Icon icon={Icons.Cross} w={20} h={20}/> : <Icon icon={Icons.Hamburger} w={20} h={20}/>
+                                            }
+                                        </Button>
+                                    </Flex>
                                     <Link href="/contact" sx={{
                                         color: color,
                                         fontWeight: 700,
@@ -133,16 +140,6 @@ const SiteHeader:any = ({ menu, darkTheme }:ISiteHeader): ReactNode => {
                                 </GridItem>
                             </Grid>
                         </Flex>
-                        {/*<Flex h={height} py={4} align="center">*/}
-                        {/*    <Flex display={['flex', , , 'none']} flex={1}>*/}
-                        {/*        <Box flex={1}/>*/}
-                        {/*        <Button onClick={onToggle} color="steelBlue">*/}
-                        {/*            {*/}
-                        {/*                isOpen ? <Icon icon={Icons.Cross} w={20} h={20}/> : <Icon icon={Icons.Hamburger} w={20} h={20}/>*/}
-                        {/*            }*/}
-                        {/*        </Button>*/}
-                        {/*    </Flex>*/}
-                        {/*</Flex>*/}
                     </Container>
                 </Box>
             </MotionBox>
