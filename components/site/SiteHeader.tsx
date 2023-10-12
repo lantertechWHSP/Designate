@@ -10,7 +10,9 @@ import {
     useDisclosure,
     usePopoverContext,
     Collapse,
-    Text
+    Text,
+    Grid,
+    GridItem,
 } from '@chakra-ui/react';
 import {motion} from 'framer-motion';
 import useDocumentScroll from '~/hooks/useDocumentScroll';
@@ -72,7 +74,11 @@ const SiteHeader:any = ({ menu, darkTheme }:ISiteHeader): ReactNode => {
         }
     }
 
-    // const [color, setColor] = useState(darkTheme ? )
+    const [color, setColor] = useState(getColor());
+
+    useEffect(() => {
+        setColor(getColor());
+    }, [isOpen, isScrolledDown, isMinimumScrolled])
 
     return <Box as="header">
         <Box pos="fixed" top={0} height={[height]} w="100%" zIndex={100}
@@ -85,30 +91,56 @@ const SiteHeader:any = ({ menu, darkTheme }:ISiteHeader): ReactNode => {
                      transition="background 300ms linear">
                     <Container>
                         <Flex h={height} py={4} align="center">
-                            <Box width={200}>
-                                <Link
-                                    href="/"
-                                    style={{
+                            <Grid templateColumns='repeat(12, 1fr)' width="100%">
+                                <GridItem colSpan={3}>
+                                    <Flex height="48px" align="center">
+                                        <Link
+                                            href="/"
+                                            sx={{
+                                                display: 'block',
+                                                width: '188px',
+                                                position: 'relative',
+                                                top: '-3px'
+                                            }}>
+                                            <Box as="span"
+                                                 transition="color 300ms linear"
+                                                 color={color}>
+                                                <Logo />
+                                            </Box>
+                                        </Link>
+                                    </Flex>
+                                </GridItem>
+                                <GridItem colSpan={7}>
+                                    <DesktopNav menu={menu} color={color}/>
+                                </GridItem>
+                                <GridItem colSpan={2}>
+                                    <Link href="/contact" sx={{
+                                        color: color,
+                                        borderColor: color,
+                                        fontWeight: 700,
+                                        padding: '0 20px',
+                                        lineHeight: '48px',
+                                        height: '48px',
+                                        border: '1px solid',
+                                        borderRadius: '24px',
                                         display: 'block',
-                                        width: '188px'
+                                        textAlign: 'center'
                                     }}>
-                                    <Box as="span"
-                                         transition="color 300ms linear"
-                                         color={getColor()}>
-                                        <Logo />
-                                    </Box>
-                                </Link>
-                            </Box>
-                            <DesktopNav menu={menu}/>
-                            <Flex display={['flex', , , 'none']} flex={1}>
-                                <Box flex={1}/>
-                                <Button onClick={onToggle} color="steelBlue">
-                                    {
-                                        isOpen ? <Icon icon={Icons.Cross} w={20} h={20}/> : <Icon icon={Icons.Hamburger} w={20} h={20}/>
-                                    }
-                                </Button>
-                            </Flex>
+                                        Contact
+                                    </Link>
+                                </GridItem>
+                            </Grid>
                         </Flex>
+                        {/*<Flex h={height} py={4} align="center">*/}
+                        {/*    <Flex display={['flex', , , 'none']} flex={1}>*/}
+                        {/*        <Box flex={1}/>*/}
+                        {/*        <Button onClick={onToggle} color="steelBlue">*/}
+                        {/*            {*/}
+                        {/*                isOpen ? <Icon icon={Icons.Cross} w={20} h={20}/> : <Icon icon={Icons.Hamburger} w={20} h={20}/>*/}
+                        {/*            }*/}
+                        {/*        </Button>*/}
+                        {/*    </Flex>*/}
+                        {/*</Flex>*/}
                     </Container>
                 </Box>
             </MotionBox>
@@ -117,39 +149,43 @@ const SiteHeader:any = ({ menu, darkTheme }:ISiteHeader): ReactNode => {
     </Box>;
 };
 
-const DestopPopoverTrigger:any  = ({item}): ReactNode => {
+const DestopPopoverTrigger:any  = ({item, color}): ReactNode => {
     const { isOpen } = usePopoverContext();
 
     return <PopoverTrigger>
         <MenuItemLink variant="siteHeader"
-            title={item.title}
-            link={item.link}
-            externalLink={item.externalLink} px={4}>
+                      color={color}
+                      title={item.title}
+                      ink={item.link}
+                      externalLink={item.externalLink}
+                      px={5}>
             <Flex as="span" align="baseline">
                 <Text as="span" mr={2}>{item.title}</Text>
                 <Box transition="transform 300ms ease"
                     transform={isOpen ? 'rotate(180deg)' : ''}>
-                    <Icon icon={Icons.ChevronDown} w={12} h={12} />
+                    <Icon icon={Icons.WideArrowDown} w={12} h={12} />
                 </Box>
             </Flex>
         </MenuItemLink>
     </PopoverTrigger>;
 };
 
-const DesktopNav:any = ({menu}): ReactNode => {
-    return <Flex as="nav" display={['none', , , 'flex']}>
+const DesktopNav:any = ({menu, color}): ReactNode => {
+    return <Flex as="nav" display={['none', , , 'flex']} height="48px" align="center">
         {
             Array.isArray(menu) && menu.length > 0 && menu.map((item: IMenuLink, index: number) => {
                 return Array.isArray(item.children) && item.children.length > 0 ?
                     <Popover trigger="hover" placement="bottom-start" key={index}>
-                        <DestopPopoverTrigger item={item} />
+                        <DestopPopoverTrigger item={item} color={color} />
                         <PopoverContent>
                             {
-                                item.children && <Box background="steelBlue" py={2} px={4}>
+                                item.children && <Box background="steelBlue" py={2} px={3}>
                                     {
                                         item.children.map((child: IMenuLink, childIndex: number) => {
                                             return <Box py={2} key={childIndex}>
-                                                <MenuItemLink variant="siteHeader"
+                                                <MenuItemLink
+                                                    variant="siteHeader"
+                                                    color={color}
                                                     title={child.title}
                                                     link={child.link}
                                                     externalLink={child.externalLink} />
@@ -159,8 +195,10 @@ const DesktopNav:any = ({menu}): ReactNode => {
                                 </Box>
                             }
                         </PopoverContent>
-                    </Popover> : <MenuItemLink variant="siteHeader"
-                        px={2}
+                    </Popover> : <MenuItemLink
+                        variant="siteHeader"
+                        color={color}
+                        px={5}
                         key={index} title={item.title}
                         link={item.link}
                         externalLink={item.externalLink} />;

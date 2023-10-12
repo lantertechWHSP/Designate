@@ -173,8 +173,9 @@ export const theme:any = extendBaseTheme({
             },
             variants: {
                 siteHeader: {
-                    fontSize: [18],
-                    color: 'lightGrey2',
+                    fontSize: [16],
+                    fontWeight: 700
+                    // color: 'lightGrey2',
                 },
                 siteFooter: {
                     color: 'steelBlue3',

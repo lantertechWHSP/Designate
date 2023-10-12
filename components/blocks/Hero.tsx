@@ -11,57 +11,85 @@ interface IHeroBlock {
     image?:IImage;
 }
 
+const VectorEffect = () => {
+    return <svg height="100%" viewBox="0 0 531 482" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14.2059 1336.07L407.624 934.939C571.33 768.023 571.321 497.4 407.624 330.503L111.226 632.721L-282.199 1033.85L14.2059 1336.07Z" fill="url(#paint0_linear_4298_6245)"/>
+        <path d="M14.2067 -674.8L407.625 -273.668C571.33 -106.753 571.321 163.87 407.625 330.767L111.227 28.5495L-282.2 -372.582L14.2067 -674.8Z" fill="url(#paint1_linear_4298_6245)"/>
+        <defs>
+            <linearGradient id="paint0_linear_4298_6245" x1="593.971" y1="456.199" x2="146.708" y2="490.18" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#50513C"/>
+                <stop offset="1" stop-color="#E4DDC1"/>
+            </linearGradient>
+            <linearGradient id="paint1_linear_4298_6245" x1="18.9204" y1="-23.7722" x2="369.727" y2="365.04" gradientUnits="userSpaceOnUse">
+                <stop offset="0.0887029" stop-color="#50513C"/>
+                <stop offset="1" stop-color="#E4DDC1"/>
+            </linearGradient>
+        </defs>
+    </svg>
+}
+
 const HeroBlock:any = ({ title, video, image }:IHeroBlock) : ReactNode => {
     const { observe: contentWidthObserve, width: contentWidth } = useDimensions();
 
-    return <Box
-        position="relative"
-        overflow="hidden"
-        ref={contentWidthObserve}>
-        {
-            (() => {
-                if(video && video?.url) {
-                    return <Box>
-                        <AspectRatio ratio={[320 / 428, contentWidth / 800, contentWidth / 840]}>
-                            <>
-                                <video autoPlay={true} loop={true} muted={true} playsInline>
-                                    <source src={video?.url} />
-                                </video>
-                                <Box
-                                    background="rgba(0, 0, 0, 0.3)"
-                                    position="absolute"
-                                    top="0"
-                                    bottom="0"
-                                    left="0"
-                                    right="0">
-                                </Box>
-                            </>
-                        </AspectRatio>
-                    </Box>;
-                }
-                else if(image && image?.url) {
-                    return  <Box
-                        h={['428px', '800px', '840px']}
-                        backgroundImage={`url(${image?.url}?w=2400&h=930)`}
-                        backgroundPosition="center"
-                        backgroundSize="cover">
-                    </Box>;
-                }
-            })()
-        }
-        <Flex>
-            <Container position="relative" minW="1380px">
-                <Flex
-                    direction="column"
-                    position="absolute"
-                    bottom={['30px','60px', ,'90px']}
-                    alignItems="left"
-                    zIndex={2}>
-                    <Heading as="h1" fontSize="70px" fontWeight={300} lineHeight={1.1} maxWidth={['100vw', , '600px', '900px']} color="white">{title}</Heading>
-                </Flex>
-            </Container>
-        </Flex>
+    return <Box>
+        <Box minH={['492px']}
+             position="relative"
+             backgroundImage={`url('/images/blocks/hero/background.png')`}
+             backgroundPosition="center"
+             backgroundSize="cover">
+            <Box position="absolute" left="40%" height="100%">
+                <VectorEffect />
+            </Box>
+        </Box>
     </Box>;
+    //     <Box
+    //     position="relative"
+    //     overflow="hidden"
+    //     ref={contentWidthObserve}>
+    //     {
+    //         (() => {
+    //             if(video && video?.url) {
+    //                 return <Box>
+    //                     <AspectRatio ratio={[320 / 428, contentWidth / 800, contentWidth / 840]}>
+    //                         <>
+    //                             <video autoPlay={true} loop={true} muted={true} playsInline>
+    //                                 <source src={video?.url} />
+    //                             </video>
+    //                             <Box
+    //                                 background="rgba(0, 0, 0, 0.3)"
+    //                                 position="absolute"
+    //                                 top="0"
+    //                                 bottom="0"
+    //                                 left="0"
+    //                                 right="0">
+    //                             </Box>
+    //                         </>
+    //                     </AspectRatio>
+    //                 </Box>;
+    //             }
+    //             else if(image && image?.url) {
+    //                 return  <Box
+    //                     h={['428px', '800px', '840px']}
+    //                     backgroundImage={`url(${image?.url}?w=2400&h=930)`}
+    //                     backgroundPosition="center"
+    //                     backgroundSize="cover">
+    //                 </Box>;
+    //             }
+    //         })()
+    //     }
+    //     <Flex>
+    //         <Container position="relative" minW="1380px">
+    //             <Flex
+    //                 direction="column"
+    //                 position="absolute"
+    //                 bottom={['30px','60px', ,'90px']}
+    //                 alignItems="left"
+    //                 zIndex={2}>
+    //                 <Heading as="h1" fontSize="70px" fontWeight={300} lineHeight={1.1} maxWidth={['100vw', , '600px', '900px']} color="white">{title}</Heading>
+    //             </Flex>
+    //         </Container>
+    //     </Flex>
+    // </Box>;
 };
 
 export default HeroBlock;
