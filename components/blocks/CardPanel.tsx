@@ -22,7 +22,7 @@ interface ICardPanelBlock {
 
 const CardPanelBlock:any = ({ annotation, title, description, image, link, align }:ICardPanelBlock) : ReactNode => {
     return <ContentBlock background="ghostWhite" py={8}>
-        <Flex>
+        <Flex direction={align === ICardPanelAlign.Right ? 'row-reverse' : ''}>
             <Flex width="50%" background="white" direction="column" p={8}>
                 {
                     annotation && <Text variant="annotation" mb={8}>
