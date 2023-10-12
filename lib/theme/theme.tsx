@@ -8,14 +8,17 @@ const colors:any = {
     highlightGreen: '#B0E70F',
 
     black: '#1C1C1C',
+    blackBlur: 'rgba(28, 28, 28, 0.4)',
 
     darkBrown: '#50513C',
-    darkBrownBlur: 'rgba(80, 81, 60, 0.20)',
+    darkBrownBlur: 'rgba(80, 81, 60, 0.2)',
     sand: '#E4DDC1',
 
     white: '#fff',
 
     grey: '#CBCBC5',
+
+    lightGrey: '#c4c4c4',
 
     // Legacy
     ghostWhite: '#f2f4f6',
@@ -29,7 +32,7 @@ const colors:any = {
     steelBlue3: '#667085',
     // white: '#fff',
     // grey: '#999',
-    lightGrey: '#c4c4c4',
+    // lightGrey: '#c4c4c4',
     lightGrey2: '#ddd',
     lightGrey3: '#f1f2f5',
     green: '#00ce7d',
@@ -67,12 +70,21 @@ export const theme:any = extendBaseTheme({
                 fontWeight: 500
             },
             variants: {
+                // New
                 hero: {
                     fontSize: ['76px'],
                     fontWeight: 500,
                     lineHeight: ['90px'],
                     color: 'white'
                 },
+                sectionHeading: {
+                    fontSize: ['40px'],
+                    lineHeight: ['48px'],
+                    fontWeight: 700,
+                },
+
+
+                /// Legacy
                 h1: {
                     fontSize: ['50px'],
                     lineHeight: ['60px'],
@@ -103,11 +115,11 @@ export const theme:any = extendBaseTheme({
                     lineHeight: ['18px'],
                     fontWeight: 500,
                 },
-                sectionHeading: {
-                    fontSize: ['40px'],
-                    lineHeight: ['60px'],
-                    fontWeight: 500,
-                },
+                // sectionHeading: {
+                //     fontSize: ['40px'],
+                //     lineHeight: ['60px'],
+                //     fontWeight: 500,
+                // },
                 sectionSubheading: {
                     fontSize: ['32px'],
                     lineHeight: ['48px'],

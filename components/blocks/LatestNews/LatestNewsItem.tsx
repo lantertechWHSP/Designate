@@ -3,21 +3,25 @@ import { IPost } from '~/interfaces/models/post';
 import { Flex, Box, Heading } from '@chakra-ui/react';
 import { DateTime } from 'luxon';
 import { SectionLink } from '~/components/elements/sectionLink';
+import {Image} from "~/components/elements/image";
 
 interface ILatestNewsItem extends IPost {
 }
 
-const LatestNewsItem:any = ({ title, publishDate, slug }:ILatestNewsItem) : ReactNode => {
+const LatestNewsItem:any = ({ title, image, publishDate, slug }:ILatestNewsItem) : ReactNode => {
     const date:string = DateTime.fromFormat(publishDate, 'yyyy-mm-dd').toFormat('DDD');
 
-    return <Flex direction="column" borderTop="1px solid" borderColor="lightGrey2" py={4}>
+    return <Flex direction="column" py={4}>
         {
-            title && <Heading as="h3">
+            <Image image={image} ratio={2/1} mb={4} />
+        }
+        {
+            title && <Heading as="h3" fontSize={['21px']} lineHeight={['30px']}>
                 {title}
             </Heading>
         }
         {
-            date && <Heading as="h4" color="steelBlue3" fontWeight={400} mb={8}>
+            date && <Heading as="h4" color="blackBlur" fontWeight={400} mb={4}>
                 {date}
             </Heading>
         }

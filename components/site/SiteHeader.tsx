@@ -119,6 +119,7 @@ const SiteHeader:any = ({ menu, darkTheme }:ISiteHeader): ReactNode => {
                                     <Link href="/contact" sx={{
                                         color: color,
                                         fontWeight: 700,
+                                        minWidth: 200,
                                         padding: '0 20px',
                                         lineHeight: '48px',
                                         height: '48px',

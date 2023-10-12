@@ -1,3 +1,6 @@
+import { imageAttrs } from "~/dato/attrs/responsiveImageAttrs";
+
+
 const postFrag:string = `
     fragment postFrag on PostRecord {
         __typename
@@ -7,17 +10,7 @@ const postFrag:string = `
         excerpt
         author
         image {
-            responsiveImage {
-                aspectRatio
-                height
-                sizes
-                src
-                srcSet
-                webpSrcSet
-                width
-                alt
-                title
-            }    
+            ${imageAttrs({ width: 800, height: 400 })}   
         }
         publishDate
         isFeatured

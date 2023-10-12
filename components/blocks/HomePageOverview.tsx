@@ -1,6 +1,6 @@
 import ContentBlock from "~/components/blocks/Content";
 import { ReactNode } from 'react';
-import { Box, Heading, Grid, GridItem, Link, Flex } from '@chakra-ui/react';
+import { Box, Heading, Flex } from '@chakra-ui/react';
 import { Image } from '~/components/elements/image';
 import { IImage } from '~/interfaces/util/image';
 import {SectionLink} from "~/components/elements/sectionLink";

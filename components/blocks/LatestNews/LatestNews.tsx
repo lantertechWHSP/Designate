@@ -1,10 +1,10 @@
 import { ReactNode } from 'react';
-import { SimpleGrid, Flex, Heading, Box } from '@chakra-ui/react';
+import { SimpleGrid, Flex, Heading, Box, Divider } from '@chakra-ui/react';
 import ContentBlock from '~/components/blocks/Content';
 import { doQuery, queries } from '~/dato/api';
 import { IPost } from '~/interfaces/models/post';
 import LatestNewsItem from '~/components/blocks/LatestNews/LatestNewsItem';
-import {SectionLink} from "~/components/elements/sectionLink";
+import { SectionLinkButton } from "~/components/elements/sectionLink";
 
 interface ILatestNewsBlock {
     title:string;
@@ -14,18 +14,19 @@ interface ILatestNewsBlock {
 }
 
 const LatestNewsBlock:any = ({ data: { posts } }:ILatestNewsBlock) : ReactNode => {
-    return <ContentBlock py={8} background="lightGrey3">
+    return <ContentBlock py={8} background="grey">
+        <Divider borderColor="blackBlur" mb={8} />
         <Flex align="center" mb={8}>
             <Heading as="h2" variant="sectionHeading">
                 Latest News
             </Heading>
             <Box flex="1" />
-            <SectionLink href="/news">
+            <SectionLinkButton href="/news">
                 All News
-            </SectionLink>
+            </SectionLinkButton>
         </Flex>
         {
-            (Array.isArray(posts) && posts.length > 0) && <SimpleGrid columns={[1, ,3]}>
+            (Array.isArray(posts) && posts.length > 0) && <SimpleGrid columns={[1, ,3]} gap={8}>
                 {
                     posts.map((post:IPost, index:number) => {
                         return <LatestNewsItem {...post} key={index} />;

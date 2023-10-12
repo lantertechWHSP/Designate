@@ -20,3 +20,18 @@ export const SectionLink:any = ({ ...props }:ISectionLink) => {
         </Flex>
     </Link>;
 };
+
+export const SectionLinkButton:any = ({ ...props }:ISectionLink) => {
+    return <Link {...props}
+                 color="darkBrown"
+                 height="50px"
+                 lineHeight="50px"
+                 borderRadius="25px"
+                 px={4}
+                 border="1px solid"
+                 borderColor="darkBrownBlur"
+                 textAlign="center"
+                 minWidth="200px"
+                 fontWeight={700}>
+    </Link>;
+};
