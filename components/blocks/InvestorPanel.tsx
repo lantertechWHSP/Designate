@@ -29,59 +29,60 @@ const InvestorPanelBlock:any = ({ displayHeadline }:IInvestorPanelBlock) : React
                         <Heading as="h3" variant="sectionSubheading" mb={4}>
                             Share Price Performance
                         </Heading>
-                        <Box borderTop="1px solid" borderColor="lightGrey2" py={4}>
+                        <Box mb="12px" borderTop="1px solid" borderColor="lightGrey2" py={4}>
                             <Text fontSize={['72px']}
+                                  mb={0}
                                   lineHeight={['80px']}
                                   fontWeight={500}
                                   color="darkBrown"
                                   data-yourir="price showCurrency=true minDecimals=2 maxDecimals=2" />
-                        </Box>
-                        <Box sx={{
-                            '.chakra-badge.yourir-positive': {
-                                background: 'positive'
-                            },
-                            '.chakra-badge.yourir-negative': {
-                                background: 'negative',
-                            },
-                            '.yourir-change .yourir-positive': {
-                                 color: 'darkBrown'
-                            },
-                            '.yourir-change .yourir-negative': {
-                                color: 'darkBrown'
-                            },
-                            '.yourir-pct-symbol .yourir-positive': {
-                                color: 'darkBrown'
-                            },
-                            '.yourir-pct-symbol .yourir-negative': {
-                                color: 'darkBrown'
-                            },
-                            '.yourir-pct-change .yourir-positive': {
-                                color: 'darkBrown'
-                            },
-                            '.yourir-pct-change .yourir-negative': {
-                                color: 'darkBrown'
-                            }
-                        }}>
-                            <Badge align="baseline" data-yourir="changeSignCSS" color="darkBrown">
-                                <Box as="span"
-                                     data-yourir="changeSignCSS"
-                                     mr={1}
-                                     sx={{
-                                        '&.yourir-positive:before': {
-                                            color: 'darkBrown',
-                                            content: "'\\2197'"
-                                        },
-                                        '&.yourir-negative:before': {
-                                            color: 'darkBrown',
-                                            content: "'\\2198'"
-                                        },
-                                        '&.yourir-zero:before': { content: "'-'" }
-                                    }}
-                                />
-                                <Text as="span" color="darkBrown" data-yourir="change maxDecimals=2" />
-                                {'\u00A0'}
-                                (<Text as="span" color="darkBrown" data-yourir="pctChange" />)
-                            </Badge>
+                            <Box sx={{
+                                '.chakra-badge.yourir-positive': {
+                                    background: 'positive'
+                                },
+                                '.chakra-badge.yourir-negative': {
+                                    background: 'negative',
+                                },
+                                '.yourir-change .yourir-positive': {
+                                    color: 'darkBrown'
+                                },
+                                '.yourir-change .yourir-negative': {
+                                    color: 'darkBrown'
+                                },
+                                '.yourir-pct-symbol .yourir-positive': {
+                                    color: 'darkBrown'
+                                },
+                                '.yourir-pct-symbol .yourir-negative': {
+                                    color: 'darkBrown'
+                                },
+                                '.yourir-pct-change .yourir-positive': {
+                                    color: 'darkBrown'
+                                },
+                                '.yourir-pct-change .yourir-negative': {
+                                    color: 'darkBrown'
+                                }
+                            }}>
+                                <Badge align="baseline" data-yourir="changeSignCSS" color="darkBrown">
+                                    <Box as="span"
+                                         data-yourir="changeSignCSS"
+                                         mr={1}
+                                         sx={{
+                                             '&.yourir-positive:before': {
+                                                 color: 'darkBrown',
+                                                 content: "'\\2197'"
+                                             },
+                                             '&.yourir-negative:before': {
+                                                 color: 'darkBrown',
+                                                 content: "'\\2198'"
+                                             },
+                                             '&.yourir-zero:before': { content: "'-'" }
+                                         }}
+                                    />
+                                    <Text as="span" color="darkBrown" data-yourir="change maxDecimals=2" />
+                                    {'\u00A0'}
+                                    (<Text as="span" color="darkBrown" data-yourir="pctChange" />)
+                                </Badge>
+                            </Box>
                         </Box>
                         <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" height="0" width="0">
                             <defs>
@@ -162,7 +163,7 @@ const InvestorPanelBlock:any = ({ displayHeadline }:IInvestorPanelBlock) : React
                                       direction="row"
                                       color="darkBrownBlur"
                                       align="center"
-                                      py={[4, 4, '27px']}>
+                                      py={[4, 4, '26px']}>
                                     <Heading data-yourir="$cur.heading"
                                         as="h3"
                                         variant="listItem" mr={2} />
