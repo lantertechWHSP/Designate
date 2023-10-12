@@ -93,7 +93,7 @@ export const theme:any = extendBaseTheme({
                 },
                 sectionSubheading: {
                     fontSize: ['28px'],
-                    lineHeight: ['32px']
+                    lineHeight: ['32px'],
                 },
 
                 listItem: {

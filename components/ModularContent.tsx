@@ -18,6 +18,7 @@ import InvestorPanelBlock from '~/components/blocks/InvestorPanel';
 import HeroBlock from '~/components/blocks/Hero';
 import HomePageOverviewBlock from '~/components/blocks/HomePageOverview';
 import AsxAnnouncementsPanelBlock from '~/components/blocks/AsxAnnouncementsPanel';
+import SeeAlsoPanelBlock from '~/components/blocks/SeeAlsoPanel';
 
 // About/Track Record
 import TrackRecordTableBlock from '~/components/blocks/TrackRecordTable';
@@ -62,6 +63,7 @@ const blocks:any = {
     HeroBlock,
     HomePageOverviewBlock,
     AsxAnnouncementsPanelBlock,
+    SeeAlsoPanelBlock,
 
     // About/Track Record
     TrackRecordTableBlock,

@@ -18,6 +18,7 @@ import { investorPanelRecord } from '~/dato/blocks/investorPanel';
 import { heroRecord } from '~/dato/blocks/hero';
 import { homePageOverviewRecord } from '~/dato/blocks/homePageOverview';
 import { asxAnnouncementsPanelRecord } from '~/dato/blocks/asxAnnouncementsPanel';
+import { seeAlsoPanelRecord } from '~/dato/blocks/seeAlsoPanel';
 
 // About/Track Record
 import { trackRecordTableRecord } from '~/dato/blocks/trackRecordTable';
@@ -90,9 +91,11 @@ export const blocks:string = `
         ... on HomePageOverviewRecord {
             ${homePageOverviewRecord}
         }
-        
         ... on AsxAnnouncementsPanelRecord {
             ${asxAnnouncementsPanelRecord}
+        }
+        ... on SeeAlsoPanelRecord {
+            ${seeAlsoPanelRecord}
         }
 
         ... on TrackRecordTableRecord {
