@@ -10,9 +10,12 @@ const colors:any = {
     black: '#1C1C1C',
 
     darkBrown: '#50513C',
+    darkBrownBlur: 'rgba(80, 81, 60, 0.20)',
     sand: '#E4DDC1',
 
     white: '#fff',
+
+    grey: '#CBCBC5',
 
     // Legacy
     ghostWhite: '#f2f4f6',
@@ -24,8 +27,8 @@ const colors:any = {
     steelBlue: '#353a3f',
     steelBlue2: '#3f4448',
     steelBlue3: '#667085',
-    white: '#fff',
-    grey: '#999',
+    // white: '#fff',
+    // grey: '#999',
     lightGrey: '#c4c4c4',
     lightGrey2: '#ddd',
     lightGrey3: '#f1f2f5',
@@ -64,6 +67,12 @@ export const theme:any = extendBaseTheme({
                 fontWeight: 500
             },
             variants: {
+                hero: {
+                    fontSize: ['76px'],
+                    fontWeight: 500,
+                    lineHeight: ['90px'],
+                    color: 'white'
+                },
                 h1: {
                     fontSize: ['50px'],
                     lineHeight: ['60px'],
