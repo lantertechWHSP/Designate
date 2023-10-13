@@ -5,7 +5,7 @@ import { doQuery, queries } from '~/dato/api';
 import { IPost } from '~/interfaces/models/post';
 import LatestNewsItem from '~/components/blocks/LatestNews/LatestNewsItem';
 import { SectionLinkButton } from "~/components/elements/sectionLink";
-import { Row, Column, ColumnValues } from '~/components/elements/grid/grid';
+import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
 
 interface ILatestNewsBlock {
     title:string;
@@ -30,9 +30,9 @@ const LatestNewsBlock:any = ({ data: { posts } }:ILatestNewsBlock) : ReactNode =
             (Array.isArray(posts) && posts.length > 0) && <Row>
                 {
                     posts.map((post:IPost, index:number) => {
-                        return <Column width={[ColumnValues.Full, , ColumnValues.Third]} key={index}>
+                        return <Column width={[ColumnWidth.Full, , ColumnWidth.OneThird]} key={index}>
                             <LatestNewsItem {...post} />
-                        </Column>
+                        </Column>;
                     })
                 }
             </Row>

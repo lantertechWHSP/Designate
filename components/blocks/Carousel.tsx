@@ -53,7 +53,7 @@ const CarouselBlock:any = ({ items }:ICarouselBlock) : ReactNode => {
         if(instanceRef.current) {
             instanceRef.current.moveToIdx(index);
         }
-    }
+    };
 
     return <ContentBlock py={8} background="ghostWhite">
         <Box className="keen-slider" ref={sliderRef} position="relative">
@@ -98,11 +98,11 @@ const CarouselBlock:any = ({ items }:ICarouselBlock) : ReactNode => {
                         {
                             items.map((item:ICarouselItem, index:number) => {
                                 return <Button width="8px" height="8px" mx={1}
-                                               background={slideIndex === index ? 'black' : 'white'}
-                                               borderRadius="4px"
-                                               onClick={() => {
-                                    goToIndex(index);
-                                }} />
+                                    background={slideIndex === index ? 'black' : 'white'}
+                                    borderRadius="4px"
+                                    onClick={() => {
+                                        goToIndex(index);
+                                    }} />;
                             })
                         }
                     </Box>

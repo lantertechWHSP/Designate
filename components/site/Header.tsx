@@ -11,8 +11,6 @@ import {
     usePopoverContext,
     Collapse,
     Text,
-    Grid,
-    GridItem,
 } from '@chakra-ui/react';
 import {motion} from 'framer-motion';
 import useDocumentScroll from '~/hooks/useDocumentScroll';
@@ -27,7 +25,7 @@ import { IMenuLink } from '~/interfaces/models/menuLink';
 import Logo from "~/components/site/Logo";
 import { Link } from '~/components/elements/link';
 import { IHeader as IDatoHeader } from "~/interfaces/layout/header";
-import { Row, Column, ColumnValues } from "~/components/elements/grid/grid";
+import { Row, Column, ColumnWidth } from "~/components/elements/grid/grid";
 
 const MotionBox:any = motion(Box);
 
@@ -35,7 +33,7 @@ interface IHeader extends IDatoHeader {
 }
 
 const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
-    const {isOpen, onToggle} = useDisclosure();
+    const {isOpen, _onToggle} = useDisclosure();
     const height:string = '120px';
 
     const [isScrolledDown, setIsScrolledDown] = useState(false);
@@ -89,53 +87,53 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
                     transition="background 300ms linear">
                     <Container>
                         <Row height={[height]} align="center">
-                                <Column width={[ColumnValues.TwoTwelfths]}>
-                                    <Flex height="48px" align="center">
-                                        <Link
-                                            href="/"
-                                            sx={{
-                                                display: 'block',
-                                                width: '188px',
-                                                position: 'relative',
-                                                top: '-3px'
-                                            }}>
-                                            <Box as="span"
-                                                 transition="color 300ms linear"
-                                                 color={color}>
-                                                <Logo />
-                                            </Box>
-                                        </Link>
-                                    </Flex>
-                                </Column>
-                                <Column width={[ColumnValues.SevenTwelfths]}>
-                                    <DesktopNav menu={menu} color={color}/>
-                                </Column>
-                                <Column width={[ColumnValues.Quarter]}>
-                                    {/*<Flex display={['flex', , , 'none']} flex={1}>*/}
-                                    {/*    <Button onClick={onToggle}>*/}
-                                    {/*        {*/}
-                                    {/*            isOpen ? <Icon icon={Icons.Cross} w={20} h={20}/> : <Icon icon={Icons.Hamburger} w={20} h={20}/>*/}
-                                    {/*        }*/}
-                                    {/*    </Button>*/}
-                                    {/*</Flex>*/}
-                                    <Flex justify="flex-end">
-                                        <Link href="/contact" sx={{
-                                            color: color,
-                                            fontWeight: 700,
-                                            minWidth: 200,
-                                            padding: '0 20px',
-                                            lineHeight: '48px',
-                                            height: '48px',
-                                            border: `1px solid ${color === 'white' ? `rgba(255, 255, 255, 0.5)` : `rgba(0, 0, 0, 0.5)`}`,
-                                            borderRadius: '24px',
+                            <Column width={[ColumnWidth.TwoTwelfths]}>
+                                <Flex height="48px" align="center">
+                                    <Link
+                                        href="/"
+                                        sx={{
                                             display: 'block',
-                                            textAlign: 'center'
+                                            width: '188px',
+                                            position: 'relative',
+                                            top: '-3px'
                                         }}>
-                                            Contact
-                                        </Link>
-                                    </Flex>
-                                </Column>
-                            </Row>
+                                        <Box as="span"
+                                            transition="color 300ms linear"
+                                            color={color}>
+                                            <Logo />
+                                        </Box>
+                                    </Link>
+                                </Flex>
+                            </Column>
+                            <Column width={[ColumnWidth.SevenTwelfths]}>
+                                <DesktopNav menu={menu} color={color}/>
+                            </Column>
+                            <Column width={[ColumnWidth.OneQuarter]}>
+                                {/*<Flex display={['flex', , , 'none']} flex={1}>*/}
+                                {/*    <Button onClick={onToggle}>*/}
+                                {/*        {*/}
+                                {/*            isOpen ? <Icon icon={Icons.Cross} w={20} h={20}/> : <Icon icon={Icons.Hamburger} w={20} h={20}/>*/}
+                                {/*        }*/}
+                                {/*    </Button>*/}
+                                {/*</Flex>*/}
+                                <Flex justify="flex-end">
+                                    <Link href="/contact" sx={{
+                                        color: color,
+                                        fontWeight: 700,
+                                        minWidth: 200,
+                                        padding: '0 20px',
+                                        lineHeight: '48px',
+                                        height: '48px',
+                                        border: `1px solid ${color === 'white' ? `rgba(255, 255, 255, 0.5)` : `rgba(0, 0, 0, 0.5)`}`,
+                                        borderRadius: '24px',
+                                        display: 'block',
+                                        textAlign: 'center'
+                                    }}>
+                                        Contact
+                                    </Link>
+                                </Flex>
+                            </Column>
+                        </Row>
                     </Container>
                 </Box>
             </MotionBox>

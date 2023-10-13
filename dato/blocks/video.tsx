@@ -14,4 +14,5 @@ export const videoRecord:string = `
     coverImage {
         ${imageAttrs()}
     }
+    containerWidth
 `;

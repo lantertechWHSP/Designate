@@ -3,7 +3,7 @@ import { Box, Heading, Text } from '@chakra-ui/react';
 import ContentBlock from '~/components/blocks/Content';
 import { ILink} from '~/interfaces/util/link';
 import { SectionLink } from '~/components/elements/sectionLink';
-import { Row, Column, ColumnValues } from '~/components/elements/grid/grid';
+import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
 
 interface ISeeAlsoItem {
     title?:string;
@@ -47,9 +47,9 @@ const SeeAlsoPanelBlock:any = ({ items }:ISeeAlsoPanelBlock) : ReactNode => {
             (Array.isArray(items) && items.length > 0) && <Row>
                 {
                     items.map((item:ISeeAlsoItem, index:number) => {
-                        return <Column key={index} width={[ColumnValues.Full, ColumnValues.Half, ColumnValues.Quarter]}>
+                        return <Column key={index} width={[ColumnWidth.Full, ColumnWidth.Half, ColumnWidth.OneQuarter]}>
                             <SeeAlsoItem {...item} />
-                        </Column>
+                        </Column>;
                     })
                 }
             </Row>

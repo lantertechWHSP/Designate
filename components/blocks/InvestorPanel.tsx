@@ -4,7 +4,7 @@ import ContentBlock from '~/components/blocks/Content';
 import { YourIR } from 'yourir-next';
 import { Icon, Icons } from '~/components/elements/icon';
 import { SectionLink, SectionLinkButton } from '~/components/elements/sectionLink';
-import { Row, Column, ColumnValues } from "~/components/elements/grid/grid";
+import { Row, Column, ColumnWidth } from "~/components/elements/grid/grid";
 
 interface IInvestorPanelBlock {
     displayHeadline?:boolean;
@@ -26,18 +26,18 @@ const InvestorPanelBlock:any = ({ displayHeadline }:IInvestorPanelBlock) : React
         <Box py={8}>
             <Box as={YourIR}>
                 <Row>
-                    <Column width={[ColumnValues.Full, , ColumnValues.Half]}>
+                    <Column width={[ColumnWidth.Full, , ColumnWidth.Half]}>
                         <Flex direction="column">
                             <Heading as="h3" variant="sectionSubheading" mb={4}>
                                 Share Price Performance
                             </Heading>
                             <Box mb="12px" borderTop="1px solid" borderColor="lightGrey2" py={4}>
                                 <Text fontSize={['72px']}
-                                      mb={0}
-                                      lineHeight={['80px']}
-                                      fontWeight={500}
-                                      color="darkBrown"
-                                      data-yourir="price showCurrency=true minDecimals=2 maxDecimals=2" />
+                                    mb={0}
+                                    lineHeight={['80px']}
+                                    fontWeight={500}
+                                    color="darkBrown"
+                                    data-yourir="price showCurrency=true minDecimals=2 maxDecimals=2" />
                                 <Box sx={{
                                     '.chakra-badge.yourir-zero': {
                                         background: 'lightGrey'
@@ -72,18 +72,18 @@ const InvestorPanelBlock:any = ({ displayHeadline }:IInvestorPanelBlock) : React
                                 }}>
                                     <Badge data-yourir="changeSignCSS" color="darkBrown">
                                         <Box as="span"
-                                             data-yourir="changeSignCSS"
-                                             mr={1}
-                                             sx={{
-                                                 '&.yourir-positive:before': {
-                                                     color: 'darkBrown',
-                                                     content: "'\\2197'"
-                                                 },
-                                                 '&.yourir-negative:before': {
-                                                     color: 'darkBrown',
-                                                     content: "'\\2198'"
-                                                 }
-                                             }}
+                                            data-yourir="changeSignCSS"
+                                            mr={1}
+                                            sx={{
+                                                '&.yourir-positive:before': {
+                                                    color: 'darkBrown',
+                                                    content: "'\\2197'"
+                                                },
+                                                '&.yourir-negative:before': {
+                                                    color: 'darkBrown',
+                                                    content: "'\\2198'"
+                                                }
+                                            }}
                                         />
                                         <Text as="span" color="darkBrown" data-yourir="change maxDecimals=2" />
                                         {'\u00A0'}
@@ -102,53 +102,53 @@ const InvestorPanelBlock:any = ({ displayHeadline }:IInvestorPanelBlock) : React
                                 </defs>
                             </svg>
                             <Box w="100%"
-                                 sx={{
-                                     '.yourir-chart': {
-                                         padding: '40px 0 0',
-                                         borderBottomWidth: '1px',
-                                         borderStyle: 'solid',
-                                         borderColor: 'darkBrown',
-                                         color: 'darkBrown'
-                                     },
-                                     '.yourir-chart-price-fill': {
-                                         fill: `url(#priceGradient)`
-                                     },
-                                     '.yourir-chart-price': {
-                                         stroke: 'darkBrown',
-                                         strokeWidth: '1px',
-                                     },
-                                     '.yourir-chart-yaxis-label': {
-                                         position: 'relative',
-                                         top: '-10px'
-                                     },
-                                     '.yourir-chart-yaxis-left .yourir-chart-yaxis-outside .yourir-chart-yaxis-label-container': {
-                                         left: '0',
-                                         marginRight: '0',
-                                         fontSize: '12px',
-                                         color: 'darkGrey'
-                                     },
-                                     '.yourir-chart-xaxis': {
-                                         position: 'relative',
-                                         top: '-40px'
-                                     },
-                                     '.yourir-chart-xaxis-label': {
-                                         fontSize: '12px',
-                                         color: 'darkGrey'
-                                     },
-                                     '.yourir-chart-panel-border-bottom': {
-                                         display: 'none'
-                                     },
-                                     '.yourir-chart-tick-bottom': {
-                                         display: 'none'
-                                     },
-                                     '.yourir-chart-xaxis-outside': {
-                                         position: 'relative',
-                                         top: '10px'
-                                     },
-                                     '.yourir-chart-yaxis-gridline': {
-                                         stroke: 'lightGrey2'
-                                     }
-                                 }}>
+                                sx={{
+                                    '.yourir-chart': {
+                                        padding: '40px 0 0',
+                                        borderBottomWidth: '1px',
+                                        borderStyle: 'solid',
+                                        borderColor: 'darkBrown',
+                                        color: 'darkBrown'
+                                    },
+                                    '.yourir-chart-price-fill': {
+                                        fill: `url(#priceGradient)`
+                                    },
+                                    '.yourir-chart-price': {
+                                        stroke: 'darkBrown',
+                                        strokeWidth: '1px',
+                                    },
+                                    '.yourir-chart-yaxis-label': {
+                                        position: 'relative',
+                                        top: '-10px'
+                                    },
+                                    '.yourir-chart-yaxis-left .yourir-chart-yaxis-outside .yourir-chart-yaxis-label-container': {
+                                        left: '0',
+                                        marginRight: '0',
+                                        fontSize: '12px',
+                                        color: 'darkGrey'
+                                    },
+                                    '.yourir-chart-xaxis': {
+                                        position: 'relative',
+                                        top: '-40px'
+                                    },
+                                    '.yourir-chart-xaxis-label': {
+                                        fontSize: '12px',
+                                        color: 'darkGrey'
+                                    },
+                                    '.yourir-chart-panel-border-bottom': {
+                                        display: 'none'
+                                    },
+                                    '.yourir-chart-tick-bottom': {
+                                        display: 'none'
+                                    },
+                                    '.yourir-chart-xaxis-outside': {
+                                        position: 'relative',
+                                        top: '10px'
+                                    },
+                                    '.yourir-chart-yaxis-gridline': {
+                                        stroke: 'lightGrey2'
+                                    }
+                                }}>
                                 <div data-yourir="priceChart1 range=6y ranges=6m,1y,5y,10y showTooltips=true">
                                     <Box data-yourir="plots" />
                                 </div>
@@ -161,7 +161,7 @@ const InvestorPanelBlock:any = ({ displayHeadline }:IInvestorPanelBlock) : React
                             </Box>
                         </Flex>
                     </Column>
-                    <Column width={[ColumnValues.Full, , ColumnValues.Half]}>
+                    <Column width={[ColumnWidth.Full, , ColumnWidth.Half]}>
                         <Flex direction="column">
                             <Heading as="h3" variant="sectionSubheading" mb={4}>
                                 ASX Announcements
@@ -169,18 +169,18 @@ const InvestorPanelBlock:any = ({ displayHeadline }:IInvestorPanelBlock) : React
                             <Box data-yourir="announcements pageSize=5" borderBottom="1px solid" borderColor="darkBrown">
                                 <Box data-yourir="items">
                                     <Flex role="group"
-                                          borderTop="1px solid"
-                                          borderColor="lightGrey2"
-                                          direction="row"
-                                          color="darkBrownBlur"
-                                          align="center"
-                                          py={[4, 4, '26px']}>
+                                        borderTop="1px solid"
+                                        borderColor="lightGrey2"
+                                        direction="row"
+                                        color="darkBrownBlur"
+                                        align="center"
+                                        py={[4, 4, '26px']}>
                                         <Heading data-yourir="$cur.heading"
-                                                 as="h3"
-                                                 variant="listItem" mr={2} />
+                                            as="h3"
+                                            variant="listItem" mr={2} />
                                         <Heading data-yourir="$cur.date format='DD.MM.YY'"
-                                                 as="span"
-                                                 variant="listLabel" mr={2} />
+                                            as="span"
+                                            variant="listLabel" mr={2} />
                                         <Box flex={1} />
                                         <ChakraLink data-yourir="linkAnnouncement fileId" cursor="pointer" color="darkBrownBlur">
                                             <Icon icon={Icons.ChevronRight} />

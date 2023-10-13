@@ -5,7 +5,7 @@ import {IFooter as IDatoFooter} from '~/interfaces/layout/footer';
 import Logo from "~/components/site/Logo";
 import {IMenuLink} from '~/interfaces/models/menuLink';
 import {MenuItemLink} from '~/components/elements/menuItemLink';
-import {Column, ColumnValues, Row} from "~/components/elements/grid/grid";
+import {Column, ColumnWidth, Row} from "~/components/elements/grid/grid";
 
 interface IFooter extends IDatoFooter {
 }
@@ -14,12 +14,12 @@ const Footer:any = ({ menu, address, email, phone, fax, linkedin, youtube, copyr
     return <Box as="footer" background="black2" color="white" py={8}>
         <Container>
             <Row>
-                <Column width={[ColumnValues.Full, ,ColumnValues.Half]}>
+                <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
                     <Flex direction="column">
                         {
                             (Array.isArray(menu) && menu.length > 0) && menu.map((item:IMenuLink, index:number) => {
                                 return <Box key={index}
-                                            mb={2}>
+                                    mb={2}>
                                     <MenuItemLink
                                         variant="siteFooter"
                                         fontSize={['32px']}
@@ -33,57 +33,57 @@ const Footer:any = ({ menu, address, email, phone, fax, linkedin, youtube, copyr
                         }
                     </Flex>
                 </Column>
-                <Column width={[ColumnValues.Full, ,ColumnValues.Quarter]}>
+                <Column width={[ColumnWidth.Full, ,ColumnWidth.OneQuarter]}>
                     {
                         phone && <Box>
-                        <Link href={`tel:${phone}`} variant="siteFooter">
-                            {phone}
-                        </Link>
-                      </Box>
+                            <Link href={`tel:${phone}`} variant="siteFooter">
+                                {phone}
+                            </Link>
+                        </Box>
                     }
                     {
                         fax && <Box>
-                        <Link href={`tel:${fax}`} variant="siteFooter">
-                            {fax}
-                        </Link>
-                      </Box>
+                            <Link href={`tel:${fax}`} variant="siteFooter">
+                                {fax}
+                            </Link>
+                        </Box>
                     }
                     {
                         email && <Box>
-                        <Link href={`mailto:${email}`} variant="siteFooter">
-                            {email}
-                        </Link>
-                      </Box>
+                            <Link href={`mailto:${email}`} variant="siteFooter">
+                                {email}
+                            </Link>
+                        </Box>
                     }
                 </Column>
-                <Column width={[ColumnValues.Full, ,ColumnValues.Quarter]}>
+                <Column width={[ColumnWidth.Full, ,ColumnWidth.OneQuarter]}>
                     {
                         address && <Box mb={8}>
                             {address}
-                      </Box>
+                        </Box>
                     }
                     {
                         (linkedin || youtube) && <Flex w={['100%', '250px']} mx={-2}>
                             {
                                 linkedin && <Box px={2}>
-                                <Link href={linkedin} variant="siteFooter">
-                                  Linkedin
-                                </Link>
-                              </Box>
+                                    <Link href={linkedin} variant="siteFooter">
+                                        Linkedin
+                                    </Link>
+                                </Box>
                             }
                             {
                                 youtube && <Box px={2}>
-                                <Link href={youtube} variant="siteFooter">
-                                  YouTube
-                                </Link>
-                              </Box>
+                                    <Link href={youtube} variant="siteFooter">
+                                        YouTube
+                                    </Link>
+                                </Box>
                             }
-                      </Flex>
+                        </Flex>
                     }
                 </Column>
             </Row>
             <Row  mt={20}>
-                <Column width={[ColumnValues.Full, ,ColumnValues.Half]}>
+                <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
                     <Link
                         href="/"
                         sx={{
@@ -93,21 +93,21 @@ const Footer:any = ({ menu, address, email, phone, fax, linkedin, youtube, copyr
                             top: '-3px'
                         }}>
                         <Box as="span"
-                             color="white">
+                            color="white">
                             <Logo />
                         </Box>
                     </Link>
                 </Column>
-                <Column width={[ColumnValues.Full, ,ColumnValues.Quarter]}>
+                <Column width={[ColumnWidth.Full, ,ColumnWidth.OneQuarter]}>
                     <Link href="/privacy-policy" color="whiteBlur" variant="siteFooter">
                         Privacy Policy
                     </Link>
                 </Column>
-                <Column width={[ColumnValues.Full, ,ColumnValues.Quarter]}>
+                <Column width={[ColumnWidth.Full, ,ColumnWidth.OneQuarter]}>
                     {
                         copyright && <Text mb={0} color="whiteBlur">
                             {copyright}
-                      </Text>
+                        </Text>
                     }
                 </Column>
             </Row>

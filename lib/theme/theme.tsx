@@ -10,6 +10,7 @@ const colors:any = {
     black: '#1C1C1C',
     blackBlur: 'rgba(28, 28, 28, 0.4)',
     black2: '#1B2024',
+    black3: '#323639',
 
     darkBrown: '#50513C',
     darkBrownBlur: 'rgba(80, 81, 60, 0.2)',
@@ -117,9 +118,15 @@ export const theme:any = extendBaseTheme({
                     color: 'darkBrownBlur',
                     fontSize: ['21px'],
                     fontWeight: 500,
+                },
+
+
+
+                h3: {
+                    fontSize: ['28px'],
+                    lineHeight: ['34px'],
+                    fontWeight: 500
                 }
-
-
                 /// Legacy
                 // h1: {
                 //     fontSize: ['50px'],

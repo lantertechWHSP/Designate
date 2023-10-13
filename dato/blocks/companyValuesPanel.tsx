@@ -5,9 +5,9 @@ export const companyValuesPanelRecord:string = `
     id
     items {
         title
-        content
         icon {
-            ${imageAttrs(30, 30)}
+            ${imageAttrs(100, 100)}
         }
     }
+    containerWidth  
 `;
