@@ -97,7 +97,7 @@ const CarouselBlock:any = ({ items }:ICarouselBlock) : ReactNode => {
                     <Box position="absolute" bottom="30px" left="50%" transform="translateX(-50%)" zIndex="2">
                         {
                             items.map((item:ICarouselItem, index:number) => {
-                                return <Button width="8px" height="8px" mx={1}
+                                return <Button key={index} width="8px" height="8px" mx={1}
                                     background={slideIndex === index ? 'black' : 'white'}
                                     borderRadius="4px"
                                     onClick={() => {

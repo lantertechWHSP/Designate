@@ -33,7 +33,7 @@ interface IHeader extends IDatoHeader {
 }
 
 const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
-    const {isOpen, _onToggle} = useDisclosure();
+    const {isOpen, onToggle} = useDisclosure();
     const height:string = '120px';
 
     const [isScrolledDown, setIsScrolledDown] = useState(false);
@@ -109,13 +109,13 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
                                 <DesktopNav menu={menu} color={color}/>
                             </Column>
                             <Column width={[ColumnWidth.OneQuarter]}>
-                                {/*<Flex display={['flex', , , 'none']} flex={1}>*/}
-                                {/*    <Button onClick={onToggle}>*/}
-                                {/*        {*/}
-                                {/*            isOpen ? <Icon icon={Icons.Cross} w={20} h={20}/> : <Icon icon={Icons.Hamburger} w={20} h={20}/>*/}
-                                {/*        }*/}
-                                {/*    </Button>*/}
-                                {/*</Flex>*/}
+                                <Flex display={['flex', , , 'none']} flex={1}>
+                                    <Button onClick={onToggle}>
+                                        {
+                                            isOpen ? <Icon icon={Icons.Cross} w={20} h={20}/> : <Icon icon={Icons.Hamburger} w={20} h={20}/>
+                                        }
+                                    </Button>
+                                </Flex>
                                 <Flex justify="flex-end">
                                     <Link href="/contact" sx={{
                                         color: color,

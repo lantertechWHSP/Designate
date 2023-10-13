@@ -35,11 +35,14 @@ export enum ColumnWidth {
 }
 
 interface IRow extends ChakraProps {
-    direction:any;
+    direction?:any;
+    justify?:any;
+    children?:any;
 }
 
 interface IColumn extends ChakraProps {
-    width:string[];
+    width:ColumnWidth|ColumnWidth[];
+    children?:any;
 }
 
 export const Row:any = ({ direction = ['row'], justify = ['flex-start'], children, ...props }:IRow) : ReactNode => {
