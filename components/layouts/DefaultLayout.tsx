@@ -17,16 +17,16 @@ const DefaultLayout:any = ({ layout, children }:any) : ReactNode => {
             <Box flex="1">
                 {
                     !layout.isHomePage && <Box h={['376px']}
-                                                position="relative"
-                                                backgroundImage={`url('/images/layouts/background.png')`}
-                                                backgroundPosition="center"
-                                                backgroundSize="cover">
+                        position="relative"
+                        backgroundImage={`url('/images/layouts/background.png')`}
+                        backgroundPosition="center"
+                        backgroundSize="cover">
                         <Container>
                             <Flex h={['376px']} align="flex-end" py={8}>
                                 {
                                     layout.title && <Heading as="h1" variant="defaultLayoutTitle">
                                         {layout.title}
-                                  </Heading>
+                                    </Heading>
                                 }
                             </Flex>
                         </Container>

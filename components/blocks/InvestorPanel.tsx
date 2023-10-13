@@ -70,18 +70,18 @@ const InvestorPanelBlock:any = ({ displayHeadline }:IInvestorPanelBlock) : React
                             }}>
                                 <Badge data-yourir="changeSignCSS" color="darkBrown">
                                     <Box as="span"
-                                         data-yourir="changeSignCSS"
-                                         mr={1}
-                                         sx={{
-                                             '&.yourir-positive:before': {
-                                                 color: 'darkBrown',
-                                                 content: "'\\2197'"
-                                             },
-                                             '&.yourir-negative:before': {
-                                                 color: 'darkBrown',
-                                                 content: "'\\2198'"
-                                             }
-                                         }}
+                                        data-yourir="changeSignCSS"
+                                        mr={1}
+                                        sx={{
+                                            '&.yourir-positive:before': {
+                                                color: 'darkBrown',
+                                                content: "'\\2197'"
+                                            },
+                                            '&.yourir-negative:before': {
+                                                color: 'darkBrown',
+                                                content: "'\\2198'"
+                                            }
+                                        }}
                                     />
                                     <Text as="span" color="darkBrown" data-yourir="change maxDecimals=2" />
                                     {'\u00A0'}

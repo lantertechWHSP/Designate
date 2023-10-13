@@ -15,6 +15,6 @@ const HeroVectorEffect:any = () : ReactNode => {
             </linearGradient>
         </defs>
     </svg>;
-}
+};
 
 export default HeroVectorEffect;

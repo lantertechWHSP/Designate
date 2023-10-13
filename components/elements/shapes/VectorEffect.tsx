@@ -21,7 +21,7 @@ const VectorEffect:any = () : ReactNode => {
                 <stop offset="1" stop-color="#E4DDC1"/>
             </linearGradient>
         </defs>
-    </svg>
-}
+    </svg>;
+};
 
 export default VectorEffect;

@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import ContentBlock from '~/components/blocks/Content';
 import { ChakraProps } from '@chakra-ui/system';
-import { Box, Heading } from '@chakra-ui/react';
+import { Flex, Box, Heading, Text } from '@chakra-ui/react';
 
 interface IOverviewBlock extends ChakraProps {
     subtitle?:string;
@@ -9,19 +9,29 @@ interface IOverviewBlock extends ChakraProps {
 }
 
 const OverviewBlock:any = ({ subtitle, description }:IOverviewBlock) : ReactNode => {
-    return <ContentBlock background="lightGrey3" py={12}>
-        <Box maxW="900px">
-            {
-                subtitle && <Heading as="h2" variant="h2" fontWeight={400} mb={4}>
-                    {subtitle}
-                </Heading>
-            }
-            {
-                description && <Box color="steelBlue">
-                    {description}
-                </Box>
-            }
-        </Box>
+    return <ContentBlock background="ghostWhite" py={8}>
+        <Flex mx={-4}>
+            <Box w={['50%']} px={4}>
+                {
+                    subtitle && <Heading as="h2"
+                        fontSize={['36px']}
+                        lineHeight={['42px']}
+                        color="darkBrown"
+                        fontWeight={500} mb={4}>
+                        {subtitle}
+                    </Heading>
+                }
+            </Box>
+            <Box w={['50%']} px={4}>
+                {
+                    description && <Text fontSize={['19px']}
+                        lineHeight={['29px']}
+                        color="darkBrown">
+                        {description}
+                    </Text>
+                }
+            </Box>
+        </Flex>
     </ContentBlock>;
 };
 
