@@ -4,5 +4,5 @@ export interface IPage {
     slug?:string;
     seo?: any[];
     blocks?:any[];
-    darkTheme:boolean;
+    darkTheme?:boolean;
 }

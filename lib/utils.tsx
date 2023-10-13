@@ -76,7 +76,7 @@ export const getLayoutData:any = (site:ISite, page:IPage, preview:boolean) : any
 
     const footer:IFooter = site?.footer || null;
     if(footer) {
-        footer.menu = site?.menu || []
+        footer.menu = site?.menu || [];
     }
 
     return {

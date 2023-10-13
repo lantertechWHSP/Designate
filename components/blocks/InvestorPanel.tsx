@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Box, Heading, Text, Flex, SimpleGrid, Divider, Badge, Link as ChakraLink } from '@chakra-ui/react';
+import { Box, Heading, Text, Flex, SimpleGrid, Badge, Link as ChakraLink } from '@chakra-ui/react';
 import ContentBlock from '~/components/blocks/Content';
 import { YourIR } from 'yourir-next';
 import { Icon, Icons } from '~/components/elements/icon';
@@ -31,11 +31,11 @@ const InvestorPanelBlock:any = ({ displayHeadline }:IInvestorPanelBlock) : React
                         </Heading>
                         <Box mb="12px" borderTop="1px solid" borderColor="lightGrey2" py={4}>
                             <Text fontSize={['72px']}
-                                  mb={0}
-                                  lineHeight={['80px']}
-                                  fontWeight={500}
-                                  color="darkBrown"
-                                  data-yourir="price showCurrency=true minDecimals=2 maxDecimals=2" />
+                                mb={0}
+                                lineHeight={['80px']}
+                                fontWeight={500}
+                                color="darkBrown"
+                                data-yourir="price showCurrency=true minDecimals=2 maxDecimals=2" />
                             <Box sx={{
                                 '.chakra-badge.yourir-zero': {
                                     background: 'lightGrey'
@@ -68,7 +68,7 @@ const InvestorPanelBlock:any = ({ displayHeadline }:IInvestorPanelBlock) : React
                                     display: 'none'
                                 }
                             }}>
-                                <Badge align="baseline" data-yourir="changeSignCSS" color="darkBrown">
+                                <Badge data-yourir="changeSignCSS" color="darkBrown">
                                     <Box as="span"
                                          data-yourir="changeSignCSS"
                                          mr={1}
@@ -165,12 +165,12 @@ const InvestorPanelBlock:any = ({ displayHeadline }:IInvestorPanelBlock) : React
                         <Box data-yourir="announcements pageSize=5" borderBottom="1px solid" borderColor="darkBrown">
                             <Box data-yourir="items">
                                 <Flex role="group"
-                                      borderTop="1px solid"
-                                      borderColor="lightGrey2"
-                                      direction="row"
-                                      color="darkBrownBlur"
-                                      align="center"
-                                      py={[4, 4, '26px']}>
+                                    borderTop="1px solid"
+                                    borderColor="lightGrey2"
+                                    direction="row"
+                                    color="darkBrownBlur"
+                                    align="center"
+                                    py={[4, 4, '26px']}>
                                     <Heading data-yourir="$cur.heading"
                                         as="h3"
                                         variant="listItem" mr={2} />

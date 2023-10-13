@@ -18,7 +18,7 @@ const Footer:any = ({ menu, address, email, phone, fax, linkedin, youtube, copyr
                         {
                             (Array.isArray(menu) && menu.length > 0) && menu.map((item:IMenuLink, index:number) => {
                                 return <Box key={index}
-                                            mb={2}>
+                                    mb={2}>
                                     <MenuItemLink
                                         variant="siteFooter"
                                         fontSize={['32px']}
@@ -27,7 +27,7 @@ const Footer:any = ({ menu, address, email, phone, fax, linkedin, youtube, copyr
                                         title={item.title}
                                         link={item.link}
                                         externalLink={item.externalLink} />
-                                </Box>
+                                </Box>;
                             })
                         }
                     </Flex>
@@ -66,18 +66,18 @@ const Footer:any = ({ menu, address, email, phone, fax, linkedin, youtube, copyr
                             {
                                 linkedin && <Box px={2}>
                                     <Link href={linkedin} variant="siteFooter">
-                                      Linkedin
+                                        Linkedin
                                     </Link>
                                 </Box>
                             }
                             {
                                 youtube && <Box px={2}>
                                     <Link href={youtube} variant="siteFooter">
-                                      YouTube
+                                        YouTube
                                     </Link>
                                 </Box>
                             }
-                      </Flex>
+                        </Flex>
                     }
                 </Box>
             </Flex>
@@ -92,7 +92,7 @@ const Footer:any = ({ menu, address, email, phone, fax, linkedin, youtube, copyr
                             top: '-3px'
                         }}>
                         <Box as="span"
-                             color="white">
+                            color="white">
                             <Logo />
                         </Box>
                     </Link>
@@ -106,7 +106,7 @@ const Footer:any = ({ menu, address, email, phone, fax, linkedin, youtube, copyr
                     {
                         copyright && <Text mb={0} color="whiteBlur">
                             {copyright}
-                      </Text>
+                        </Text>
                     }
                 </Box>
             </Flex>

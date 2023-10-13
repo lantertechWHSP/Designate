@@ -11,7 +11,7 @@ interface IHeroBlock {
     image?:IImage;
 }
 
-const VectorEffect = () => {
+const VectorEffect:any = () : ReactNode => {
     return <svg height="100%" viewBox="0 0 531 482" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M14.2059 1336.07L407.624 934.939C571.33 768.023 571.321 497.4 407.624 330.503L111.226 632.721L-282.199 1033.85L14.2059 1336.07Z" fill="url(#paint0_linear_4298_6245)"/>
         <path d="M14.2067 -674.8L407.625 -273.668C571.33 -106.753 571.321 163.87 407.625 330.767L111.227 28.5495L-282.2 -372.582L14.2067 -674.8Z" fill="url(#paint1_linear_4298_6245)"/>
@@ -25,8 +25,8 @@ const VectorEffect = () => {
                 <stop offset="1" stop-color="#E4DDC1"/>
             </linearGradient>
         </defs>
-    </svg>
-}
+    </svg>;
+};
 
 const HeroBlock:any = ({ title, video, image }:IHeroBlock) : ReactNode => {
     const { observe: contentWidthObserve, width: contentWidth } = useDimensions();
@@ -36,10 +36,10 @@ const HeroBlock:any = ({ title, video, image }:IHeroBlock) : ReactNode => {
         ref={contentWidthObserve}>
         {
             title && <Box h={['492px']}
-                           position="relative"
-                           backgroundImage={`url('/images/blocks/hero/background.png')`}
-                           backgroundPosition="center"
-                           backgroundSize="cover">
+                position="relative"
+                backgroundImage={`url('/images/blocks/hero/background.png')`}
+                backgroundPosition="center"
+                backgroundSize="cover">
                 <Container h={['492px']}>
                     <Flex minH="100%" align="flex-end">
                         <Heading py={8} variant="hero" position="relative" zIndex="2" maxWidth={['100vw', , '600px', '1000px']}>

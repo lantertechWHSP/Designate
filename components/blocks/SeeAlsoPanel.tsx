@@ -12,7 +12,7 @@ interface ISeeAlsoItem {
 
 interface ISeeAlsoPanelBlock {
     title?:string;
-    links?:ISeeAlsoItem[];
+    items?:ISeeAlsoItem[];
 }
 
 const SeeAlsoItem:any = ({ title, description, link }:ISeeAlsoItem) : ReactNode => {

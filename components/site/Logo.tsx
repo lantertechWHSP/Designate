@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
-const Logo = () : ReactNode => {
-    return <svg width="189" height="26" viewBox="0 0 189 26" fill="none" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+const Logo:any = () : ReactNode => {
+    return <svg width="189" height="26" viewBox="0 0 189 26" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
         <g>
             <g>
                 <path d="M48.9,26c-2.4,0-4.4-0.4-6-1.3c-1.6-0.9-3.1-1.9-4.2-3.2l4.5-3.5c0.6,1.1,1.5,1.9,2.4,2.5c1,0.6,2.1,0.9,3.2,0.9
@@ -52,7 +52,7 @@ const Logo = () : ReactNode => {
             <path d="M26.4,12.1h-6v13.6h6V12.1z"/>
             <path d="M20.4,6.2v13.6H6.3V6.2L20.4,6.2c0-3.2-2.7-5.9-6-5.9H0.3v25.3h26.1V12.1C26.4,8.8,23.7,6.2,20.4,6.2z"/>
         </g>
-    </svg>
-}
+    </svg>;
+};
 
 export default Logo;

@@ -46,7 +46,7 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
     });
 
 
-    let getBackground = () => {
+    const getBackground:any = () : string => {
         if(isOpen || (!isScrolledDown && isMinimumScrolled)) {
             return 'white';
         }
@@ -58,21 +58,21 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
                 return 'white';
             }
         }
-    }
+    };
 
-    let getColor = () => {
+    const getColor:any = () : string => {
         if(isOpen || (!isScrolledDown && isMinimumScrolled)) {
-            return 'black'
+            return 'black';
         }
         else {
             if(darkTheme) {
                 return 'white';
             }
             else {
-                return 'black'
+                return 'black';
             }
         }
-    }
+    };
 
     const [background, setBackground] = useState(getBackground());
     const [color, setColor] = useState(getColor());
@@ -80,7 +80,7 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
     useEffect(() => {
         setColor(getColor());
         setBackground(getBackground());
-    }, [isOpen, isScrolledDown, isMinimumScrolled])
+    }, [isOpen, isScrolledDown, isMinimumScrolled]);
 
     return <Box as="header">
         <Box pos="fixed" top={0} height={[height]} w="100%" zIndex={100}
@@ -90,7 +90,7 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
                     opacity: !isOpen && isScrolledDown && isMinimumScrolled ? 0 : 1,
                 }}>
                 <Box background={background}
-                     transition="background 300ms linear">
+                    transition="background 300ms linear">
                     <Container>
                         <Flex h={height} py={4} align="center">
                             <Grid templateColumns='repeat(12, 1fr)' width="100%">
@@ -105,8 +105,8 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
                                                 top: '-3px'
                                             }}>
                                             <Box as="span"
-                                                 transition="color 300ms linear"
-                                                 color={color}>
+                                                transition="color 300ms linear"
+                                                color={color}>
                                                 <Logo />
                                             </Box>
                                         </Link>
@@ -117,7 +117,7 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
                                 </GridItem>
                                 <GridItem colSpan={[9, , ,2]}>
                                     <Flex display={['flex', , , 'none']} flex={1}>
-                                        <Button onClick={onToggle} color="steelBlue">
+                                        <Button onClick={onToggle}>
                                             {
                                                 isOpen ? <Icon icon={Icons.Cross} w={20} h={20}/> : <Icon icon={Icons.Hamburger} w={20} h={20}/>
                                             }
@@ -153,11 +153,11 @@ const DestopPopoverTrigger:any  = ({item, color}): ReactNode => {
 
     return <PopoverTrigger>
         <MenuItemLink variant="siteHeader"
-                      color={color}
-                      title={item.title}
-                      ink={item.link}
-                      externalLink={item.externalLink}
-                      px={5}>
+            color={color}
+            title={item.title}
+            ink={item.link}
+            externalLink={item.externalLink}
+            px={5}>
             <Flex as="span" align="baseline">
                 <Text as="span" mr={2}>{item.title}</Text>
                 <Box transition="transform 300ms ease"
@@ -178,13 +178,13 @@ const DesktopNav:any = ({menu, color}): ReactNode => {
                         <DestopPopoverTrigger item={item} color={color} />
                         <PopoverContent>
                             {
-                                item.children && <Box background="steelBlue" py={2} px={3}>
+                                item.children && <Box background="white" py={2} px={3}>
                                     {
                                         item.children.map((child: IMenuLink, childIndex: number) => {
                                             return <Box py={2} key={childIndex}>
                                                 <MenuItemLink
                                                     variant="siteHeader"
-                                                    color={color}
+                                                    color="black"
                                                     title={child.title}
                                                     link={child.link}
                                                     externalLink={child.externalLink} />
