@@ -1,4 +1,7 @@
+import { IMenuLink } from '~/interfaces/models/menuLink';
+
 export interface IFooter {
+    menu?: IMenuLink[];
     email?:string;
     address?:string;
     phone?:string

@@ -178,7 +178,7 @@ const InvestorPanelBlock:any = ({ displayHeadline }:IInvestorPanelBlock) : React
                                         as="span"
                                         variant="listLabel" mr={2} />
                                     <Box flex={1} />
-                                    <ChakraLink data-yourir="linkAnnouncement" cursor="pointer" color="darkBrownBlur">
+                                    <ChakraLink data-yourir="linkAnnouncement fileId" cursor="pointer" color="darkBrownBlur">
                                         <Icon icon={Icons.ChevronRight} />
                                     </ChakraLink>
                                 </Flex>

@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import Meta from '~/components/site/Meta';
-import SiteHeader from '~/components/site/SiteHeader';
-import SiteFooter from '~/components/site/SiteFooter';
+import Header from '~/components/site/Header';
+import Footer from '~/components/site/Footer';
 import { Flex, Box } from '@chakra-ui/react';
 
 const PlainLayout:any = ({ layout, children }:any) : ReactNode => {
@@ -10,7 +10,7 @@ const PlainLayout:any = ({ layout, children }:any) : ReactNode => {
             {
                 layout?.metatags && <Meta tags={layout?.metatags} />
             }
-            <SiteHeader menu={layout?.menu} />
+            <Header menu={layout?.menu} />
             <Box flex="1">
                 {
                     children && <>
@@ -18,7 +18,7 @@ const PlainLayout:any = ({ layout, children }:any) : ReactNode => {
                     </>
                 }
             </Box>
-            <SiteFooter {...layout?.footer} />
+            <Footer {...layout?.footer} />
         </Flex>
     );
 };

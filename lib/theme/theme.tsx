@@ -230,15 +230,16 @@ export const theme:any = extendBaseTheme({
             },
             variants: {
                 siteHeader: {
-                    fontSize: [16],
+                    fontSize: ['16px'],
                     fontWeight: 700
-                    // color: 'lightGrey2',
                 },
                 siteFooter: {
-                    color: 'steelBlue3',
+                    fontSize: ['18px'],
+                    color: 'white',
+                    fontWeight: 400
                 },
                 sectionLink: {
-                    fontSize: [16],
+                    fontSize: ['16px'],
                     lineHeight: [1.2],
                     color: 'skyBlue',
                     display: 'flex',

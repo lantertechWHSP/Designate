@@ -4,6 +4,7 @@ import { IBlock } from '~/interfaces/util/block';
 import { ISite } from '~/interfaces/layout/site';
 import { IPage } from '~/interfaces/models/page';
 import { isNil as _isNil } from 'lodash';
+import {IFooter} from "~/interfaces/layout/footer";
 
 export const resolveInternalLink:any = (link:ILink) : string => {
     if (!link) {
@@ -73,12 +74,17 @@ export const getLayoutData:any = (site:ISite, page:IPage, preview:boolean) : any
     const metatags:any = [...favicon, ...(page?.seo || [])];
     const breadcrumbs:any = getBreadcrumbs(site?.menu, page);
 
+    const footer:IFooter = site?.footer || null;
+    if(footer) {
+        footer.menu = site?.menu || []
+    }
+
     return {
         metatags: metatags,
         breadcrumbs: breadcrumbs,
         page: page ? page : null,
         menu: site?.menu || [],
-        footer: site?.footer || null,
+        footer: footer,
         slug: page?.slug || null,
         isHomePage: page?.slug ? page?.slug === 'home' : false,
         title: page?.title || null,

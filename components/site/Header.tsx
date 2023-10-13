@@ -26,14 +26,14 @@ import { MenuItemLink } from '~/components/elements/menuItemLink';
 import { IMenuLink } from '~/interfaces/models/menuLink';
 import Logo from "~/components/site/Logo";
 import { Link } from '~/components/elements/link';
-import { IHeader } from "~/interfaces/layout/header";
+import { IHeader as IDatoHeader } from "~/interfaces/layout/header";
 
 const MotionBox:any = motion(Box);
 
-interface ISiteHeader extends IHeader {
+interface IHeader extends IDatoHeader {
 }
 
-const SiteHeader:any = ({ menu, darkTheme }:ISiteHeader): ReactNode => {
+const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
     const {isOpen, onToggle} = useDisclosure();
     const height:string = '120px';
 
@@ -293,4 +293,4 @@ const MobileNavItem:any = ({item}): ReactNode => {
     </Box>;
 };
 
-export default SiteHeader;
+export default Header;
