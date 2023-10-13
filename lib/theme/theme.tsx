@@ -84,12 +84,16 @@ export const theme:any = extendBaseTheme({
                 fontWeight: 500
             },
             variants: {
-                // New
                 hero: {
                     fontSize: ['76px'],
                     fontWeight: 500,
                     lineHeight: ['90px'],
                     color: 'white'
+                },
+                defaultLayoutTitle: {
+                    fontSize: ['64px'],
+                    fontWeight: 500,
+                    lineHeight: ['80px']
                 },
                 sectionHeading: {
                     fontSize: ['40px'],

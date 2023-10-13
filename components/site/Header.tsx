@@ -51,12 +51,7 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
             return 'white';
         }
         else {
-            if(darkTheme) {
-                return 'rgba(0, 0, 0, 0)';
-            }
-            else {
-                return 'white';
-            }
+            return 'rgba(0, 0, 0, 0)';
         }
     };
 

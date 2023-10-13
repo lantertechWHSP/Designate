@@ -5,6 +5,7 @@ import Footer from '~/components/site/Footer';
 import PageLinks from '~/components/site/PageLinks';
 import { Heading, Container, Flex, Box } from '@chakra-ui/react';
 import { SubscriptionForm } from '~/components/elements/mailchimp/subscriptionForm';
+import VectorEffect from '~/components/elements/shapes/VectorEffect';
 
 const DefaultLayout:any = ({ layout, children }:any) : ReactNode => {
     return (
@@ -15,17 +16,24 @@ const DefaultLayout:any = ({ layout, children }:any) : ReactNode => {
             <Header darkTheme={layout.darkTheme} menu={layout?.menu} />
             <Box flex="1">
                 {
-                    !layout.isHomePage && <Flex background="steelBlue2" h={['350px']} direction="column" justify="flex-end">
-                        <Box>
-                            <Container>
-                                <Heading as="h1" variant="h1" color="white" fontWeight={400} mb={12}>
-                                    {
-                                        layout.title
-                                    }
-                                </Heading>
-                            </Container>
+                    !layout.isHomePage && <Box h={['376px']}
+                                                position="relative"
+                                                backgroundImage={`url('/images/layouts/background.png')`}
+                                                backgroundPosition="center"
+                                                backgroundSize="cover">
+                        <Container>
+                            <Flex h={['376px']} align="flex-end" py={8}>
+                                {
+                                    layout.title && <Heading as="h1" variant="defaultLayoutTitle">
+                                        {layout.title}
+                                  </Heading>
+                                }
+                            </Flex>
+                        </Container>
+                        <Box position="absolute" top="0" left="60%" height="100%">
+                            <VectorEffect />
                         </Box>
-                    </Flex>
+                    </Box>
                 }
                 {
                     children && <Box>
