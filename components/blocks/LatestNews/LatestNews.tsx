@@ -1,10 +1,11 @@
 import { ReactNode } from 'react';
-import { SimpleGrid, Flex, Heading, Box, Divider } from '@chakra-ui/react';
+import { Flex, Heading, Box, Divider } from '@chakra-ui/react';
 import ContentBlock from '~/components/blocks/Content';
 import { doQuery, queries } from '~/dato/api';
 import { IPost } from '~/interfaces/models/post';
 import LatestNewsItem from '~/components/blocks/LatestNews/LatestNewsItem';
 import { SectionLinkButton } from "~/components/elements/sectionLink";
+import { Row, Column, ColumnValues } from '~/components/elements/grid/grid';
 
 interface ILatestNewsBlock {
     title:string;
@@ -26,13 +27,15 @@ const LatestNewsBlock:any = ({ data: { posts } }:ILatestNewsBlock) : ReactNode =
             </SectionLinkButton>
         </Flex>
         {
-            (Array.isArray(posts) && posts.length > 0) && <SimpleGrid columns={[1, ,3]} gap={8}>
+            (Array.isArray(posts) && posts.length > 0) && <Row>
                 {
                     posts.map((post:IPost, index:number) => {
-                        return <LatestNewsItem {...post} key={index} />;
+                        return <Column width={[ColumnValues.Full, , ColumnValues.Third]} key={index}>
+                            <LatestNewsItem {...post} />
+                        </Column>
                     })
                 }
-            </SimpleGrid>
+            </Row>
         }
     </ContentBlock>;
 };

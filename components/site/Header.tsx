@@ -27,6 +27,7 @@ import { IMenuLink } from '~/interfaces/models/menuLink';
 import Logo from "~/components/site/Logo";
 import { Link } from '~/components/elements/link';
 import { IHeader as IDatoHeader } from "~/interfaces/layout/header";
+import { Row, Column, ColumnValues } from "~/components/elements/grid/grid";
 
 const MotionBox:any = motion(Box);
 
@@ -87,9 +88,8 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
                 <Box background={background}
                     transition="background 300ms linear">
                     <Container>
-                        <Flex h={height} py={4} align="center">
-                            <Grid templateColumns='repeat(12, 1fr)' width="100%">
-                                <GridItem colSpan={[3]}>
+                        <Row height={[height]} align="center">
+                                <Column width={[ColumnValues.TwoTwelfths]}>
                                     <Flex height="48px" align="center">
                                         <Link
                                             href="/"
@@ -100,41 +100,42 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
                                                 top: '-3px'
                                             }}>
                                             <Box as="span"
-                                                transition="color 300ms linear"
-                                                color={color}>
+                                                 transition="color 300ms linear"
+                                                 color={color}>
                                                 <Logo />
                                             </Box>
                                         </Link>
                                     </Flex>
-                                </GridItem>
-                                <GridItem colSpan={7} display={['none', , , 'flex']}>
+                                </Column>
+                                <Column width={[ColumnValues.SevenTwelfths]}>
                                     <DesktopNav menu={menu} color={color}/>
-                                </GridItem>
-                                <GridItem colSpan={[9, , ,2]}>
-                                    <Flex display={['flex', , , 'none']} flex={1}>
-                                        <Button onClick={onToggle}>
-                                            {
-                                                isOpen ? <Icon icon={Icons.Cross} w={20} h={20}/> : <Icon icon={Icons.Hamburger} w={20} h={20}/>
-                                            }
-                                        </Button>
+                                </Column>
+                                <Column width={[ColumnValues.Quarter]}>
+                                    {/*<Flex display={['flex', , , 'none']} flex={1}>*/}
+                                    {/*    <Button onClick={onToggle}>*/}
+                                    {/*        {*/}
+                                    {/*            isOpen ? <Icon icon={Icons.Cross} w={20} h={20}/> : <Icon icon={Icons.Hamburger} w={20} h={20}/>*/}
+                                    {/*        }*/}
+                                    {/*    </Button>*/}
+                                    {/*</Flex>*/}
+                                    <Flex justify="flex-end">
+                                        <Link href="/contact" sx={{
+                                            color: color,
+                                            fontWeight: 700,
+                                            minWidth: 200,
+                                            padding: '0 20px',
+                                            lineHeight: '48px',
+                                            height: '48px',
+                                            border: `1px solid ${color === 'white' ? `rgba(255, 255, 255, 0.5)` : `rgba(0, 0, 0, 0.5)`}`,
+                                            borderRadius: '24px',
+                                            display: 'block',
+                                            textAlign: 'center'
+                                        }}>
+                                            Contact
+                                        </Link>
                                     </Flex>
-                                    <Link href="/contact" sx={{
-                                        color: color,
-                                        fontWeight: 700,
-                                        minWidth: 200,
-                                        padding: '0 20px',
-                                        lineHeight: '48px',
-                                        height: '48px',
-                                        border: `1px solid ${color === 'white' ? `rgba(255, 255, 255, 0.5)` : `rgba(0, 0, 0, 0.5)`}`,
-                                        borderRadius: '24px',
-                                        display: 'block',
-                                        textAlign: 'center'
-                                    }}>
-                                        Contact
-                                    </Link>
-                                </GridItem>
-                            </Grid>
-                        </Flex>
+                                </Column>
+                            </Row>
                     </Container>
                 </Box>
             </MotionBox>

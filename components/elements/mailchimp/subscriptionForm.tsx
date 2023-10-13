@@ -3,6 +3,7 @@ import { Heading, Container, Flex, Button, Input, Text, Box, Divider } from '@ch
 import { Formik, Form, Field } from 'formik';
 // import ReCAPTCHA from 'react-google-recaptcha';
 import * as yup from 'yup';
+import { Row, Column, ColumnValues } from '~/components/elements/grid/grid';
 
 // @TODO Subscription form and ReCaptcha
 export const SubscriptionForm:any = () : ReactNode => {
@@ -49,16 +50,16 @@ export const SubscriptionForm:any = () : ReactNode => {
 
     return <Box background="black2" pt={8}>
         <Container>
-            <Flex mx={-4} mb={2}>
-                <Box width={['100%', ,'50%']} px={4}>
+            <Row>
+                <Column width={[ColumnValues.Full, , ColumnValues.Half]}>
                     <Heading as="h2" variant="sectionHeading" color="white">
                         Subscribe for the latest updates
                     </Heading>
                     <Text color="whiteBlur">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     </Text>
-                </Box>
-                <Flex width={['100%', ,'50%']} px={4} justify="flex-end">
+                </Column>
+                <Column width={[ColumnValues.Full, , ColumnValues.Half]} justify="flex-end">
                     <Formik
                         validationSchema={SCHEMA}
                         initialValues={INITIAL_VALUES}
@@ -77,37 +78,37 @@ export const SubscriptionForm:any = () : ReactNode => {
                                             status !== 'success' ? <>
                                                 <Flex minW="400px" direction="column">
                                                     <Field as={Input}
-                                                        type="email"
-                                                        border="1px solid"
-                                                        background="transparent"
-                                                        sx={(errors.email && (touched.email && isAttemptedSubmit))  ? {
-                                                            color: 'error',
-                                                            borderColor: '#f1767488'
-                                                        } : {}}
-                                                        borderColor="whiteBlur"
-                                                        px={4}
-                                                        _placeholder={{
-                                                            color: 'whiteBlur'
-                                                        }}
-                                                        color="white"
-                                                        h="50px"
-                                                        id="email"
-                                                        name="email"
-                                                        borderRadius="4px"
-                                                        mr={4}
-                                                        placeholder="Email Address"
-                                                        autoComplete="off" />
+                                                           type="email"
+                                                           border="1px solid"
+                                                           background="transparent"
+                                                           sx={(errors.email && (touched.email && isAttemptedSubmit))  ? {
+                                                               color: 'error',
+                                                               borderColor: '#f1767488'
+                                                           } : {}}
+                                                           borderColor="whiteBlur"
+                                                           px={4}
+                                                           _placeholder={{
+                                                               color: 'whiteBlur'
+                                                           }}
+                                                           color="white"
+                                                           h="50px"
+                                                           id="email"
+                                                           name="email"
+                                                           borderRadius="4px"
+                                                           mr={4}
+                                                           placeholder="Email Address"
+                                                           autoComplete="off" />
                                                     {
                                                         (errors.email && (touched.email && isAttemptedSubmit)) && <Text variant="error" mt={2} mb={0}>{errors.email.toString()}</Text>
                                                     }
                                                 </Flex>
                                                 <Button type="submit"
-                                                    background="white"
-                                                    color="black"
-                                                    py={0}
-                                                    h="50px"
-                                                    borderRadius="4px"
-                                                    minW="180px">Subscribe</Button>
+                                                        background="white"
+                                                        color="black"
+                                                        py={0}
+                                                        h="50px"
+                                                        borderRadius="4px"
+                                                        minW="180px">Subscribe</Button>
                                             </> : <Flex minHeight="48px" align="center">
                                                 <Text color="white" mb={0}>{message}</Text>
                                             </Flex>
@@ -117,8 +118,8 @@ export const SubscriptionForm:any = () : ReactNode => {
                             })
                         }
                     </Formik>
-                </Flex>
-            </Flex>
+                </Column>
+            </Row>
             <Divider borderColor="whiteBlur" />
         </Container>
     </Box>;

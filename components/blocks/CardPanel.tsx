@@ -3,8 +3,9 @@ import { ILink } from '~/interfaces/util/link';
 import ContentBlock from '~/components/blocks/Content';
 import { Image } from '~/components/elements/image';
 import { Box, Flex, Heading, Text } from '@chakra-ui/react';
-import {Link} from "~/components/elements/link";
-import {SectionLink} from "~/components/elements/sectionLink";
+import { Link } from "~/components/elements/link";
+import { SectionLink } from "~/components/elements/sectionLink";
+import { gutter } from "~/components/elements/grid/grid";
 
 enum ICardPanelAlign {
     Left = 'Left',
@@ -23,7 +24,7 @@ interface ICardPanelBlock {
 const CardPanelBlock:any = ({ annotation, title, description, image, link, align }:ICardPanelBlock) : ReactNode => {
     return <ContentBlock background="ghostWhite" py={8}>
         <Flex direction={(align === ICardPanelAlign.Right) ? 'row-reverse' : 'row'}>
-            <Flex width="50%" background="white" direction="column" p={8}>
+            <Flex width="50%" background="white" direction="column" p={gutter * 2}>
                 {
                     annotation && <Text variant="annotation" mb={8}>
                         {annotation}

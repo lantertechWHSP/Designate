@@ -1,8 +1,9 @@
-import { ReactNode, Fragment } from 'react';
-import { Box, Heading, SimpleGrid, Text } from '@chakra-ui/react';
+import { ReactNode } from 'react';
+import { Box, Heading, Text } from '@chakra-ui/react';
 import ContentBlock from '~/components/blocks/Content';
-import { ILink } from '~/interfaces/util/link';
+import { ILink} from '~/interfaces/util/link';
 import { SectionLink } from '~/components/elements/sectionLink';
+import { Row, Column, ColumnValues } from '~/components/elements/grid/grid';
 
 interface ISeeAlsoItem {
     title?:string;
@@ -43,15 +44,15 @@ const SeeAlsoPanelBlock:any = ({ items }:ISeeAlsoPanelBlock) : ReactNode => {
             </Heading>
         }
         {
-            (Array.isArray(items) && items.length > 0) && <SimpleGrid columns={[1, 2, 4]} spacing={[0, 8]}>
+            (Array.isArray(items) && items.length > 0) && <Row>
                 {
                     items.map((item:ISeeAlsoItem, index:number) => {
-                        return <Fragment key={index}>
+                        return <Column key={index} width={[ColumnValues.Full, ColumnValues.Half, ColumnValues.Quarter]}>
                             <SeeAlsoItem {...item} />
-                        </Fragment>;
+                        </Column>
                     })
                 }
-            </SimpleGrid>
+            </Row>
         }
     </ContentBlock>;
 };

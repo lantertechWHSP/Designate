@@ -19,7 +19,7 @@ const VideoBlock:any = ({ title, video, videoEmbed, ...props }:IVideoBlock) : Re
     const [currentVideo] = useState<IVideo>(video ? video : videoEmbed);
 
     return <ContentBlock {...props} mb={8}>
-        <Row>
+        <Row justify={['center']}>
             <Column width={[ColumnValues.Full, ,ColumnValues.TenTwelfths]}>
                 {
                     currentVideo && <AspectRatio ratio={[29 / 18, 21 / 10, ,21 / 9]}>
