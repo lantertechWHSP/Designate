@@ -13,12 +13,12 @@ const VectorEffect:any = () : ReactNode => {
         </g>
         <defs>
             <linearGradient id="paint0_linear_4025_41175" x1="505.277" y1="355.873" x2="125.213" y2="387.361" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#50513C"/>
-                <stop offset="1" stop-color="#E4DDC1"/>
+                <stop stopColor="#50513C"/>
+                <stop offset="1" stopColor="#E4DDC1"/>
             </linearGradient>
             <linearGradient id="paint1_linear_4025_41175" x1="16.0941" y1="-18.5443" x2="286.335" y2="308.079" gradientUnits="userSpaceOnUse">
-                <stop offset="0.0887029" stop-color="#50513C"/>
-                <stop offset="1" stop-color="#E4DDC1"/>
+                <stop offset="0.0887029" stopColor="#50513C"/>
+                <stop offset="1" stopColor="#E4DDC1"/>
             </linearGradient>
         </defs>
     </svg>;

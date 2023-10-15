@@ -1,5 +1,3 @@
-import { imageAttrs } from '~/dato/attrs/responsiveImageAttrs';
-
 export const investmentPhilosophyRecord:string = `
     __typename
     id
@@ -7,7 +5,8 @@ export const investmentPhilosophyRecord:string = `
         title
         content
         icon {
-            ${imageAttrs(30, 30)}
+            url
+            alt
         }
     }
 `;

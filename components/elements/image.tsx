@@ -13,7 +13,7 @@ interface IImage extends ChakraProps {
 export const Image:any = ({ image, ratio, ...props }:IImage) : ReactNode => {
     return <Box {...props}>
         {
-            image ? <DatoImage data={image.responsiveImage} /> : <AspectRatio ratio={ratio} >
+            image && image.responsiveImage ? <DatoImage data={image.responsiveImage} /> : <AspectRatio ratio={ratio} >
                 <Box background="lightGrey" />
             </AspectRatio>
         }

@@ -1,4 +1,4 @@
-import ContentBlock from "~/components/blocks/Content";
+import ContentBlock, { ContainerWidth } from "~/components/blocks/Content";
 import { ReactNode, useState} from 'react';
 import { AspectRatio, Text } from '@chakra-ui/react';
 import dynamic from 'next/dynamic';
@@ -12,12 +12,13 @@ interface IVideoBlock {
     title?:string;
     video?:IVideo;
     videoEmbed?:IVideo;
+    containerWidth?:ContainerWidth;
 }
 
-const VideoBlock:any = ({ title, video, videoEmbed, ...props }:IVideoBlock) : ReactNode => {
+const VideoBlock:any = ({ title, video, videoEmbed, containerWidth }:IVideoBlock) : ReactNode => {
     const [currentVideo] = useState<IVideo>(video ? video : videoEmbed);
 
-    return <ContentBlock {...props} background="black3" py={12}>
+    return <ContentBlock containerWidth={containerWidth} background="black3" py={12}>
         {
             currentVideo && <AspectRatio ratio={[29 / 18, 21 / 10, ,21 / 9]}>
                 <ReactPlayer

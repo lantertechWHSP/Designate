@@ -1,4 +1,4 @@
-import ContentBlock from "~/components/blocks/Content";
+import ContentBlock, { ContainerWidth } from "~/components/blocks/Content";
 import StructuredContent from 'components/StructuredContent';
 import { ReactNode } from 'react';
 import { ChakraProps } from '@chakra-ui/system';
@@ -7,10 +7,11 @@ interface ITextBlock extends ChakraProps {
     id?:string;
     __typename?:string;
     content?:any;
+    containerWidth?:ContainerWidth;
 }
 
-const TextBlock:any = ({ content, ...props }:ITextBlock) : ReactNode => {
-    return <ContentBlock {...props} my={8}>
+const TextBlock:any = ({ content, containerWidth }:ITextBlock) : ReactNode => {
+    return <ContentBlock containerWidth={containerWidth} my={8}>
         <StructuredContent content={content} />
     </ContentBlock>;
 };

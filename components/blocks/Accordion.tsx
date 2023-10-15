@@ -12,8 +12,8 @@ interface IAccordionItem {
     content?:string;
 }
 
-const AccordionBlock:any = ({ title, items, ...props }:IAccordionBlock) : ReactNode => {
-    return <ContentBlock {...props} background="steelBlue" color="white" py={8}>
+const AccordionBlock:any = ({ title, items }:IAccordionBlock) : ReactNode => {
+    return <ContentBlock background="steelBlue" color="white" py={8}>
         {
             title && <Box mb={8}>
                 <Heading as="h2" variant="sectionHeading">
