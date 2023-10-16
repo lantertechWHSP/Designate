@@ -339,10 +339,10 @@ export const theme:any = extendBaseTheme({
                     px: 4,
                     color: 'steelBlue3',
                     _focus: {
-                        background: 'lightGrey3'
+                        background: 'lightGrey2'
                     },
                     _active: {
-                        background: 'lightGrey3'
+                        background: 'lightGrey2'
                     }
                 }
             }

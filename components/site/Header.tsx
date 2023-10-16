@@ -82,12 +82,15 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
             <MotionBox
                 animate={{
                     opacity: !isOpen && isScrolledDown && isMinimumScrolled ? 0 : 1,
+                    background: background
+                }}
+                transition={{
+                    ease: 'linear',
+                    duration: 0.3
                 }}>
-                <Box background={background}
-                    transition="background 300ms linear">
-                    <Container>
+                <Container>
                         <Row height={[height]} align="center">
-                            <Column width={[ColumnWidth.TwoTwelfths]}>
+                            <Column width={[ColumnWidth.Half, , ,ColumnWidth.TwoTwelfths]}>
                                 <Flex height="48px" align="center">
                                     <Link
                                         href="/"
@@ -105,39 +108,38 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
                                     </Link>
                                 </Flex>
                             </Column>
-                            <Column width={[ColumnWidth.SevenTwelfths]}>
-                                <DesktopNav menu={menu} color={color}/>
+                            <Column display={['none', , ,'block']} width={[ColumnWidth.None, , ,ColumnWidth.EightTwelfths]}>
+                                <Box>
+                                    <DesktopNav menu={menu} color={color}/>
+                                </Box>
                             </Column>
-                            <Column width={[ColumnWidth.OneQuarter]}>
-                                <Flex display={['flex', , , 'none']} flex={1}>
-                                    <Button onClick={onToggle}>
+                            <Column width={[ColumnWidth.Half, , ,ColumnWidth.TwoTwelfths]}>
+                                <Flex display="flex" justify="flex-end">
+                                    <Button color={color} onClick={onToggle} display={['flex', , ,'none']}>
                                         {
                                             isOpen ? <Icon icon={Icons.Cross} w={20} h={20}/> : <Icon icon={Icons.Hamburger} w={20} h={20}/>
                                         }
                                     </Button>
-                                </Flex>
-                                <Flex justify="flex-end">
-                                    <Link href="/contact" sx={{
-                                        color: color,
-                                        fontWeight: 700,
-                                        minWidth: 200,
-                                        padding: '0 20px',
-                                        lineHeight: '48px',
-                                        height: '48px',
-                                        border: `1px solid ${color === 'white' ? `rgba(255, 255, 255, 0.5)` : `rgba(0, 0, 0, 0.5)`}`,
-                                        borderRadius: '24px',
-                                        display: 'block',
-                                        textAlign: 'center'
-                                    }}>
+                                    <Link display={['none', , ,'block']}
+                                          href="/contact" sx={{
+                                            color: color,
+                                            fontWeight: 700,
+                                            minWidth: 200,
+                                            padding: '0 20px',
+                                            lineHeight: '48px',
+                                            height: '48px',
+                                            border: `1px solid ${color === 'white' ? `rgba(255, 255, 255, 0.5)` : `rgba(0, 0, 0, 0.5)`}`,
+                                            borderRadius: '24px',
+                                            textAlign: 'center'
+                                        }}>
                                         Contact
                                     </Link>
                                 </Flex>
                             </Column>
                         </Row>
                     </Container>
-                </Box>
+                <MobileNav background={background} menu={menu} isOpen={isOpen}/>
             </MotionBox>
-            <MobileNav menu={menu} isOpen={isOpen}/>
         </Box>
     </Box>;
 };
@@ -154,7 +156,7 @@ const DestopPopoverTrigger:any  = ({item, color}): ReactNode => {
             px={5}>
             <Flex as="span" align="baseline">
                 <Text as="span" mr={2}>{item.title}</Text>
-                <Box transition="transform 300ms ease"
+                <Box transition="transform 300ms linear"
                     transform={isOpen ? 'rotate(180deg)' : ''}>
                     <Icon icon={Icons.WideArrowDown} w={12} h={12} />
                 </Box>
@@ -200,7 +202,7 @@ const DesktopNav:any = ({menu, color}): ReactNode => {
     </Flex>;
 };
 
-const MobileNav:any = ({menu, isOpen}): ReactNode => {
+const MobileNav:any = ({background, menu, isOpen = false}): ReactNode => {
     const scrollRef:any = useRef<ReactNode>();
 
     useEffect(() => {
@@ -222,17 +224,18 @@ const MobileNav:any = ({menu, isOpen}): ReactNode => {
         position="sticky"
         left={0}
         right={0}
-        h="calc(100vh - 34px)"
+        h={isOpen ? "calc(100vh - 34px)" : '0'}
         zIndex={isOpen ? 100 : 0}
-        display={['block', , , 'none']}
         pointerEvents={!isOpen ? 'none' : 'all'}
-        background="ghostWhite"
-        opacity={0}
         animate={{
-            opacity: !isOpen ? 0 : 1
+            opacity: !isOpen ? 0 : 1,
+        }}
+        transition={{
+            ease: 'linear',
+            duration: 0.3
         }}>
         <Box ref={scrollRef} overflowY="auto" h="100%">
-            <Box>
+            <Box color="black" borderBottom="1px solid" borderColor="lightGrey2">
                 {
                     Array.isArray(menu) && menu.length > 0 && menu.map((item: IMenuLink, index: number) => {
                         return <MobileNavItem item={item} key={index}/>;
@@ -254,36 +257,45 @@ const MobileNavItem:any = ({item}): ReactNode => {
     };
 
     return <Box>
-        <Flex px={4} py={3}>
+        <Flex px={4} py={3} borderTop="1px solid" cursor={hasChildren ? 'pointer' : 'auto'} onClick={handleClick}  borderColor="lightGrey2">
             <MenuItemLink variant="siteHeader"
-                title={item.title}
+                          color="black"
+                          fontSize="18px"
                 link={item.link}
-                externalLink={item.externalLink} />
+                externalLink={item.externalLink} >
+                {item.title}
+            </MenuItemLink>
             <Box flex={1}/>
             {
-                hasChildren && <Button onClick={handleClick} color="steelBlue">
+                hasChildren && <Button color="black">
                     <Box
-                        width="16px"
-                        height="16px"
-                        transition={'all 300ms ease'}
+                        width="12px"
+                        height="12px"
+                        transition={'transform 300ms linear'}
                         transform={isOpen ? 'rotate(180deg)' : ''}>
-                        <Icon icon={Icons.ChevronDown} w={16} h={16}/>
+                        <Icon icon={Icons.ChevronDown} w={12} h={12}/>
                     </Box>
                 </Button>
             }
         </Flex>
-        <Collapse in={isOpen} animateOpacity>
-            {
-                item.children.map((child: IMenuLink, childIndex: number) => {
-                    return <Box px={4} py={2} key={childIndex}>
-                        <MenuItemLink variant="siteHeader"
-                            title={child.title}
-                            link={child.link}
-                            externalLink={child.externalLink} />
-                    </Box>;
-                })
-            }
-        </Collapse>
+        {
+            hasChildren && <Collapse in={isOpen} animateOpacity>
+                <Box borderTop="1px solid" borderColor="lightGrey2">
+                    {
+                        item.children.map((child: IMenuLink, childIndex: number) => {
+                            return <Box px={4} py={2} key={childIndex}>
+                                <MenuItemLink variant="siteHeader"
+                                              color="darkBrown"
+                                              link={child.link}
+                                              externalLink={child.externalLink} >
+                                    {child.title}
+                                </MenuItemLink>
+                            </Box>;
+                        })
+                    }
+                </Box>
+            </Collapse>
+        }
     </Box>;
 };
 

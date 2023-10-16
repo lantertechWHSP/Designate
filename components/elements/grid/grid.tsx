@@ -5,6 +5,8 @@ import { ChakraProps } from '@chakra-ui/system';
 export const gutter:number = 4; // Charka width
 
 export enum ColumnWidth {
+    None = '0',
+
     // Tweltfths
     Twelfth = '8.33333333333%',
     TwoTwelfths = '16.6666666667%',
