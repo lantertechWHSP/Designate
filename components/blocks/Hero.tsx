@@ -14,17 +14,18 @@ interface IHeroBlock {
 
 const HeroBlock:any = ({ title, video, image }:IHeroBlock) : ReactNode => {
     const { observe: contentWidthObserve, width: contentWidth } = useDimensions();
+    const height = ['300px', , ,'490px'];
 
     return <Box
         overflow="hidden"
         ref={contentWidthObserve}>
         {
-            title && <Box h={['492px']}
+            title && <Box h={height}
                 position="relative"
                 backgroundImage={`url('/images/blocks/hero/background.png')`}
                 backgroundPosition="center"
                 backgroundSize="cover">
-                <Container h={['492px']}>
+                <Container h={height}>
                     <Flex minH="100%" align="flex-end">
                         <Heading py={8} variant="hero" position="relative" zIndex="2" maxWidth={['100vw', , '600px', '1000px']}>
                             {
@@ -39,12 +40,12 @@ const HeroBlock:any = ({ title, video, image }:IHeroBlock) : ReactNode => {
             </Box>
         }
         {
-            (video && video?.url || image && image?.url) && <Box h={['428px', ,'600px']} position="relative">
+            (video && video?.url || image && image?.url) && <Box h={['300px', '420px', ,'600px']} position="relative">
                 {
                     (() => {
                         if(video && video?.url) {
                             return <Box>
-                                <AspectRatio ratio={[320 / 428, contentWidth / 600, contentWidth / 600]}>
+                                <AspectRatio ratio={[contentWidth / 300, contentWidth / 420, , contentWidth / 600]}>
                                     <>
                                         <video autoPlay={true} loop={true} muted={true} playsInline>
                                             <source src={video?.url} />
@@ -63,7 +64,7 @@ const HeroBlock:any = ({ title, video, image }:IHeroBlock) : ReactNode => {
                         }
                         else if(image && image?.url) {
                             return  <Box
-                                h={['428px', '600px', '600px']}
+                                h={['300px', '420px', ,'600px']}
                                 backgroundImage={`url(${image?.url}?w=2400&h=930)`}
                                 backgroundPosition="center"
                                 backgroundSize="cover">

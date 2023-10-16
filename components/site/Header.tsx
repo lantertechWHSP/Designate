@@ -235,7 +235,7 @@ const MobileNav:any = ({background, menu, isOpen = false}): ReactNode => {
             duration: 0.3
         }}>
         <Box ref={scrollRef} overflowY="auto" h="100%">
-            <Box color="black" borderBottom="1px solid" borderColor="lightGrey2">
+            <Box color="black">
                 {
                     Array.isArray(menu) && menu.length > 0 && menu.map((item: IMenuLink, index: number) => {
                         return <MobileNavItem item={item} key={index}/>;

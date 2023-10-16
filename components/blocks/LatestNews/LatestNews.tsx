@@ -17,8 +17,8 @@ interface ILatestNewsBlock {
 }
 
 const LatestNewsBlock:any = ({ background, color, data: { posts } }:ILatestNewsBlock) : ReactNode => {
-    return <ContentBlock py={8} background={background} color={color}>
-        <Flex align="center" mb={8}>
+    return <ContentBlock py={[8, ,12]} background={background} color={color}>
+        <Flex align="center" mb={[4, ,8]}>
             <Heading as="h2" variant="sectionHeading">
                 Latest News
             </Heading>
@@ -31,7 +31,7 @@ const LatestNewsBlock:any = ({ background, color, data: { posts } }:ILatestNewsB
             (Array.isArray(posts) && posts.length > 0) ? <Row>
                 {
                     posts.map((post:IPost, index:number) => {
-                        return <Column width={[ColumnWidth.Full, , ColumnWidth.OneThird]} key={index}>
+                        return <Column width={[ColumnWidth.Full, ,ColumnWidth.OneThird]} key={index}>
                             <LatestNewsItem {...post} />
                         </Column>;
                     })

@@ -23,14 +23,14 @@ export const SectionLink:any = ({ ...props }:ISectionLink) => {
 export const SectionLinkButton:any = ({ ...props }:ISectionLink) => {
     return <Link {...props}
         color="darkBrown"
-        height="50px"
-        lineHeight="50px"
-        borderRadius="25px"
+        height={['40px', ,'50px']}
+        lineHeight={['40px', ,'50px']}
+        borderRadius={['20px', ,'25px']}
         px={4}
         border="1px solid"
         borderColor="darkBrownBlur"
         textAlign="center"
-        minWidth="200px"
+        minWidth={['120px', ,'200px']}
         fontWeight={700}>
     </Link>;
 };

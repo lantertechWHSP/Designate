@@ -86,19 +86,19 @@ export const theme:any = extendBaseTheme({
             },
             variants: {
                 hero: {
-                    fontSize: ['76px'],
+                    fontSize: ['36px', '46px', '56px', '76px'],
                     fontWeight: 500,
-                    lineHeight: ['90px'],
+                    lineHeight: [1.2],
                     color: 'white'
                 },
                 defaultLayoutTitle: {
                     fontSize: ['64px'],
                     fontWeight: 500,
-                    lineHeight: ['80px']
+                    lineHeight: [1.2]
                 },
                 sectionHeading: {
-                    fontSize: ['40px'],
-                    lineHeight: ['48px'],
+                    fontSize: ['32px', ,'40px'],
+                    lineHeight: [1.2],
                     fontWeight: 700,
                 },
                 sectionSubheading: {

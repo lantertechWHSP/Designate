@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Box, Heading, Text, Flex, Badge, Link as ChakraLink } from '@chakra-ui/react';
+import { Box, Heading, Text, Flex, Badge, Divider, Link as ChakraLink } from '@chakra-ui/react';
 import ContentBlock, { BackgroundColor } from '~/components/blocks/Content';
 import { YourIR } from 'yourir-next';
 import { Icon, Icons } from '~/components/elements/icon';
@@ -12,15 +12,15 @@ interface IInvestorPanelBlock {
 }
 
 const InvestorPanelBlock:any = ({ background, displayHeadline }:IInvestorPanelBlock) : ReactNode => {
-    return <ContentBlock background={background} py={12}>
+    return <ContentBlock background={background} py={[8, ,12]}>
         {
-            displayHeadline && <Flex align="center" mb={4}>
+            displayHeadline && <Flex align="center" mb={[4, ,8]}>
                 <Heading as="h2" variant="sectionHeading">
                     Investors
                 </Heading>
                 <Box flex="1" />
                 <SectionLinkButton href="/news">
-                    Investor Overview
+                    Overview
                 </SectionLinkButton>
             </Flex>
         }
@@ -31,7 +31,7 @@ const InvestorPanelBlock:any = ({ background, displayHeadline }:IInvestorPanelBl
                         <Heading as="h3" variant="sectionSubheading" mb={4}>
                             Share Price Performance
                         </Heading>
-                        <Box mb="12px" borderTop="1px solid" borderColor="lightGrey2" py={4}>
+                        <Box mb={[0, ,'12px']} borderTop="1px solid" borderColor="lightGrey2" py={4}>
                             <Text fontSize={['72px']}
                                 mb={0}
                                 lineHeight={['80px']}
@@ -154,10 +154,13 @@ const InvestorPanelBlock:any = ({ background, displayHeadline }:IInvestorPanelBl
                             </div>
                         </Box>
                         <Box flex="1" />
-                        <Box py={8}>
+                        <Box pt={8}>
                             <SectionLink href="/investor-centre/share-price-information">
                                 See All
                             </SectionLink>
+                        </Box>
+                        <Box py={8} display={['block', ,'none']}>
+                            <Divider />
                         </Box>
                     </Flex>
                 </Column>
@@ -178,18 +181,20 @@ const InvestorPanelBlock:any = ({ background, displayHeadline }:IInvestorPanelBl
                                     <Heading data-yourir="$cur.heading"
                                         as="h3"
                                         variant="listItem" mr={2} />
-                                    <Heading data-yourir="$cur.date format='DD.MM.YY'"
-                                        as="span"
-                                        variant="listLabel" mr={2} />
                                     <Box flex={1} />
-                                    <ChakraLink data-yourir="linkAnnouncement fileId" cursor="pointer" color="darkBrownBlur">
-                                        <Icon icon={Icons.ChevronRight} />
-                                    </ChakraLink>
+                                    <Flex direction="row" align="center">
+                                        <Heading data-yourir="$cur.date format='DD.MM.YY'"
+                                                 as="span"
+                                                 variant="listLabel" mr={2} />
+                                        <ChakraLink data-yourir="linkAnnouncement fileId" cursor="pointer" color="darkBrownBlur">
+                                            <Icon icon={Icons.ChevronRight} />
+                                        </ChakraLink>
+                                    </Flex>
                                 </Flex>
                             </Box>
                         </Box>
                         <Box flex="1" />
-                        <Box py={8}>
+                        <Box pt={8}>
                             <SectionLink href="investor-centre/asx-announcements">
                                 See All
                             </SectionLink>

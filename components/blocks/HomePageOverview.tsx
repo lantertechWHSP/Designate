@@ -13,10 +13,10 @@ interface IHomePageOverviewBlock {
 }
 
 const HomePageOverviewBlock:any = ({ description, imageMain, imageSide, imageSide2 }:IHomePageOverviewBlock) : ReactNode => {
-    return <ContentBlock background="brownGrey" py={12}>
+    return <ContentBlock background="brownGrey" py={[8, ,12]}>
         {
-            description && <Box maxW="900" mx="auto" textAlign="center" mb={8}>
-                <Heading as="h2" fontSize={["26px"]} fontWeight={500} lineHeight={["38px"]} mb={8}>
+            description && <Box maxW="900" mx="auto" textAlign="center" mb={[4, ,8]}>
+                <Heading as="h2" fontSize={['20px', , ,'26px']} fontWeight={500} lineHeight={[1.45]} mb={[4, ,8]}>
                     {description}
                 </Heading>
                 <SectionLink href="/about/our-company">
