@@ -8,7 +8,7 @@ export const cardPanelRecord:string = `
     title
     description
     image {
-        ${imageAttrs()}
+        ${imageAttrs(700, 700)}
     }
     align
     link {

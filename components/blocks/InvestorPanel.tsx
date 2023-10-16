@@ -154,12 +154,12 @@ const InvestorPanelBlock:any = ({ background, displayHeadline }:IInvestorPanelBl
                             </div>
                         </Box>
                         <Box flex="1" />
-                        <Box py={8}>
+                        <Box pt={8}>
                             <SectionLink href="/investor-centre/share-price-information">
                                 See All
                             </SectionLink>
                         </Box>
-                        <Box pb={8} display={['block', ,'none']}>
+                        <Box py={8} display={['block', ,'none']}>
                             <Divider />
                         </Box>
                     </Flex>
@@ -194,7 +194,7 @@ const InvestorPanelBlock:any = ({ background, displayHeadline }:IInvestorPanelBl
                             </Box>
                         </Box>
                         <Box flex="1" />
-                        <Box py={8}>
+                        <Box pt={8}>
                             <SectionLink href="investor-centre/asx-announcements">
                                 See All
                             </SectionLink>

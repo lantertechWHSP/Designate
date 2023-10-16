@@ -14,7 +14,7 @@ interface IHeroBlock {
 
 const HeroBlock:any = ({ title, video, image }:IHeroBlock) : ReactNode => {
     const { observe: contentWidthObserve, width: contentWidth } = useDimensions();
-    const height = ['300px', , ,'490px'];
+    const height = ['300px', '420px', ,'490px'];
 
     return <Box
         overflow="hidden"

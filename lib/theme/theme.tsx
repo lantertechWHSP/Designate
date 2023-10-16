@@ -102,8 +102,8 @@ export const theme:any = extendBaseTheme({
                     fontWeight: 700,
                 },
                 sectionSubheading: {
-                    fontSize: ['28px'],
-                    lineHeight: ['32px'],
+                    fontSize: ['24px', ,'28px'],
+                    lineHeight: [1.2],
                 },
 
                 listItem: {
@@ -439,7 +439,39 @@ export const theme:any = extendBaseTheme({
             ol: {
                 ml: 4,
                 mb: 4
-            }
+            },
+            // YourIR
+            '#yourir-default-announcement': {
+                height: '0',
+                overflow: 'hidden'
+            },
+            '.yourir-announcement-popup': {
+                zIndex: '120'
+            },
+            // '[data-yourir="result"].yourir-success': {
+            //     fontSize: '16px',
+            //     lineHeight: '24px',
+            //     fontWeight: '600',
+                // color: '#08746B',
+                // background: '#D6DCD6',
+                // padding: '0.75rem 1rem',
+            // },
+            // '[data-yourir="result"].yourir-error': {
+            //     fontSize: '16px',
+            //     lineHeight: '24px',
+            //     fontWeight: '600',
+                // color: '#C82027',
+                // background: '#eacbcc',
+                // padding: '0.75rem 1rem',
+            // },
+            // '[data-yourir="result"].yourir-has-error': {
+            //     fontSize: '16px',
+            //     lineHeight: '24px',
+            //     fontWeight: '600',
+                // color: '#C82027',
+                // background: '#eacbcc',
+                // padding: '0.75rem 1rem',
+            // }
         },
     }
 });

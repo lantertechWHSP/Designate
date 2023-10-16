@@ -9,7 +9,7 @@ import VectorEffect from '~/components/elements/shapes/VectorEffect';
 
 const DefaultLayout:any = ({ layout, children }:any) : ReactNode => {
     return (
-        <Flex minHeight="100vh" direction="column">
+        <Flex minHeight="100vh" direction="column" overflowX="hidden">
             {
                 layout?.metatags && <Meta tags={layout?.metatags} />
             }

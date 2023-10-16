@@ -11,19 +11,18 @@ interface IFooter extends IDatoFooter {
 }
 
 const Footer:any = ({ menu, address, email, phone, fax, linkedin, youtube, copyright }:IFooter) : ReactNode => {
-    return <Box as="footer" background="black2" color="white" py={8}>
+    return <Box as="footer" background="black2" color="white" py={[6, 8, 12]}>
         <Container>
             <Row>
-                <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
+                <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]} mb={[4, ,0]}>
                     <Flex direction="column">
                         {
                             (Array.isArray(menu) && menu.length > 0) && menu.map((item:IMenuLink, index:number) => {
-                                return <Box key={index}
-                                    mb={2}>
+                                return <Box key={index}>
                                     <MenuItemLink
                                         variant="siteFooter"
-                                        fontSize={['32px']}
-                                        lineHeight={1.4}
+                                        fontSize={['28px', ,'32px']}
+                                        lineHeight={1.6}
                                         fontWeight={500}
                                         title={item.title}
                                         link={item.link}
@@ -58,7 +57,7 @@ const Footer:any = ({ menu, address, email, phone, fax, linkedin, youtube, copyr
                 </Column>
                 <Column width={[ColumnWidth.Full, ,ColumnWidth.OneQuarter]}>
                     {
-                        address && <Box mb={8}>
+                        address && <Box mb={[4, ,8]}>
                             {address}
                         </Box>
                     }
@@ -82,8 +81,8 @@ const Footer:any = ({ menu, address, email, phone, fax, linkedin, youtube, copyr
                     }
                 </Column>
             </Row>
-            <Row  mt={20}>
-                <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
+            <Row  mt={[8, ,20]}>
+                <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]} mb={[8, ,0]}>
                     <Link
                         href="/"
                         sx={{

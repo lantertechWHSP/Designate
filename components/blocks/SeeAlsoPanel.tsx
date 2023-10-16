@@ -24,7 +24,7 @@ const SeeAlsoItem:any = ({ title, description, link }:ISeeAlsoItem) : ReactNode 
             </Heading>
         }
         {
-            description && <Text mb={12}>
+            description && <Text mb={[6, ,12]}>
                 {description}
             </Text>
         }
@@ -37,9 +37,9 @@ const SeeAlsoItem:any = ({ title, description, link }:ISeeAlsoItem) : ReactNode 
 };
 
 const SeeAlsoPanelBlock:any = ({ items }:ISeeAlsoPanelBlock) : ReactNode => {
-    return <ContentBlock py={8}>
+    return <ContentBlock py={[6, 8, 12]}>
         {
-            <Heading variant="sectionHeading" as="h2" mb={8}>
+            <Heading variant="sectionHeading" as="h2" mb={[4, ,8]}>
                 See Also
             </Heading>
         }
