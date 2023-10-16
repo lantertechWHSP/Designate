@@ -17,7 +17,7 @@ interface ILatestNewsBlock {
 }
 
 const LatestNewsBlock:any = ({ background, color, data: { posts } }:ILatestNewsBlock) : ReactNode => {
-    return <ContentBlock py={[8, ,12]} background={background} color={color}>
+    return <ContentBlock py={[6, 8, 12]} background={background} color={color}>
         <Flex align="center" mb={[4, ,8]}>
             <Heading as="h2" variant="sectionHeading">
                 Latest News

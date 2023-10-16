@@ -14,7 +14,7 @@ const PageLinks:any = ({ current }:any) : ReactNode => {
     );
 
     return (
-        <Box py={[8, ,12]} background="ghostWhite2">
+        <Box py={[6, 8, 12]} background="ghostWhite2">
             <Container>
                 <Heading variant="pageLinksHeading" mb={4}>
                     See Also

@@ -26,11 +26,11 @@ interface ICardPanelBlock {
 const CardPanelBlock:any = ({ annotation, title, description, image, link, document, align }:ICardPanelBlock) : ReactNode => {
     console.log(document);
 
-    return <ContentBlock background="ghostWhite" py={8}>
-        <Flex direction={(align === ICardPanelAlign.Right) ? 'row-reverse' : 'row'}>
-            <Flex width="50%" background="white" direction="column" p={gutter * 2}>
+    return <ContentBlock background="ghostWhite" py={[6, 8, 12]}>
+        <Flex direction={['column', ,(align === ICardPanelAlign.Right) ? 'row-reverse' : 'row']}>
+            <Flex width={['100%', ,'50%']} background="white" direction="column" p={[6, ,gutter * 2]}>
                 {
-                    annotation && <Text variant="annotation" mb={8}>
+                    annotation && <Text variant="annotation" mb={[2, ,8]}>
                         {annotation}
                     </Text>
                 }
@@ -51,7 +51,7 @@ const CardPanelBlock:any = ({ annotation, title, description, image, link, docum
                     </Link>
                 }
             </Flex>
-            <Box width="50%">
+            <Box width={['100%', ,'50%']}>
                 {
                     link ? <Link {...link}>
                         <Image image={image} ratio={[3 / 2]} />

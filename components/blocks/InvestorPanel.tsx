@@ -12,7 +12,7 @@ interface IInvestorPanelBlock {
 }
 
 const InvestorPanelBlock:any = ({ background, displayHeadline }:IInvestorPanelBlock) : ReactNode => {
-    return <ContentBlock background={background} py={[8, ,12]}>
+    return <ContentBlock background={background} py={[6, 8, 12]}>
         {
             displayHeadline && <Flex align="center" mb={[4, ,8]}>
                 <Heading as="h2" variant="sectionHeading">
@@ -154,12 +154,12 @@ const InvestorPanelBlock:any = ({ background, displayHeadline }:IInvestorPanelBl
                             </div>
                         </Box>
                         <Box flex="1" />
-                        <Box pt={8}>
+                        <Box py={8}>
                             <SectionLink href="/investor-centre/share-price-information">
                                 See All
                             </SectionLink>
                         </Box>
-                        <Box py={8} display={['block', ,'none']}>
+                        <Box pb={8} display={['block', ,'none']}>
                             <Divider />
                         </Box>
                     </Flex>
@@ -194,7 +194,7 @@ const InvestorPanelBlock:any = ({ background, displayHeadline }:IInvestorPanelBl
                             </Box>
                         </Box>
                         <Box flex="1" />
-                        <Box pt={8}>
+                        <Box py={8}>
                             <SectionLink href="investor-centre/asx-announcements">
                                 See All
                             </SectionLink>
