@@ -60,11 +60,11 @@ const SharePriceChart:any = () : ReactNode => {
                     left: '0',
                     marginRight: '0',
                     fontSize: '12px',
-                    color: 'grey'
+                    color: 'brownGrey'
                 },
                 '.yourir-chart-xaxis-label': {
                     fontSize: '12px',
-                    color: 'grey'
+                    color: 'brownGrey'
                 },
                 '.yourir-chart-panel-border-bottom': {
                     display: 'none'

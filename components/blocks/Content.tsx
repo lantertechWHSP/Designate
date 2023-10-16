@@ -11,6 +11,7 @@ export enum ContainerWidth {
 
 export enum BackgroundColor {
     White = 'White',
+    BrownGrey = 'BrownGrey',
     GhostWhite = 'GhostWhite',
     DarkBrown = 'DarkBrown'
 }
@@ -41,6 +42,7 @@ const ContentBlock:any = ({ contain = true, color = '', background = '', contain
 
     switch(background) {
         case BackgroundColor.White : selectedBackground = 'white'; break;
+        case BackgroundColor.BrownGrey : selectedBackground = 'brownGrey'; break;
         case BackgroundColor.GhostWhite : selectedBackground = 'ghostWhite'; break;
         case BackgroundColor.DarkBrown : selectedBackground = 'darkBrown'; break;
         default : selectedBackground = background;

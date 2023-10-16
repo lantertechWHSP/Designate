@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
-import { Flex, Heading, Box, Divider } from '@chakra-ui/react';
-import ContentBlock from '~/components/blocks/Content';
+import { Flex, Heading, Box, Text } from '@chakra-ui/react';
+import ContentBlock, {BackgroundColor, TextColor} from '~/components/blocks/Content';
 import { doQuery, queries } from '~/dato/api';
 import { IPost } from '~/interfaces/models/post';
 import LatestNewsItem from '~/components/blocks/LatestNews/LatestNewsItem';
@@ -12,11 +12,12 @@ interface ILatestNewsBlock {
     data: {
         posts:IPost[];
     }
+    background?:BackgroundColor|string;
+    color?:TextColor|string;
 }
 
-const LatestNewsBlock:any = ({ data: { posts } }:ILatestNewsBlock) : ReactNode => {
-    return <ContentBlock py={8} background="grey">
-        <Divider borderColor="blackBlur" mb={8} />
+const LatestNewsBlock:any = ({ background, color, data: { posts } }:ILatestNewsBlock) : ReactNode => {
+    return <ContentBlock py={8} background={background} color={color}>
         <Flex align="center" mb={8}>
             <Heading as="h2" variant="sectionHeading">
                 Latest News
@@ -27,7 +28,7 @@ const LatestNewsBlock:any = ({ data: { posts } }:ILatestNewsBlock) : ReactNode =
             </SectionLinkButton>
         </Flex>
         {
-            (Array.isArray(posts) && posts.length > 0) && <Row>
+            (Array.isArray(posts) && posts.length > 0) ? <Row>
                 {
                     posts.map((post:IPost, index:number) => {
                         return <Column width={[ColumnWidth.Full, , ColumnWidth.OneThird]} key={index}>
@@ -35,13 +36,13 @@ const LatestNewsBlock:any = ({ data: { posts } }:ILatestNewsBlock) : ReactNode =
                         </Column>;
                     })
                 }
-            </Row>
+            </Row> : <Text variant="caption">No latest news found…</Text>
         }
     </ContentBlock>;
 };
 
 LatestNewsBlock.getData = async () => {
-    const result:any = await doQuery(queries.posts, {
+    const result:any = await doQuery(queries.latestPosts, {
         first: 3,
         filter: {
             isFeatured: {

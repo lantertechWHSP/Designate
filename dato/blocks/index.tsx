@@ -13,6 +13,7 @@ import { companyValuesPanelRecord } from '~/dato/blocks/companyValuesPanel';
 import { latestNewsRecord } from '~/dato/blocks/latestNews';
 import { contactsPanelRecord } from '~/dato/blocks/contactsPanel';
 import { investorPanelRecord } from '~/dato/blocks/investorPanel';
+import { keyDatesPanelRecord } from '~/dato/blocks/keyDatesPanel';
 
 // Home
 import { heroRecord } from '~/dato/blocks/hero';
@@ -42,7 +43,6 @@ import { shareHistoricalPricesTableRecord } from '~/dato/blocks/shareHistoricalP
 import { dividendHistoryTableRecord } from '~/dato/blocks/dividendHistoryTable';
 import { dividendLatestTableRecord } from '~/dato/blocks/dividendLatestTable';
 import { dividendGrowthChartRecord } from '~/dato/blocks/dividendGrowthChart';
-
 export const blocks:string = `
     blocks {
         ... on TextRecord {
@@ -84,6 +84,9 @@ export const blocks:string = `
         }
         ... on InvestorPanelRecord {
             ${investorPanelRecord}
+        }
+        ... on KeyDatesPanelRecord {
+            ${keyDatesPanelRecord}
         }
 
         ... on HeroRecord {

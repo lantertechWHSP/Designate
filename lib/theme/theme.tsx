@@ -21,7 +21,7 @@ const colors:any = {
     ghostWhite: '#f8f8f8',
 
     darkGrey: '#969696',
-    grey: '#CBCBC5',
+    brownGrey: '#CBCBC5',
 
     lightGrey: '#c4c4c4',
     lightGrey2: '#DEE2E6',

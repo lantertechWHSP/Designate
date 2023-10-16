@@ -1,6 +1,7 @@
 export const investmentPhilosophyRecord:string = `
     __typename
     id
+    title
     items {
         title
         content

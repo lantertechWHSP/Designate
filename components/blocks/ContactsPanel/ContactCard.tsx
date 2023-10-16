@@ -9,7 +9,7 @@ interface IContactCardProps extends IContact {
 const ContactCard:any = ({ title, address, contactName, phone, phone2, email, email2, website }:IContactCardProps) : ReactNode => {
     return <Box>
         {
-            title && <Heading as="h3" variant="h4" mb={4}>
+            title && <Heading as="h3" variant="h4" color="darkBrown" fontSize={['21px']} lineHeight={['26px']} mb={4}>
                 {title}
             </Heading>
         }

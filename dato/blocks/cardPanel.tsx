@@ -1,5 +1,5 @@
 import { imageAttrs } from '~/dato/attrs/responsiveImageAttrs';
-import { internalLinkAttrs } from "~/dato/attrs/internalLink";
+import {internalLinkAttrs} from "~/dato/attrs/internalLink";
 
 export const cardPanelRecord:string = `
     __typename
@@ -13,5 +13,13 @@ export const cardPanelRecord:string = `
     align
     link {
         ${internalLinkAttrs}
+    }
+    document {
+        ... on DocumentRecord {
+            id
+            document {
+                url
+            }
+        }
     }
 `;

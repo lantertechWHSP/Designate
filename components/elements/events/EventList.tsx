@@ -9,22 +9,20 @@ interface IEventList {
 
 const EventList:any = ({ events }:IEventList) : ReactNode => {
     return <Box>
-        <Container>
-            {
-                (Array.isArray(events) && events.length > 0) ? <>
-                    {
-                        events.map((event:IEvent, index:number) => {
-                            return <Box borderTop="1px solid" borderColor="lightGrey2" key={index}>
-                                <EventCard {...event} />
-                            </Box>;
-                        })
-                    }
-                    <Box borderBottom="1px solid" borderColor="lightGrey2" />
-                </> : <Box>
-                    <Text variant="caption">No Events</Text>
-                </Box>
-            }
-        </Container>
+        {
+            (Array.isArray(events) && events.length > 0) ? <>
+                {
+                    events.map((event:IEvent, index:number) => {
+                        return <Box borderTop="1px solid" borderColor="lightGrey2" key={index}>
+                            <EventCard {...event} />
+                        </Box>;
+                    })
+                }
+                <Box borderBottom="1px solid" borderColor="lightGrey2" />
+            </> : <Box>
+                <Text variant="caption">No Events</Text>
+            </Box>
+        }
     </Box>;
 };
 

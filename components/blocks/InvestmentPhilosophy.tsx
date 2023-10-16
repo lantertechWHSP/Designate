@@ -11,11 +11,17 @@ interface InvestmentPhilosophyItem {
 }
 
 interface IInvestmentPhilosophyBlock extends ChakraProps {
+    title?:string;
     items:InvestmentPhilosophyItem[];
 }
 
-const InvestmentPhilosophyBlock:any = ({ items }:IInvestmentPhilosophyBlock) : ReactNode => {
+const InvestmentPhilosophyBlock:any = ({ title, items }:IInvestmentPhilosophyBlock) : ReactNode => {
     return <ContentBlock background="ghostWhite"  py={8}>
+        {
+            title && <Heading as="h2" variant="sectionHeading" mb={8}>
+                {title}
+            </Heading>
+        }
         {
             (Array.isArray(items) && items.length > 0) && <SimpleGrid columns={[1, ,items.length > 4 ? 4 : items.length]} spacing={[4]}>
                 {

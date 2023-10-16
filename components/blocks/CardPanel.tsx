@@ -6,6 +6,7 @@ import { Box, Flex, Heading, Text } from '@chakra-ui/react';
 import { Link } from "~/components/elements/link";
 import { SectionLink } from "~/components/elements/sectionLink";
 import { gutter } from "~/components/elements/grid/grid";
+import { IDocument } from "~/interfaces/models/document";
 
 enum ICardPanelAlign {
     Left = 'Left',
@@ -19,9 +20,12 @@ interface ICardPanelBlock {
     image?:string;
     align?:ICardPanelAlign;
     link?:ILink;
+    document?:IDocument;
 }
 
-const CardPanelBlock:any = ({ annotation, title, description, image, link, align }:ICardPanelBlock) : ReactNode => {
+const CardPanelBlock:any = ({ annotation, title, description, image, link, document, align }:ICardPanelBlock) : ReactNode => {
+    console.log(document);
+
     return <ContentBlock background="ghostWhite" py={8}>
         <Flex direction={(align === ICardPanelAlign.Right) ? 'row-reverse' : 'row'}>
             <Flex width="50%" background="white" direction="column" p={gutter * 2}>
@@ -38,18 +42,26 @@ const CardPanelBlock:any = ({ annotation, title, description, image, link, align
                 }
                 <Box flex={1} />
                 {
-                    link && <SectionLink {...link}>
+                    link ? <SectionLink {...link}>
                         Read More
-                    </SectionLink>
+                    </SectionLink> : (document && document?.document.url) && <Link href={document.document?.url}
+                                                                                   as="a"
+                                                                                   target="_blank">
+                        Download
+                    </Link>
                 }
             </Flex>
             <Box width="50%">
                 {
                     link ? <Link {...link}>
                         <Image image={image} ratio={[3 / 2]} />
-                    </Link> : <>
-                        <Image image={image} ratio={[3 / 2]} />
-                    </>
+                    </Link> : document && document?.document.url ? <>
+                        <Link href={document.document?.url}
+                              as="a"
+                              target="_blank">
+                            <Image image={image} ratio={[3 / 2]} />
+                        </Link>
+                    </> : <Image image={image} ratio={[3 / 2]} />
                 }
             </Box>
         </Flex>

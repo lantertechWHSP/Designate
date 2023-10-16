@@ -33,3 +33,24 @@ export const postsMeta:string = `
         }
     }
 `;
+
+export const latestPosts:string = `
+    query posts ($first: IntType, $skip: IntType, $filter: PostModelFilter, $orderBy: [PostModelOrderBy]) {
+        posts: allPosts(first: $first, skip: $skip, filter: $filter, orderBy: $orderBy) {
+            ...postFrag
+        }
+    }
+    fragment postFrag on PostRecord {
+        __typename
+        id
+        slug
+        title
+        excerpt
+        author
+        image {
+            ${imageAttrs({ width: 840, height: 360 })}   
+        }
+        publishDate
+        isFeatured
+    }
+`;

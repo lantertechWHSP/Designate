@@ -11,6 +11,7 @@ import { ILayout } from '~/interfaces/layout/layout';
 import { IBlock } from '~/interfaces/util/block';
 import EventList from '~/components/elements/events/EventList';
 import { IEvent } from '~/interfaces/models/event';
+import { Container } from '@chakra-ui/react';
 
 interface INextPageProps {
     layout?:ILayout;
@@ -38,7 +39,9 @@ const KeyDatesPage : NextPage = ({ layout, blocks, events }:INextPageProps)  : J
     return (
         <DefaultLayout layout={layout}>
             <ModularContent content={blocks} />
-            <EventList events={events} />
+            <Container>
+                <EventList events={events} />
+            </Container>
         </DefaultLayout>
     );
 };
