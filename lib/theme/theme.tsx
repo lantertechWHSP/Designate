@@ -240,9 +240,14 @@ export const theme:any = extendBaseTheme({
         },
         Link: {
             baseStyle: {
-                color: 'skyBlue',
+                color: 'darkBrown',
             },
             variants: {
+                underline: {
+                    display: 'inline-block',
+                    borderBottom: '1px solid',
+                    borderColor: 'darkBrownBlur'
+                },
                 siteHeader: {
                     fontSize: ['16px'],
                     fontWeight: 700
@@ -259,7 +264,7 @@ export const theme:any = extendBaseTheme({
                     display: 'flex',
                     alignItems: 'center',
                     textDecoration: 'underline'
-                }
+                },
             }
         },
         Button: {
@@ -412,13 +417,13 @@ export const theme:any = extendBaseTheme({
                 lineHeight: '26px',
                 color: 'black'
             },
-            a: {
-                textDecoration: 'none',
-                color: 'skyBlue',
-                _focus: {
-                    boxShadow: 'none',
-                },
-            },
+            // a: {
+                // textDecoration: 'none',
+                // color: 'darkBrown',
+                // _focus: {
+                //     boxShadow: 'none',
+                // },
+            // },
             p: {
                 mb: 4
             },

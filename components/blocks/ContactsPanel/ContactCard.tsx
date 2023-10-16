@@ -18,7 +18,7 @@ const ContactCard:any = ({ title, address, contactName, phone, phone2, email, em
                 <Heading as="h4" variant="h5">
                     Address
                 </Heading>
-                <Box color="steelBlue2">
+                <Box>
                     {address}
                 </Box>
             </Box>
@@ -28,7 +28,7 @@ const ContactCard:any = ({ title, address, contactName, phone, phone2, email, em
                 <Heading as="h4" variant="h5">
                     Contact
                 </Heading>
-                <Box color="steelBlue2">
+                <Box>
                     {contactName}
                 </Box>
             </Box>
@@ -40,14 +40,14 @@ const ContactCard:any = ({ title, address, contactName, phone, phone2, email, em
                 </Heading>
                 {
                     phone && <Box>
-                        <Link href={`tel:${phone}`} color="steelBlue2">
+                        <Link href={`tel:${phone}`} variant="underline">
                             {phone}
                         </Link>
                     </Box>
                 }
                 {
                     phone2 && <Box>
-                        <Link href={`tel:${phone2}`} color="steelBlue2">
+                        <Link href={`tel:${phone2}`} variant="underline">
                             {phone2}
                         </Link>
                     </Box>
@@ -61,14 +61,14 @@ const ContactCard:any = ({ title, address, contactName, phone, phone2, email, em
                 </Heading>
                 {
                     email && <Box>
-                        <Link href={`mailto:${email}`} color="steelBlue2">
+                        <Link href={`mailto:${email}`} variant="underline">
                             {email}
                         </Link>
                     </Box>
                 }
                 {
                     email2 && <Box>
-                        <Link href={`mailto:${email2}`} color="steelBlue2">
+                        <Link href={`mailto:${email2}`} variant="underline">
                             {email2}
                         </Link>
                     </Box>
@@ -81,7 +81,7 @@ const ContactCard:any = ({ title, address, contactName, phone, phone2, email, em
                     Website
                 </Heading>
                 <Box>
-                    <Link href={website} color="steelBlue2">
+                    <Link href={website} variant="underline">
                         {website}
                     </Link>
                 </Box>

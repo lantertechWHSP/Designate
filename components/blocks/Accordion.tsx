@@ -1,10 +1,12 @@
 import { ReactNode } from 'react';
-import ContentBlock from '~/components/blocks/Content';
+import ContentBlock, { BackgroundColor, TextColor } from '~/components/blocks/Content';
 import { Heading, Box, Accordion, AccordionItem, AccordionPanel, AccordionButton } from '@chakra-ui/react';
 
 interface IAccordionBlock {
     title?:string;
     items?:IAccordionItem[];
+    background?:BackgroundColor|string;
+    color:TextColor|string;
 }
 
 interface IAccordionItem {
@@ -12,8 +14,8 @@ interface IAccordionItem {
     content?:string;
 }
 
-const AccordionBlock:any = ({ title, items }:IAccordionBlock) : ReactNode => {
-    return <ContentBlock background="steelBlue" color="white" py={8}>
+const AccordionBlock:any = ({ title, background, color, items }:IAccordionBlock) : ReactNode => {
+    return <ContentBlock background={background} color={color} color="white" py={8}>
         {
             title && <Box mb={8}>
                 <Heading as="h2" variant="sectionHeading">
@@ -31,7 +33,8 @@ const AccordionBlock:any = ({ title, items }:IAccordionBlock) : ReactNode => {
                                 borderColor="white">
                                 <Heading as="h3"
                                     variant="h4"
-                                    fontWeight={400}>
+                                         fontSize={['21px']}
+                                    fontWeight={500}>
                                     {item?.title}
                                 </Heading>
                             </AccordionButton>

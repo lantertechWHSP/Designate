@@ -14,7 +14,7 @@ interface IContactsPanelBlock extends ChakraProps {
 }
 
 const ContactsPanelBlock:any = ({ data: { contacts } }:IContactsPanelBlock) : ReactNode => {
-    return <ContentBlock py={8}>
+    return <ContentBlock background="ghostWhite" py={8}>
         <Box mb={8}>
             <Heading as="h2" variant="sectionHeading">
                 Contacts

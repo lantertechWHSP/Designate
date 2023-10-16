@@ -1,7 +1,7 @@
-import {ReactNode} from 'react';
-import {Box, Container} from '@chakra-ui/react';
-import {ChakraProps} from '@chakra-ui/system';
-import {Column, ColumnWidth, Row} from "~/components/elements/grid/grid";
+import { ReactNode } from 'react';
+import { Box, Container } from '@chakra-ui/react';
+import { ChakraProps } from '@chakra-ui/system';
+import { Column, ColumnWidth, Row } from "~/components/elements/grid/grid";
 
 export enum ContainerWidth {
     Default = 'Default',
@@ -11,19 +11,27 @@ export enum ContainerWidth {
 
 export enum BackgroundColor {
     White = 'White',
-    GhostWhite = 'GhostWhite'
+    GhostWhite = 'GhostWhite',
+    DarkBrown = 'DarkBrown'
+}
+
+export enum TextColor {
+    DarkBrown = 'DarkBrown',
+    White = 'White'
 }
 
 interface IContentBlock extends ChakraProps {
     contain?:boolean;
     children?:any;
     background?:BackgroundColor|string;
+    textColor?:TextColor|string;
     containerWidth?:ContainerWidth;
 }
 
-const ContentBlock:any = ({ contain = true, background = '', containerWidth = ContainerWidth.Default, children, ...props }:IContentBlock) : ReactNode => {
+const ContentBlock:any = ({ contain = true, color = '', background = '', containerWidth = ContainerWidth.Default, children, ...props }:IContentBlock) : ReactNode => {
     let columnWidth:ColumnWidth;
     let selectedBackground:string;
+    let selectedColor:string;
 
     switch(containerWidth) {
         case ContainerWidth.Wide : columnWidth = ColumnWidth.TenTwelfths; break;
@@ -34,10 +42,17 @@ const ContentBlock:any = ({ contain = true, background = '', containerWidth = Co
     switch(background) {
         case BackgroundColor.White : selectedBackground = 'white'; break;
         case BackgroundColor.GhostWhite : selectedBackground = 'ghostWhite'; break;
+        case BackgroundColor.DarkBrown : selectedBackground = 'darkBrown'; break;
         default : selectedBackground = background;
     }
 
-    return <Box background={selectedBackground} {...props}>
+    switch(color) {
+        case TextColor.DarkBrown : selectedColor = 'darkBrown'; break;
+        case TextColor.White : selectedColor = 'white'; break;
+        default : selectedColor = color;
+    }
+
+    return <Box color={selectedColor} background={selectedBackground} {...props}>
         {
             contain ? <Container>
                 {
