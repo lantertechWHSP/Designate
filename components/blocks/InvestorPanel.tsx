@@ -10,8 +10,8 @@ interface IInvestorPanelBlock {
     displayHeadline?:boolean;
 }
 
-const InvestorPanelBlock:any = ({ displayHeadline }:IInvestorPanelBlock) : ReactNode => {
-    return <ContentBlock background="ghostWhite" py={8}>
+const InvestorPanelBlock:any = ({ background, displayHeadline }:IInvestorPanelBlock) : ReactNode => {
+    return <ContentBlock background={background} py={8}>
         {
             displayHeadline && <Flex align="center" mb={4}>
                 <Heading as="h2" variant="sectionHeading">

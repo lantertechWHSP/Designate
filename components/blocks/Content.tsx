@@ -9,14 +9,21 @@ export enum ContainerWidth {
     Narrow = 'Narrow',
 }
 
+export enum BackgroundColor {
+    White = 'White',
+    GhostWhite = 'GhostWhite'
+}
+
 interface IContentBlock extends ChakraProps {
     contain?:boolean;
     children?:any;
+    background?:BackgroundColor|string;
     containerWidth?:ContainerWidth;
 }
 
-const ContentBlock:any = ({ contain = true, containerWidth = ContainerWidth.Default, children, ...props }:IContentBlock) : ReactNode => {
+const ContentBlock:any = ({ contain = true, background = '', containerWidth = ContainerWidth.Default, children, ...props }:IContentBlock) : ReactNode => {
     let columnWidth:ColumnWidth;
+    let selectedBackground:string;
 
     switch(containerWidth) {
         case ContainerWidth.Wide : columnWidth = ColumnWidth.TenTwelfths; break;
@@ -24,7 +31,13 @@ const ContentBlock:any = ({ contain = true, containerWidth = ContainerWidth.Defa
         default : columnWidth = ColumnWidth.Full;
     }
 
-    return <Box {...props}>
+    switch(background) {
+        case BackgroundColor.White : selectedBackground = 'white'; break;
+        case BackgroundColor.GhostWhite : selectedBackground = 'ghostWhite'; break;
+        default : selectedBackground = background;
+    }
+
+    return <Box background={selectedBackground} {...props}>
         {
             contain ? <Container>
                 {

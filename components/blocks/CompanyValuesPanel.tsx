@@ -2,10 +2,10 @@ import ContentBlock from '~/components/blocks/Content';
 import { ReactNode } from 'react';
 import { ChakraProps } from '@chakra-ui/system';
 import { ISVGImage} from '~/interfaces/util/image';
-import { Heading, Box, SimpleGrid, Flex } from '@chakra-ui/react';
+import { Heading, Box, SimpleGrid, Flex, Text } from '@chakra-ui/react';
 
 interface ICompanyValuesPanelBlock extends ChakraProps {
-    items:ICompanyValue;
+    items?:ICompanyValue[];
 }
 
 interface ICompanyValue {
@@ -20,10 +20,10 @@ const CompanyValuesPanelBlock:any = ({ items, ...props }:ICompanyValuesPanelBloc
                 <Heading as="h3" variant="h3" mb={4}>
                     Our People and Values
                 </Heading>
-                <SimpleGrid background="ghostWhite" columns={[1, , 3]} spacing={[0, 4]}>
+                <SimpleGrid background="ghostWhite" columns={[1, ,items.length > 4 ? 4 : items.length]} spacing={[4]}>
                     {
                         items.map((item:ICompanyValue, index:number) => {
-                            return <Flex direction="column" key={index} py={8} px={4} align="center">
+                            return <Flex direction="column" key={index} py={8} px={4}>
                                 {
                                     (item.icon && item.icon.url) && <Box mb={4}><img src={item.icon.url} alt={item.icon?.alt} /></Box>
                                 }

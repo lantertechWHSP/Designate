@@ -18,7 +18,7 @@ const ObjectivePanelBlock:any = ({ items, containerWidth }:IObjectivePanelBlock)
     return <ContentBlock containerWidth={containerWidth} py={4}>
         {
             (Array.isArray(items) && items.length > 0) && <Box background="ghostWhite" py={8}>
-                <SimpleGrid columns={[1, , 3]}>
+                <SimpleGrid columns={[1, , items.length > 4 ? 4 : items.length]}>
                     {
                         items.map((item:IObjectivePanelItem, index:number) => {
                             return <Box borderRight={[0,index < items.length - 1 ? "1px solid" : '' ]} borderColor={['lightGrey2', 'lightGrey2']} px={8} key={index}>

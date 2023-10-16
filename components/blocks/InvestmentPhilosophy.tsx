@@ -17,7 +17,7 @@ interface IInvestmentPhilosophyBlock extends ChakraProps {
 const InvestmentPhilosophyBlock:any = ({ items }:IInvestmentPhilosophyBlock) : ReactNode => {
     return <ContentBlock background="ghostWhite"  py={8}>
         {
-            (Array.isArray(items) && items.length > 0) && <SimpleGrid columns={[1, , 3]} spacing={[0, 8]}>
+            (Array.isArray(items) && items.length > 0) && <SimpleGrid columns={[1, ,items.length > 4 ? 4 : items.length]} spacing={[4]}>
                 {
                     items.map((item:InvestmentPhilosophyItem, index:number) => {
                         return <Box key={index}>
