@@ -5,8 +5,8 @@ import { Heading, Box, Accordion, AccordionItem, AccordionPanel, AccordionButton
 interface IAccordionBlock {
     title?:string;
     items?:IAccordionItem[];
-    background?:BackgroundColor|string;
-    color:TextColor|string;
+    background?:BackgroundColor;
+    color:TextColor;
 }
 
 interface IAccordionItem {
@@ -15,7 +15,7 @@ interface IAccordionItem {
 }
 
 const AccordionBlock:any = ({ title, background, color, items }:IAccordionBlock) : ReactNode => {
-    return <ContentBlock background={background} color={color} color="white" py={8}>
+    return <ContentBlock background={background} color={color} py={8}>
         {
             title && <Box mb={8}>
                 <Heading as="h2" variant="sectionHeading">
@@ -33,7 +33,7 @@ const AccordionBlock:any = ({ title, background, color, items }:IAccordionBlock)
                                 borderColor="white">
                                 <Heading as="h3"
                                     variant="h4"
-                                         fontSize={['21px']}
+                                    fontSize={['21px']}
                                     fontWeight={500}>
                                     {item?.title}
                                 </Heading>

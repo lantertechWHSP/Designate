@@ -418,11 +418,11 @@ export const theme:any = extendBaseTheme({
                 color: 'black'
             },
             // a: {
-                // textDecoration: 'none',
-                // color: 'darkBrown',
-                // _focus: {
-                //     boxShadow: 'none',
-                // },
+            // textDecoration: 'none',
+            // color: 'darkBrown',
+            // _focus: {
+            //     boxShadow: 'none',
+            // },
             // },
             p: {
                 mb: 4

@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Box, Container } from '@chakra-ui/react';
+import { Box, Container, ResponsiveValue } from '@chakra-ui/react';
 import { ChakraProps } from '@chakra-ui/system';
 import { Column, ColumnWidth, Row } from "~/components/elements/grid/grid";
 
@@ -24,15 +24,15 @@ export enum TextColor {
 interface IContentBlock extends ChakraProps {
     contain?:boolean;
     children?:any;
-    background?:BackgroundColor|string;
-    textColor?:TextColor|string;
+    background?:BackgroundColor|ResponsiveValue<any>|string;
+    textColor?:TextColor|ResponsiveValue<any>|string;
     containerWidth?:ContainerWidth;
 }
 
 const ContentBlock:any = ({ contain = true, color = '', background = '', containerWidth = ContainerWidth.Default, children, ...props }:IContentBlock) : ReactNode => {
     let columnWidth:ColumnWidth;
-    let selectedBackground:string;
-    let selectedColor:string;
+    let selectedBackground:BackgroundColor|ResponsiveValue<any>|string;
+    let selectedColor:TextColor|ResponsiveValue<any>|string;
 
     switch(containerWidth) {
         case ContainerWidth.Wide : columnWidth = ColumnWidth.TenTwelfths; break;

@@ -2,7 +2,7 @@ import ContentBlock from '~/components/blocks/Content';
 import { ReactNode } from 'react';
 import { ChakraProps } from '@chakra-ui/system';
 import { ISVGImage} from '~/interfaces/util/image';
-import { Heading, Box, SimpleGrid, Flex, Text } from '@chakra-ui/react';
+import { Heading, Box, SimpleGrid, Flex } from '@chakra-ui/react';
 
 interface ICompanyValuesPanelBlock extends ChakraProps {
     items?:ICompanyValue[];

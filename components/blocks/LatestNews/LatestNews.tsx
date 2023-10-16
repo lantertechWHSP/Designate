@@ -12,8 +12,8 @@ interface ILatestNewsBlock {
     data: {
         posts:IPost[];
     }
-    background?:BackgroundColor|string;
-    color?:TextColor|string;
+    background?:BackgroundColor;
+    color?:TextColor;
 }
 
 const LatestNewsBlock:any = ({ background, color, data: { posts } }:ILatestNewsBlock) : ReactNode => {

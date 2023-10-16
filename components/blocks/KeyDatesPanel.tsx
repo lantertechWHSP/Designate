@@ -3,11 +3,13 @@ import { ReactNode } from 'react';
 import { ChakraProps } from '@chakra-ui/system';
 import EventList from "~/components/elements/events/EventList";
 import { IEvent } from '~/interfaces/models/event';
-import {doQuery, queries} from "~/dato/api";
+import { doQuery, queries } from '~/dato/api';
 import { Heading } from '@chakra-ui/react';
 
 interface IKeyDatesPanelBlock extends ChakraProps {
-    events:IEvent[];
+    data: {
+        events:IEvent[];
+    };
 }
 
 const KeyDatesPanelBlock:any = ({ data: { events } }:IKeyDatesPanelBlock) : ReactNode => {

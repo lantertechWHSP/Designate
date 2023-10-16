@@ -45,8 +45,8 @@ const CardPanelBlock:any = ({ annotation, title, description, image, link, docum
                     link ? <SectionLink {...link}>
                         Read More
                     </SectionLink> : (document && document?.document.url) && <Link href={document.document?.url}
-                                                                                   as="a"
-                                                                                   target="_blank">
+                        as="a"
+                        target="_blank">
                         Download
                     </Link>
                 }
@@ -57,8 +57,8 @@ const CardPanelBlock:any = ({ annotation, title, description, image, link, docum
                         <Image image={image} ratio={[3 / 2]} />
                     </Link> : document && document?.document.url ? <>
                         <Link href={document.document?.url}
-                              as="a"
-                              target="_blank">
+                            as="a"
+                            target="_blank">
                             <Image image={image} ratio={[3 / 2]} />
                         </Link>
                     </> : <Image image={image} ratio={[3 / 2]} />
