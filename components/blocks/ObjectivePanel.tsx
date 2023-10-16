@@ -16,7 +16,7 @@ interface IObjectivePanelBlock extends ChakraProps {
 }
 
 const ObjectivePanelBlock:any = ({ items, containerWidth }:IObjectivePanelBlock) : ReactNode => {
-    return <ContentBlock containerWidth={containerWidth} py={8}>
+    return <ContentBlock containerWidth={containerWidth} py={4}>
         {
             (Array.isArray(items) && items.length > 0) && <Box background="ghostWhite" py={8}>
                 <SimpleGrid columns={[1, , 3]}>
