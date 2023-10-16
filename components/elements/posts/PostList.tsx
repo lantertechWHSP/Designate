@@ -57,7 +57,7 @@ const PostList:any = ({ latestPosts, postsMeta }:IPostsList) : ReactNode => {
                     </SimpleGrid>
                     {
                         couldNotLoadPosts && <Box>
-                            <Text variant="caption" color="lightGrey">Could not load Posts</Text>
+                            <Text variant="caption">Could not load Posts</Text>
                         </Box>
                     }
                     {
@@ -69,7 +69,7 @@ const PostList:any = ({ latestPosts, postsMeta }:IPostsList) : ReactNode => {
                     }
                 </> : <>
                     <Box>
-                        <Text variant="caption" color="lightGrey">No Posts</Text>
+                        <Text variant="caption">No Posts</Text>
                     </Box>
                 </>
             }

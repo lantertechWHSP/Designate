@@ -25,7 +25,7 @@ const OverviewBlock:any = ({ subtitle, description }:IOverviewBlock) : ReactNode
             <Box w={['50%']} px={4}>
                 {
                     description && <Text fontSize={['19px']}
-                                         m={0} 
+                                         m={0}
                                          lineHeight={['29px']}
                                          color="darkBrown">
                         {description}

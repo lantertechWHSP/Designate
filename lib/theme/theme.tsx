@@ -209,6 +209,9 @@ export const theme:any = extendBaseTheme({
                 // },
                 error: {
                     color: 'error'
+                },
+                caption: {
+                    fontSize: '14px'
                 }
             }
         },
@@ -362,7 +365,7 @@ export const theme:any = extendBaseTheme({
             variants: {
                 basic: {
                     th: {
-                        fontSize: '16px',
+                        fontSize: ['16px'],
                         fontWeight: 400,
                         lineHeight: '24px',
                         color: 'steelBlue3',
@@ -372,6 +375,7 @@ export const theme:any = extendBaseTheme({
                     },
                     td: {
                         py: 4,
+                        fontSize: ['18px'],
                         borderBottom: '1px solid',
                         borderColor: 'lightGrey2',
                     }

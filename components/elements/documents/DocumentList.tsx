@@ -215,7 +215,7 @@ const DocumentList:any = ({ latestDocuments, documentsMeta, documentsFilters }:I
                     </Box>
                     {
                         couldNotLoadDocuments && <Box>
-                            <Text variant="caption" color="lightGrey">Could not load Documents</Text>
+                            <Text variant="caption">Could not load Documents</Text>
                         </Box>
                     }
                     {
@@ -227,7 +227,7 @@ const DocumentList:any = ({ latestDocuments, documentsMeta, documentsFilters }:I
                     }
                 </> : <>
                     <Box>
-                        <Text variant="caption" color="lightGrey">No Documents</Text>
+                        <Text variant="caption">No Documents</Text>
                     </Box>
                 </>
             }

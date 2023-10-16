@@ -43,7 +43,7 @@ const TrackRecordTableBlock:any = ({ table }:ITrackRecordTableBlock) : ReactNode
                         </Tbody>
                     }
                 </Table>
-            </TableContainer> : <Text variant="caption" color="lightGrey">No Data Availiable</Text>
+            </TableContainer> : <Text variant="caption">No Data Availiable</Text>
         }
     </ContentBlock>;
 };

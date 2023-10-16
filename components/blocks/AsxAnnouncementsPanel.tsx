@@ -208,7 +208,7 @@ const AsxAnnouncementsPanelBlock:any = () : ReactNode => {
                         </Flex>
                     </Box>
                     <Box data-yourir="if isEmpty">
-                        <Text variant="caption" color="grey1">
+                        <Text variant="caption">
                             No results
                         </Text>
                     </Box>

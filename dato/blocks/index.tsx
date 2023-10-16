@@ -28,6 +28,7 @@ import { trackRecordDividendRecord } from '~/dato/blocks/trackRecordDividend';
 // About/Investment Approach
 import { investmentPhilosophyRecord } from '~/dato/blocks/investmentPhilosophy';
 import { investmentPortfolioTableRecord } from '~/dato/blocks/investmentPortfolioTable';
+import { objectivePanelRecord } from '~/dato/blocks/objectivePanel';
 
 // About/Investment Portfolio
 import { peoplePanelRecord } from '~/dato/blocks/peoplePanel';
@@ -113,6 +114,9 @@ export const blocks:string = `
         }
         ... on InvestmentPortfolioTableRecord {
             ${investmentPortfolioTableRecord}
+        }
+        ... on ObjectivePanelRecord {
+            ${objectivePanelRecord}
         }
         
         ... on PeoplePanelRecord {

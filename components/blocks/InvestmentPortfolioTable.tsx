@@ -1,7 +1,7 @@
 import ContentBlock from '~/components/blocks/Content';
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 import { ChakraProps } from '@chakra-ui/system';
-import { Box, Heading, Text, TableContainer, Table, Thead, Tr, Th, Tbody, Td, Progress } from '@chakra-ui/react';
+import { Box, Heading, Text, TableContainer, Table, Thead, Tr, Th, Tbody, Td, Flex } from '@chakra-ui/react';
 import { sumBy as _sumBy, round as _round } from 'lodash';
 import { DateTime } from 'luxon';
 import { ITable } from '~/interfaces/util/table';
@@ -12,40 +12,62 @@ interface ITableRow {
 }
 
 interface InvestmentPortfolioTableBlock extends ChakraProps {
-    table:ITable<ITableRow>;
-    lastUpdated:any;
+    table?:ITable<ITableRow>;
+    lastUpdated?:any;
+}
+
+interface IPercentageBar {
+    value:number;
+}
+
+const PercentageBar:any = ({ value }:IPercentageBar) => {
+    const remainder:number = value - 100;
+
+    return <Box>
+        {
+            (value >= 0 && value <= 100) && <Flex height="24px" direction="row" width={'100%'} borderRadius="3px" background="rgba(255, 255, 255, 0.1)">
+                {
+                    value >= 0 && value <= 80 ? <>
+                        <Box width={`${value}%`} background="white" borderRadius="3px" marginRight="8px" height="24px" />
+                        <Box width={`${remainder}%`} px={2}>
+                            {value}%
+                        </Box>
+                    </> : <>
+                        <Box width={`${value}%`} textAlign="right" background="white" borderRadius="3px" px={2} height="24px" color="darkBrown">
+                            {value}%
+                        </Box>
+                    </>
+                }
+            </Flex>
+        }
+    </Box>
 }
 
 const InvestmentPortfolioTableBlock:any = ({ table, lastUpdated }:InvestmentPortfolioTableBlock) : ReactNode => {
-    const total:number = _sumBy(table.data, (row:ITableRow) => {
+    const [total] = useState<number>(table.data ? _sumBy(table.data, (row:ITableRow) => {
         const value:number = +row.NetAssetValue;
         return value;
-    });
+    }) : 0);
 
-    return <ContentBlock py={8}>
+    return <ContentBlock background="darkBrown" py={8}>
         <Box mb={8}>
-            <Heading as="h2">
+            <Heading as="h2" variant="sectionHeading" color="white">
                 Our Portfolio
             </Heading>
-            <Text>
-                Total Value: ${_round(total / 1000, 2)} Billion
-            </Text>
         </Box>
         <TableContainer>
-            <Table variant="basic" w="100%">
+            <Table variant="basic" w="100%" color="white">
                 {
                     Array.isArray(table.columns) && table.columns.length > 0 && <Thead>
                         <Tr>
-                            <Th width="20%">
+                            <Th width="20%" color="whiteBlur">
                                 Portfolio
                             </Th>
-                            <Th width="20%">
+                            <Th width="20%" color="whiteBlur">
                                 Net Asset Value (M)
                             </Th>
-                            <Th width="20%">
-                                Percentage
-                            </Th>
-                            <Th width="40%">
+                            <Th width="60%" color="whiteBlur">
+                                Weighting
                             </Th>
                         </Tr>
                     </Thead>
@@ -63,12 +85,9 @@ const InvestmentPortfolioTableBlock:any = ({ table, lastUpdated }:InvestmentPort
                                     <Td>
                                         {row.NetAssetValue || '-'}
                                     </Td>
-                                    <Td>
-                                        {percentage ? `${percentage}%` : '-'}
-                                    </Td>
-                                    <Td>
+                                    <Td verticalAlign="middle">
                                         {
-                                            percentage ? <Progress size='sm' value={percentage} /> : <>-</>
+                                            percentage ? <PercentageBar value={percentage} /> : <>-</>
                                         }
                                     </Td>
                                 </Tr>;
@@ -79,7 +98,7 @@ const InvestmentPortfolioTableBlock:any = ({ table, lastUpdated }:InvestmentPort
             </Table>
         </TableContainer>
         {
-            lastUpdated && <Text mt={4}>
+            lastUpdated && <Text mt={4} fontSize="14px" color="white">
                 Last updated at {DateTime.fromFormat(lastUpdated, "yyyy-mm-dd").toFormat('d/MM/yyyy')}
             </Text>
         }

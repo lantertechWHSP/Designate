@@ -21,7 +21,7 @@ const EventList:any = ({ events }:IEventList) : ReactNode => {
                     }
                     <Box borderBottom="1px solid" borderColor="lightGrey2" />
                 </> : <Box>
-                    <Text variant="caption" color="lightGrey">No Events</Text>
+                    <Text variant="caption">No Events</Text>
                 </Box>
             }
         </Container>

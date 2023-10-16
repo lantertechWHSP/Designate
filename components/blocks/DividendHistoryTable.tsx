@@ -73,7 +73,7 @@ const DividendHistoryTableBlock:any = ({ table }:IDividendHistoryTable) : ReactN
                         }
                     </Tbody>
                 </Table>
-            </TableContainer> : <Text variant="caption" color="lightGrey">No Dividends</Text>
+            </TableContainer> : <Text variant="caption">No Dividends</Text>
         }
     </ContentBlock>;
 };

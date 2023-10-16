@@ -28,6 +28,7 @@ import TrackRecordDividendBlock from '~/components/blocks/TrackRecordDividend';
 // About/Investment Approach
 import InvestmentPhilosophyBlock from '~/components/blocks/InvestmentPhilosophy';
 import InvestmentPortfolioTableBlock from '~/components/blocks/InvestmentPortfolioTable';
+import ObjectivePanelBlock from '~/components/blocks/ObjectivePanel';
 
 // About/Investment Portfolio
 import PeoplePanelBlock from '~/components/blocks/PeoplePanel';
@@ -73,6 +74,7 @@ const blocks:any = {
     // About/Investment Approach
     InvestmentPhilosophyBlock,
     InvestmentPortfolioTableBlock,
+    ObjectivePanelBlock,
 
     // About/Investment Portfolio
     PeoplePanelBlock,
