@@ -2,7 +2,6 @@ import { ReactNode } from 'react';
 import ContentBlock, { ContainerWidth } from '~/components/blocks/Content';
 import { ChakraProps } from '@chakra-ui/system';
 import { SimpleGrid, Box, Heading, Text } from '@chakra-ui/react';
-import { gutter } from '~/components/elements/grid/grid';
 
 interface IObjectivePanelItem {
     title?:string;
@@ -22,12 +21,12 @@ const ObjectivePanelBlock:any = ({ items, containerWidth }:IObjectivePanelBlock)
                 <SimpleGrid columns={[1, , 3]}>
                     {
                         items.map((item:IObjectivePanelItem, index:number) => {
-                            return <Box borderRight={[0,index < items.length - 1 ? "1px solid" : '' ]} borderColor={['lightGrey2', 'lightGrey2']} px={8}>
+                            return <Box borderRight={[0,index < items.length - 1 ? "1px solid" : '' ]} borderColor={['lightGrey2', 'lightGrey2']} px={8} key={index}>
                                 {
                                     item.title && <Heading as="h3"
-                                                           fontSize={['56px']}
-                                                           lineHeight={['56px']}
-                                                           color="darkBrownBlur">
+                                        fontSize={['56px']}
+                                        lineHeight={['56px']}
+                                        color="darkBrownBlur">
                                         {item.title}
                                     </Heading>
                                 }
@@ -39,13 +38,13 @@ const ObjectivePanelBlock:any = ({ items, containerWidth }:IObjectivePanelBlock)
                                 {
                                     item.annotation && <Text color="darkBrown">
                                         {item.annotation}
-                                  </Text>
+                                    </Text>
                                 }
-                            </Box>
+                            </Box>;
                         })
                     }
                 </SimpleGrid>
-          </Box>
+            </Box>
         }
     </ContentBlock>;
 };

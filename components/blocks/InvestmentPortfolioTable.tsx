@@ -28,7 +28,7 @@ const PercentageBar:any = ({ value }:IPercentageBar) => {
             (value >= 0 && value <= 100) && <Flex height="24px" direction="row" width={'100%'} borderRadius="3px" background="rgba(255, 255, 255, 0.1)">
                 {
                     value >= 0 && value <= 80 ? <>
-                        <Box width={`${value}%`} background="white" borderRadius="3px" marginRight="8px" height="24px" />
+                        <Box width={`${value}%`} background="white" borderRadius="3px" height="24px" />
                         <Box width={`${remainder}%`} px={2}>
                             {value}%
                         </Box>
@@ -40,8 +40,8 @@ const PercentageBar:any = ({ value }:IPercentageBar) => {
                 }
             </Flex>
         }
-    </Box>
-}
+    </Box>;
+};
 
 const InvestmentPortfolioTableBlock:any = ({ table, lastUpdated }:InvestmentPortfolioTableBlock) : ReactNode => {
     const [total] = useState<number>(table.data ? _sumBy(table.data, (row:ITableRow) => {
