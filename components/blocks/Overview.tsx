@@ -12,7 +12,7 @@ interface IOverviewBlock extends ChakraProps {
 const OverviewBlock:any = ({ subtitle, description }:IOverviewBlock) : ReactNode => {
     return <ContentBlock background="ghostWhite" py={8}>
         <Row>
-            <Column width={[ColumnWidth.Full, , ColumnWidth.Half]}>
+            <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half]}>
                 {
                     subtitle && <Heading as="h2"
                                          fontSize={['36px']}
@@ -23,7 +23,7 @@ const OverviewBlock:any = ({ subtitle, description }:IOverviewBlock) : ReactNode
                   </Heading>
                 }
             </Column>
-            <Column width={[ColumnWidth.Full, , ColumnWidth.Half]}>
+            <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half]}>
                 {
                     description && <Text fontSize={['19px']}
                                          m={0}

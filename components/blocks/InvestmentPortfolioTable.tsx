@@ -20,10 +20,10 @@ interface IPercentageBar {
     value:number;
 }
 
-const PercentageBar:any = ({ value }:IPercentageBar) => {
+const PercentageBar:any = ({ value, display }:IPercentageBar) => {
     const remainder:number = value - 100;
 
-    return <Box>
+    return <Box display={display}>
         {
             (value >= 0 && value <= 100) && <Flex height="24px" direction="row" width={'100%'} borderRadius="3px" background="rgba(255, 255, 255, 0.1)">
                 {
@@ -60,13 +60,13 @@ const InvestmentPortfolioTableBlock:any = ({ table, lastUpdated }:InvestmentPort
                 {
                     Array.isArray(table.columns) && table.columns.length > 0 && <Thead>
                         <Tr>
-                            <Th width="20%" color="whiteBlur">
+                            <Th width={['50%', ,'20%']} color="whiteBlur">
                                 Portfolio
                             </Th>
-                            <Th width="20%" color="whiteBlur">
+                            <Th width={['35%', ,'20%']}  color="whiteBlur">
                                 Net Asset Value (M)
                             </Th>
-                            <Th width="60%" color="whiteBlur">
+                            <Th width={['15%', ,'60%']}  color="whiteBlur">
                                 Weighting
                             </Th>
                         </Tr>
@@ -87,7 +87,12 @@ const InvestmentPortfolioTableBlock:any = ({ table, lastUpdated }:InvestmentPort
                                     </Td>
                                     <Td verticalAlign="middle">
                                         {
-                                            percentage ? <PercentageBar value={percentage} /> : <>-</>
+                                            percentage ? <>
+                                                <PercentageBar display={['none', , 'block']} value={percentage} />
+                                                <Box display={['block', ,'none']}>
+                                                    {percentage}%
+                                                </Box>
+                                            </> : <>-</>
                                         }
                                     </Td>
                                 </Tr>;
