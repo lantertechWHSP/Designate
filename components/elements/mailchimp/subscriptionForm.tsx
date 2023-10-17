@@ -52,7 +52,7 @@ export const SubscriptionForm:any = () : ReactNode => {
         <Container>
             <Box py={[6, 8, 12]}>
                 <Row>
-                    <Column width={[ColumnWidth.Full, , ColumnWidth.Half]}>
+                    <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half]}>
                         <Heading as="h2" variant="sectionHeading" color="white">
                             Subscribe for the latest updates
                         </Heading>
@@ -60,7 +60,7 @@ export const SubscriptionForm:any = () : ReactNode => {
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         </Text>
                     </Column>
-                    <Column width={[ColumnWidth.Full, , ColumnWidth.Half]} justify="flex-end">
+                    <Column width={[ColumnWidth.Full, , , ColumnWidth.Half]} justify="flex-end">
                         <Formik
                             validationSchema={SCHEMA}
                             initialValues={INITIAL_VALUES}
@@ -74,7 +74,7 @@ export const SubscriptionForm:any = () : ReactNode => {
                                         event.preventDefault();
                                         handleSubmit();
                                     }} noValidate>
-                                        <Flex direction={['column', ,'row']} justifyContent="center">
+                                        <Flex direction={['column', ,'row']} px={0} py={[0, 4, 4, 0]} justifyContent="center">
                                             {
                                                 status !== 'success' ? <>
                                                     <Flex flex={1} direction="column">

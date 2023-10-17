@@ -44,10 +44,9 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
         setIsMinimumScrolled(currentScrollTop > 80);
     });
 
-
     const getBackground:any = () : string => {
         if(isOpen || (!isScrolledDown && isMinimumScrolled)) {
-            return 'white';
+            return 'rgba(255, 255, 255, 1)';
         }
         else {
             return 'rgba(0, 0, 0, 0)';
@@ -60,10 +59,10 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
         }
         else {
             if(darkTheme) {
-                return 'white';
+                return '#fff';
             }
             else {
-                return 'black';
+                return '#1C1C1C';
             }
         }
     };

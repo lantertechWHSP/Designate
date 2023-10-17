@@ -14,7 +14,7 @@ const Footer:any = ({ menu, address, email, phone, fax, linkedin, youtube, copyr
     return <Box as="footer" background="black2" color="white" py={[6, 8, 12]}>
         <Container>
             <Row>
-                <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]} mb={[4, ,0]}>
+                <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half]} mb={[4, ,0]}>
                     <Flex direction="column">
                         {
                             (Array.isArray(menu) && menu.length > 0) && menu.map((item:IMenuLink, index:number) => {
@@ -32,7 +32,7 @@ const Footer:any = ({ menu, address, email, phone, fax, linkedin, youtube, copyr
                         }
                     </Flex>
                 </Column>
-                <Column width={[ColumnWidth.Full, ,ColumnWidth.OneQuarter]}>
+                <Column width={[ColumnWidth.Full, ,ColumnWidth.Half, ColumnWidth.OneQuarter]}>
                     {
                         phone && <Box>
                             <Link href={`tel:${phone}`} variant="siteFooter">
@@ -55,7 +55,7 @@ const Footer:any = ({ menu, address, email, phone, fax, linkedin, youtube, copyr
                         </Box>
                     }
                 </Column>
-                <Column width={[ColumnWidth.Full, ,ColumnWidth.OneQuarter]}>
+                <Column width={[ColumnWidth.Full, ,ColumnWidth.Half, ColumnWidth.OneQuarter]}>
                     {
                         address && <Box mb={[4, ,8]}>
                             {address}

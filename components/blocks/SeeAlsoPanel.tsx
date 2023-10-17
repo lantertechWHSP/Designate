@@ -47,7 +47,7 @@ const SeeAlsoPanelBlock:any = ({ items }:ISeeAlsoPanelBlock) : ReactNode => {
             (Array.isArray(items) && items.length > 0) && <Row>
                 {
                     items.map((item:ISeeAlsoItem, index:number) => {
-                        return <Column key={index} width={[ColumnWidth.Full, ColumnWidth.Half, ColumnWidth.OneQuarter]}>
+                        return <Column key={index} width={[ColumnWidth.Full, , ColumnWidth.Half, ColumnWidth.OneQuarter]}>
                             <SeeAlsoItem {...item} />
                         </Column>;
                     })
