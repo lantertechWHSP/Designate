@@ -1,7 +1,7 @@
-import { ReactNode } from 'react';
-import { Box, Container, ResponsiveValue } from '@chakra-ui/react';
-import { ChakraProps } from '@chakra-ui/system';
-import { Column, ColumnWidth, Row } from "~/components/elements/grid/grid";
+import {ReactNode} from 'react';
+import {Box, Container, ResponsiveValue} from '@chakra-ui/react';
+import {ChakraProps} from '@chakra-ui/system';
+import {Column, ColumnWidth, Row} from "~/components/elements/grid/grid";
 
 export enum ContainerWidth {
     Default = 'Default',
@@ -30,14 +30,14 @@ interface IContentBlock extends ChakraProps {
 }
 
 const ContentBlock:any = ({ contain = true, color = '', background = '', containerWidth = ContainerWidth.Default, children, ...props }:IContentBlock) : ReactNode => {
-    let columnWidth:ColumnWidth;
+    let columnWidths:ColumnWidth[];
     let selectedBackground:BackgroundColor|ResponsiveValue<any>|string;
     let selectedColor:TextColor|ResponsiveValue<any>|string;
 
     switch(containerWidth) {
-        case ContainerWidth.Wide : columnWidth = ColumnWidth.TenTwelfths; break;
-        case ContainerWidth.Narrow : columnWidth = ColumnWidth.EightTwelfths; break;
-        default : columnWidth = ColumnWidth.Full;
+        case ContainerWidth.Wide : columnWidths = [ColumnWidth.Full, ,ColumnWidth.TenTwelfths]; break;
+        case ContainerWidth.Narrow : columnWidths = [ColumnWidth.Full, ,ColumnWidth.TenTwelfths, ColumnWidth.EightTwelfths]; break;
+        default : columnWidths = [ColumnWidth.Full];
     }
 
     switch(background) {
@@ -58,11 +58,11 @@ const ContentBlock:any = ({ contain = true, color = '', background = '', contain
         {
             contain ? <Container>
                 {
-                    (containerWidth !== ContainerWidth.Default) ? <Row justify={['center']}>
-                        <Column width={[ColumnWidth.Full, , columnWidth]}>
+                    <Row justify={['center']}>
+                        <Column width={columnWidths}>
                             {children}
                         </Column>
-                    </Row> : <>{children}</>
+                    </Row>
                 }
             </Container> : <Box>
                 {children}

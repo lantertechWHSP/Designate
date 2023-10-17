@@ -23,7 +23,7 @@ const CompanyValuesPanelBlock:any = ({ items, ...props }:ICompanyValuesPanelBloc
                 <SimpleGrid background="ghostWhite" columns={[1, ,items.length > 4 ? 4 : items.length]} spacing={[4]}>
                     {
                         items.map((item:ICompanyValue, index:number) => {
-                            return <Flex direction="column" key={index} py={8} px={4}>
+                            return <Flex direction="column" key={index} alignItems="center" py={8} px={4}>
                                 {
                                     (item.icon && item.icon.url) && <Box mb={4}><img src={item.icon.url} alt={item.icon?.alt} /></Box>
                                 }

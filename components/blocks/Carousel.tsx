@@ -62,7 +62,7 @@ const CarouselBlock:any = ({ items }:ICarouselBlock) : ReactNode => {
                     {
                         items.map((item:ICarouselItem, index:number) => {
                             return <Box className="keen-slider__slide" key={index}>
-                                <AspectRatio ratio={[3 / 1.25]}>
+                                <AspectRatio ratio={[3 /2, ,3 / 1.25]}>
                                     <Box
                                         backgroundImage={item.image?.responsiveImage?.src}
                                         backgroundSize="cover"
@@ -72,7 +72,7 @@ const CarouselBlock:any = ({ items }:ICarouselBlock) : ReactNode => {
                             </Box>;
                         })
                     }
-                    <Box position="absolute" width="100%" top="50%" transform="translateY(-50%)" zIndex="2">
+                    <Box position="absolute" width="100%" top="50%" transform="translateY(-50%)" height="60px" zIndex="2">
                         <Button position="absolute"
                             backgroundColor="whiteBlur"
                             color="black"
