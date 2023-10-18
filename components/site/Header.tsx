@@ -88,55 +88,55 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
                     duration: 0.3
                 }}>
                 <Container>
-                        <Row height={[height]} align="center">
-                            <Column width={[ColumnWidth.Half, , ,ColumnWidth.TwoTwelfths]}>
-                                <Flex height="48px" align="center">
-                                    <Link
-                                        href="/"
-                                        sx={{
-                                            display: 'block',
-                                            width: '188px',
-                                            position: 'relative',
-                                            top: '-3px'
-                                        }}>
-                                        <Box as="span"
-                                            transition="color 300ms linear"
-                                            color={color}>
-                                            <Logo />
-                                        </Box>
-                                    </Link>
-                                </Flex>
-                            </Column>
-                            <Column display={['none', , ,'block']} width={[ColumnWidth.None, , ,ColumnWidth.EightTwelfths]}>
-                                <Box>
-                                    <DesktopNav menu={menu} color={color}/>
-                                </Box>
-                            </Column>
-                            <Column width={[ColumnWidth.Half, , ,ColumnWidth.TwoTwelfths]}>
-                                <Flex display="flex" justify="flex-end">
-                                    <Button color={color} onClick={onToggle} display={['flex', , ,'none']}>
-                                        {
-                                            isOpen ? <Icon icon={Icons.Cross} w={20} h={20}/> : <Icon icon={Icons.Hamburger} w={20} h={20}/>
-                                        }
-                                    </Button>
-                                    <Link display={['none', , ,'block']}
-                                          href="/contact" sx={{
-                                            color: color,
-                                            fontWeight: 700,
-                                            minWidth: 200,
-                                            padding: '0 20px',
-                                            lineHeight: '48px',
-                                            height: '48px',
-                                            border: `1px solid ${color === 'white' ? `rgba(255, 255, 255, 0.5)` : `rgba(0, 0, 0, 0.5)`}`,
-                                            borderRadius: '24px',
-                                            textAlign: 'center'
-                                        }}>
-                                        Contact
-                                    </Link>
-                                </Flex>
-                            </Column>
-                        </Row>
-                    </Container>
+                    <Row height={[height]} align="center">
+                        <Column width={[ColumnWidth.Half, , ,ColumnWidth.TwoTwelfths]}>
+                            <Flex height="48px" align="center">
+                                <Link
+                                    href="/"
+                                    sx={{
+                                        display: 'block',
+                                        width: '188px',
+                                        position: 'relative',
+                                        top: '-3px'
+                                    }}>
+                                    <Box as="span"
+                                        transition="color 300ms linear"
+                                        color={color}>
+                                        <Logo />
+                                    </Box>
+                                </Link>
+                            </Flex>
+                        </Column>
+                        <Column display={['none', , ,'block']} width={[ColumnWidth.None, , ,ColumnWidth.EightTwelfths]}>
+                            <Box>
+                                <DesktopNav menu={menu} color={color}/>
+                            </Box>
+                        </Column>
+                        <Column width={[ColumnWidth.Half, , ,ColumnWidth.TwoTwelfths]}>
+                            <Flex display="flex" justify="flex-end">
+                                <Button color={color} onClick={onToggle} display={['flex', , ,'none']}>
+                                    {
+                                        isOpen ? <Icon icon={Icons.Cross} w={20} h={20}/> : <Icon icon={Icons.Hamburger} w={20} h={20}/>
+                                    }
+                                </Button>
+                                <Link display={['none', , ,'block']}
+                                    href="/contact" sx={{
+                                        color: color,
+                                        fontWeight: 700,
+                                        minWidth: 200,
+                                        padding: '0 20px',
+                                        lineHeight: '48px',
+                                        height: '48px',
+                                        border: `1px solid ${color === 'white' ? `rgba(255, 255, 255, 0.5)` : `rgba(0, 0, 0, 0.5)`}`,
+                                        borderRadius: '24px',
+                                        textAlign: 'center'
+                                    }}>
+                                    Contact
+                                </Link>
+                            </Flex>
+                        </Column>
+                    </Row>
+                </Container>
                 <MobileNav background={background} menu={menu} isOpen={isOpen}/>
             </MotionBox>
         </Box>
@@ -201,7 +201,7 @@ const DesktopNav:any = ({menu, color}): ReactNode => {
     </Flex>;
 };
 
-const MobileNav:any = ({background, menu, isOpen = false}): ReactNode => {
+const MobileNav:any = ({ menu, isOpen = false }): ReactNode => {
     const scrollRef:any = useRef<ReactNode>();
 
     useEffect(() => {
@@ -258,8 +258,8 @@ const MobileNavItem:any = ({item}): ReactNode => {
     return <Box>
         <Flex px={4} py={3} borderTop="1px solid" cursor={hasChildren ? 'pointer' : 'auto'} onClick={handleClick}  borderColor="lightGrey2">
             <MenuItemLink variant="siteHeader"
-                          color="black"
-                          fontSize="18px"
+                color="black"
+                fontSize="18px"
                 link={item.link}
                 externalLink={item.externalLink} >
                 {item.title}
@@ -284,9 +284,9 @@ const MobileNavItem:any = ({item}): ReactNode => {
                         item.children.map((child: IMenuLink, childIndex: number) => {
                             return <Box px={4} py={2} key={childIndex}>
                                 <MenuItemLink variant="siteHeader"
-                                              color="darkBrown"
-                                              link={child.link}
-                                              externalLink={child.externalLink} >
+                                    color="darkBrown"
+                                    link={child.link}
+                                    externalLink={child.externalLink} >
                                     {child.title}
                                 </MenuItemLink>
                             </Box>;

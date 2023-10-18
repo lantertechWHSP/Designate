@@ -79,38 +79,38 @@ export const SubscriptionForm:any = () : ReactNode => {
                                                 status !== 'success' ? <>
                                                     <Flex flex={1} direction="column">
                                                         <Field as={Input}
-                                                               type="email"
-                                                               border="1px solid"
-                                                               background="transparent"
-                                                               sx={(errors.email && (touched.email && isAttemptedSubmit))  ? {
-                                                                   color: 'error',
-                                                                   borderColor: '#f1767488'
-                                                               } : {}}
-                                                               borderColor="whiteBlur"
-                                                               px={4}
-                                                               _placeholder={{
-                                                                   color: 'whiteBlur'
-                                                               }}
-                                                               color="white"
-                                                               h="50px"
-                                                               id="email"
-                                                               name="email"
-                                                               borderRadius="4px"
-                                                               placeholder="Email Address"
-                                                               autoComplete="off" />
+                                                            type="email"
+                                                            border="1px solid"
+                                                            background="transparent"
+                                                            sx={(errors.email && (touched.email && isAttemptedSubmit))  ? {
+                                                                color: 'error',
+                                                                borderColor: '#f1767488'
+                                                            } : {}}
+                                                            borderColor="whiteBlur"
+                                                            px={4}
+                                                            _placeholder={{
+                                                                color: 'whiteBlur'
+                                                            }}
+                                                            color="white"
+                                                            h="50px"
+                                                            id="email"
+                                                            name="email"
+                                                            borderRadius="4px"
+                                                            placeholder="Email Address"
+                                                            autoComplete="off" />
                                                         {
                                                             (errors.email && (touched.email && isAttemptedSubmit)) && <Text variant="error" mt={2} mb={0}>{errors.email.toString()}</Text>
                                                         }
                                                     </Flex>
                                                     <Button type="submit"
-                                                            background="white"
-                                                            color="black"
-                                                            py={0}
-                                                            h="50px"
-                                                            ml={[0, ,4]}
-                                                            mt={[4, ,0]}
-                                                            borderRadius="4px"
-                                                            minW={['100%', ,'180px']} >Subscribe</Button>
+                                                        background="white"
+                                                        color="black"
+                                                        py={0}
+                                                        h="50px"
+                                                        ml={[0, ,4]}
+                                                        mt={[4, ,0]}
+                                                        borderRadius="4px"
+                                                        minW={['100%', ,'180px']} >Subscribe</Button>
                                                 </> : <Flex minHeight="48px" align="center">
                                                     <Text color="white" mb={0}>{message}</Text>
                                                 </Flex>

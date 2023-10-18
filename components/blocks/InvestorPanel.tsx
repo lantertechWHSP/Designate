@@ -184,8 +184,8 @@ const InvestorPanelBlock:any = ({ background, displayHeadline }:IInvestorPanelBl
                                     <Box flex={1} />
                                     <Flex direction="row" align="center">
                                         <Heading data-yourir="$cur.date format='DD.MM.YY'"
-                                                 as="span"
-                                                 variant="listLabel" mr={2} />
+                                            as="span"
+                                            variant="listLabel" mr={2} />
                                         <ChakraLink data-yourir="linkAnnouncement fileId" cursor="pointer" color="darkBrownBlur">
                                             <Icon icon={Icons.ChevronRight} />
                                         </ChakraLink>

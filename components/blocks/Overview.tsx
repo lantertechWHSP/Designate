@@ -15,22 +15,22 @@ const OverviewBlock:any = ({ subtitle, description }:IOverviewBlock) : ReactNode
             <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half]}>
                 {
                     subtitle && <Heading as="h2"
-                                         fontSize={['36px']}
-                                         lineHeight={['42px']}
-                                         color="darkBrown"
-                                         fontWeight={500} mb={4}>
+                        fontSize={['36px']}
+                        lineHeight={['42px']}
+                        color="darkBrown"
+                        fontWeight={500} mb={4}>
                         {subtitle}
-                  </Heading>
+                    </Heading>
                 }
             </Column>
             <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half]}>
                 {
                     description && <Text fontSize={['19px']}
-                                         m={0}
-                                         lineHeight={['29px']}
-                                         color="darkBrown">
+                        m={0}
+                        lineHeight={['29px']}
+                        color="darkBrown">
                         {description}
-                  </Text>
+                    </Text>
                 }
             </Column>
         </Row>

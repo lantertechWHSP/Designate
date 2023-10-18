@@ -24,8 +24,8 @@ const ObjectivePanelBlock:any = ({ items, containerWidth }:IObjectivePanelBlock)
                             return <Flex direction={['row', , ,'column']} borderRight={[0,index < items.length - 1 ? "1px solid" : '' ]} borderColor={['lightGrey2', 'lightGrey2']} px={8} key={index}>
                                 {
                                     item.title && <Heading as="h3"
-                                                           minWidth={['60px', , ,'initial']}
-                                                           mr={[0, , ,4]}
+                                        minWidth={['60px', , ,'initial']}
+                                        mr={[0, , ,4]}
                                         fontSize={['56px']}
                                         lineHeight={['56px']}
                                         color="darkBrownBlur">
@@ -36,7 +36,7 @@ const ObjectivePanelBlock:any = ({ items, containerWidth }:IObjectivePanelBlock)
                                     (item.description || item.annotation) && <Box>
                                         {
                                             item.description && <Heading as="h4" fontSize={['28px']} lineHeight={['28px']} color="darkBrown">
-                                                  {item.description}
+                                                {item.description}
                                             </Heading>
                                         }
                                         {

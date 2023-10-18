@@ -20,10 +20,10 @@ interface IPercentageBar {
     value:number;
 }
 
-const PercentageBar:any = ({ value, display }:IPercentageBar) => {
+const PercentageBar:any = ({ value }:IPercentageBar) => {
     const remainder:number = value - 100;
 
-    return <Box display={display}>
+    return <Box>
         {
             (value >= 0 && value <= 100) && <Flex height="24px" direction="row" width={'100%'} borderRadius="3px" background="rgba(255, 255, 255, 0.1)">
                 {
@@ -88,7 +88,9 @@ const InvestmentPortfolioTableBlock:any = ({ table, lastUpdated }:InvestmentPort
                                     <Td verticalAlign="middle">
                                         {
                                             percentage ? <>
-                                                <PercentageBar display={['none', , 'block']} value={percentage} />
+                                                <Box display={['none', , 'block']} >
+                                                    <PercentageBar value={percentage} />
+                                                </Box>
                                                 <Box display={['block', ,'none']}>
                                                     {percentage}%
                                                 </Box>
