@@ -117,14 +117,14 @@ const LineChart:any = ({ data }:ILineChart) : ReactNode => {
         });
 
         return newLines;
-    }, [data]);
+    }, [data, height, width]);
 
     useEffect(() => {
         const setDimension:any = () : void => {
             if(elementRef.current) {
                 const newWidth:number = elementRef.current.getBoundingClientRect().width;
                 setWidth(newWidth);
-                setHeight(newWidth * 0.4);
+                setHeight(newWidth * 0.45);
             }
         };
 
@@ -168,7 +168,7 @@ const LineChart:any = ({ data }:ILineChart) : ReactNode => {
                         transform={`translate(${[margin.left, margin.top].join(",")})`}
                         overflow={"visible"}
                     >
-                        <AxisLeft scale={yScale} width={width} />
+                        <AxisLeft scale={yScale} chartHeight={height} width={width} />
                         <g transform="translate(30, 0)">
                             <AxisBottom scale={xScale} transform={`translate(0, ${boundsHeight})`} />
                             {

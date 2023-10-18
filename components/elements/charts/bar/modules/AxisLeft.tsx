@@ -23,7 +23,7 @@ export const AxisLeft:any = ({ scale, chartHeight, width }:IAxisLeft) : ReactNod
 
         let newTickCount = Math.floor(chartHeight / 100) + 1;
 
-        setTickCount(clamp(newTickCount, 1, 10));
+        setTickCount(clamp(newTickCount, 3, 10));
     }, [chartHeight]);
 
     return <g className="y-axis">

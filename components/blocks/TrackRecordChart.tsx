@@ -117,13 +117,19 @@ const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesT
                         <>
                             <MenuButton as={Button}
                                 variant="menuButton"
-                                minW="270px"
-                                        color="darkGrey"
+                                minW={['200px', ,'270px']}
+                                        borderColor="darkGrey"
+                                color="darkGrey"
                                 rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} h={12} w={12} /> : <Icon icon={Icons.ChevronDown} h={12} w={12}  /> }>
-                                Compare
+                                <Flex display="inlineFlex" direction="row" alignItems="center">
+                                    <Box background="lightGrey2" width="10px" height="10px" borderRadius="5px" mr={2} />
+                                    <Text as="span">
+                                        Compare
+                                    </Text>
+                                </Flex>
                             </MenuButton>
                             <Portal>
-                                <MenuList minW="270px">
+                                <MenuList minW={['200px', ,'270px']}>
                                     {
                                         filters.map((item:IChartFilter, index:number) => {
                                             return <MenuItem key={index}
