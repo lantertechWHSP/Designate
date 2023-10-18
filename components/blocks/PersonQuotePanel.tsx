@@ -20,12 +20,17 @@ const PersonQuotePanelBlock:any = ({ containerWidth, contain, quote, person }:IP
                     <Text fontSize="24px" lineHeight="28px" fontWeight={700} color="darkBrown">
                         {quote}
                     </Text>
-                    <footer>—{person.name}, {person.companyPosition}</footer>
+                    {
+                        person && <footer>—{person?.name}, {person?.companyPosition}</footer>
+
+                    }
                 </blockquote>
             </Column>
-            <Column width={ColumnWidth.OneThird}>
-                <Image image={person.image} ratio={[1 / 1]} />
-            </Column>
+            {
+                (person && person.image) && <Column width={ColumnWidth.OneThird}>
+                    <Image image={person.image} ratio={[1 / 1]} />
+                </Column>
+            }
         </Row>
     </ContentBlock>;
 };

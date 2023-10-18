@@ -11,12 +11,12 @@ const ProfileCard:any = ({ image, name, companyPosition, onClick }:IProfileCard)
     return <Box>
         <Image image={image} ratio={[1 / 1]} onClick={onClick} mb={4} />
         {
-            name && <Heading as="h2" variant="h4" fontWeight={400}>
+            name && <Heading as="h3" fontSize={['21px']} lineHeight={['26px']} fontWeight={500}>
                 {name}
             </Heading>
         }
         {
-            companyPosition && <Heading as="h3" variant="h5" color="steelBlue2" fontWeight={400}>
+            companyPosition && <Heading as="h4" fontSize={['19px']} lineHeight={['28px']} color="darkBrown" fontWeight={400}>
                 {companyPosition}
             </Heading>
         }

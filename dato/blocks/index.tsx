@@ -43,6 +43,10 @@ import { shareHistoricalPricesTableRecord } from '~/dato/blocks/shareHistoricalP
 import { dividendHistoryTableRecord } from '~/dato/blocks/dividendHistoryTable';
 import { dividendLatestTableRecord } from '~/dato/blocks/dividendLatestTable';
 import { dividendGrowthChartRecord } from '~/dato/blocks/dividendGrowthChart';
+
+// People and Governance
+import { profilesPanelRecord } from '~/dato/blocks/profilesPanel';
+
 export const blocks:string = `
     blocks {
         ... on TextRecord {
@@ -124,6 +128,10 @@ export const blocks:string = `
         
         ... on PortfolioPanelRecord {
             ${portfolioPanelRecord}
+        }
+
+        ... on ProfilesPanelRecord {
+            ${profilesPanelRecord}
         }
 
         ... on SharePricePanelRecord {
