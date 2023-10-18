@@ -15,7 +15,7 @@ const ContactCard:any = ({ title, address, contactName, phone, phone2, email, em
         }
         {
             address && <Box mb={4}>
-                <Heading as="h4" variant="h5">
+                <Heading as="h4" variant="h5" mb={0}>
                     Address
                 </Heading>
                 <Box>
@@ -25,7 +25,7 @@ const ContactCard:any = ({ title, address, contactName, phone, phone2, email, em
         }
         {
             contactName && <Box mb={4}>
-                <Heading as="h4" variant="h5">
+                <Heading as="h4" variant="h5" mb={0}>
                     Contact
                 </Heading>
                 <Box>
@@ -35,7 +35,7 @@ const ContactCard:any = ({ title, address, contactName, phone, phone2, email, em
         }
         {
             (phone || phone2) && <Box mb={4}>
-                <Heading  as="h4" variant="h5">
+                <Heading  as="h4" variant="h5" mb={0}>
                     Phone
                 </Heading>
                 {
@@ -56,7 +56,7 @@ const ContactCard:any = ({ title, address, contactName, phone, phone2, email, em
         }
         {
             (email || email2) && <Box mb={4}>
-                <Heading as="h4" variant="h5">
+                <Heading as="h4" variant="h5" mb={0}>
                     Email
                 </Heading>
                 {
@@ -77,7 +77,7 @@ const ContactCard:any = ({ title, address, contactName, phone, phone2, email, em
         }
         {
             website && <Box mb={4}>
-                <Heading as="h4" variant="h5">
+                <Heading as="h4" variant="h5" mb={0}>
                     Website
                 </Heading>
                 <Box>

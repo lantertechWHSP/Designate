@@ -177,7 +177,7 @@ const InvestorPanelBlock:any = ({ background, displayHeadline }:IInvestorPanelBl
                                     direction="row"
                                     color="darkBrownBlur"
                                     align="center"
-                                    py={[4, 4, '26px']}>
+                                    py={[4, , 3, '26px']}>
                                     <Heading data-yourir="$cur.heading"
                                         as="h3"
                                         variant="listItem" mr={2} />

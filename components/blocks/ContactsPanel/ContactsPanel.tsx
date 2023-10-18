@@ -21,10 +21,10 @@ const ContactsPanelBlock:any = ({ data: { contacts } }:IContactsPanelBlock) : Re
             </Heading>
         </Box>
         {
-            (Array.isArray(contacts) && contacts.length > 0) && <SimpleGrid columns={[1, , 3]}>
+            (Array.isArray(contacts) && contacts.length > 0) && <SimpleGrid columns={[1, , , 3]}>
                 {
                     contacts.map((contact:IContact, index:number) => {
-                        return <Fragment key={index}><ContactCard {...contact} /></Fragment>;
+                        return <Box key={index}><ContactCard {...contact} /></Box>;
                     })
                 }
             </SimpleGrid>
