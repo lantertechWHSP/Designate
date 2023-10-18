@@ -38,7 +38,7 @@ import PersonQuotePanelBlock from '~/components/blocks/PersonQuotePanel';
 import PortfolioImageGalleryBlock from '~/components/blocks/PortfolioImageGallery';
 
 // People and Governance
-import ProfilesPanelBlock from '~/components/blocks/ProfilesPanel';
+import ProfilesPanelBlock from '~/components/blocks/ProfilesPanel/ProfilesPanel';
 
 // Investor Center/Share Price
 import SharePricePanelBlock from '~/components/blocks/SharePricePanel/SharePricePanel';
