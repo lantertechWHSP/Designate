@@ -18,7 +18,7 @@ const PortfolioPanelBlock:any = ({ items }:IPortfolioPanelBlock) : ReactNode => 
         <Accordion allowToggle>
             {
                 items.map((item:IPortfolioPanel, index:number) => {
-                    const newContent = [];
+                    const newContent:any[] = [];
                     item.content.map((content) => {
                         content['contain'] = false;
                         newContent.push(content);
@@ -26,14 +26,14 @@ const PortfolioPanelBlock:any = ({ items }:IPortfolioPanelBlock) : ReactNode => 
 
                     return <AccordionItem key={index}>
                         <AccordionButton py={4}
-                                         borderTop="1px solid"
-                                         alignItems="flex-start"
-                                         textAlign="left"
-                                         borderColor="lightGrey2">
+                            borderTop="1px solid"
+                            alignItems="flex-start"
+                            textAlign="left"
+                            borderColor="lightGrey2">
                             <Heading as="h3"
-                                     variant="h4"
-                                     fontSize={['21px']}
-                                     fontWeight={500}>
+                                variant="h4"
+                                fontSize={['21px']}
+                                fontWeight={500}>
                                 {item?.title}
                             </Heading>
                         </AccordionButton>

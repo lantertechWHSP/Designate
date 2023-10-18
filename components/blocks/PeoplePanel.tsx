@@ -6,6 +6,7 @@ import { Image } from '~/components/elements/image';
 
 interface IPeoplePanelBlock {
     containerWidth?:ContainerWidth;
+    contain?:boolean;
     people:IPerson[];
 }
 

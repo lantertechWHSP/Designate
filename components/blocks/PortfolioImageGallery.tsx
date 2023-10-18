@@ -15,13 +15,13 @@ const PortfolioImageGalleryBlock:any = ({ containerWidth, contain, images }:IPor
         {
             (Array.isArray(images) && images.length > 0) && <SimpleGrid background="ghostWhite" columns={[1, ,images.length > 4 ? 4 : images.length]} spacing={[4]}>
                 {
-                    images.map((image:IImage) => {
-                        return <Flex align="center" justify="center" p={[8, ,12]}>
+                    images.map((image:IImage, index:number) => {
+                        return <Flex align="center" justify="center" p={[8, ,12]} key={index}>
                             <Image image={image} />
-                        </Flex>
+                        </Flex>;
                     })
                 }
-           </SimpleGrid>
+            </SimpleGrid>
         }
 
     </ContentBlock>;

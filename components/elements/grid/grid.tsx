@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Flex, Box } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
 import { ChakraProps } from '@chakra-ui/system';
 
 export const gutter:number = 4; // Charka width
@@ -45,6 +45,7 @@ interface IRow extends ChakraProps {
 interface IColumn extends ChakraProps {
     width:ColumnWidth|ColumnWidth[];
     children?:any;
+    direction?:any;
 }
 
 export const Row:any = ({ direction = ['row'], justify = ['flex-start'], children, ...props }:IRow) : ReactNode => {
