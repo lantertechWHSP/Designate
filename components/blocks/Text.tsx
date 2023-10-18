@@ -8,10 +8,11 @@ interface ITextBlock extends ChakraProps {
     __typename?:string;
     content?:any;
     containerWidth?:ContainerWidth;
+    contain?:boolean;
 }
 
-const TextBlock:any = ({ content, containerWidth }:ITextBlock) : ReactNode => {
-    return <ContentBlock containerWidth={containerWidth} my={8}>
+const TextBlock:any = ({ content, containerWidth, contain }:ITextBlock) : ReactNode => {
+    return <ContentBlock containerWidth={containerWidth} contain={contain} my={8}>
         <StructuredContent content={content} />
     </ContentBlock>;
 };

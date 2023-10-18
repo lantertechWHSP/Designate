@@ -53,8 +53,8 @@ export const Row:any = ({ direction = ['row'], justify = ['flex-start'], childre
     </Flex>;
 };
 
-export const Column:any = ({ width = [ColumnWidth.Full], children, ...props }:IColumn) : ReactNode => {
-    return <Box width={width} px={gutter} {...props}>
+export const Column:any = ({ width = [ColumnWidth.Full], direction = ['column'], children, ...props }:IColumn) : ReactNode => {
+    return <Flex direction={direction} width={width} px={gutter} {...props}>
         {children}
-    </Box>;
+    </Flex>;
 };

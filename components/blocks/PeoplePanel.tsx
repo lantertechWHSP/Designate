@@ -1,15 +1,16 @@
 import { ReactNode } from 'react';
-import ContentBlock from '~/components/blocks/Content';
+import ContentBlock, { ContainerWidth } from '~/components/blocks/Content';
 import { SimpleGrid, Box, Heading, Text } from '@chakra-ui/react';
 import { IPerson } from '~/interfaces/models/person';
 import { Image } from '~/components/elements/image';
 
 interface IPeoplePanelBlock {
+    containerWidth?:ContainerWidth;
     people:IPerson[];
 }
 
-const PeoplePanelBlock:any = ({ people }:IPeoplePanelBlock) : ReactNode => {
-    return <ContentBlock py={8}>
+const PeoplePanelBlock:any = ({ containerWidth, contain, people }:IPeoplePanelBlock) : ReactNode => {
+    return <ContentBlock containerWidth={containerWidth} contain={contain}>
         {
             (Array.isArray(people) && people.length > 0) && <SimpleGrid columns={[1, , 3]} spacing={[0, 8]}>
                 {

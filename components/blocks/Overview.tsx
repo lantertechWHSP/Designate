@@ -1,8 +1,8 @@
 import {ReactNode} from 'react';
 import ContentBlock from '~/components/blocks/Content';
-import { ChakraProps } from '@chakra-ui/system';
-import { Heading, Text } from '@chakra-ui/react';
-import { Column, ColumnWidth, Row } from '~/components/elements/grid/grid';
+import {ChakraProps} from '@chakra-ui/system';
+import {Heading, Text} from '@chakra-ui/react';
+import {Column, ColumnWidth, Row} from '~/components/elements/grid/grid';
 
 interface IOverviewBlock extends ChakraProps {
     subtitle?:string;
@@ -12,7 +12,7 @@ interface IOverviewBlock extends ChakraProps {
 const OverviewBlock:any = ({ subtitle, description }:IOverviewBlock) : ReactNode => {
     return <ContentBlock background="ghostWhite" py={8}>
         <Row>
-            <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half]}>
+            <Column width={[ColumnWidth.Full, , ,subtitle && !description ? ColumnWidth.ThreeQuarters : ColumnWidth.Half]}>
                 {
                     subtitle && <Heading as="h2"
                         fontSize={['36px']}

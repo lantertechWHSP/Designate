@@ -32,7 +32,7 @@ import { investmentPortfolioTableRecord } from '~/dato/blocks/investmentPortfoli
 import { objectivePanelRecord } from '~/dato/blocks/objectivePanel';
 
 // About/Investment Portfolio
-import { peoplePanelRecord } from '~/dato/blocks/peoplePanel';
+import { portfolioPanelRecord } from "~/dato/blocks/portfolioPanel";
 
 // Investor Center/Share Price
 import { sharePricePanelRecord } from '~/dato/blocks/sharePricePanel';
@@ -122,8 +122,8 @@ export const blocks:string = `
             ${objectivePanelRecord}
         }
         
-        ... on PeoplePanelRecord {
-            ${peoplePanelRecord}
+        ... on PortfolioPanelRecord {
+            ${portfolioPanelRecord}
         }
 
         ... on SharePricePanelRecord {

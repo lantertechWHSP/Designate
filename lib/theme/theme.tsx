@@ -411,7 +411,8 @@ export const theme:any = extendBaseTheme({
                 mb: 4
             },
             blockquote: {
-                // borderLeft: `4px solid ${colors.skyBlue}`,
+                borderLeft: `4px solid`,
+                borderColor: 'darkBrownBlur',
                 pl: 8,
                 mb: 4
             },

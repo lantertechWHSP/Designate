@@ -18,7 +18,7 @@ export const AxisLeft:any = ({ scale, chartHeight, width }:IAxisLeft) : ReactNod
 
     useEffect(() => {
         const clamp:any = (val:number, min:number, max:number) : number => {
-            return val > max ? max : val < min ? min : val;
+            return Math.min(Math.max(val, min), max);
         };
 
         const newTickCount:number = Math.floor(chartHeight / 100) + 1;

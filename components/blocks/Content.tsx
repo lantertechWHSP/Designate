@@ -1,7 +1,7 @@
-import {ReactNode} from 'react';
-import {Box, Container, ResponsiveValue} from '@chakra-ui/react';
-import {ChakraProps} from '@chakra-ui/system';
-import {Column, ColumnWidth, Row} from "~/components/elements/grid/grid";
+import { ReactNode } from 'react';
+import { Box, Container, ResponsiveValue } from '@chakra-ui/react';
+import { ChakraProps } from '@chakra-ui/system';
+import { Column, ColumnWidth, Row } from "~/components/elements/grid/grid";
 
 export enum ContainerWidth {
     Default = 'Default',
@@ -64,9 +64,15 @@ const ContentBlock:any = ({ contain = true, color = '', background = '', contain
                         </Column>
                     </Row>
                 }
-            </Container> : <Box>
-                {children}
-            </Box>
+            </Container> : <>
+                {
+                    containerWidth !== ContainerWidth.Default ? <Row justify={['center']}>
+                        <Column width={columnWidths}>
+                            {children}
+                        </Column>
+                    </Row> : <>{children}</>
+                }
+            </>
         }
     </Box>;
 };
