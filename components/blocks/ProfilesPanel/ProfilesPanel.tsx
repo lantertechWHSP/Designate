@@ -1,9 +1,11 @@
 import React, { ReactNode, useState } from 'react';
 import { Image } from "~/components/elements/image";
 import { Icon, Icons } from "~/components/elements/icon";
-import { Box, Flex, Container, SimpleGrid, Heading, Modal, ModalOverlay, ModalContent, Button } from '@chakra-ui/react';
+import { Box, Text, Container, SimpleGrid, Heading, Modal, ModalOverlay, ModalContent, Button, Divider } from '@chakra-ui/react';
 import { IPerson } from '~/interfaces/models/person';
 import ProfileCard from '~/components/blocks/ProfilesPanel/ProfileCard';
+import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
+import StructuredContent from '~/components/StructuredContent';
 
 interface IProfilesPanelBlock {
     people:IPerson[];
@@ -37,43 +39,49 @@ export const ProfilesPanelBlock:any = ({ people }:IProfilesPanelBlock) : ReactNo
             </SimpleGrid>
             <Modal isOpen={modalOpen} size="full"  onClose={() => setModalOpen(false)}>
                 <ModalOverlay />
-                <ModalContent minWidth="100vw" minHeight="100vh" background="steelBlue">
+                <ModalContent minWidth="100vw" minHeight="100vh" background="brownGrey">
                     <Box my={8}>
                         <Container>
-                            <Flex mx={-4}>
-                                <Box px={4} display={['none', , , 'block']}>
-                                    <Box w={['500px']}>
-                                        <Image image={activePerson?.image} ratio={[1 / 1]} />
-                                    </Box>
-                                </Box>
-                                <Box px={4}>
+                            <Row>
+                                <Column width={[ColumnWidth.None, ,ColumnWidth.OneThird]}>
+                                    <Image image={activePerson?.image} ratio={[1 / 1]} display={['none', , 'block']} />
+                                </Column>
+                                <Column  width={[ColumnWidth.Full, ,ColumnWidth.TwoThirds]}>
                                     {
-                                        (activePerson?.name || activePerson?.companyPosition) && <Box mb={6}>
+                                        (activePerson?.name || activePerson?.companyPosition || activePerson?.qualifications) && <Box minHeight="90px">
                                             {
-                                                activePerson?.name && <Heading as="h2" variant="h2" fontWeight={400} color="white">
+                                                activePerson?.name && <Heading as="h2" fontWeight={500} fontSize={['21px']} lineHeight={['26px']}>
                                                     {activePerson.name}
-                                              </Heading>
+                                                </Heading>
                                             }
                                             {
-                                                activePerson?.companyPosition && <Heading as="h3" variant="h3" fontWeight={400} color="lightGrey">
+                                                activePerson?.companyPosition && <Heading as="h3" fontSize={['19px']}>
                                                     {activePerson.companyPosition}
-                                              </Heading>
+                                                </Heading>
                                             }
-                                      </Box>
+                                            {
+                                                activePerson?.qualifications && <Text color="darkBrownBlur" m={0}>
+                                                    {activePerson?.qualifications}
+                                                </Text>
+                                            }
+                                        </Box>
+                                    }
+                                    <Divider borderColor="darkBrownBlur" my={4} />
+                                    {
+                                        <Box maxWidth="400px" display={['block', , 'none']}>
+                                            <Image image={activePerson?.image} ratio={[1 / 1]} mb={8} />
+                                        </Box>
                                     }
                                     {
-                                        <Image image={activePerson?.image} ratio={[1 / 1]} mb={8} display={['block', , , 'none']} />
+                                        activePerson?.description && <Box>
+                                            <StructuredContent content={activePerson?.description} />
+                                        </Box>
                                     }
-                                    {
-                                        activePerson?.description && <Box color="white" style={{ whiteSpace: 'pre-wrap' }}>
-                                            {activePerson.description}
-                                      </Box>
-                                    }
-                                </Box>
-                                <Button pos="absolute" top={8} right={8} onClick={() => setModalOpen(false)} borderRadius="50%" background="lightGrey" w="44px" h="44px">
-                                    <Icon icon={Icons.Cross} w={24} h={24} />
-                                </Button>
-                            </Flex>
+                                </Column>
+                            </Row>
+                            <Button pos="absolute" top={8} right={8} onClick={() => setModalOpen(false)} borderRadius="50%" border="2px solid" borderColor="darkBrownBlur" background="transparent" w="50px" h="50px">
+                                <Icon icon={Icons.Cross} w={16} h={16} />
+                            </Button>
                         </Container>
                     </Box>
                 </ModalContent>

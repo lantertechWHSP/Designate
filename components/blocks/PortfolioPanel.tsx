@@ -13,17 +13,10 @@ interface IPortfolioPanelBlock {
 }
 
 const PortfolioPanelBlock:any = ({ items }:IPortfolioPanelBlock) : ReactNode => {
-
     return <ContentBlock py={[6, 8, 12]}>
         <Accordion allowToggle>
             {
                 items.map((item:IPortfolioPanel, index:number) => {
-                    const newContent:any[] = [];
-                    item.content.map((content) => {
-                        content['contain'] = false;
-                        newContent.push(content);
-                    });
-
                     return <AccordionItem key={index}>
                         <AccordionButton py={4}
                             borderTop="1px solid"
@@ -39,7 +32,7 @@ const PortfolioPanelBlock:any = ({ items }:IPortfolioPanelBlock) : ReactNode => 
                         </AccordionButton>
                         <AccordionPanel borderColor="lightGrey2" py={4}>
                             {
-                                (Array.isArray(newContent) && newContent.length > 0) && <ModularContent content={newContent} />
+                                (Array.isArray(item.content) && item.content.length > 0) && <ModularContent content={item.content} contain={false} />
                             }
                         </AccordionPanel>
                     </AccordionItem>;

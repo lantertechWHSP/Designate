@@ -1,4 +1,5 @@
 import { imageAttrs } from '~/dato/attrs/responsiveImageAttrs';
+import { structuredTextAttrs } from '~/dato/attrs/structuredTextAttrs';
 
 export const profilesPanelRecord:string = `
     __typename
@@ -8,7 +9,10 @@ export const profilesPanelRecord:string = `
         name
         definition
         companyPosition
-        description
+        description {
+            ${structuredTextAttrs}
+        }
+        qualifications
         image {
             ${imageAttrs({ width: 500, height: 500 })}
         }

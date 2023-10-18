@@ -108,7 +108,7 @@ export const getBlock:any = (name:any) : any => {
     return blocks[name?.replace(/Record$/, 'Block')];
 };
 
-export const ModularContent:any = ({ content }) : any => {
+export const ModularContent:any = ({ content, contain = false }) : any => {
     if (!content || content === null || !Array.isArray(content)) {
         return null;
     }
@@ -116,6 +116,6 @@ export const ModularContent:any = ({ content }) : any => {
     return content.map((block) => {
         const Block:any = getBlock(block.__typename);
         if (!Block) return null;
-        return <Block key={block.id} {...block} />;
+        return <Block key={block.id} {...block} contain={contain} />;
     });
 };

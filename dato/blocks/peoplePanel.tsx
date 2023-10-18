@@ -9,7 +9,6 @@ export const peoplePanelRecord:string = `
         name
         definition
         companyPosition
-        description
         image {
             ${imageAttrs({ width: 500, height: 500 })}
         }

@@ -5,6 +5,7 @@ export interface IPerson {
     name?:string;
     definition?:string;
     companyPosition?:string;
+    qualifications?:string;
     description?:string;
     image:IImage;
 }
