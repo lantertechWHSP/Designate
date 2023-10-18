@@ -32,10 +32,10 @@ import InvestmentPortfolioTableBlock from '~/components/blocks/InvestmentPortfol
 import ObjectivePanelBlock from '~/components/blocks/ObjectivePanel';
 
 // About/Investment Portfolio
-import PortfolioPanelBlock from '~/components/blocks/PortfolioPanel';
-import PeoplePanelBlock from '~/components/blocks/PeoplePanel';
-import PersonQuotePanelBlock from '~/components/blocks/PersonQuotePanel';
-import PortfolioImageGalleryBlock from '~/components/blocks/PortfolioImageGallery';
+import PortfolioPanelBlock from '~/components/blocks/PortfolioPanel/PortfolioPanel';
+import PortfolioProfilesPanelBlock from '~/components/blocks/PortfolioPanel/PortfolioProfilesPanel';
+import PortfolioQuotePanelBlock from '~/components/blocks/PortfolioPanel/PortfolioQuotePanel';
+import PortfolioImageGalleryBlock from '~/components/blocks/PortfolioPanel/PortfolioImageGallery';
 
 // People and Governance
 import ProfilesPanelBlock from '~/components/blocks/ProfilesPanel/ProfilesPanel';
@@ -86,8 +86,8 @@ const blocks:any = {
 
     // About/Investment Portfolio
     PortfolioPanelBlock,
-    PeoplePanelBlock,
-    PersonQuotePanelBlock,
+    PortfolioProfilesPanelBlock,
+    PortfolioQuotePanelBlock,
     PortfolioImageGalleryBlock,
 
     // People and Governance

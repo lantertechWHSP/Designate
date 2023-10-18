@@ -1,6 +1,6 @@
 import { imageAttrs } from '~/dato/attrs/responsiveImageAttrs';
 
-export const personQuotePanelRecord:string = `
+export const portfolioQuotePanelRecord:string = `
     __typename
     id
     person {

@@ -10,7 +10,7 @@ interface IPeoplePanelBlock {
     people:IPerson[];
 }
 
-const PeoplePanelBlock:any = ({ containerWidth, contain, people }:IPeoplePanelBlock) : ReactNode => {
+const PortfolioProfilesPanelBlock:any = ({ containerWidth, contain, people }:IPeoplePanelBlock) : ReactNode => {
     return <ContentBlock containerWidth={containerWidth} contain={contain}>
         {
             (Array.isArray(people) && people.length > 0) && <SimpleGrid columns={[1, , 3]} spacing={[0, 8]}>
@@ -36,4 +36,4 @@ const PeoplePanelBlock:any = ({ containerWidth, contain, people }:IPeoplePanelBl
     </ContentBlock>;
 };
 
-export default PeoplePanelBlock;
+export default PortfolioProfilesPanelBlock;

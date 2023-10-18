@@ -1,6 +1,6 @@
 import { textRecord } from '~/dato/blocks/text';
-import { peoplePanelRecord } from '~/dato/blocks/peoplePanel';
-import { personQuotePanelRecord } from '~/dato/blocks/personQuotePanel';
+import { portfolioProfilesPanelRecord } from '~/dato/blocks/portfolioProfilesPanelRecord';
+import { portfolioQuotePanelRecord } from '~/dato/blocks/portfolioQuotePanel';
 import { portfolioImageGalleryRecord } from '~/dato/blocks/portfolioImageGallery';
 
 export const portfolioPanelRecord:string = `
@@ -12,11 +12,11 @@ export const portfolioPanelRecord:string = `
             ... on TextRecord {
                 ${textRecord}
             }
-            ... on PeoplePanelRecord {
-                ${peoplePanelRecord}
+            ... on PortfolioProfilesPanelRecord {
+                ${portfolioProfilesPanelRecord}
             }
-            ... on PersonQuotePanelRecord {
-                ${personQuotePanelRecord}
+            ... on PortfolioQuotePanelRecord {
+                ${portfolioQuotePanelRecord}
             }
             ... on PortfolioImageGalleryRecord {
                 ${portfolioImageGalleryRecord}

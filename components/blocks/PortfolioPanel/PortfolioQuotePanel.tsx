@@ -5,14 +5,14 @@ import { Image } from '~/components/elements/image';
 import { Row, Column, ColumnWidth } from "~/components/elements/grid/grid";
 import { Text } from '@chakra-ui/react';
 
-interface IPeoplePanelBlock {
+interface IPortfolioQuotePanelBlock {
     containerWidth?:ContainerWidth;
     contain?:boolean;
     quote:string;
     person:IPerson;
 }
 
-const PersonQuotePanelBlock:any = ({ containerWidth, contain, quote, person }:IPeoplePanelBlock) : ReactNode => {
+const PortfolioQuotePanelBlock:any = ({ containerWidth, contain, quote, person }:IPortfolioQuotePanelBlock) : ReactNode => {
     return <ContentBlock containerWidth={containerWidth} contain={contain}>
         <Row>
             <Column width={ColumnWidth.TwoThirds} display="flex" justify="center">
@@ -35,4 +35,4 @@ const PersonQuotePanelBlock:any = ({ containerWidth, contain, quote, person }:IP
     </ContentBlock>;
 };
 
-export default PersonQuotePanelBlock;
+export default PortfolioQuotePanelBlock;
