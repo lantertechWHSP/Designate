@@ -65,7 +65,7 @@ const BarChart:any = ({ data }:IBarChart) : ReactNode => {
             if(elementRef.current) {
                 const newWidth:number = elementRef.current.getBoundingClientRect().width;
                 setWidth(newWidth);
-                setHeight(newWidth * 0.4);
+                setHeight(newWidth * 0.45);
             }
         };
 
@@ -87,8 +87,8 @@ const BarChart:any = ({ data }:IBarChart) : ReactNode => {
         sx={{
             '.tick': {
                 fontSize: '14px',
-                fontFamily: 'Untitled Sans',
-                color: 'steelBlue3'
+                fontFamily: 'Gramatika',
+                color: 'darkBrown'
             },
             '.x-axis .domain': {
                 display: 'none'
@@ -100,7 +100,7 @@ const BarChart:any = ({ data }:IBarChart) : ReactNode => {
                 color: 'lightGrey2'
             },
             '.bar': {
-                fill: 'steelBlue3'
+                fill: 'darkBrown'
             }
         }}>
         {
@@ -112,7 +112,7 @@ const BarChart:any = ({ data }:IBarChart) : ReactNode => {
                         transform={`translate(${[margin.left, margin.top].join(",")})`}
                         overflow={"visible"}
                     >
-                        <AxisLeft scale={yScale} width={width} />
+                        <AxisLeft scale={yScale} chartHeight={height} width={width} />
                         <AxisBottom scale={xScale} transform={`translate(0, ${boundsHeight})`} />
                         <Bars values={data.bars} xScale={xScale} yScale={yScale} height={boundsHeight} />
                     </g>

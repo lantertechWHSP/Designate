@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import ContentBlock from '~/components/blocks/Content';
 import BarChart from '~/components/elements/charts/bar/BarChart';
 import { ITable } from '~/interfaces/util/table';
+import { Heading, Box } from '@chakra-ui/react';
 
 interface ITableRow {
     Year:string;
@@ -9,10 +10,11 @@ interface ITableRow {
 }
 
 interface ITrackRecordDividendBlock {
-    table: ITable<ITableRow>;
+    title?:string;
+    table?: ITable<ITableRow>;
 }
 
-const TrackRecordDividendBlock:any = ({ table }:ITrackRecordDividendBlock) : ReactNode => {
+const TrackRecordDividendBlock:any = ({ title, table }:ITrackRecordDividendBlock) : ReactNode => {
     const chartData:any = [];
 
     table.data.map((row:ITableRow) => {
@@ -22,8 +24,25 @@ const TrackRecordDividendBlock:any = ({ table }:ITrackRecordDividendBlock) : Rea
         });
     });
 
-    return <ContentBlock py={8}>
-        <BarChart data={{ bars: chartData }} />
+    return <ContentBlock background="darkBrown" py={[6, 8, 12]}>
+        {
+            title && <Heading as="h2" variant="sectionSubheading" color="white" mb={12}>
+                {title}
+            </Heading>
+        }
+        <Box sx={{
+            '.tick': {
+                color: 'whiteBlur !important'
+            },
+            '.y-axis .tick line': {
+                color: 'whiteBlur !important'
+            },
+            '.bar': {
+                fill: 'white !important'
+            }
+        }}>
+            <BarChart data={{ bars: chartData }} />
+        </Box>
     </ContentBlock>;
 };
 

@@ -1,14 +1,20 @@
 import { ReactNode } from 'react';
 import ContentBlock from '~/components/blocks/Content';
-import { TableContainer, Table, Thead, Tr, Th, Tbody, Td, Text } from '@chakra-ui/react';
+import { Heading, TableContainer, Table, Thead, Tr, Th, Tbody, Td, Text } from '@chakra-ui/react';
 import { ITable } from '~/interfaces/util/table';
 
 interface ITrackRecordTableBlock {
-    table:ITable<any>;
+    title?:string;
+    table?:ITable<any>;
 }
 
-const TrackRecordTableBlock:any = ({ table }:ITrackRecordTableBlock) : ReactNode => {
-    return <ContentBlock py={8}>
+const TrackRecordTableBlock:any = ({ title, table }:ITrackRecordTableBlock) : ReactNode => {
+    return <ContentBlock py={[6, 8, 12]}>
+        {
+            title && <Heading as="h2" variant="sectionSubheading" mb={4}>
+                {title}
+            </Heading>
+        }
         {
             table.data && table.data.length > 0 ? <TableContainer>
                 <Table variant="basic" w="100%">
@@ -32,7 +38,7 @@ const TrackRecordTableBlock:any = ({ table }:ITrackRecordTableBlock) : ReactNode
                                     return <Tr key={rowIndex}>
                                         {
                                             table.columns.map((column:string, columnIndex:number) => {
-                                                return <Td key={columnIndex}>
+                                                return <Td key={columnIndex} fontWeight={500} minWidth="80px" pr={2}>
                                                     {row[column]}
                                                 </Td>;
                                             })

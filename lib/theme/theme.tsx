@@ -20,37 +20,21 @@ const colors:any = {
     whiteBlur: 'rgba(255, 255, 255, 0.7)',
     ghostWhite: '#f8f8f8',
 
-    darkGrey: '#969696',
+    // steelBlue: '#667085',
+
+    darkGrey: '#848484',
     brownGrey: '#CBCBC5',
 
     lightGrey: '#c4c4c4',
     lightGrey2: '#DEE2E6',
+    lightGrey2Blur: '#DEE2E666',
+
 
     success: '#e8f1c8',
     positive: '#e8f1c8',
     negative: '#f9c9c8',
 
-    error: '#f17674',
-
-    // negative: '#'
-
-    // Legacy
-    // ghostWhite: '#f2f4f6',
-    // ghostWhite2: '#f9fafb',
-    // mutedSteel: '#33373a',
-    // skyBlue: '#4594f7',
-
-    // black: '#000000',
-    // steelBlue: '#353a3f',
-    // steelBlue2: '#3f4448',
-    // steelBlue3: '#667085',
-    // white: '#fff',
-    // grey: '#999',
-    // lightGrey: '#c4c4c4',
-    // lightGrey2: '#ddd',
-    // lightGrey3: '#f1f2f5',
-    // green: '#00ce7d',
-    // red: '#df322f'
+    error: '#f17674'
 
 };
 
@@ -97,11 +81,13 @@ export const theme:any = extendBaseTheme({
                     lineHeight: [1.2]
                 },
                 sectionHeading: {
+                    color: 'black',
                     fontSize: ['32px', ,'40px'],
                     lineHeight: [1.2],
                     fontWeight: 700,
                 },
                 sectionSubheading: {
+                    color: 'black',
                     fontSize: ['24px', ,'28px'],
                     lineHeight: [1.2],
                 },
@@ -199,19 +185,15 @@ export const theme:any = extendBaseTheme({
             variants: {
                 sectionDescription: {
                     fontSize: ['18px'],
-                    color: 'darkBrown'
                 },
-                // listItemDate: {
-                //     fontSize: [18],
-                //     lineHeight: [1.35],
-                //     fontWeight: 400,
-                //     color: 'steelBlue3'
-                // },
                 error: {
                     color: 'error'
                 },
                 caption: {
                     fontSize: '14px'
+                },
+                annotation: {
+                    color: 'blackBlur'
                 }
             }
         },
@@ -274,7 +256,6 @@ export const theme:any = extendBaseTheme({
             variants: {
                 button: {
                     background: 'white',
-                    color: 'steelBlue3',
                     height: '50px',
                     lineHeight: '50px',
                     px: 4,
@@ -283,7 +264,6 @@ export const theme:any = extendBaseTheme({
                 },
                 pagination: {
                     background: 'transparent',
-                    color: 'steelBlue3',
                     minWidth: '40px',
                     height: '40px',
                     fontSize: '14px',
@@ -292,7 +272,6 @@ export const theme:any = extendBaseTheme({
                 },
                 tab: {
                     background: 'white',
-                    color: 'steelBlue3',
                     width: '54px',
                     height: '36px',
                     fontSize: '14px',
@@ -300,7 +279,9 @@ export const theme:any = extendBaseTheme({
                 },
                 menuButton: {
                     background: 'white',
-                    color: 'steelBlue3',
+                    borderRadius: '8px',
+                    border: '1px solid',
+                    borderColor: 'lightGrey2',
                     px: 4,
                     height: '50px',
                     textAlign: 'unset'
@@ -329,7 +310,10 @@ export const theme:any = extendBaseTheme({
                 list: {
                     py: 1,
                     px: 0,
-                    background: 'white'
+                    background: 'white',
+                    borderRadius: '8px',
+                    overflow: 'hidden',
+                    padding: 0
                 },
                 item: {
                     height: '50px',
@@ -337,12 +321,12 @@ export const theme:any = extendBaseTheme({
                     textAlign: 'unset',
                     justifyContent: 'unset',
                     px: 4,
-                    color: 'steelBlue3',
+                    color: 'black',
                     _focus: {
-                        background: 'lightGrey2'
+                        background: 'lightGrey2Blur'
                     },
                     _active: {
-                        background: 'lightGrey2'
+                        background: 'lightGrey2Blur'
                     }
                 }
             }
@@ -373,7 +357,7 @@ export const theme:any = extendBaseTheme({
                         fontSize: ['16px'],
                         fontWeight: 400,
                         lineHeight: '24px',
-                        color: 'steelBlue3',
+                        color: 'darkBrown',
                         borderBottom: '1px solid',
                         borderColor: 'lightGrey2',
                         py: 2
@@ -414,8 +398,7 @@ export const theme:any = extendBaseTheme({
             },
             body: {
                 fontSize: '16px',
-                lineHeight: '26px',
-                color: 'black'
+                lineHeight: '26px'
             },
             // a: {
             // textDecoration: 'none',

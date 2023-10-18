@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState, ReactNode, Fragment }  from 'react';
-import { scaleLinear, scaleTime, line } from 'd3';
+import { scaleLinear, scaleTime, line, area } from 'd3';
 import { Box } from '@chakra-ui/react';
 import { max as _max, min as _min, throttle as _throttle, isNil as _isNil } from 'lodash';
 import { DateTime } from 'luxon';
@@ -24,8 +24,9 @@ interface IData {
 }
 
 interface ILineDataSVG {
-    d:any;
-    stroke:string;
+    drawnArea:any;
+    drawnLine:any;
+    stroke?:string;
     display:boolean;
 }
 
@@ -39,7 +40,7 @@ interface IMargin {
 const LineChart:any = ({ data }:ILineChart) : ReactNode => {
     const [width, setWidth] = useState<number>(null);
     const [height, setHeight] = useState<number>(null);
-    const margin:IMargin = { top: 30, right: 30, bottom: 50, left: 0 };
+    const margin:IMargin = { top: 30, right: 30, bottom: 30, left: 0 };
     const elementRef:any = useRef<ReactNode>();
 
     const boundsWidth:number = useMemo<number>(() => {
@@ -95,6 +96,11 @@ const LineChart:any = ({ data }:ILineChart) : ReactNode => {
         .x((datum:IData) => xScale(datum.date))
         .y((datum:IData) => yScale(datum.value));
 
+    const areaBuilder:any = area<IData>()
+        .x((datum:IData) => xScale(datum.date))
+        .y1((datum:IData) => yScale(datum.value))
+        .y0(yScale(0));
+
     const linesSVG:any = useMemo(() => {
         const colorGenerator:ColorGenerator = new ColorGenerator();
         const newLines:ILineDataSVG[] = [];
@@ -102,8 +108,9 @@ const LineChart:any = ({ data }:ILineChart) : ReactNode => {
         data.lines.map((line:ILine) => {
             if(line.data) {
                 newLines.push({
-                    d: lineBuilder(line.data),
-                    stroke: colorGenerator.next(),
+                    drawnArea: areaBuilder(line.data),
+                    drawnLine: lineBuilder(line.data),
+                    stroke: line.fill ? line.fill : colorGenerator.next(),
                     display: line.display
                 });
             }
@@ -139,8 +146,8 @@ const LineChart:any = ({ data }:ILineChart) : ReactNode => {
         sx={{
             '.tick': {
                 fontSize: '14px',
-                fontFamily: 'Untitled Sans',
-                color: 'steelBlue3'
+                fontFamily: 'Gramatika',
+                color: 'darkBrown'
             },
             '.x-axis .domain': {
                 display: 'none'
@@ -151,9 +158,6 @@ const LineChart:any = ({ data }:ILineChart) : ReactNode => {
             '.y-axis .tick line': {
                 color: 'lightGrey2'
             },
-            '.bar': {
-                fill: 'steelBlue3'
-            }
         }}>
         {
             (boundsWidth && boundsHeight) && <svg width={width} height={height} shapeRendering={"crispEdges"}>
@@ -169,18 +173,39 @@ const LineChart:any = ({ data }:ILineChart) : ReactNode => {
                             <AxisBottom scale={xScale} transform={`translate(0, ${boundsHeight})`} />
                             {
                                 (Array.isArray(linesSVG) && linesSVG.length > 0) && <>
+                                    <g>
+                                        {
+                                            linesSVG.map((line:ILineDataSVG, index:number) => {
+                                                {
+                                                    return <Fragment key={index}>
+                                                        {
+                                                            ((_isNil(line.display) || line.display) && index === 0) &&
+                                                              <path
+                                                                d={line.drawnArea}
+                                                                fill={'rgba(80, 81, 60, 0.2)'}
+                                                                opacity={1}
+                                                                zIndex="0"
+                                                                strokeWidth={0}
+                                                              />
+                                                        }
+                                                    </Fragment>;
+                                                }
+                                            })
+                                        }
+                                    </g>
                                     {
                                         linesSVG.map((line:ILineDataSVG, index:number) => {
                                             {
                                                 return <Fragment key={index}>
                                                     {
-                                                        (_isNil(line.display) || line.display) && <path
-                                                            d={line.d}
-                                                            opacity={1}
-                                                            stroke={line.stroke}
-                                                            fill="none"
-                                                            strokeWidth={2}
-                                                        />
+                                                        (_isNil(line.display) || line.display) &&
+                                                            <path
+                                                              d={line.drawnLine}
+                                                              zIndex="2"
+                                                              stroke={line.stroke}
+                                                              fill="none"
+                                                              strokeWidth={2}
+                                                            />
                                                     }
                                                 </Fragment>;
                                             }
