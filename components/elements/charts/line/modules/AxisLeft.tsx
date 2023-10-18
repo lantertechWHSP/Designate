@@ -7,7 +7,7 @@ interface IAxisLeft {
 }
 
 export const AxisLeft:any = ({ scale, chartHeight, width }:IAxisLeft) : ReactNode => {
-    const [tickCount, setTickCount] = useState(10);
+    const [tickCount, setTickCount] = useState<number>(10);
 
     const ticks:any = useMemo(() => {
         return scale.ticks(tickCount).map((value) => ({
@@ -17,11 +17,11 @@ export const AxisLeft:any = ({ scale, chartHeight, width }:IAxisLeft) : ReactNod
     }, [scale, tickCount]);
 
     useEffect(() => {
-        const clamp = (val:number, min:number, max:number) : number => {
+        const clamp:any = (val:number, min:number, max:number) : number => {
             return val > max ? max : val < min ? min : val;
-        }
+        };
 
-        let newTickCount = Math.floor(chartHeight / 100) + 1;
+        const newTickCount:number = Math.floor(chartHeight / 100) + 1;
 
         setTickCount(clamp(newTickCount, 3, 10));
     }, [chartHeight]);

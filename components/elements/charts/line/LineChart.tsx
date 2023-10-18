@@ -180,13 +180,13 @@ const LineChart:any = ({ data }:ILineChart) : ReactNode => {
                                                     return <Fragment key={index}>
                                                         {
                                                             ((_isNil(line.display) || line.display) && index === 0) &&
-                                                              <path
+                                                            <path
                                                                 d={line.drawnArea}
                                                                 fill={'rgba(80, 81, 60, 0.2)'}
                                                                 opacity={1}
                                                                 zIndex="0"
                                                                 strokeWidth={0}
-                                                              />
+                                                            />
                                                         }
                                                     </Fragment>;
                                                 }
@@ -200,11 +200,11 @@ const LineChart:any = ({ data }:ILineChart) : ReactNode => {
                                                     {
                                                         (_isNil(line.display) || line.display) &&
                                                             <path
-                                                              d={line.drawnLine}
-                                                              zIndex="2"
-                                                              stroke={line.stroke}
-                                                              fill="none"
-                                                              strokeWidth={2}
+                                                                d={line.drawnLine}
+                                                                zIndex="2"
+                                                                stroke={line.stroke}
+                                                                fill="none"
+                                                                strokeWidth={2}
                                                             />
                                                     }
                                                 </Fragment>;

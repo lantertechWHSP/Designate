@@ -118,7 +118,7 @@ const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesT
                             <MenuButton as={Button}
                                 variant="menuButton"
                                 minW={['200px', ,'270px']}
-                                        borderColor="darkGrey"
+                                borderColor="darkGrey"
                                 color="darkGrey"
                                 rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} h={12} w={12} /> : <Icon icon={Icons.ChevronDown} h={12} w={12}  /> }>
                                 <Flex display="inlineFlex" direction="row" alignItems="center">
@@ -135,7 +135,7 @@ const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesT
                                             return <MenuItem key={index}
                                                 as={Button}
                                                 variant="menuItemFilter"
-                                                             isActive={item.isActive}
+                                                isActive={item.isActive}
                                                 onClick={() => {
                                                     let isToggled:boolean = false;
 

@@ -18,7 +18,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) : Reac
     return <ChakraProvider theme={theme}>
         <Head>
             <meta name="viewport" content="width=device-width, initial-scale=1" />
-            <meta name="version" content="0.5.3" />
+            <meta name="version" content="0.5.4" />
         </Head>
         <Fonts />
         <Component {...pageProps} />
