@@ -35,6 +35,7 @@ import ObjectivePanelBlock from '~/components/blocks/ObjectivePanel';
 import PortfolioPanelBlock from '~/components/blocks/PortfolioPanel';
 import PeoplePanelBlock from '~/components/blocks/PeoplePanel';
 import PersonQuotePanelBlock from '~/components/blocks/PersonQuotePanel';
+import PortfolioImageGalleryBlock from '~/components/blocks/PortfolioImageGallery';
 
 // Investor Center/Share Price
 import SharePricePanelBlock from '~/components/blocks/SharePricePanel/SharePricePanel';
@@ -84,6 +85,7 @@ const blocks:any = {
     PortfolioPanelBlock,
     PeoplePanelBlock,
     PersonQuotePanelBlock,
+    PortfolioImageGalleryBlock,
 
     // Investor Center/SharePrice
     SharePricePanelBlock,
