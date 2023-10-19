@@ -7,18 +7,24 @@ interface ISectionLink extends IDatoLink {
 
 export const SectionLink:any = ({ ...props }:ISectionLink) => {
     return <Link {...props} color="darkBrown">
-        <Flex align="center"
-            display="inline-flex"
-            borderBottom="1px solid"
-            borderColor="darkBrownBlur"
-            fontWeight={700}>
-            <Text as="span" mr={2}>
-                {props.children}
-            </Text>
-            <Icon icon={Icons.ChevronRight} w={12} h={12} />
-        </Flex>
+        <SectionLinkInner>
+            {props.children}
+        </SectionLinkInner>
     </Link>;
 };
+
+export const SectionLinkInner:any = ({ children }) => {
+    return <Flex align="center"
+                 display="inline-flex"
+                 borderBottom="1px solid"
+                 borderColor="darkBrownBlur"
+                 fontWeight={700}>
+        <Text as="span" mr={2}>
+            {children}
+        </Text>
+        <Icon icon={Icons.ChevronRight} w={12} h={12} />
+    </Flex>
+}
 
 export const SectionLinkButton:any = ({ ...props }:ISectionLink) => {
     return <Link {...props}

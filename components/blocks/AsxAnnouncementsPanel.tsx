@@ -4,6 +4,7 @@ import { YourIR, set } from 'yourir-next';
 import { Icon, Icons } from '~/components/elements/icon';
 import { symbol } from '~/consts/yourir';
 import { IFilter } from '~/interfaces/util/filter';
+import {SectionLinkInner} from "~/components/elements/sectionLink";
 
 const AsxAnnouncementsPanelBlock:any = () : ReactNode => {
     const filters:IFilter[] = [
@@ -133,20 +134,28 @@ const AsxAnnouncementsPanelBlock:any = () : ReactNode => {
                     <Box data-yourir="ifnot isEmpty">
                         <Box data-yourir="items">
                             <Box borderTop="1px solid" borderColor="lightGrey2">
-                                <Flex py={4} direction={['row']}>
+                                <Flex py={4} direction={['row']}
+                                      _hover={{
+                                          transition: 'background 0.3s linear',
+                                          background: 'lightGrey2Blur'
+                                        }}>
                                     <Heading as="h3"
                                         data-yourir="$cur.heading"
                                         flex={1}
                                         variant="listItem" />
                                     <Text data-yourir="$cur.date format='DD.MM.YYYY'"
-                                        variant="listItemDate"
-                                        textAlign={['left']}
+                                        variant="listLabel"
+                                        textAlign={['right', ,'left']}
                                         minWidth={['140px']}
                                         maxWidth={['140px']}
                                         mb={0} />
-                                    <Flex display={['none', ,'flex']}>
+                                    <Flex  minWidth={['unset', ,'140px']}
+                                           justify="flex-end"
+                                           display={['none', ,'flex']}>
                                         <Link data-yourir="viewAnnouncementOnMobile {$cur.symbol} {$cur.fileID}">
-                                            View
+                                            <SectionLinkInner>
+                                                View
+                                            </SectionLinkInner>
                                         </Link>
                                     </Flex>
                                 </Flex>
@@ -157,9 +166,18 @@ const AsxAnnouncementsPanelBlock:any = () : ReactNode => {
                             <Box>
                                 <Button variant="pagination"
                                     data-yourir="prevPage"
-                                    leftIcon={<Icon icon={Icons.ChevronLeft} w={12} h={12} />}
+                                        m={0}
                                     onClick={scrollToTable}>
-                                    Prev
+                                    <Flex align="center"
+                                          display="inline-flex"
+                                          borderBottom="1px solid"
+                                          borderColor="darkBrownBlur"
+                                          fontWeight={700}>
+                                        <Icon icon={Icons.ChevronLeft} w={12} h={12} />
+                                        <Text as="span" ml={2}>
+                                            Prev
+                                        </Text>
+                                    </Flex>
                                 </Button>
                             </Box>
                             <Box>
@@ -167,8 +185,9 @@ const AsxAnnouncementsPanelBlock:any = () : ReactNode => {
                                     sx={
                                         {
                                             '.yourir-active': {
-                                                bg: 'white',
-                                                borderRadius: 0
+                                                background: 'darkBrown',
+                                                color: 'white',
+                                                borderRadius: '50%'
                                             },
                                             '[disabled]': {
                                                 display: 'none'
@@ -200,9 +219,18 @@ const AsxAnnouncementsPanelBlock:any = () : ReactNode => {
                             <Box>
                                 <Button variant="pagination"
                                     data-yourir="nextPage"
-                                    rightIcon={<Icon icon={Icons.ChevronRight} w={12} h={12} />}
+                                        m={0}
                                     onClick={scrollToTable}>
-                                    Next
+                                    <Flex align="center"
+                                          display="inline-flex"
+                                          borderBottom="1px solid"
+                                          borderColor="darkBrownBlur"
+                                          fontWeight={700}>
+                                        <Text as="span" mr={2}>
+                                            Next
+                                        </Text>
+                                        <Icon icon={Icons.ChevronRight} w={12} h={12} />
+                                    </Flex>
                                 </Button>
                             </Box>
                         </Flex>

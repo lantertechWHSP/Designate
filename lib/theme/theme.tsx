@@ -20,15 +20,12 @@ const colors:any = {
     whiteBlur: 'rgba(255, 255, 255, 0.7)',
     ghostWhite: '#f8f8f8',
 
-    // steelBlue: '#667085',
-
     darkGrey: '#848484',
     brownGrey: '#CBCBC5',
 
     lightGrey: '#c4c4c4',
     lightGrey2: '#DEE2E6',
     lightGrey2Blur: '#DEE2E666',
-
 
     success: '#e8f1c8',
     positive: '#e8f1c8',
@@ -104,77 +101,7 @@ export const theme:any = extendBaseTheme({
                     color: 'darkBrownBlur',
                     fontSize: ['21px'],
                     fontWeight: 500,
-                },
-
-
-
-                h3: {
-                    fontSize: ['28px'],
-                    lineHeight: ['34px'],
-                    fontWeight: 500
                 }
-                /// Legacy
-                // h1: {
-                //     fontSize: ['50px'],
-                //     lineHeight: ['60px'],
-                //     fontWeight: 500,
-                // },
-                // h2: {
-                //     fontSize: ['40px'],
-                //     lineHeight: ['50px'],
-                //     fontWeight: 500,
-                // },
-                // h3: {
-                //     fontSize: ['30px'],
-                //     lineHeight: ['40px'],
-                //     fontWeight: 500,
-                // },
-                // h4: {
-                //     fontSize: ['20px'],
-                //     lineHeight: ['30px'],
-                //     fontWeight: 500,
-                // },
-                // h5: {
-                //     fontSize: ['16px'],
-                //     lineHeight: ['24px'],
-                //     fontWeight: 500,
-                // },
-                // h6: {
-                //     fontSize: ['14px'],
-                //     lineHeight: ['18px'],
-                //     fontWeight: 500,
-                // },
-                // sectionHeading: {
-                //     fontSize: ['40px'],
-                //     lineHeight: ['60px'],
-                //     fontWeight: 500,
-                // },
-                // sectionSubheading: {
-                //     fontSize: ['32px'],
-                //     lineHeight: ['48px'],
-                //     fontWeight: 500,
-                // },
-                // pageLinksHeading: {
-                //     fontSize: ['20px'],
-                //     lineHeight: ['30px'],
-                //     fontWeight: 500,
-                // },
-                // listItem: {
-                //     color: 'black',
-                //     fontSize: ['18px'],
-                //     lineHeight: ['26px'],
-                //     fontWeight: 500,
-                //     a: {
-                //         color: 'black'
-                //     }
-                // },
-                //
-                // label: {
-                //     fontSize: ['16px'],
-                //     lineHeight: ['18px'],
-                //     color: 'lightGrey',
-                //     fontWeight: 400
-                // }
             },
         },
         Text: {
@@ -194,7 +121,12 @@ export const theme:any = extendBaseTheme({
                 },
                 annotation: {
                     color: 'blackBlur'
-                }
+                },
+                listLabel: {
+                    color: 'darkBrownBlur',
+                    fontSize: ['21px'],
+                    fontWeight: 500,
+                },
             }
         },
         Code: {
@@ -263,12 +195,14 @@ export const theme:any = extendBaseTheme({
                     fontWeight: 500
                 },
                 pagination: {
+                    color: 'darkBrown',
                     background: 'transparent',
                     minWidth: '40px',
                     height: '40px',
                     fontSize: '14px',
                     fontWeight: 500,
-                    p: 0
+                    p: 0,
+                    mx: 2
                 },
                 tab: {
                     background: 'white',
@@ -307,11 +241,23 @@ export const theme:any = extendBaseTheme({
             ...Menu,
             parts: ['list', 'item', 'button'],
             baseStyle: {
+                button: {
+                    background: 'white',
+                    borderRadius: '8px',
+                    border: '1px solid',
+                    borderColor: 'lightGrey2',
+                    px: 4,
+                    height: '50px',
+                    textAlign: 'unset'
+                },
                 list: {
                     py: 1,
                     px: 0,
                     background: 'white',
+                    border: '1px solid',
+                    borderColor: 'lightGrey2',
                     borderRadius: '8px',
+                    boxShadow: '0px 4px 10px 0px rgba(0, 0, 0, 0.10)',
                     overflow: 'hidden',
                     padding: 0
                 },
@@ -387,9 +333,6 @@ export const theme:any = extendBaseTheme({
     },
     styles: {
         global: {
-            // '::selection': {
-            //     background: 'rgba(42, 67, 100, 0.3)',
-            // },
             '*:focus': {
                 outline: 0,
             },
@@ -400,13 +343,6 @@ export const theme:any = extendBaseTheme({
                 fontSize: '16px',
                 lineHeight: '26px'
             },
-            // a: {
-            // textDecoration: 'none',
-            // color: 'darkBrown',
-            // _focus: {
-            //     boxShadow: 'none',
-            // },
-            // },
             p: {
                 mb: 4
             },
@@ -432,30 +368,6 @@ export const theme:any = extendBaseTheme({
             '.yourir-announcement-popup': {
                 zIndex: '120'
             },
-            // '[data-yourir="result"].yourir-success': {
-            //     fontSize: '16px',
-            //     lineHeight: '24px',
-            //     fontWeight: '600',
-            // color: '#08746B',
-            // background: '#D6DCD6',
-            // padding: '0.75rem 1rem',
-            // },
-            // '[data-yourir="result"].yourir-error': {
-            //     fontSize: '16px',
-            //     lineHeight: '24px',
-            //     fontWeight: '600',
-            // color: '#C82027',
-            // background: '#eacbcc',
-            // padding: '0.75rem 1rem',
-            // },
-            // '[data-yourir="result"].yourir-has-error': {
-            //     fontSize: '16px',
-            //     lineHeight: '24px',
-            //     fontWeight: '600',
-            // color: '#C82027',
-            // background: '#eacbcc',
-            // padding: '0.75rem 1rem',
-            // }
         },
     }
 });
