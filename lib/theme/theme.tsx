@@ -1,6 +1,6 @@
 import { extendBaseTheme } from '@chakra-ui/react';
 import chakraTheme from '@chakra-ui/theme';
-const { Modal, Menu, Badge, Progress } = chakraTheme.components;
+const { Modal, Menu, Badge, Progress, Checkbox } = chakraTheme.components;
 
 const colors:any = {
     // New
@@ -18,6 +18,7 @@ const colors:any = {
 
     white: '#fff',
     whiteBlur: 'rgba(255, 255, 255, 0.7)',
+    whiteBlur2: 'rgba(255, 255, 255, 0.1)',
     ghostWhite: '#f8f8f8',
 
     darkGrey: '#848484',
@@ -27,12 +28,15 @@ const colors:any = {
     lightGrey2: '#DEE2E6',
     lightGrey2Blur: '#DEE2E666',
 
-    success: '#e8f1c8',
+
     positive: '#e8f1c8',
     negative: '#f9c9c8',
 
-    error: '#f17674'
+    error: '#f17674',
+    errorText: '#fff4f4',
 
+    success: '#93d490',
+    successText: '#1b5318',
 };
 
 export const theme:any = extendBaseTheme({
@@ -277,6 +281,9 @@ export const theme:any = extendBaseTheme({
                 }
             }
         },
+        Checkbox: {
+            ...Checkbox
+        },
         Divider: {
             baseStyle: {
                 borderWidth: '1px',
@@ -368,6 +375,27 @@ export const theme:any = extendBaseTheme({
             '.yourir-announcement-popup': {
                 zIndex: '120'
             },
+            '[data-yourir="result"]': {
+                display: 'block',
+                width: '100%',
+                height: '40px',
+                lineHeight: '40px',
+                m: 0,
+                px: 2,
+            },
+            'input[type=text].yourir-has-error': {
+                borderColor: 'error',
+                background: '#f1767422',
+                color: 'error'
+            },
+            '[data-yourir="result"].yourir-has-error': {
+                background: 'error',
+                color: 'errorText',
+            },
+            '[data-yourir="result"].yourir-success': {
+                background: 'success',
+                color: 'successText'
+            }
         },
     }
 });

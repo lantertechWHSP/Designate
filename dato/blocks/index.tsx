@@ -34,6 +34,9 @@ import { objectivePanelRecord } from '~/dato/blocks/objectivePanel';
 // About/Investment Portfolio
 import { portfolioPanelRecord } from "~/dato/blocks/portfolioPanel";
 
+// Investor Center/ ASX Announcements
+import { asxNewsletterFormPanelRecord } from '~/dato/blocks/asxNewsletterFormPanel';
+
 // Investor Center/Share Price
 import { sharePricePanelRecord } from '~/dato/blocks/sharePricePanel';
 import { shareQuoteTableRecord } from '~/dato/blocks/shareQuoteTable';
@@ -128,6 +131,10 @@ export const blocks:string = `
         
         ... on PortfolioPanelRecord {
             ${portfolioPanelRecord}
+        }
+        
+        ... on AsxNewsletterFormPanelRecord {
+            ${asxNewsletterFormPanelRecord}
         }
 
         ... on ProfilesPanelRecord {

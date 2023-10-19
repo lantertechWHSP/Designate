@@ -40,6 +40,9 @@ import PortfolioImageGalleryBlock from '~/components/blocks/PortfolioPanel/Portf
 // People and Governance
 import ProfilesPanelBlock from '~/components/blocks/ProfilesPanel/ProfilesPanel';
 
+// Investor Center/ ASX Announcements
+import AsxNewsletterFormPanelBlock from '~/components/blocks/AsxNewsletterFormPanel';
+
 // Investor Center/Share Price
 import SharePricePanelBlock from '~/components/blocks/SharePricePanel/SharePricePanel';
 import ShareQuoteTableBlock from '~/components/blocks/ShareQuoteTable';
@@ -92,6 +95,9 @@ const blocks:any = {
 
     // People and Governance
     ProfilesPanelBlock,
+
+    // Investor Center/ ASX Announcements
+    AsxNewsletterFormPanelBlock,
 
     // Investor Center/SharePrice
     SharePricePanelBlock,
