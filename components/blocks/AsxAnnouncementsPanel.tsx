@@ -77,12 +77,11 @@ const AsxAnnouncementsPanelBlock:any = () : ReactNode => {
                                 <>
                                     <MenuButton as={Button}
                                         variant="menuButton"
-                                        minW="200px"
                                         rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} h={12} w={12} /> : <Icon icon={Icons.ChevronDown} h={12} w={12}  /> }>
                                         {filterName}
                                     </MenuButton>
                                     <Portal>
-                                        <MenuList minW="200px">
+                                        <MenuList>
                                             {
                                                 filters.map((item:IFilter, index:number) => {
                                                     return <MenuItem key={index}
@@ -105,12 +104,12 @@ const AsxAnnouncementsPanelBlock:any = () : ReactNode => {
                                 <>
                                     <MenuButton as={Button}
                                         variant="menuButton"
-                                        minW="200px"
+                                        minW={['200px', ,'270px']}
                                         rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} h={12} w={12} /> : <Icon icon={Icons.ChevronDown} h={12} w={12} /> }>
                                         {yearName}
                                     </MenuButton>
                                     <Portal>
-                                        <MenuList minW="200px">
+                                        <MenuList minW={['200px', ,'270px']}>
                                             {
                                                 years.map((item, index) => {
                                                     return <MenuItem key={index}
@@ -135,10 +134,10 @@ const AsxAnnouncementsPanelBlock:any = () : ReactNode => {
                         <Box data-yourir="items">
                             <Box borderTop="1px solid" borderColor="lightGrey2">
                                 <Flex py={4} direction={['row']}
-                                      _hover={{
-                                          transition: 'background 0.3s linear',
-                                          background: 'lightGrey2Blur'
-                                        }}>
+                                    _hover={{
+                                        transition: 'background 0.3s linear',
+                                        background: 'lightGrey2Blur'
+                                    }}>
                                     <Heading as="h3"
                                         data-yourir="$cur.heading"
                                         flex={1}
@@ -150,8 +149,8 @@ const AsxAnnouncementsPanelBlock:any = () : ReactNode => {
                                         maxWidth={['140px']}
                                         mb={0} />
                                     <Flex  minWidth={['unset', ,'140px']}
-                                           justify="flex-end"
-                                           display={['none', ,'flex']}>
+                                        justify="flex-end"
+                                        display={['none', ,'flex']}>
                                         <Link data-yourir="viewAnnouncementOnMobile {$cur.symbol} {$cur.fileID}">
                                             <SectionLinkInner>
                                                 View
@@ -166,13 +165,13 @@ const AsxAnnouncementsPanelBlock:any = () : ReactNode => {
                             <Box>
                                 <Button variant="pagination"
                                     data-yourir="prevPage"
-                                        m={0}
+                                    m={0}
                                     onClick={scrollToTable}>
                                     <Flex align="center"
-                                          display="inline-flex"
-                                          borderBottom="1px solid"
-                                          borderColor="darkBrownBlur"
-                                          fontWeight={700}>
+                                        display="inline-flex"
+                                        borderBottom="1px solid"
+                                        borderColor="darkBrownBlur"
+                                        fontWeight={700}>
                                         <Icon icon={Icons.ChevronLeft} w={12} h={12} />
                                         <Text as="span" ml={2}>
                                             Prev
@@ -219,13 +218,13 @@ const AsxAnnouncementsPanelBlock:any = () : ReactNode => {
                             <Box>
                                 <Button variant="pagination"
                                     data-yourir="nextPage"
-                                        m={0}
+                                    m={0}
                                     onClick={scrollToTable}>
                                     <Flex align="center"
-                                          display="inline-flex"
-                                          borderBottom="1px solid"
-                                          borderColor="darkBrownBlur"
-                                          fontWeight={700}>
+                                        display="inline-flex"
+                                        borderBottom="1px solid"
+                                        borderColor="darkBrownBlur"
+                                        fontWeight={700}>
                                         <Text as="span" mr={2}>
                                             Next
                                         </Text>

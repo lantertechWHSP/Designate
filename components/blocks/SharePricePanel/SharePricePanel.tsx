@@ -1,22 +1,20 @@
-import React, { ReactNode } from 'react';
-import { Container, Box, Grid, GridItem, Heading } from '@chakra-ui/react';
+import React, {ReactNode} from 'react';
+import {Box, Container} from '@chakra-ui/react';
 import SharePriceOverview from '~/components/blocks/SharePricePanel/SharePriceOverview';
 import SharePriceChart from '~/components/blocks/SharePricePanel/SharePriceChart';
+import {Column, ColumnWidth, Row} from "~/components/elements/grid/grid";
 
 const SharePricePanelBlock:any = () : ReactNode => {
-    return <Box background="lightGrey3" py={8}>
+    return <Box background="lightGrey3" py={[6, 8, 12]}>
         <Container>
-            <Grid templateColumns='repeat(5, 1fr)' gap={8}>
-                <GridItem colSpan={2}>
+            <Row>
+                <Column width={[ColumnWidth.Full, , , ColumnWidth.FiveTwelfths]}>
                     <SharePriceOverview />
-                </GridItem>
-                <GridItem colSpan={3}>
-                    <Heading as="h2" variant="h3" mt={2} mb={4}>
-                        Share Price
-                    </Heading>
+                </Column>
+                <Column width={[ColumnWidth.Full, , , ColumnWidth.SevenTwelfths]}>
                     <SharePriceChart />
-                </GridItem>
-            </Grid>
+                </Column>
+            </Row>
         </Container>
     </Box>;
 };

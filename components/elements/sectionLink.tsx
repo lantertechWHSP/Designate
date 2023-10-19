@@ -15,16 +15,16 @@ export const SectionLink:any = ({ ...props }:ISectionLink) => {
 
 export const SectionLinkInner:any = ({ children }) => {
     return <Flex align="center"
-                 display="inline-flex"
-                 borderBottom="1px solid"
-                 borderColor="darkBrownBlur"
-                 fontWeight={700}>
+        display="inline-flex"
+        borderBottom="1px solid"
+        borderColor="darkBrownBlur"
+        fontWeight={700}>
         <Text as="span" mr={2}>
             {children}
         </Text>
         <Icon icon={Icons.ChevronRight} w={12} h={12} />
-    </Flex>
-}
+    </Flex>;
+};
 
 export const SectionLinkButton:any = ({ ...props }:ISectionLink) => {
     return <Link {...props}

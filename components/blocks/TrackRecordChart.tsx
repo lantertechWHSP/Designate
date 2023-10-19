@@ -6,6 +6,7 @@ import { Heading, Flex, Box, Menu, MenuButton, Button, Portal, MenuList, MenuIte
 import { Icon, Icons } from '~/components/elements/icon';
 import { IFilter } from '~/interfaces/util/filter';
 import { ITable } from '~/interfaces/util/table';
+import {colors} from "~/components/elements/charts/colors";
 
 interface ITrackRecordChartBlock {
     australianSharesTable:ITable<any>;
@@ -52,25 +53,25 @@ const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesT
             label: 'Australian Shares',
             value: 'australian',
             isActive: true,
-            background: '#848484'
+            background: colors[0],
         },
         {
             label: 'International Shares',
             value: 'international',
             isActive: false,
-            background: '#E5A635'
+            background: colors[1],
         },
         {
             label: 'Australian Listed',
             value: 'listed',
             isActive: false,
-            background: '#93B24A'
+            background: colors[2],
         },
         {
             label: 'Australian Bonds',
             value: 'bonds',
             isActive: false,
-            background: '#673148'
+            background: colors[3],
         },
     ]);
 
@@ -117,19 +118,16 @@ const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesT
                         <>
                             <MenuButton as={Button}
                                 variant="menuButton"
-                                minW={['200px', ,'270px']}
-                                borderColor="darkGrey"
-                                color="darkGrey"
                                 rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} h={12} w={12} /> : <Icon icon={Icons.ChevronDown} h={12} w={12}  /> }>
                                 <Flex display="inlineFlex" direction="row" alignItems="center">
                                     <Box background="lightGrey2" width="10px" height="10px" borderRadius="5px" mr={2} />
                                     <Text as="span">
-                                        Compare
+                                        Compare…
                                     </Text>
                                 </Flex>
                             </MenuButton>
                             <Portal>
-                                <MenuList minW={['200px', ,'270px']}>
+                                <MenuList>
                                     {
                                         filters.map((item:IChartFilter, index:number) => {
                                             return <MenuItem key={index}

@@ -110,8 +110,6 @@ export const theme:any = extendBaseTheme({
         },
         Text: {
             baseStyle: {
-                fontSize: ['16px'],
-                lineHeight: ['26px']
             },
             variants: {
                 sectionDescription: {
@@ -213,12 +211,16 @@ export const theme:any = extendBaseTheme({
                     width: '54px',
                     height: '36px',
                     fontSize: '14px',
-                    fontWeight: 500
+                    fontWeight: 500,
+                    border: '1px solid',
+                    borderColor: 'lightGrey2',
+                    mx: '-1px'
                 },
                 menuButton: {
                     background: 'white',
                     borderRadius: '8px',
                     border: '1px solid',
+                    minWidth: ['200px', , '270px'],
                     borderColor: 'lightGrey2',
                     px: 4,
                     height: '50px',
@@ -270,6 +272,7 @@ export const theme:any = extendBaseTheme({
                     lineHeight: '50px',
                     textAlign: 'unset',
                     justifyContent: 'unset',
+                    minWidth: ['200px', , '270px'],
                     px: 4,
                     color: 'black',
                     _focus: {
