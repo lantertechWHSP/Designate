@@ -5,6 +5,7 @@ import VideoBlock from '~/components/blocks/Video';
 import AudioBlock from '~/components/blocks/Audio';
 import OverviewBlock from '~/components/blocks/Overview';
 import CardPanelBlock from '~/components/blocks/CardPanel';
+import ContentCardPanelBlock from '~/components/blocks/ContentCardPanel';
 import AccordionBlock from '~/components/blocks/Accordion';
 import CarouselBlock from '~/components/blocks/Carousel';
 
@@ -61,6 +62,7 @@ const blocks:any = {
     AudioBlock,
     OverviewBlock,
     CardPanelBlock,
+    ContentCardPanelBlock,
     AccordionBlock,
     CarouselBlock,
 

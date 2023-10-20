@@ -22,4 +22,5 @@ export const textRecord:string = `
         }
     }
     containerWidth
+    background
 `;

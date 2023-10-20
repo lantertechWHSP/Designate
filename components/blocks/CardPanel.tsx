@@ -13,7 +13,7 @@ enum ICardPanelAlign {
     Right = 'Right'
 }
 
-interface ICardPanelBlock {
+interface IContentCardPanelBlock {
     annotation?:string;
     title?:string;
     description?:string;
@@ -24,8 +24,6 @@ interface ICardPanelBlock {
 }
 
 const CardPanelBlock:any = ({ annotation, title, description, image, link, document, align }:ICardPanelBlock) : ReactNode => {
-
-
     return <ContentBlock background="ghostWhite" py={[6, 8, 12]}>
         <Flex direction={['column', ,(align === ICardPanelAlign.Right) ? 'row-reverse' : 'row']}>
             <Flex width={['100%', ,'50%']} background="white" direction="column" p={[6, ,gutter * 2]}>
@@ -52,10 +50,11 @@ const CardPanelBlock:any = ({ annotation, title, description, image, link, docum
                 }
             </Flex>
             <Box width={['100%', ,'50%']}
-                position="relative"
-                backgroundImage={image?.responsiveImage ? `url('${image.responsiveImage.src}')` : 'lightGrey'}
-                backgroundPosition="center"
-                backgroundSize="cover">
+                 position="relative"
+                 backgroundImage={image?.responsiveImage ? `url('${image.responsiveImage.src}')` : 'lightGrey'}
+                 backgroundPosition="center"
+                 backgroundRepeat="no-repeat"
+                 backgroundSize="cover">
                 {
                     link ? <Link {...link} position="absolute" top="0" bottom="0" left="0" right="0" title="">
                     </Link> : (document && document?.document.url) && <Link href={document.document?.url}
