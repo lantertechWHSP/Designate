@@ -1,6 +1,6 @@
 import { extendBaseTheme } from '@chakra-ui/react';
 import chakraTheme from '@chakra-ui/theme';
-const { Modal, Menu, Badge, Progress, Checkbox } = chakraTheme.components;
+const { Modal, Menu, Badge, Alert } = chakraTheme.components;
 
 const colors:any = {
     // New
@@ -20,6 +20,7 @@ const colors:any = {
     whiteBlur: 'rgba(255, 255, 255, 0.7)',
     whiteBlur2: 'rgba(255, 255, 255, 0.1)',
     ghostWhite: '#f8f8f8',
+    ghostWhiteBlur: 'rgba(248, 248, 248, 0.7)',
 
     darkGrey: '#848484',
     brownGrey: '#CBCBC5',
@@ -284,9 +285,6 @@ export const theme:any = extendBaseTheme({
                 }
             }
         },
-        Checkbox: {
-            ...Checkbox
-        },
         Divider: {
             baseStyle: {
                 borderWidth: '1px',
@@ -337,8 +335,8 @@ export const theme:any = extendBaseTheme({
                 background: 'sand'
             },
         },
-        Progress: {
-            ...Progress
+        Alert: {
+            ...Alert
         }
     },
     styles: {

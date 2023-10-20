@@ -8,9 +8,9 @@ import { GetStaticPropsContext, GetStaticPropsResult } from 'next';
 import { IBlock } from '~/interfaces/util/block';
 import { IPost } from '~/interfaces/models/post';
 import { IPostsMeta } from '~/interfaces/models/postsMeta';
-import PostList, { DATO_QUERY_VALUES } from "~/components/elements/posts/PostList";
-import PlainLayout from "~/components/layouts/PlainLayout";
-import FeaturedPostsCarousel from "~/components/elements/posts/FeaturedPostsCarousel";
+import PostList, { DATO_QUERY_VALUES } from '~/components/elements/posts/PostList';
+import PlainLayout from '~/components/layouts/PlainLayout';
+import FeaturedPostsCarousel from '~/components/elements/posts/FeaturedPostsCarousel';
 
 interface INextPageProps {
     layout?:ILayout;

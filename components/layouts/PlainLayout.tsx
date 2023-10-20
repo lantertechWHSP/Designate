@@ -6,11 +6,11 @@ import { Flex, Box } from '@chakra-ui/react';
 
 const PlainLayout:any = ({ layout, children }:any) : ReactNode => {
     return (
-        <Flex minHeight="100vh" direction="column">
+        <Flex minHeight="100vh" direction="column"  overflowX="hidden">
             {
                 layout?.metatags && <Meta tags={layout?.metatags} />
             }
-            <Header menu={layout?.menu} />
+            <Header darkTheme={layout.darkTheme} menu={layout?.menu} />
             <Box flex="1">
                 {
                     children && <>

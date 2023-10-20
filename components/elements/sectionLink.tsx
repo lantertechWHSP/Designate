@@ -26,17 +26,18 @@ export const SectionLinkInner:any = ({ children }) => {
     </Flex>;
 };
 
-export const SectionLinkButton:any = ({ ...props }:ISectionLink) => {
+export const SectionLinkButton:any = ({ color = 'darkBrown', borderColor = 'darkBrownBlur', ...props }:ISectionLink) => {
     return <Link {...props}
-        color="darkBrown"
+        display="block"
+        color={color}
         height={['40px', ,'50px']}
         lineHeight={['40px', ,'50px']}
         borderRadius={['20px', ,'25px']}
         px={4}
         border="1px solid"
-        borderColor="darkBrownBlur"
+        borderColor={borderColor}
         textAlign="center"
-        minWidth={['120px', ,'200px']}
+        width={['120px', ,'200px']}
         fontWeight={700}>
     </Link>;
 };

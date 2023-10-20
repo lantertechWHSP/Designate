@@ -22,8 +22,9 @@ function useDocumentScrollThrottled(callback) : any {
     useEffect(() => {
         window.addEventListener("scroll", handleDocumentScrollThrottled);
 
-        return () =>
+        return () => {
             window.removeEventListener("scroll", handleDocumentScrollThrottled);
+        }
     }, []);
 }
 

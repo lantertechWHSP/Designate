@@ -36,9 +36,9 @@ const DefaultLayout:any = ({ layout, children }:any) : ReactNode => {
                     </Box>
                 }
                 {
-                    children && <Box>
+                    children && <>
                         {children}
-                    </Box>
+                    </>
                 }
             </Box>
             {
