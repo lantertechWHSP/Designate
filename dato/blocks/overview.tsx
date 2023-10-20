@@ -1,6 +1,10 @@
+import { structuredTextAttrs } from '~/dato/attrs/structuredTextAttrs';
+
 export const overviewRecord:string = `
     __typename
     id
     subtitle
-    description
+    description {
+        ${structuredTextAttrs}
+    }
 `;

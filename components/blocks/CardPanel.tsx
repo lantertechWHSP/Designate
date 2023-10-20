@@ -53,7 +53,7 @@ const CardPanelBlock:any = ({ annotation, title, description, image, link, docum
             </Flex>
             <Box width={['100%', ,'50%']}
                 position="relative"
-                backgroundImage={`url('${image.responsiveImage.src}')`}
+                backgroundImage={image?.responsiveImage ? `url('${image.responsiveImage.src}')` : 'lightGrey'}
                 backgroundPosition="center"
                 backgroundSize="cover">
                 {
