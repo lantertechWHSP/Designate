@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import ContentBlock, { ContainerWidth } from '~/components/blocks/Content';
+import ContentBlock from '~/components/blocks/Content';
 import { SimpleGrid, Box, Heading, Text } from '@chakra-ui/react';
 import { IPerson } from '~/interfaces/models/person';
 import { Image } from '~/components/elements/image';

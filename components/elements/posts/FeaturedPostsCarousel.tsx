@@ -59,24 +59,24 @@ const FeaturedPostsCarousel:any = ({ posts }:IFeaturedPostsCarousel) : any => {
                             return <Box className="keen-slider__slide" key={index}>
                                 <Box minH={"calc(100vh - 120px)"}>
                                     <Flex position="absolute"
-                                          top="0"
-                                          bottom="0"
-                                          left="0"
-                                          right="0"
-                                          backgroundImage={post?.image?.responsiveImage?.src}
-                                          backgroundSize="cover"
-                                          backgroundPosition="center" />
+                                        top="0"
+                                        bottom="0"
+                                        left="0"
+                                        right="0"
+                                        backgroundImage={post?.image?.responsiveImage?.src}
+                                        backgroundSize="cover"
+                                        backgroundPosition="center" />
                                     <Box background="linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%)"
-                                         position="absolute"
-                                         top="0"
-                                         bottom="0"
-                                         left="0"
-                                         right="0" />
+                                        position="absolute"
+                                        top="0"
+                                        bottom="0"
+                                        left="0"
+                                        right="0" />
                                     <Box position="absolute"
-                                         zIndex="2"
-                                         left="0"
-                                         right="0"
-                                         bottom="40px">
+                                        zIndex="2"
+                                        left="0"
+                                        right="0"
+                                        bottom="40px">
                                         <Container >
                                             <Box maxWidth="900px">
                                                 {
@@ -107,7 +107,7 @@ const FeaturedPostsCarousel:any = ({ posts }:IFeaturedPostsCarousel) : any => {
                                         </Container>
                                     </Box>
                                 </Box>
-                            </Box>
+                            </Box>;
                         })
                     }
                 </>
@@ -115,11 +115,11 @@ const FeaturedPostsCarousel:any = ({ posts }:IFeaturedPostsCarousel) : any => {
                     {
                         posts.map((post:IPost, index:number) => {
                             return <Button key={index} width="8px" height="8px" mx={1}
-                                           background={slideIndex === index ? 'white' : 'whiteBlur'}
-                                           borderRadius="4px"
-                                           onClick={() => {
-                                               goToIndex(index);
-                                           }} />;
+                                background={slideIndex === index ? 'white' : 'whiteBlur'}
+                                borderRadius="4px"
+                                onClick={() => {
+                                    goToIndex(index);
+                                }} />;
                         })
                     }
                 </Box>

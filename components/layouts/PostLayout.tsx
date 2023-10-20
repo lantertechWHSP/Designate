@@ -18,9 +18,9 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
             }
             <Header menu={layout?.menu} />
             <Flex width="100%"
-                  height={['550px']}
-                  background="linear-gradient(270deg, #50513C 0%, rgba(228, 221, 193, 0.50) 100%)"
-                  align="flex-end">
+                height={['550px']}
+                background="linear-gradient(270deg, #50513C 0%, rgba(228, 221, 193, 0.50) 100%)"
+                align="flex-end">
                 <Box width="100%" marginBottom="200px">
                     <Container>
                         <Row justify="center">
@@ -30,7 +30,7 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
                                         {
                                             (() => {
                                                 if (post?.author && date) {
-                                                    return <>{post?.author}, {date}</>
+                                                    return <>{post?.author}, {date}</>;
                                                 }
                                                 else if (post?.author) {
                                                     return post?.author;
@@ -44,12 +44,12 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
                                 }
                                 {
                                     post?.title && <Heading as="h1"
-                                                            fontSize={['50px']}
-                                                            lineHeight={['54px']}
-                                                            fontWeight={500}
-                                                            maxHeight={['104px']}
-                                                            overflow="hidden"
-                                                            textOverflow="ellipsis">
+                                        fontSize={['50px']}
+                                        lineHeight={['54px']}
+                                        fontWeight={500}
+                                        maxHeight={['104px']}
+                                        overflow="hidden"
+                                        textOverflow="ellipsis">
                                         {post?.title}
                                     </Heading>
                                 }

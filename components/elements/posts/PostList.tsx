@@ -7,8 +7,8 @@ import { IPostsMeta } from '~/interfaces/models/postsMeta';
 import { throttle as _throttle } from 'lodash';
 
 interface IPostsList {
-    latestPosts:IPost[];
-    postsMeta:IPostsMeta;
+    latestPosts?:IPost[];
+    postsMeta?:IPostsMeta;
 }
 
 export const DATO_QUERY_VALUES:any = {
@@ -16,12 +16,11 @@ export const DATO_QUERY_VALUES:any = {
     ORDER_BY : 'date_DESC',
 };
 
-const PostList:any = ({ latestPosts, postsMeta }:IPostsList) : ReactNode => {
+const PostList:any = ({ latestPosts }:IPostsList) : ReactNode => {
     const [page, setPage] = useState<number>(1);
     const [posts, setPosts] = useState<IPost[]>(latestPosts);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [couldNotLoadPosts, setCouldNotLoadPosts] = useState<boolean>(false);
-    const [totalPostsCount] = useState<number>(postsMeta?.count);
 
     const [noMorePosts, setNoMorePosts] = useState(false);
     const [hideNoMorePosts, setHideNoMorePosts] = useState(false);
@@ -43,7 +42,7 @@ const PostList:any = ({ latestPosts, postsMeta }:IPostsList) : ReactNode => {
 
                         setTimeout(() => {
                             setHideNoMorePosts(true);
-                        }, 5000)
+                        }, 5000);
                     }
                 }).catch(() => {
                     setCouldNotLoadPosts(true);
@@ -55,29 +54,29 @@ const PostList:any = ({ latestPosts, postsMeta }:IPostsList) : ReactNode => {
                         setIsLoading(false);
                     }, 250);
                 });
-            }, 1000)
+            }, 1000);
         }
     };
 
     const onScroll:any = useCallback(_throttle(() => {
         if(elementRef.current) {
-            const elementOffsetBottom = elementRef.current.offsetTop + elementRef.current.getBoundingClientRect().height;
-            const paddedOffset = 100;
-            const windowScrollBottom = window.scrollY + window.innerHeight;
+            const elementOffsetBottom:number = elementRef.current.offsetTop + elementRef.current.getBoundingClientRect().height;
+            const paddedOffset:number = 100;
+            const windowScrollBottom:number = window.scrollY + window.innerHeight;
 
             if(windowScrollBottom >= elementOffsetBottom + paddedOffset) {
-                loadMore(page);
+                loadMore();
             }
         }
-    }, 100));
+    }, 100), [page, posts]);
 
     useEffect(() => {
         window.addEventListener("scroll", onScroll);
 
         return () => {
             window.removeEventListener("scroll", onScroll);
-        }
-    }, [onScroll])
+        };
+    }, [onScroll]);
 
     return <Box bg="ghostWhite" py={12} ref={elementRef}>
         {
@@ -108,9 +107,9 @@ const PostList:any = ({ latestPosts, postsMeta }:IPostsList) : ReactNode => {
                 <Box>
                     <Container>
                         {
-                            couldNotLoadPosts && <Box status="error">
+                            couldNotLoadPosts && <Alert status="error">
                                 <Text variant="caption">Could not load posts</Text>
-                            </Box>
+                            </Alert>
                         }
                         {
                             (noMorePosts && !hideNoMorePosts) && <Alert status="info" mt={4}>

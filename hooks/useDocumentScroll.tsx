@@ -24,7 +24,7 @@ function useDocumentScrollThrottled(callback) : any {
 
         return () => {
             window.removeEventListener("scroll", handleDocumentScrollThrottled);
-        }
+        };
     }, []);
 }
 

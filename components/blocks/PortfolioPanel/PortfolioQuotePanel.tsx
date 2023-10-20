@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import ContentBlock, { ContainerWidth } from '~/components/blocks/Content';
+import ContentBlock from '~/components/blocks/Content';
 import { IPerson } from '~/interfaces/models/person';
 import { Image } from '~/components/elements/image';
 import { Row, Column, ColumnWidth } from "~/components/elements/grid/grid";

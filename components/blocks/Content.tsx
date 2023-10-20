@@ -38,7 +38,7 @@ const ContentBlock:any = ({ contain = true, color = '', background = '', contain
     switch(containerWidth) {
         case ContainerWidth.Wide : columnWidths = [ColumnWidth.Full, ,ColumnWidth.TenTwelfths]; break;
         case ContainerWidth.Narrow : columnWidths = [ColumnWidth.Full, ,ColumnWidth.TenTwelfths, ColumnWidth.EightTwelfths]; break;
-        case ContainerWidth.Full : columnWidths = [ColumnWidth.Full];
+        case ContainerWidth.Full : columnWidths = [ColumnWidth.Full]; break;
         default : columnWidths = [ColumnWidth.Full];
     }
 
@@ -55,8 +55,6 @@ const ContentBlock:any = ({ contain = true, color = '', background = '', contain
         case TextColor.White : selectedColor = 'white'; break;
         default : selectedColor = color;
     }
-
-    debugger;
 
     return <Box color={selectedColor} background={selectedBackground} {...props}>
         {
