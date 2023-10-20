@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import ContentBlock from '~/components/blocks/Content';
 import { Heading, Accordion, AccordionItem, AccordionPanel, AccordionButton } from '@chakra-ui/react';
 import { ModularContent } from '~/components/ModularContent';
+import { Row, Column, ColumnWidth } from "~/components/elements/grid/grid";
 
 interface IPortfolioPanel {
     title?:string;
@@ -32,7 +33,11 @@ const PortfolioPanelBlock:any = ({ items }:IPortfolioPanelBlock) : ReactNode => 
                         </AccordionButton>
                         <AccordionPanel borderColor="lightGrey2" py={4}>
                             {
-                                (Array.isArray(item.content) && item.content.length > 0) && <ModularContent content={item.content} contain={false} />
+                                (Array.isArray(item.content) && item.content.length > 0) && <Row justify="center">
+                                    <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths, ColumnWidth.EightTwelfths]}>
+                                        <ModularContent content={item.content} contain={false} />
+                                    </Column>
+                                </Row>
                             }
                         </AccordionPanel>
                     </AccordionItem>;

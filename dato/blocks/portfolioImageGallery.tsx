@@ -6,5 +6,4 @@ export const portfolioImageGalleryRecord:string = `
     images {
         ${imageAttrs()}
     }
-    containerWidth
 `;

@@ -5,13 +5,12 @@ import { IPerson } from '~/interfaces/models/person';
 import { Image } from '~/components/elements/image';
 
 interface IPeoplePanelBlock {
-    containerWidth?:ContainerWidth;
     contain?:boolean;
     people:IPerson[];
 }
 
-const PortfolioProfilesPanelBlock:any = ({ containerWidth, contain, people }:IPeoplePanelBlock) : ReactNode => {
-    return <ContentBlock containerWidth={containerWidth} contain={contain}>
+const PortfolioProfilesPanelBlock:any = ({ contain, people }:IPeoplePanelBlock) : ReactNode => {
+    return <ContentBlock contain={contain}>
         {
             (Array.isArray(people) && people.length > 0) && <SimpleGrid columns={[1, , 3]} spacing={[0, 8]}>
                 {

@@ -3,7 +3,6 @@ import { imageAttrs } from '~/dato/attrs/responsiveImageAttrs';
 export const portfolioProfilesPanelRecord:string = `
     __typename
     id
-    containerWidth
     people {
         id
         name

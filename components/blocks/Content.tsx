@@ -5,6 +5,7 @@ import { Column, ColumnWidth, Row } from "~/components/elements/grid/grid";
 
 export enum ContainerWidth {
     Default = 'Default',
+    Full = 'Full',
     Wide = 'Wide',
     Narrow = 'Narrow',
 }
@@ -37,6 +38,7 @@ const ContentBlock:any = ({ contain = true, color = '', background = '', contain
     switch(containerWidth) {
         case ContainerWidth.Wide : columnWidths = [ColumnWidth.Full, ,ColumnWidth.TenTwelfths]; break;
         case ContainerWidth.Narrow : columnWidths = [ColumnWidth.Full, ,ColumnWidth.TenTwelfths, ColumnWidth.EightTwelfths]; break;
+        case ContainerWidth.Full : columnWidths = [ColumnWidth.Full];
         default : columnWidths = [ColumnWidth.Full];
     }
 
