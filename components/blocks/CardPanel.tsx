@@ -13,7 +13,7 @@ enum ICardPanelAlign {
     Right = 'Right'
 }
 
-interface IContentCardPanelBlock {
+interface ICardPanelBlock {
     annotation?:string;
     title?:string;
     description?:string;
@@ -50,11 +50,11 @@ const CardPanelBlock:any = ({ annotation, title, description, image, link, docum
                 }
             </Flex>
             <Box width={['100%', ,'50%']}
-                 position="relative"
-                 backgroundImage={image?.responsiveImage ? `url('${image.responsiveImage.src}')` : 'lightGrey'}
-                 backgroundPosition="center"
-                 backgroundRepeat="no-repeat"
-                 backgroundSize="cover">
+                position="relative"
+                backgroundImage={image?.responsiveImage ? `url('${image.responsiveImage.src}')` : 'lightGrey'}
+                backgroundPosition="center"
+                backgroundRepeat="no-repeat"
+                backgroundSize="cover">
                 {
                     link ? <Link {...link} position="absolute" top="0" bottom="0" left="0" right="0" title="">
                     </Link> : (document && document?.document.url) && <Link href={document.document?.url}

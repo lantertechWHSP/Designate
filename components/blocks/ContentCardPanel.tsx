@@ -24,11 +24,11 @@ const ContentCardPanel:any = ({ title, description, image, containerWidth }:ICon
                 }
             </Flex>
             <Box width={['100%', ,'50%']}
-                 position="relative"
-                 backgroundImage={image?.responsiveImage ? `url('${image.responsiveImage.src}')` : 'lightGrey'}
-                 backgroundPosition="center"
-                 backgroundRepeat="no-repeat"
-                 backgroundSize="cover">
+                position="relative"
+                backgroundImage={image?.responsiveImage ? `url('${image.responsiveImage.src}')` : 'lightGrey'}
+                backgroundPosition="center"
+                backgroundRepeat="no-repeat"
+                backgroundSize="cover">
                 <Box paddingTop="66%" />
             </Box>
         </Flex>

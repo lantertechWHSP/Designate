@@ -6,8 +6,8 @@ import { Column, ColumnWidth, Row } from '~/components/elements/grid/grid';
 import StructuredContent from "~/components/StructuredContent";
 
 interface IOverviewBlock extends ChakraProps {
-    subtitle?:string;
-    description?:string;
+    subtitle?:any;
+    description?:any;
 }
 
 const OverviewBlock:any = ({ subtitle, description }:IOverviewBlock) : ReactNode => {
@@ -20,7 +20,7 @@ const OverviewBlock:any = ({ subtitle, description }:IOverviewBlock) : ReactNode
                         lineHeight={['42px']}
                         color="darkBrown"
                         fontWeight={500} mb={4}>
-                        {subtitle}
+                        <StructuredContent content={subtitle} />
                     </Heading>
                 }
             </Column>
