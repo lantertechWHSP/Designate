@@ -42,11 +42,11 @@ const CardPanelBlock:any = ({ annotation, title, description, image, link, docum
                 {
                     link ? <SectionLink {...link}>
                         Read More
-                    </SectionLink> : (document && document?.document.url) && <Link href={document.document?.url}
+                    </SectionLink> : (document && document?.document && document?.document?.url) && <SectionLink href={document.document?.url}
                         as="a"
                         target="_blank">
                         Download
-                    </Link>
+                    </SectionLink>
                 }
             </Flex>
             <Box width={['100%', ,'50%']}

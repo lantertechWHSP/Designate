@@ -9,10 +9,11 @@ export const DATO_QUERY_VALUES:any = {
 };
 
 interface IDocumentBasicList {
+    title?:String;
     latestDocuments?:IDocument[];
 }
 
-const DocumentBasicList:any = ({latestDocuments}:IDocumentBasicList) : ReactNode => {
+const DocumentBasicList:any = ({ title, latestDocuments }:IDocumentBasicList) : ReactNode => {
     const [documents] = useState(latestDocuments);
     const [documentBundles, setDocumentBundles] = useState<IDocumentBundle[]>([]);
 
@@ -34,11 +35,16 @@ const DocumentBasicList:any = ({latestDocuments}:IDocumentBasicList) : ReactNode
     return <Box bg="lightGrey3" py={12}>
         <Container>
             {
+                title && <Heading as="h2" variant="sectionSubheading" mb={8}>
+                    {title}
+                </Heading>
+            }
+            {
                 (Array.isArray(documents) && documents.length > 0) && <Box>
                     {
                         documentBundles.map((documentBundle:IDocumentBundle, index:number) => {
                             return <Box key={index} pb={8}>
-                                <Heading as="h2" variant="h3" py={2} mb={4}>{documentBundle.title}</Heading>
+                                <Heading as="h3" fontSize={['24px']} lineHeight={['24px']} fontWeight={600} py={2} mb={4}>{documentBundle.title}</Heading>
                                 {
                                     (Array.isArray(documentBundle.documents) && documentBundle.documents.length > 0) && <>
                                         {

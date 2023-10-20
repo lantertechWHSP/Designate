@@ -196,7 +196,7 @@ const DocumentList:any = ({ latestDocuments, documentsMeta, documentsFilters }:I
                         {
                             documentBundles.map((documentBundle:IDocumentBundle, index:number) => {
                                 return <Box key={index} pb={8}>
-                                    <Heading as="h2" variant="h3" py={2} mb={4}>{documentBundle.title}</Heading>
+                                    <Heading as="h2" py={2} mb={4}>{documentBundle.title}</Heading>
                                     {
                                         (Array.isArray(documentBundle.documents) && documentBundle.documents.length > 0) && <>
                                             {

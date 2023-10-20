@@ -42,7 +42,7 @@ const NewsPage : NextPage = ({ layout, blocks, documents }:INextPageProps) : JSX
     return (
         <DefaultLayout layout={layout}>
             <ModularContent content={blocks} />
-            <DocumentBasicList latestDocuments={documents} />
+            <DocumentBasicList title="Downloads" latestDocuments={documents} />
         </DefaultLayout>
     );
 };
