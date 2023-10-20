@@ -18,9 +18,7 @@ const DefaultLayout:any = ({ layout, children }:any) : ReactNode => {
                 {
                     !layout.isHomePage && <Box h={['376px']}
                         position="relative"
-                        backgroundImage={`url('/images/layouts/background.png')`}
-                        backgroundPosition="center"
-                        backgroundSize="cover">
+                        background="linear-gradient(270deg, #50513C 0%, rgba(228, 221, 193, 0.50) 100%)">
                         <Container>
                             <Flex h={['376px']} align="flex-end" py={8}>
                                 {

@@ -1,14 +1,14 @@
 import React from 'react';
-import type { NextPage } from 'next';
-import { ModularContent } from '~/components/ModularContent';
-import { doQuery, queries } from '~/dato/api';
-import { getLayoutData, getBlocks } from '~/lib/utils';
-import { GetStaticPropsContext, GetStaticPropsResult, GetStaticPathsResult } from 'next';
-import { ILayout } from '~/interfaces/layout/layout';
-import { ISite } from '~/interfaces/layout/site';
-import { IBlock } from '~/interfaces/util/block';
-import { IPost } from '~/interfaces/models/post';
-import { ContainerWidth } from '~/components/blocks/Content';
+import type {NextPage} from 'next';
+import {GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult} from 'next';
+import {ModularContent} from '~/components/ModularContent';
+import {doQuery, queries} from '~/dato/api';
+import {getBlocks, getLayoutData} from '~/lib/utils';
+import {ILayout} from '~/interfaces/layout/layout';
+import {ISite} from '~/interfaces/layout/site';
+import {IBlock} from '~/interfaces/util/block';
+import {IPost} from '~/interfaces/models/post';
+import {ContainerWidth} from '~/components/blocks/Content';
 import PostLayout from '~/components/layouts/PostLayout';
 
 interface INextPageProps {
@@ -40,10 +40,11 @@ export async function getStaticProps({ params, preview }:GetStaticPropsContext) 
 }
 
 const PostPage : NextPage = ({ post, layout, blocks}:any)  : JSX.Element => {
-
     // Format the Container Width when it’s in a post…
     blocks.map((block:IBlock) => {
-        block.containerWidth = ContainerWidth.Narrow;
+        if(block.containerWidth === ContainerWidth.Default) {
+            block.containerWidth = ContainerWidth.Narrow;
+        }
     });
 
     return (

@@ -114,7 +114,7 @@ export const getBlock:any = (name:any) : any => {
     return blocks[name?.replace(/Record$/, 'Block')];
 };
 
-export const ModularContent:any = ({ content, contain = false }) : any => {
+export const ModularContent:any = ({ content, contain = true }) : any => {
     if (!content || content === null || !Array.isArray(content)) {
         return null;
     }

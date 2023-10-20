@@ -2,6 +2,7 @@ import { seoAttrs } from '~/dato/attrs/seo';
 import { textRecord } from '~/dato/blocks/text';
 import { imageRecord } from '~/dato/blocks/image';
 import { videoRecord } from '~/dato/blocks/video';
+import {imageAttrs} from "~/dato/attrs/responsiveImageAttrs";
 
 export const post:string = `
     query post ($slug: String!) {
@@ -12,17 +13,7 @@ export const post:string = `
             excerpt
             author
             image {
-                responsiveImage (imgixParams: { auto:format, w: "1380", h: "920", fit:crop }) {
-                    aspectRatio
-                    height
-                    sizes
-                    src
-                    srcSet
-                    webpSrcSet
-                    width
-                    alt
-                    title
-                }    
+                ${imageAttrs({ width: 1108, height: 550})}
             }
             publishDate
             seo: _seoMetaTags {

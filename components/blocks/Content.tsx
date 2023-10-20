@@ -56,6 +56,8 @@ const ContentBlock:any = ({ contain = true, color = '', background = '', contain
         default : selectedColor = color;
     }
 
+    debugger;
+
     return <Box color={selectedColor} background={selectedBackground} {...props}>
         {
             contain ? <Container>
