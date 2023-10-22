@@ -126,16 +126,13 @@ const DocumentList:any = ({ latestDocuments, documentsMeta, documentsFilters }:I
 
     return <Box bg="lightGrey3" py={12}>
         <Container>
-            <Box pb={4}>
+            <Box pb={4} mb={8}>
                 <ButtonGroup>
                     <Menu>
                         {({ isOpen }) => (
                             <>
                                 <MenuButton as={Button}
                                     variant="menuButton"
-                                    height="40px"
-                                    lineHeight="40px"
-                                    minW="200px"
                                     rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} w={12} h={12} /> : <Icon icon={Icons.ChevronDown} w={12} h={12} />}>
                                     {selectedTag.label ? selectedTag.label : 'Compare…'}
                                 </MenuButton>
@@ -163,9 +160,6 @@ const DocumentList:any = ({ latestDocuments, documentsMeta, documentsFilters }:I
                             <>
                                 <MenuButton as={Button}
                                     variant="menuButton"
-                                    height="40px"
-                                    lineHeight="40px"
-                                    minW="200px"
                                     rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} w={12} h={12} /> : <Icon icon={Icons.ChevronDown} w={12} h={12} />}>
                                     {selectedYear.label ? selectedYear.label : 'Compare…'}
                                 </MenuButton>
@@ -196,7 +190,7 @@ const DocumentList:any = ({ latestDocuments, documentsMeta, documentsFilters }:I
                         {
                             documentBundles.map((documentBundle:IDocumentBundle, index:number) => {
                                 return <Box key={index} pb={8}>
-                                    <Heading as="h2" py={2} mb={4}>{documentBundle.title}</Heading>
+                                    <Heading as="h2" variant="sectionHeading" mb={4}>{documentBundle.title}</Heading>
                                     {
                                         (Array.isArray(documentBundle.documents) && documentBundle.documents.length > 0) && <>
                                             {
@@ -220,7 +214,7 @@ const DocumentList:any = ({ latestDocuments, documentsMeta, documentsFilters }:I
                     }
                     {
                         documents.length < totalDocumentCount && <Flex py={8} justify="center">
-                            <Button variant="button" onClick={loadMore} rightIcon={isLoading && <Spinner size='sm' />} minWidth="200px">
+                            <Button variant="button" onClick={loadMore} rightIcon={isLoading && <Spinner size='sm' />} minWidth="200px" border="1px solid" height="50px" width="50px" borderRadius="25px" borderColor="darkGrey">
                                 Load More
                             </Button>
                         </Flex>

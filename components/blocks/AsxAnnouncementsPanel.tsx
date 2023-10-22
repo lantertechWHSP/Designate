@@ -145,8 +145,8 @@ const AsxAnnouncementsPanelBlock:any = () : ReactNode => {
                                     <Text data-yourir="$cur.date format='DD.MM.YYYY'"
                                         variant="listLabel"
                                         textAlign={['right', ,'left']}
-                                        minWidth={['140px']}
-                                        maxWidth={['140px']}
+                                        minWidth={['140px', ,'30%']}
+                                        maxWidth={['140px', ,'30%']}
                                         mb={0} />
                                     <Flex  minWidth={['unset', ,'140px']}
                                         justify="flex-end"

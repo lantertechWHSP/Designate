@@ -34,8 +34,8 @@ const DocumentCard:any = ({ title, date, document }:IDocumentCard) : ReactNode =
             date && <Text
                 variant="listLabel"
                 textAlign={['right', ,'left']}
-                minWidth={['140px']}
-                maxWidth={['140px']}
+                minWidth={['140px', ,'30%']}
+                maxWidth={['140px', ,'30%']}
                 mb={0} >
                 {DateTime.fromISO(date).toFormat('d/M/yyyy')}
             </Text>
