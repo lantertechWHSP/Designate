@@ -4,7 +4,7 @@ import { Heading, Box, TableContainer, Table, Thead, Tr, Th, Tbody, Td } from '@
 import ContentBlock from '~/components/blocks/Content';
 
 const ShareQuoteTable:any = () : ReactNode => {
-    return <ContentBlock py={[6, 8, 12]} background="ghostWhite">
+    return <ContentBlock background="ghostWhite">
         <Box as={YourIR}>
             <Heading as="h2" variant="sectionHeading" mb={8}>
                 Quote Table

@@ -13,7 +13,7 @@ interface ITextBlock extends ChakraProps {
 }
 
 const TextBlock:any = ({ background, content, containerWidth, contain }:ITextBlock) : ReactNode => {
-    return <ContentBlock background={background} containerWidth={containerWidth} contain={contain} py={[6, 8, 12]}>
+    return <ContentBlock background={background} containerWidth={containerWidth} contain={contain}>
         <StructuredContent content={content} />
     </ContentBlock>;
 };

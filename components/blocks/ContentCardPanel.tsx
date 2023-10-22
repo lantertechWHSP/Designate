@@ -13,7 +13,7 @@ interface IContentCardPanelBlock {
 }
 
 const ContentCardPanel:any = ({ title, description, image, containerWidth }:IContentCardPanelBlock) : ReactNode => {
-    return <ContentBlock containerWidth={containerWidth} background="ghostWhite" py={[6, 8, 12]}>
+    return <ContentBlock containerWidth={containerWidth} background="ghostWhite">
         <Flex direction={['column', ,'row']}>
             <Flex width={['100%', ,'50%']} background="white" direction="column" p={[6, ,gutter * 2]}>
                 {

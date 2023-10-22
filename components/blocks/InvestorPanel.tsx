@@ -12,7 +12,7 @@ interface IInvestorPanelBlock {
 }
 
 const InvestorPanelBlock:any = ({ background, displayHeadline }:IInvestorPanelBlock) : ReactNode => {
-    return <ContentBlock background={background} py={[6, 8, 12]}>
+    return <ContentBlock background={background}>
         {
             displayHeadline && <Flex align="center" mb={[4, ,8]}>
                 <Heading as="h2" variant="sectionHeading">

@@ -14,7 +14,7 @@ interface IPortfolioPanelBlock {
 }
 
 const PortfolioPanelBlock:any = ({ items }:IPortfolioPanelBlock) : ReactNode => {
-    return <ContentBlock py={[6, 8, 12]}>
+    return <ContentBlock>
         <Accordion allowToggle>
             {
                 items.map((item:IPortfolioPanel, index:number) => {

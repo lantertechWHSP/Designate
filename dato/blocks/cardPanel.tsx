@@ -22,4 +22,6 @@ export const cardPanelRecord:string = `
             }
         }
     }
+    paddingTop
+    paddingBottom
 `;

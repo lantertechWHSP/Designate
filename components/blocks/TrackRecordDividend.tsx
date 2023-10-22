@@ -24,7 +24,7 @@ const TrackRecordDividendBlock:any = ({ title, table }:ITrackRecordDividendBlock
         });
     });
 
-    return <ContentBlock background="darkBrown" py={[6, 8, 12]}>
+    return <ContentBlock background="darkBrown">
         {
             title && <Heading as="h2" variant="sectionSubheading" color="white" mb={12}>
                 {title}

@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { Flex, Heading, Box, Text } from '@chakra-ui/react';
-import ContentBlock, {BackgroundColor, TextColor} from '~/components/blocks/Content';
+import ContentBlock, { BackgroundColor, TextColor, PaddingTop, PaddingBottom } from '~/components/blocks/Content';
 import { doQuery, queries } from '~/dato/api';
 import { IPost } from '~/interfaces/models/post';
 import LatestNewsItem from '~/components/blocks/LatestNews/LatestNewsItem';
@@ -14,10 +14,15 @@ interface ILatestNewsBlock {
     }
     background?:BackgroundColor;
     color?:TextColor;
+    paddingTop?:PaddingTop;
+    paddingBottom?:PaddingBottom;
 }
 
-const LatestNewsBlock:any = ({ background, color, data: { posts } }:ILatestNewsBlock) : ReactNode => {
-    return <ContentBlock py={[6, 8, 12]} background={background} color={color}>
+const LatestNewsBlock:any = ({ background, color, paddingTop, paddingBottom, data: { posts } }:ILatestNewsBlock) : ReactNode => {
+    console.log(paddingTop);
+    console.log(paddingBottom);
+
+    return <ContentBlock background={background} color={color} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         <Flex align="center" mb={[4, ,8]}>
             <Heading as="h2" variant="sectionHeading">
                 Latest News

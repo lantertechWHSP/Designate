@@ -5,7 +5,7 @@ import SharePriceChart from '~/components/blocks/SharePricePanel/SharePriceChart
 import {Column, ColumnWidth, Row} from "~/components/elements/grid/grid";
 
 const SharePricePanelBlock:any = () : ReactNode => {
-    return <Box background="lightGrey3" py={[6, 8, 12]}>
+    return <Box background="lightGrey3">
         <Container>
             <Row>
                 <Column width={[ColumnWidth.Full, , , ColumnWidth.FiveTwelfths]}>

@@ -5,7 +5,7 @@ import { Column, Row, ColumnWidth } from "~/components/elements/grid/grid";
 import { Box, Heading, Input, Button, Flex } from '@chakra-ui/react';
 
 const AsxNewsletterFormPanelBlock:any = () : ReactNode => {
-    return <ContentBlock background="darkBrown" py={[6, 8, 12]}>
+    return <ContentBlock background="darkBrown">
         <Row justify="center" textAlign="center">
             <Column width={[ColumnWidth.Full, , ColumnWidth.TenTwelfths]}>
                 <Heading as="h2" fontSize={['36px']} lineHeight={['42px']} fontWeight={500} color="white" mb={8}>

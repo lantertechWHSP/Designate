@@ -107,7 +107,7 @@ const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesT
         updateLines();
     }, []);
 
-    return <ContentBlock py={[6, 8, 12]}>
+    return <ContentBlock>
         <Flex justify="space-between">
             <Heading as="h2" variant="sectionSubheading">
                 20 Year Total Shareholder Return

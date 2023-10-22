@@ -17,7 +17,7 @@ interface ISeeAlsoPanelBlock {
 }
 
 const SeeAlsoItem:any = ({ title, description, link }:ISeeAlsoItem) : ReactNode => {
-    return <Box bg="white" borderTop="1px solid" borderColor="darkBrownBlur" py={4}>
+    return <Box bg="white" borderTop="1px solid" borderColor="darkBrownBlur" pt={4}>
         {
             title && <Heading as="h3" fontSize={['24px']} fontWeight={700} mb={2}>
                 {title}
@@ -37,7 +37,7 @@ const SeeAlsoItem:any = ({ title, description, link }:ISeeAlsoItem) : ReactNode 
 };
 
 const SeeAlsoPanelBlock:any = ({ items }:ISeeAlsoPanelBlock) : ReactNode => {
-    return <ContentBlock py={[6, 8, 12]}>
+    return <ContentBlock>
         {
             <Heading variant="sectionHeading" as="h2" mb={[4, ,8]}>
                 See Also
@@ -48,7 +48,9 @@ const SeeAlsoPanelBlock:any = ({ items }:ISeeAlsoPanelBlock) : ReactNode => {
                 {
                     items.map((item:ISeeAlsoItem, index:number) => {
                         return <Column key={index} width={[ColumnWidth.Full, , ColumnWidth.Half, ColumnWidth.OneQuarter]}>
-                            <SeeAlsoItem {...item} />
+                            <Box mb={[index === items.length - 1 ? 0 : 4, , ,4]}>
+                                <SeeAlsoItem {...item} />
+                            </Box>
                         </Column>;
                     })
                 }

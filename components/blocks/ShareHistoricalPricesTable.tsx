@@ -10,7 +10,7 @@ const ShareHistoricalPricesTable:any = () : ReactNode => {
         window.scrollTo({ top: scrollDiv - 120, behavior: 'smooth'});
     };
 
-    return <ContentBlock py={[6, 8, 12]} background="ghostWhite" id="historical-price">
+    return <ContentBlock background="ghostWhite" id="historical-price">
         <Box as={YourIR}>
             <Heading as="h2" variant="sectionHeading" mb={8}>
                 Historical Prices

@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { ILink } from '~/interfaces/util/link';
-import ContentBlock from '~/components/blocks/Content';
+import ContentBlock, {PaddingBottom, PaddingTop} from '~/components/blocks/Content';
 import { Box, Flex, Heading, Text } from '@chakra-ui/react';
 import { Link } from "~/components/elements/link";
 import { SectionLink } from "~/components/elements/sectionLink";
@@ -21,10 +21,12 @@ interface ICardPanelBlock {
     align?:ICardPanelAlign;
     link?:ILink;
     document?:IDocument;
+    paddingTop?:PaddingTop;
+    paddingBottom?:PaddingBottom;
 }
 
-const CardPanelBlock:any = ({ annotation, title, description, image, link, document, align }:ICardPanelBlock) : ReactNode => {
-    return <ContentBlock background="ghostWhite" py={[6, 8, 12]}>
+const CardPanelBlock:any = ({ annotation, title, description, image, link, document, align, paddingTop, paddingBottom }:ICardPanelBlock) : ReactNode => {
+    return <ContentBlock background="ghostWhite" paddingTop={paddingTop} paddingBottom={paddingBottom}>
         <Flex direction={['column', ,(align === ICardPanelAlign.Right) ? 'row-reverse' : 'row']}>
             <Flex width={['100%', ,'50%']} background="white" direction="column" p={[6, ,gutter * 2]}>
                 {

@@ -79,7 +79,7 @@ export const theme:any = extendBaseTheme({
                 sectionHeading: {
                     color: 'black',
                     fontSize: ['32px', ,'40px'],
-                    lineHeight: [1.2],
+                    lineHeight: [1.25],
                     fontWeight: 700,
                 },
                 sectionSubheading: {

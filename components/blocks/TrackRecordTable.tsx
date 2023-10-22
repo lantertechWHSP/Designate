@@ -9,7 +9,7 @@ interface ITrackRecordTableBlock {
 }
 
 const TrackRecordTableBlock:any = ({ title, table }:ITrackRecordTableBlock) : ReactNode => {
-    return <ContentBlock py={[6, 8, 12]}>
+    return <ContentBlock>
         {
             title && <Heading as="h2" variant="sectionSubheading" mb={4}>
                 {title}

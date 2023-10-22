@@ -3,4 +3,6 @@ export const latestNewsRecord:string = `
     id
     background
     color
+    paddingTop
+    paddingBottom
 `;

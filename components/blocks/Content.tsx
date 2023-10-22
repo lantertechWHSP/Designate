@@ -22,6 +22,16 @@ export enum TextColor {
     White = 'White'
 }
 
+export enum PaddingTop {
+    Default = 'Default',
+    None = 'None'
+}
+
+export enum PaddingBottom {
+    Default = 'Default',
+    None = 'None'
+}
+
 interface IContentBlock extends ChakraProps {
     contain?:boolean;
     children?:any;
@@ -30,10 +40,20 @@ interface IContentBlock extends ChakraProps {
     containerWidth?:ContainerWidth;
 }
 
-const ContentBlock:any = ({ contain = true, color = '', background = '', containerWidth = ContainerWidth.Default, children, ...props }:IContentBlock) : ReactNode => {
+const ContentBlock:any = ({
+                              contain = true,
+                              color = '',
+                              background = '',
+                              containerWidth = ContainerWidth.Default,
+                              children,
+                              paddingTop = '',
+                              paddingBottom = '',
+                              ...props }:IContentBlock) : ReactNode => {
     let columnWidths:ColumnWidth[];
     let selectedBackground:BackgroundColor|ResponsiveValue<any>|string;
     let selectedColor:TextColor|ResponsiveValue<any>|string;
+    let selectedPaddingTop:PaddingTop|ResponsiveValue<any>|string;
+    let selectedPaddingBottom:PaddingTop|ResponsiveValue<any>|string;
 
     switch(containerWidth) {
         case ContainerWidth.Wide : columnWidths = [ColumnWidth.Full, ,ColumnWidth.TenTwelfths]; break;
@@ -56,7 +76,19 @@ const ContentBlock:any = ({ contain = true, color = '', background = '', contain
         default : selectedColor = color;
     }
 
-    return <Box color={selectedColor} background={selectedBackground} {...props}>
+    switch(paddingTop) {
+        case PaddingTop.Default : selectedPaddingTop = [6, 8, 12]; break;
+        case PaddingTop.None : selectedPaddingTop = [0]; break;
+        default : selectedPaddingTop = [6, 8, 12]; break;
+    }
+
+    switch(paddingBottom) {
+        case PaddingBottom.Default : selectedPaddingBottom = [6, 8, 12]; break;
+        case PaddingBottom.None : selectedPaddingBottom = [0]; break;
+        default : selectedPaddingBottom = [6, 8, 12]; break;
+    }
+
+    return <Box color={selectedColor} background={selectedBackground} paddingTop={selectedPaddingTop} paddingBottom={selectedPaddingBottom} {...props}>
         {
             contain ? <Container>
                 {
