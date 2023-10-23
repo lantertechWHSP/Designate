@@ -10,7 +10,6 @@ import { IFilter } from '~/interfaces/util/filter';
 import { ITable } from '~/interfaces/util/table';
 import { colors } from '~/components/elements/charts/colors';
 
-
 interface ITrackRecordChartBlock extends IBlock, ChakraProps {
     australianSharesTable:ITable<any>;
     internationalSharesTable:ITable<any>;
@@ -22,7 +21,7 @@ interface IChartFilter extends IFilter {
     background?:string;
 }
 
-const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesTable, australianListedTable, australianBondsTable }:ITrackRecordChartBlock) : ReactNode => {
+const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesTable, australianListedTable, australianBondsTable, paddingTop, paddingBottom }:ITrackRecordChartBlock) : ReactNode => {
     const australianShares:any = australianSharesTable.data.map((datum) => {
         return {
             value: +datum.Value,
@@ -110,7 +109,7 @@ const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesT
         updateLines();
     }, []);
 
-    return <ContentBlock>
+    return <ContentBlock paddingTop={paddingTop} paddingBottom={paddingBottom}>
         <Flex justify="space-between">
             <Heading as="h2" variant="sectionSubheading">
                 20 Year Total Shareholder Return

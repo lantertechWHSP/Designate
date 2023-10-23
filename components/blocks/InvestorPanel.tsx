@@ -13,8 +13,8 @@ interface IInvestorPanelBlock extends IBlock, ChakraProps {
     displayHeadline?:boolean;
 }
 
-const InvestorPanelBlock:any = ({ background, displayHeadline }:IInvestorPanelBlock) : ReactNode => {
-    return <ContentBlock background={background}>
+const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddingBottom }:IInvestorPanelBlock) : ReactNode => {
+    return <ContentBlock background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         {
             displayHeadline && <Flex align="center" mb={[4, ,8]}>
                 <Heading as="h2" variant="sectionHeading">

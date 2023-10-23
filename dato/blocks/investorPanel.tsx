@@ -3,4 +3,6 @@ export const investorPanelRecord:string = `
     id
     displayHeadline
     backgroundColor
+    paddingTop
+    paddingBottom
 `;

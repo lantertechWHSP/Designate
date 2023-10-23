@@ -6,7 +6,6 @@ import { doQuery, queries } from '~/dato/api';
 import ContentBlock from '~/components/blocks/Content';
 import { Box, Heading, SimpleGrid } from '@chakra-ui/react';
 import { IContact } from '~/interfaces/models/contact';
-import { ChakraProps } from '@chakra-ui/system';
 import ContactCard from '~/components/blocks/ContactsPanel/ContactCard';
 
 interface IContactsPanelBlock extends IBlock, ChakraProps {

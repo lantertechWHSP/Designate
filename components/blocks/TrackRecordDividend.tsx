@@ -16,7 +16,7 @@ interface ITrackRecordDividendBlock extends IBlock, ChakraProps {
     table?: ITable<ITableRow>;
 }
 
-const TrackRecordDividendBlock:any = ({ title, table }:ITrackRecordDividendBlock) : ReactNode => {
+const TrackRecordDividendBlock:any = ({ title, table, paddingTop, paddingBottom }:ITrackRecordDividendBlock) : ReactNode => {
     const chartData:any = [];
 
     table.data.map((row:ITableRow) => {
@@ -26,7 +26,7 @@ const TrackRecordDividendBlock:any = ({ title, table }:ITrackRecordDividendBlock
         });
     });
 
-    return <ContentBlock background="darkBrown">
+    return <ContentBlock background="darkBrown" paddingTop={paddingTop} paddingBottom={paddingBottom}>
         {
             title && <Heading as="h2" variant="sectionSubheading" color="white" mb={12}>
                 {title}
