@@ -33,7 +33,7 @@ const PortfolioPanelBlock:any = ({ items }:IPortfolioPanelBlock) : ReactNode => 
                                 {item?.title}
                             </Heading>
                         </AccordionButton>
-                        <AccordionPanel borderColor="lightGrey2" py={4}>
+                        <AccordionPanel borderColor="lightGrey2" py={8}>
                             {
                                 (Array.isArray(item.content) && item.content.length > 0) && <Row justify="center">
                                     <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths, ColumnWidth.EightTwelfths]}>

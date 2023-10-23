@@ -12,4 +12,6 @@ export const portfolioProfilesPanelRecord:string = `
             ${imageAttrs({ width: 500, height: 500 })}
         }
     }
+    paddingTop
+    paddingBottom
 `;

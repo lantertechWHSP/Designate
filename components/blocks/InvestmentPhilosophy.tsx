@@ -16,8 +16,8 @@ interface IInvestmentPhilosophyBlock extends IBlock, ChakraProps {
     items:InvestmentPhilosophyItem[];
 }
 
-const InvestmentPhilosophyBlock:any = ({ title, items }:IInvestmentPhilosophyBlock) : ReactNode => {
-    return <ContentBlock background="ghostWhite">
+const InvestmentPhilosophyBlock:any = ({ title, items, paddingTop, paddingBottom }:IInvestmentPhilosophyBlock) : ReactNode => {
+    return <ContentBlock background="ghostWhite" paddingTop={paddingTop} paddingBottom={paddingBottom}>
         {
             title && <Heading as="h2" variant="sectionHeading" mb={8}>
                 {title}

@@ -10,4 +10,6 @@ export const investmentPhilosophyRecord:string = `
             alt
         }
     }
+    paddingTop
+    paddingBottom
 `;

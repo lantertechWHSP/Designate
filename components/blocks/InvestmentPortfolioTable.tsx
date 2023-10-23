@@ -44,13 +44,13 @@ const PercentageBar:any = ({ value }:IPercentageBar) => {
     </Box>;
 };
 
-const InvestmentPortfolioTableBlock:any = ({ table, lastUpdated }:InvestmentPortfolioTableBlock) : ReactNode => {
+const InvestmentPortfolioTableBlock:any = ({ table, lastUpdated, paddingTop, paddingBottom }:InvestmentPortfolioTableBlock) : ReactNode => {
     const [total] = useState<number>(table.data ? _sumBy(table.data, (row:ITableRow) => {
         const value:number = +row.NetAssetValue;
         return value;
     }) : 0);
 
-    return <ContentBlock background="darkBrown" py={8}>
+    return <ContentBlock background="darkBrown" paddingTop={paddingTop} paddingBottom={paddingBottom}>
         <Box mb={8}>
             <Heading as="h2" variant="sectionHeading" color="white">
                 Our Portfolio

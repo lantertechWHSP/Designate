@@ -20,7 +20,7 @@ const OverviewBlock:any = ({ subtitle, description, paddingTop, paddingBottom }:
                         fontSize={['36px']}
                         lineHeight={['42px']}
                         color="darkBrown"
-                        fontWeight={500} mb={4}>
+                        fontWeight={500}>
                         <StructuredContent content={subtitle} />
                     </Heading>
                 }
@@ -30,7 +30,6 @@ const OverviewBlock:any = ({ subtitle, description, paddingTop, paddingBottom }:
                     description && <Box
                         fontSize={['19px']}
                         lineHeight={['29px']}
-                        m={0}
                         color="darkBrown">
                         <StructuredContent content={description} />
                     </Box>

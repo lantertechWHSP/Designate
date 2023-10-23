@@ -4,7 +4,6 @@ import { ChakraProps } from '@chakra-ui/system';
 import ContentBlock from '~/components/blocks/Content';
 import { SimpleGrid, Box, Heading, Text, Flex } from '@chakra-ui/react';
 
-
 interface IObjectivePanelItem {
     title?:string;
     description?:string;
@@ -15,8 +14,8 @@ interface IObjectivePanelBlock extends IBlock, ChakraProps {
     items?:IObjectivePanelItem[];
 }
 
-const ObjectivePanelBlock:any = ({ items, containerWidth }:IObjectivePanelBlock) : ReactNode => {
-    return <ContentBlock containerWidth={containerWidth}>
+const ObjectivePanelBlock:any = ({ items, containerWidth, paddingTop, paddingBottom }:IObjectivePanelBlock) : ReactNode => {
+    return <ContentBlock containerWidth={containerWidth} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         {
             (Array.isArray(items) && items.length > 0) && <Box background="ghostWhite" py={8}>
                 <SimpleGrid columns={[1, , 1, items.length > 4 ? 4 : items.length]}>

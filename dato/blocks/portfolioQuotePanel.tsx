@@ -11,4 +11,6 @@ export const portfolioQuotePanelRecord:string = `
         }
     }
     quote
+    paddingTop
+    paddingBottom
 `;

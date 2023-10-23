@@ -1,16 +1,18 @@
 import { ReactNode } from 'react';
+import { IBlock } from '~/interfaces/util/block';
+import { ChakraProps } from '@chakra-ui/system';
 import ContentBlock from '~/components/blocks/Content';
 import { SimpleGrid, Box, Heading, Text } from '@chakra-ui/react';
 import { IPerson } from '~/interfaces/models/person';
 import { Image } from '~/components/elements/image';
 
-interface IPeoplePanelBlock {
+interface IPeoplePanelBlock extends IBlock, ChakraProps {
     contain?:boolean;
     people:IPerson[];
 }
 
-const PortfolioProfilesPanelBlock:any = ({ contain, people }:IPeoplePanelBlock) : ReactNode => {
-    return <ContentBlock contain={contain}>
+const PortfolioProfilesPanelBlock:any = ({ contain, people, paddingTop, paddingBottom }:IPeoplePanelBlock) : ReactNode => {
+    return <ContentBlock contain={contain} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         {
             (Array.isArray(people) && people.length > 0) && <SimpleGrid columns={[1, , 3]} spacing={[0, 8]}>
                 {

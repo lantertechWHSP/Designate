@@ -3,4 +3,6 @@ export const investmentPortfolioTableRecord:string = `
     id
     table
     lastUpdated
+    paddingTop
+    paddingBottom
 `;

@@ -7,4 +7,6 @@ export const objectivePanelRecord:string = `
         annotation
     }
     containerWidth
+    paddingTop
+    paddingBottom
 `;

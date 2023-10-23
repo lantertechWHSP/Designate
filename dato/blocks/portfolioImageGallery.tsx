@@ -6,4 +6,6 @@ export const portfolioImageGalleryRecord:string = `
     images {
         ${imageAttrs()}
     }
+    paddingTop
+    paddingBottom
 `;
