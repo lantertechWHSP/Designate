@@ -1,4 +1,5 @@
 import { IImage } from '~/interfaces/util/image';
+import { IStructuredText } from '~/interfaces/util/structuredText';
 
 export interface IPerson {
     id?:string;
@@ -6,6 +7,6 @@ export interface IPerson {
     definition?:string;
     companyPosition?:string;
     qualifications?:string;
-    description?:string;
+    description?:IStructuredText;
     image:IImage;
 }

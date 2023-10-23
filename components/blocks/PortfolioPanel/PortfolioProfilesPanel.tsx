@@ -14,7 +14,7 @@ interface IPeoplePanelBlock extends IBlock, ChakraProps {
 const PortfolioProfilesPanelBlock:any = ({ contain, people, paddingTop, paddingBottom }:IPeoplePanelBlock) : ReactNode => {
     return <ContentBlock contain={contain} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         {
-            (Array.isArray(people) && people.length > 0) && <SimpleGrid columns={[1, , 3]} spacing={[0, 8]}>
+            (Array.isArray(people) && people.length > 0) && <SimpleGrid columns={[1, , 3]} spacing={[0, ,8]}>
                 {
                     people.map((person:IPerson, index:number) => {
                         return <Box key={index}>

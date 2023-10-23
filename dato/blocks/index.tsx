@@ -51,6 +51,9 @@ import { dividendHistoryTableRecord } from '~/dato/blocks/dividendHistoryTable';
 import { dividendLatestTableRecord } from '~/dato/blocks/dividendLatestTable';
 import { dividendGrowthChartRecord } from '~/dato/blocks/dividendGrowthChart';
 
+// Investor Center/Manage Shareholdings
+import { computershareContactPanelRecord } from "~/dato/blocks/computershareContactPanel";
+
 // People and Governance
 import { profilesPanelRecord } from '~/dato/blocks/profilesPanel';
 
@@ -170,6 +173,10 @@ export const blocks:string = `
         }
         ... on DividendGrowthChartRecord {
             ${dividendGrowthChartRecord}
+        }
+
+        ... on ComputershareContactPanelRecord {
+            ${computershareContactPanelRecord}
         }
     }
 `;

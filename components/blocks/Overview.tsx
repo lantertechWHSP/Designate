@@ -5,10 +5,11 @@ import StructuredContent from "~/components/StructuredContent";
 import ContentBlock from '~/components/blocks/Content';
 import { Heading, Box } from '@chakra-ui/react';
 import { Column, ColumnWidth, Row } from '~/components/elements/grid/grid';
+import { IStructuredText } from '~/interfaces/util/structuredText';
 
 interface IOverviewBlock extends IBlock, ChakraProps {
-    subtitle?:any;
-    description?:any;
+    subtitle?:IStructuredText;
+    description?:IStructuredText;
 }
 
 const OverviewBlock:any = ({ subtitle, description, paddingTop, paddingBottom }:IOverviewBlock) : ReactNode => {

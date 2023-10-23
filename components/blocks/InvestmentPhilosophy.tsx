@@ -24,7 +24,7 @@ const InvestmentPhilosophyBlock:any = ({ title, items, paddingTop, paddingBottom
             </Heading>
         }
         {
-            (Array.isArray(items) && items.length > 0) && <SimpleGrid columns={[1, ,2, items.length > 4 ? 4 : items.length]} spacing={[4]}>
+            (Array.isArray(items) && items.length > 0) && <SimpleGrid columns={[1, ,2, items.length > 4 ? 4 : items.length]} spacing={[0, 0, 8, 8]}>
                 {
                     items.map((item:InvestmentPhilosophyItem, index:number) => {
                         return <Box key={index}>

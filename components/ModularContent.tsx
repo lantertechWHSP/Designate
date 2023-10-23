@@ -57,6 +57,8 @@ import DividendHistoryTableBlock from '~/components/blocks/DividendHistoryTable'
 import DividendLatestTableBlock from '~/components/blocks/DividendLatestTable';
 import DividendGrowthChartBlock from '~/components/blocks/DividendGrowthChart';
 
+import ComputershareContactPanelBlock from '~/components/blocks/ComputershareContactPanel';
+
 const blocks:any = {
     // General
     TextBlock,
@@ -101,9 +103,6 @@ const blocks:any = {
     // About/Sustainability
     SustainabilityPanelBlock,
 
-    // People and Governance
-    ProfilesPanelBlock,
-
     // Investor Center/ ASX Announcements
     AsxNewsletterFormPanelBlock,
 
@@ -115,7 +114,13 @@ const blocks:any = {
     // Investor Center/Dividends
     DividendHistoryTableBlock,
     DividendLatestTableBlock,
-    DividendGrowthChartBlock
+    DividendGrowthChartBlock,
+
+    // Investor Center/Share Registry
+    ComputershareContactPanelBlock,
+
+    // People and Governance
+    ProfilesPanelBlock,
 };
 
 export const getBlock:any = (name:any) : any => {

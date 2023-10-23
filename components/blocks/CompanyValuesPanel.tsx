@@ -21,7 +21,7 @@ const CompanyValuesPanelBlock:any = ({ items, paddingTop, paddingBottom, ...prop
                 <Heading as="h3" variant="h3" mb={4}>
                     Our People and Values
                 </Heading>
-                <SimpleGrid background="ghostWhite" columns={[1, ,items.length > 4 ? 4 : items.length]} spacing={[4]}>
+                <SimpleGrid background="ghostWhite" columns={[1, ,items.length > 4 ? 4 : items.length]} spacing={[0, ,8]}>
                     {
                         items.map((item:ICompanyValue, index:number) => {
                             return <Flex direction="column" key={index} alignItems="center" py={8} px={4}>
