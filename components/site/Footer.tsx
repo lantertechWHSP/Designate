@@ -14,7 +14,7 @@ const Footer:any = ({ menu, address, email, phone, fax, linkedin, youtube, copyr
     return <Box as="footer" background="black2" color="white" py={[6, 8, 12]}>
         <Container>
             <Row>
-                <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half]} mb={[4, ,0]}>
+                <Column width={[ColumnWidth.Full, ColumnWidth.Half]} mb={[4, ,0]}>
                     <Flex direction="column">
                         {
                             (Array.isArray(menu) && menu.length > 0) && menu.map((item:IMenuLink, index:number) => {
@@ -32,53 +32,57 @@ const Footer:any = ({ menu, address, email, phone, fax, linkedin, youtube, copyr
                         }
                     </Flex>
                 </Column>
-                <Column width={[ColumnWidth.Full, ,ColumnWidth.Half, ColumnWidth.OneQuarter]}>
-                    {
-                        phone && <Box>
-                            <Link href={`tel:${phone}`} variant="siteFooter">
-                                {phone}
-                            </Link>
-                        </Box>
-                    }
-                    {
-                        fax && <Box>
-                            <Link href={`tel:${fax}`} variant="siteFooter">
-                                {fax}
-                            </Link>
-                        </Box>
-                    }
-                    {
-                        email && <Box>
-                            <Link href={`mailto:${email}`} variant="siteFooter">
-                                {email}
-                            </Link>
-                        </Box>
-                    }
-                </Column>
-                <Column width={[ColumnWidth.Full, ,ColumnWidth.Half, ColumnWidth.OneQuarter]}>
-                    {
-                        address && <Box mb={[4, ,8]}>
-                            {address}
-                        </Box>
-                    }
-                    {
-                        (linkedin || youtube) && <Flex w={['100%', '250px']} mx={-2}>
+                <Column width={[ColumnWidth.Full, ColumnWidth.Half]}>
+                    <Row>
+                        <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half]} mb={[4, , ,0]} order={[2, , ,1]}>
                             {
-                                linkedin && <Box px={2}>
-                                    <Link href={linkedin} variant="siteFooter">
-                                        Linkedin
+                                phone && <Box>
+                                    <Link href={`tel:${phone}`} variant="siteFooter">
+                                        {phone}
                                     </Link>
                                 </Box>
                             }
                             {
-                                youtube && <Box px={2}>
-                                    <Link href={youtube} variant="siteFooter">
-                                        YouTube
+                                fax && <Box>
+                                    <Link href={`tel:${fax}`} variant="siteFooter">
+                                        {fax}
                                     </Link>
                                 </Box>
                             }
-                        </Flex>
-                    }
+                            {
+                                email && <Box>
+                                    <Link href={`mailto:${email}`} variant="siteFooter">
+                                        {email}
+                                    </Link>
+                                </Box>
+                            }
+                        </Column>
+                        <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half]} order={[1, , ,2]}>
+                            {
+                                address && <Box mb={[4, ,8]}>
+                                    {address}
+                                </Box>
+                            }
+                            {
+                                (linkedin || youtube) && <Flex w={['100%', '250px']} mx={-2} display={['none', , ,'flex']}>
+                                    {
+                                        linkedin && <Box px={2}>
+                                            <Link href={linkedin} variant="siteFooter">
+                                                Linkedin
+                                            </Link>
+                                        </Box>
+                                    }
+                                    {
+                                        youtube && <Box px={2}>
+                                            <Link href={youtube} variant="siteFooter">
+                                                YouTube
+                                            </Link>
+                                        </Box>
+                                    }
+                                </Flex>
+                            }
+                        </Column>
+                    </Row>
                 </Column>
             </Row>
             <Row  mt={[8, ,20]}>
