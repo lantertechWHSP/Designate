@@ -1,12 +1,11 @@
 import { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
-import { ChakraProps } from '@chakra-ui/system';
 import ContentBlock from '~/components/blocks/Content';
 import { SimpleGrid, Box, Heading, Text } from '@chakra-ui/react';
 import { IPerson } from '~/interfaces/models/person';
 import { Image } from '~/components/elements/image';
 
-interface IPeoplePanelBlock extends IBlock, ChakraProps {
+interface IPeoplePanelBlock extends IBlock {
     contain?:boolean;
     people:IPerson[];
 }

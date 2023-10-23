@@ -1,11 +1,10 @@
 import { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
-import { ChakraProps } from '@chakra-ui/system';
 import ContentBlock from '~/components/blocks/Content';
 import { ISVGImage } from '~/interfaces/util/image';
 import { Heading, Box, SimpleGrid, Flex } from '@chakra-ui/react';
 
-interface ICompanyValuesPanelBlock extends IBlock, ChakraProps {
+interface ICompanyValuesPanelBlock extends IBlock {
     items?:ICompanyValue[];
 }
 

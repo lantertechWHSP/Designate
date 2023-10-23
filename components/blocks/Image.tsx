@@ -1,11 +1,10 @@
 import { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
-import { ChakraProps } from '@chakra-ui/system';
 import ContentBlock from '~/components/blocks/Content';
 import { Image as DatoImage } from 'react-datocms';
 import { IImage } from '~/interfaces/util/image';
 
-interface IImageBlock extends IBlock, ChakraProps {
+interface IImageBlock extends IBlock {
     image:IImage;
 }
 

@@ -1,12 +1,11 @@
 import React, { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
-import { ChakraProps } from '@chakra-ui/system';
 import ContentBlock from "~/components/blocks/Content";
 import SharePriceOverview from '~/components/blocks/SharePricePanel/SharePriceOverview';
 import SharePriceChart from '~/components/blocks/SharePricePanel/SharePriceChart';
 import { Column, ColumnWidth, Row } from '~/components/elements/grid/grid';
 
-interface ISharePricePanelBlock extends IBlock, ChakraProps {
+interface ISharePricePanelBlock extends IBlock {
 }
 
 const SharePricePanelBlock:any = ({ paddingTop, paddingBottom }:ISharePricePanelBlock) : ReactNode => {

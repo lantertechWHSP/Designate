@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
-import { ChakraProps } from '@chakra-ui/system';
 import { Box, Container, Flex, Heading } from '@chakra-ui/react';
 import { AspectRatio } from '@chakra-ui/react';
 import useDimensions from 'react-cool-dimensions';
@@ -8,7 +7,7 @@ import { IVideo } from '~/interfaces/util/video';
 import { IImage } from '~/interfaces/util/image';
 import HeroVectorEffect from '~/components/elements/shapes/HeroVectorEffect';
 
-interface IHeroBlock extends IBlock, ChakraProps {
+interface IHeroBlock extends IBlock {
     title?:string;
     video?:IVideo;
     image?:IImage;

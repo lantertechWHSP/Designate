@@ -1,12 +1,11 @@
 import React, {ReactNode} from 'react';
 import { IBlock } from '~/interfaces/util/block';
-import { ChakraProps } from '@chakra-ui/system';
 import ContentBlock from '~/components/blocks/Content';
 import { YourIR } from 'yourir-next';
 import { Column, Row, ColumnWidth } from '~/components/elements/grid/grid';
 import { Box, Heading, Input, Button, Flex } from '@chakra-ui/react';
 
-interface IAsxNewsletterFormPanelBlock extends IBlock, ChakraProps {
+interface IAsxNewsletterFormPanelBlock extends IBlock {
 }
 
 const AsxNewsletterFormPanelBlock:any = ({}:IAsxNewsletterFormPanelBlock) : ReactNode => {

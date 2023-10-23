@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
-import { ChakraProps } from '@chakra-ui/system';
 import ContentBlock from '~/components/blocks/Content';
 import { Row, Column, ColumnWidth } from "~/components/elements/grid/grid";
 import { Heading, Box, Text } from '@chakra-ui/react';
@@ -10,17 +9,16 @@ import { Link } from '~/components/elements/link';
 import { Image } from '~/components/elements/image';
 import { IImage } from '~/interfaces/util/image';
 
-interface IComputershareContactPanelBlock extends IBlock, ChakraProps {
+interface IComputershareContactPanelBlock extends IBlock {
     title?:string;
     description?:IStructuredText;
     image?:IImage;
     onlineDescription?:IStructuredText;
-    address?:IStructuredText;
     website?:string;
     contactLocal?:string;
     contactInternational?:string;
     email?:string;
-    address?:string;
+    address?:IStructuredText;
 }
 
 const ComputershareContactPanelBlock:any = ({ title, description, image, onlineDescription, website, contactLocal, contactInternational, email, address }:IComputershareContactPanelBlock) : ReactNode => {
@@ -115,9 +113,9 @@ const ComputershareContactPanelBlock:any = ({ title, description, image, onlineD
                         <Heading as="h3" variant="sectionSubheading" mb={4}>
                             Address
                         </Heading>
-                         <Box mb={4}>
-                             <StructuredContent content={address} />
-                         </Box>
+                        <Box mb={4}>
+                            <StructuredContent content={address} />
+                        </Box>
                     </Box>
                 }
 

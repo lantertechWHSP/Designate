@@ -1,10 +1,9 @@
 import { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
-import { ChakraProps } from '@chakra-ui/system';
 import ContentBlock from '~/components/blocks/Content';
 import { Box, Heading } from '@chakra-ui/react';
 
-interface IOverviewBlock extends IBlock, ChakraProps {
+interface IOverviewBlock extends IBlock {
 }
 
 const SustainabilityPanelBlock:any = ({  paddingTop, paddingBottom }:IOverviewBlock) : ReactNode => {

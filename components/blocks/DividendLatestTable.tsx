@@ -1,10 +1,9 @@
 import { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
-import { ChakraProps } from '@chakra-ui/system';
 import ContentBlock from '~/components/blocks/Content';
 import { ITable } from '~/interfaces/util/table';
 import { Heading, Box, TableContainer, Table, Thead, Tr, Th, Tbody, Td, Text } from '@chakra-ui/react';
-import {Row, Column, ColumnWidth} from "~/components/elements/grid/grid";
+import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
 
 interface ITableRow {
     Dividend:string;
@@ -14,7 +13,7 @@ interface ITableRow {
     PaymentDate:string;
 }
 
-interface IDividendLatestTableBlock extends IBlock, ChakraProps {
+interface IDividendLatestTableBlock extends IBlock {
     description:string;
     table:ITable<ITableRow>;
 }

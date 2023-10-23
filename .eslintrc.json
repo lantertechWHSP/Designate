@@ -33,6 +33,7 @@
     "no-inferrable-types": "off",
     "no-irregular-whitespace": "off",
     "no-sparse-arrays": "off",
+    "no-empty-pattern": "off",
     "react-hooks/exhaustive-deps": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/ban-types": "off",

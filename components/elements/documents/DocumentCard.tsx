@@ -1,11 +1,10 @@
 import { ReactNode } from 'react';
 import { IDocument } from "~/interfaces/models/document";
 import { Flex, Heading, Text, Link } from '@chakra-ui/react';
-import { ChakraProps } from '@chakra-ui/system';
 import { DateTime } from 'luxon';
 import { SectionLink } from "~/components/elements/sectionLink";
 
-interface IDocumentCard extends IDocument, ChakraProps {
+interface IDocumentCard extends IDocument {
 }
 
 const DocumentCard:any = ({ title, date, document }:IDocumentCard) : ReactNode => {

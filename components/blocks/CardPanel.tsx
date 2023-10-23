@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
-import { ChakraProps } from '@chakra-ui/system';
 import ContentBlock from '~/components/blocks/Content';
 import { ILink } from '~/interfaces/util/link';
 import { Box, Flex, Heading, Text } from '@chakra-ui/react';
@@ -15,7 +14,7 @@ enum ICardPanelAlign {
     Right = 'Right'
 }
 
-interface ICardPanelBlock extends IBlock, ChakraProps {
+interface ICardPanelBlock extends IBlock {
     annotation?:string;
     title?:string;
     description?:string;
@@ -23,8 +22,6 @@ interface ICardPanelBlock extends IBlock, ChakraProps {
     align?:ICardPanelAlign;
     link?:ILink;
     document?:IDocument;
-    paddingTop?:PaddingTop;
-    paddingBottom?:PaddingBottom;
 }
 
 const CardPanelBlock:any = ({ annotation, title, description, image, link, document, align, paddingTop, paddingBottom }:ICardPanelBlock) : ReactNode => {

@@ -42,9 +42,9 @@ const BarChart:any = ({ data }:IBarChart) : ReactNode => {
     const yScale:any = useMemo<any>(() => {
         if(data && data.bars) {
 
-            let max = _maxBy(data.bars, (datum:IData) => {
+            let max:number = _maxBy(data.bars, (datum:IData) => {
                 return datum.value;
-            }).value
+            }).value;
 
             max *= 1.3;
 

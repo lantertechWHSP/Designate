@@ -1,13 +1,12 @@
 import { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
-import { ChakraProps } from '@chakra-ui/system';
 import ContentBlock from '~/components/blocks/Content';
 import EventList from "~/components/elements/events/EventList";
 import { IEvent } from '~/interfaces/models/event';
 import { doQuery, queries } from '~/dato/api';
 import { Heading } from '@chakra-ui/react';
 
-interface IKeyDatesPanelBlock extends IBlock, ChakraProps {
+interface IKeyDatesPanelBlock extends IBlock {
     data: {
         events:IEvent[];
     };

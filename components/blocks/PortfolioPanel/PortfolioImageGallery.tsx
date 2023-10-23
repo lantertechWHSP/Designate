@@ -1,12 +1,11 @@
 import { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
-import { ChakraProps } from '@chakra-ui/system';
 import ContentBlock from '~/components/blocks/Content';
 import { IImage } from '~/interfaces/util/image';
 import { Flex, SimpleGrid } from '@chakra-ui/react';
 import { Image } from '~/components/elements/image';
 
-interface IPortfolioImageGalleryBlock extends IBlock, ChakraProps {
+interface IPortfolioImageGalleryBlock extends IBlock {
     contain?:boolean;
     images:IImage[];
 }

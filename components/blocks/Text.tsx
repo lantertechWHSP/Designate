@@ -1,11 +1,10 @@
 import { ReactNode } from 'react';
-import { ChakraProps } from '@chakra-ui/system';
 import { IBlock } from '~/interfaces/util/block';
 import ContentBlock from '~/components/blocks/Content';
 import StructuredContent from 'components/StructuredContent';
 import { IStructuredText } from '~/interfaces/util/structuredText';
 
-interface ITextBlock extends IBlock, ChakraProps {
+interface ITextBlock extends IBlock {
     content?:IStructuredText;
 }
 

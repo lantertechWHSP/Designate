@@ -1,13 +1,12 @@
 import { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
-import { ChakraProps } from '@chakra-ui/system';
 import ContentBlock from '~/components/blocks/Content';
 import { IPerson } from '~/interfaces/models/person';
 import { Image } from '~/components/elements/image';
 import { Row, Column, ColumnWidth } from "~/components/elements/grid/grid";
 import { Text } from '@chakra-ui/react';
 
-interface IPortfolioQuotePanelBlock extends IBlock, ChakraProps {
+interface IPortfolioQuotePanelBlock extends IBlock {
     contain?:boolean;
     quote:string;
     person:IPerson;

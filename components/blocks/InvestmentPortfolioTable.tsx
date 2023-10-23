@@ -1,6 +1,5 @@
 import { ReactNode, useState } from 'react';
 import { IBlock } from '~/interfaces/util/block';
-import { ChakraProps } from '@chakra-ui/system';
 import ContentBlock from '~/components/blocks/Content';
 import { Box, Heading, Text, TableContainer, Table, Thead, Tr, Th, Tbody, Td, Flex } from '@chakra-ui/react';
 import { sumBy as _sumBy, round as _round } from 'lodash';
@@ -12,7 +11,7 @@ interface ITableRow {
     NetAssetValue:string;
 }
 
-interface InvestmentPortfolioTableBlock extends IBlock, ChakraProps {
+interface InvestmentPortfolioTableBlock extends IBlock {
     table?:ITable<ITableRow>;
     lastUpdated?:any;
 }

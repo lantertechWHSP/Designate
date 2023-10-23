@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 import { Box, Container, ResponsiveValue } from '@chakra-ui/react';
-import { ChakraProps } from '@chakra-ui/system';
 import { Column, ColumnWidth, Row } from "~/components/elements/grid/grid";
 
 export enum ContainerWidth {
@@ -32,23 +31,25 @@ export enum PaddingBottom {
     None = 'None'
 }
 
-interface IContentBlock extends ChakraProps {
-    contain?:boolean;
+interface IContentBlock {
     children?:any;
+    contain?:boolean;
     background?:BackgroundColor|ResponsiveValue<any>|string;
-    textColor?:TextColor|ResponsiveValue<any>|string;
+    color?:TextColor|ResponsiveValue<any>|string;
+    paddingTop?:PaddingTop|ResponsiveValue<any>|string;
+    paddingBottom?:PaddingBottom|ResponsiveValue<any>|string;
     containerWidth?:ContainerWidth;
 }
 
-export const getTextColor = (color:TextColor|ResponsiveValue<any>|string) : TextColor|ResponsiveValue<any>|string => {
+export const getTextColor:any = (color:TextColor|ResponsiveValue<any>|string) : TextColor|ResponsiveValue<any>|string => {
     switch(color) {
         case TextColor.White : return 'white';
         case TextColor.DarkBrown : return 'darkBrown';
         default : return color;
     }
-}
+};
 
-export const getBackgroundColor = (background:BackgroundColor|ResponsiveValue<any>|string) : BackgroundColor|ResponsiveValue<any>|string => {
+export const getBackgroundColor:any = (background:BackgroundColor|ResponsiveValue<any>|string) : BackgroundColor|ResponsiveValue<any>|string => {
     switch(background) {
         case BackgroundColor.White : return 'white';
         case BackgroundColor.BrownGrey : return 'brownGrey';
@@ -56,20 +57,20 @@ export const getBackgroundColor = (background:BackgroundColor|ResponsiveValue<an
         case BackgroundColor.DarkBrown : return 'darkBrown';
         default : return background;
     }
-}
+};
 
 const ContentBlock:any = ({
-                              contain = true,
-                              color = '',
-                              background = '',
-                              containerWidth = ContainerWidth.Default,
-                              children,
-                              paddingTop = '',
-                              paddingBottom = '',
-                              ...props }:IContentBlock) : ReactNode => {
+    contain = true,
+    color = '',
+    background = '',
+    containerWidth = ContainerWidth.Default,
+    children,
+    paddingTop = '',
+    paddingBottom = '',
+    ...props }:IContentBlock) : ReactNode => {
     let columnWidths:ColumnWidth[];
-    let selectedBackground:BackgroundColor|ResponsiveValue<any>|string = getBackgroundColor(background);
-    let selectedColor:TextColor|ResponsiveValue<any>|string = getTextColor(color);
+    const selectedBackground:BackgroundColor|ResponsiveValue<any>|string = getBackgroundColor(background);
+    const selectedColor:TextColor|ResponsiveValue<any>|string = getTextColor(color);
     let selectedPaddingTop:PaddingTop|ResponsiveValue<any>|string;
     let selectedPaddingBottom:PaddingTop|ResponsiveValue<any>|string;
 

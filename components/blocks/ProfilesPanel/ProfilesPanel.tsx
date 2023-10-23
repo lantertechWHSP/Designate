@@ -1,6 +1,5 @@
 import React, { ReactNode, useState } from 'react';
 import { IBlock } from '~/interfaces/util/block';
-import { ChakraProps } from '@chakra-ui/system';
 import StructuredContent from '~/components/StructuredContent';
 import { Image } from "~/components/elements/image";
 import { Icon, Icons } from "~/components/elements/icon";
@@ -9,7 +8,7 @@ import { IPerson } from '~/interfaces/models/person';
 import ProfileCard from '~/components/blocks/ProfilesPanel/ProfileCard';
 import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
 
-interface IProfilesPanelBlock extends IBlock, ChakraProps {
+interface IProfilesPanelBlock extends IBlock {
     people:IPerson[];
 }
 

@@ -1,9 +1,8 @@
 import { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
-import { ChakraProps } from '@chakra-ui/system';
 import ContentBlock from '~/components/blocks/Content';
 
-interface IAudioBlock extends IBlock, ChakraProps {
+interface IAudioBlock extends IBlock {
     trackId?:string;
 }
 

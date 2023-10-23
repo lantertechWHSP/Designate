@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
-import { ChakraProps } from '@chakra-ui/system';
 import ContentBlock from '~/components/blocks/Content';
 import { Box, Heading, Text, Flex, Badge, Divider, Link as ChakraLink } from '@chakra-ui/react';
 import { Row, Column, ColumnWidth } from "~/components/elements/grid/grid";
@@ -9,7 +8,7 @@ import { Icon, Icons } from '~/components/elements/icon';
 import { SectionLink, SectionLinkButton } from '~/components/elements/sectionLink';
 
 
-interface IInvestorPanelBlock extends IBlock, ChakraProps {
+interface IInvestorPanelBlock extends IBlock {
     displayHeadline?:boolean;
 }
 

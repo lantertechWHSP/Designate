@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
-import { ChakraProps } from '@chakra-ui/system';
 import ContentBlock from '~/components/blocks/Content';
 import { Box, Flex, Heading } from '@chakra-ui/react';
 import { gutter } from '~/components/elements/grid/grid';
@@ -8,7 +7,7 @@ import { IImage } from '~/interfaces/util/image';
 import StructuredContent from '~/components/StructuredContent';
 import { IStructuredText } from '~/interfaces/util/structuredText';
 
-interface IContentCardPanelBlock extends IBlock, ChakraProps {
+interface IContentCardPanelBlock extends IBlock {
     title?:string;
     description?:IStructuredText;
     image?:IImage;

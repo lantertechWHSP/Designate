@@ -1,6 +1,5 @@
 import { ReactNode, useState } from 'react';
 import { IBlock } from '~/interfaces/util/block';
-import { ChakraProps } from '@chakra-ui/system';
 import ContentBlock from '~/components/blocks/Content';
 import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
@@ -12,7 +11,7 @@ interface ICarouselItem {
     image:IImage;
 }
 
-interface ICarouselBlock extends IBlock, ChakraProps {
+interface ICarouselBlock extends IBlock {
     items:ICarouselItem[];
 }
 

@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
-import { ChakraProps } from '@chakra-ui/system';
 import ContentBlock from '~/components/blocks/Content';
 import { Box, Heading, Text } from '@chakra-ui/react';
 import { ILink} from '~/interfaces/util/link';
@@ -14,7 +13,7 @@ interface ISeeAlsoItem {
     link:ILink;
 }
 
-interface ISeeAlsoPanelBlock extends IBlock, ChakraProps {
+interface ISeeAlsoPanelBlock extends IBlock {
     title?:string;
     items?:ISeeAlsoItem[];
 }

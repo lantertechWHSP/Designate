@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
-import { ChakraProps } from '@chakra-ui/system';
 import ContentBlock from '~/components/blocks/Content';
 import { ITable } from '~/interfaces/util/table';
 import { TableContainer, Table, Thead, Tr, Th, Tbody, Td, Text } from '@chakra-ui/react';
@@ -13,7 +12,7 @@ interface ITableRow {
     PaymentDate:string;
 }
 
-interface IDividendHistoryTableBlock extends IBlock, ChakraProps {
+interface IDividendHistoryTableBlock extends IBlock {
     table:ITable<ITableRow>;
 }
 

@@ -1,6 +1,5 @@
 import { ReactNode, useState } from 'react';
 import { IBlock } from '~/interfaces/util/block';
-import { ChakraProps } from '@chakra-ui/system';
 import ContentBlock from '~/components/blocks/Content';
 import StackedBarChart from '~/components/elements/charts/stackedBar/StackedBarChart';
 import { ITable} from '~/interfaces/util/table';
@@ -15,7 +14,7 @@ interface ITableRow {
     SpecialDividend:number;
 }
 
-interface IDividendGrowthChartBlock extends IBlock, ChakraProps {
+interface IDividendGrowthChartBlock extends IBlock {
     table:ITable<ITableRow>;
 }
 

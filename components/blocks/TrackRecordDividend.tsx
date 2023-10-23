@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
-import { ChakraProps } from '@chakra-ui/system';
 import ContentBlock from '~/components/blocks/Content';
 import BarChart from '~/components/elements/charts/bar/BarChart';
 import { ITable } from '~/interfaces/util/table';
@@ -11,7 +10,7 @@ interface ITableRow {
     Value:string;
 }
 
-interface ITrackRecordDividendBlock extends IBlock, ChakraProps {
+interface ITrackRecordDividendBlock extends IBlock {
     title?:string;
     table?: ITable<ITableRow>;
 }

@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
-import { ChakraProps } from '@chakra-ui/system';
 import ContentBlock from '~/components/blocks/Content';
 import { Heading, Accordion, AccordionItem, AccordionPanel, AccordionButton } from '@chakra-ui/react';
 import { ModularContent } from '~/components/ModularContent';
@@ -11,7 +10,7 @@ interface IPortfolioPanel {
     content?:any;
 }
 
-interface IPortfolioPanelBlock extends IBlock, ChakraProps {
+interface IPortfolioPanelBlock extends IBlock {
     items:IPortfolioPanel[];
 }
 

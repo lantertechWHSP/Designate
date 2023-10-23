@@ -1,20 +1,18 @@
 import { ReactNode } from 'react';
 import { IEvent } from "~/interfaces/models/event";
-import { Flex, Heading, Text, Box } from '@chakra-ui/react';
-import { ChakraProps } from '@chakra-ui/system';
+import { Flex, Heading, Text } from '@chakra-ui/react';
 import { DateTime } from 'luxon';
 import AddToCalendar from '~/components/elements/events/AddToCalendar';
-import {SectionLink} from "~/components/elements/sectionLink";
 
-interface IEventCard extends IEvent, ChakraProps {
+interface IEventCard extends IEvent {
 }
 
 const EventCard:any = ({ title, allDay, startDate, endDate, details, location }:IEventCard) : ReactNode => {
     return <Flex py={4} direction={['row']}
-                 _hover={{
-                     transition: 'background 0.3s linear',
-                     background: 'lightGrey2Blur'
-                 }}>
+        _hover={{
+            transition: 'background 0.3s linear',
+            background: 'lightGrey2Blur'
+        }}>
         {
             title && <Heading as="h3"
                 flex={1}
@@ -24,17 +22,17 @@ const EventCard:any = ({ title, allDay, startDate, endDate, details, location }:
         }
         {
             startDate && <Text
-            variant="listLabel"
-            textAlign={['right', ,'left']}
-            minWidth={['140px', ,'30%']}
-            maxWidth={['140px', ,'30%']}
-            mb={0} >
+                variant="listLabel"
+                textAlign={['right', ,'left']}
+                minWidth={['140px', ,'30%']}
+                maxWidth={['140px', ,'30%']}
+                mb={0} >
                 {DateTime.fromISO(startDate).toFormat('d/M/yyyy')}
-          </Text>
+            </Text>
         }
         <Flex minWidth={['unset', ,'140px']}
-              justify="flex-end"
-              display={['none', ,'flex']}>
+            justify="flex-end"
+            display={['none', ,'flex']}>
             {
                 <AddToCalendar
                     event={{

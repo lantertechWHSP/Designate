@@ -1,6 +1,5 @@
 import { ReactNode, useState} from 'react';
 import { IBlock } from '~/interfaces/util/block';
-import { ChakraProps } from '@chakra-ui/system';
 import ContentBlock from "~/components/blocks/Content";
 import { AspectRatio, Text } from '@chakra-ui/react';
 import dynamic from 'next/dynamic';
@@ -9,7 +8,7 @@ import { IVideo } from '~/interfaces/util/video';
 
 const ReactPlayer:any = dynamic(() => import("react-player"), { ssr: false });
 
-interface IVideoBlock extends IBlock, ChakraProps {
+interface IVideoBlock extends IBlock {
     title?:string;
     video?:IVideo;
     videoEmbed?:IVideo;

@@ -7,5 +7,5 @@ export const accordionRecord:string = `
         content
     }
     background
-    color
+    textColor
 `;

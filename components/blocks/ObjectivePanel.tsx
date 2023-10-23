@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
-import { ChakraProps } from '@chakra-ui/system';
 import ContentBlock from '~/components/blocks/Content';
 import { SimpleGrid, Box, Heading, Text, Flex } from '@chakra-ui/react';
 
@@ -10,7 +9,7 @@ interface IObjectivePanelItem {
     annotation?:string;
 }
 
-interface IObjectivePanelBlock extends IBlock, ChakraProps {
+interface IObjectivePanelBlock extends IBlock {
     items?:IObjectivePanelItem[];
 }
 

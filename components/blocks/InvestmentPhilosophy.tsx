@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
-import { ChakraProps } from '@chakra-ui/system';
 import ContentBlock from '~/components/blocks/Content';
 import { ISVGImage } from '~/interfaces/util/image';
 import { Heading, Box, SimpleGrid } from '@chakra-ui/react';
@@ -11,7 +10,7 @@ interface InvestmentPhilosophyItem {
     icon?:ISVGImage;
 }
 
-interface IInvestmentPhilosophyBlock extends IBlock, ChakraProps {
+interface IInvestmentPhilosophyBlock extends IBlock {
     title?:string;
     items:InvestmentPhilosophyItem[];
 }

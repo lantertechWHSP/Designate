@@ -5,7 +5,7 @@ import { Link } from '~/components/elements/link';
 import { Image } from '~/components/elements/image';
 import {SectionLink} from "~/components/elements/sectionLink";
 
-interface IPostCard extends IPost, ChakraProps {
+interface IPostCard extends IPost {
 }
 
 const PostCard:any = ({ title, image, publishDate, slug }:IPostCard) : any => {

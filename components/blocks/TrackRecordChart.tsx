@@ -1,6 +1,5 @@
 import { ReactNode, useState, useEffect } from 'react';
 import { IBlock } from '~/interfaces/util/block';
-import { ChakraProps } from '@chakra-ui/system';
 import ContentBlock from '~/components/blocks/Content';
 import LineChart from '~/components/elements/charts/line/LineChart';
 import { DateTime } from 'luxon';
@@ -10,7 +9,7 @@ import { IFilter } from '~/interfaces/util/filter';
 import { ITable } from '~/interfaces/util/table';
 import { colors } from '~/components/elements/charts/colors';
 
-interface ITrackRecordChartBlock extends IBlock, ChakraProps {
+interface ITrackRecordChartBlock extends IBlock {
     australianSharesTable:ITable<any>;
     internationalSharesTable:ITable<any>;
     australianListedTable:ITable<any>;
