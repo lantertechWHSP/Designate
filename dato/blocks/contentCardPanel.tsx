@@ -13,4 +13,6 @@ export const contentCardPanel:string = `
         ${imageAttrs(700, 700)}
     }
     containerWidth
+    paddingTop
+    paddingBottom
 `;

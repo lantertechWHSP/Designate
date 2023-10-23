@@ -40,6 +40,24 @@ interface IContentBlock extends ChakraProps {
     containerWidth?:ContainerWidth;
 }
 
+export const getTextColor = (color:TextColor|ResponsiveValue<any>|string) : TextColor|ResponsiveValue<any>|string => {
+    switch(color) {
+        case TextColor.White : return 'white';
+        case TextColor.DarkBrown : return 'darkBrown';
+        default : return color;
+    }
+}
+
+export const getBackgroundColor = (background:BackgroundColor|ResponsiveValue<any>|string) : BackgroundColor|ResponsiveValue<any>|string => {
+    switch(background) {
+        case BackgroundColor.White : return 'white';
+        case BackgroundColor.BrownGrey : return 'brownGrey';
+        case BackgroundColor.GhostWhite : return 'ghostWhite';
+        case BackgroundColor.DarkBrown : return 'darkBrown';
+        default : return background;
+    }
+}
+
 const ContentBlock:any = ({
                               contain = true,
                               color = '',
@@ -50,8 +68,8 @@ const ContentBlock:any = ({
                               paddingBottom = '',
                               ...props }:IContentBlock) : ReactNode => {
     let columnWidths:ColumnWidth[];
-    let selectedBackground:BackgroundColor|ResponsiveValue<any>|string;
-    let selectedColor:TextColor|ResponsiveValue<any>|string;
+    let selectedBackground:BackgroundColor|ResponsiveValue<any>|string = getBackgroundColor(background);
+    let selectedColor:TextColor|ResponsiveValue<any>|string = getTextColor(color);
     let selectedPaddingTop:PaddingTop|ResponsiveValue<any>|string;
     let selectedPaddingBottom:PaddingTop|ResponsiveValue<any>|string;
 
@@ -60,20 +78,6 @@ const ContentBlock:any = ({
         case ContainerWidth.Narrow : columnWidths = [ColumnWidth.Full, ,ColumnWidth.TenTwelfths, ColumnWidth.EightTwelfths]; break;
         case ContainerWidth.Full : columnWidths = [ColumnWidth.Full]; break;
         default : columnWidths = [ColumnWidth.Full];
-    }
-
-    switch(background) {
-        case BackgroundColor.White : selectedBackground = 'white'; break;
-        case BackgroundColor.BrownGrey : selectedBackground = 'brownGrey'; break;
-        case BackgroundColor.GhostWhite : selectedBackground = 'ghostWhite'; break;
-        case BackgroundColor.DarkBrown : selectedBackground = 'darkBrown'; break;
-        default : selectedBackground = background;
-    }
-
-    switch(color) {
-        case TextColor.DarkBrown : selectedColor = 'darkBrown'; break;
-        case TextColor.White : selectedColor = 'white'; break;
-        default : selectedColor = color;
     }
 
     switch(paddingTop) {

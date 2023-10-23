@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
 import { ChakraProps } from '@chakra-ui/system';
-import ContentBlock from '~/components/blocks/Content';
+import ContentBlock, {getTextColor} from '~/components/blocks/Content';
 import { Heading, Box, Accordion, AccordionItem, AccordionPanel, AccordionButton } from '@chakra-ui/react';
 
 interface IAccordionBlock extends IBlock, ChakraProps {
@@ -15,10 +15,12 @@ interface IAccordionItem {
 }
 
 const AccordionBlock:any = ({ title, background, color, items }:IAccordionBlock) : ReactNode => {
+    const selectedColor:any = getTextColor(color);
+
     return <ContentBlock background={background} color={color} py={8}>
         {
             title && <Box mb={8}>
-                <Heading as="h2" variant="sectionHeading">
+                <Heading as="h2" variant="sectionHeading" color={selectedColor}>
                     {title}
                 </Heading>
             </Box>
@@ -32,7 +34,7 @@ const AccordionBlock:any = ({ title, background, color, items }:IAccordionBlock)
                                 borderTop="1px solid"
                                 alignItems="flex-start"
                                 textAlign="left"
-                                borderColor="white">
+                                borderColor={getTextColor(selectedColor)}>
                                 <Heading as="h3"
                                     variant="h4"
                                     fontSize={['21px']}

@@ -39,55 +39,57 @@ export const ProfilesPanelBlock:any = ({ people }:IProfilesPanelBlock) : ReactNo
                     })
                 }
             </SimpleGrid>
-            <Modal isOpen={modalOpen} size="full"  onClose={() => setModalOpen(false)}>
-                <ModalOverlay />
-                <ModalContent minWidth="100vw" minHeight="100vh" background="brownGrey">
-                    <Box my={8}>
-                        <Container>
-                            <Row>
-                                <Column width={[ColumnWidth.None, ,ColumnWidth.OneThird]}>
-                                    <Image image={activePerson?.image} ratio={[1 / 1]} display={['none', , 'block']} />
-                                </Column>
-                                <Column  width={[ColumnWidth.Full, ,ColumnWidth.TwoThirds]}>
-                                    {
-                                        (activePerson?.name || activePerson?.companyPosition || activePerson?.qualifications) && <Box minHeight="90px">
-                                            {
-                                                activePerson?.name && <Heading as="h2" fontWeight={500} fontSize={['21px']} lineHeight={['26px']}>
-                                                    {activePerson.name}
-                                                </Heading>
-                                            }
-                                            {
-                                                activePerson?.companyPosition && <Heading as="h3" fontSize={['19px']}>
-                                                    {activePerson.companyPosition}
-                                                </Heading>
-                                            }
-                                            {
-                                                activePerson?.qualifications && <Text color="darkBrownBlur" m={0}>
-                                                    {activePerson?.qualifications}
-                                                </Text>
-                                            }
-                                        </Box>
-                                    }
-                                    <Divider borderColor="darkBrownBlur" my={4} />
-                                    {
-                                        <Box maxWidth="400px" display={['block', , 'none']}>
-                                            <Image image={activePerson?.image} ratio={[1 / 1]} mb={8} />
-                                        </Box>
-                                    }
-                                    {
-                                        activePerson?.description && <Box>
-                                            <StructuredContent content={activePerson?.description} />
-                                        </Box>
-                                    }
-                                </Column>
-                            </Row>
-                            <Button pos="absolute" top={8} right={8} onClick={() => setModalOpen(false)} borderRadius="50%" border="2px solid" borderColor="darkBrownBlur" background="transparent" w="50px" h="50px">
-                                <Icon icon={Icons.Cross} w={16} h={16} />
-                            </Button>
-                        </Container>
-                    </Box>
-                </ModalContent>
-            </Modal>
+            {
+                <Modal isOpen={modalOpen} size="full"  onClose={() => setModalOpen(false)}>
+                    <ModalOverlay />
+                    <ModalContent minWidth="100vw" minHeight="100vh" background="brownGrey">
+                        <Box my={8}>
+                            <Container>
+                                <Row>
+                                    <Column width={[ColumnWidth.None, ,ColumnWidth.OneThird]}>
+                                        <Image image={activePerson?.image} ratio={[1 / 1]} display={['none', , 'block']} />
+                                    </Column>
+                                    <Column  width={[ColumnWidth.Full, ,ColumnWidth.TwoThirds]}>
+                                        {
+                                            (activePerson?.name || activePerson?.companyPosition || activePerson?.qualifications) && <Box minHeight="50px">
+                                                {
+                                                    activePerson?.name && <Heading as="h2" fontWeight={500} fontSize={['21px']} lineHeight={['26px']}>
+                                                        {activePerson.name}
+                                                    </Heading>
+                                                }
+                                                {
+                                                    activePerson?.companyPosition && <Heading as="h3" fontSize={['19px']}>
+                                                        {activePerson.companyPosition}
+                                                    </Heading>
+                                                }
+                                                {
+                                                    activePerson?.qualifications && <Text color="darkBrownBlur" m={0}>
+                                                        {activePerson?.qualifications}
+                                                    </Text>
+                                                }
+                                            </Box>
+                                        }
+                                        <Divider borderColor="darkBrownBlur" my={4} />
+                                        {
+                                            <Box maxWidth="400px" display={['block', , 'none']}>
+                                                <Image image={activePerson?.image} ratio={[1 / 1]} mb={8} />
+                                            </Box>
+                                        }
+                                        {
+                                            activePerson?.description && <Box>
+                                                <StructuredContent content={activePerson?.description} />
+                                            </Box>
+                                        }
+                                    </Column>
+                                </Row>
+                                <Button pos="absolute" top={8} right={8} onClick={() => setModalOpen(false)} borderRadius="50%" border="2px solid" borderColor="darkBrownBlur" background="transparent" w="50px" h="50px">
+                                    <Icon icon={Icons.Cross} w={16} h={16} />
+                                </Button>
+                            </Container>
+                        </Box>
+                    </ModalContent>
+                </Modal>
+            }
         </Container>
     </Box>;
 };

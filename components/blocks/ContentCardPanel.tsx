@@ -13,8 +13,8 @@ interface IContentCardPanelBlock extends IBlock, ChakraProps {
     image?:IImage;
 }
 
-const ContentCardPanel:any = ({ title, description, image, containerWidth }:IContentCardPanelBlock) : ReactNode => {
-    return <ContentBlock containerWidth={containerWidth} background="ghostWhite">
+const ContentCardPanel:any = ({ title, description, image, containerWidth, paddingTop, paddingBottom }:IContentCardPanelBlock) : ReactNode => {
+    return <ContentBlock background="ghostWhite" containerWidth={containerWidth} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         <Flex direction={['column', ,'row']}>
             <Flex width={['100%', ,'50%']} background="white" direction="column" p={[6, ,gutter * 2]}>
                 {

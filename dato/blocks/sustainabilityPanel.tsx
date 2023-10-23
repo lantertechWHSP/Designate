@@ -1,4 +1,4 @@
-export const keyDatesPanelRecord:string = `
+export const sustainabilityPanelRecord:string = `
     __typename
     id
     paddingTop

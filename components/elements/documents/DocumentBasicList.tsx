@@ -32,7 +32,7 @@ const DocumentBasicList:any = ({ title, latestDocuments }:IDocumentBasicList) : 
         setDocumentBundles(newSortedDocumentBundles.reverse());
     }, [documents]);
 
-    return <Box bg="lightGrey3" py={12}>
+    return <Box bg="lightGrey3" py={[6, 8, 12]}>
         <Container>
             {
                 title && <Heading as="h2" variant="sectionSubheading" mb={8}>
@@ -43,7 +43,7 @@ const DocumentBasicList:any = ({ title, latestDocuments }:IDocumentBasicList) : 
                 (Array.isArray(documents) && documents.length > 0) && <Box>
                     {
                         documentBundles.map((documentBundle:IDocumentBundle, index:number) => {
-                            return <Box key={index} pb={8}>
+                            return <Box key={index} pb={index === documentBundles.length - 1 ? 0 : 4}>
                                 <Heading as="h3" fontSize={['24px']} lineHeight={['24px']} fontWeight={600} py={2} mb={4}>{documentBundle.title}</Heading>
                                 {
                                     (Array.isArray(documentBundle.documents) && documentBundle.documents.length > 0) && <>

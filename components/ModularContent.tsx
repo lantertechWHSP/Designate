@@ -38,6 +38,9 @@ import PortfolioProfilesPanelBlock from '~/components/blocks/PortfolioPanel/Port
 import PortfolioQuotePanelBlock from '~/components/blocks/PortfolioPanel/PortfolioQuotePanel';
 import PortfolioImageGalleryBlock from '~/components/blocks/PortfolioPanel/PortfolioImageGallery';
 
+// About/Sustainability
+import SustainabilityPanelBlock from '~/components/blocks/SustainabilityPanel';
+
 // People and Governance
 import ProfilesPanelBlock from '~/components/blocks/ProfilesPanel/ProfilesPanel';
 
@@ -94,6 +97,9 @@ const blocks:any = {
     PortfolioProfilesPanelBlock,
     PortfolioQuotePanelBlock,
     PortfolioImageGalleryBlock,
+
+    // About/Sustainability
+    SustainabilityPanelBlock,
 
     // People and Governance
     ProfilesPanelBlock,
