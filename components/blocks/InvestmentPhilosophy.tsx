@@ -1,6 +1,7 @@
-import ContentBlock from '~/components/blocks/Content';
 import { ReactNode } from 'react';
+import { IBlock } from '~/interfaces/util/block';
 import { ChakraProps } from '@chakra-ui/system';
+import ContentBlock from '~/components/blocks/Content';
 import { ISVGImage } from '~/interfaces/util/image';
 import { Heading, Box, SimpleGrid } from '@chakra-ui/react';
 
@@ -10,13 +11,13 @@ interface InvestmentPhilosophyItem {
     icon?:ISVGImage;
 }
 
-interface IInvestmentPhilosophyBlock extends ChakraProps {
+interface IInvestmentPhilosophyBlock extends IBlock, ChakraProps {
     title?:string;
     items:InvestmentPhilosophyItem[];
 }
 
 const InvestmentPhilosophyBlock:any = ({ title, items }:IInvestmentPhilosophyBlock) : ReactNode => {
-    return <ContentBlock background="ghostWhite"  py={8}>
+    return <ContentBlock background="ghostWhite">
         {
             title && <Heading as="h2" variant="sectionHeading" mb={8}>
                 {title}

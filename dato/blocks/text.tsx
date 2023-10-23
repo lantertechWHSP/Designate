@@ -23,4 +23,6 @@ export const textRecord:string = `
     }
     containerWidth
     background
+    paddingTop
+    paddingBottom
 `;

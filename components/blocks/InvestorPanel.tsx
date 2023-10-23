@@ -1,13 +1,15 @@
 import { ReactNode } from 'react';
+import { IBlock } from '~/interfaces/util/block';
+import { ChakraProps } from '@chakra-ui/system';
+import ContentBlock from '~/components/blocks/Content';
 import { Box, Heading, Text, Flex, Badge, Divider, Link as ChakraLink } from '@chakra-ui/react';
-import ContentBlock, { BackgroundColor } from '~/components/blocks/Content';
+import { Row, Column, ColumnWidth } from "~/components/elements/grid/grid";
 import { YourIR } from 'yourir-next';
 import { Icon, Icons } from '~/components/elements/icon';
 import { SectionLink, SectionLinkButton } from '~/components/elements/sectionLink';
-import { Row, Column, ColumnWidth } from "~/components/elements/grid/grid";
 
-interface IInvestorPanelBlock {
-    background?:BackgroundColor;
+
+interface IInvestorPanelBlock extends IBlock, ChakraProps {
     displayHeadline?:boolean;
 }
 

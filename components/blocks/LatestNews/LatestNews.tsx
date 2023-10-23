@@ -1,27 +1,22 @@
 import { ReactNode } from 'react';
+import { IBlock } from '~/interfaces/util/block';
+import { ChakraProps } from '@chakra-ui/system';
 import { Flex, Heading, Box, Text } from '@chakra-ui/react';
-import ContentBlock, { BackgroundColor, TextColor, PaddingTop, PaddingBottom } from '~/components/blocks/Content';
+import ContentBlock from '~/components/blocks/Content';
 import { doQuery, queries } from '~/dato/api';
 import { IPost } from '~/interfaces/models/post';
 import LatestNewsItem from '~/components/blocks/LatestNews/LatestNewsItem';
 import { SectionLinkButton } from "~/components/elements/sectionLink";
 import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
 
-interface ILatestNewsBlock {
+interface ILatestNewsBlock extends IBlock, ChakraProps {
     title:string;
     data: {
         posts:IPost[];
     }
-    background?:BackgroundColor;
-    color?:TextColor;
-    paddingTop?:PaddingTop;
-    paddingBottom?:PaddingBottom;
 }
 
 const LatestNewsBlock:any = ({ background, color, paddingTop, paddingBottom, data: { posts } }:ILatestNewsBlock) : ReactNode => {
-    console.log(paddingTop);
-    console.log(paddingBottom);
-
     return <ContentBlock background={background} color={color} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         <Flex align="center" mb={[4, ,8]}>
             <Heading as="h2" variant="sectionHeading">

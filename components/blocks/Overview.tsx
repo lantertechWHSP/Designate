@@ -1,17 +1,19 @@
-import {ReactNode} from 'react';
-import ContentBlock from '~/components/blocks/Content';
+import { ReactNode } from 'react';
+import { IBlock } from '~/interfaces/util/block';
 import { ChakraProps } from '@chakra-ui/system';
+import ContentBlock from '~/components/blocks/Content';
 import { Heading, Box } from '@chakra-ui/react';
 import { Column, ColumnWidth, Row } from '~/components/elements/grid/grid';
 import StructuredContent from "~/components/StructuredContent";
 
-interface IOverviewBlock extends ChakraProps {
+
+interface IOverviewBlock extends IBlock, ChakraProps {
     subtitle?:any;
     description?:any;
 }
 
 const OverviewBlock:any = ({ subtitle, description }:IOverviewBlock) : ReactNode => {
-    return <ContentBlock background="ghostWhite" py={8}>
+    return <ContentBlock background="ghostWhite">
         <Row>
             <Column width={[ColumnWidth.Full, , ,subtitle && !description ? ColumnWidth.ThreeQuarters : ColumnWidth.Half]}>
                 {

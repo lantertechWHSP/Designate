@@ -15,4 +15,6 @@ export const videoRecord:string = `
         ${imageAttrs()}
     }
     containerWidth
+    paddingTop
+    paddingBottom
 `;

@@ -1,10 +1,16 @@
 import React, { ReactNode } from 'react';
+import { IBlock } from '~/interfaces/util/block';
+import { ChakraProps } from '@chakra-ui/system';
+import ContentBlock from "~/components/blocks/Content";
 import { Icon, Icons } from '~/components/elements/icon';
 import { YourIR } from 'yourir-next';
 import { Heading, Flex, Text, Box, ButtonGroup, Button, TableContainer, Table, Thead, Tr, Th, Tbody, Td } from '@chakra-ui/react';
-import ContentBlock from "~/components/blocks/Content";
 
-const ShareHistoricalPricesTable:any = () : ReactNode => {
+
+interface ShareHistoricalPricesTable extends IBlock, ChakraProps {
+}
+
+const ShareHistoricalPricesTable:any = ({}:ShareHistoricalPricesTable) : ReactNode => {
     const scrollToTable:any = () : void => {
         const scrollDiv:number = document.getElementById("historical-price").offsetTop;
         window.scrollTo({ top: scrollDiv - 120, behavior: 'smooth'});

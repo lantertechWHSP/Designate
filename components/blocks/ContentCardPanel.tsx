@@ -1,15 +1,16 @@
 import { ReactNode } from 'react';
-import ContentBlock, { ContainerWidth } from '~/components/blocks/Content';
+import { IBlock } from '~/interfaces/util/block';
+import { ChakraProps } from '@chakra-ui/system';
+import ContentBlock from '~/components/blocks/Content';
 import { Box, Flex, Heading } from '@chakra-ui/react';
 import { gutter } from '~/components/elements/grid/grid';
 import { IImage } from '~/interfaces/util/image';
 import StructuredContent from '~/components/StructuredContent';
 
-interface IContentCardPanelBlock {
+interface IContentCardPanelBlock extends IBlock, ChakraProps {
     title?:string;
     description?:string;
     image?:IImage;
-    containerWidth:ContainerWidth;
 }
 
 const ContentCardPanel:any = ({ title, description, image, containerWidth }:IContentCardPanelBlock) : ReactNode => {

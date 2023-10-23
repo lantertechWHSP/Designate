@@ -1,10 +1,15 @@
-import React, {ReactNode} from 'react';
-import {Box, Container} from '@chakra-ui/react';
+import React, { ReactNode } from 'react';
+import { IBlock } from '~/interfaces/util/block';
+import { ChakraProps } from '@chakra-ui/system';
+import { Box, Container } from '@chakra-ui/react';
 import SharePriceOverview from '~/components/blocks/SharePricePanel/SharePriceOverview';
 import SharePriceChart from '~/components/blocks/SharePricePanel/SharePriceChart';
-import {Column, ColumnWidth, Row} from "~/components/elements/grid/grid";
+import { Column, ColumnWidth, Row } from '~/components/elements/grid/grid';
 
-const SharePricePanelBlock:any = () : ReactNode => {
+interface ISharePricePanelBlock extends IBlock, ChakraProps {
+}
+
+const SharePricePanelBlock:any = ({}:ISharePricePanelBlock) : ReactNode => {
     return <Box background="lightGrey3">
         <Container>
             <Row>

@@ -1,9 +1,14 @@
 import React, { ReactNode } from 'react';
+import { IBlock } from '~/interfaces/util/block';
+import { ChakraProps } from '@chakra-ui/system';
+import ContentBlock from '~/components/blocks/Content';
 import { YourIR } from 'yourir-next';
 import { Heading, Box, TableContainer, Table, Thead, Tr, Th, Tbody, Td } from '@chakra-ui/react';
-import ContentBlock from '~/components/blocks/Content';
 
-const ShareQuoteTable:any = () : ReactNode => {
+interface IShareQuoteTable extends IBlock, ChakraProps {
+}
+
+const ShareQuoteTable:any = ({}:IShareQuoteTable) : ReactNode => {
     return <ContentBlock background="ghostWhite">
         <Box as={YourIR}>
             <Heading as="h2" variant="sectionHeading" mb={8}>

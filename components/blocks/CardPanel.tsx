@@ -1,6 +1,8 @@
 import { ReactNode } from 'react';
+import { IBlock } from '~/interfaces/util/block';
+import { ChakraProps } from '@chakra-ui/system';
+import ContentBlock from '~/components/blocks/Content';
 import { ILink } from '~/interfaces/util/link';
-import ContentBlock, {PaddingBottom, PaddingTop} from '~/components/blocks/Content';
 import { Box, Flex, Heading, Text } from '@chakra-ui/react';
 import { Link } from "~/components/elements/link";
 import { SectionLink } from "~/components/elements/sectionLink";
@@ -13,7 +15,7 @@ enum ICardPanelAlign {
     Right = 'Right'
 }
 
-interface ICardPanelBlock {
+interface ICardPanelBlock extends IBlock, ChakraProps {
     annotation?:string;
     title?:string;
     description?:string;

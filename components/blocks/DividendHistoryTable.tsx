@@ -1,4 +1,6 @@
 import { ReactNode } from 'react';
+import { IBlock } from '~/interfaces/util/block';
+import { ChakraProps } from '@chakra-ui/system';
 import ContentBlock from '~/components/blocks/Content';
 import { ITable } from '~/interfaces/util/table';
 import { TableContainer, Table, Thead, Tr, Th, Tbody, Td, Text } from '@chakra-ui/react';
@@ -11,11 +13,11 @@ interface ITableRow {
     PaymentDate:string;
 }
 
-interface IDividendHistoryTable {
+interface IDividendHistoryTableBlock extends IBlock, ChakraProps {
     table:ITable<ITableRow>;
 }
 
-const DividendHistoryTableBlock:any = ({ table }:IDividendHistoryTable) : ReactNode => {
+const DividendHistoryTableBlock:any = ({ table }:IDividendHistoryTableBlock) : ReactNode => {
     return <ContentBlock py={8}>
         {
             (table && table.data && Array.isArray(table?.data) && table.data.length > 0) ? <TableContainer>

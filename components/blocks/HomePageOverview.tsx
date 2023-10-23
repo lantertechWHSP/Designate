@@ -1,11 +1,13 @@
-import ContentBlock from "~/components/blocks/Content";
 import { ReactNode } from 'react';
+import { IBlock } from '~/interfaces/util/block';
+import { ChakraProps } from '@chakra-ui/system';
+import ContentBlock from '~/components/blocks/Content';
 import { Box, Heading, Flex } from '@chakra-ui/react';
 import { Image } from '~/components/elements/image';
 import { IImage } from '~/interfaces/util/image';
-import {SectionLink} from "~/components/elements/sectionLink";
+import { SectionLink } from '~/components/elements/sectionLink';
 
-interface IHomePageOverviewBlock {
+interface IHomePageOverviewBlock extends IBlock, ChakraProps {
     description?:string;
     imageMain?:IImage;
     imageSide?:IImage;

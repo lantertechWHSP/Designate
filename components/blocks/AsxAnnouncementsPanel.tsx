@@ -1,12 +1,17 @@
 import React, { ReactNode } from 'react';
+import { IBlock } from '~/interfaces/util/block';
+import { ChakraProps } from '@chakra-ui/system';
 import { Box, Container, Flex, Heading, Text, ButtonGroup, Button, Menu, MenuButton, Portal, MenuList, MenuItem, Link } from '@chakra-ui/react';
 import { YourIR, set } from 'yourir-next';
 import { Icon, Icons } from '~/components/elements/icon';
 import { symbol } from '~/consts/yourir';
 import { IFilter } from '~/interfaces/util/filter';
-import {SectionLinkInner} from "~/components/elements/sectionLink";
+import { SectionLinkInner } from '~/components/elements/sectionLink';
 
-const AsxAnnouncementsPanelBlock:any = () : ReactNode => {
+interface IAsxAnnouncementsPanelBlock extends IBlock, ChakraProps {
+}
+
+const AsxAnnouncementsPanelBlock:any = ({}:IAsxAnnouncementsPanelBlock) : ReactNode => {
     const filters:IFilter[] = [
         {
             label: 'All Document Types',

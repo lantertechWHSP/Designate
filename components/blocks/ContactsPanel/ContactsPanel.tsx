@@ -1,4 +1,6 @@
 import { ReactNode } from 'react';
+import { IBlock } from '~/interfaces/util/block';
+import { ChakraProps } from '@chakra-ui/system';
 import { IEvent } from '~/interfaces/models/event';
 import { doQuery, queries } from '~/dato/api';
 import ContentBlock from '~/components/blocks/Content';
@@ -7,14 +9,14 @@ import { IContact } from '~/interfaces/models/contact';
 import { ChakraProps } from '@chakra-ui/system';
 import ContactCard from '~/components/blocks/ContactsPanel/ContactCard';
 
-interface IContactsPanelBlock extends ChakraProps {
+interface IContactsPanelBlock extends IBlock, ChakraProps {
     data: {
         contacts:IContact[];
     }
 }
 
 const ContactsPanelBlock:any = ({ data: { contacts } }:IContactsPanelBlock) : ReactNode => {
-    return <ContentBlock background="ghostWhite" py={8}>
+    return <ContentBlock background="ghostWhite">
         <Box mb={8}>
             <Heading as="h2" variant="sectionHeading">
                 Contacts

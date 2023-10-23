@@ -1,10 +1,15 @@
 import React, {ReactNode} from 'react';
-import {YourIR} from 'yourir-next';
+import { IBlock } from '~/interfaces/util/block';
+import { ChakraProps } from '@chakra-ui/system';
 import ContentBlock from '~/components/blocks/Content';
-import { Column, Row, ColumnWidth } from "~/components/elements/grid/grid";
+import { YourIR } from 'yourir-next';
+import { Column, Row, ColumnWidth } from '~/components/elements/grid/grid';
 import { Box, Heading, Input, Button, Flex } from '@chakra-ui/react';
 
-const AsxNewsletterFormPanelBlock:any = () : ReactNode => {
+interface IAsxNewsletterFormPanelBlock extends IBlock, ChakraProps {
+}
+
+const AsxNewsletterFormPanelBlock:any = ({}:IAsxNewsletterFormPanelBlock) : ReactNode => {
     return <ContentBlock background="darkBrown">
         <Row justify="center" textAlign="center">
             <Column width={[ColumnWidth.Full, , ColumnWidth.TenTwelfths]}>

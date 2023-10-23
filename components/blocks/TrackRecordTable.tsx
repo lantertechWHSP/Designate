@@ -1,9 +1,11 @@
 import { ReactNode } from 'react';
+import { IBlock } from '~/interfaces/util/block';
+import { ChakraProps } from '@chakra-ui/system';
 import ContentBlock from '~/components/blocks/Content';
 import { Heading, TableContainer, Table, Thead, Tr, Th, Tbody, Td, Text } from '@chakra-ui/react';
 import { ITable } from '~/interfaces/util/table';
 
-interface ITrackRecordTableBlock {
+interface ITrackRecordTableBlock extends IBlock, ChakraProps {
     title?:string;
     table?:ITable<any>;
 }

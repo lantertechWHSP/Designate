@@ -1,7 +1,10 @@
 import { ReactNode } from 'react';
-import ContentBlock, { ContainerWidth } from '~/components/blocks/Content';
+import { IBlock } from '~/interfaces/util/block';
+import { ChakraProps } from '@chakra-ui/system';
+import ContentBlock from '~/components/blocks/Content';
 import { ChakraProps } from '@chakra-ui/system';
 import { SimpleGrid, Box, Heading, Text, Flex } from '@chakra-ui/react';
+
 
 interface IObjectivePanelItem {
     title?:string;
@@ -9,9 +12,8 @@ interface IObjectivePanelItem {
     annotation?:string;
 }
 
-interface IObjectivePanelBlock extends ChakraProps {
+interface IObjectivePanelBlock extends IBlock, ChakraProps {
     items?:IObjectivePanelItem[];
-    containerWidth?:ContainerWidth;
 }
 
 const ObjectivePanelBlock:any = ({ items, containerWidth }:IObjectivePanelBlock) : ReactNode => {

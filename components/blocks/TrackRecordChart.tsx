@@ -1,4 +1,6 @@
 import { ReactNode, useState, useEffect } from 'react';
+import { IBlock } from '~/interfaces/util/block';
+import { ChakraProps } from '@chakra-ui/system';
 import ContentBlock from '~/components/blocks/Content';
 import LineChart from '~/components/elements/charts/line/LineChart';
 import { DateTime } from 'luxon';
@@ -6,9 +8,10 @@ import { Heading, Flex, Box, Menu, MenuButton, Button, Portal, MenuList, MenuIte
 import { Icon, Icons } from '~/components/elements/icon';
 import { IFilter } from '~/interfaces/util/filter';
 import { ITable } from '~/interfaces/util/table';
-import {colors} from "~/components/elements/charts/colors";
+import { colors } from '~/components/elements/charts/colors';
 
-interface ITrackRecordChartBlock {
+
+interface ITrackRecordChartBlock extends IBlock, ChakraProps {
     australianSharesTable:ITable<any>;
     internationalSharesTable:ITable<any>;
     australianListedTable:ITable<any>;

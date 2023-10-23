@@ -1,7 +1,9 @@
 import { ReactNode, useState } from 'react';
+import { IBlock } from '~/interfaces/util/block';
+import { ChakraProps } from '@chakra-ui/system';
+import ContentBlock from '~/components/blocks/Content';
 import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
-import ContentBlock from '~/components/blocks/Content';
 import { IImage } from '~/interfaces/util/image';
 import { Box, AspectRatio, Button } from '@chakra-ui/react';
 import { Icon, Icons } from '~/components/elements/icon';
@@ -10,12 +12,11 @@ interface ICarouselItem {
     image:IImage;
 }
 
-interface ICarouselBlock {
+interface ICarouselBlock extends IBlock, ChakraProps {
     items:ICarouselItem[];
 }
 
-const CarouselBlock:any = ({ items }:ICarouselBlock) : ReactNode => {
-
+const CarouselBlock:any = ({ items, paddingTop, paddingBottom }:ICarouselBlock) : ReactNode => {
     const [slideIndex, setSlideIndex] = useState<number>(0);
     const [sliderRef, instanceRef] = useKeenSlider({
         loop: true,
@@ -55,7 +56,7 @@ const CarouselBlock:any = ({ items }:ICarouselBlock) : ReactNode => {
         }
     };
 
-    return <ContentBlock py={8} background="ghostWhite">
+    return <ContentBlock background="ghostWhite" paddingTop={paddingTop} paddingBottom={paddingBottom}>
         <Box className="keen-slider" ref={sliderRef} position="relative">
             {
                 (Array.isArray(items) && items.length > 0) && <>

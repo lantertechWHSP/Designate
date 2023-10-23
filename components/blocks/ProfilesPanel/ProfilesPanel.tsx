@@ -1,13 +1,15 @@
 import React, { ReactNode, useState } from 'react';
+import { IBlock } from '~/interfaces/util/block';
+import { ChakraProps } from '@chakra-ui/system';
+import StructuredContent from '~/components/StructuredContent';
 import { Image } from "~/components/elements/image";
 import { Icon, Icons } from "~/components/elements/icon";
 import { Box, Text, Container, SimpleGrid, Heading, Modal, ModalOverlay, ModalContent, Button, Divider } from '@chakra-ui/react';
 import { IPerson } from '~/interfaces/models/person';
 import ProfileCard from '~/components/blocks/ProfilesPanel/ProfileCard';
 import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
-import StructuredContent from '~/components/StructuredContent';
 
-interface IProfilesPanelBlock {
+interface IProfilesPanelBlock extends IBlock, ChakraProps {
     people:IPerson[];
 }
 

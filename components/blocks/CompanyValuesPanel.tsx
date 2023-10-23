@@ -1,10 +1,11 @@
-import ContentBlock from '~/components/blocks/Content';
 import { ReactNode } from 'react';
+import { IBlock } from '~/interfaces/util/block';
 import { ChakraProps } from '@chakra-ui/system';
-import { ISVGImage} from '~/interfaces/util/image';
+import ContentBlock from '~/components/blocks/Content';
+import { ISVGImage } from '~/interfaces/util/image';
 import { Heading, Box, SimpleGrid, Flex } from '@chakra-ui/react';
 
-interface ICompanyValuesPanelBlock extends ChakraProps {
+interface ICompanyValuesPanelBlock extends IBlock, ChakraProps {
     items?:ICompanyValue[];
 }
 
@@ -13,8 +14,8 @@ interface ICompanyValue {
     icon?:ISVGImage;
 }
 
-const CompanyValuesPanelBlock:any = ({ items, ...props }:ICompanyValuesPanelBlock) : ReactNode => {
-    return <ContentBlock {...props} py={8}>
+const CompanyValuesPanelBlock:any = ({ items, paddingTop, paddingBottom, ...props }:ICompanyValuesPanelBlock) : ReactNode => {
+    return <ContentBlock paddingTop={paddingTop} paddingBottom={paddingBottom} {...props}>
         {
             (Array.isArray(items) && items.length > 0) && <>
                 <Heading as="h3" variant="h3" mb={4}>

@@ -1,4 +1,6 @@
 import { ReactNode, useState } from 'react';
+import { IBlock } from '~/interfaces/util/block';
+import { ChakraProps } from '@chakra-ui/system';
 import ContentBlock from '~/components/blocks/Content';
 import StackedBarChart from '~/components/elements/charts/stackedBar/StackedBarChart';
 import { ITable } from '~/interfaces/util/table';
@@ -12,11 +14,11 @@ interface ITableRow {
     SpecialDividend:number;
 }
 
-interface IDividendGrowthChart {
+interface IDividendGrowthChartBlock extends IBlock, ChakraProps {
     table:ITable<ITableRow>;
 }
 
-const DividendGrowthChart:any = ({ table }:IDividendGrowthChart) : ReactNode => {
+const DividendGrowthChart:any = ({ table }:IDividendGrowthChartBlock) : ReactNode => {
     const getValues:any = () => {
         const values:any = [];
         if(table && table.data && Array.isArray(table.data) && table.data.length > 0) {

@@ -1,12 +1,12 @@
 import { ReactNode } from 'react';
-import ContentBlock, { BackgroundColor, TextColor } from '~/components/blocks/Content';
+import { IBlock } from '~/interfaces/util/block';
+import { ChakraProps } from '@chakra-ui/system';
+import ContentBlock from '~/components/blocks/Content';
 import { Heading, Box, Accordion, AccordionItem, AccordionPanel, AccordionButton } from '@chakra-ui/react';
 
-interface IAccordionBlock {
+interface IAccordionBlock extends IBlock, ChakraProps {
     title?:string;
     items?:IAccordionItem[];
-    background?:BackgroundColor;
-    color:TextColor;
 }
 
 interface IAccordionItem {

@@ -8,5 +8,7 @@ export const companyValuesPanelRecord:string = `
             alt
         }
     }
-    containerWidth  
+    containerWidth
+    paddingTop
+    paddingBottom
 `;
