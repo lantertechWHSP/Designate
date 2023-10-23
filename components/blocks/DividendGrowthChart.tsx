@@ -3,9 +3,10 @@ import { IBlock } from '~/interfaces/util/block';
 import { ChakraProps } from '@chakra-ui/system';
 import ContentBlock from '~/components/blocks/Content';
 import StackedBarChart from '~/components/elements/charts/stackedBar/StackedBarChart';
-import { ITable } from '~/interfaces/util/table';
+import { ITable} from '~/interfaces/util/table';
 import { isFinite as _isFinite } from 'lodash';
-import { Heading } from '@chakra-ui/react';
+import { Box, Flex, Heading, Text } from '@chakra-ui/react';
+import { Column, ColumnWidth, Row } from '~/components/elements/grid/grid';
 
 interface ITableRow {
     Year:string;
@@ -48,17 +49,52 @@ const DividendGrowthChart:any = ({ table }:IDividendGrowthChartBlock) : ReactNod
         }
 
         return {
-            groups: ['InterimDividend', 'FinalDividend', 'SpecialDividend'],
+            groups: [{
+                fill: 'rgba(255, 255, 255, 1)',
+                label: 'InterimDividend',
+            }, {
+                fill: 'rgba(255, 255, 255, 0.5)',
+                label: 'FinalDividend',
+            }, {
+                fill: 'rgba(255, 255, 255, 0.3)',
+                label: 'SpecialDividend'
+            }],
             rows: values
         };
     };
 
     const [data] = useState(getValues());
 
-    return <ContentBlock py={8}>
-        <Heading as="h2" mb={8}>
-            Continued Dividend Growth
-        </Heading>
+    return <ContentBlock background="darkBrown">
+        <Row align="baseline" mb={[4, 6, ,8]}>
+            <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half]}>
+                <Heading as="h2" variant="sectionHeading" mb={[3, , ,0]} color="white">
+                    Continued Dividend Growth
+                </Heading>
+            </Column>
+            <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half]} align={['flex-start', , ,'flex-end']}>
+                <Flex mx={-2}>
+                    <Flex align="center" px={2}>
+                        <Box background="rgba(255, 255, 255, 1)" width="10px" height="10px" borderRadius="5px" mr={2} />
+                        <Text as="span" mb={0} lineHeight={1} color="white">
+                            Latest Dividend
+                        </Text>
+                    </Flex>
+                    <Flex align="center" px={2}>
+                        <Box background="rgba(255, 255, 255, 0.5)" width="10px" height="10px" borderRadius="5px" mr={2} />
+                        <Text as="span" mb={0} lineHeight={1} color="white">
+                            Final Dividend
+                        </Text>
+                    </Flex>
+                    <Flex align="center" px={2}>
+                        <Box background="rgba(255, 255, 255, 0.3)" width="10px" height="10px" borderRadius="5px" mr={2} />
+                        <Text as="span" mb={0} lineHeight={1} color="white">
+                            Special Dividend
+                        </Text>
+                    </Flex>
+                </Flex>
+            </Column>
+        </Row>
         <StackedBarChart data={data} />
     </ContentBlock>;
 };

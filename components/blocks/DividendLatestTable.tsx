@@ -4,6 +4,7 @@ import { ChakraProps } from '@chakra-ui/system';
 import ContentBlock from '~/components/blocks/Content';
 import { ITable } from '~/interfaces/util/table';
 import { Heading, Box, TableContainer, Table, Thead, Tr, Th, Tbody, Td, Text } from '@chakra-ui/react';
+import {Row, Column, ColumnWidth} from "~/components/elements/grid/grid";
 
 interface ITableRow {
     Dividend:string;
@@ -18,15 +19,19 @@ interface IDividendLatestTableBlock extends IBlock, ChakraProps {
     table:ITable<ITableRow>;
 }
 
-const DividendLatestTableBlock:any = ({ table, description }:IDividendLatestTableBlock) : ReactNode => {
-    return <ContentBlock py={8}>
-        <Heading as="h2" mb={8}>
+const DividendLatestTableBlock:any = ({ table, description, paddingTop, paddingBottom }:IDividendLatestTableBlock) : ReactNode => {
+    return <ContentBlock paddingTop={paddingTop} paddingBottom={paddingBottom}>
+        <Heading as="h2" variant="sectionHeading" mb={8}>
             Latest Dividend
         </Heading>
         {
-            description && <Box>
-                {description}
-            </Box>
+            description && <Row>
+                <Column width={[ColumnWidth.Full, , ColumnWidth.Half]}>
+                    <Box fontSize={['19px']} lineHeight={['29px']} color="darkBrown" mb={8}>
+                        {description}
+                    </Box>
+                </Column>
+            </Row>
         }
         {
             (table && table.data && Array.isArray(table?.data) && table.data.length > 0) ? <TableContainer>

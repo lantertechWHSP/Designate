@@ -17,8 +17,8 @@ interface IDividendHistoryTableBlock extends IBlock, ChakraProps {
     table:ITable<ITableRow>;
 }
 
-const DividendHistoryTableBlock:any = ({ table }:IDividendHistoryTableBlock) : ReactNode => {
-    return <ContentBlock py={8}>
+const DividendHistoryTableBlock:any = ({ table, paddingTop, paddingBottom }:IDividendHistoryTableBlock) : ReactNode => {
+    return <ContentBlock paddingTop={paddingTop} paddingBottom={paddingBottom}>
         {
             (table && table.data && Array.isArray(table?.data) && table.data.length > 0) ? <TableContainer>
                 <Table variant="basic" w="100%">

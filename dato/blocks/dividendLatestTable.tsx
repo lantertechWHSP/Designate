@@ -3,4 +3,6 @@ export const dividendLatestTableRecord:string = `
     id
     description
     table
+    paddingTop
+    paddingBottom
 `;

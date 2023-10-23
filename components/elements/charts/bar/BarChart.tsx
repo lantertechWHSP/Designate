@@ -41,10 +41,15 @@ const BarChart:any = ({ data }:IBarChart) : ReactNode => {
 
     const yScale:any = useMemo<any>(() => {
         if(data && data.bars) {
+
+            let max = _maxBy(data.bars, (datum:IData) => {
+                return datum.value;
+            }).value
+
+            max *= 1.3;
+
             return scaleLinear()
-                .domain([0, _maxBy(data.bars, (datum:IData) => {
-                    return datum.value;
-                }).value])
+                .domain([0, max])
                 .range([boundsHeight, 0]);
         }
     }, [data, height]);
@@ -88,7 +93,7 @@ const BarChart:any = ({ data }:IBarChart) : ReactNode => {
             '.tick': {
                 fontSize: '14px',
                 fontFamily: 'Gramatika',
-                color: 'darkBrown'
+                color: 'lightGrey2'
             },
             '.x-axis .domain': {
                 display: 'none'

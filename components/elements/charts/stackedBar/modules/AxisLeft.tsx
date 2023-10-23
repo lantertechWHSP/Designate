@@ -1,17 +1,30 @@
-import { useMemo, ReactNode } from 'react';
+import { useMemo, useState, useEffect, ReactNode } from 'react';
 
 interface IAxisLeft {
     scale:any;
-    width:number;
+    chartHeight?:number;
+    width?:number;
 }
 
-export const AxisLeft:any = ({ scale, width }:IAxisLeft) : ReactNode => {
+export const AxisLeft:any = ({ scale, chartHeight, width }:IAxisLeft) : ReactNode => {
+    const [tickCount, setTickCount] = useState<number>(10);
+
     const ticks:any = useMemo(() => {
-        return scale.ticks().map((value) => ({
+        return scale.ticks(tickCount).map((value) => ({
             value,
             offset: scale(value),
         }));
-    }, [scale]);
+    }, [scale, tickCount]);
+
+    useEffect(() => {
+        const clamp:any = (val:number, min:number, max:number) : number => {
+            return Math.min(Math.max(val, min), max);
+        };
+
+        const newTickCount:number = Math.floor(chartHeight / 100) + 1;
+
+        setTickCount(clamp(newTickCount, 3, 10));
+    }, [chartHeight]);
 
     return <g className="y-axis">
         {

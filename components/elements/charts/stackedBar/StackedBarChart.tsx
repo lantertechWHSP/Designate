@@ -1,19 +1,23 @@
 import React, { useEffect, useMemo, useRef, useState, ReactNode }  from 'react';
 import { Box } from '@chakra-ui/react';
 import { scaleLinear, scaleBand, scaleOrdinal, stack } from 'd3';
-import { throttle as _throttle, maxBy as _maxBy, sum as _sum, flatMap as _flatMap } from 'lodash';
+import { throttle as _throttle, maxBy as _maxBy, sum as _sum, flatMap as _flatMap, map as _map } from 'lodash';
 import { AxisLeft } from '~/components/elements/charts/stackedBar/modules/AxisLeft';
 import { AxisBottom } from '~/components/elements/charts/stackedBar/modules/AxisBottom';
-import { ColorGenerator } from '~/lib/colorGenerator/colorGenerator';
 
 interface IStackedBarChart {
     data: {
-        groups:string[];
-        rows:IRow[];
+        groups:IDataGroup[];
+        rows:IDataRow[];
     }
 }
 
-interface IRow {
+interface IDataGroup {
+    label:string;
+    fill:string;
+}
+
+interface IDataRow {
     label:string;
     values:IData[];
 }
@@ -46,14 +50,14 @@ const StackedBarChart:any = ({ data }:IStackedBarChart) : ReactNode => {
 
     const yScale:any = useMemo<any>(() => {
         if(data && data.rows) {
-            let max:number = _maxBy(_flatMap(data.rows, (row:IRow) => {
+            let max:number = _maxBy(_flatMap(data.rows, (row:IDataRow) => {
                 return _sum(_flatMap((row.values), (datum:IData) => {
                     return datum.value;
                 }));
             }));
 
             // Bump up the value for aesthetics
-            max *= 1.2;
+            max *= 1.3;
 
             return scaleLinear()
                 .domain([0, max])
@@ -64,7 +68,7 @@ const StackedBarChart:any = ({ data }:IStackedBarChart) : ReactNode => {
     const xScale:any = useMemo<any>(() => {
         if(data && data.rows)  {
             return scaleBand()
-                .domain(data.rows.map((row:IRow) => {
+                .domain(data.rows.map((row:IDataRow) => {
                     return row.label + '​'; // Add ZWSP (number casting issue in d3)
                 }))
                 .range([0, width])
@@ -76,7 +80,7 @@ const StackedBarChart:any = ({ data }:IStackedBarChart) : ReactNode => {
         if(data.groups && data.rows) {
             const values:any[] = [];
 
-            data.rows.map((row:IRow) => {
+            data.rows.map((row:IDataRow) => {
                 const object:any = {
                     label: row.label + '​',  // Add ZWSP (number casting issue in d3)
                 };
@@ -88,21 +92,24 @@ const StackedBarChart:any = ({ data }:IStackedBarChart) : ReactNode => {
                 values.push(object);
             });
 
-            return stack().keys(data.groups)(values);
+            return stack().keys(_map(data.groups, (group:IDataGroup) => {
+                return group.label;
+            }))(values);
         }
         return [];
     }, [data]);
 
     const colors:any = useMemo<any>(() => {
         if(data.groups) {
-            const colorGenerator:ColorGenerator = new ColorGenerator();
             const values:any = [];
 
-            data.groups.map(() => {
-                values.push(colorGenerator.next());
+            data.groups.map((group:IDataGroup) => {
+                values.push(group.fill);
             });
 
-            return scaleOrdinal().domain(data.groups).range(values);
+            return scaleOrdinal().domain(_map(data.groups, (group:IDataGroup) => {
+                return group.label;
+            })).range(values);
         }
     }, [data]);
 
@@ -133,8 +140,8 @@ const StackedBarChart:any = ({ data }:IStackedBarChart) : ReactNode => {
         sx={{
             '.tick': {
                 fontSize: '14px',
-                fontFamily: 'Untitled Sans',
-                color: 'steelBlue3'
+                fontFamily: 'Gramatika',
+                color: 'lightGrey2'
             },
             '.x-axis .domain': {
                 display: 'none'
@@ -146,7 +153,7 @@ const StackedBarChart:any = ({ data }:IStackedBarChart) : ReactNode => {
                 color: 'lightGrey2'
             },
             '.bar': {
-                fill: 'steelBlue3'
+                fill: 'darkBrown'
             }
         }}>
         {
@@ -158,7 +165,7 @@ const StackedBarChart:any = ({ data }:IStackedBarChart) : ReactNode => {
                         transform={`translate(${[margin.left, margin.top].join(",")})`}
                         overflow={"visible"}
                     >
-                        <AxisLeft scale={yScale} width={width} />
+                        <AxisLeft scale={yScale} chartHeight={height} width={width} />
                         <g transform="translate(30, 0)">
                             <AxisBottom scale={xScale} transform={`translate(0, ${boundsHeight})`} />
                             {stacked.map((data:any, index:number) => {
