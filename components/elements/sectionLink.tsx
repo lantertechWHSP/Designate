@@ -16,7 +16,7 @@ export const SectionLink:any = ({ ...props }:ISectionLink) => {
 export const SectionLinkInner:any = ({ children }) => {
     return <Flex align="center"
         display="inline-flex"
-        borderBottom="1px solid"
+        borderBottom="2px solid"
         borderColor="darkBrownBlur"
         fontWeight={700}>
         <Text as="span" mr={2}>
@@ -34,7 +34,7 @@ export const SectionLinkButton:any = ({ color = 'darkBrown', borderColor = 'dark
         lineHeight={['40px', ,'50px']}
         borderRadius={['20px', ,'25px']}
         px={4}
-        border="1px solid"
+        border="2px solid"
         borderColor={borderColor}
         textAlign="center"
         width={['120px', ,'200px']}

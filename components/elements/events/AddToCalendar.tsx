@@ -18,7 +18,7 @@ const AddToCalendar:any = ({ event }:IAddToCalendar) : ReactNode => {
         <Menu placement="bottom-end">
             {() => (
                 <>
-                    <MenuButton as={Button}>
+                    <MenuButton as={Button} color="darkBrown">
                         <SectionLinkInner>
                             Add To Calendar
                         </SectionLinkInner>

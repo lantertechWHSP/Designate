@@ -12,7 +12,12 @@ interface IOverviewBlock extends IBlock, ChakraProps {
 }
 
 const OverviewBlock:any = ({ subtitle, description, paddingTop, paddingBottom }:IOverviewBlock) : ReactNode => {
-    return <ContentBlock background="ghostWhite" paddingTop={paddingTop} paddingBottom={paddingBottom}>
+    return <ContentBlock background="ghostWhite" paddingTop={paddingTop} paddingBottom={paddingBottom} sx={{
+        a: {
+            borderBottom: '1px solid',
+            borderColor: 'darkBrown'
+        }
+    }}>
         <Row>
             <Column width={[ColumnWidth.Full, , ,subtitle && !description ? ColumnWidth.ThreeQuarters : ColumnWidth.Half]}>
                 {

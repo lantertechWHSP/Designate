@@ -9,4 +9,6 @@ export const overviewRecord:string = `
     description {
         ${structuredTextAttrs}
     }
+    paddingTop
+    paddingBottom
 `;

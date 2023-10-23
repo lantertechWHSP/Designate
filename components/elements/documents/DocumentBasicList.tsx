@@ -32,7 +32,7 @@ const DocumentBasicList:any = ({ title, latestDocuments }:IDocumentBasicList) : 
         setDocumentBundles(newSortedDocumentBundles.reverse());
     }, [documents]);
 
-    return <Box bg="lightGrey3" py={[6, 8, 12]}>
+    return <Box bg="ghostWhite" py={[6, 8, 12]}>
         <Container>
             {
                 title && <Heading as="h2" variant="sectionSubheading" mb={8}>

@@ -124,7 +124,7 @@ const DocumentList:any = ({ latestDocuments, documentsMeta, documentsFilters }:I
         });
     }, [selectedYear, selectedTag]);
 
-    return <Box bg="lightGrey3" py={12}>
+    return <Box bg="ghostWhite" py={12}>
         <Container>
             <Box pb={4} mb={8}>
                 <ButtonGroup>

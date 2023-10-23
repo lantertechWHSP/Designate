@@ -10,13 +10,13 @@ import { Heading, Flex, Text, Box, ButtonGroup, Button, TableContainer, Table, T
 interface ShareHistoricalPricesTable extends IBlock, ChakraProps {
 }
 
-const ShareHistoricalPricesTable:any = ({}:ShareHistoricalPricesTable) : ReactNode => {
+const ShareHistoricalPricesTable:any = ({ paddingTop, paddingBottom }:ShareHistoricalPricesTable) : ReactNode => {
     const scrollToTable:any = () : void => {
         const scrollDiv:number = document.getElementById("historical-price").offsetTop;
         window.scrollTo({ top: scrollDiv - 120, behavior: 'smooth'});
     };
 
-    return <ContentBlock background="ghostWhite" id="historical-price">
+    return <ContentBlock background="ghostWhite" paddingTop={paddingTop} paddingBottom={paddingBottom} id="historical-price">
         <Box as={YourIR}>
             <Heading as="h2" variant="sectionHeading" mb={8}>
                 Historical Prices

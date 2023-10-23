@@ -39,7 +39,7 @@ const KeyDatesPage : NextPage = ({ layout, blocks, events }:INextPageProps)  : J
     return (
         <DefaultLayout layout={layout}>
             <ModularContent content={blocks} />
-            <Box background="ghostWhite">
+            <Box background="ghostWhite" py={[6, 8, 12]}>
                 <Container>
                     <EventList events={events} />
                 </Container>

@@ -8,8 +8,8 @@ import { Heading, Box, TableContainer, Table, Thead, Tr, Th, Tbody, Td } from '@
 interface IShareQuoteTable extends IBlock, ChakraProps {
 }
 
-const ShareQuoteTable:any = ({}:IShareQuoteTable) : ReactNode => {
-    return <ContentBlock background="ghostWhite">
+const ShareQuoteTable:any = ({ paddingTop, paddingBottom }:IShareQuoteTable) : ReactNode => {
+    return <ContentBlock background="ghostWhite" paddingTop={paddingTop} paddingBottom={paddingBottom}>
         <Box as={YourIR}>
             <Heading as="h2" variant="sectionHeading" mb={8}>
                 Quote Table

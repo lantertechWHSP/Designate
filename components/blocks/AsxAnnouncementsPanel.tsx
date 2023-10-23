@@ -72,7 +72,7 @@ const AsxAnnouncementsPanelBlock:any = ({}:IAsxAnnouncementsPanelBlock) : ReactN
         window.scrollTo({ top: scrollDiv - 120, behavior: 'smooth'});
     };
 
-    return <Box id="asx-announcements-panel" background="lightGrey3">
+    return <Box id="asx-announcements-panel" background="ghostWhite">
         <Box as={YourIR}>
             <Container>
                 <Box py={8}>
