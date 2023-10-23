@@ -2,6 +2,15 @@ import { extendBaseTheme } from '@chakra-ui/react';
 import chakraTheme from '@chakra-ui/theme';
 const { Modal, Menu, Badge, Alert } = chakraTheme.components;
 
+const breakpoints = {
+    base: '0px',
+    sm: '320px',
+    md: '768px',
+    lg: '992px',
+    xl: '1280px',
+    '2xl': '1536px',
+};
+
 const colors:any = {
     // New
     darkGreen: '#527535',
@@ -54,6 +63,9 @@ export const theme:any = extendBaseTheme({
         bold: 700,
         extraBold: 800,
         black: 900,
+    },
+    breakpoints: {
+        ...breakpoints
     },
     colors: {
         ...colors

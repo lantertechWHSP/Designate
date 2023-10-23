@@ -27,7 +27,7 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
         }
         <Box as={YourIR}>
             <Row>
-                <Column width={[ColumnWidth.Full, , ColumnWidth.Half]}>
+                <Column width={[ColumnWidth.Full, , , ,ColumnWidth.Half]}>
                     <Flex direction="column">
                         <Heading as="h3" variant="sectionSubheading" mb={4}>
                             Share Price Performance
@@ -160,12 +160,12 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                                 See All
                             </SectionLink>
                         </Box>
-                        <Box py={8} display={['block', ,'none']}>
+                        <Box py={8} display={['block', , , ,'none']}>
                             <Divider />
                         </Box>
                     </Flex>
                 </Column>
-                <Column width={[ColumnWidth.Full, , ColumnWidth.Half]}>
+                <Column width={[ColumnWidth.Full, , , ,ColumnWidth.Half]}>
                     <Flex direction="column">
                         <Heading as="h3" variant="sectionSubheading" mb={4}>
                             ASX Announcements
