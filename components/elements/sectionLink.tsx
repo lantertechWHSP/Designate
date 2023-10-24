@@ -3,6 +3,9 @@ import { Flex, Text } from '@chakra-ui/react';
 import { Icon, Icons } from '~/components/elements/icon';
 
 interface ISectionLink extends IDatoLink {
+    color?:string;
+    borderColor?:string;
+    borderColorHover?:string;
 }
 
 export const SectionLink:any = ({ ...props }:ISectionLink) => {
@@ -18,10 +21,10 @@ export const SectionLinkInner:any = ({ children }) => {
         display="inline-flex"
         borderBottom="2px solid"
         borderColor="darkBrownBlur"
-         transition="border-color 0.3s linear"
-         _hover={{
-             borderColor: 'darkBrown'
-         }}
+        transition="border-color 0.3s linear"
+        _hover={{
+            borderColor: 'darkBrown'
+        }}
         fontWeight={700}>
         <Text as="span" mr={2}>
             {children}
@@ -44,7 +47,7 @@ export const SectionLinkButton:any = ({ color = 'darkBrown', borderColor = 'dark
         width={['120px', ,'180px']}
         transition="border-color 0.3s linear"
         _hover={{
-            borderColor: 'darkBrown'
+            borderColor: borderColorHover
         }}
         fontWeight={700}>
     </Link>;

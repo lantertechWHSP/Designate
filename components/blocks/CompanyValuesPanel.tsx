@@ -2,8 +2,8 @@ import { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
 import ContentBlock from '~/components/blocks/Content';
 import { ISVGImage } from '~/interfaces/util/image';
-import { Heading, Box, SimpleGrid, Flex } from '@chakra-ui/react';
-import {Row, Column, ColumnWidth} from "~/components/elements/grid/grid";
+import { Heading, Box, Flex } from '@chakra-ui/react';
+import { Row, Column, ColumnWidth } from "~/components/elements/grid/grid";
 
 interface ICompanyValuesPanelBlock extends IBlock {
     items?:ICompanyValue[];
@@ -25,8 +25,8 @@ const CompanyValuesPanelBlock:any = ({ items, paddingTop, paddingBottom, ...prop
                     <Row wrap={['no-wrap', , 'wrap']} >
                         {
                             items.map((item:ICompanyValue, index:number) => {
-                                return <Column width={[ColumnWidth.Half, ,ColumnWidth.OneThird]} minWidth={[ColumnWidth.Half, ,'unset']}>
-                                    <Flex direction="column" key={index} alignItems="center" py={8} px={4}>
+                                return <Column width={[ColumnWidth.Half, ,ColumnWidth.OneThird]} minWidth={[ColumnWidth.Half, ,'unset']} key={index}>
+                                    <Flex direction="column" alignItems="center" py={8} px={4}>
                                         {
                                             (item.icon && item.icon.url) && <Box mb={4}><img src={item.icon.url} alt={item.icon?.alt} /></Box>
                                         }
@@ -36,7 +36,7 @@ const CompanyValuesPanelBlock:any = ({ items, paddingTop, paddingBottom, ...prop
                                             </Heading>
                                         }
                                     </Flex>
-                                </Column>
+                                </Column>;
                             })
                         }
                     </Row>

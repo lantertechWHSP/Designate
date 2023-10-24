@@ -23,8 +23,8 @@ interface IChartFilter extends IFilter {
 const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesTable, australianListedTable, australianBondsTable, paddingTop, paddingBottom, theme }:ITrackRecordChartBlock) : ReactNode => {
     const backgroundColor:string = theme === Theme.Dark ? 'darkBrown' : 'white';
     const colors:string[] = theme === Theme.Dark ? darkLegendColors : legendColors;
-    const textColor = theme === Theme.Dark ? 'white' : 'black';
-    const fillColor = theme === Theme.Dark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(80, 81, 60, 0.05)';
+    const textColor:string = theme === Theme.Dark ? 'white' : 'black';
+    const fillColor:string = theme === Theme.Dark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(80, 81, 60, 0.05)';
 
     const australianShares:any = australianSharesTable.data.map((datum) => {
         return {

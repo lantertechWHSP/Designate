@@ -1,9 +1,8 @@
 import { Box, Text, Heading } from '@chakra-ui/react';
 import { IPost } from "~/interfaces/models/post";
-import { ChakraProps } from '@chakra-ui/system';
 import { Link } from '~/components/elements/link';
 import { Image } from '~/components/elements/image';
-import {SectionLink} from "~/components/elements/sectionLink";
+import { SectionLink } from '~/components/elements/sectionLink';
 
 interface IPostCard extends IPost {
 }

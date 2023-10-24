@@ -3,7 +3,7 @@ import { YourIR, set } from 'yourir-next';
 import { Icon, Icons } from '~/components/elements/icon';
 import { Flex, Box, Text, ButtonGroup, Button, Menu, MenuButton, Portal, MenuList, MenuItem } from '@chakra-ui/react';
 import { IFilter } from '~/interfaces/util/filter';
-import { colors } from "~/components/elements/charts/colors";
+import { legendColors } from "~/components/elements/charts/colors";
 
 interface ISharePriceFilter extends IFilter {
     background?:string;
@@ -15,19 +15,19 @@ const SharePriceChart:any = () : ReactNode => {
             label: 'XAO All Ordinaries',
             value:  'relativePrice1', // Relative Price 1 is XAO (xao.asx)
             isActive: false,
-            background: colors[1],
+            background: legendColors[1],
         },
         {
             label: 'XJO S&P/ASX 200',
             value: 'relativePrice2', // Relative Price 2 is XJO  (xjo.asx)
             isActive: false,
-            background: colors[2],
+            background: legendColors[2],
         },
         {
             label: 'XKO S&P/ASX 300',
             value: 'relativePrice3', /// Relative Price 3 is XKO (xko.asx)
             isActive: false,
-            background: colors[3],
+            background: legendColors[3],
         }
     ];
 
@@ -88,13 +88,13 @@ const SharePriceChart:any = () : ReactNode => {
                         display: 'none'
                     },
                     '.yourir-chart-relative-price1': {
-                        stroke: colors[1],
+                        stroke: legendColors[1],
                     },
                     '.yourir-chart-relative-price2': {
-                        stroke: colors[2]
+                        stroke: legendColors[2]
                     },
                     '.yourir-chart-relative-price3': {
-                        stroke: colors[3]
+                        stroke: legendColors[3]
                     }
                 }}>
                 <Box id="priceComparisionChart" data-yourir="priceComparisonChart1 volume.visible=false range=1m ranges=1d,1m,6m,1y,5y,10y showTooltips=true">

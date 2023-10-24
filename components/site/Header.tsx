@@ -228,8 +228,7 @@ const MobileNav:any = ({ background, menu, isOpen = false }): ReactNode => {
         transition={{
             ease: 'linear',
             duration: 0.3
-        }}
-        pointerEvents={!isOpen ? 'none' : 'all'}>
+        }}>
         <Box ref={scrollRef} overflowY="auto" h={isOpen ? '100%' : '0'}>
             <Box color="black">
                 {

@@ -36,7 +36,7 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                             <Text fontSize={['72px']}
                                 mb={0}
                                 lineHeight={['80px']}
-                                  letterSpacing="-2px"
+                                letterSpacing="-2px"
                                 fontWeight={500}
                                 color="darkBrown"
                                 data-yourir="price showCurrency=true minDecimals=2 maxDecimals=2" />
@@ -105,57 +105,57 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                         </svg>
                         <Box overflowX="clip" overflowY="visible">
                             <Box w="calc(100% + 40px)"
-                                 mx="-20px"
-                                 sx={{
-                                     '.yourir-chart': {
-                                         padding: '20px 0 0',
-                                         borderBottomWidth: '1px',
-                                         borderStyle: 'solid',
-                                         borderColor: 'darkBrown',
-                                         color: 'darkBrown'
-                                     },
-                                     '.yourir-chart-price-fill': {
-                                         fill: `url(#priceGradient)`
-                                     },
-                                     '.yourir-chart-price': {
-                                         stroke: 'darkBrown',
-                                         strokeWidth: '2px',
-                                     },
-                                     '.yourir-chart-yaxis-label': {
-                                         position: 'relative',
-                                         top: '-10px'
-                                     },
-                                     '.yourir-chart-yaxis-left .yourir-chart-yaxis-outside .yourir-chart-yaxis-label-container': {
-                                         left: '20px',
-                                         marginRight: '0',
-                                         fontSize: '12px',
-                                         color: 'darkGrey'
-                                     },
-                                     '.yourir-chart-xaxis': {
-                                         position: 'relative',
-                                         top: '-40px'
-                                     },
-                                     '.yourir-chart-xaxis-label': {
-                                         fontSize: '12px',
-                                         color: 'darkGrey'
-                                     },
-                                     '.yourir-chart-panel-border-bottom': {
-                                         display: 'none'
-                                     },
-                                     '.yourir-chart-tick-bottom': {
-                                         display: 'none'
-                                     },
-                                     '.yourir-chart-xaxis-outside': {
-                                         position: 'relative',
-                                         top: '10px'
-                                     },
-                                     '.yourir-chart-yaxis-gridline': {
-                                         stroke: 'lightGrey2'
-                                     },
-                                     '.yourir-chart-yaxis-outside .yourir-chart-yaxis-label-container:first-of-type': {
-                                         display: 'none'
-                                     }
-                                 }}>
+                                mx="-20px"
+                                sx={{
+                                    '.yourir-chart': {
+                                        padding: '20px 0 0',
+                                        borderBottomWidth: '1px',
+                                        borderStyle: 'solid',
+                                        borderColor: 'darkBrown',
+                                        color: 'darkBrown'
+                                    },
+                                    '.yourir-chart-price-fill': {
+                                        fill: `url(#priceGradient)`
+                                    },
+                                    '.yourir-chart-price': {
+                                        stroke: 'darkBrown',
+                                        strokeWidth: '2px',
+                                    },
+                                    '.yourir-chart-yaxis-label': {
+                                        position: 'relative',
+                                        top: '-10px'
+                                    },
+                                    '.yourir-chart-yaxis-left .yourir-chart-yaxis-outside .yourir-chart-yaxis-label-container': {
+                                        left: '20px',
+                                        marginRight: '0',
+                                        fontSize: '12px',
+                                        color: 'darkGrey'
+                                    },
+                                    '.yourir-chart-xaxis': {
+                                        position: 'relative',
+                                        top: '-40px'
+                                    },
+                                    '.yourir-chart-xaxis-label': {
+                                        fontSize: '12px',
+                                        color: 'darkGrey'
+                                    },
+                                    '.yourir-chart-panel-border-bottom': {
+                                        display: 'none'
+                                    },
+                                    '.yourir-chart-tick-bottom': {
+                                        display: 'none'
+                                    },
+                                    '.yourir-chart-xaxis-outside': {
+                                        position: 'relative',
+                                        top: '10px'
+                                    },
+                                    '.yourir-chart-yaxis-gridline': {
+                                        stroke: 'lightGrey2'
+                                    },
+                                    '.yourir-chart-yaxis-outside .yourir-chart-yaxis-label-container:first-of-type': {
+                                        display: 'none'
+                                    }
+                                }}>
                                 <div data-yourir="priceChart1 range=6m showTooltips=true" >
                                     <Box data-yourir="plots"  />
                                 </div>
@@ -185,31 +185,31 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                                     direction="row"
                                     color="darkBrownBlur"
                                     align="center"
-                                      transition="color 0.3s linear"
+                                    transition="color 0.3s linear"
                                     _hover={{
                                         color: 'black'
                                     }}
                                     py={[4, ,'22px']}>
                                     <Box position="relative" top="1px">
                                         <Heading data-yourir="$cur.heading"
-                                                 as="h3"
-                                                 display="inline"
-                                                 variant="listItem" mr={3} />
+                                            as="h3"
+                                            display="inline"
+                                            variant="listItem" mr={3} />
                                         <Heading data-yourir="$cur.date format='DD.MM.YY'"
-                                                 as="span"
-                                                 display="inline"
-                                                 variant="listLabel" mr={2} />
+                                            as="span"
+                                            display="inline"
+                                            variant="listLabel" mr={2} />
                                     </Box>
                                     <Box flex={1} />
                                     <Box ml={2} transition="transform 0.3s linear" _groupHover={{
                                         transform: 'translateX(4px)',
                                     }}>
                                         <ChakraLink  data-yourir="linkAnnouncement fileId" cursor="pointer"
-                                                     color="darkBrownBlur"
-                                                     transition="color 0.3s linear"
-                                                     _groupHover={{
-                                                         color: 'darkBrown',
-                                                     }}>
+                                            color="darkBrownBlur"
+                                            transition="color 0.3s linear"
+                                            _groupHover={{
+                                                color: 'darkBrown',
+                                            }}>
                                             <Icon icon={Icons.ChevronRight} />
                                         </ChakraLink>
                                     </Box>

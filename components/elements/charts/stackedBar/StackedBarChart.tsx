@@ -10,8 +10,9 @@ interface IStackedBarChart {
         groups:IDataGroup[];
         rows:IDataRow[];
     };
-    color?:string;
+    textColor?:string;
     borderColor?:string;
+    fillColor?:string;
 }
 
 interface IDataGroup {

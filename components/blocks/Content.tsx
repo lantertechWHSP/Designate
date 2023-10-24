@@ -72,7 +72,6 @@ const ContentBlock:any = ({
     children,
     paddingTop = '',
     paddingBottom = '',
-    theme = '',
     ...props }:IContentBlock) : ReactNode => {
     let columnWidths:ColumnWidth[];
     const selectedBackground:BackgroundColor|ResponsiveValue<any>|string = getBackgroundColor(background);

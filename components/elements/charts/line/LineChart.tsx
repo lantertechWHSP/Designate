@@ -13,6 +13,7 @@ interface ILineChart {
     };
     textColor?:string;
     borderColor?:string;
+    fillColor?:string;
 }
 
 interface ILine {

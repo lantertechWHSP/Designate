@@ -13,6 +13,7 @@ interface IBarChart {
     };
     textColor?:string;
     fillColor?:string;
+    borderColor?:string;
 }
 
 interface IData {

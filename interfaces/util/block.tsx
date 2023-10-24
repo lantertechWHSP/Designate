@@ -1,4 +1,4 @@
-import { BackgroundColor, ContainerWidth, PaddingBottom, PaddingTop, TextColor } from '~/components/blocks/Content';
+import { BackgroundColor, ContainerWidth, PaddingBottom, PaddingTop, TextColor, Theme } from '~/components/blocks/Content';
 
 export interface IBlock {
     id?:string;

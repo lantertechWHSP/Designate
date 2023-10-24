@@ -21,10 +21,10 @@ interface IDividendGrowthChartBlock extends IBlock {
 
 const DividendGrowthChart:any = ({ table, theme }:IDividendGrowthChartBlock) : ReactNode => {
     const backgroundColor:string = theme === Theme.Dark ? 'darkBrown' : 'white';
-    let newLightLegendColors:string[] = [...legendColors];
+    const newLightLegendColors:string[] = [...legendColors];
     newLightLegendColors.shift();
     const colors:string[] = theme === Theme.Dark ? darkLegendColors : newLightLegendColors;
-    const textColor = theme === Theme.Dark ? 'white' : 'black';
+    const textColor:string = theme === Theme.Dark ? 'white' : 'black';
 
     const getValues:any = () => {
         const values:any = [];
