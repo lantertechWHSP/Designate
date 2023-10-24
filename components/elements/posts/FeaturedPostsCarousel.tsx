@@ -116,7 +116,7 @@ const FeaturedPostsCarousel:any = ({ posts }:IFeaturedPostsCarousel) : any => {
                         posts.map((post:IPost, index:number) => {
                             return <Button key={index} width="8px" height="8px" mx={1}
                                 background={slideIndex === index ? 'white' : 'whiteBlur'}
-                                borderRadius="4px"
+                                borderRadius="3px"
                                 onClick={() => {
                                     goToIndex(index);
                                 }} />;

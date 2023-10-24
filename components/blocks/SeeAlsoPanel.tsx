@@ -19,7 +19,7 @@ interface ISeeAlsoPanelBlock extends IBlock {
 }
 
 const SeeAlsoItem:any = ({ title, description, link }:ISeeAlsoItem) : ReactNode => {
-    return <Flex direction={['row', ,'column']} align={['center', ,'unset']} bg="white" borderTop="1px solid" borderColor="darkBrownBlur" py={4}>
+    return <Flex direction={['row', ,'column']} align={['center', ,'unset']} borderTop="1px solid" borderColor="darkBrownBlur" py={4}>
         {
             title && <Heading as="h3" fontSize={['24px']} fontWeight={700} mb={[0, ,2]}>
                 {title}
@@ -34,7 +34,7 @@ const SeeAlsoItem:any = ({ title, description, link }:ISeeAlsoItem) : ReactNode 
             <Box flex={1} display={['block', ,'none']} />
         }
         {
-            link && <SectionLink {...link} mb={0}>
+            link && <SectionLink {...link} mb={8}>
                 Read More
             </SectionLink>
         }
@@ -42,7 +42,7 @@ const SeeAlsoItem:any = ({ title, description, link }:ISeeAlsoItem) : ReactNode 
 };
 
 const SeeAlsoPanelBlock:any = ({ items }:ISeeAlsoPanelBlock) : ReactNode => {
-    return <ContentBlock>
+    return <ContentBlock background="ghostWhite">
         {
             <Heading variant="sectionHeading" as="h2" mb={[4, ,8]}>
                 See Also

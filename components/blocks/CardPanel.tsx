@@ -26,7 +26,7 @@ interface ICardPanelBlock extends IBlock {
 
 const CardPanelBlock:any = ({ annotation, title, description, image, link, document, align, paddingTop, paddingBottom }:ICardPanelBlock) : ReactNode => {
     return <ContentBlock background="ghostWhite" paddingTop={paddingTop} paddingBottom={paddingBottom}>
-        <Flex direction={['column', ,(align === ICardPanelAlign.Right) ? 'row-reverse' : 'row']}>
+        <Flex direction={['column', ,(align === ICardPanelAlign.Right) ? 'row-reverse' : 'row']} borderRadius="3px" overflow="hidden" filter="drop-shadow(0px 1px 0px rgba(0, 0, 0, 0.10))" >
             <Flex width={['100%', ,'50%']} background="white" direction="column" p={[6, ,gutter * 2]}>
                 {
                     annotation && <Text variant="annotation" mb={[2, 4 ,8]}>
@@ -51,6 +51,7 @@ const CardPanelBlock:any = ({ annotation, title, description, image, link, docum
                 }
             </Flex>
             <Box width={['100%', ,'50%']}
+                 minHeight="400px"
                 position="relative"
                 backgroundImage={image?.responsiveImage ? `url('${image.responsiveImage.src}')` : 'lightGrey'}
                 backgroundPosition="center"
@@ -62,7 +63,6 @@ const CardPanelBlock:any = ({ annotation, title, description, image, link, docum
                         as="a" target="_blank" position="absolute" top="0" bottom="0" left="0" right="0">
                     </Link>
                 }
-                <Box paddingTop="66%" />
             </Box>
         </Flex>
     </ContentBlock>;

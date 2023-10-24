@@ -95,7 +95,7 @@ export const SubscriptionForm:any = () : ReactNode => {
                                                             h="50px"
                                                             id="email"
                                                             name="email"
-                                                            borderRadius="4px"
+                                                            borderRadius="3px"
                                                             placeholder="Email Address"
                                                             autoComplete="off" />
                                                         {
@@ -109,7 +109,7 @@ export const SubscriptionForm:any = () : ReactNode => {
                                                         h="50px"
                                                         ml={[0, ,4]}
                                                         mt={[4, ,0]}
-                                                        borderRadius="4px"
+                                                        borderRadius="3px"
                                                         minW={['100%', ,'180px']} >Subscribe</Button>
                                                 </> : <Flex minHeight="48px" align="center">
                                                     <Text color="white" mb={0}>{message}</Text>

@@ -12,12 +12,12 @@ interface ILatestNewsItem extends IPost {
 const LatestNewsItem:any = ({ title, image, publishDate, slug }:ILatestNewsItem) : ReactNode => {
     const date:string = DateTime.fromFormat(publishDate, 'yyyy-mm-dd').toFormat('DDD');
 
-    return <Flex direction="column" py={[2, ,4]}>
+    return <Flex direction="column">
         {
             slug ? <Link href={`news/${slug}`}>
-                <Image image={image} ratio={2/1} mb={4} />
+                <Image image={image} ratio={2/1} mb={4} borderRadius="3px" overflow="hidden" />
             </Link> : <>
-                <Image image={image} ratio={2/1} mb={4} />
+                <Image image={image} ratio={2/1} mb={4} borderRadius="3px" overflow="hidden" />
             </>
         }
         {

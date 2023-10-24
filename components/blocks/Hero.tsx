@@ -15,7 +15,7 @@ interface IHeroBlock extends IBlock {
 
 const HeroBlock:any = ({ title, video, image }:IHeroBlock) : ReactNode => {
     const { observe: contentWidthObserve, width: contentWidth } = useDimensions();
-    const height:string[] = ['300px', '420px', ,'490px'];
+    const height:string[] = ['420px', '482px'];
 
     return <Box
         overflow="hidden"
@@ -28,7 +28,7 @@ const HeroBlock:any = ({ title, video, image }:IHeroBlock) : ReactNode => {
                 backgroundSize="cover">
                 <Container h={height}>
                     <Flex minH="100%" align="flex-end">
-                        <Heading py={8} variant="hero" position="relative" zIndex="2" maxWidth={['100vw', , '600px', '1000px']}>
+                        <Heading py={[6, 8, 12]} variant="hero" position="relative" zIndex="2" maxWidth={['100vw', , '600px', '1000px']}>
                             {
                                 title
                             }
@@ -51,14 +51,6 @@ const HeroBlock:any = ({ title, video, image }:IHeroBlock) : ReactNode => {
                                         <video autoPlay={true} loop={true} muted={true} playsInline>
                                             <source src={video?.url} />
                                         </video>
-                                        <Box
-                                            background="rgba(0, 0, 0, 0.3)"
-                                            position="absolute"
-                                            top="0"
-                                            bottom="0"
-                                            left="0"
-                                            right="0">
-                                        </Box>
                                     </>
                                 </AspectRatio>
                             </Box>;

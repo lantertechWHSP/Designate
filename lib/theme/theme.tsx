@@ -31,6 +31,8 @@ const colors:any = {
     ghostWhite: '#f8f8f8',
     ghostWhiteBlur: 'rgba(248, 248, 248, 0.7)',
 
+    steelBlue: '#667085',
+
     darkGrey: '#848484',
     brownGrey: '#CBCBC5',
 
@@ -80,15 +82,17 @@ export const theme:any = extendBaseTheme({
             },
             variants: {
                 hero: {
-                    fontSize: ['36px', '46px', '56px', '76px'],
+                    fontSize: ['50px', '56px', '72px'],
                     fontWeight: 500,
-                    lineHeight: [1.2],
+                    lineHeight: ['46px', '60px', '76px'],
+                    letterSpacing: ['-0.75px'],
                     color: 'white'
                 },
                 defaultLayoutTitle: {
-                    fontSize: ['64px'],
+                    fontSize: ['46px', '56px', '64px'],
                     fontWeight: 500,
-                    lineHeight: [1.2]
+                    lineHeight: [1.1],
+                    letterSpacing: ['-0.75px']
                 },
                 sectionHeading: {
                     color: 'black',
@@ -106,8 +110,16 @@ export const theme:any = extendBaseTheme({
                     fontSize: ['21px'],
                     fontWeight: 500,
                     color: 'darkBrown',
+                    transition: 'color 0.3s linear',
+                    _hover: {
+                        color: 'black'
+                    },
                     a: {
-                        color: 'darkBrown'
+                        color: 'darkBrown',
+                        transition: 'color 0.3s linear',
+                        _hover: {
+                            color: 'black'
+                        }
                     }
                 },
                 listLabel: {
@@ -123,6 +135,8 @@ export const theme:any = extendBaseTheme({
             variants: {
                 sectionDescription: {
                     fontSize: ['18px'],
+                    lineHeight: ['27px'],
+                    color: 'steelBlue'
                 },
                 error: {
                     color: 'error'

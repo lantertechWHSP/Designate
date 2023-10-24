@@ -32,10 +32,11 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                         <Heading as="h3" variant="sectionSubheading" mb={4}>
                             Share Price Performance
                         </Heading>
-                        <Box mb={[0, ,'12px']} borderTop="1px solid" borderColor="lightGrey2" py={4}>
+                        <Box mb={[0, ,'13px']} borderTop="1px solid" borderColor="lightGrey2" py={2}>
                             <Text fontSize={['72px']}
                                 mb={0}
                                 lineHeight={['80px']}
+                                  letterSpacing="-2px"
                                 fontWeight={500}
                                 color="darkBrown"
                                 data-yourir="price showCurrency=true minDecimals=2 maxDecimals=2" />
@@ -107,7 +108,7 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                                  mx="-20px"
                                  sx={{
                                      '.yourir-chart': {
-                                         padding: '40px 0 0',
+                                         padding: '20px 0 0',
                                          borderBottomWidth: '1px',
                                          borderStyle: 'solid',
                                          borderColor: 'darkBrown',
@@ -184,21 +185,35 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                                     direction="row"
                                     color="darkBrownBlur"
                                     align="center"
-                                    py={[4, , 3, '26px']}>
-                                    <Box>
+                                      transition="color 0.3s linear"
+                                    _hover={{
+                                        color: 'black'
+                                    }}
+                                    py={[4, ,'22px']}>
+                                    <Box position="relative" top="1px">
                                         <Heading data-yourir="$cur.heading"
                                                  as="h3"
                                                  display="inline"
-                                                 variant="listItem" mr={2} />
+                                                 variant="listItem" mr={3} />
                                         <Heading data-yourir="$cur.date format='DD.MM.YY'"
                                                  as="span"
                                                  display="inline"
                                                  variant="listLabel" mr={2} />
                                     </Box>
                                     <Box flex={1} />
-                                    <ChakraLink ml={2} data-yourir="linkAnnouncement fileId" cursor="pointer" color="darkBrownBlur">
-                                        <Icon icon={Icons.ChevronRight} />
-                                    </ChakraLink>
+                                    <Box ml={2} transition="transform 0.3s linear" _groupHover={{
+                                        transform: 'translateX(4px)',
+                                    }}>
+                                        <ChakraLink  data-yourir="linkAnnouncement fileId" cursor="pointer"
+                                                     color="darkBrownBlur"
+                                                     transition="color 0.3s linear"
+                                                     _groupHover={{
+                                                         color: 'darkBrown',
+                                                     }}>
+                                            <Icon icon={Icons.ChevronRight} />
+                                        </ChakraLink>
+                                    </Box>
+
                                 </Flex>
                             </Box>
                         </Box>

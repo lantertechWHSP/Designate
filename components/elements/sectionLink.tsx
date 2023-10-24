@@ -18,6 +18,10 @@ export const SectionLinkInner:any = ({ children }) => {
         display="inline-flex"
         borderBottom="2px solid"
         borderColor="darkBrownBlur"
+         transition="border-color 0.3s linear"
+         _hover={{
+             borderColor: 'darkBrown'
+         }}
         fontWeight={700}>
         <Text as="span" mr={2}>
             {children}
@@ -26,7 +30,7 @@ export const SectionLinkInner:any = ({ children }) => {
     </Flex>;
 };
 
-export const SectionLinkButton:any = ({ color = 'darkBrown', borderColor = 'darkBrownBlur', ...props }:ISectionLink) => {
+export const SectionLinkButton:any = ({ color = 'darkBrown', borderColor = 'darkBrownBlur', borderColorHover = 'darkBrown', ...props }:ISectionLink) => {
     return <Link {...props}
         display="block"
         color={color}
@@ -37,7 +41,11 @@ export const SectionLinkButton:any = ({ color = 'darkBrown', borderColor = 'dark
         border="2px solid"
         borderColor={borderColor}
         textAlign="center"
-        width={['120px', ,'200px']}
+        width={['120px', ,'180px']}
+        transition="border-color 0.3s linear"
+        _hover={{
+            borderColor: 'darkBrown'
+        }}
         fontWeight={700}>
     </Link>;
 };

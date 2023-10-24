@@ -99,10 +99,8 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
                                 </Link>
                             </Flex>
                         </Column>
-                        <Column display={['none', , ,'block']} width={[ColumnWidth.None, , ,ColumnWidth.EightTwelfths]}>
-                            <Box>
-                                <DesktopNav menu={menu} color={color}/>
-                            </Box>
+                        <Column display={['none', , ,'flex']} align="center" width={[ColumnWidth.None, , ,ColumnWidth.EightTwelfths]}>
+                            <DesktopNav menu={menu} color={color}/>
                         </Column>
                         <Column width={[ColumnWidth.Half, , ,ColumnWidth.TwoTwelfths]}>
                             <Flex display="flex" justify="flex-end">
@@ -115,11 +113,15 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
                                     href="/contact" sx={{
                                         color: color,
                                         fontWeight: 700,
-                                        minWidth: 200,
+                                        minWidth: ['120px', ,'180px'],
                                         padding: '0 20px',
                                         lineHeight: '48px',
                                         height: '48px',
-                                        border: `1px solid ${color}88`,
+                                        border: `2px solid ${color}88`,
+                                        transition: 'border 0.3s ease-in',
+                                        _hover: {
+                                            border: `2px solid ${color}`,
+                                        },
                                         borderRadius: '24px',
                                         textAlign: 'center'
                                     }}>

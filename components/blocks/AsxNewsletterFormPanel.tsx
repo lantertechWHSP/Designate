@@ -26,7 +26,7 @@ const AsxNewsletterFormPanelBlock:any = ({}:IAsxNewsletterFormPanelBlock) : Reac
                                 height="50px"
                                 border="1px solid"
                                 borderColor="white"
-                                borderRadius="4px"
+                                borderRadius="3px"
                                 lineHeight="50px"
                                 color="white"
                                 _placeholder={{
@@ -43,7 +43,7 @@ const AsxNewsletterFormPanelBlock:any = ({}:IAsxNewsletterFormPanelBlock) : Reac
                             <Button data-yourir="subscribe"
                                 mt={4}
                                 minWidth={['unset', ,'300px']}
-                                borderRadius="4px"
+                                borderRadius="3px"
                                 height="50px" lineHeight="50px" background="white">Subscribe</Button>
                         </Flex>
 

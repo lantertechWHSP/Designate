@@ -21,14 +21,16 @@ const OverviewBlock:any = ({ subtitle, description, paddingTop, paddingBottom }:
         <Row>
             <Column width={[ColumnWidth.Full, , ,subtitle && !description ? ColumnWidth.ThreeQuarters : ColumnWidth.Half]}>
                 {
-                    subtitle && <Heading as="h2"
-                        fontSize={['36px']}
-                        lineHeight={['42px']}
-                        color="darkBrown"
-                        fontWeight={500}
-                        pb={[4, , ,0]}>
-                        <StructuredContent content={subtitle} />
-                    </Heading>
+                    subtitle && <Box pr="50px">
+                        <Heading as="h2"
+                                 fontSize={['28px', '32px', '36px']}
+                                 lineHeight={['35px', '38px', '42px']}
+                                 color="darkBrown"
+                                 fontWeight={500}
+                                 pb={[4, , ,0]}>
+                            <StructuredContent content={subtitle} />
+                        </Heading>
+                    </Box>
                 }
             </Column>
             <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half]}>

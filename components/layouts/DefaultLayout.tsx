@@ -20,9 +20,9 @@ const DefaultLayout:any = ({ layout, children }:any) : ReactNode => {
                         position="relative"
                         background="linear-gradient(270deg, #50513C 0%, rgba(228, 221, 193, 0.50) 100%)">
                         <Container>
-                            <Flex h={['376px']} align="flex-end" py={8}>
+                            <Flex h={['376px']} align="flex-end">
                                 {
-                                    layout.title && <Heading as="h1" variant="defaultLayoutTitle">
+                                    layout.title && <Heading as="h1" variant="defaultLayoutTitle" mb={[6, 8, 12]}>
                                         {layout.title}
                                     </Heading>
                                 }

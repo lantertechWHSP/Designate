@@ -99,7 +99,7 @@ const CarouselBlock:any = ({ items, paddingTop, paddingBottom }:ICarouselBlock) 
                             items.map((item:ICarouselItem, index:number) => {
                                 return <Button key={index} width="8px" height="8px" mx={1}
                                     background={slideIndex === index ? 'black' : 'white'}
-                                    borderRadius="4px"
+                                    borderRadius="3px"
                                     onClick={() => {
                                         goToIndex(index);
                                     }} />;
