@@ -9,7 +9,7 @@ interface ITextBlock extends IBlock {
 }
 
 const TextBlock:any = ({ background, content, containerWidth, contain, paddingTop, paddingBottom }:ITextBlock) : ReactNode => {
-    return <ContentBlock background={background} containerWidth={containerWidth} contain={contain} paddingTop={paddingTop} paddingBottom={paddingBottom}>
+    return content && <ContentBlock background={background} containerWidth={containerWidth} contain={contain} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         <StructuredContent content={content} />
     </ContentBlock>;
 };

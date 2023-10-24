@@ -42,25 +42,19 @@ const SeeAlsoItem:any = ({ title, description, link }:ISeeAlsoItem) : ReactNode 
 };
 
 const SeeAlsoPanelBlock:any = ({ items }:ISeeAlsoPanelBlock) : ReactNode => {
-    return <ContentBlock background="ghostWhite">
-        {
-            <Heading variant="sectionHeading" as="h2" mb={[4, ,8]}>
-                See Also
-            </Heading>
-        }
-        {
-            (Array.isArray(items) && items.length > 0) ? <Row>
-                {
-                    items.map((item:ISeeAlsoItem, index:number) => {
-                        return <Column key={index} width={[ColumnWidth.Full, , ColumnWidth.Half, ColumnWidth.OneQuarter]}>
-                            <SeeAlsoItem {...item} />
-                        </Column>;
-                    })
-                }
-            </Row> : <Alert status="info" mt={4}>
-                Nothing else to see…
-            </Alert>
-        }
+    return (Array.isArray(items) && items.length > 0) && <ContentBlock background="ghostWhite">
+        <Heading variant="sectionHeading" as="h2" mb={[4, ,8]}>
+            See Also
+        </Heading>
+        <Row>
+            {
+                items.map((item:ISeeAlsoItem, index:number) => {
+                    return <Column key={index} width={[ColumnWidth.Full, , ColumnWidth.Half, ColumnWidth.OneQuarter]}>
+                        <SeeAlsoItem {...item} />
+                    </Column>;
+                })
+            }
+        </Row>
     </ContentBlock>;
 };
 

@@ -17,7 +17,7 @@ interface IVideoBlock extends IBlock {
 const VideoBlock:any = ({ title, video, videoEmbed, containerWidth, paddingTop, paddingBottom }:IVideoBlock) : ReactNode => {
     const [currentVideo] = useState<IVideo>(video ? video : videoEmbed);
 
-    return <ContentBlock background="black3" containerWidth={containerWidth} paddingTop={paddingTop} paddingBottom={paddingBottom}>
+    return (title || currentVideo) && <ContentBlock background="black3" containerWidth={containerWidth} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         {
             currentVideo && <AspectRatio ratio={[29 / 18, 21 / 10, ,21 / 9]}>
                 <ReactPlayer
