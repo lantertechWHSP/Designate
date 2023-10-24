@@ -3,4 +3,5 @@ export const trackRecordDividendRecord:string = `
     id
     title
     table
+    theme
 `;

@@ -10,7 +10,9 @@ import { maxBy as _maxBy, throttle as _throttle } from 'lodash';
 interface IBarChart {
     data: {
         bars: IData[];
-    }
+    };
+    textColor?:string;
+    fillColor?:string;
 }
 
 interface IData {
@@ -25,7 +27,7 @@ interface IMargin {
     left:number;
 }
 
-const BarChart:any = ({ data }:IBarChart) : ReactNode => {
+const BarChart:any = ({ data, textColor, fillColor }:IBarChart) : ReactNode => {
     const [width, setWidth] = useState<number>(null);
     const [height, setHeight] = useState<number>(null);
     const margin:IMargin = { top: 30, right: 30, bottom: 50, left: 0 };
@@ -93,7 +95,7 @@ const BarChart:any = ({ data }:IBarChart) : ReactNode => {
             '.tick': {
                 fontSize: '14px',
                 fontFamily: 'Gramatika',
-                color: 'lightGrey2'
+                color: textColor
             },
             '.x-axis .domain': {
                 display: 'none'
@@ -105,7 +107,7 @@ const BarChart:any = ({ data }:IBarChart) : ReactNode => {
                 color: 'lightGrey2'
             },
             '.bar': {
-                fill: 'darkBrown'
+                fill: fillColor
             }
         }}>
         {

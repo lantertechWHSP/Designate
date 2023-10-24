@@ -1,9 +1,10 @@
 import { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
-import ContentBlock from '~/components/blocks/Content';
+import ContentBlock, {Theme} from '~/components/blocks/Content';
 import BarChart from '~/components/elements/charts/bar/BarChart';
 import { ITable } from '~/interfaces/util/table';
 import { Heading, Box } from '@chakra-ui/react';
+import { darkLegendColors, legendColors } from '~/components/elements/charts/colors';
 
 interface ITableRow {
     Year:string;
@@ -15,7 +16,11 @@ interface ITrackRecordDividendBlock extends IBlock {
     table?: ITable<ITableRow>;
 }
 
-const TrackRecordDividendBlock:any = ({ title, table, paddingTop, paddingBottom }:ITrackRecordDividendBlock) : ReactNode => {
+const TrackRecordDividendBlock:any = ({ title, table, paddingTop, paddingBottom, theme }:ITrackRecordDividendBlock) : ReactNode => {
+    const backgroundColor:string = theme === Theme.Dark ? 'darkBrown' : 'white';
+    const textColor = theme === Theme.Dark ? 'white' : 'black';
+    const fillColor = theme === Theme.Dark ? 'white' : 'lightGrey';
+
     const chartData:any = [];
 
     table.data.map((row:ITableRow) => {
@@ -25,24 +30,26 @@ const TrackRecordDividendBlock:any = ({ title, table, paddingTop, paddingBottom 
         });
     });
 
-    return <ContentBlock background="darkBrown" paddingTop={paddingTop} paddingBottom={paddingBottom}>
+    return <ContentBlock background={backgroundColor} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         {
-            title && <Heading as="h2" variant="sectionSubheading" color="white" mb={12}>
+            title && <Heading as="h2" variant="sectionSubheading" color={textColor} mb={12}>
                 {title}
             </Heading>
         }
-        <Box sx={{
-            '.tick': {
-                color: 'whiteBlur !important'
-            },
-            '.y-axis .tick line': {
-                color: 'whiteBlur !important'
-            },
-            '.bar': {
-                fill: 'white !important'
-            }
-        }}>
-            <BarChart data={{ bars: chartData }} />
+
+    {/*    sx={{*/}
+    {/*    '.tick': {*/}
+    {/*        color: 'whiteBlur !important'*/}
+    {/*    },*/}
+    {/*    '.y-axis .tick line': {*/}
+    {/*        color: 'whiteBlur !important'*/}
+    {/*    },*/}
+    {/*    '.bar': {*/}
+    {/*        fill: 'white !important'*/}
+    {/*    }*/}
+    {/*}}*/}
+        <Box>
+            <BarChart data={{ bars: chartData }} textColor={textColor} fillColor={fillColor} />
         </Box>
     </ContentBlock>;
 };
