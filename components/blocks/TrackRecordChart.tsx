@@ -1,13 +1,13 @@
 import { ReactNode, useState, useEffect } from 'react';
 import { IBlock } from '~/interfaces/util/block';
-import ContentBlock from '~/components/blocks/Content';
+import ContentBlock, { Theme } from '~/components/blocks/Content';
 import LineChart from '~/components/elements/charts/line/LineChart';
 import { DateTime } from 'luxon';
 import { Heading, Flex, Box, Menu, MenuButton, Button, Portal, MenuList, MenuItem, Text } from '@chakra-ui/react';
 import { Icon, Icons } from '~/components/elements/icon';
 import { IFilter } from '~/interfaces/util/filter';
 import { ITable } from '~/interfaces/util/table';
-import { colors } from '~/components/elements/charts/colors';
+import { darkLegendColors, legendColors } from '~/components/elements/charts/colors';
 
 interface ITrackRecordChartBlock extends IBlock {
     australianSharesTable:ITable<any>;
@@ -20,7 +20,12 @@ interface IChartFilter extends IFilter {
     background?:string;
 }
 
-const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesTable, australianListedTable, australianBondsTable, paddingTop, paddingBottom }:ITrackRecordChartBlock) : ReactNode => {
+const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesTable, australianListedTable, australianBondsTable, paddingTop, paddingBottom, theme }:ITrackRecordChartBlock) : ReactNode => {
+    const backgroundColor:string = theme === Theme.Dark ? 'darkBrown' : 'white';
+    const colors:string[] = theme === Theme.Dark ? darkLegendColors : legendColors;
+    const textColor = theme === Theme.Dark ? 'white' : 'black';
+    const fillColor = theme === Theme.Dark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(80, 81, 60, 0.05)';
+
     const australianShares:any = australianSharesTable.data.map((datum) => {
         return {
             value: +datum.Value,
@@ -83,22 +88,22 @@ const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesT
         newLines.push({
             data: australianShares,
             display: filters[0].isActive,
-            fill: '#848484'
+            fill: colors[0]
         });
         newLines.push({
             data: internationalShares,
             display: filters[1].isActive,
-            fill: '#E5A635'
+            fill: colors[1]
         });
         newLines.push({
             data: australianListed,
             display: filters[2].isActive,
-            fill: '#93B24A'
+            fill: colors[2]
         });
         newLines.push({
             data: australianBonds,
             display: filters[3].isActive,
-            fill: '#673148'
+            fill: colors[3]
         });
 
         setLines(newLines);
@@ -108,9 +113,9 @@ const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesT
         updateLines();
     }, []);
 
-    return <ContentBlock paddingTop={paddingTop} paddingBottom={paddingBottom}>
+    return <ContentBlock paddingTop={paddingTop} paddingBottom={paddingBottom} background={backgroundColor}>
         <Flex justify="space-between">
-            <Heading as="h2" variant="sectionSubheading">
+            <Heading as="h2" variant="sectionSubheading" color={textColor}>
                 20 Year Total Shareholder Return
             </Heading>
             <Box>
@@ -121,7 +126,7 @@ const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesT
                                 variant="menuButton"
                                 rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} h={12} w={12} /> : <Icon icon={Icons.ChevronDown} h={12} w={12}  /> }>
                                 <Flex display="inlineFlex" direction="row" alignItems="center">
-                                    <Box background="lightGrey2" width="10px" height="10px" borderRadius="5px" mr={2} />
+                                    <Box background={theme === Theme.Dark ? 'white' : 'lightGrey'} width="8px" height="8px" borderRadius="4px" border="1px solid" borderColor={theme === Theme.Dark ? 'black' : 'transparent'}  mr={2} />
                                     <Text as="span">
                                         Compare…
                                     </Text>
@@ -153,7 +158,7 @@ const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesT
                                                         updateLines();
                                                     }
                                                 }}>
-                                                <Box background={item.background} width="10px" height="10px" borderRadius="5px" mr={2} />
+                                                <Box background={item.background} width="8px" height="8px" borderRadius="4px" border="1px solid" borderColor={theme === Theme.Dark ? 'black' : 'transparent'} mr={2} />
                                                 <Text as="span">{item.label}</Text>
                                             </MenuItem>;
                                         })
@@ -165,7 +170,7 @@ const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesT
                 </Menu>
             </Box>
         </Flex>
-        <LineChart data={{ lines: lines }} />
+        <LineChart data={{ lines: lines }} color={textColor} fillColor={fillColor} />
     </ContentBlock>;
 };
 

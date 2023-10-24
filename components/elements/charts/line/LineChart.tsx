@@ -11,6 +11,8 @@ interface ILineChart {
     data: {
         lines: ILine[];
     }
+    color?:string;
+    borderColor?:string;
 }
 
 interface ILine {
@@ -38,7 +40,7 @@ interface IMargin {
     left:number;
 }
 
-const LineChart:any = ({ data }:ILineChart) : ReactNode => {
+const LineChart:any = ({ data, color = 'darkBrown', borderColor = 'lightGrey2', fillColor = 'rgba(80, 81, 60, 0.05)' }:ILineChart) : ReactNode => {
     const [width, setWidth] = useState<number>(null);
     const [height, setHeight] = useState<number>(null);
     const margin:IMargin = { top: 30, right: 30, bottom: 30, left: 0 };
@@ -148,7 +150,7 @@ const LineChart:any = ({ data }:ILineChart) : ReactNode => {
             '.tick': {
                 fontSize: '14px',
                 fontFamily: 'Gramatika',
-                color: 'darkBrown'
+                color: color
             },
             '.x-axis .domain': {
                 display: 'none'
@@ -157,7 +159,7 @@ const LineChart:any = ({ data }:ILineChart) : ReactNode => {
                 display: 'none'
             },
             '.y-axis .tick line': {
-                color: 'lightGrey2'
+                color: borderColor
             },
         }}>
         {
@@ -185,7 +187,7 @@ const LineChart:any = ({ data }:ILineChart) : ReactNode => {
                                                             ((_isNil(line.display) || line.display) && index === 0) &&
                                                             <path
                                                                 d={line.drawnArea}
-                                                                fill={'rgba(80, 81, 60, 0.05)'}
+                                                                fill={fillColor}
                                                                 opacity={1}
                                                                 strokeWidth={0}
                                                             />

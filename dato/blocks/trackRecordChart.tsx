@@ -7,4 +7,5 @@ export const trackRecordChartRecord:string = `
     australianBondsTable
     paddingTop
     paddingBottom
+    theme
 `;

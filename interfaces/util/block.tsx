@@ -9,6 +9,7 @@ export interface IBlock {
     textColor?:TextColor;
     paddingTop?:PaddingTop;
     paddingBottom?:PaddingBottom;
+    theme?:Theme;
     contain?:boolean;
 
     // External
