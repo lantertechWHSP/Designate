@@ -37,6 +37,7 @@ export enum ColumnWidth {
 }
 
 interface IRow extends ChakraProps {
+    wrap?:any;
     direction?:any;
     justify?:any;
     children?:any;
@@ -48,8 +49,8 @@ interface IColumn extends ChakraProps {
     direction?:any;
 }
 
-export const Row:any = ({ direction = ['row'], justify = ['flex-start'], children, ...props }:IRow) : ReactNode => {
-    return <Flex wrap="wrap" direction={direction} justify={justify} mx={-gutter} {...props}>
+export const Row:any = ({ wrap = ['wrap'], direction = ['row'], justify = ['flex-start'], children, ...props }:IRow) : ReactNode => {
+    return <Flex wrap={wrap} direction={direction} justify={justify} mx={-gutter} {...props}>
         {children}
     </Flex>;
 };

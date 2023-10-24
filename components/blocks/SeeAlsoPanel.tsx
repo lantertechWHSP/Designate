@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
 import ContentBlock from '~/components/blocks/Content';
-import { Box, Heading, Text } from '@chakra-ui/react';
+import { Box, Heading, Text, Flex } from '@chakra-ui/react';
 import { ILink} from '~/interfaces/util/link';
 import { SectionLink } from '~/components/elements/sectionLink';
 import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
@@ -19,23 +19,26 @@ interface ISeeAlsoPanelBlock extends IBlock {
 }
 
 const SeeAlsoItem:any = ({ title, description, link }:ISeeAlsoItem) : ReactNode => {
-    return <Box bg="white" borderTop="1px solid" borderColor="darkBrownBlur" pt={4}>
+    return <Flex direction={['row', ,'column']} align={['center', ,'unset']} bg="white" borderTop="1px solid" borderColor="darkBrownBlur" py={4}>
         {
-            title && <Heading as="h3" fontSize={['24px']} fontWeight={700} mb={2}>
+            title && <Heading as="h3" fontSize={['24px']} fontWeight={700} mb={[0, ,2]}>
                 {title}
             </Heading>
         }
         {
-            description && <Text mb={[6, ,12]}>
+            description && <Text display={['none', ,'block']} mb={[6, ,12]}>
                 {description}
             </Text>
         }
         {
-            link && <SectionLink {...link}>
+            <Box flex={1} display={['block', ,'none']} />
+        }
+        {
+            link && <SectionLink {...link} mb={0}>
                 Read More
             </SectionLink>
         }
-    </Box>;
+    </Flex>;
 };
 
 const SeeAlsoPanelBlock:any = ({ items }:ISeeAlsoPanelBlock) : ReactNode => {
@@ -50,9 +53,7 @@ const SeeAlsoPanelBlock:any = ({ items }:ISeeAlsoPanelBlock) : ReactNode => {
                 {
                     items.map((item:ISeeAlsoItem, index:number) => {
                         return <Column key={index} width={[ColumnWidth.Full, , ColumnWidth.Half, ColumnWidth.OneQuarter]}>
-                            <Box mb={[index === items.length - 1 ? 0 : 4, , ,4]}>
-                                <SeeAlsoItem {...item} />
-                            </Box>
+                            <SeeAlsoItem {...item} />
                         </Column>;
                     })
                 }

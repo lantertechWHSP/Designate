@@ -179,18 +179,20 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                                     color="darkBrownBlur"
                                     align="center"
                                     py={[4, , 3, '26px']}>
-                                    <Heading data-yourir="$cur.heading"
-                                        as="h3"
-                                        variant="listItem" mr={2} />
-                                    <Box flex={1} />
-                                    <Flex direction="row" align="center">
+                                    <Box>
+                                        <Heading data-yourir="$cur.heading"
+                                                 as="h3"
+                                                 display="inline"
+                                                 variant="listItem" mr={2} />
                                         <Heading data-yourir="$cur.date format='DD.MM.YY'"
-                                            as="span"
-                                            variant="listLabel" mr={2} />
-                                        <ChakraLink data-yourir="linkAnnouncement fileId" cursor="pointer" color="darkBrownBlur">
-                                            <Icon icon={Icons.ChevronRight} />
-                                        </ChakraLink>
-                                    </Flex>
+                                                 as="span"
+                                                 display="inline"
+                                                 variant="listLabel" mr={2} />
+                                    </Box>
+                                    <Box flex={1} />
+                                    <ChakraLink ml={2} data-yourir="linkAnnouncement fileId" cursor="pointer" color="darkBrownBlur">
+                                        <Icon icon={Icons.ChevronRight} />
+                                    </ChakraLink>
                                 </Flex>
                             </Box>
                         </Box>

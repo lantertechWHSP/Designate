@@ -55,11 +55,11 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
 
     const getColor:any = () : string => {
         if(isOpen || (!isScrolledDown && isMinimumScrolled)) {
-            return 'black';
+            return '#1C1C1C';
         }
         else {
             if(darkTheme) {
-                return '#fff';
+                return '#ffffff';
             }
             else {
                 return '#1C1C1C';
@@ -127,7 +127,7 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
                                         padding: '0 20px',
                                         lineHeight: '48px',
                                         height: '48px',
-                                        border: `1px solid ${color === 'white' ? `rgba(255, 255, 255, 0.5)` : `rgba(0, 0, 0, 0.5)`}`,
+                                        border: `1px solid ${color}88`,
                                         borderRadius: '24px',
                                         textAlign: 'center'
                                     }}>

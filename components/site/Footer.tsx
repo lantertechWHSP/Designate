@@ -14,7 +14,7 @@ const Footer:any = ({ menu, address, email, phone, fax, linkedin, youtube, copyr
     return <Box as="footer" background="black2" color="white" py={[6, 8, 12]}>
         <Container>
             <Row>
-                <Column width={[ColumnWidth.Full, ColumnWidth.Half]} mb={[4, ,0]}>
+                <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]} mb={[4, ,0]} display={['none', 'block']}>
                     <Flex direction="column">
                         {
                             (Array.isArray(menu) && menu.length > 0) && menu.map((item:IMenuLink, index:number) => {
@@ -32,9 +32,9 @@ const Footer:any = ({ menu, address, email, phone, fax, linkedin, youtube, copyr
                         }
                     </Flex>
                 </Column>
-                <Column width={[ColumnWidth.Full, ColumnWidth.Half]}>
+                <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
                     <Row>
-                        <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half]} mb={[4, , ,0]} order={[2, , ,1]}>
+                        <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half]} order={[2, , ,1]}>
                             {
                                 phone && <Box>
                                     <Link href={`tel:${phone}`} variant="siteFooter">
@@ -57,7 +57,7 @@ const Footer:any = ({ menu, address, email, phone, fax, linkedin, youtube, copyr
                                 </Box>
                             }
                         </Column>
-                        <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half]} order={[1, , ,2]}>
+                        <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half]}  mb={[4, , ,0]}  order={[1, , ,2]}>
                             {
                                 address && <Box mb={[4, ,8]}>
                                     {address}
@@ -86,7 +86,7 @@ const Footer:any = ({ menu, address, email, phone, fax, linkedin, youtube, copyr
                 </Column>
             </Row>
             <Row  mt={[8, ,20]}>
-                <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]} mb={[8, ,0]}>
+                <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]} order={[2, , 1]}>
                     <Link
                         href="/"
                         sx={{
@@ -101,18 +101,23 @@ const Footer:any = ({ menu, address, email, phone, fax, linkedin, youtube, copyr
                         </Box>
                     </Link>
                 </Column>
-                <Column width={[ColumnWidth.Full, ,ColumnWidth.OneQuarter]}>
-                    <Link href="/privacy-policy" color="whiteBlur" variant="siteFooter">
-                        Privacy Policy
-                    </Link>
+                <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]} mb={[8, ,0]} order={[1, ,2]}>
+                    <Row>
+                        <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
+                            <Link href="/privacy-policy" color="whiteBlur" variant="siteFooter">
+                                Privacy Policy
+                            </Link>
+                        </Column>
+                        <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
+                            {
+                                copyright && <Text mb={0} color="whiteBlur">
+                                    {copyright}
+                                </Text>
+                            }
+                        </Column>
+                    </Row>
                 </Column>
-                <Column width={[ColumnWidth.Full, ,ColumnWidth.OneQuarter]}>
-                    {
-                        copyright && <Text mb={0} color="whiteBlur">
-                            {copyright}
-                        </Text>
-                    }
-                </Column>
+
             </Row>
         </Container>
     </Box>;

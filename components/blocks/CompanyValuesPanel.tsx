@@ -17,7 +17,7 @@ const CompanyValuesPanelBlock:any = ({ items, paddingTop, paddingBottom, ...prop
     return <ContentBlock paddingTop={paddingTop} paddingBottom={paddingBottom} {...props}>
         {
             (Array.isArray(items) && items.length > 0) && <>
-                <Heading as="h3" variant="h3" mb={4}>
+                <Heading as="h3" variant="sectionSubheading" mb={4}>
                     Our People and Values
                 </Heading>
                 <SimpleGrid background="ghostWhite" columns={[1, ,items.length > 4 ? 4 : items.length]} spacing={[0, ,8]}>

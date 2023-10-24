@@ -4,7 +4,7 @@ const { Modal, Menu, Badge, Alert } = chakraTheme.components;
 
 const breakpoints = {
     base: '0px',
-    sm: '320px',
+    sm: '480px',
     md: '768px',
     lg: '992px',
     xl: '1280px',
@@ -69,6 +69,9 @@ export const theme:any = extendBaseTheme({
     },
     colors: {
         ...colors
+    },
+    sizes: {
+
     },
     components: {
         Modal,
@@ -149,17 +152,10 @@ export const theme:any = extendBaseTheme({
         },
         Container: {
             baseStyle: {
-                maxW: '1380px',
+                maxW: '1400px',
                 margin: '0 auto',
-                px: ['16px'],
+                px: ['16px', '32px'],
             },
-            variants: {
-                content: {
-                    maxW: '880px',
-                    margin: '0 auto',
-                    px: ['16px'],
-                }
-            }
         },
         Link: {
             baseStyle: {
@@ -381,6 +377,16 @@ export const theme:any = extendBaseTheme({
             },
             '.yourir-announcement-popup': {
                 zIndex: '120'
+            },
+            // Render horizonal scroll
+            '.horizonalScroll::-webkit-scrollbar': {
+                WebkitAppearance: 'none',
+                height: '7px'
+            },
+            '.horizonalScroll::-webkit-scrollbar-thumb': {
+                borderRadius: '4px',
+                backgroundColor: 'rgba(0, 0, 0, .5)',
+                boxShadow: '0 0 1px rgba(255, 255, 255, .5)',
             },
             '[data-yourir="result"]': {
                 display: 'block',
