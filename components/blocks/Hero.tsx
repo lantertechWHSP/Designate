@@ -17,15 +17,13 @@ const HeroBlock:any = ({ title, video, image }:IHeroBlock) : ReactNode => {
     const { observe: contentWidthObserve, width: contentWidth } = useDimensions();
     const height:string[] = ['420px', '482px'];
 
-    return <Box
-        overflow="hidden"
-        ref={contentWidthObserve}>
+    return (title || video && video?.url || image && image?.url) && <Box overflow="hidden" ref={contentWidthObserve}>
         {
             title && <Box h={height}
-                position="relative"
-                backgroundImage={`url('/images/blocks/hero/background.png')`}
-                backgroundPosition="center"
-                backgroundSize="cover">
+                          position="relative"
+                          backgroundImage={`url('/images/blocks/hero/background.png')`}
+                          backgroundPosition="center"
+                          backgroundSize="cover">
                 <Container h={height}>
                     <Flex minH="100%" align="flex-end">
                         <Heading py={[6, 8, 12]} variant="hero" position="relative" zIndex="2" maxWidth={['100vw', , '600px', '1000px']}>

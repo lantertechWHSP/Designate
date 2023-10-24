@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
 import ContentBlock from '~/components/blocks/Content';
-import { Box, Heading, Text, Flex } from '@chakra-ui/react';
+import { Box, Heading, Text, Flex, Alert } from '@chakra-ui/react';
 import { ILink} from '~/interfaces/util/link';
 import { SectionLink } from '~/components/elements/sectionLink';
 import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
@@ -19,7 +19,7 @@ interface ISeeAlsoPanelBlock extends IBlock {
 }
 
 const SeeAlsoItem:any = ({ title, description, link }:ISeeAlsoItem) : ReactNode => {
-    return <Flex direction={['row', ,'column']} align={['center', ,'unset']} borderTop="1px solid" borderColor="darkBrownBlur" py={4}>
+    return (title || description || link) && <Flex direction={['row', ,'column']} align={['center', ,'unset']} borderTop="1px solid" borderColor="darkBrownBlur" py={4}>
         {
             title && <Heading as="h3" fontSize={['24px']} fontWeight={700} mb={[0, ,2]}>
                 {title}
@@ -49,7 +49,7 @@ const SeeAlsoPanelBlock:any = ({ items }:ISeeAlsoPanelBlock) : ReactNode => {
             </Heading>
         }
         {
-            (Array.isArray(items) && items.length > 0) && <Row>
+            (Array.isArray(items) && items.length > 0) ? <Row>
                 {
                     items.map((item:ISeeAlsoItem, index:number) => {
                         return <Column key={index} width={[ColumnWidth.Full, , ColumnWidth.Half, ColumnWidth.OneQuarter]}>
@@ -57,7 +57,9 @@ const SeeAlsoPanelBlock:any = ({ items }:ISeeAlsoPanelBlock) : ReactNode => {
                         </Column>;
                     })
                 }
-            </Row>
+            </Row> : <Alert status="info" mt={4}>
+                Nothing else to see…
+            </Alert>
         }
     </ContentBlock>;
 };
