@@ -1,4 +1,4 @@
-import {ReactNode, useState, useEffect, useRef} from 'react';
+import { ReactNode, useState, useEffect, useRef, useMemo } from 'react';
 import {
     Container,
     Flex,
@@ -33,7 +33,7 @@ interface IHeader extends IDatoHeader {
 }
 
 const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
-    const {isOpen, onToggle} = useDisclosure();
+    const { isOpen, onToggle } = useDisclosure();
     const height:string = '120px';
 
     const [isScrolledDown, setIsScrolledDown] = useState(false);
@@ -44,16 +44,17 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
         setIsMinimumScrolled(currentScrollTop > 80);
     });
 
-    const getBackground:any = () : string => {
+
+    const background:any = useMemo(() => {
         if(isOpen || (!isScrolledDown && isMinimumScrolled)) {
             return 'rgba(255, 255, 255, 1)';
         }
         else {
             return 'rgba(0, 0, 0, 0)';
         }
-    };
+    }, [isOpen, isScrolledDown, isMinimumScrolled, darkTheme]);
 
-    const getColor:any = () : string => {
+    const color:any = useMemo(() => {
         if(isOpen || (!isScrolledDown && isMinimumScrolled)) {
             return '#1C1C1C';
         }
@@ -65,15 +66,7 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
                 return '#1C1C1C';
             }
         }
-    };
-
-    const [background, setBackground] = useState(getBackground());
-    const [color, setColor] = useState(getColor());
-
-    useEffect(() => {
-        setColor(getColor());
-        setBackground(getBackground());
-    }, [isOpen, isScrolledDown, isMinimumScrolled]);
+    }, [isOpen, isScrolledDown, isMinimumScrolled, darkTheme]);
 
     return <Box as="header">
         <Box pos="fixed" top={0} height={[height]} w="100%" zIndex={100}
@@ -100,7 +93,6 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
                                         top: '-3px'
                                     }}>
                                     <Box as="span"
-                                        transition="color 300ms linear"
                                         color={color}>
                                         <Logo />
                                     </Box>
@@ -137,8 +129,8 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
                         </Column>
                     </Row>
                 </Container>
-                <MobileNav background={background} menu={menu} isOpen={isOpen}/>
             </MotionBox>
+            <MobileNav background={background} menu={menu} isOpen={isOpen}/>
         </Box>
     </Box>;
 };
@@ -201,7 +193,7 @@ const DesktopNav:any = ({menu, color}): ReactNode => {
     </Flex>;
 };
 
-const MobileNav:any = ({ menu, isOpen = false }): ReactNode => {
+const MobileNav:any = ({ background, menu, isOpen = false }): ReactNode => {
     const scrollRef:any = useRef<ReactNode>();
 
     useEffect(() => {
@@ -218,22 +210,25 @@ const MobileNav:any = ({ menu, isOpen = false }): ReactNode => {
         };
     }, [scrollRef, isOpen]);
 
+
     return <MotionBox
         as="nav"
         position="sticky"
         left={0}
         right={0}
-        h={isOpen ? "calc(100vh - 34px)" : '0'}
+        h={'calc(100vh - 120px)'}
         zIndex={isOpen ? 100 : 0}
         pointerEvents={!isOpen ? 'none' : 'all'}
         animate={{
             opacity: !isOpen ? 0 : 1,
+            background: background
         }}
         transition={{
             ease: 'linear',
             duration: 0.3
-        }}>
-        <Box ref={scrollRef} overflowY="auto" h="100%">
+        }}
+        pointerEvents={!isOpen ? 'none' : 'all'}>
+        <Box ref={scrollRef} overflowY="auto" h={isOpen ? '100%' : '0'}>
             <Box color="black">
                 {
                     Array.isArray(menu) && menu.length > 0 && menu.map((item: IMenuLink, index: number) => {
@@ -256,7 +251,7 @@ const MobileNavItem:any = ({item}): ReactNode => {
     };
 
     return <Box>
-        <Flex px={4} py={3} borderTop="1px solid" cursor={hasChildren ? 'pointer' : 'auto'} onClick={handleClick}  borderColor="lightGrey2">
+        <Flex px={['16px', '24px', '32px']} py={3} borderTop="1px solid" cursor={hasChildren ? 'pointer' : 'auto'} onClick={handleClick}  borderColor="lightGrey2">
             <MenuItemLink variant="siteHeader"
                 color="black"
                 fontSize="18px"
@@ -282,7 +277,7 @@ const MobileNavItem:any = ({item}): ReactNode => {
                 <Box borderTop="1px solid" borderColor="lightGrey2">
                     {
                         item.children.map((child: IMenuLink, childIndex: number) => {
-                            return <Box px={4} py={2} key={childIndex}>
+                            return <Box px={['16px', '24px', '32px']} py={2} key={childIndex}>
                                 <MenuItemLink variant="siteHeader"
                                     color="darkBrown"
                                     link={child.link}

@@ -3,6 +3,7 @@ import { IBlock } from '~/interfaces/util/block';
 import ContentBlock from '~/components/blocks/Content';
 import { ISVGImage } from '~/interfaces/util/image';
 import { Heading, Box, SimpleGrid, Flex } from '@chakra-ui/react';
+import {Row, Column, ColumnWidth} from "~/components/elements/grid/grid";
 
 interface ICompanyValuesPanelBlock extends IBlock {
     items?:ICompanyValue[];
@@ -20,22 +21,27 @@ const CompanyValuesPanelBlock:any = ({ items, paddingTop, paddingBottom, ...prop
                 <Heading as="h3" variant="sectionSubheading" mb={4}>
                     Our People and Values
                 </Heading>
-                <SimpleGrid background="ghostWhite" columns={[1, ,items.length > 4 ? 4 : items.length]} spacing={[0, ,8]}>
-                    {
-                        items.map((item:ICompanyValue, index:number) => {
-                            return <Flex direction="column" key={index} alignItems="center" py={8} px={4}>
-                                {
-                                    (item.icon && item.icon.url) && <Box mb={4}><img src={item.icon.url} alt={item.icon?.alt} /></Box>
-                                }
-                                {
-                                    item.title && <Heading as="h3" variant="h4" mb={2}>
-                                        {item.title}
-                                    </Heading>
-                                }
-                            </Flex>;
-                        })
-                    }
-                </SimpleGrid></>
+                <Box background="ghostWhite" className="horizonalScroll" overflowX={['scroll', ,'hidden']}>
+                    <Row wrap={['no-wrap', , 'wrap']} >
+                        {
+                            items.map((item:ICompanyValue, index:number) => {
+                                return <Column width={[ColumnWidth.Half, ,ColumnWidth.OneThird]} minWidth={[ColumnWidth.Half, ,'unset']}>
+                                    <Flex direction="column" key={index} alignItems="center" py={8} px={4}>
+                                        {
+                                            (item.icon && item.icon.url) && <Box mb={4}><img src={item.icon.url} alt={item.icon?.alt} /></Box>
+                                        }
+                                        {
+                                            item.title && <Heading as="h3" variant="h4" mb={2}>
+                                                {item.title}
+                                            </Heading>
+                                        }
+                                    </Flex>
+                                </Column>
+                            })
+                        }
+                    </Row>
+                </Box>
+            </>
         }
     </ContentBlock>;
 };

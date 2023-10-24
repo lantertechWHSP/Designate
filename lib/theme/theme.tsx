@@ -38,7 +38,6 @@ const colors:any = {
     lightGrey2: '#DEE2E6',
     lightGrey2Blur: '#DEE2E666',
 
-
     positive: '#e8f1c8',
     negative: '#f9c9c8',
 
@@ -154,7 +153,7 @@ export const theme:any = extendBaseTheme({
             baseStyle: {
                 maxW: '1400px',
                 margin: '0 auto',
-                px: ['16px', '32px'],
+                px: ['16px', '24px', '32px'],
             },
         },
         Link: {
