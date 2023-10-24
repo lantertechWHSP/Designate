@@ -27,7 +27,7 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
         }
         <Box as={YourIR}>
             <Row>
-                <Column width={[ColumnWidth.Full, , , ,ColumnWidth.Half]}>
+                <Column width={[ColumnWidth.Full, , , ,ColumnWidth.FiveTwelfths]} mr={[0, , , ,ColumnWidth.Twelfth]}>
                     <Flex direction="column">
                         <Heading as="h3" variant="sectionSubheading" mb={4}>
                             Share Price Performance
@@ -96,63 +96,69 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                         </Box>
                         <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" height="0" width="0">
                             <defs>
-                                <linearGradient id="priceGradient" gradientTransform="rotate(90)">
-                                    <stop offset="0%" stopColor="rgba(80, 81, 60, 0.2)" />
-                                    <stop offset="100%" stopColor="rgba(80, 81, 60, 0.2)" />
+                                <linearGradient id="priceGradient">
+                                    <stop offset="0%" stopColor="rgba(80, 81, 60, 0.05)" />
+                                    <stop offset="100%" stopColor="rgba(80, 81, 60, 0.05)" />
                                 </linearGradient>
                             </defs>
                         </svg>
-                        <Box w="100%"
-                            sx={{
-                                '.yourir-chart': {
-                                    padding: '40px 0 0',
-                                    borderBottomWidth: '1px',
-                                    borderStyle: 'solid',
-                                    borderColor: 'darkBrown',
-                                    color: 'darkBrown'
-                                },
-                                '.yourir-chart-price-fill': {
-                                    fill: `url(#priceGradient)`
-                                },
-                                '.yourir-chart-price': {
-                                    stroke: 'darkBrown',
-                                    strokeWidth: '1px',
-                                },
-                                '.yourir-chart-yaxis-label': {
-                                    position: 'relative',
-                                    top: '-10px'
-                                },
-                                '.yourir-chart-yaxis-left .yourir-chart-yaxis-outside .yourir-chart-yaxis-label-container': {
-                                    left: '0',
-                                    marginRight: '0',
-                                    fontSize: '12px',
-                                    color: 'darkGrey'
-                                },
-                                '.yourir-chart-xaxis': {
-                                    position: 'relative',
-                                    top: '-40px'
-                                },
-                                '.yourir-chart-xaxis-label': {
-                                    fontSize: '12px',
-                                    color: 'darkGrey'
-                                },
-                                '.yourir-chart-panel-border-bottom': {
-                                    display: 'none'
-                                },
-                                '.yourir-chart-tick-bottom': {
-                                    display: 'none'
-                                },
-                                '.yourir-chart-xaxis-outside': {
-                                    position: 'relative',
-                                    top: '10px'
-                                },
-                                '.yourir-chart-yaxis-gridline': {
-                                    stroke: 'lightGrey2'
-                                }
-                            }}>
-                            <div data-yourir="priceChart1 range=6y ranges=6m,1y,5y,10y showTooltips=true">
-                                <Box data-yourir="plots" />
-                            </div>
+                        <Box overflowX="clip" overflowY="visible">
+                            <Box w="calc(100% + 40px)"
+                                 mx="-20px"
+                                 sx={{
+                                     '.yourir-chart': {
+                                         padding: '40px 0 0',
+                                         borderBottomWidth: '1px',
+                                         borderStyle: 'solid',
+                                         borderColor: 'darkBrown',
+                                         color: 'darkBrown'
+                                     },
+                                     '.yourir-chart-price-fill': {
+                                         fill: `url(#priceGradient)`
+                                     },
+                                     '.yourir-chart-price': {
+                                         stroke: 'darkBrown',
+                                         strokeWidth: '2px',
+                                     },
+                                     '.yourir-chart-yaxis-label': {
+                                         position: 'relative',
+                                         top: '-10px'
+                                     },
+                                     '.yourir-chart-yaxis-left .yourir-chart-yaxis-outside .yourir-chart-yaxis-label-container': {
+                                         left: '20px',
+                                         marginRight: '0',
+                                         fontSize: '12px',
+                                         color: 'darkGrey'
+                                     },
+                                     '.yourir-chart-xaxis': {
+                                         position: 'relative',
+                                         top: '-40px'
+                                     },
+                                     '.yourir-chart-xaxis-label': {
+                                         fontSize: '12px',
+                                         color: 'darkGrey'
+                                     },
+                                     '.yourir-chart-panel-border-bottom': {
+                                         display: 'none'
+                                     },
+                                     '.yourir-chart-tick-bottom': {
+                                         display: 'none'
+                                     },
+                                     '.yourir-chart-xaxis-outside': {
+                                         position: 'relative',
+                                         top: '10px'
+                                     },
+                                     '.yourir-chart-yaxis-gridline': {
+                                         stroke: 'lightGrey2'
+                                     },
+                                     '.yourir-chart-yaxis-outside .yourir-chart-yaxis-label-container:first-of-type': {
+                                         display: 'none'
+                                     }
+                                 }}>
+                                <div data-yourir="priceChart1 range=6m showTooltips=true" >
+                                    <Box data-yourir="plots"  />
+                                </div>
+                            </Box>
                         </Box>
                         <Box flex="1" />
                         <Box pt={8}>

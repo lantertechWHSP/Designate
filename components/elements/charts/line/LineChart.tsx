@@ -170,8 +170,10 @@ const LineChart:any = ({ data }:ILineChart) : ReactNode => {
                         overflow={"visible"}
                     >
                         <AxisLeft scale={yScale} chartHeight={height} width={width} />
-                        <g transform="translate(30, 0)">
-                            <AxisBottom scale={xScale} transform={`translate(0, ${boundsHeight})`} />
+                        <g>
+                            <g transform="translate(30, 0)">
+                                <AxisBottom scale={xScale} transform={`translate(0, ${boundsHeight})`} />
+                            </g>
                             {
                                 (Array.isArray(linesSVG) && linesSVG.length > 0) && <>
                                     <g>
@@ -183,7 +185,7 @@ const LineChart:any = ({ data }:ILineChart) : ReactNode => {
                                                             ((_isNil(line.display) || line.display) && index === 0) &&
                                                             <path
                                                                 d={line.drawnArea}
-                                                                fill={'rgba(80, 81, 60, 0.2)'}
+                                                                fill={'rgba(80, 81, 60, 0.05)'}
                                                                 opacity={1}
                                                                 strokeWidth={0}
                                                             />

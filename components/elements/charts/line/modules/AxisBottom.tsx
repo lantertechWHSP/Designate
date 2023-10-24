@@ -16,7 +16,7 @@ export const AxisBottom:any = ({ scale, transform }:IAxisBottom) : ReactNode => 
         }
     }, [scale]);
 
-    return <g className="x-axis">
+    return <g className="x-axis" >
         <g ref={elementRef} transform={transform} />
     </g>;
 };

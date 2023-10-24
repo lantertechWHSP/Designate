@@ -3,4 +3,6 @@ export const trackRecordTableRecord:string = `
     id
     title
     table
+    paddingTop
+    paddingBottom
 `;
