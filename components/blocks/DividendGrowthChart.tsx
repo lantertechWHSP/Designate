@@ -1,11 +1,12 @@
 import { ReactNode, useState } from 'react';
 import { IBlock } from '~/interfaces/util/block';
-import ContentBlock from '~/components/blocks/Content';
+import ContentBlock, {Theme} from '~/components/blocks/Content';
 import StackedBarChart from '~/components/elements/charts/stackedBar/StackedBarChart';
 import { ITable} from '~/interfaces/util/table';
 import { isFinite as _isFinite } from 'lodash';
 import { Box, Flex, Heading, Text } from '@chakra-ui/react';
 import { Column, ColumnWidth, Row } from '~/components/elements/grid/grid';
+import {darkLegendColors, legendColors} from "~/components/elements/charts/colors";
 
 interface ITableRow {
     Year:string;
@@ -18,7 +19,13 @@ interface IDividendGrowthChartBlock extends IBlock {
     table:ITable<ITableRow>;
 }
 
-const DividendGrowthChart:any = ({ table }:IDividendGrowthChartBlock) : ReactNode => {
+const DividendGrowthChart:any = ({ table, theme }:IDividendGrowthChartBlock) : ReactNode => {
+    const backgroundColor:string = theme === Theme.Dark ? 'darkBrown' : 'white';
+    let newLightLegendColors:string[] = [...legendColors];
+    newLightLegendColors.shift();
+    const colors:string[] = theme === Theme.Dark ? darkLegendColors : newLightLegendColors;
+    const textColor = theme === Theme.Dark ? 'white' : 'black';
+
     const getValues:any = () => {
         const values:any = [];
         if(table && table.data && Array.isArray(table.data) && table.data.length > 0) {
@@ -49,13 +56,13 @@ const DividendGrowthChart:any = ({ table }:IDividendGrowthChartBlock) : ReactNod
 
         return {
             groups: [{
-                fill: 'rgba(255, 255, 255, 1)',
+                fill: colors[0],
                 label: 'InterimDividend',
             }, {
-                fill: 'rgba(255, 255, 255, 0.5)',
+                fill: colors[1],
                 label: 'FinalDividend',
             }, {
-                fill: 'rgba(255, 255, 255, 0.3)',
+                fill: colors[2],
                 label: 'SpecialDividend'
             }],
             rows: values
@@ -64,37 +71,37 @@ const DividendGrowthChart:any = ({ table }:IDividendGrowthChartBlock) : ReactNod
 
     const [data] = useState(getValues());
 
-    return <ContentBlock background="darkBrown">
+    return <ContentBlock background={backgroundColor}>
         <Row align="baseline" mb={[4, 6, ,8]}>
             <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half]}>
-                <Heading as="h2" variant="sectionHeading" mb={[3, , ,0]} color="white">
+                <Heading as="h2" variant="sectionHeading" mb={[3, , ,0]} color={textColor}>
                     Continued Dividend Growth
                 </Heading>
             </Column>
             <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half]} align={['flex-start', , ,'flex-end']}>
                 <Flex mx={-2}>
                     <Flex align="center" px={2}>
-                        <Box background="rgba(255, 255, 255, 1)" width="10px" height="10px" borderRadius="5px" mr={2} />
-                        <Text as="span" mb={0} lineHeight={1} color="white">
+                        <Box background={colors[0]} width="10px" height="10px" borderRadius="5px" mr={2} />
+                        <Text as="span" mb={0} lineHeight={1} color={textColor}>
                             Latest Dividend
                         </Text>
                     </Flex>
                     <Flex align="center" px={2}>
-                        <Box background="rgba(255, 255, 255, 0.5)" width="10px" height="10px" borderRadius="5px" mr={2} />
-                        <Text as="span" mb={0} lineHeight={1} color="white">
+                        <Box background={colors[1]} width="10px" height="10px" borderRadius="5px" mr={2} />
+                        <Text as="span" mb={0} lineHeight={1} color={textColor}>
                             Final Dividend
                         </Text>
                     </Flex>
                     <Flex align="center" px={2}>
-                        <Box background="rgba(255, 255, 255, 0.3)" width="10px" height="10px" borderRadius="5px" mr={2} />
-                        <Text as="span" mb={0} lineHeight={1} color="white">
+                        <Box background={colors[2]} width="10px" height="10px" borderRadius="5px" mr={2} />
+                        <Text as="span" mb={0} lineHeight={1} color={textColor}>
                             Special Dividend
                         </Text>
                     </Flex>
                 </Flex>
             </Column>
         </Row>
-        <StackedBarChart data={data} />
+        <StackedBarChart data={data} textColor={textColor} />
     </ContentBlock>;
 };
 

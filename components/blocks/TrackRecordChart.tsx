@@ -170,7 +170,7 @@ const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesT
                 </Menu>
             </Box>
         </Flex>
-        <LineChart data={{ lines: lines }} color={textColor} fillColor={fillColor} />
+        <LineChart data={{ lines: lines }} textColor={textColor} fillColor={fillColor} />
     </ContentBlock>;
 };
 

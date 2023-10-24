@@ -9,7 +9,9 @@ interface IStackedBarChart {
     data: {
         groups:IDataGroup[];
         rows:IDataRow[];
-    }
+    };
+    color?:string;
+    borderColor?:string;
 }
 
 interface IDataGroup {
@@ -34,7 +36,7 @@ interface IMargin {
     left:number;
 }
 
-const StackedBarChart:any = ({ data }:IStackedBarChart) : ReactNode => {
+const StackedBarChart:any = ({ data, textColor = 'darkBrown', borderColor = 'lightGrey2' }:IStackedBarChart) : ReactNode => {
     const [width, setWidth] = useState<number>(null);
     const [height, setHeight] = useState<number>(null);
     const margin:IMargin = { top: 30, right: 30, bottom: 50, left: 0 };
@@ -141,7 +143,7 @@ const StackedBarChart:any = ({ data }:IStackedBarChart) : ReactNode => {
             '.tick': {
                 fontSize: '14px',
                 fontFamily: 'Gramatika',
-                color: 'lightGrey2'
+                color: textColor
             },
             '.x-axis .domain': {
                 display: 'none'
@@ -150,10 +152,7 @@ const StackedBarChart:any = ({ data }:IStackedBarChart) : ReactNode => {
                 display: 'none'
             },
             '.y-axis .tick line': {
-                color: 'lightGrey2'
-            },
-            '.bar': {
-                fill: 'darkBrown'
+                color: borderColor
             }
         }}>
         {

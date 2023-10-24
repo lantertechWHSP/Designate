@@ -4,7 +4,6 @@ import ContentBlock, {Theme} from '~/components/blocks/Content';
 import BarChart from '~/components/elements/charts/bar/BarChart';
 import { ITable } from '~/interfaces/util/table';
 import { Heading, Box } from '@chakra-ui/react';
-import { darkLegendColors, legendColors } from '~/components/elements/charts/colors';
 
 interface ITableRow {
     Year:string;
@@ -32,22 +31,10 @@ const TrackRecordDividendBlock:any = ({ title, table, paddingTop, paddingBottom,
 
     return <ContentBlock background={backgroundColor} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         {
-            title && <Heading as="h2" variant="sectionSubheading" color={textColor} mb={12}>
+            title && <Heading as="h2" variant="sectionSubheading" color={textColor} mb={4}>
                 {title}
             </Heading>
         }
-
-    {/*    sx={{*/}
-    {/*    '.tick': {*/}
-    {/*        color: 'whiteBlur !important'*/}
-    {/*    },*/}
-    {/*    '.y-axis .tick line': {*/}
-    {/*        color: 'whiteBlur !important'*/}
-    {/*    },*/}
-    {/*    '.bar': {*/}
-    {/*        fill: 'white !important'*/}
-    {/*    }*/}
-    {/*}}*/}
         <Box>
             <BarChart data={{ bars: chartData }} textColor={textColor} fillColor={fillColor} />
         </Box>

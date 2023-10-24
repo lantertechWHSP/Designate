@@ -10,8 +10,8 @@ import { AxisBottom } from "~/components/elements/charts/line/modules/AxisBottom
 interface ILineChart {
     data: {
         lines: ILine[];
-    }
-    color?:string;
+    };
+    textColor?:string;
     borderColor?:string;
 }
 
@@ -40,7 +40,7 @@ interface IMargin {
     left:number;
 }
 
-const LineChart:any = ({ data, color = 'darkBrown', borderColor = 'lightGrey2', fillColor = 'rgba(80, 81, 60, 0.05)' }:ILineChart) : ReactNode => {
+const LineChart:any = ({ data, textColor = 'darkBrown', borderColor = 'lightGrey2', fillColor = 'rgba(80, 81, 60, 0.05)' }:ILineChart) : ReactNode => {
     const [width, setWidth] = useState<number>(null);
     const [height, setHeight] = useState<number>(null);
     const margin:IMargin = { top: 30, right: 30, bottom: 30, left: 0 };
@@ -150,7 +150,7 @@ const LineChart:any = ({ data, color = 'darkBrown', borderColor = 'lightGrey2', 
             '.tick': {
                 fontSize: '14px',
                 fontFamily: 'Gramatika',
-                color: color
+                color: textColor
             },
             '.x-axis .domain': {
                 display: 'none'

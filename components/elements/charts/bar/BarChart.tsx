@@ -27,7 +27,7 @@ interface IMargin {
     left:number;
 }
 
-const BarChart:any = ({ data, textColor, fillColor }:IBarChart) : ReactNode => {
+const BarChart:any = ({ data, textColor = 'darkBrown', borderColor = 'lightGrey2', fillColor = 'lightGrey' }:IBarChart) : ReactNode => {
     const [width, setWidth] = useState<number>(null);
     const [height, setHeight] = useState<number>(null);
     const margin:IMargin = { top: 30, right: 30, bottom: 50, left: 0 };
@@ -104,7 +104,7 @@ const BarChart:any = ({ data, textColor, fillColor }:IBarChart) : ReactNode => {
                 display: 'none'
             },
             '.y-axis .tick line': {
-                color: 'lightGrey2'
+                color: borderColor
             },
             '.bar': {
                 fill: fillColor
