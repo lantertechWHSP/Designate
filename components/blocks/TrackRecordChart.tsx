@@ -106,11 +106,21 @@ const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesT
             fill: colors[3]
         });
 
+
         setLines(newLines);
     };
 
+    const [hasData] = useState<boolean>((australianSharesTable.data && australianSharesTable.data.length > 0) &&
+        (internationalSharesTable.data && internationalSharesTable.data.length > 0) &&
+        (australianListedTable.data && australianListedTable.data.length > 0) &&
+        (australianBondsTable.data && australianBondsTable.data.length > 0))
+
     useEffect(() => {
-        updateLines();
+        debugger;
+        if(hasData) {
+            debugger;
+            updateLines();
+        }
     }, []);
 
     return <ContentBlock paddingTop={paddingTop} paddingBottom={paddingBottom} background={backgroundColor}>
@@ -118,57 +128,59 @@ const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesT
             <Heading as="h2" variant="sectionSubheading" color={textColor}>
                 20 Year Total Shareholder Return
             </Heading>
-            <Box>
-                <Menu>
-                    {({ isOpen }) => (
-                        <>
-                            <MenuButton as={Button}
-                                variant="menuButton"
-                                rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} h={12} w={12} /> : <Icon icon={Icons.ChevronDown} h={12} w={12}  /> }>
-                                <Flex display="inlineFlex" direction="row" alignItems="center">
-                                    <Box background={theme === Theme.Dark ? 'white' : 'lightGrey'} width="8px" height="8px" borderRadius="4px" border="1px solid" borderColor={theme === Theme.Dark ? 'black' : 'transparent'}  mr={2} />
-                                    <Text as="span">
-                                        Compare…
-                                    </Text>
-                                </Flex>
-                            </MenuButton>
-                            <Portal>
-                                <MenuList>
-                                    {
-                                        filters.map((item:IChartFilter, index:number) => {
-                                            return <MenuItem key={index}
-                                                as={Button}
-                                                variant="menuItemFilter"
-                                                isActive={item.isActive}
-                                                onClick={() => {
-                                                    let isToggled:boolean = false;
+            {
+                hasData && <Box>
+                    <Menu>
+                        {({ isOpen }) => (
+                            <>
+                                <MenuButton as={Button}
+                                            variant="menuButton"
+                                            rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} h={12} w={12} /> : <Icon icon={Icons.ChevronDown} h={12} w={12}  /> }>
+                                    <Flex display="inlineFlex" direction="row" alignItems="center">
+                                        <Box background={theme === Theme.Dark ? 'white' : 'lightGrey'} width="8px" height="8px" borderRadius="4px" border="1px solid" borderColor={theme === Theme.Dark ? 'black' : 'transparent'}  mr={2} />
+                                        <Text as="span">
+                                            Compare…
+                                        </Text>
+                                    </Flex>
+                                </MenuButton>
+                                <Portal>
+                                    <MenuList>
+                                        {
+                                            filters.map((item:IChartFilter, index:number) => {
+                                                return <MenuItem key={index}
+                                                                 as={Button}
+                                                                 variant="menuItemFilter"
+                                                                 isActive={item.isActive}
+                                                                 onClick={() => {
+                                                                     let isToggled:boolean = false;
 
-                                                    const newFilters:IChartFilter[] = [...filters];
+                                                                     const newFilters:IChartFilter[] = [...filters];
 
-                                                    newFilters.map((innerFilter) => {
-                                                        if(innerFilter.value === item.value) {
-                                                            innerFilter.isActive = !innerFilter.isActive;
+                                                                     newFilters.map((innerFilter) => {
+                                                                         if(innerFilter.value === item.value) {
+                                                                             innerFilter.isActive = !innerFilter.isActive;
 
-                                                            isToggled = true;
-                                                        }
-                                                    });
+                                                                             isToggled = true;
+                                                                         }
+                                                                     });
 
-                                                    if(isToggled) {
-                                                        setFilters(newFilters);
-                                                        updateLines();
-                                                    }
-                                                }}>
-                                                <Box background={item.background} width="8px" height="8px" borderRadius="4px" border="1px solid" borderColor={theme === Theme.Dark ? 'black' : 'transparent'} mr={2} />
-                                                <Text as="span">{item.label}</Text>
-                                            </MenuItem>;
-                                        })
-                                    }
-                                </MenuList>
-                            </Portal>
-                        </>
-                    )}
-                </Menu>
-            </Box>
+                                                                     if(isToggled) {
+                                                                         setFilters(newFilters);
+                                                                         updateLines();
+                                                                     }
+                                                                 }}>
+                                                    <Box background={item.background} width="8px" height="8px" borderRadius="4px" border="1px solid" borderColor={theme === Theme.Dark ? 'black' : 'transparent'} mr={2} />
+                                                    <Text as="span">{item.label}</Text>
+                                                </MenuItem>;
+                                            })
+                                        }
+                                    </MenuList>
+                                </Portal>
+                            </>
+                        )}
+                    </Menu>
+                </Box>
+            }
         </Flex>
         <LineChart data={{ lines: lines }} textColor={textColor} fillColor={fillColor} />
     </ContentBlock>;

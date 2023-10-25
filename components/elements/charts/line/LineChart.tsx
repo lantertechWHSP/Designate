@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState, ReactNode, Fragment }  from 'react';
 import { scaleLinear, scaleTime, line, area } from 'd3';
-import { Box } from '@chakra-ui/react';
-import { max as _max, min as _min, throttle as _throttle, isNil as _isNil } from 'lodash';
+import { Box, Alert } from '@chakra-ui/react';
+import { max as _max, min as _min, throttle as _throttle, isNil as _isNil , sumBy as _sumBy} from 'lodash';
 import { DateTime } from 'luxon';
 import { ColorGenerator } from '~/lib/colorGenerator/colorGenerator';
 import { AxisLeft } from "~/components/elements/charts/line/modules/AxisLeft";
@@ -55,8 +55,23 @@ const LineChart:any = ({ data, textColor = 'darkBrown', borderColor = 'lightGrey
         return height - margin.top - margin.bottom;
     }, [height]);
 
+    const hasData:any = useMemo(() => {
+        debugger;
+
+        if(data && Array.isArray(data.lines) && data.lines.length > 0) {
+            const sum:number = _sumBy(data.lines, (line) => {
+                return Array.isArray(line.data) ? line.data.length : 0;
+            });
+
+            debugger;
+
+            return sum > 0;
+        }
+        return false;
+    }, [data]);
+
     const yScale:any = useMemo<any>(() => {
-        if(data && data.lines) {
+        if(hasData) {
             const flattendValues:number[] = [];
 
             data.lines.map((line:ILine) => {
@@ -73,10 +88,15 @@ const LineChart:any = ({ data, textColor = 'darkBrown', borderColor = 'lightGrey
                 .domain([0, max])
                 .range([boundsHeight, 0]);
         }
-    }, [data, height]);
+        else {
+            return scaleLinear()
+                .domain([0, 10])
+                .range([boundsHeight, 0]);
+        }
+    }, [hasData, height]);
 
     const xScale:any = useMemo<any>(() => {
-        if(data && data.lines) {
+        if(hasData) {
             const flattendDates:number[] = [];
 
             data.lines.map((line:ILine) => {
@@ -94,7 +114,12 @@ const LineChart:any = ({ data, textColor = 'darkBrown', borderColor = 'lightGrey
                 .domain([min, max])
                 .range([0, width]);
         }
-    }, [data, width]);
+        else {
+            return scaleTime()
+                .domain([DateTime.now().valueOf(), DateTime.now().valueOf()])
+                .range([0, width]);
+        }
+    }, [hasData, width]);
 
     const lineBuilder:any = line<IData>()
         .x((datum:IData) => xScale(datum.date))
@@ -106,22 +131,24 @@ const LineChart:any = ({ data, textColor = 'darkBrown', borderColor = 'lightGrey
         .y0(yScale(0));
 
     const linesSVG:any = useMemo(() => {
-        const colorGenerator:ColorGenerator = new ColorGenerator();
-        const newLines:ILineDataSVG[] = [];
+        if(hasData) {
+            const colorGenerator:ColorGenerator = new ColorGenerator();
+            const newLines:ILineDataSVG[] = [];
 
-        data.lines.map((line:ILine) => {
-            if(line.data) {
-                newLines.push({
-                    drawnArea: areaBuilder(line.data),
-                    drawnLine: lineBuilder(line.data),
-                    stroke: line.fill ? line.fill : colorGenerator.next(),
-                    display: line.display
-                });
-            }
-        });
+            data.lines.map((line:ILine) => {
+                if(line.data) {
+                    newLines.push({
+                        drawnArea: areaBuilder(line.data),
+                        drawnLine: lineBuilder(line.data),
+                        stroke: line.fill ? line.fill : colorGenerator.next(),
+                        display: line.display
+                    });
+                }
+            });
 
-        return newLines;
-    }, [data, height, width]);
+            return newLines;
+        }
+    }, [hasData, height, width]);
 
     useEffect(() => {
         const setDimension:any = () : void => {
@@ -145,84 +172,87 @@ const LineChart:any = ({ data, textColor = 'darkBrown', borderColor = 'lightGrey
         };
     }, []);
 
-    return <Box
-        ref={elementRef}
-        sx={{
-            '.tick': {
-                fontSize: '14px',
-                fontFamily: 'Gramatika',
-                color: textColor
-            },
-            '.x-axis .domain': {
-                display: 'none'
-            },
-            '.x-axis .tick line': {
-                display: 'none'
-            },
-            '.y-axis .tick line': {
-                color: borderColor
-            },
-        }}>
+    return <>
         {
-            (boundsWidth && boundsHeight) && <svg width={width} height={height} shapeRendering={"crispEdges"}>
-                {
-                    (data && data.lines) && <g
-                        width={boundsWidth}
-                        height={boundsHeight}
-                        transform={`translate(${[margin.left, margin.top].join(",")})`}
-                        overflow={"visible"}
-                    >
-                        <AxisLeft scale={yScale} chartHeight={height} width={width} />
-                        <g>
-                            <g transform="translate(30, 0)">
-                                <AxisBottom scale={xScale} transform={`translate(0, ${boundsHeight})`} />
-                            </g>
-                            {
-                                (Array.isArray(linesSVG) && linesSVG.length > 0) && <>
-                                    <g>
+            hasData ? <Box ref={elementRef}
+                               sx={{
+                                   '.tick': {
+                                       fontSize: '14px',
+                                       fontFamily: 'Gramatika',
+                                       color: textColor
+                                   },
+                                   '.x-axis .domain': {
+                                       display: 'none'
+                                   },
+                                   '.x-axis .tick line': {
+                                       display: 'none'
+                                   },
+                                   '.y-axis .tick line': {
+                                       color: borderColor
+                                   },
+                               }}>
+            {
+                (boundsWidth && boundsHeight) && <svg width={width} height={height} shapeRendering={"crispEdges"}>
+                    {
+                        <g
+                            width={boundsWidth}
+                            height={boundsHeight}
+                            transform={`translate(${[margin.left, margin.top].join(",")})`}
+                            overflow={"visible"}
+                        >
+                            <AxisLeft scale={yScale} chartHeight={height} width={width} />
+                            <g>
+                                <g transform="translate(30, 0)">
+                                    <AxisBottom scale={xScale} transform={`translate(0, ${boundsHeight})`} />
+                                </g>
+                                {
+                                    (Array.isArray(linesSVG) && linesSVG.length > 0) && <>
+                                        <g>
+                                            {
+                                                linesSVG.map((line:ILineDataSVG, index:number) => {
+                                                    {
+                                                        return <Fragment key={index}>
+                                                            {
+                                                                ((_isNil(line.display) || line.display) && index === 0) &&
+                                                                <path
+                                                                    d={line.drawnArea}
+                                                                    fill={fillColor}
+                                                                    opacity={1}
+                                                                    strokeWidth={0}
+                                                                />
+                                                            }
+                                                        </Fragment>;
+                                                    }
+                                                })
+                                            }
+                                        </g>
                                         {
                                             linesSVG.map((line:ILineDataSVG, index:number) => {
                                                 {
                                                     return <Fragment key={index}>
                                                         {
-                                                            ((_isNil(line.display) || line.display) && index === 0) &&
-                                                            <path
-                                                                d={line.drawnArea}
-                                                                fill={fillColor}
-                                                                opacity={1}
-                                                                strokeWidth={0}
-                                                            />
-                                                        }
-                                                    </Fragment>;
-                                                }
-                                            })
-                                        }
-                                    </g>
-                                    {
-                                        linesSVG.map((line:ILineDataSVG, index:number) => {
-                                            {
-                                                return <Fragment key={index}>
-                                                    {
-                                                        (_isNil(line.display) || line.display) &&
+                                                            (_isNil(line.display) || line.display) &&
                                                             <path
                                                                 d={line.drawnLine}
                                                                 stroke={line.stroke}
                                                                 fill="none"
                                                                 strokeWidth={2}
                                                             />
-                                                    }
-                                                </Fragment>;
-                                            }
-                                        })
-                                    }
-                                </>
-                            }
+                                                        }
+                                                    </Fragment>;
+                                                }
+                                            })
+                                        }
+                                    </>
+                                }
+                            </g>
                         </g>
-                    </g>
-                }
-            </svg>
+                    }
+                </svg>
+            }
+            </Box> : <Alert status="info" mt={8}>No Data</Alert>
         }
-    </Box>;
+    </>;
 };
 
 export default LineChart;
