@@ -25,7 +25,7 @@ return (Array.isArray(items) && items.length > 0) && <ContentBlock paddingTop={p
                     {
                         items.map((item:ICompanyValue, index:number) => {
                             return <Column width={[ColumnWidth.Half, ,ColumnWidth.OneThird]} minWidth={[ColumnWidth.Half, ,'unset']}
-                                           key={index} background="lightGreyX">
+                                           key={index} background="lightGrey3Blur">
                                 <Flex direction="column" alignItems="center" justify="center" minHeight={['244px', ,'250px']} py={'10px'} px={4}>
                                     {
                                         (item.icon && item.icon.url) && <Box mb={4}><img src={item.icon.url} alt={item.icon?.alt} /></Box>

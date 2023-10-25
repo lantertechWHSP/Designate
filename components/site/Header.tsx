@@ -106,7 +106,7 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
                             <Flex display="flex" justify="flex-end">
                                 <Button color={color} onClick={onToggle} display={['flex', , ,'none']}>
                                     {
-                                        isOpen ? <Icon icon={Icons.Cross} w={20} h={20}/> : <Icon icon={Icons.Hamburger} w={20} h={20}/>
+                                        isOpen ? <Icon icon={Icons.Cross} w={34} h={34}/> : <Icon icon={Icons.Hamburger} w={34} h={34}/>
                                     }
                                 </Button>
                                 <Link display={['none', , ,'block']}
@@ -152,7 +152,7 @@ const DestopPopoverTrigger:any  = ({item, color, isLast}): ReactNode => {
                 <Text as="span" mr={2}>{item.title}</Text>
                 <Box transition="transform 300ms linear"
                     transform={isOpen ? 'rotate(180deg)' : ''}>
-                    <Icon icon={Icons.WideArrowDown} w={12} h={12} />
+                    <Icon icon={Icons.WideTriangleDown} w={12} h={12} />
                 </Box>
             </Flex>
         </MenuItemLink>

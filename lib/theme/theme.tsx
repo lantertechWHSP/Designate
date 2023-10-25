@@ -34,12 +34,10 @@ const colors:any = {
 
     steelBlue: '#667085',
 
-
-    lightGreyX: '#d9d9d933',
-
     lightGrey: '#c4c4c4',
     lightGrey2: '#DEE2E6',
     lightGrey2Blur: '#DEE2E666',
+    lightGrey3Blur: '#d9d9d933',
 
     positive: '#e8f1c8',
     negative: '#f9c9c8',
@@ -250,6 +248,7 @@ export const theme:any = extendBaseTheme({
                     background: 'white',
                     borderRadius: '8px',
                     border: '1px solid',
+                    fontSize: '16px',
                     minWidth: ['200px', , '270px'],
                     borderColor: 'lightGrey2',
                     px: 4,
@@ -308,6 +307,7 @@ export const theme:any = extendBaseTheme({
                     lineHeight: '50px',
                     textAlign: 'unset',
                     justifyContent: 'unset',
+                    fontSize: '16px',
                     minWidth: ['200px', , '270px'],
                     px: 4,
                     color: 'black',
