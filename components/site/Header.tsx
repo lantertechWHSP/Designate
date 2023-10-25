@@ -122,6 +122,7 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
                                         _hover: {
                                             border: `2px solid ${color}`,
                                         },
+                                    fontSize: '16px',
                                         borderRadius: '24px',
                                         textAlign: 'center'
                                     }}>
@@ -137,7 +138,7 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
     </Box>;
 };
 
-const DestopPopoverTrigger:any  = ({item, color}): ReactNode => {
+const DestopPopoverTrigger:any  = ({item, color, isLast}): ReactNode => {
     const { isOpen } = usePopoverContext();
 
     return <PopoverTrigger>
@@ -145,8 +146,8 @@ const DestopPopoverTrigger:any  = ({item, color}): ReactNode => {
             color={color}
             title={item.title}
             ink={item.link}
-            externalLink={item.externalLink}
-            px={5}>
+                      mr={!isLast ? 10 : 0}
+            externalLink={item.externalLink}>
             <Flex as="span" align="baseline">
                 <Text as="span" mr={2}>{item.title}</Text>
                 <Box transition="transform 300ms linear"
@@ -163,8 +164,8 @@ const DesktopNav:any = ({menu, color}): ReactNode => {
         {
             Array.isArray(menu) && menu.length > 0 && menu.map((item: IMenuLink, index: number) => {
                 return Array.isArray(item.children) && item.children.length > 0 ?
-                    <Popover trigger="hover" placement="bottom-start" key={index}>
-                        <DestopPopoverTrigger item={item} color={color} />
+                    <Popover trigger="hover" placement="bottom-start" key={index} closeOnBlur={true}>
+                        <DestopPopoverTrigger item={item} color={color} isLast={index === menu.length - 1} />
                         <PopoverContent>
                             {
                                 item.children && <Box background="white" py={2} px={3}>

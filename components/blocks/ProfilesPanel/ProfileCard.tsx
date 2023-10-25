@@ -10,19 +10,19 @@ interface IProfileCard extends IPerson {
 
 const ProfileCard:any = ({ image, name, companyPosition, qualifications, onClick }:IProfileCard) : ReactNode => {
     return <Flex direction="column">
-        <Image image={image} ratio={[1 / 1]} onClick={onClick} mb={4} />
+        <Image image={image} ratio={[1 / 1]} onClick={onClick} mb={4} cursor="pointer" />
         {
             name && <Heading as="h3" fontSize={['21px']} lineHeight={['26px']} fontWeight={500}>
                 {name}
             </Heading>
         }
         {
-            companyPosition && <Heading as="h4" fontSize={['19px']} lineHeight={['28px']} color="darkBrown" fontWeight={400}>
+            companyPosition && <Heading as="h4" fontSize={['19px']} lineHeight={['28px']} color="steelBlue" fontWeight={400}>
                 {companyPosition}
             </Heading>
         }
         {
-            qualifications && <Text mb={0} color="darkBrownBlur">
+            qualifications && <Text mb={0} fontSize={['16px']} color="darkBrownBlur">
                 {qualifications}
             </Text>
         }

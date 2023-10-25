@@ -23,10 +23,10 @@ export const ProfilesPanelBlock:any = ({ people }:IProfilesPanelBlock) : ReactNo
 
     return (Array.isArray(people) && people.length > 0) && <Box py={[6, 8, 12]}>
         <Container>
-            <SimpleGrid columns={[1, 2, 4]} spacing={[0, 8, 8]}>
+            <SimpleGrid columns={[1, 2, 4]} spacing={[0, 8, 8]} mb={-8}>
                 {
                      people.map((person:IPerson, index:number) => {
-                        return (
+                        return <Box mb={[0, ,8]}>
                             <ProfileCard
                                 key={index}
                                 {...person}
@@ -34,7 +34,7 @@ export const ProfilesPanelBlock:any = ({ people }:IProfilesPanelBlock) : ReactNo
                                     onProfileClick(index);
                                 }}
                             />
-                        );
+                        </Box>
                     })
                 }
             </SimpleGrid>

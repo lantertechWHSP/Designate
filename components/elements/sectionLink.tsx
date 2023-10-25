@@ -25,6 +25,7 @@ export const SectionLinkInner:any = ({ children }) => {
         _hover={{
             borderColor: 'darkBrown'
         }}
+             fontSize={["16px"]}
         fontWeight={700}>
         <Text as="span" mr={2}>
             {children}
@@ -46,6 +47,7 @@ export const SectionLinkButton:any = ({ color = 'darkBrown', borderColor = 'dark
         textAlign="center"
         width={['120px', ,'180px']}
         transition="border-color 0.3s linear"
+                 fontSize={["16px"]}
         _hover={{
             borderColor: borderColorHover
         }}

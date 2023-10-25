@@ -187,8 +187,7 @@ export const theme:any = extendBaseTheme({
         },
         Link: {
             baseStyle: {
-                color: 'darkBrown',
-                fontSize: '16px'
+                color: 'darkBrown'
             },
             variants: {
                 underline: {
@@ -217,7 +216,6 @@ export const theme:any = extendBaseTheme({
         },
         Button: {
             baseStyle: {
-                fontSize: ['16px']
             },
             variants: {
                 button: {
