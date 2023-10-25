@@ -8,6 +8,7 @@ import CardPanelBlock from '~/components/blocks/CardPanel';
 import ContentCardPanelBlock from '~/components/blocks/ContentCardPanel';
 import AccordionBlock from '~/components/blocks/Accordion';
 import CarouselBlock from '~/components/blocks/Carousel';
+import HorizontalRuleBlock from '~/components/blocks/HorizontalRule';
 
 import DocumentHeroPanelBlock from '~/components/blocks/DocumentHeroPanel';
 import CompanyValuesPanelBlock from '~/components/blocks/CompanyValuesPanel';
@@ -70,6 +71,7 @@ const blocks:any = {
     ContentCardPanelBlock,
     AccordionBlock,
     CarouselBlock,
+    HorizontalRuleBlock,
 
     DocumentHeroPanelBlock,
     CompanyValuesPanelBlock,

@@ -21,25 +21,26 @@ return (Array.isArray(items) && items.length > 0) && <ContentBlock paddingTop={p
         </Heading>
         <Box borderRadius="3px" overflow="hidden" mb={'-20px'}>
             <Box className="horizonalScroll" overflowX={['scroll', ,'hidden']}>
-                <Row wrap={['no-wrap', , 'wrap']}>
+                <Flex wrap={['no-wrap', , 'wrap']} direction="row">
                     {
                         items.map((item:ICompanyValue, index:number) => {
-                            return <Column width={[ColumnWidth.Half, ,ColumnWidth.OneThird]} minWidth={[ColumnWidth.Half, ,'unset']}
-                                           key={index} background="lightGrey3Blur">
-                                <Flex direction="column" alignItems="center" justify="center" minHeight={['244px', ,'250px']} py={'10px'} px={4}>
-                                    {
-                                        (item.icon && item.icon.url) && <Box mb={4}><img src={item.icon.url} alt={item.icon?.alt} /></Box>
-                                    }
-                                    {
-                                        item.title && <Heading as="h3" fontSize="24px" color="darkBrown" mb={2}>
-                                            {item.title}
-                                        </Heading>
-                                    }
+                            return <Flex width={['196px', ,'calc(33.3333333% - 1px)']} minWidth={['220px', ,'calc(33.3333333% - 1px)']} minHeight="264px" boxSizing="border-box" py={6} background="lightGrey3Blur">
+                                <Flex minWidth="100%" minHeight="100%" borderRight="1px solid" borderColor={items.length - 1 === index ? 'transparent' : 'borderColor'}>
+                                    <Flex minWidth="100%" minHeight="100%" px={4} direction="column" align="center" justify="center">
+                                        {
+                                            (item.icon && item.icon.url) && <Box mb={4}><img src={item.icon.url} alt={item.icon?.alt} /></Box>
+                                        }
+                                        {
+                                            item.title && <Heading as="h3" fontSize="24px" color="darkBrown" mb={2}>
+                                                {item.title}
+                                            </Heading>
+                                        }
+                                    </Flex>
                                 </Flex>
-                            </Column>;
+                            </Flex>
                         })
                     }
-                </Row>
+                </Flex>
             </Box>
         </Box>
     </ContentBlock>;

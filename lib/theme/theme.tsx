@@ -13,18 +13,18 @@ const breakpoints:any = {
 
 const colors:any = {
     darkGreen: '#527535',
-    highlightGreen: '#B0E70F',
+    highlightGreen: '#b0e70f',
 
-    black: '#1C1C1C',
+    black: '#1c1c1c',
     blackBlur: 'rgba(28, 28, 28, 0.4)',
-    black2: '#1B2024',
+    black2: '#1b2024',
     black3: '#323639',
 
-    brownGrey: '#CBCBC5',
-    darkBrown: '#50513C',
+    brownGrey: '#cbcbc5',
+    darkBrown: '#50513c',
     darkBrownBlur: 'rgba(80, 81, 60, 0.4)',
 
-    white: '#fff',
+    white: '#ffffff',
     whiteBlur: 'rgba(255, 255, 255, 0.7)',
     whiteBlur2: 'rgba(255, 255, 255, 0.2)',
     ghostWhite: '#f8f8f8',
@@ -33,8 +33,8 @@ const colors:any = {
     steelBlue: '#667085',
 
     lightGrey: '#c4c4c4',
-    lightGrey2: '#DEE2E6',
-    lightGrey2Blur: '#DEE2E666',
+    lightGrey2: '#dee2e6',
+    lightGrey2Blur: '#dee2e666',
     lightGrey3Blur: '#d9d9d933',
 
     positive: '#e8f1c8',
@@ -172,8 +172,7 @@ export const theme:any = extendBaseTheme({
                 fontFamily: `'Menlo', sans-serif`,
                 border: '1px dashed',
                 borderColor: 'borderColor',
-                borderRadius: 0,
-                backgroundColor: '#f0f0f0',
+                borderRadius: 0
             },
         },
         Container: {
@@ -312,9 +311,6 @@ export const theme:any = extendBaseTheme({
                     px: 4,
                     color: 'black',
                     _focus: {
-                        background: 'lightGrey2Blur'
-                    },
-                    _active: {
                         background: 'lightGrey2Blur'
                     }
                 }

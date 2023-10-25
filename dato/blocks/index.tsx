@@ -8,6 +8,7 @@ import { cardPanelRecord } from '~/dato/blocks/cardPanel';
 import { contentCardPanel } from '~/dato/blocks/contentCardPanel';
 import { accordionRecord } from '~/dato/blocks/accordion';
 import { carouselRecord } from '~/dato/blocks/carousel';
+import { horizontalRuleRecord } from '~/dato/blocks/horizontalRule';
 
 import { documentHeroPanelRecord } from '~/dato/blocks/documentHeroPanel';
 import { companyValuesPanelRecord } from '~/dato/blocks/companyValuesPanel';
@@ -85,6 +86,9 @@ export const blocks:string = `
         }
         ... on CarouselRecord {
             ${carouselRecord}
+        }
+        ... on HorizontalRuleRecord {
+            ${horizontalRuleRecord}
         }
 
         ... on DocumentHeroPanelRecord {

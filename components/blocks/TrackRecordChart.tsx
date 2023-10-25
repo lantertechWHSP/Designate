@@ -168,8 +168,15 @@ const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesT
                                                                          updateLines();
                                                                      }
                                                                  }}>
-                                                    <Box background={item.background} width="8px" height="8px" borderRadius="4px" border="1px solid" borderColor={theme === Theme.Dark ? 'black' : 'transparent'} mr={2} />
-                                                    <Text as="span">{item.label}</Text>
+                                                    <Flex direction="row" align="center" width="100%">
+                                                        <Box background={item.background} width="8px" height="8px" borderRadius="4px" border="1px solid" borderColor={theme === Theme.Dark ? 'black' : 'transparent'} mr={2} />
+                                                        <Flex flex="1">{item.label}</Flex>
+                                                        {
+                                                            item.isActive && <Box color="steelBlue">
+                                                                <Icon icon={Icons.Tick} h={12} w={12}  />
+                                                            </Box>
+                                                        }
+                                                    </Flex>
                                                 </MenuItem>;
                                             })
                                         }
