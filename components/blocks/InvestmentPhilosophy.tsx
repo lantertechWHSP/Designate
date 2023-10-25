@@ -16,7 +16,7 @@ interface IInvestmentPhilosophyBlock extends IBlock {
 }
 
 const InvestmentPhilosophyBlock:any = ({ title, items, paddingTop, paddingBottom }:IInvestmentPhilosophyBlock) : ReactNode => {
-    return <ContentBlock background="ghostWhite" paddingTop={paddingTop} paddingBottom={paddingBottom}>
+    return (title || (Array.isArray(items) && items.length > 0)) && <ContentBlock background="ghostWhite" paddingTop={paddingTop} paddingBottom={paddingBottom}>
         {
             title && <Heading as="h2" variant="sectionHeading" mb={8}>
                 {title}
@@ -26,9 +26,9 @@ const InvestmentPhilosophyBlock:any = ({ title, items, paddingTop, paddingBottom
             (Array.isArray(items) && items.length > 0) && <SimpleGrid columns={[1, ,2, items.length > 4 ? 4 : items.length]} spacing={[0, 0, 8, 8]}>
                 {
                     items.map((item:InvestmentPhilosophyItem, index:number) => {
-                        return <Box key={index}>
+                        return <Box key={index} mb={8}>
                             {
-                                (item.icon && item.icon.url) && <Box mb={4}>
+                                (item.icon && item.icon.url) && <Box mb={8}>
                                     <img src={item.icon.url} alt={item.icon?.alt} width="90px" height="60px" />
                                 </Box>
                             }

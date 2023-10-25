@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 import { IBlock } from '~/interfaces/util/block';
 import ContentBlock from '~/components/blocks/Content';
 import { IPerson } from '~/interfaces/models/person';
@@ -13,21 +13,40 @@ interface IPortfolioQuotePanelBlock extends IBlock {
 }
 
 const PortfolioQuotePanelBlock:any = ({ contain, quote, person, paddingTop, paddingBottom }:IPortfolioQuotePanelBlock) : ReactNode => {
-    return <ContentBlock contain={contain} paddingTop={paddingTop} paddingBottom={paddingBottom}>
-        <Row>
-            <Column width={ColumnWidth.TwoThirds} display="flex" justify="center">
-                <blockquote>
-                    <Text fontSize="24px" lineHeight="28px" fontWeight={700} color="darkBrown">
-                        {quote}
-                    </Text>
-                    {
-                        person && <footer>—{person?.name}, {person?.companyPosition}</footer>
 
-                    }
-                </blockquote>
-            </Column>
+    const [blockQuoteFooter] = useState<string>((() => {
+        if(person) {
+            if(person.name && person.companyPosition) {
+                return `${person.name}, ${person.companyPosition}`;
+            }
+            else if(person.name) {
+                return person.name;
+            }
+            else if(person.companyPosition) {
+                return person.companyPosition;
+            }
+        }
+        return '';
+    })())
+
+    return (quote || person) && <ContentBlock contain={contain} paddingTop={paddingTop} paddingBottom={paddingBottom}>
+        <Row>
             {
-                (person && person.image) && <Column width={ColumnWidth.OneThird}>
+                (quote || blockQuoteFooter) && <Column width={ColumnWidth.TwoThirds} display="flex" justify="center">
+                    <blockquote>
+                        {
+                            quote && <Text fontSize="24px" lineHeight="28px" fontWeight={700} color="darkBrown">
+                                {quote}
+                            </Text>
+                        }
+                        {
+                            blockQuoteFooter && <footer>—{blockQuoteFooter}</footer>
+                        }
+                    </blockquote>
+                </Column>
+            }
+            {
+                (person && person?.image) && <Column width={ColumnWidth.OneThird}>
                     <Image image={person.image} ratio={[1 / 1]} />
                 </Column>
             }

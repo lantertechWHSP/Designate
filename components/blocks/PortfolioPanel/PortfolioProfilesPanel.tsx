@@ -11,28 +11,26 @@ interface IPeoplePanelBlock extends IBlock {
 }
 
 const PortfolioProfilesPanelBlock:any = ({ contain, people, paddingTop, paddingBottom }:IPeoplePanelBlock) : ReactNode => {
-    return <ContentBlock contain={contain} paddingTop={paddingTop} paddingBottom={paddingBottom}>
-        {
-            (Array.isArray(people) && people.length > 0) && <SimpleGrid columns={[1, , 3]} spacing={[0, ,8]}>
-                {
-                    people.map((person:IPerson, index:number) => {
-                        return <Box key={index}>
-                            <Image image={person.image} ratio={[1 / 1]} mb={4} />
-                            {
-                                person.name && <Heading as="h3">
-                                    {person.name}
-                                </Heading>
-                            }
-                            {
-                                person.companyPosition && <Text>
-                                    {person.companyPosition}
-                                </Text>
-                            }
-                        </Box>;
-                    })
-                }
-            </SimpleGrid>
-        }
+    return (Array.isArray(people) && people.length > 0) && <ContentBlock contain={contain} paddingTop={paddingTop} paddingBottom={paddingBottom}>
+        <SimpleGrid columns={[1, , 3]} spacing={[0, ,8]}>
+            {
+                people.map((person:IPerson, index:number) => {
+                    return <Box key={index}>
+                        <Image image={person.image} ratio={[1 / 1]} mb={4} />
+                        {
+                            person.name && <Heading as="h3">
+                                {person.name}
+                            </Heading>
+                        }
+                        {
+                            person.companyPosition && <Text>
+                                {person.companyPosition}
+                            </Text>
+                        }
+                    </Box>;
+                })
+            }
+        </SimpleGrid>
     </ContentBlock>;
 };
 

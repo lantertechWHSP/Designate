@@ -15,7 +15,7 @@ interface IPortfolioPanelBlock extends IBlock {
 }
 
 const PortfolioPanelBlock:any = ({ items }:IPortfolioPanelBlock) : ReactNode => {
-    return <ContentBlock>
+    return (Array.isArray(items) && items.length > 0) && <ContentBlock>
         <Accordion allowToggle>
             {
                 items.map((item:IPortfolioPanel, index:number) => {
