@@ -15,29 +15,32 @@ interface ICompanyValue {
 }
 
 const CompanyValuesPanelBlock:any = ({ items, paddingTop, paddingBottom, containerWidth }:ICompanyValuesPanelBlock) : ReactNode => {
-return (Array.isArray(items) && items.length > 0) && <ContentBlock paddingTop={paddingTop} paddingBottom={paddingBottom} containerWidth={containerWidth}>
-        <Heading as="h3" variant="sectionSubheading" mb={4}>
+return (Array.isArray(items) && items.length > 0) && <ContentBlock paddingTop={paddingTop} paddingBottom={paddingBottom} containerWidth={containerWidth} background="ghostWhite">
+        <Heading as="h3" variant="sectionSubheading" mb={8}>
             Our People and Values
         </Heading>
-        <Box background="ghostWhite" className="horizonalScroll" overflowX={['scroll', ,'hidden']}>
-            <Row wrap={['no-wrap', , 'wrap']} >
-                {
-                    items.map((item:ICompanyValue, index:number) => {
-                        return <Column width={[ColumnWidth.Half, ,ColumnWidth.OneThird]} minWidth={[ColumnWidth.Half, ,'unset']} key={index}>
-                            <Flex direction="column" alignItems="center" py={8} px={4}>
-                                {
-                                    (item.icon && item.icon.url) && <Box mb={4}><img src={item.icon.url} alt={item.icon?.alt} /></Box>
-                                }
-                                {
-                                    item.title && <Heading as="h3" variant="h4" mb={2}>
-                                        {item.title}
-                                    </Heading>
-                                }
-                            </Flex>
-                        </Column>;
-                    })
-                }
-            </Row>
+        <Box borderRadius="3px" overflow="hidden" mb={'-20px'}>
+            <Box className="horizonalScroll" overflowX={['scroll', ,'hidden']}>
+                <Row wrap={['no-wrap', , 'wrap']}>
+                    {
+                        items.map((item:ICompanyValue, index:number) => {
+                            return <Column width={[ColumnWidth.Half, ,ColumnWidth.OneThird]} minWidth={[ColumnWidth.Half, ,'unset']}
+                                           key={index} background="lightGreyX">
+                                <Flex direction="column" alignItems="center" justify="center" minHeight={['244px', ,'250px']} py={'10px'} px={4}>
+                                    {
+                                        (item.icon && item.icon.url) && <Box mb={4}><img src={item.icon.url} alt={item.icon?.alt} /></Box>
+                                    }
+                                    {
+                                        item.title && <Heading as="h3" fontSize="24px" color="darkBrown" mb={2}>
+                                            {item.title}
+                                        </Heading>
+                                    }
+                                </Flex>
+                            </Column>;
+                        })
+                    }
+                </Row>
+            </Box>
         </Box>
     </ContentBlock>;
 };

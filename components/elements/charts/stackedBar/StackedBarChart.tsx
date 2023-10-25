@@ -143,7 +143,7 @@ const StackedBarChart:any = ({ data, textColor = 'darkBrown', borderColor = 'lig
             if(elementRef.current) {
                 const newWidth:number = elementRef.current.getBoundingClientRect().width;
                 setWidth(newWidth);
-                setHeight(newWidth * 0.4);
+                setHeight(390);
             }
         };
 

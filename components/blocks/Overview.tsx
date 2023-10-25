@@ -30,10 +30,7 @@ const OverviewBlock:any = ({ subtitle, description, paddingTop, paddingBottom }:
             </Column>
             <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half]}>
                 {
-                    description && <Box
-                        fontSize={['19px']}
-                        lineHeight={['29px']}
-                        color="darkBrown">
+                    description && <Box>
                         <StructuredContent content={description} />
                     </Box>
                 }

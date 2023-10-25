@@ -117,7 +117,7 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
                                         padding: '0 20px',
                                         lineHeight: '48px',
                                         height: '48px',
-                                        border: `2px solid ${color}88`,
+                                        border: color === '#1C1C1C' ? '2px solid rgba(28, 28, 28, 0.1)' : '2px solid rgba(255, 255, 255, 0.2)',
                                         transition: 'border 0.3s ease-in',
                                         _hover: {
                                             border: `2px solid ${color}`,

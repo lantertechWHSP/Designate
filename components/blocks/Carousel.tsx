@@ -56,9 +56,10 @@ const CarouselBlock:any = ({ items, paddingTop, paddingBottom }:ICarouselBlock) 
     };
 
     return (Array.isArray(items) && items.length > 0) && <ContentBlock background="ghostWhite" paddingTop={paddingTop} paddingBottom={paddingBottom}>
-        <Box className="keen-slider" ref={sliderRef} position="relative">
-            {
-                items.map((item:ICarouselItem, index:number) => {
+        <Box borderRadius="3px" overflow="hidden">
+            <Box className="keen-slider" ref={sliderRef} position="relative">
+                {
+                    items.map((item:ICarouselItem, index:number) => {
                         return <Box className="keen-slider__slide" key={index}>
                             <AspectRatio ratio={[3 /2, ,3 / 1.25]}>
                                 <Box
@@ -69,40 +70,41 @@ const CarouselBlock:any = ({ items, paddingTop, paddingBottom }:ICarouselBlock) 
                             </AspectRatio>
                         </Box>;
                     })
-            }
-            <Box position="absolute" width="100%" top="50%" transform="translateY(-50%)" height="56px" zIndex="2">
-                <Button position="absolute"
-                        backgroundColor="whiteBlur"
-                        color="black"
-                        left="10px"
-                        width="56px"
-                        height="56px"
-                        borderRadius="50%"
-                        onClick={prev}>
-                    <Icon icon={Icons.ChevronLeft} />
-                </Button>
-                <Button position="absolute"
-                        backgroundColor="whiteBlur"
-                        color="black"
-                        right="10px"
-                        width="56px"
-                        height="56px"
-                        borderRadius="50%"
-                        onClick={next}>
-                    <Icon icon={Icons.ChevronRight} />
-                </Button>
-            </Box>
-            <Box position="absolute" bottom="30px" left="50%" transform="translateX(-50%)" zIndex="2">
-                {
-                    items.map((item:ICarouselItem, index:number) => {
-                        return <Button key={index} width="8px" height="8px" mx={1}
-                                       background={slideIndex === index ? 'black' : 'white'}
-                                       borderRadius="3px"
-                                       onClick={() => {
-                                           goToIndex(index);
-                                       }} />;
-                    })
                 }
+                <Box position="absolute" width="100%" top="50%" transform="translateY(-50%)" height="56px" zIndex="2">
+                    <Button position="absolute"
+                            backgroundColor="whiteBlur"
+                            color="black"
+                            left="10px"
+                            width="56px"
+                            height="56px"
+                            borderRadius="50%"
+                            onClick={prev}>
+                        <Icon icon={Icons.ArrowLeft} />
+                    </Button>
+                    <Button position="absolute"
+                            backgroundColor="whiteBlur"
+                            color="black"
+                            right="10px"
+                            width="56px"
+                            height="56px"
+                            borderRadius="50%"
+                            onClick={next}>
+                        <Icon icon={Icons.ArrowRight} />
+                    </Button>
+                </Box>
+                <Box position="absolute" bottom="30px" left="50%" transform="translateX(-50%)" zIndex="2">
+                    {
+                        items.map((item:ICarouselItem, index:number) => {
+                            return <Button key={index} width="8px" height="8px" mx={1}
+                                           background={slideIndex === index ? 'black' : 'white'}
+                                           borderRadius="3px"
+                                           onClick={() => {
+                                               goToIndex(index);
+                                           }} />;
+                        })
+                    }
+                </Box>
             </Box>
         </Box>
     </ContentBlock>;

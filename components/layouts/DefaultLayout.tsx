@@ -22,7 +22,7 @@ const DefaultLayout:any = ({ layout, children }:any) : ReactNode => {
                         <Container>
                             <Flex h={['376px']} align="flex-end">
                                 {
-                                    layout.title && <Heading as="h1" variant="defaultLayoutTitle" mb={[6, 8, 12]}>
+                                    layout.title && <Heading as="h1" variant="defaultLayoutTitle" mb={12}>
                                         {layout.title}
                                     </Heading>
                                 }

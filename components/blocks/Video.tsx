@@ -1,7 +1,7 @@
 import { ReactNode, useState} from 'react';
 import { IBlock } from '~/interfaces/util/block';
 import ContentBlock from "~/components/blocks/Content";
-import { AspectRatio, Text } from '@chakra-ui/react';
+import { AspectRatio, Text, Box } from '@chakra-ui/react';
 import dynamic from 'next/dynamic';
 import { IVideo } from '~/interfaces/util/video';
 
@@ -18,18 +18,20 @@ const VideoBlock:any = ({ title, video, videoEmbed, containerWidth, paddingTop, 
     const [currentVideo] = useState<IVideo>(video ? video : videoEmbed);
 
     return (title || currentVideo) && <ContentBlock background="black3" containerWidth={containerWidth} paddingTop={paddingTop} paddingBottom={paddingBottom}>
-        {
-            currentVideo && <AspectRatio ratio={[29 / 18, 21 / 10, ,21 / 9]}>
-                <ReactPlayer
-                    controls
-                    width="100%"
-                    height="100%"
-                    url={currentVideo.url} />
-            </AspectRatio>
-        }
-        {
-            title && <Text as="small">{title}</Text>
-        }
+        <Box mb="60px">
+            {
+                currentVideo && <AspectRatio ratio={[16 / 7.5]}>
+                    <ReactPlayer
+                        controls
+                        width="100%"
+                        height="100%"
+                        url={currentVideo.url} />
+                </AspectRatio>
+            }
+            {
+                title && <Text as="small">{title}</Text>
+            }
+        </Box>
     </ContentBlock>;
 };
 

@@ -21,20 +21,21 @@ const colors:any = {
     black2: '#1B2024',
     black3: '#323639',
 
+    brownGrey: '#CBCBC5',
     darkBrown: '#50513C',
-    darkBrownBlur: 'rgba(80, 81, 60, 0.2)',
+    darkBrownBlur: 'rgba(80, 81, 60, 0.4)',
     sand: '#E4DDC1',
 
     white: '#fff',
     whiteBlur: 'rgba(255, 255, 255, 0.7)',
-    whiteBlur2: 'rgba(255, 255, 255, 0.1)',
+    whiteBlur2: 'rgba(255, 255, 255, 0.2)',
     ghostWhite: '#f8f8f8',
     ghostWhiteBlur: 'rgba(248, 248, 248, 0.7)',
 
     steelBlue: '#667085',
 
-    darkGrey: '#848484',
-    brownGrey: '#CBCBC5',
+
+    lightGreyX: '#d9d9d933',
 
     lightGrey: '#c4c4c4',
     lightGrey2: '#DEE2E6',
@@ -78,6 +79,7 @@ export const theme:any = extendBaseTheme({
         Modal,
         Heading: {
             baseStyle: {
+                color: 'black',
                 fontWeight: 500
             },
             variants: {
@@ -102,12 +104,13 @@ export const theme:any = extendBaseTheme({
                 },
                 sectionSubheading: {
                     color: 'black',
-                    fontSize: ['24px', ,'28px'],
+                    fontSize: ['26px', ,'28px'],
                     lineHeight: [1.2],
                 },
 
                 listItem: {
-                    fontSize: ['21px'],
+                    fontSize: ['18px', ,'21px'],
+                    lineHeight: ['23px', ,'23px'],
                     fontWeight: 500,
                     color: 'darkBrown',
                     transition: 'color 0.3s linear',
@@ -124,8 +127,20 @@ export const theme:any = extendBaseTheme({
                 },
                 listLabel: {
                     color: 'darkBrownBlur',
-                    fontSize: ['21px'],
+                    fontSize: ['18px', ,'21px'],
+                    lineHeight: ['23px', ,'23px'],
                     fontWeight: 500,
+                },
+                h1: {
+                    fontSize: ['21px', '24px', '28px'],
+                    lineHeight: ['21px', '24px', '26px']
+                },
+                h2: {
+                    fontSize: ['21px', '24px', '28px'],
+                    lineHeight: ['21px', '24px', '26px']
+                },
+                h3: {
+
                 }
             },
         },
@@ -173,6 +188,7 @@ export const theme:any = extendBaseTheme({
         Link: {
             baseStyle: {
                 color: 'darkBrown',
+                fontSize: '16px'
             },
             variants: {
                 underline: {
@@ -201,7 +217,7 @@ export const theme:any = extendBaseTheme({
         },
         Button: {
             baseStyle: {
-
+                fontSize: ['16px']
             },
             variants: {
                 button: {
@@ -240,7 +256,13 @@ export const theme:any = extendBaseTheme({
                     borderColor: 'lightGrey2',
                     px: 4,
                     height: '50px',
-                    textAlign: 'unset'
+                    textAlign: 'unset',
+                    _hover: {
+                        borderColor: 'black'
+                    },
+                    _active: {
+                        borderColor: 'black'
+                    }
                 },
             }
         },
@@ -318,6 +340,14 @@ export const theme:any = extendBaseTheme({
                 },
                 th: {
                     textAlign: 'left',
+                },
+                tr: {
+                    _last: {
+                        td: {
+                            borderBottom: '1px solid',
+                            borderColor: 'black',
+                        }
+                    }
                 }
             },
             variants: {
@@ -326,8 +356,8 @@ export const theme:any = extendBaseTheme({
                         fontSize: ['16px'],
                         fontWeight: 400,
                         lineHeight: '24px',
-                        color: 'darkBrown',
-                        borderBottom: '1px solid',
+                        color: 'steelBlue',
+                        borderBottom: '2px solid',
                         borderColor: 'lightGrey2',
                         py: 2
                     },
@@ -336,6 +366,7 @@ export const theme:any = extendBaseTheme({
                         fontSize: ['18px'],
                         borderBottom: '1px solid',
                         borderColor: 'lightGrey2',
+                        color: 'black'
                     }
                 }
             }
@@ -363,8 +394,9 @@ export const theme:any = extendBaseTheme({
                 outline: 0
             },
             body: {
-                fontSize: '16px',
-                lineHeight: '26px'
+                color: 'steelBlue',
+                fontSize: '19px',
+                lineHeight: '29px'
             },
             p: {
                 mb: 4

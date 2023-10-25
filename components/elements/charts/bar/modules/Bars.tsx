@@ -18,6 +18,7 @@ export const Bars:any = ({ values, height, xScale, yScale }:IBars) : ReactNode =
             (Array.isArray(values) && values.length > 0) &&  <g className="bars">
                 {values.map(({ value, label }) => (
                     <rect
+                        rx="3"
                         className="bar"
                         key={`bar-${label}`}
                         x={xScale(label)}

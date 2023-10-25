@@ -5,12 +5,12 @@ export const homePageOverviewRecord:string = `
     id
     description
     imageMain {
-        ${imageAttrs({ width: 700, height: 700})}
+        ${imageAttrs({ width: 652, height: 672})}
     }
     imageSide {
-        ${imageAttrs({ width: 700, height: (700 / 2)})}
+        ${imageAttrs({ width: 652, height: 330})}
     }
     imageSide2 {
-        ${imageAttrs({ width: 700, height: (700 / 2)})}
+        ${imageAttrs({ width: 652, height: 330})}
     }
 `;

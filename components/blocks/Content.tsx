@@ -87,15 +87,15 @@ const ContentBlock:any = ({
     }
 
     switch(paddingTop) {
-        case PaddingTop.Default : selectedPaddingTop = [6, 8, 12]; break;
+        case PaddingTop.Default : selectedPaddingTop = ['40px', , '60px']; break;
         case PaddingTop.None : selectedPaddingTop = [0]; break;
-        default : selectedPaddingTop = [6, 8, 12]; break;
+        default : selectedPaddingTop = ['40px', , '60px']; break;
     }
 
     switch(paddingBottom) {
-        case PaddingBottom.Default : selectedPaddingBottom = [6, 8, 12]; break;
+        case PaddingBottom.Default : selectedPaddingBottom = ['40px', , '60px']; break;
         case PaddingBottom.None : selectedPaddingBottom = [0]; break;
-        default : selectedPaddingBottom = [6, 8, 12]; break;
+        default : selectedPaddingBottom = ['40px', , '60px']; break;
     }
 
     return <Box color={selectedColor} background={selectedBackground} paddingTop={selectedPaddingTop} paddingBottom={selectedPaddingBottom} {...props}>

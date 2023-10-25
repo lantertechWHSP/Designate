@@ -1,11 +1,11 @@
-import { ReactNode } from 'react';
-import { IBlock } from '~/interfaces/util/block';
+import {ReactNode} from 'react';
+import {IBlock} from '~/interfaces/util/block';
 import ContentBlock from '~/components/blocks/Content';
-import { Box, Heading, Text, Flex, Badge, Divider, Link as ChakraLink } from '@chakra-ui/react';
-import { Row, Column, ColumnWidth } from "~/components/elements/grid/grid";
-import { YourIR } from 'yourir-next';
-import { Icon, Icons } from '~/components/elements/icon';
-import { SectionLink, SectionLinkButton } from '~/components/elements/sectionLink';
+import {Badge, Box, Divider, Flex, Heading, Link as ChakraLink, Text} from '@chakra-ui/react';
+import {Column, ColumnWidth, Row} from "~/components/elements/grid/grid";
+import {YourIR} from 'yourir-next';
+import {Icon, Icons} from '~/components/elements/icon';
+import {SectionLink, SectionLinkButton} from '~/components/elements/sectionLink';
 
 
 interface IInvestorPanelBlock extends IBlock {
@@ -27,15 +27,16 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
         }
         <Box as={YourIR}>
             <Row>
-                <Column width={[ColumnWidth.Full, , , ,ColumnWidth.FiveTwelfths]} mr={[0, , , ,ColumnWidth.Twelfth]}>
+                <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half, ColumnWidth.FiveTwelfths]} mr={[0, 0, 0, 0,ColumnWidth.Twelfth]}>
                     <Flex direction="column">
                         <Heading as="h3" variant="sectionSubheading" mb={4}>
                             Share Price Performance
                         </Heading>
                         <Box mb={[0, ,'13px']} borderTop="1px solid" borderColor="lightGrey2" py={2}>
-                            <Text fontSize={['72px']}
+                            <Text
                                 mb={0}
-                                lineHeight={['80px']}
+                                fontSize={['64px', ,'72px']}
+                                lineHeight={['64px', ,'80px']}
                                 letterSpacing="-2px"
                                 fontWeight={500}
                                 color="darkBrown"
@@ -95,14 +96,6 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                                 </Badge>
                             </Box>
                         </Box>
-                        <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" height="0" width="0">
-                            <defs>
-                                <linearGradient id="priceGradient">
-                                    <stop offset="0%" stopColor="rgba(80, 81, 60, 0.05)" />
-                                    <stop offset="100%" stopColor="rgba(80, 81, 60, 0.05)" />
-                                </linearGradient>
-                            </defs>
-                        </svg>
                         <Box overflowX="clip" overflowY="visible">
                             <Box w="calc(100% + 40px)"
                                 mx="-20px"
@@ -115,7 +108,7 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                                         color: 'darkBrown'
                                     },
                                     '.yourir-chart-price-fill': {
-                                        fill: `url(#priceGradient)`
+                                        fill: `rgba(80, 81, 60, 0.2)`
                                     },
                                     '.yourir-chart-price': {
                                         stroke: 'darkBrown',
@@ -167,12 +160,12 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                                 See All
                             </SectionLink>
                         </Box>
-                        <Box py={8} display={['block', , , ,'none']}>
+                        <Box py={8} display={['block', , , 'none']}>
                             <Divider />
                         </Box>
                     </Flex>
                 </Column>
-                <Column width={[ColumnWidth.Full, , , ,ColumnWidth.Half]}>
+                <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half, ColumnWidth.Half]}>
                     <Flex direction="column">
                         <Heading as="h3" variant="sectionSubheading" mb={4}>
                             ASX Announcements

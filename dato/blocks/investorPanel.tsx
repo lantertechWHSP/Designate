@@ -2,7 +2,7 @@ export const investorPanelRecord:string = `
     __typename
     id
     displayHeadline
-    backgroundColor
+    background
     paddingTop
     paddingBottom
 `;

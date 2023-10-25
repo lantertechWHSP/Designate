@@ -88,7 +88,7 @@ const BarChart:any = ({ data, textColor = 'darkBrown', borderColor = 'lightGrey2
             if(elementRef.current) {
                 const newWidth:number = elementRef.current.getBoundingClientRect().width;
                 setWidth(newWidth);
-                setHeight(newWidth * 0.45);
+                setHeight(390);// @TODO set to 340 on mobile
             }
         };
 
@@ -96,12 +96,12 @@ const BarChart:any = ({ data, textColor = 'darkBrown', borderColor = 'lightGrey2
             setDimension();
         }, 100);
 
-        window.addEventListener("resize", handleResize);
+        window.addEventListener('resize', handleResize);
 
         setDimension();
 
         return () => {
-            window.removeEventListener("resize", handleResize);
+            window.removeEventListener('resize', handleResize);
         };
     }, []);
 

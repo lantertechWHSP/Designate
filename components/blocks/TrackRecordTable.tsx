@@ -17,7 +17,7 @@ const TrackRecordTableBlock:any = ({ title, table, paddingTop, paddingBottom }:I
             </Heading>
         }
         {
-            table.data && table.data.length > 0 ? <TableContainer>
+            table.data && table.data.length > 0 ? <TableContainer mb="20px">
                 <Table variant="basic" w="100%">
                     {
                         Array.isArray(table.columns) && table.columns.length > 0 && <Thead>

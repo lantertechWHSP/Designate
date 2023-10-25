@@ -151,7 +151,7 @@ const LineChart:any = ({ data, textColor = 'darkBrown', borderColor = 'lightGrey
             if(elementRef.current) {
                 const newWidth:number = elementRef.current.getBoundingClientRect().width;
                 setWidth(newWidth);
-                setHeight(newWidth * 0.45);
+                setHeight(390);
             }
         };
 
@@ -185,6 +185,10 @@ const LineChart:any = ({ data, textColor = 'darkBrown', borderColor = 'lightGrey
                            '.y-axis .tick line': {
                                color: borderColor
                            },
+
+                            '.y-axis .tick:first-of-type line': {
+                               color: 'black'
+                            }
                        }}>
             {
                 (boundsWidth && boundsHeight) && <svg width={width} height={height} shapeRendering={"crispEdges"}>
