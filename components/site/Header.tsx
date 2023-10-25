@@ -106,7 +106,7 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
                             <Flex display="flex" justify="flex-end">
                                 <Button color={color} onClick={onToggle} display={['flex', , ,'none']}>
                                     {
-                                        isOpen ? <Icon icon={Icons.Cross} w={34} h={34}/> : <Icon icon={Icons.Hamburger} w={34} h={34}/>
+                                        isOpen ? <Icon icon={Icons.StickyMenuClose} w={34} h={34}/> : <Icon icon={Icons.StickyMenuHamburger} w={34} h={34}/>
                                     }
                                 </Button>
                                 <Link display={['none', , ,'block']}
