@@ -32,7 +32,7 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                         <Heading as="h3" variant="sectionSubheading" mb={4}>
                             Share Price Performance
                         </Heading>
-                        <Box mb={[0, ,'13px']} borderTop="1px solid" borderColor="lightGrey2" py={2}>
+                        <Box mb={[0, ,'13px']} borderTop="1px solid" borderColor="borderColor" py={2}>
                             <Text
                                 mb={0}
                                 fontSize={['64px', ,'72px']}
@@ -143,7 +143,7 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                                         top: '10px'
                                     },
                                     '.yourir-chart-yaxis-gridline': {
-                                        stroke: 'lightGrey2'
+                                        stroke: 'borderColor'
                                     },
                                     '.yourir-chart-yaxis-outside .yourir-chart-yaxis-label-container:first-of-type': {
                                         display: 'none'
@@ -174,7 +174,7 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                             <Box data-yourir="items">
                                 <Flex role="group"
                                     borderTop="1px solid"
-                                    borderColor="lightGrey2"
+                                    borderColor="borderColor"
                                     direction="row"
                                     color="darkBrownBlur"
                                     align="center"

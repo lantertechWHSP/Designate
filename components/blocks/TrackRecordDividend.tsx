@@ -19,7 +19,7 @@ const TrackRecordDividendBlock:any = ({ title, table, paddingTop, paddingBottom,
     const backgroundColor:string = theme === Theme.Dark ? 'darkBrown' : 'white';
     const textColor = theme === Theme.Dark ? 'white' : 'black';
     const fillColor = theme === Theme.Dark ? 'white' : 'lightGrey';
-    const borderColor = theme === Theme.Dark ? 'whiteBlur2' : 'lightGrey2';
+    const borderColor = theme === Theme.Dark ? 'whiteBlur2' : 'borderColor';
 
     const chartData:any = [];
 

@@ -4,7 +4,7 @@ import { Box, Text, Badge, Heading } from '@chakra-ui/react';
 
 const SharePriceOverview:any = () : ReactNode => {
     return<Box as={YourIR}>
-        <Box mb={4} pb={[4, ,8]} borderBottom="1px solid" borderColor="lightGrey2">
+        <Box mb={4} pb={[4, ,8]} borderBottom="1px solid" borderColor="borderColor">
             <Heading as="h3" fontSize={['36px']}
                 lineHeight={['42px']} fontWeight={500}
                 mb={4}>
@@ -15,7 +15,7 @@ const SharePriceOverview:any = () : ReactNode => {
                 <Text as="span" data-yourir="commonStatus" />
             </Badge>
         </Box>
-        <Box pb={[4, ,20]} borderBottom="1px solid" borderColor="lightGrey2">
+        <Box pb={[4, ,20]} borderBottom="1px solid" borderColor="borderColor">
             <Text fontSize={['72px']}
                 mb={0}
                 lineHeight={['80px']}
@@ -77,7 +77,7 @@ const SharePriceOverview:any = () : ReactNode => {
                 </Badge>
             </Box>
         </Box>
-        <Box py={4} borderBottom="1px solid" borderColor="lightGrey2">
+        <Box py={4} borderBottom="1px solid" borderColor="borderColor">
             <Text as="label" fontSize={['16px']} lineHeight={['18px']}>Market Cap</Text>
             <Text fontSize={['24px']}
                 lineHeight={['26px']}

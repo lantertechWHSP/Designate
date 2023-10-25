@@ -136,7 +136,7 @@ const AsxAnnouncementsPanelBlock:any = ({}:IAsxAnnouncementsPanelBlock) : ReactN
                 <Box id={`announcements`} data-yourir={`announcements pageSize=10 symbol=${symbol}.asx`}>
                     <Box data-yourir="ifnot isEmpty">
                         <Box data-yourir="items">
-                            <Box borderTop="1px solid" borderColor="lightGrey2">
+                            <Box borderTop="1px solid" borderColor="borderColor">
                                 <Flex py={4} direction={['row']}
                                     _hover={{
                                         transition: 'background 0.3s linear',
@@ -164,7 +164,7 @@ const AsxAnnouncementsPanelBlock:any = ({}:IAsxAnnouncementsPanelBlock) : ReactN
                                 </Flex>
                             </Box>
                         </Box>
-                        <Box borderTop="1px solid" borderColor="lightGrey2" />
+                        <Box borderTop="1px solid" borderColor="borderColor" />
                         <Flex direction="row" justify="space-between" align="center" py={8}>
                             <Box>
                                 <Button variant="pagination"

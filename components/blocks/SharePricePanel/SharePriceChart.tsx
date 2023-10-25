@@ -48,7 +48,7 @@ const SharePriceChart:any = () : ReactNode => {
                         padding: '40px 0',
                         borderBottomWidth: '1px',
                         borderStyle: 'solid',
-                        borderColor: 'lightGrey2'
+                        borderColor: 'borderColor'
                     },
                     '.yourir-chart-price-fill': {
                         fill: `url(#priceGradient)`
@@ -82,7 +82,7 @@ const SharePriceChart:any = () : ReactNode => {
                         top: '10px'
                     },
                     '.yourir-chart-yaxis-gridline': {
-                        stroke: 'lightGrey2'
+                        stroke: 'borderColor'
                     },
                     '.yourir-chart-symbol-label': {
                         display: 'none'

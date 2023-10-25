@@ -37,7 +37,7 @@ interface IMargin {
     left:number;
 }
 
-const StackedBarChart:any = ({ data, textColor = 'darkBrown', borderColor = 'lightGrey2' }:IStackedBarChart) : ReactNode => {
+const StackedBarChart:any = ({ data, textColor = 'darkBrown', borderColor = 'borderColor' }:IStackedBarChart) : ReactNode => {
     const [width, setWidth] = useState<number>(null);
     const [height, setHeight] = useState<number>(null);
     const margin:IMargin = { top: 30, right: 30, bottom: 50, left: 0 };

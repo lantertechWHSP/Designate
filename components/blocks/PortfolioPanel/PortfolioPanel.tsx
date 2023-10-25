@@ -24,7 +24,7 @@ const PortfolioPanelBlock:any = ({ items }:IPortfolioPanelBlock) : ReactNode => 
                             borderTop="1px solid"
                             alignItems="flex-start"
                             textAlign="left"
-                            borderColor="lightGrey2">
+                            borderColor="borderColor">
                             <Heading as="h3"
                                 variant="h4"
                                 fontSize={['21px']}
@@ -32,7 +32,7 @@ const PortfolioPanelBlock:any = ({ items }:IPortfolioPanelBlock) : ReactNode => 
                                 {item?.title}
                             </Heading>
                         </AccordionButton>
-                        <AccordionPanel borderColor="lightGrey2" py={8}>
+                        <AccordionPanel borderColor="borderColor" py={8}>
                             {
                                 (Array.isArray(item.content) && item.content.length > 0) && <Row justify="center">
                                     <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths, ColumnWidth.EightTwelfths]}>

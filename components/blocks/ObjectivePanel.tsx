@@ -19,7 +19,7 @@ const ObjectivePanelBlock:any = ({ items, containerWidth, paddingTop, paddingBot
             <SimpleGrid columns={[1, , 1, items.length > 4 ? 4 : items.length]}>
                 {
                     items.map((item:IObjectivePanelItem, index:number) => {
-                        return <Flex direction={['row', , ,'column']} mb={[items.length - 1 === index ? 0 : 8, , ,0]} borderRight={[0,index < items.length - 1 ? "1px solid" : '' ]} borderColor={['lightGrey2', 'lightGrey2']} px={8} key={index}>
+                        return <Flex direction={['row', , ,'column']} mb={[items.length - 1 === index ? 0 : 8, , ,0]} borderRight={[0,index < items.length - 1 ? "1px solid" : '' ]} borderColor={['borderColor', 'borderColor']} px={8} key={index}>
                             {
                                 item.title && <Heading as="h3"
                                     minWidth={['60px', , ,'initial']}

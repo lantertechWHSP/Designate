@@ -13,12 +13,12 @@ const EventList:any = ({ events }:IEventList) : ReactNode => {
             (Array.isArray(events) && events.length > 0) ? <>
                 {
                     events.map((event:IEvent, index:number) => {
-                        return <Box borderTop="1px solid" borderColor="lightGrey2" key={index}>
+                        return <Box borderTop="1px solid" borderColor="borderColor" key={index}>
                             <EventCard {...event} />
                         </Box>;
                     })
                 }
-                <Box borderBottom="1px solid" borderColor="lightGrey2" />
+                <Box borderBottom="1px solid" borderColor="borderColor" />
             </> : <Box>
                 <Alert status="info">No Events</Alert>
             </Box>

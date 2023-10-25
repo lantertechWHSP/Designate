@@ -12,7 +12,6 @@ const breakpoints:any = {
 };
 
 const colors:any = {
-    // New
     darkGreen: '#527535',
     highlightGreen: '#B0E70F',
 
@@ -24,7 +23,6 @@ const colors:any = {
     brownGrey: '#CBCBC5',
     darkBrown: '#50513C',
     darkBrownBlur: 'rgba(80, 81, 60, 0.4)',
-    sand: '#E4DDC1',
 
     white: '#fff',
     whiteBlur: 'rgba(255, 255, 255, 0.7)',
@@ -48,6 +46,8 @@ const colors:any = {
     success: '#93d490',
     successText: '#1b5318',
 };
+
+colors['borderColor'] = colors.lightGrey2;
 
 export const theme:any = extendBaseTheme({
     fonts: {
@@ -171,7 +171,7 @@ export const theme:any = extendBaseTheme({
             baseStyle: {
                 fontFamily: `'Menlo', sans-serif`,
                 border: '1px dashed',
-                borderColor: 'lightGrey2',
+                borderColor: 'borderColor',
                 borderRadius: 0,
                 backgroundColor: '#f0f0f0',
             },
@@ -241,7 +241,7 @@ export const theme:any = extendBaseTheme({
                     fontSize: '14px',
                     fontWeight: 500,
                     border: '1px solid',
-                    borderColor: 'lightGrey2',
+                    borderColor: 'borderColor',
                     mx: '-1px'
                 },
                 menuButton: {
@@ -250,7 +250,7 @@ export const theme:any = extendBaseTheme({
                     border: '1px solid',
                     fontSize: '16px',
                     minWidth: ['200px', , '270px'],
-                    borderColor: 'lightGrey2',
+                    borderColor: 'borderColor',
                     px: 4,
                     height: '50px',
                     textAlign: 'unset',
@@ -286,7 +286,7 @@ export const theme:any = extendBaseTheme({
                     background: 'white',
                     borderRadius: '8px',
                     border: '1px solid',
-                    borderColor: 'lightGrey2',
+                    borderColor: 'borderColor',
                     px: 4,
                     height: '50px',
                     textAlign: 'unset'
@@ -296,7 +296,7 @@ export const theme:any = extendBaseTheme({
                     px: 0,
                     background: 'white',
                     border: '1px solid',
-                    borderColor: 'lightGrey2',
+                    borderColor: 'borderColor',
                     borderRadius: '8px',
                     boxShadow: '0px 4px 10px 0px rgba(0, 0, 0, 0.10)',
                     overflow: 'hidden',
@@ -324,7 +324,7 @@ export const theme:any = extendBaseTheme({
             baseStyle: {
                 borderWidth: '1px',
                 borderStyle: 'solid',
-                borderColor: 'lightGrey2',
+                borderColor: 'borderColor',
             }
         },
         Table: {
@@ -356,14 +356,14 @@ export const theme:any = extendBaseTheme({
                         lineHeight: '24px',
                         color: 'steelBlue',
                         borderBottom: '2px solid',
-                        borderColor: 'lightGrey2',
+                        borderColor: 'borderColor',
                         py: 2
                     },
                     td: {
                         py: 4,
                         fontSize: ['18px'],
                         borderBottom: '1px solid',
-                        borderColor: 'lightGrey2',
+                        borderColor: 'borderColor',
                         color: 'black'
                     }
                 }
@@ -376,7 +376,7 @@ export const theme:any = extendBaseTheme({
                 lineHeight: '30px',
                 borderRadius: '15px',
                 px: 2,
-                background: 'sand'
+                background: 'darkBrown'
             },
         },
         Alert: {

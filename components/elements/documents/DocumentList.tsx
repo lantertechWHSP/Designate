@@ -195,12 +195,12 @@ const DocumentList:any = ({ latestDocuments, documentsMeta, documentsFilters }:I
                                         (Array.isArray(documentBundle.documents) && documentBundle.documents.length > 0) && <>
                                             {
                                                 documentBundle.documents.map((document:IDocument, innerIndex:number) => {
-                                                    return <Box borderTop="1px solid" borderColor="lightGrey2" key={innerIndex}>
+                                                    return <Box borderTop="1px solid" borderColor="borderColor" key={innerIndex}>
                                                         <DocumentCard {...document} />
                                                     </Box>;
                                                 })
                                             }
-                                            <Box borderBottom="1px solid" borderColor="lightGrey2" />
+                                            <Box borderBottom="1px solid" borderColor="borderColor" />
                                         </>
                                     }
                                 </Box>;

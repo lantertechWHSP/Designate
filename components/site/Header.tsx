@@ -253,7 +253,7 @@ const MobileNavItem:any = ({item}): ReactNode => {
     };
 
     return <Box>
-        <Flex px={['16px', '24px', '32px']} py={3} borderTop="1px solid" cursor={hasChildren ? 'pointer' : 'auto'} onClick={handleClick}  borderColor="lightGrey2">
+        <Flex px={['16px', '24px', '32px']} py={3} borderTop="1px solid" cursor={hasChildren ? 'pointer' : 'auto'} onClick={handleClick}  borderColor="borderColor">
             <MenuItemLink variant="siteHeader"
                 color="black"
                 fontSize="18px"
@@ -276,7 +276,7 @@ const MobileNavItem:any = ({item}): ReactNode => {
         </Flex>
         {
             hasChildren && <Collapse in={isOpen} animateOpacity>
-                <Box borderTop="1px solid" borderColor="lightGrey2">
+                <Box borderTop="1px solid" borderColor="borderColor">
                     {
                         item.children.map((child: IMenuLink, childIndex: number) => {
                             return <Box px={['16px', '24px', '32px']} py={2} key={childIndex}>

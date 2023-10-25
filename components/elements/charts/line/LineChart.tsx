@@ -41,7 +41,7 @@ interface IMargin {
     left:number;
 }
 
-const LineChart:any = ({ data, textColor = 'darkBrown', borderColor = 'lightGrey2', fillColor = 'rgba(80, 81, 60, 0.05)' }:ILineChart) : ReactNode => {
+const LineChart:any = ({ data, textColor = 'darkBrown', borderColor = 'borderColor', fillColor = 'rgba(80, 81, 60, 0.05)' }:ILineChart) : ReactNode => {
     const [width, setWidth] = useState<number>(null);
     const [height, setHeight] = useState<number>(null);
     const margin:IMargin = { top: 30, right: 30, bottom: 30, left: 0 };

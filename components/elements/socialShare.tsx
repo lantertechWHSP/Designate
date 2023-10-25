@@ -11,7 +11,7 @@ const SocialShare:any = () => {
     return (
         <Box>
             <Heading py={2}>Share</Heading>
-            <Box borderTop="1px solid" borderColor="lightGrey2" py={4}>
+            <Box borderTop="1px solid" borderColor="borderColor" py={4}>
                 <Flex mx={-2}>
                     <ShareLink href={links.twitter(link)} color="black">
                         <Icon icon={Icons.X} />
