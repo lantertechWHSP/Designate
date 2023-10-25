@@ -89,7 +89,7 @@ const LineChart:any = ({ data, textColor = 'darkBrown', borderColor = 'lightGrey
                 .domain([0, 10])
                 .range([boundsHeight, 0]);
         }
-    }, [hasData, height]);
+    }, [data, hasData, height]);
 
     const xScale:any = useMemo<any>(() => {
         if(hasData) {
@@ -115,7 +115,7 @@ const LineChart:any = ({ data, textColor = 'darkBrown', borderColor = 'lightGrey
                 .domain([DateTime.now().valueOf(), DateTime.now().valueOf()])
                 .range([0, width]);
         }
-    }, [hasData, width]);
+    }, [data, hasData, width]);
 
     const lineBuilder:any = line<IData>()
         .x((datum:IData) => xScale(datum.date))
@@ -144,7 +144,7 @@ const LineChart:any = ({ data, textColor = 'darkBrown', borderColor = 'lightGrey
 
             return newLines;
         }
-    }, [hasData, height, width]);
+    }, [data, hasData, height, width]);
 
     useEffect(() => {
         const setDimension:any = () : void => {

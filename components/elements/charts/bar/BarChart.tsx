@@ -64,7 +64,7 @@ const BarChart:any = ({ data, textColor = 'darkBrown', borderColor = 'lightGrey2
                 .domain([0, 1])
                 .range([boundsHeight, 0]);
         }
-    }, [hasData, height]);
+    }, [data, hasData, height]);
 
     const xScale:any = useMemo<any>(() => {
         if(hasData) {
@@ -81,7 +81,7 @@ const BarChart:any = ({ data, textColor = 'darkBrown', borderColor = 'lightGrey2
                 .range([0, width])
                 .padding(0.5);
         }
-    }, [hasData, width]);
+    }, [data, hasData, width]);
 
     useEffect(() => {
         const setDimension:any = () : void => {

@@ -99,7 +99,7 @@ const StackedBarChart:any = ({ data, textColor = 'darkBrown', borderColor = 'lig
                 .range([0, width])
                 .padding(0.5);
         }
-    }, [hasData, width]);
+    }, [data, hasData, width]);
 
     const stacked:any = useMemo<any>(() => {
         if(data.groups && data.rows) {
