@@ -56,14 +56,10 @@ const LineChart:any = ({ data, textColor = 'darkBrown', borderColor = 'lightGrey
     }, [height]);
 
     const hasData:any = useMemo(() => {
-        debugger;
-
         if(data && Array.isArray(data.lines) && data.lines.length > 0) {
             const sum:number = _sumBy(data.lines, (line) => {
                 return Array.isArray(line.data) ? line.data.length : 0;
             });
-
-            debugger;
 
             return sum > 0;
         }
@@ -172,25 +168,24 @@ const LineChart:any = ({ data, textColor = 'darkBrown', borderColor = 'lightGrey
         };
     }, []);
 
-    return <>
+    return <Box ref={elementRef}>
         {
-            hasData ? <Box ref={elementRef}
-                               sx={{
-                                   '.tick': {
-                                       fontSize: '14px',
-                                       fontFamily: 'Gramatika',
-                                       color: textColor
-                                   },
-                                   '.x-axis .domain': {
-                                       display: 'none'
-                                   },
-                                   '.x-axis .tick line': {
-                                       display: 'none'
-                                   },
-                                   '.y-axis .tick line': {
-                                       color: borderColor
-                                   },
-                               }}>
+            hasData ? <Box sx={{
+                           '.tick': {
+                               fontSize: '14px',
+                               fontFamily: 'Gramatika',
+                               color: textColor
+                           },
+                           '.x-axis .domain': {
+                               display: 'none'
+                           },
+                           '.x-axis .tick line': {
+                               display: 'none'
+                           },
+                           '.y-axis .tick line': {
+                               color: borderColor
+                           },
+                       }}>
             {
                 (boundsWidth && boundsHeight) && <svg width={width} height={height} shapeRendering={"crispEdges"}>
                     {
@@ -250,9 +245,9 @@ const LineChart:any = ({ data, textColor = 'darkBrown', borderColor = 'lightGrey
                     }
                 </svg>
             }
-            </Box> : <Alert status="info" mt={8}>No Data</Alert>
+            </Box> : <Alert status="info">No Data</Alert>
         }
-    </>;
+    </Box>;
 };
 
 export default LineChart;

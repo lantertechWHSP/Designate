@@ -22,12 +22,14 @@ const TrackRecordDividendBlock:any = ({ title, table, paddingTop, paddingBottom,
 
     const chartData:any = [];
 
-    table.data.map((row:ITableRow) => {
-        chartData.push({
-            label: row.Year,
-            value: row.Value
+    if(table && Array.isArray(table.data) && table.data.length > 0) {
+        table.data.map((row:ITableRow) => {
+            chartData.push({
+                label: row.Year,
+                value: row.Value
+            });
         });
-    });
+    }
 
     return <ContentBlock background={backgroundColor} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         {
@@ -35,9 +37,7 @@ const TrackRecordDividendBlock:any = ({ title, table, paddingTop, paddingBottom,
                 {title}
             </Heading>
         }
-        <Box>
-            <BarChart data={{ bars: chartData }} textColor={textColor} fillColor={fillColor} />
-        </Box>
+        <BarChart data={{ bars: chartData }} textColor={textColor} fillColor={fillColor} />
     </ContentBlock>;
 };
 
