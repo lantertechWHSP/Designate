@@ -1,10 +1,11 @@
 import { ReactNode, useState, useEffect, useRef, useCallback } from 'react';
 import { doQuery, queries } from '~/dato/api';
 import PostCard from '~/components/elements/posts/PostCard';
-import { SimpleGrid, Box, Alert, Spinner, Text, Container } from '@chakra-ui/react';
+import { SimpleGrid, Box, Alert, Spinner, Container, useDisclosure, Button, Text } from '@chakra-ui/react';
 import { IPost } from '~/interfaces/models/post';
 import { IPostsMeta } from '~/interfaces/models/postsMeta';
 import { throttle as _throttle } from 'lodash';
+import { Icon, Icons } from "~/components/elements/icon";
 
 interface IPostsList {
     latestPosts?:IPost[];
@@ -23,7 +24,8 @@ const PostList:any = ({ latestPosts }:IPostsList) : ReactNode => {
     const [couldNotLoadPosts, setCouldNotLoadPosts] = useState<boolean>(false);
 
     const [noMorePosts, setNoMorePosts] = useState(false);
-    const [hideNoMorePosts, setHideNoMorePosts] = useState(false);
+
+    const { isOpen: isNoMorePostsOpen, onClose: isNoMorePostsOnClose } = useDisclosure({ defaultIsOpen: true })
 
     const elementRef:any = useRef<ReactNode>();
 
@@ -39,10 +41,6 @@ const PostList:any = ({ latestPosts }:IPostsList) : ReactNode => {
                     }
                     else {
                         setNoMorePosts(true);
-
-                        setTimeout(() => {
-                            setHideNoMorePosts(true);
-                        }, 5000);
                     }
                 }).catch(() => {
                     setCouldNotLoadPosts(true);
@@ -59,7 +57,7 @@ const PostList:any = ({ latestPosts }:IPostsList) : ReactNode => {
     };
 
     const onScroll:any = useCallback(_throttle(() => {
-        if(elementRef.current) {
+        if(elementRef.current && !noMorePosts) {
             const elementOffsetBottom:number = elementRef.current.offsetTop + elementRef.current.getBoundingClientRect().height;
             const paddedOffset:number = 100;
             const windowScrollBottom:number = window.scrollY + window.innerHeight;
@@ -68,7 +66,7 @@ const PostList:any = ({ latestPosts }:IPostsList) : ReactNode => {
                 loadMore();
             }
         }
-    }, 100), [page, posts]);
+    }, 100), [page, posts, isLoading]);
 
     useEffect(() => {
         window.addEventListener("scroll", onScroll);
@@ -94,7 +92,7 @@ const PostList:any = ({ latestPosts }:IPostsList) : ReactNode => {
                     {
                         <Box sx={{
                             position: 'absolute',
-                            display: hideNoMorePosts ? 'none' : 'block',
+                            display: (noMorePosts) ? 'none' : 'block',
                             bottom: 0,
                             left: 0,
                             right: 0,
@@ -107,13 +105,19 @@ const PostList:any = ({ latestPosts }:IPostsList) : ReactNode => {
                 <Box>
                     <Container>
                         {
-                            couldNotLoadPosts && <Alert status="error">
-                                <Text variant="caption">Could not load posts</Text>
+                            couldNotLoadPosts && <Alert status="error" mt={4}>
+                                <Alert status="error">Could not load posts</Alert>
                             </Alert>
                         }
                         {
-                            (noMorePosts && !hideNoMorePosts) && <Alert status="info" mt={4}>
-                                No more posts
+                            (noMorePosts && isNoMorePostsOpen) && <Alert status="info" mt={4}>
+                                <Box>
+                                    No more posts
+                                </Box>
+                                <Box flex="1" />
+                                <Button onClick={isNoMorePostsOnClose}>
+                                    <Icon icon={Icons.Cross} />
+                                </Button>
                             </Alert>
                         }
                         {

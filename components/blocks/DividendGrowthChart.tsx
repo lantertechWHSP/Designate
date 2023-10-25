@@ -78,28 +78,30 @@ const DividendGrowthChart:any = ({ table, theme }:IDividendGrowthChartBlock) : R
                     Continued Dividend Growth
                 </Heading>
             </Column>
-            <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half]} align={['flex-start', , ,'flex-end']}>
-                <Flex mx={-2}>
-                    <Flex align="center" px={2}>
-                        <Box background={colors[0]} width="10px" height="10px" borderRadius="5px" mr={2} />
-                        <Text as="span" mb={0} lineHeight={1} color={textColor}>
-                            Latest Dividend
-                        </Text>
+            {
+                (Array.isArray(data?.rows) && data.rows.length > 0) && <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half]} align={['flex-start', , ,'flex-end']}>
+                    <Flex mx={-2}>
+                        <Flex align="center" px={2}>
+                            <Box background={colors[0]} width="10px" height="10px" borderRadius="5px" mr={2} />
+                            <Text as="span" mb={0} lineHeight={1} color={textColor}>
+                                Latest Dividend
+                            </Text>
+                        </Flex>
+                        <Flex align="center" px={2}>
+                            <Box background={colors[1]} width="10px" height="10px" borderRadius="5px" mr={2} />
+                            <Text as="span" mb={0} lineHeight={1} color={textColor}>
+                                Final Dividend
+                            </Text>
+                        </Flex>
+                        <Flex align="center" px={2}>
+                            <Box background={colors[2]} width="10px" height="10px" borderRadius="5px" mr={2} />
+                            <Text as="span" mb={0} lineHeight={1} color={textColor}>
+                                Special Dividend
+                            </Text>
+                        </Flex>
                     </Flex>
-                    <Flex align="center" px={2}>
-                        <Box background={colors[1]} width="10px" height="10px" borderRadius="5px" mr={2} />
-                        <Text as="span" mb={0} lineHeight={1} color={textColor}>
-                            Final Dividend
-                        </Text>
-                    </Flex>
-                    <Flex align="center" px={2}>
-                        <Box background={colors[2]} width="10px" height="10px" borderRadius="5px" mr={2} />
-                        <Text as="span" mb={0} lineHeight={1} color={textColor}>
-                            Special Dividend
-                        </Text>
-                    </Flex>
-                </Flex>
-            </Column>
+                </Column>
+            }
         </Row>
         <StackedBarChart data={data} textColor={textColor} />
     </ContentBlock>;

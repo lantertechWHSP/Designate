@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
 import ContentBlock from '~/components/blocks/Content';
 import { ITable } from '~/interfaces/util/table';
-import { TableContainer, Table, Thead, Tr, Th, Tbody, Td, Text } from '@chakra-ui/react';
+import { TableContainer, Table, Thead, Tr, Th, Tbody, Td, Alert } from '@chakra-ui/react';
 
 interface ITableRow {
     Dividend:string;
@@ -74,7 +74,7 @@ const DividendHistoryTableBlock:any = ({ table, paddingTop, paddingBottom }:IDiv
                         }
                     </Tbody>
                 </Table>
-            </TableContainer> : <Text variant="caption">No Dividends</Text>
+            </TableContainer> : <Alert status="title">No Dividend Data</Alert>
         }
     </ContentBlock>;
 };

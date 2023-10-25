@@ -22,7 +22,7 @@ interface IComputershareContactPanelBlock extends IBlock {
 }
 
 const ComputershareContactPanelBlock:any = ({ title, description, image, onlineDescription, website, contactLocal, contactInternational, email, address }:IComputershareContactPanelBlock) : ReactNode => {
-    return <ContentBlock>
+    return (title || description || image || onlineDescription || website || contactLocal || contactInternational || email || address) && <ContentBlock>
         <Row mb={8}>
             <Column width={[ColumnWidth.Full, ,ColumnWidth.OneThird]}>
                 {

@@ -1,5 +1,5 @@
 import { ReactNode, useState, useEffect } from 'react';
-import { Heading, Box, Container } from '@chakra-ui/react';
+import { Heading, Box, Container, Alert } from '@chakra-ui/react';
 import { IDocument, IDocumentBundle } from '~/interfaces/models/document';
 import { forOwn as _forOwn, groupBy as _groupBy } from 'lodash';
 import DocumentCard from "~/components/elements/documents/DocumentCard";
@@ -40,7 +40,7 @@ const DocumentBasicList:any = ({ title, latestDocuments }:IDocumentBasicList) : 
                 </Heading>
             }
             {
-                (Array.isArray(documents) && documents.length > 0) && <Box>
+                (Array.isArray(latestDocuments) && latestDocuments.length > 0) ? <Box>
                     {
                         documentBundles.map((documentBundle:IDocumentBundle, index:number) => {
                             return <Box key={index} pb={index === documentBundles.length - 1 ? 0 : 4}>
@@ -60,6 +60,8 @@ const DocumentBasicList:any = ({ title, latestDocuments }:IDocumentBasicList) : 
                             </Box>;
                         })
                     }
+                </Box> : <Box>
+                    <Alert status="info">No Documents</Alert>
                 </Box>
             }
         </Container>
