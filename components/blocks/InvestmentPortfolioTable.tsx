@@ -57,17 +57,35 @@ const InvestmentPortfolioTableBlock:any = ({ table, lastUpdated, paddingTop, pad
         </Box>
         {
             ((Array.isArray(table?.data) && table.data.length > 0) || (Array.isArray(table?.columns) && table.columns.length > 0)) ? <TableContainer>
-                <Table variant="basic" w="100%" color="white">
+                <Table variant="basic" w="100%" color="white" sx={{
+                    td: {
+                        borderBottom: '1px solid',
+                        borderColor: 'whiteBlur2',
+                        color: 'white'
+                    },
+                    th: {
+                        color: 'whiteBlur'
+                    },
+                    tr: {
+                        _last: {
+                            td: {
+                                borderBottom: '1px solid',
+                                borderColor: 'whiteBlur2',
+                                color: 'white'
+                            }
+                        }
+                    }
+                }}>
                     {
                         Array.isArray(table.columns) && table.columns.length > 0 && <Thead>
                             <Tr>
-                                <Th width={['50%', ,'20%']} color="whiteBlur">
+                                <Th width={['50%', ,'20%']}>
                                     Portfolio
                                 </Th>
-                                <Th width={['35%', ,'20%']}  color="whiteBlur">
+                                <Th width={['35%', ,'20%']} >
                                     Net Asset Value (M)
                                 </Th>
-                                <Th width={['15%', ,'60%']}  color="whiteBlur">
+                                <Th width={['15%', ,'60%']} >
                                     Weighting
                                 </Th>
                             </Tr>
