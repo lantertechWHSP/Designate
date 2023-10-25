@@ -16,7 +16,7 @@ interface IAccordionItem {
 const AccordionBlock:any = ({ title, background, textColor, items }:IAccordionBlock) : ReactNode => {
     const selectedColor:any = getTextColor(textColor);
 
-    return <ContentBlock background={background} color={textColor} py={8}>
+    return (title || (Array.isArray(items) && items.length > 0)) && <ContentBlock background={background} color={textColor} py={8}>
         {
             title && <Box mb={8}>
                 <Heading as="h2" variant="sectionHeading" color={selectedColor}>
@@ -41,8 +41,7 @@ const AccordionBlock:any = ({ title, background, textColor, items }:IAccordionBl
                                     {item?.title}
                                 </Heading>
                             </AccordionButton>
-                            <AccordionPanel borderTop="1px solid"
-                                py={4}>
+                            <AccordionPanel borderTop="1px solid" borderColor={selectedColor} py={4}>
                                 {item?.content}
                             </AccordionPanel>
                         </AccordionItem>;

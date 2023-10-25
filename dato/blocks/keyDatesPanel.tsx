@@ -3,4 +3,5 @@ export const keyDatesPanelRecord:string = `
     id
     paddingTop
     paddingBottom
+    background
 `;

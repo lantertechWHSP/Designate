@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Box, Text } from '@chakra-ui/react';
+import { Box, Alert } from '@chakra-ui/react';
 import EventCard from '~/components/elements/events/EventCard';
 import { IEvent } from '~/interfaces/models/event';
 
@@ -20,7 +20,7 @@ const EventList:any = ({ events }:IEventList) : ReactNode => {
                 }
                 <Box borderBottom="1px solid" borderColor="lightGrey2" />
             </> : <Box>
-                <Text variant="caption">No Events</Text>
+                <Alert status="info">No Events</Alert>
             </Box>
         }
     </Box>;

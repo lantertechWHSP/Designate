@@ -1,7 +1,7 @@
 import { useState, ReactNode, useEffect } from 'react';
 import { doQuery, queries } from '~/dato/api';
 import DocumentCard from '~/components/elements/documents/DocumentCard';
-import { Box, Flex, Button, Spinner, Text, Container, Heading, Menu, MenuButton, Portal, MenuList, MenuItem, ButtonGroup  } from '@chakra-ui/react';
+import { Box, Flex, Button, Spinner, Text, Container, Heading, Menu, MenuButton, Portal, MenuList, MenuItem, ButtonGroup, Alert } from '@chakra-ui/react';
 import { IDocument, IDocumentsFilters, IDocumentBundle } from '~/interfaces/models/document';
 import { IDocumentsMeta } from '~/interfaces/models/document';
 import { groupBy as _groupBy, forOwn as _forOwn } from 'lodash';
@@ -126,66 +126,66 @@ const DocumentList:any = ({ latestDocuments, documentsMeta, documentsFilters }:I
 
     return <Box bg="ghostWhite" py={12}>
         <Container>
-            <Box pb={4} mb={8}>
-                <ButtonGroup>
-                    <Menu>
-                        {({ isOpen }) => (
-                            <>
-                                <MenuButton as={Button}
-                                    variant="menuButton"
-                                    rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} w={12} h={12} /> : <Icon icon={Icons.ChevronDown} w={12} h={12} />}>
-                                    {selectedTag.label ? selectedTag.label : 'Compare…'}
-                                </MenuButton>
-                                <Portal>
-                                    <MenuList>
-                                        {
-                                            tagFilters.map((item:IFilter, index:number) => {
-                                                return <MenuItem key={index}
-                                                    as={Button}
-                                                    variant="menuItemFilter"
-                                                    onClick={() => {
-                                                        setSelectedTag(item);
-                                                    }}>
-                                                    {item.label}
-                                                </MenuItem>;
-                                            })
-                                        }
-                                    </MenuList>
-                                </Portal>
-                            </>
-                        )}
-                    </Menu>
-                    <Menu>
-                        {({ isOpen }) => (
-                            <>
-                                <MenuButton as={Button}
-                                    variant="menuButton"
-                                    rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} w={12} h={12} /> : <Icon icon={Icons.ChevronDown} w={12} h={12} />}>
-                                    {selectedYear.label ? selectedYear.label : 'Compare…'}
-                                </MenuButton>
-                                <Portal>
-                                    <MenuList>
-                                        {
-                                            yearFilters.map((item:IFilter, index:number) => {
-                                                return <MenuItem key={index}
-                                                    as={Button}
-                                                    variant="menuItemFilter"
-                                                    onClick={() => {
-                                                        setSelectedYear(item);
-                                                    }}>
-                                                    {item.label}
-                                                </MenuItem>;
-                                            })
-                                        }
-                                    </MenuList>
-                                </Portal>
-                            </>
-                        )}
-                    </Menu>
-                </ButtonGroup>
-            </Box>
             {
-                (Array.isArray(documents) && documents.length > 0) ? <>
+                (Array.isArray(latestDocuments) && latestDocuments.length > 0) ? <>
+                    <Box pb={4} mb={8}>
+                        <ButtonGroup>
+                            <Menu>
+                                {({ isOpen }) => (
+                                    <>
+                                        <MenuButton as={Button}
+                                                    variant="menuButton"
+                                                    rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} w={12} h={12} /> : <Icon icon={Icons.ChevronDown} w={12} h={12} />}>
+                                            {selectedTag.label ? selectedTag.label : 'Compare…'}
+                                        </MenuButton>
+                                        <Portal>
+                                            <MenuList>
+                                                {
+                                                    tagFilters.map((item:IFilter, index:number) => {
+                                                        return <MenuItem key={index}
+                                                                         as={Button}
+                                                                         variant="menuItemFilter"
+                                                                         onClick={() => {
+                                                                             setSelectedTag(item);
+                                                                         }}>
+                                                            {item.label}
+                                                        </MenuItem>;
+                                                    })
+                                                }
+                                            </MenuList>
+                                        </Portal>
+                                    </>
+                                )}
+                            </Menu>
+                            <Menu>
+                                {({ isOpen }) => (
+                                    <>
+                                        <MenuButton as={Button}
+                                                    variant="menuButton"
+                                                    rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} w={12} h={12} /> : <Icon icon={Icons.ChevronDown} w={12} h={12} />}>
+                                            {selectedYear.label ? selectedYear.label : 'Compare…'}
+                                        </MenuButton>
+                                        <Portal>
+                                            <MenuList>
+                                                {
+                                                    yearFilters.map((item:IFilter, index:number) => {
+                                                        return <MenuItem key={index}
+                                                                         as={Button}
+                                                                         variant="menuItemFilter"
+                                                                         onClick={() => {
+                                                                             setSelectedYear(item);
+                                                                         }}>
+                                                            {item.label}
+                                                        </MenuItem>;
+                                                    })
+                                                }
+                                            </MenuList>
+                                        </Portal>
+                                    </>
+                                )}
+                            </Menu>
+                        </ButtonGroup>
+                    </Box>
                     <Box>
                         {
                             documentBundles.map((documentBundle:IDocumentBundle, index:number) => {
@@ -213,15 +213,19 @@ const DocumentList:any = ({ latestDocuments, documentsMeta, documentsFilters }:I
                         </Box>
                     }
                     {
-                        documents.length < totalDocumentCount && <Flex py={8} justify="center">
+                        documents.length < totalDocumentCount ? <Flex py={8} justify="center">
                             <Button variant="button" onClick={loadMore} rightIcon={isLoading && <Spinner size='sm' />} minWidth="200px" border="1px solid" height="50px" width="50px" borderRadius="25px" borderColor="darkGrey">
                                 Load More
                             </Button>
-                        </Flex>
+                        </Flex> : <Box>
+                            <Alert status="info">
+                                Loaded all documents
+                            </Alert>
+                        </Box>
                     }
                 </> : <>
                     <Box>
-                        <Text variant="caption">No Documents</Text>
+                        <Alert status="info">No Documents</Alert>
                     </Box>
                 </>
             }

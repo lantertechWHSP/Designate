@@ -14,21 +14,19 @@ interface IContactsPanelBlock extends IBlock {
 }
 
 const ContactsPanelBlock:any = ({ data: { contacts } }:IContactsPanelBlock) : ReactNode => {
-    return <ContentBlock background="ghostWhite">
+    return (Array.isArray(contacts) && contacts.length > 0) && <ContentBlock background="ghostWhite">
         <Box mb={8}>
             <Heading as="h2" variant="sectionHeading">
                 Contacts
             </Heading>
         </Box>
-        {
-            (Array.isArray(contacts) && contacts.length > 0) && <SimpleGrid columns={[1, , , 3]}>
-                {
-                    contacts.map((contact:IContact, index:number) => {
-                        return <Box key={index} mb={[index < contacts.length - 1 ? 4 : 0, , ,0]}><ContactCard {...contact} /></Box>;
-                    })
-                }
-            </SimpleGrid>
-        }
+        <SimpleGrid columns={[1, , , 3]}>
+            {
+                contacts.map((contact:IContact, index:number) => {
+                    return <Box key={index} mb={[index < contacts.length - 1 ? 4 : 0, , ,0]}><ContactCard {...contact} /></Box>;
+                })
+            }
+        </SimpleGrid>
     </ContentBlock>;
 };
 

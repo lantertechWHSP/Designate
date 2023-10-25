@@ -21,11 +21,11 @@ export const ProfilesPanelBlock:any = ({ people }:IProfilesPanelBlock) : ReactNo
         setModalOpen(true);
     };
 
-    return <Box py={[6, 8, 12]}>
+    return (Array.isArray(people) && people.length > 0) && <Box py={[6, 8, 12]}>
         <Container>
             <SimpleGrid columns={[1, 2, 4]} spacing={[0, 8, 8]}>
                 {
-                    (Array.isArray(people) && people.length > 0) && people.map((person:IPerson, index:number) => {
+                     people.map((person:IPerson, index:number) => {
                         return (
                             <ProfileCard
                                 key={index}
