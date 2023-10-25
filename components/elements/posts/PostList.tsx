@@ -1,7 +1,7 @@
 import { ReactNode, useState, useEffect, useRef, useCallback } from 'react';
 import { doQuery, queries } from '~/dato/api';
 import PostCard from '~/components/elements/posts/PostCard';
-import { SimpleGrid, Box, Alert, Spinner, Container, useDisclosure, Button, Text } from '@chakra-ui/react';
+import { SimpleGrid, Box, Alert, Spinner, Container, useDisclosure, Button } from '@chakra-ui/react';
 import { IPost } from '~/interfaces/models/post';
 import { IPostsMeta } from '~/interfaces/models/postsMeta';
 import { throttle as _throttle } from 'lodash';
@@ -25,7 +25,7 @@ const PostList:any = ({ latestPosts }:IPostsList) : ReactNode => {
 
     const [noMorePosts, setNoMorePosts] = useState(false);
 
-    const { isOpen: isNoMorePostsOpen, onClose: isNoMorePostsOnClose } = useDisclosure({ defaultIsOpen: true })
+    const { isOpen: isNoMorePostsOpen, onClose: isNoMorePostsOnClose } = useDisclosure({ defaultIsOpen: true });
 
     const elementRef:any = useRef<ReactNode>();
 

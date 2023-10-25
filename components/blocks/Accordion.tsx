@@ -35,21 +35,21 @@ const AccordionBlock:any = ({ title, background, textColor, items }:IAccordionBl
                             {({ isExpanded }) => (
                                 <>
                                     <AccordionButton py={4}
-                                                     borderTop="1px solid"
-                                                     align="center"
-                                                     textAlign="left"
-                                                     color={selectedTextColor}
-                                                     borderColor={borderColor}>
+                                        borderTop="1px solid"
+                                                     alignItems="center"
+                                        textAlign="left"
+                                        color={selectedTextColor}
+                                        borderColor={borderColor}>
                                         <Heading as="h3"
-                                                 variant="h4"
-                                                 color={selectedTextColor}
-                                                 fontSize={['21px']}
-                                                 fontWeight={500}>
+                                            variant="h4"
+                                            color={selectedTextColor}
+                                            fontSize={['21px']}
+                                            fontWeight={500}>
                                             {item?.title}
                                         </Heading>
                                         <Box flex={1} />
                                         <Box transition="transform 300ms linear"
-                                             transform={isExpanded ? 'rotate(180deg)' : ''}>
+                                            transform={isExpanded ? 'rotate(180deg)' : ''}>
                                             <Icon icon={Icons.ChevronDown} />
                                         </Box>
                                     </AccordionButton>

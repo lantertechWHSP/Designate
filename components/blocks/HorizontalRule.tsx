@@ -9,7 +9,7 @@ interface IHorizontalRuleBlock extends IBlock {
 const HorizontalRuleBlock:any = ({}:IHorizontalRuleBlock) : ReactNode => {
     return <ContentBlock paddingTop={PaddingTop.None} paddingBottom={PaddingBottom.None}>
         <Divider />
-    </ContentBlock>
-}
+    </ContentBlock>;
+};
 
 export default HorizontalRuleBlock;

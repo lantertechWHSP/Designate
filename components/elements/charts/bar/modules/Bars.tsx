@@ -18,12 +18,11 @@ export const Bars:any = ({ values, height, xScale, yScale }:IBars) : ReactNode =
         {
             (Array.isArray(values) && values.length > 0) &&  <g className="bars">
                 {values.map(({ value, label }) => (
-                    <g clipPath={`inset(0 0 ${borderRadius}px 0)`}>
+                    <g clipPath={`inset(0 0 ${borderRadius}px 0)`} key={`bar-${label}`}>
                         <rect
                             rx={borderRadius}
                             ry={borderRadius}
                             className="bar"
-                            key={`bar-${label}`}
                             x={xScale(label)}
                             y={yScale(value)}
                             width={xScale.bandwidth()}

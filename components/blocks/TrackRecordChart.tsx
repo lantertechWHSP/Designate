@@ -25,7 +25,7 @@ const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesT
     const colors:string[] = theme === Theme.Dark ? darkLegendColors : legendColors;
     const textColor:string = theme === Theme.Dark ? 'white' : 'steelBlue';
     const fillColor:string = theme === Theme.Dark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(80, 81, 60, 0.05)';
-    const borderColor = theme === Theme.Dark ? 'whiteBlur2' : 'borderColor';
+    const borderColor:string = theme === Theme.Dark ? 'whiteBlur2' : 'borderColor';
 
     const australianShares:any = australianSharesTable.data.map((datum) => {
         return {
@@ -114,7 +114,7 @@ const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesT
     const [hasData] = useState<boolean>((australianSharesTable.data && australianSharesTable.data.length > 0) &&
         (internationalSharesTable.data && internationalSharesTable.data.length > 0) &&
         (australianListedTable.data && australianListedTable.data.length > 0) &&
-        (australianBondsTable.data && australianBondsTable.data.length > 0))
+        (australianBondsTable.data && australianBondsTable.data.length > 0));
 
     useEffect(() => {
         if(hasData) {
@@ -133,8 +133,8 @@ const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesT
                         {({ isOpen }) => (
                             <>
                                 <MenuButton as={Button}
-                                            variant="menuButton"
-                                            rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} h={12} w={12} /> : <Icon icon={Icons.ChevronDown} h={12} w={12}  /> }>
+                                    variant="menuButton"
+                                    rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} h={12} w={12} /> : <Icon icon={Icons.ChevronDown} h={12} w={12}  /> }>
                                     <Flex display="inlineFlex" direction="row" alignItems="center">
                                         <Box background={theme === Theme.Dark ? 'white' : 'lightGrey'} width="8px" height="8px" borderRadius="4px" border="1px solid" borderColor={theme === Theme.Dark ? 'black' : 'transparent'}  mr={2} />
                                         <Text as="span">
@@ -147,27 +147,27 @@ const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesT
                                         {
                                             filters.map((item:IChartFilter, index:number) => {
                                                 return <MenuItem key={index}
-                                                                 as={Button}
-                                                                 variant="menuItemFilter"
-                                                                 isActive={item.isActive}
-                                                                 onClick={() => {
-                                                                     let isToggled:boolean = false;
+                                                    as={Button}
+                                                    variant="menuItemFilter"
+                                                    isActive={item.isActive}
+                                                    onClick={() => {
+                                                        let isToggled:boolean = false;
 
-                                                                     const newFilters:IChartFilter[] = [...filters];
+                                                        const newFilters:IChartFilter[] = [...filters];
 
-                                                                     newFilters.map((innerFilter) => {
-                                                                         if(innerFilter.value === item.value) {
-                                                                             innerFilter.isActive = !innerFilter.isActive;
+                                                        newFilters.map((innerFilter) => {
+                                                            if(innerFilter.value === item.value) {
+                                                                innerFilter.isActive = !innerFilter.isActive;
 
-                                                                             isToggled = true;
-                                                                         }
-                                                                     });
+                                                                isToggled = true;
+                                                            }
+                                                        });
 
-                                                                     if(isToggled) {
-                                                                         setFilters(newFilters);
-                                                                         updateLines();
-                                                                     }
-                                                                 }}>
+                                                        if(isToggled) {
+                                                            setFilters(newFilters);
+                                                            updateLines();
+                                                        }
+                                                    }}>
                                                     <Flex direction="row" align="center" width="100%">
                                                         <Box background={item.background} width="8px" height="8px" borderRadius="4px" border="1px solid" borderColor={theme === Theme.Dark ? 'black' : 'transparent'} mr={2} />
                                                         <Flex flex="1">{item.label}</Flex>

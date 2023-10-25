@@ -25,16 +25,15 @@ export const ProfilesPanelBlock:any = ({ people }:IProfilesPanelBlock) : ReactNo
         <Container>
             <SimpleGrid columns={[1, 2, 4]} spacing={[0, 8, 8]} mb={-8}>
                 {
-                     people.map((person:IPerson, index:number) => {
-                        return <Box mb={[0, ,8]}>
+                    people.map((person:IPerson, index:number) => {
+                        return <Box mb={[0, ,8]} key={index}>
                             <ProfileCard
-                                key={index}
                                 {...person}
                                 onClick={() => {
                                     onProfileClick(index);
                                 }}
                             />
-                        </Box>
+                        </Box>;
                     })
                 }
             </SimpleGrid>

@@ -27,7 +27,7 @@ const PortfolioQuotePanelBlock:any = ({ contain, quote, person, paddingTop, padd
             }
         }
         return '';
-    })())
+    })());
 
     return (quote || person) && <ContentBlock contain={contain} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         <Row>

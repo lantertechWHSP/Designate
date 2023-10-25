@@ -3,7 +3,6 @@ import { IBlock } from '~/interfaces/util/block';
 import ContentBlock from '~/components/blocks/Content';
 import { ISVGImage } from '~/interfaces/util/image';
 import { Heading, Box, Flex } from '@chakra-ui/react';
-import { Row, Column, ColumnWidth } from "~/components/elements/grid/grid";
 
 interface ICompanyValuesPanelBlock extends IBlock {
     items?:ICompanyValue[];
@@ -15,16 +14,16 @@ interface ICompanyValue {
 }
 
 const CompanyValuesPanelBlock:any = ({ items, paddingTop, paddingBottom, containerWidth }:ICompanyValuesPanelBlock) : ReactNode => {
-return (Array.isArray(items) && items.length > 0) && <ContentBlock paddingTop={paddingTop} paddingBottom={paddingBottom} containerWidth={containerWidth} background="ghostWhite">
+    return (Array.isArray(items) && items.length > 0) && <ContentBlock paddingTop={paddingTop} paddingBottom={paddingBottom} containerWidth={containerWidth} background="ghostWhite">
         <Heading as="h3" variant="sectionSubheading" mb={8}>
             Our People and Values
         </Heading>
         <Box borderRadius="3px" overflow="hidden" mb={'-20px'}>
             <Box className="horizonalScroll" overflowX={['scroll', ,'hidden']}>
-                <Flex wrap={['no-wrap', , 'wrap']} direction="row">
+                <Flex wrap={['nowrap', , 'wrap']} direction="row">
                     {
                         items.map((item:ICompanyValue, index:number) => {
-                            return <Flex width={['196px', ,'calc(33.3333333% - 1px)']} minWidth={['220px', ,'calc(33.3333333% - 1px)']} minHeight="264px" boxSizing="border-box" py={6} background="lightGrey3Blur">
+                            return <Flex width={['196px', ,'calc(33.3333333% - 1px)']} minWidth={['220px', ,'calc(33.3333333% - 1px)']} minHeight="264px" boxSizing="border-box" py={6} background="lightGrey3Blur" key={index}>
                                 <Flex minWidth="100%" minHeight="100%" borderRight="1px solid" borderColor={items.length - 1 === index ? 'transparent' : 'borderColor'}>
                                     <Flex minWidth="100%" minHeight="100%" px={4} direction="column" align="center" justify="center">
                                         {
@@ -37,7 +36,7 @@ return (Array.isArray(items) && items.length > 0) && <ContentBlock paddingTop={p
                                         }
                                     </Flex>
                                 </Flex>
-                            </Flex>
+                            </Flex>;
                         })
                     }
                 </Flex>

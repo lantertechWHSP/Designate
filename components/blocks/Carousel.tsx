@@ -73,23 +73,23 @@ const CarouselBlock:any = ({ items, paddingTop, paddingBottom }:ICarouselBlock) 
                 }
                 <Box position="absolute" width="100%" top="50%" transform="translateY(-50%)" height="56px" zIndex="2">
                     <Button position="absolute"
-                            backgroundColor="whiteBlur"
-                            color="black"
-                            left="10px"
-                            width="56px"
-                            height="56px"
-                            borderRadius="50%"
-                            onClick={prev}>
+                        backgroundColor="whiteBlur"
+                        color="black"
+                        left="10px"
+                        width="56px"
+                        height="56px"
+                        borderRadius="50%"
+                        onClick={prev}>
                         <Icon icon={Icons.ArrowLeft} />
                     </Button>
                     <Button position="absolute"
-                            backgroundColor="whiteBlur"
-                            color="black"
-                            right="10px"
-                            width="56px"
-                            height="56px"
-                            borderRadius="50%"
-                            onClick={next}>
+                        backgroundColor="whiteBlur"
+                        color="black"
+                        right="10px"
+                        width="56px"
+                        height="56px"
+                        borderRadius="50%"
+                        onClick={next}>
                         <Icon icon={Icons.ArrowRight} />
                     </Button>
                 </Box>
@@ -97,11 +97,11 @@ const CarouselBlock:any = ({ items, paddingTop, paddingBottom }:ICarouselBlock) 
                     {
                         items.map((item:ICarouselItem, index:number) => {
                             return <Button key={index} width="8px" height="8px" mx={1}
-                                           background={slideIndex === index ? 'black' : 'white'}
-                                           borderRadius="3px"
-                                           onClick={() => {
-                                               goToIndex(index);
-                                           }} />;
+                                background={slideIndex === index ? 'black' : 'white'}
+                                borderRadius="3px"
+                                onClick={() => {
+                                    goToIndex(index);
+                                }} />;
                         })
                     }
                 </Box>

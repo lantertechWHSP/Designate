@@ -43,7 +43,7 @@ const BarChart:any = ({ data, textColor = 'steelBlue', borderColor = 'borderColo
     }, [height]);
 
     const hasData:any = useMemo(() => {
-        return data && Array.isArray(data.bars) && data.bars.length > 0
+        return data && Array.isArray(data.bars) && data.bars.length > 0;
     }, [data]);
 
     const yScale:any = useMemo<any>(() => {
@@ -77,7 +77,7 @@ const BarChart:any = ({ data, textColor = 'steelBlue', borderColor = 'borderColo
         }
         else {
             return scaleBand()
-                .domain([0, 1])
+                .domain([''])
                 .range([0, width])
                 .padding(0.5);
         }
@@ -145,7 +145,7 @@ const BarChart:any = ({ data, textColor = 'steelBlue', borderColor = 'borderColo
                 }
             </Box> : <Alert status="info">No Data</Alert>
         }
-    </Box>
+    </Box>;
 };
 
 export default BarChart;

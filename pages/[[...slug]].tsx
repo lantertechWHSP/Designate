@@ -51,7 +51,9 @@ export async function getStaticProps({ params, preview }:GetStaticPropsContext) 
 }
 
 const Page : NextPage = ({ layout, blocks }:INextPageProps) : JSX.Element => {
-    blocks[blocks.length - 1].paddingBottom = PaddingBottom.Spacious;
+    if(Array.isArray(blocks) && blocks.length > 0) {
+        blocks[blocks.length - 1].paddingBottom = PaddingBottom.Spacious;
+    }
 
     return (
         <DefaultLayout layout={layout}>

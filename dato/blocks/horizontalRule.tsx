@@ -1,4 +1,4 @@
-export const horizontalRuleRecord = `
+export const horizontalRuleRecord:string = `
     __typename
     id
 `;

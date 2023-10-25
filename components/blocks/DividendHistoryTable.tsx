@@ -74,7 +74,7 @@ const DividendHistoryTableBlock:any = ({ table, paddingTop, paddingBottom }:IDiv
                         }
                     </Tbody>
                 </Table>
-            </TableContainer> : <Alert status="title">No Dividend Data</Alert>
+            </TableContainer> : <Alert status="info">No Dividend Data</Alert>
         }
     </ContentBlock>;
 };

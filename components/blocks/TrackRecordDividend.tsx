@@ -3,7 +3,7 @@ import { IBlock } from '~/interfaces/util/block';
 import ContentBlock, {Theme} from '~/components/blocks/Content';
 import BarChart from '~/components/elements/charts/bar/BarChart';
 import { ITable } from '~/interfaces/util/table';
-import { Heading, Box } from '@chakra-ui/react';
+import { Heading } from '@chakra-ui/react';
 
 interface ITableRow {
     Year:string;
@@ -17,9 +17,9 @@ interface ITrackRecordDividendBlock extends IBlock {
 
 const TrackRecordDividendBlock:any = ({ title, table, paddingTop, paddingBottom, theme }:ITrackRecordDividendBlock) : ReactNode => {
     const backgroundColor:string = theme === Theme.Dark ? 'darkBrown' : 'white';
-    const textColor = theme === Theme.Dark ? 'white' : 'steelBlue';
-    const fillColor = theme === Theme.Dark ? 'white' : 'lightGrey';
-    const borderColor = theme === Theme.Dark ? 'whiteBlur2' : 'borderColor';
+    const textColor:string = theme === Theme.Dark ? 'white' : 'steelBlue';
+    const fillColor:string = theme === Theme.Dark ? 'white' : 'lightGrey';
+    const borderColor:string = theme === Theme.Dark ? 'whiteBlur2' : 'borderColor';
 
     const chartData:any = [];
 

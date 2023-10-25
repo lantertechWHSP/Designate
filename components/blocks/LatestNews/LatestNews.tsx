@@ -28,7 +28,7 @@ const LatestNewsBlock:any = ({ background, textColor, paddingTop, paddingBottom,
         </Flex>
         {
             (Array.isArray(posts) && posts.length > 0) ? <Box className="horizonalScroll" overflowX={['scroll', ,'hidden']}>
-                <Row wrap={['no-wrap', , 'wrap']} >
+                <Row wrap={['nowrap', , 'wrap']} >
                     {
                         posts.map((post:IPost, index:number) => {
                             return <Column width={[ColumnWidth.Half, ,ColumnWidth.OneThird]} minWidth={[ColumnWidth.Half, ,'unset']} key={index}>

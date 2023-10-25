@@ -55,7 +55,7 @@ const StackedBarChart:any = ({ data, textColor = 'steelBlue', borderColor = 'bor
         if(data && Array.isArray(data.rows) && data.rows.length > 0) {
             const sum:number = _sumBy(data.rows, (row:IDataRow) => {
                 return Array.isArray(row.values) ? row.values.length : 0;
-            })
+            });
 
             return sum > 0;
         }
@@ -95,7 +95,7 @@ const StackedBarChart:any = ({ data, textColor = 'steelBlue', borderColor = 'bor
         }
         else {
             return scaleBand()
-                .domain([0, 1])
+                .domain([''])
                 .range([0, width])
                 .padding(0.5);
         }
@@ -221,7 +221,7 @@ const StackedBarChart:any = ({ data, textColor = 'steelBlue', borderColor = 'bor
                 }
             </Box> : <Alert status="info">No Data</Alert>
         }
-    </Box>
+    </Box>;
 };
 
 export default StackedBarChart;

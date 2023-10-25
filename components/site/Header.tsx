@@ -122,7 +122,7 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
                                         _hover: {
                                             border: `2px solid ${color}`,
                                         },
-                                    fontSize: '16px',
+                                        fontSize: '16px',
                                         borderRadius: '24px',
                                         textAlign: 'center'
                                     }}>
@@ -146,7 +146,7 @@ const DestopPopoverTrigger:any  = ({item, color, isLast}): ReactNode => {
             color={color}
             title={item.title}
             ink={item.link}
-                      mr={!isLast ? 10 : 0}
+            mr={!isLast ? 10 : 0}
             externalLink={item.externalLink}>
             <Flex as="span" align="baseline">
                 <Text as="span" mr={2}>{item.title}</Text>
