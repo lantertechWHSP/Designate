@@ -17,7 +17,7 @@ interface ITrackRecordDividendBlock extends IBlock {
 
 const TrackRecordDividendBlock:any = ({ title, table, paddingTop, paddingBottom, theme }:ITrackRecordDividendBlock) : ReactNode => {
     const backgroundColor:string = theme === Theme.Dark ? 'darkBrown' : 'white';
-    const textColor = theme === Theme.Dark ? 'white' : 'black';
+    const textColor = theme === Theme.Dark ? 'white' : 'steelBlue';
     const fillColor = theme === Theme.Dark ? 'white' : 'lightGrey';
     const borderColor = theme === Theme.Dark ? 'whiteBlur2' : 'borderColor';
 

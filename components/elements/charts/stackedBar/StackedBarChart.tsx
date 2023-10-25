@@ -37,7 +37,7 @@ interface IMargin {
     left:number;
 }
 
-const StackedBarChart:any = ({ data, textColor = 'darkBrown', borderColor = 'borderColor' }:IStackedBarChart) : ReactNode => {
+const StackedBarChart:any = ({ data, textColor = 'steelBlue', borderColor = 'borderColor' }:IStackedBarChart) : ReactNode => {
     const [width, setWidth] = useState<number>(null);
     const [height, setHeight] = useState<number>(null);
     const margin:IMargin = { top: 30, right: 30, bottom: 50, left: 0 };
@@ -165,8 +165,8 @@ const StackedBarChart:any = ({ data, textColor = 'darkBrown', borderColor = 'bor
             hasData ? <Box
                 sx={{
                     '.tick': {
-                        fontSize: '14px',
-                        fontFamily: 'Gramatika',
+                        fontSize: '12px',
+                        fontFamily: 'Roboto',
                         color: textColor
                     },
                     '.x-axis .domain': {

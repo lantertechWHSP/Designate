@@ -24,7 +24,7 @@ const DividendGrowthChart:any = ({ table, theme }:IDividendGrowthChartBlock) : R
     const newLightLegendColors:string[] = [...legendColors];
     newLightLegendColors.shift();
     const colors:string[] = theme === Theme.Dark ? darkLegendColors : newLightLegendColors;
-    const textColor:string = theme === Theme.Dark ? 'white' : 'black';
+    const textColor:string = theme === Theme.Dark ? 'white' : 'steelBlue';
     const borderColor = theme === Theme.Dark ? 'whiteBlur2' : 'borderColor';
 
     const getValues:any = () => {
