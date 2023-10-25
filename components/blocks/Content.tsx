@@ -28,6 +28,7 @@ export enum PaddingTop {
 
 export enum PaddingBottom {
     Default = 'Default',
+    Spacious = 'Spacious',
     None = 'None'
 }
 
@@ -94,6 +95,7 @@ const ContentBlock:any = ({
 
     switch(paddingBottom) {
         case PaddingBottom.Default : selectedPaddingBottom = ['40px', , '60px']; break;
+        case PaddingBottom.Spacious : selectedPaddingBottom = ['120px', '120px', '120px']; break;
         case PaddingBottom.None : selectedPaddingBottom = [0]; break;
         default : selectedPaddingBottom = ['40px', , '60px']; break;
     }

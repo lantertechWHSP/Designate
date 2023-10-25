@@ -18,7 +18,7 @@ const VideoBlock:any = ({ title, video, videoEmbed, containerWidth, paddingTop, 
     const [currentVideo] = useState<IVideo>(video ? video : videoEmbed);
 
     return (title || currentVideo) && <ContentBlock background="black3" containerWidth={containerWidth} paddingTop={paddingTop} paddingBottom={paddingBottom}>
-        <Box mb="60px">
+        <Box>
             {
                 currentVideo && <AspectRatio ratio={[16 / 7.5]}>
                     <ReactPlayer
