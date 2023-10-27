@@ -9,10 +9,7 @@ interface IEventCard extends IEvent {
 
 const EventCard:any = ({ title, allDay, startDate, endDate, details, location }:IEventCard) : ReactNode => {
     return <Flex py={4} direction={['row']}
-        _hover={{
-            transition: 'background 0.3s linear',
-            background: 'lightGrey2Blur'
-        }}>
+                 align="center">
         {
             title && <Heading as="h3"
                 flex={1}
