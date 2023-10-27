@@ -188,11 +188,6 @@ export const theme:any = extendBaseTheme({
                 color: 'darkBrown'
             },
             variants: {
-                underline: {
-                    display: 'inline-block',
-                    borderBottom: '1px solid',
-                    borderColor: 'darkBrownBlur'
-                },
                 siteHeader: {
                     fontSize: ['16px'],
                     fontWeight: 700

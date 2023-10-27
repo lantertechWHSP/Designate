@@ -1,21 +1,21 @@
 import { ReactNode } from 'react';
 import { IContact } from '~/interfaces/models/contact';
 import { Heading, Box } from '@chakra-ui/react';
-import { Link } from "~/components/elements/link";
+import { UnderlineLink } from '~/components/elements/sectionLink';
 
 interface IContactCardProps extends IContact {
 }
 
 const ContactCard:any = ({ title, address, contactName, phone, phone2, email, email2, website }:IContactCardProps) : ReactNode => {
-    return <Box>
+    return <Box fontSize={['18px']} lineHeight={['32px']} color="darkBrown">
         {
-            title && <Heading as="h3" variant="h4" color="darkBrown" fontSize={['21px']} lineHeight={['26px']} mb={4}>
+            title && <Heading as="h3" fontSize={['21px']} lineHeight={['26px']} mb={4}>
                 {title}
             </Heading>
         }
         {
             address && <Box mb={4}>
-                <Heading as="h4" variant="h5" mb={0}>
+                <Heading as="h4" mb={0}>
                     Address
                 </Heading>
                 <Box>
@@ -25,7 +25,7 @@ const ContactCard:any = ({ title, address, contactName, phone, phone2, email, em
         }
         {
             contactName && <Box mb={4}>
-                <Heading as="h4" variant="h5" mb={0}>
+                <Heading as="h4" mb={0}>
                     Contact
                 </Heading>
                 <Box>
@@ -35,55 +35,55 @@ const ContactCard:any = ({ title, address, contactName, phone, phone2, email, em
         }
         {
             (phone || phone2) && <Box mb={4}>
-                <Heading  as="h4" variant="h5" mb={0}>
+                <Heading  as="h4" mb={0}>
                     Phone
                 </Heading>
                 {
                     phone && <Box>
-                        <Link href={`tel:${phone}`} variant="underline">
+                        <UnderlineLink href={`tel:${phone}`}>
                             {phone}
-                        </Link>
+                        </UnderlineLink>
                     </Box>
                 }
                 {
                     phone2 && <Box>
-                        <Link href={`tel:${phone2}`} variant="underline">
+                        <UnderlineLink href={`tel:${phone2}`}>
                             {phone2}
-                        </Link>
+                        </UnderlineLink>
                     </Box>
                 }
             </Box>
         }
         {
             (email || email2) && <Box mb={4}>
-                <Heading as="h4" variant="h5" mb={0}>
+                <Heading as="h4" mb={0}>
                     Email
                 </Heading>
                 {
                     email && <Box>
-                        <Link href={`mailto:${email}`} variant="underline">
+                        <UnderlineLink href={`mailto:${email}`}>
                             {email}
-                        </Link>
+                        </UnderlineLink>
                     </Box>
                 }
                 {
                     email2 && <Box>
-                        <Link href={`mailto:${email2}`} variant="underline">
+                        <UnderlineLink href={`mailto:${email2}`}>
                             {email2}
-                        </Link>
+                        </UnderlineLink>
                     </Box>
                 }
             </Box>
         }
         {
             website && <Box mb={4}>
-                <Heading as="h4" variant="h5" mb={0}>
+                <Heading as="h4" mb={0}>
                     Website
                 </Heading>
                 <Box>
-                    <Link href={website} variant="underline">
+                    <UnderlineLink href={website}>
                         {website}
-                    </Link>
+                    </UnderlineLink>
                 </Box>
             </Box>
         }

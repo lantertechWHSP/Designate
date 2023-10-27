@@ -5,9 +5,9 @@ import { Row, Column, ColumnWidth } from "~/components/elements/grid/grid";
 import { Heading, Box, Text } from '@chakra-ui/react';
 import StructuredContent from "~/components/StructuredContent";
 import { IStructuredText } from '~/interfaces/util/structuredText';
-import { Link } from '~/components/elements/link';
 import { Image } from '~/components/elements/image';
 import { IImage } from '~/interfaces/util/image';
+import { UnderlineLink } from '~/components/elements/sectionLink';
 
 interface IComputershareContactPanelBlock extends IBlock {
     title?:string;
@@ -64,9 +64,9 @@ const ComputershareContactPanelBlock:any = ({ title, description, image, onlineD
                             website && <>
                                 <Heading as="h4" fontSize={['18px']} lineHeight={['26px']} fontWeight={500} mb={4}>Website</Heading>
                                 <Text mb={0}>
-                                    <Link href={website} variant="underline">
+                                    <UnderlineLink href={website}>
                                         {website}
-                                    </Link>
+                                    </UnderlineLink>
                                 </Text>
                             </>
                         }
@@ -84,9 +84,9 @@ const ComputershareContactPanelBlock:any = ({ title, description, image, onlineD
                                 <Heading as="h4" fontSize={['18px']} lineHeight={['26px']} fontWeight={500} mb={4}>Website</Heading>
                                 {
                                     contactLocal && <Text color="darkBrown" mb={0}>
-                                        <Link href={`tel:${contactLocal}`} variant="underline" mr={2}>
+                                        <UnderlineLink href={`tel:${contactLocal}`} mr={2}>
                                             {contactLocal}
-                                        </Link>
+                                        </UnderlineLink>
                                         <Text as="span">
                                             (Australia)
                                         </Text>
@@ -94,9 +94,9 @@ const ComputershareContactPanelBlock:any = ({ title, description, image, onlineD
                                 }
                                 {
                                     contactInternational && <Text color="darkBrown" mb={0}>
-                                        <Link href={`tel:${contactInternational}`} variant="underline" mr={2}>
+                                        <UnderlineLink href={`tel:${contactInternational}`} mr={2}>
                                             {contactInternational}
-                                        </Link>
+                                        </UnderlineLink>
                                         <Text as="span">
                                             (International)
                                         </Text>

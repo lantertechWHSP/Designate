@@ -105,7 +105,8 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                                         borderBottomWidth: '1px',
                                         borderStyle: 'solid',
                                         borderColor: 'darkBrown',
-                                        color: 'darkBrown'
+                                        color: 'darkBrown',
+                                        fontSize: '15px'
                                     },
                                     '.yourir-chart-price-fill': {
                                         fill: `rgba(80, 81, 60, 0.2)`
@@ -144,6 +145,16 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                                     },
                                     '.yourir-chart-yaxis-gridline': {
                                         stroke: 'borderColor'
+                                    },
+                                    '.yourir-chart-yaxis-label-container': {
+                                        fontSize: '12px',
+                                        fontFamily: 'Roboto',
+                                        color: 'steelBlue'
+                                    },
+                                    '.yourir-chart-xaxis-label-container': {
+                                        fontSize: '12px',
+                                        fontFamily: 'Roboto',
+                                        color: 'steelBlue'
                                     },
                                     '.yourir-chart-yaxis-outside .yourir-chart-yaxis-label-container:first-of-type': {
                                         display: 'none'

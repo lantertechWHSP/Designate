@@ -28,17 +28,17 @@ const InvestmentPhilosophyBlock:any = ({ title, items, paddingTop, paddingBottom
                     items.map((item:InvestmentPhilosophyItem, index:number) => {
                         return <Box key={index} mb={8}>
                             {
-                                (item.icon && item.icon.url) && <Box mb={8}>
+                                (item.icon && item.icon.url) && <Box mb={4}>
                                     <img src={item.icon.url} alt={item.icon?.alt} width="90px" height="60px" />
                                 </Box>
                             }
                             {
-                                item.title && <Heading as="h3" variant="h4" mb={2}>
+                                item.title && <Heading as="h3" fontWeight={["21px"]} color="darkBrown" fontWeight={700} mb={2}>
                                     {item.title}
                                 </Heading>
                             }
                             {
-                                item.content && <Box>
+                                item.content && <Box fontSize={['16px']} lineHeight={['24px']}>
                                     {item.content}
                                 </Box>
                             }

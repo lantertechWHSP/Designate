@@ -6,6 +6,7 @@ import ContentBlock from '~/components/blocks/Content';
 import { Box, Heading, SimpleGrid } from '@chakra-ui/react';
 import { IContact } from '~/interfaces/models/contact';
 import ContactCard from '~/components/blocks/ContactsPanel/ContactCard';
+import { orderBy as _orderBy } from 'lodash';
 
 interface IContactsPanelBlock extends IBlock {
     data: {
@@ -22,7 +23,7 @@ const ContactsPanelBlock:any = ({ data: { contacts } }:IContactsPanelBlock) : Re
         </Box>
         <SimpleGrid columns={[1, , , 3]}>
             {
-                contacts.map((contact:IContact, index:number) => {
+                _orderBy(contacts, ['ordinal'], ['asc']).map((contact:IContact, index:number) => {
                     return <Box key={index} mb={[index < contacts.length - 1 ? 4 : 0, , ,0]}><ContactCard {...contact} /></Box>;
                 })
             }

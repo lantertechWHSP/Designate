@@ -10,6 +10,7 @@ const contactsFrag:string = `
         email
         email2
         website
+        ordinal
     }
 `;
 
