@@ -20,23 +20,23 @@ const HeroBlock:any = ({ title, video }:IHeroBlock) : ReactNode => {
     const [backgroundImg, setBackgroundImg] = useState(null);
 
     useEffect(() => {
-        const image = new Image();
+        const image:HTMLImageElement = new Image();
         image.src = '/images/blocks/hero/background.png';
         image.onload = () => {
-            setIsBackgroundLoaded(true)
+            setIsBackgroundLoaded(true);
         };
 
         setBackgroundImg(image);
-    }, [])
+    }, []);
 
     return (title || video && video?.url) && <Box overflow="hidden" ref={contentWidthObserve}>
 
         {
             (title && (video && isVideoPlaying || !video)) ? <Box h={height}
-                          position="relative"
-                          backgroundImage={`url(${backgroundImg.src})`}
-                          backgroundPosition="center"
-                          backgroundSize="cover">
+                position="relative"
+                backgroundImage={`url(${backgroundImg.src})`}
+                backgroundPosition="center"
+                backgroundSize="cover">
                 <Container h={height}>
                     <Flex minH="100%" align="flex-end">
                         <Heading py={[6, 8, 12]} variant="hero" position="relative" zIndex="2" maxWidth={['100vw', , '600px', '1000px']}>

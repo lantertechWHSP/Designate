@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
-import { Box, Container, Flex, Heading, Text, ButtonGroup, Button, Menu, MenuButton, Portal, MenuList, MenuItem, Link } from '@chakra-ui/react';
+import { Box, Container, Flex, Heading, Text, ButtonGroup, Button, Menu, MenuButton, Portal, MenuList, MenuItem, Link, Alert } from '@chakra-ui/react';
 import { YourIR, set } from 'yourir-next';
 import { Icon, Icons } from '~/components/elements/icon';
 import { symbol } from '~/consts/yourir';
@@ -74,7 +74,7 @@ const AsxAnnouncementsPanelBlock:any = ({}:IAsxAnnouncementsPanelBlock) : ReactN
     return <Box id="asx-announcements-panel" background="ghostWhite">
         <Box as={YourIR}>
             <Container>
-                <Box py={8}>
+                <Box py={12}>
                     <ButtonGroup spacing={4}>
                         <Menu>
                             {({ isOpen }) => (
@@ -133,25 +133,29 @@ const AsxAnnouncementsPanelBlock:any = ({}:IAsxAnnouncementsPanelBlock) : ReactN
                         </Menu>
                     </ButtonGroup>
                 </Box>
-                <Box id={`announcements`} data-yourir={`announcements pageSize=10 symbol=${symbol}.asx`}>
+                <Box id={`announcements`} data-yourir={`announcements pageSize=10 symbol=${symbol}.asx`} pb={'120px'}>
                     <Box data-yourir="ifnot isEmpty">
-                        <Box data-yourir="items">
+                        <Box data-yourir="items" borderTop="1px solid" borderColor="borderColor">
                             <Box borderTop="1px solid" borderColor="borderColor">
-                                <Flex py={4} direction={['row']}
-                                    _hover={{
-                                        transition: 'background 0.3s linear',
-                                        background: 'lightGrey2Blur'
-                                    }}>
+                                <Flex py={4} direction="row" align="center">
                                     <Heading as="h3"
                                         data-yourir="$cur.heading"
                                         flex={1}
                                         variant="listItem" />
-                                    <Text data-yourir="$cur.date format='DD.MM.YYYY'"
+                                    <Text data-yourir="$cur.date format='MMM DD, YYYY'"
                                         variant="listLabel"
+                                          display={['none', 'none', 'block']}
                                         textAlign={['right', ,'left']}
                                         minWidth={['140px', ,'30%']}
                                         maxWidth={['140px', ,'30%']}
                                         mb={0} />
+                                    <Text data-yourir="$cur.date format='DD.MM.YYYY'"
+                                          variant="listLabel"
+                                          display={['block', 'block' ,'none']}
+                                          textAlign={['right', ,'left']}
+                                          minWidth={['140px', ,'30%']}
+                                          maxWidth={['140px', ,'30%']}
+                                          mb={0} />
                                     <Flex  minWidth={['unset', ,'140px']}
                                         justify="flex-end"
                                         display={['none', ,'flex']}>
@@ -167,7 +171,7 @@ const AsxAnnouncementsPanelBlock:any = ({}:IAsxAnnouncementsPanelBlock) : ReactN
                         <Box borderTop="1px solid" borderColor="borderColor" />
                         <Flex direction="row" justify="space-between" align="center" py={8}>
                             <Box>
-                                <Button variant="pagination"
+                                <Button variant="paginationDirection"
                                     data-yourir="prevPage"
                                     m={0}
                                     onClick={scrollToTable}>
@@ -220,14 +224,18 @@ const AsxAnnouncementsPanelBlock:any = ({}:IAsxAnnouncementsPanelBlock) : ReactN
                                 </ButtonGroup>
                             </Box>
                             <Box>
-                                <Button variant="pagination"
+                                <Button variant="paginationDirection"
                                     data-yourir="nextPage"
                                     m={0}
                                     onClick={scrollToTable}>
                                     <Flex align="center"
                                         display="inline-flex"
-                                        borderBottom="1px solid"
+                                        borderBottom="2px solid"
                                         borderColor="darkBrownBlur"
+                                          transition="border-color 0.3s linear"
+                                          _hover={{
+                                              borderColor: 'darkBrown'
+                                          }}
                                         fontWeight={700}>
                                         <Text as="span" mr={2}>
                                             Next
@@ -239,9 +247,9 @@ const AsxAnnouncementsPanelBlock:any = ({}:IAsxAnnouncementsPanelBlock) : ReactN
                         </Flex>
                     </Box>
                     <Box data-yourir="if isEmpty">
-                        <Text variant="caption">
+                        <Alert status="info">
                             No results
-                        </Text>
+                        </Alert>
                     </Box>
                 </Box>
             </Container>

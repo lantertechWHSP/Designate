@@ -11,19 +11,19 @@ interface ISectionLink extends IDatoLink {
 export const UnderlineLink:any = ({ ...props }:ISectionLink) => {
     return <Link {...props} color="darkBrown">
         <Flex align="center"
-              display="inline-flex"
-              borderBottom="2px solid"
-              borderColor="darkBrownBlur"
-              transition="border-color 0.3s linear"
-              lineHeight={1.5}
-              _hover={{
-                  borderColor: 'darkBrown'
-              }}
-              fontWeight={500}>
+            display="inline-flex"
+            borderBottom="2px solid"
+            borderColor="darkBrownBlur"
+            transition="border-color 0.3s linear"
+            lineHeight={1.5}
+            _hover={{
+                borderColor: 'darkBrown'
+            }}
+            fontWeight={500}>
             {props.children}
         </Flex>
     </Link>;
-}
+};
 
 export const SectionLink:any = ({ ...props }:ISectionLink) => {
     return <Link {...props} color="darkBrown">

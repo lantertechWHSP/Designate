@@ -24,22 +24,22 @@ const PortfolioPanelBlock:any = ({ items, paddingBottom }:IPortfolioPanelBlock) 
                         {({ isExpanded }) => (
                             <>
                                 <AccordionButton py={4}
-                                                 lineHeight="80px"
-                                                 height="80px"
-                                                 boxSizing="border-box"
-                                                 borderTop="1px solid"
-                                                 alignItems="center"
-                                                 textAlign="left"
-                                                 borderColor="borderColor">
+                                    lineHeight="80px"
+                                    height="80px"
+                                    boxSizing="border-box"
+                                    borderTop="1px solid"
+                                    alignItems="center"
+                                    textAlign="left"
+                                    borderColor="borderColor">
                                     <Heading as="h3"
-                                             variant="h4"
-                                             fontSize={['21px']}
-                                             fontWeight={500}>
+                                        variant="h4"
+                                        fontSize={['21px']}
+                                        fontWeight={500}>
                                         {item?.title}
                                     </Heading>
                                     <Box flex={1} />
                                     <Box transition="transform 300ms linear"
-                                         transform={isExpanded ? 'rotate(180deg)' : ''}>
+                                        transform={isExpanded ? 'rotate(180deg)' : ''}>
                                         <Icon icon={Icons.ChevronDown} />
                                     </Box>
                                 </AccordionButton>
@@ -49,7 +49,7 @@ const PortfolioPanelBlock:any = ({ items, paddingBottom }:IPortfolioPanelBlock) 
                                             <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths, ColumnWidth.EightTwelfths]}>
                                                 <ModularContent content={item.content} contain={false} />
                                             </Column>
-                                      </Row>
+                                        </Row>
                                     }
                                 </AccordionPanel>
                             </>

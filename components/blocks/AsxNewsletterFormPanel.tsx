@@ -27,6 +27,7 @@ const AsxNewsletterFormPanelBlock:any = ({}:IAsxNewsletterFormPanelBlock) : Reac
                                 border="1px solid"
                                 borderColor="white"
                                 borderRadius="3px"
+                                   fontSize="16px"
                                 lineHeight="50px"
                                 color="white"
                                 _placeholder={{
@@ -37,10 +38,9 @@ const AsxNewsletterFormPanelBlock:any = ({}:IAsxNewsletterFormPanelBlock) : Reac
                                 mb={4}
                                 width="100%"
                                 type="text" size="50" data-yourir="emailAddress" placeholder="Email Address" />
-                            {/*<input type="checkbox" data-yourir="groups.Announcements" /> Get alerted on all market announcements*/}
-                            {/*<input type="checkbox" data-yourir="groups.Prices" /> Receive our closing prices daily*/}
                             <div data-yourir="result" />
                             <Button data-yourir="subscribe"
+                                    fontSize="16px"
                                 mt={4}
                                 minWidth={['unset', ,'300px']}
                                 borderRadius="3px"

@@ -40,6 +40,9 @@ const colors:any = {
     positive: '#e8f1c8',
     negative: '#f9c9c8',
 
+    positiveDot: '#00CE7D',
+    negativeDot: '#ea4743',
+
     error: '#f17674',
     errorText: '#fff4f4',
 
@@ -229,12 +232,18 @@ export const theme:any = extendBaseTheme({
                     p: 0,
                     mx: 2
                 },
+                paginationDirection: {
+                    color: 'darkBrown',
+                    fontWeight: '500px',
+                    fontSize: '16px'
+                },
                 tab: {
                     background: 'white',
-                    width: '54px',
-                    height: '36px',
+                    width: '64px',
+                    height: '44px',
                     fontSize: '14px',
                     fontWeight: 500,
+                    letterSpacing: '0.3px',
                     border: '1px solid',
                     borderColor: 'borderColor',
                     mx: '-1px'
@@ -367,8 +376,10 @@ export const theme:any = extendBaseTheme({
                 height: '30px',
                 lineHeight: '30px',
                 borderRadius: '15px',
-                px: 2,
-                background: 'darkBrown'
+                fontSize: '16px',
+                px: '16px',
+                background: 'lightGrey3Blur',
+                color: 'darkBrown'
             },
         },
         Alert: {

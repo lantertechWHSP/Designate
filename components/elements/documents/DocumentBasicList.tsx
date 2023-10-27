@@ -45,12 +45,12 @@ const DocumentBasicList:any = ({ title, latestDocuments }:IDocumentBasicList) : 
                         documentBundles.map((documentBundle:IDocumentBundle, index:number) => {
                             return <Box key={index} mb={index === documentBundles.length - 1 ? 0 : 12}>
                                 <Heading as="h3"
-                                         fontSize={['24px']}
-                                         lineHeight={['24px']}
-                                         fontWeight={700}
-                                         borderBottom="1px solid"
-                                         borderColor="borderColor"
-                                         py={4}>{documentBundle.title}</Heading>
+                                    fontSize={['24px']}
+                                    lineHeight={['24px']}
+                                    fontWeight={700}
+                                    borderBottom="1px solid"
+                                    borderColor="borderColor"
+                                    py={4}>{documentBundle.title}</Heading>
                                 {
                                     (Array.isArray(documentBundle.documents) && documentBundle.documents.length > 0) && <>
                                         {

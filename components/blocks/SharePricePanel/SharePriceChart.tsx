@@ -48,7 +48,9 @@ const SharePriceChart:any = () : ReactNode => {
                         padding: '40px 0',
                         borderBottomWidth: '1px',
                         borderStyle: 'solid',
-                        borderColor: 'borderColor'
+                        borderColor: 'borderColor',
+                        color: 'darkBrown',
+                        fontSize: '14px'
                     },
                     '.yourir-chart-price-fill': {
                         fill: `url(#priceGradient)`
@@ -65,11 +67,13 @@ const SharePriceChart:any = () : ReactNode => {
                         left: '0',
                         marginRight: '0',
                         fontSize: '12px',
-                        color: 'darkBrown'
+                        fontFamily: 'Roboto',
+                        color: 'steelBlue'
                     },
                     '.yourir-chart-xaxis-label': {
                         fontSize: '12px',
-                        color: 'darkBrown'
+                        fontFamily: 'Roboto',
+                        color: 'steelBlue'
                     },
                     '.yourir-chart-panel-border-bottom': {
                         display: 'none'
@@ -98,7 +102,7 @@ const SharePriceChart:any = () : ReactNode => {
                     }
                 }}>
                 <Box id="priceComparisionChart" data-yourir="priceComparisonChart1 volume.visible=false range=1m ranges=1d,1m,6m,1y,5y,10y showTooltips=true">
-                    <Flex direction={['column', ,'row']}>
+                    <Flex direction={['column', ,'row']} mb={8}>
                         <Box>
                             <ButtonGroup
                                 spacing={0}
@@ -111,7 +115,7 @@ const SharePriceChart:any = () : ReactNode => {
                                         }
                                     }
                                 }>
-                                <Button data-yourir="range" variant="tab" value="1d">
+                                <Button data-yourir="range" variant="tab" value="1d" borderTopLeftRadius="3px" borderBottomLeftRadius="3px">
                                     1D
                                 </Button>
                                 <Button data-yourir="range" variant="tab" value="5d">
@@ -126,18 +130,20 @@ const SharePriceChart:any = () : ReactNode => {
                                 <Button data-yourir="range" variant="tab" value="5y">
                                     5Y
                                 </Button>
-                                <Button data-yourir="range" variant="tab" value="all">
+                                <Button data-yourir="range" variant="tab" value="all" borderTopRightRadius="3px" borderBottomRightRadius="3px">
                                     Max
                                 </Button>
                             </ButtonGroup>
                         </Box>
                         <Box flex={1} />
-                        <Box mt={[4, ,0]}>
+                        <Box>
                             <Menu>
                                 {({ isOpen }) => (
                                     <>
                                         <MenuButton as={Button}
                                             variant="menuButton"
+                                                    height="44px"
+                                                    boxSizing="borderBox"
                                             rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} w={12} h={12} /> : <Icon icon={Icons.ChevronDown} w={12} h={12} />}>
                                             <Flex display="inlineFlex" direction="row" alignItems="center">
                                                 <Box background="lightGrey2" width="10px" height="10px" borderRadius="5px" mr={2} />

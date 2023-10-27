@@ -96,74 +96,71 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                                 </Badge>
                             </Box>
                         </Box>
-                        <Box overflowX="clip" overflowY="visible">
-                            <Box w="calc(100% + 40px)"
-                                mx="-20px"
-                                sx={{
-                                    '.yourir-chart': {
-                                        padding: '20px 0 0',
-                                        borderBottomWidth: '1px',
-                                        borderStyle: 'solid',
-                                        borderColor: 'darkBrown',
-                                        color: 'darkBrown',
-                                        fontSize: '15px'
-                                    },
-                                    '.yourir-chart-price-fill': {
-                                        fill: `rgba(80, 81, 60, 0.2)`
-                                    },
-                                    '.yourir-chart-price': {
-                                        stroke: 'darkBrown',
-                                        strokeWidth: '2px',
-                                    },
-                                    '.yourir-chart-yaxis-label': {
-                                        position: 'relative',
-                                        top: '-10px'
-                                    },
-                                    '.yourir-chart-yaxis-left .yourir-chart-yaxis-outside .yourir-chart-yaxis-label-container': {
-                                        left: '20px',
-                                        marginRight: '0',
-                                        fontSize: '12px',
-                                        color: 'darkGrey'
-                                    },
-                                    '.yourir-chart-xaxis': {
-                                        position: 'relative',
-                                        top: '-40px'
-                                    },
-                                    '.yourir-chart-xaxis-label': {
-                                        fontSize: '12px',
-                                        color: 'darkGrey'
-                                    },
-                                    '.yourir-chart-panel-border-bottom': {
-                                        display: 'none'
-                                    },
-                                    '.yourir-chart-tick-bottom': {
-                                        display: 'none'
-                                    },
-                                    '.yourir-chart-xaxis-outside': {
-                                        position: 'relative',
-                                        top: '10px'
-                                    },
-                                    '.yourir-chart-yaxis-gridline': {
-                                        stroke: 'borderColor'
-                                    },
-                                    '.yourir-chart-yaxis-label-container': {
-                                        fontSize: '12px',
-                                        fontFamily: 'Roboto',
-                                        color: 'steelBlue'
-                                    },
-                                    '.yourir-chart-xaxis-label-container': {
-                                        fontSize: '12px',
-                                        fontFamily: 'Roboto',
-                                        color: 'steelBlue'
-                                    },
-                                    '.yourir-chart-yaxis-outside .yourir-chart-yaxis-label-container:first-of-type': {
-                                        display: 'none'
-                                    }
-                                }}>
-                                <div data-yourir="priceChart1 range=6m showTooltips=true" >
-                                    <Box data-yourir="plots"  />
-                                </div>
-                            </Box>
+                        <Box w="100%"
+                            sx={{
+                                '.yourir-chart': {
+                                    padding: '20px 0 0',
+                                    borderBottomWidth: '1px',
+                                    borderStyle: 'solid',
+                                    borderColor: 'darkBrown',
+                                    color: 'darkBrown',
+                                    fontSize: '14px'
+                                },
+                                '.yourir-chart-price-fill': {
+                                    fill: `rgba(80, 81, 60, 0.2)`
+                                },
+                                '.yourir-chart-price': {
+                                    stroke: 'darkBrown',
+                                    strokeWidth: '2px',
+                                },
+                                '.yourir-chart-yaxis-label': {
+                                    position: 'relative',
+                                    top: '-10px'
+                                },
+                                '.yourir-chart-yaxis-left .yourir-chart-yaxis-outside .yourir-chart-yaxis-label-container': {
+                                    left: '20px',
+                                    marginRight: '0',
+                                    fontSize: '12px',
+                                    color: 'darkGrey'
+                                },
+                                '.yourir-chart-xaxis': {
+                                    position: 'relative',
+                                    top: '-40px'
+                                },
+                                '.yourir-chart-xaxis-label': {
+                                    fontSize: '12px',
+                                    color: 'darkGrey'
+                                },
+                                '.yourir-chart-panel-border-bottom': {
+                                    display: 'none'
+                                },
+                                '.yourir-chart-tick-bottom': {
+                                    display: 'none'
+                                },
+                                '.yourir-chart-xaxis-outside': {
+                                    position: 'relative',
+                                    top: '10px'
+                                },
+                                '.yourir-chart-yaxis-gridline': {
+                                    stroke: 'borderColor'
+                                },
+                                '.yourir-chart-yaxis-label-container': {
+                                    fontSize: '12px',
+                                    fontFamily: 'Roboto',
+                                    color: 'steelBlue'
+                                },
+                                '.yourir-chart-xaxis-label-container': {
+                                    fontSize: '12px',
+                                    fontFamily: 'Roboto',
+                                    color: 'steelBlue'
+                                },
+                                '.yourir-chart-yaxis-outside .yourir-chart-yaxis-label-container:first-of-type': {
+                                    display: 'none'
+                                }
+                            }}>
+                            <div data-yourir="priceChart1 range=6m showTooltips=true" >
+                                <Box data-yourir="plots"  />
+                            </div>
                         </Box>
                         <Box flex="1" />
                         <Box pt={8}>
