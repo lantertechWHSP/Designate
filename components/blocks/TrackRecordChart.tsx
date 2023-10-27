@@ -124,7 +124,7 @@ const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesT
 
     return <ContentBlock paddingTop={paddingTop} paddingBottom={paddingBottom} background={backgroundColor}>
         <Flex justify="space-between" mb={4}>
-            <Heading as="h2" variant="sectionSubheading" color={textColor}>
+            <Heading as="h2" variant="sectionSubheading">
                 20 Year Total Shareholder Return
             </Heading>
             {

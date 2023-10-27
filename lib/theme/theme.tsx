@@ -162,7 +162,8 @@ export const theme:any = extendBaseTheme({
                 },
                 listLabel: {
                     color: 'darkBrownBlur',
-                    fontSize: ['21px'],
+                    fontSize: ['18px', ,'21px'],
+                    lineHeight: ['23px', ,'23px'],
                     fontWeight: 500,
                 },
             }

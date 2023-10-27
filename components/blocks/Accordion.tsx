@@ -36,7 +36,7 @@ const AccordionBlock:any = ({ title, background, textColor, items }:IAccordionBl
                                 <>
                                     <AccordionButton py={4}
                                         borderTop="1px solid"
-                                                     alignItems="center"
+                                        alignItems="center"
                                         textAlign="left"
                                         color={selectedTextColor}
                                         borderColor={borderColor}>

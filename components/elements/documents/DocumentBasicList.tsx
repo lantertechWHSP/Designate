@@ -32,7 +32,7 @@ const DocumentBasicList:any = ({ title, latestDocuments }:IDocumentBasicList) : 
         setDocumentBundles(newSortedDocumentBundles.reverse());
     }, [documents]);
 
-    return <Box bg="ghostWhite" py={[6, 8, 12]}>
+    return <Box bg="ghostWhite" pt={['40px', ,'60px']} pb={['120px', '120px', '120px']}>
         <Container>
             {
                 title && <Heading as="h2" variant="sectionSubheading" mb={8}>
@@ -43,14 +43,20 @@ const DocumentBasicList:any = ({ title, latestDocuments }:IDocumentBasicList) : 
                 (Array.isArray(latestDocuments) && latestDocuments.length > 0) ? <Box>
                     {
                         documentBundles.map((documentBundle:IDocumentBundle, index:number) => {
-                            return <Box key={index} pb={index === documentBundles.length - 1 ? 0 : 4}>
-                                <Heading as="h3" fontSize={['24px']} lineHeight={['24px']} fontWeight={600} py={2} mb={4}>{documentBundle.title}</Heading>
+                            return <Box key={index} mb={index === documentBundles.length - 1 ? 0 : 12}>
+                                <Heading as="h3"
+                                         fontSize={['24px']}
+                                         lineHeight={['24px']}
+                                         fontWeight={700}
+                                         borderBottom="1px solid"
+                                         borderColor="borderColor"
+                                         py={4}>{documentBundle.title}</Heading>
                                 {
                                     (Array.isArray(documentBundle.documents) && documentBundle.documents.length > 0) && <>
                                         {
                                             documentBundle.documents.map((document:IDocument, innerIndex:number) => {
                                                 return <Box borderTop="1px solid" borderColor="borderColor" key={innerIndex}>
-                                                    <DocumentCard {...document} />
+                                                    <DocumentCard {...document} date={null} />
                                                 </Box>;
                                             })
                                         }

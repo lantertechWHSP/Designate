@@ -1,44 +1,52 @@
 import { ReactNode } from 'react';
 import { IDocument } from "~/interfaces/models/document";
-import { Flex, Heading, Text, Link } from '@chakra-ui/react';
+import { Flex, Heading, Text, Link, Box } from '@chakra-ui/react';
 import { DateTime } from 'luxon';
 import { SectionLink } from "~/components/elements/sectionLink";
+import {Icon, Icons} from "~/components/elements/icon";
 
 interface IDocumentCard extends IDocument {
 }
 
 const DocumentCard:any = ({ title, date, document }:IDocumentCard) : ReactNode => {
-    return <Flex py={4} direction={['row']}
-        _hover={{
-            transition: 'background 0.3s linear',
-            background: 'lightGrey2Blur'
-        }}>
-        {
-            (title && (document && document.url)) ? <Link href={document?.url}
-                display="block"
-                as="a"
-                flex={1}
-                target="_blank">
-                <Heading as="h3"
-                    variant="listItem">
+    return <Flex role="group"
+                 borderTop="1px solid"
+                 borderColor="borderColor"
+                 direction="row"
+                 color="darkBrownBlur"
+                 align="center"
+                 transition="color 0.3s linear"
+                 _hover={{
+                     color: 'black'
+                 }}
+                 py={[4, ,'22px']}>
+        <Box position="relative" top="1px" flex={1}>
+            {
+                (title && (document && document.url)) ? <Link href={document?.url}
+                                                              display="inline"
+                                                              as="a"
+                                                              mr={3}
+                                                              target="_blank">
+                    <Heading as="h3"
+                             display="inline"
+                             variant="listItem">
+                        {title}
+                    </Heading>
+                </Link> : title && <Heading as="h3"
+                                            mr={3}
+                                            display="inline"
+                                            variant="listItem">
                     {title}
                 </Heading>
-            </Link> : title && <Heading as="h3"
-                flex={1}
-                variant="listItem">
-                {title}
-            </Heading>
-        }
-        {
-            date && <Text
-                variant="listLabel"
-                textAlign={['right', ,'left']}
-                minWidth={['140px', ,'30%']}
-                maxWidth={['140px', ,'30%']}
-                mb={0} >
-                {DateTime.fromISO(date).toFormat('d/M/yyyy')}
-            </Text>
-        }
+            }
+            {
+                date && <Text as="span"
+                               display="inline"
+                               variant="listLabel" mr={2} >
+                    {DateTime.fromISO(date).toFormat('d/M/yyyy')}
+                </Text>
+            }
+        </Box>
         <Flex minWidth={['unset', ,'140px']}
             justify="flex-end"
             display={['none', ,'flex']}>
@@ -50,6 +58,19 @@ const DocumentCard:any = ({ title, date, document }:IDocumentCard) : ReactNode =
                 </SectionLink>
             }
         </Flex>
+
+        {/*<Box ml={2} transition="transform 0.3s linear" _groupHover={{*/}
+        {/*    transform: 'translateX(4px)',*/}
+        {/*}}>*/}
+        {/*    <ChakraLink  data-yourir="linkAnnouncement fileId" cursor="pointer"*/}
+        {/*                 color="darkBrownBlur"*/}
+        {/*                 transition="color 0.3s linear"*/}
+        {/*                 _groupHover={{*/}
+        {/*                     color: 'darkBrown',*/}
+        {/*                 }}>*/}
+        {/*        <Icon icon={Icons.ChevronRight} />*/}
+        {/*    </ChakraLink>*/}
+        {/*</Box>*/}
     </Flex>;
 };
 

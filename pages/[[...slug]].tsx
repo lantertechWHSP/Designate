@@ -51,8 +51,9 @@ export async function getStaticProps({ params, preview }:GetStaticPropsContext) 
 }
 
 const Page : NextPage = ({ layout, blocks }:INextPageProps) : JSX.Element => {
+    // Every last block is to have a spacious bottom padding
     if(Array.isArray(blocks) && blocks.length > 0) {
-        blocks[blocks.length - 1].paddingBottom = PaddingBottom.Spacious;
+        blocks[blocks.length - 1]['paddingBottom'] = PaddingBottom.Spacious;
     }
 
     return (
