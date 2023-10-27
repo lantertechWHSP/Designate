@@ -2,14 +2,14 @@ import React from 'react';
 import type {NextPage} from 'next';
 import {GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult} from 'next';
 import DefaultLayout from '~/components/layouts/DefaultLayout';
-import {ModularContent} from '~/components/ModularContent';
-import {doQuery, queries} from '~/dato/api';
-import {getBlocks, getLayoutData} from '~/lib/utils';
-import {ISite} from '~/interfaces/layout/site';
-import {ILayout} from '~/interfaces/layout/layout';
-import {IBlock} from '~/interfaces/util/block';
-import {IPage} from '~/interfaces/models/page';
-import {PaddingBottom} from "~/components/blocks/Content";
+import { ModularContent } from '~/components/ModularContent';
+import { doQuery, queries } from '~/dato/api';
+import { getBlocks, getLayoutData } from '~/lib/utils';
+import { ISite } from '~/interfaces/layout/site';
+import { ILayout } from '~/interfaces/layout/layout';
+import { IBlock } from '~/interfaces/util/block';
+import { IPage } from '~/interfaces/models/page';
+import { PaddingBottom } from '~/components/blocks/Content';
 
 interface INextPageProps {
     layout?:ILayout;

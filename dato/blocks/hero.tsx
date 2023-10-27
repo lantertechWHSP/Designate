@@ -5,7 +5,4 @@ export const heroRecord:string = `
     video {
         url
     }
-    image {
-        url
-    }
 `;

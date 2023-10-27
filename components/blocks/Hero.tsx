@@ -1,29 +1,42 @@
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { IBlock } from '~/interfaces/util/block';
 import { Box, Container, Flex, Heading } from '@chakra-ui/react';
 import { AspectRatio } from '@chakra-ui/react';
 import useDimensions from 'react-cool-dimensions';
 import { IVideo } from '~/interfaces/util/video';
-import { IImage } from '~/interfaces/util/image';
 import HeroVectorEffect from '~/components/elements/shapes/HeroVectorEffect';
 
 interface IHeroBlock extends IBlock {
     title?:string;
     video?:IVideo;
-    image?:IImage;
 }
 
-const HeroBlock:any = ({ title, video, image }:IHeroBlock) : ReactNode => {
+const HeroBlock:any = ({ title, video }:IHeroBlock) : ReactNode => {
     const { observe: contentWidthObserve, width: contentWidth } = useDimensions();
     const height:string[] = ['420px', '482px'];
 
-    return (title || video && video?.url || image && image?.url) && <Box overflow="hidden" ref={contentWidthObserve}>
+    const [isVideoPlaying, setIsPlaying] = useState(false);
+    const [isBackgroundLoaded, setIsBackgroundLoaded] = useState(false);
+    const [backgroundImg, setBackgroundImg] = useState(null);
+
+    useEffect(() => {
+        const image = new Image();
+        image.src = '/images/blocks/hero/background.png';
+        image.onload = () => {
+            setIsBackgroundLoaded(true)
+        };
+
+        setBackgroundImg(image);
+    }, [])
+
+    return (title || video && video?.url) && <Box overflow="hidden" ref={contentWidthObserve}>
+
         {
-            title && <Box h={height}
-                position="relative"
-                backgroundImage={`url('/images/blocks/hero/background.png')`}
-                backgroundPosition="center"
-                backgroundSize="cover">
+            (title && (video && isVideoPlaying || !video)) ? <Box h={height}
+                          position="relative"
+                          backgroundImage={`url(${backgroundImg.src})`}
+                          backgroundPosition="center"
+                          backgroundSize="cover">
                 <Container h={height}>
                     <Flex minH="100%" align="flex-end">
                         <Heading py={[6, 8, 12]} variant="hero" position="relative" zIndex="2" maxWidth={['100vw', , '600px', '1000px']}>
@@ -36,35 +49,18 @@ const HeroBlock:any = ({ title, video, image }:IHeroBlock) : ReactNode => {
                 <Box position="absolute" top="0" left="40%" height="100%">
                     <HeroVectorEffect />
                 </Box>
-            </Box>
+            </Box> : <Box h={height}/>
         }
         {
-            (video && video?.url || image && image?.url) && <Box h={['300px', '420px', ,'600px']} position="relative">
-                {
-                    (() => {
-                        if(video && video?.url) {
-                            return <Box>
-                                <AspectRatio ratio={[contentWidth / 300, contentWidth / 420, , contentWidth / 600]}>
-                                    <>
-                                        <video autoPlay={true} loop={true} muted={true} playsInline>
-                                            <source src={video?.url} />
-                                        </video>
-                                    </>
-                                </AspectRatio>
-                            </Box>;
-                        }
-                        else if(image && image?.url) {
-                            return  <Box
-                                h={['300px', '420px', ,'600px']}
-                                backgroundImage={`url(${image?.url}?w=2400&h=930)`}
-                                backgroundPosition="center"
-                                backgroundSize="cover">
-                            </Box>;
-                        }
-                    })()
-                }
+            (video) && <Box h={['300px', '420px', ,'600px']} visibility={(isBackgroundLoaded && isVideoPlaying) ? 'visible' : 'hidden'} position="relative">
+                <AspectRatio ratio={[contentWidth / 300, contentWidth / 420, , contentWidth / 600]}>
+                    <video autoPlay={true} loop={true} muted={true} preload="auto" playsInline onPlay={() => { setIsPlaying(true); }}>
+                        <source src={video?.url} />
+                    </video>
+                </AspectRatio>
             </Box>
         }
+
     </Box>;
 };
 
