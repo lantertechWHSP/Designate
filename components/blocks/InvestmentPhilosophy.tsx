@@ -33,7 +33,7 @@ const InvestmentPhilosophyBlock:any = ({ title, items, paddingTop, paddingBottom
                                 </Box>
                             }
                             {
-                                item.title && <Heading as="h3" fontWeight={["21px"]} color="darkBrown" fontWeight={700} mb={2}>
+                                item.title && <Heading as="h3" fontSize={["21px"]} color="darkBrown" fontWeight={700} mb={2}>
                                     {item.title}
                                 </Heading>
                             }
