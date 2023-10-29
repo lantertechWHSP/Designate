@@ -27,7 +27,7 @@ const AsxNewsletterFormPanelBlock:any = ({}:IAsxNewsletterFormPanelBlock) : Reac
                                 border="1px solid"
                                 borderColor="white"
                                 borderRadius="3px"
-                                   fontSize="16px"
+                                fontSize="16px"
                                 lineHeight="50px"
                                 color="white"
                                 _placeholder={{
@@ -40,7 +40,7 @@ const AsxNewsletterFormPanelBlock:any = ({}:IAsxNewsletterFormPanelBlock) : Reac
                                 type="text" size="50" data-yourir="emailAddress" placeholder="Email Address" />
                             <div data-yourir="result" />
                             <Button data-yourir="subscribe"
-                                    fontSize="16px"
+                                fontSize="16px"
                                 mt={4}
                                 minWidth={['unset', ,'300px']}
                                 borderRadius="3px"

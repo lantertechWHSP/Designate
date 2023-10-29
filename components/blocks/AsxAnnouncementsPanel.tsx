@@ -144,18 +144,18 @@ const AsxAnnouncementsPanelBlock:any = ({}:IAsxAnnouncementsPanelBlock) : ReactN
                                         variant="listItem" />
                                     <Text data-yourir="$cur.date format='MMM DD, YYYY'"
                                         variant="listLabel"
-                                          display={['none', 'none', 'block']}
+                                        display={['none', 'none', 'block']}
                                         textAlign={['right', ,'left']}
                                         minWidth={['140px', ,'30%']}
                                         maxWidth={['140px', ,'30%']}
                                         mb={0} />
                                     <Text data-yourir="$cur.date format='DD.MM.YYYY'"
-                                          variant="listLabel"
-                                          display={['block', 'block' ,'none']}
-                                          textAlign={['right', ,'left']}
-                                          minWidth={['140px', ,'30%']}
-                                          maxWidth={['140px', ,'30%']}
-                                          mb={0} />
+                                        variant="listLabel"
+                                        display={['block', 'block' ,'none']}
+                                        textAlign={['right', ,'left']}
+                                        minWidth={['140px', ,'30%']}
+                                        maxWidth={['140px', ,'30%']}
+                                        mb={0} />
                                     <Flex  minWidth={['unset', ,'140px']}
                                         justify="flex-end"
                                         display={['none', ,'flex']}>
@@ -232,10 +232,10 @@ const AsxAnnouncementsPanelBlock:any = ({}:IAsxAnnouncementsPanelBlock) : ReactN
                                         display="inline-flex"
                                         borderBottom="2px solid"
                                         borderColor="darkBrownBlur"
-                                          transition="border-color 0.3s linear"
-                                          _hover={{
-                                              borderColor: 'darkBrown'
-                                          }}
+                                        transition="border-color 0.3s linear"
+                                        _hover={{
+                                            borderColor: 'darkBrown'
+                                        }}
                                         fontWeight={700}>
                                         <Text as="span" mr={2}>
                                             Next

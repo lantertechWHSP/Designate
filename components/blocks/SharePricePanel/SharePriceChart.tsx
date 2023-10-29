@@ -142,8 +142,8 @@ const SharePriceChart:any = () : ReactNode => {
                                     <>
                                         <MenuButton as={Button}
                                             variant="menuButton"
-                                                    height="44px"
-                                                    boxSizing="borderBox"
+                                            height="44px"
+                                            boxSizing="border-box"
                                             rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} w={12} h={12} /> : <Icon icon={Icons.ChevronDown} w={12} h={12} />}>
                                             <Flex display="inlineFlex" direction="row" alignItems="center">
                                                 <Box background="lightGrey2" width="10px" height="10px" borderRadius="5px" mr={2} />
