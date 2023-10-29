@@ -71,7 +71,7 @@ const StackedBarChart:any = ({ data, textColor = 'steelBlue', borderColor = 'bor
             }));
 
             // Bump up the value for aesthetics
-            max *= 1.3;
+            max *= 1.05;
 
             return scaleLinear()
                 .domain([0, max])
@@ -189,7 +189,7 @@ const StackedBarChart:any = ({ data, textColor = 'steelBlue', borderColor = 'bor
                                 overflow={"visible"}
                             >
                                 <AxisLeft scale={yScale} chartHeight={height} width={width} />
-                                <g transform="translate(30, 0)">
+                                <g transform="translate(10px, 0)">
                                     <AxisBottom scale={xScale} transform={`translate(0, ${boundsHeight})`} />
                                     {stacked.map((data:any, index:number) => {
                                         return (

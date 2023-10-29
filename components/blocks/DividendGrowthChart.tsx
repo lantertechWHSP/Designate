@@ -85,7 +85,7 @@ const DividendGrowthChart:any = ({ table, theme }:IDividendGrowthChartBlock) : R
                         <Flex align="center" px={2}>
                             <Box background={colors[0]} width="10px" height="10px" borderRadius="5px" mr={2} />
                             <Text as="span" mb={0} lineHeight={1} color={textColor}>
-                                Latest Dividend
+                                Interim Dividend
                             </Text>
                         </Flex>
                         <Flex align="center" px={2}>
