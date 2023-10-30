@@ -7,4 +7,6 @@ export const imageRecord:string = `
         ${imageAttrs()}
     }
     containerWidth
+    paddingTop
+    paddingBottom
 `;

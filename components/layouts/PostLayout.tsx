@@ -26,7 +26,7 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
                         <Row justify="center">
                             <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths, ColumnWidth.EightTwelfths]}>
                                 {
-                                    post?.author || date && <Text color="blackBlur">
+                                    post?.author || date && <Text color="blackBlur" mb={4}>
                                         {
                                             (() => {
                                                 if (post?.author && date) {
@@ -63,6 +63,11 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
                     <Row justify="center">
                         <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths]}>
                             <Image image={post?.image} />
+                            {
+                                (post?.image && post?.image?.responsiveImage && post?.image.responsiveImage?.title) && <Text variant="annotation" mt={2} mb={0}>
+                                    {post?.image.responsiveImage?.title}
+                              </Text>
+                            }
                         </Column>
                     </Row>
                 </Container>
@@ -72,7 +77,7 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
                     {children}
                 </Box>
             }
-            <Box mb={16}>
+            <Box mb={['120px']}>
                 <Container>
                     <Row justify="center">
                         <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths, ColumnWidth.EightTwelfths]}>

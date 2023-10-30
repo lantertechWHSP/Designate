@@ -17,6 +17,7 @@ type AppPropsWithLayout = AppProps & {
 export default function App({ Component, pageProps }: AppPropsWithLayout) : ReactNode {
     return <ChakraProvider theme={theme}>
         <Head>
+            <title>WHSP</title>
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <meta name="version" content="0.5.11" />
             <link rel="preconnect" href="https://fonts.googleapis.com" />

@@ -134,15 +134,26 @@ export const theme:any = extendBaseTheme({
                 },
                 h1: {
                     fontSize: ['21px', '24px', '28px'],
-                    lineHeight: ['21px', '24px', '26px']
+                    lineHeight: ['21px', '24px', '26px'],
+                    mb: 8
                 },
                 h2: {
                     fontSize: ['21px', '24px', '28px'],
-                    lineHeight: ['21px', '24px', '26px']
+                    lineHeight: ['21px', '24px', '26px'],
+                    mb: 8
                 },
                 h3: {
-
-                }
+                    fontSize: ['21px', '21px', '21px'],
+                    lineHeight: ['26px', '26px', '26px'],
+                    color: 'darkBrown',
+                    mb: 8
+                },
+                h4: {
+                    fontSize: ['19px', '19px', '19px'],
+                    lineHeight: ['26px', '26px', '26px'],
+                    color: 'darkBrown',
+                    mb: 8
+                },
             },
         },
         Text: {
@@ -161,7 +172,8 @@ export const theme:any = extendBaseTheme({
                     fontSize: '14px'
                 },
                 annotation: {
-                    color: 'blackBlur'
+                    color: 'blackBlur',
+                    fontSize: '16px'
                 },
                 listLabel: {
                     color: 'darkBrownBlur',
@@ -415,7 +427,7 @@ export const theme:any = extendBaseTheme({
                 lineHeight: '29px'
             },
             p: {
-                mb: 4
+                mb: 8
             },
             blockquote: {
                 borderLeft: `4px solid`,
@@ -424,12 +436,12 @@ export const theme:any = extendBaseTheme({
                 mb: 4
             },
             ul: {
-                ml: 4,
-                mb: 4
+                ml: '10px',
+                mb: 8
             },
             ol: {
-                ml: 4,
-                mb: 4
+                ml: '20px',
+                mb: 8
             },
             // YourIR
             '#yourir-default-announcement': {
