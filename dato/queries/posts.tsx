@@ -60,4 +60,4 @@ export const featuredPosts:string = `
             isFeatured
         }
     }
-`
+`;

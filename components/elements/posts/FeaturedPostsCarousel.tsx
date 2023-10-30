@@ -90,7 +90,7 @@ const FeaturedPostsCarousel:any = ({ posts }:IFeaturedPostsCarousel) : any => {
                                                         {
                                                             post.excerpt && <Text color="ghostWhite2">
                                                                 {post.excerpt}
-                                                          </Text>
+                                                            </Text>
                                                         }
                                                     </Box>
                                                 </Column>
@@ -110,7 +110,7 @@ const FeaturedPostsCarousel:any = ({ posts }:IFeaturedPostsCarousel) : any => {
                         posts.map((post:IPost, index:number) => {
                             return <Button key={index} width="8px" height="8px" mx={1}
                                 background={slideIndex === index ? 'white' : 'whiteBlur'}
-                                borderRadius="3px"
+                                borderRadius="4px"
                                 onClick={() => {
                                     goToIndex(index);
                                 }} />;
