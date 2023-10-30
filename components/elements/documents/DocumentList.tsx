@@ -125,7 +125,7 @@ const DocumentList:any = ({ latestDocuments, documentsMeta, documentsFilters }:I
         });
     }, [selectedYear, selectedTag]);
 
-    return <Box bg="ghostWhite" py={12}>
+    return <Box bg="ghostWhite" pt={['40px', ,'60px']} pb={['120px', '120px', '120px']}>
         <Container>
             {
                 (Array.isArray(latestDocuments) && latestDocuments.length > 0) ? <>
