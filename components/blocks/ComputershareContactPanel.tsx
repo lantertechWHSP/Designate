@@ -21,26 +21,25 @@ interface IComputershareContactPanelBlock extends IBlock {
     address?:IStructuredText;
 }
 
-const ComputershareContactPanelBlock:any = ({ title, description, image, onlineDescription, website, contactLocal, contactInternational, email, address }:IComputershareContactPanelBlock) : ReactNode => {
-    return (title || description || image || onlineDescription || website || contactLocal || contactInternational || email || address) && <ContentBlock>
+const ComputershareContactPanelBlock:any = ({ title, description, image, onlineDescription, website, contactLocal, contactInternational, email, address, paddingBottom }:IComputershareContactPanelBlock) : ReactNode => {
+    return (title || description || image || onlineDescription || website || contactLocal || contactInternational || email || address) && <ContentBlock paddingBottom={paddingBottom}>
         <Row mb={8}>
-            <Column width={[ColumnWidth.Full, ,ColumnWidth.OneThird]}>
+            <Column width={[ColumnWidth.Full, ,ColumnWidth.FiveTwelfths]}>
                 {
-                    title && <Heading as="h2" variant="sectionHeading">
+                    title && <Heading as="h2" variant="sectionHeading" fontWeight={500}>
                         {title}
                     </Heading>
                 }
                 {
                     description && <Box
                         fontSize={['19px']}
-                        lineHeight={['29px']}
-                        color="darkBrown">
+                        lineHeight={['29px']}>
                         <StructuredContent content={description} />
                     </Box>
                 }
             </Column>
-            <Column width={[ColumnWidth.Full, ,ColumnWidth.OneThird]} />
-            <Column width={[ColumnWidth.Full, ,ColumnWidth.OneThird]}>
+            <Column width={[ColumnWidth.Full, ,ColumnWidth.ThreeTwelfths]} />
+            <Column width={[ColumnWidth.Full, ,ColumnWidth.FourTwelvfths]}>
                 {
                     image && <Box maxWidth={['300px']} mt={[8, ,0]}>
                         <Image image={image} />
