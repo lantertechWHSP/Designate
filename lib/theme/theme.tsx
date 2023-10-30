@@ -2,7 +2,7 @@ import { extendBaseTheme } from '@chakra-ui/react';
 import chakraTheme from '@chakra-ui/theme';
 const { Modal, Menu, Badge, Alert } = chakraTheme.components;
 
-const breakpoints:any = {
+export const breakpoints:any = {
     base: '0px',
     sm: '480px',
     md: '768px',

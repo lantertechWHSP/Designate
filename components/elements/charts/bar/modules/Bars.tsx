@@ -26,7 +26,7 @@ export const Bars:any = ({ values, height, xScale, yScale }:IBars) : ReactNode =
                             x={xScale(label)}
                             y={yScale(value)}
                             width={xScale.bandwidth()}
-                            height={(Math.max(height - yScale(value)) + borderRadius)}
+                            height={(Math.max(height - yScale(value)  + borderRadius, 0))}
                         />
                     </g>
                 ))}

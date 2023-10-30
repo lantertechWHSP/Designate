@@ -1,11 +1,12 @@
 import React, { useEffect, useMemo, useRef, useState, ReactNode }  from 'react';
-import { Box, Alert } from '@chakra-ui/react';
+import { Box, Alert, useMediaQuery } from '@chakra-ui/react';
 import { scaleLinear, scaleBand } from 'd3';
 import { AxisLeft } from "~/components/elements/charts/bar/modules/AxisLeft";
 import { AxisBottom } from "~/components/elements/charts/bar/modules/AxisBottom";
 import { Bars } from "~/components/elements/charts/bar/modules/Bars";
 
 import { maxBy as _maxBy, throttle as _throttle } from 'lodash';
+import { breakpoints } from '~/lib/theme/theme';
 
 interface IBarChart {
     data: {
@@ -33,6 +34,9 @@ const BarChart:any = ({ data, textColor = 'steelBlue', borderColor = 'borderColo
     const [height, setHeight] = useState<number>(null);
     const margin:IMargin = { top: 30, right: 30, bottom: 50, left: 0 };
     const elementRef:any = useRef<ReactNode>();
+    const [isDataLoaded, setIsDataLoaded] = useState(false);
+    const [hasData, setHasData] = useState(false);
+    const [mediaQuery] = useMediaQuery(`(min-width: ${breakpoints.sm})`);
 
     const boundsWidth:number = useMemo<number>(() => {
         return width - margin.right - margin.left;
@@ -42,13 +46,13 @@ const BarChart:any = ({ data, textColor = 'steelBlue', borderColor = 'borderColo
         return height - margin.top - margin.bottom;
     }, [height]);
 
-    const hasData:any = useMemo(() => {
-        return data && Array.isArray(data.bars) && data.bars.length > 0;
+    useState(() => {
+        setHasData(data && Array.isArray(data.bars) && data.bars.length > 0);
+        setIsDataLoaded(true);
     }, [data]);
 
     const yScale:any = useMemo<any>(() => {
         if(hasData) {
-
             let max:number = _maxBy(data.bars, (datum:IData) => {
                 return datum.value;
             }).value;
@@ -73,13 +77,13 @@ const BarChart:any = ({ data, textColor = 'steelBlue', borderColor = 'borderColo
                     return datum.label;
                 }))
                 .range([0, width])
-                .padding(0.5);
+                .padding(0.6)
         }
         else {
             return scaleBand()
                 .domain([''])
                 .range([0, width])
-                .padding(0.5);
+                .padding(0.6);
         }
     }, [data, hasData, width]);
 
@@ -88,7 +92,6 @@ const BarChart:any = ({ data, textColor = 'steelBlue', borderColor = 'borderColo
             if(elementRef.current) {
                 const newWidth:number = elementRef.current.getBoundingClientRect().width;
                 setWidth(newWidth);
-                setHeight(390);// @TODO set to 340 on mobile
             }
         };
 
@@ -105,45 +108,58 @@ const BarChart:any = ({ data, textColor = 'steelBlue', borderColor = 'borderColo
         };
     }, []);
 
+    useEffect(() => {
+        if(mediaQuery) {
+            setHeight(390);
+        }
+        else {
+            setHeight(340);
+        }
+    }, [mediaQuery])
+
     return <Box ref={elementRef}>
         {
-            hasData ? <Box
-                sx={{
-                    '.tick': {
-                        fontSize: '12px',
-                        fontFamily: 'Roboto',
-                        color: textColor
-                    },
-                    '.x-axis .domain': {
-                        display: 'none'
-                    },
-                    '.x-axis .tick line': {
-                        display: 'none'
-                    },
-                    '.y-axis .tick line': {
-                        color: borderColor
-                    },
-                    '.bar': {
-                        fill: fillColor
-                    }
-                }}>
+            isDataLoaded && <>
                 {
-                    (boundsWidth && boundsHeight) && <svg width={width} height={height} shapeRendering={"crispEdges"}>
+                    (hasData) ? <Box
+                        sx={{
+                            '.tick': {
+                                fontSize: '12px',
+                                fontFamily: 'Roboto',
+                                color: textColor
+                            },
+                            '.x-axis .domain': {
+                                display: 'none'
+                            },
+                            '.x-axis .tick line': {
+                                display: 'none'
+                            },
+                            '.y-axis .tick line': {
+                                color: borderColor
+                            },
+                            '.bar': {
+                                fill: fillColor
+                            }
+                        }}>
                         {
-                            (data && data.bars) && <g
-                                width={boundsWidth}
-                                height={boundsHeight}
-                                transform={`translate(${[margin.left, margin.top].join(",")})`}
-                                overflow={"visible"}
-                            >
-                                <AxisLeft scale={yScale} chartHeight={height} width={width} />
-                                <AxisBottom scale={xScale} transform={`translate(0, ${boundsHeight})`} />
-                                <Bars values={data.bars} xScale={xScale} yScale={yScale} height={boundsHeight} />
-                            </g>
+                            (boundsWidth && boundsHeight) && <svg width={width} height={height} shapeRendering={"crispEdges"}>
+                                {
+                                    (data && data.bars) && <g
+                                    width={boundsWidth}
+                                    height={boundsHeight}
+                                    transform={`translate(${[margin.left, margin.top].join(",")})`}
+                                    overflow={"visible"}
+                                  >
+                                    <AxisLeft scale={yScale} chartHeight={height} width={width} />
+                                    <AxisBottom scale={xScale} transform={`translate(0, ${boundsHeight})`} />
+                                    <Bars values={data.bars} xScale={xScale} yScale={yScale} height={boundsHeight} />
+                                  </g>
+                                }
+                          </svg>
                         }
-                    </svg>
+                    </Box> : <Alert status="info">No Data</Alert>
                 }
-            </Box> : <Alert status="info">No Data</Alert>
+            </>
         }
     </Box>;
 };
