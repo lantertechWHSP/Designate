@@ -67,7 +67,7 @@ const DocumentBasicList:any = ({ title, latestDocuments }:IDocumentBasicList) : 
                         })
                     }
                 </Box> : <Box>
-                    <Alert status="info">No Documents</Alert>
+                    <Alert status="info">No documents</Alert>
                 </Box>
             }
         </Container>

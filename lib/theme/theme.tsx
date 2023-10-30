@@ -215,11 +215,11 @@ export const theme:any = extendBaseTheme({
             },
             variants: {
                 button: {
-                    background: 'white',
                     height: '50px',
                     lineHeight: '50px',
                     px: 4,
-                    fontSize: '14px',
+                    color: 'darkBrown',
+                    fontSize: '16px',
                     fontWeight: 500
                 },
                 pagination: {
@@ -384,8 +384,20 @@ export const theme:any = extendBaseTheme({
         },
         Alert: {
             ...Alert,
-            // baseStyle: {
+            // defaultProps: {
             //     fontSize: '16px'
+            // }
+            // ...Alert,
+            // baseStyle: {
+            //     container: {
+            //         fontSize: '16px',
+            //     },
+            //     title: {
+            //         fontSize: '16px',
+            //     },
+            //     description: {
+            //         fontSize: '16px',
+            //     }
             // }
         }
     },
@@ -457,6 +469,10 @@ export const theme:any = extendBaseTheme({
             '[data-yourir="result"].yourir-success': {
                 background: 'success',
                 color: 'successText'
+            },
+            // Chakra Alert
+            '[role="alert"]': {
+                fontSize: ['16px']
             }
         },
     }
