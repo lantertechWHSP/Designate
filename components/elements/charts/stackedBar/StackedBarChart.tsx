@@ -1,9 +1,10 @@
 import React, { useEffect, useMemo, useRef, useState, ReactNode }  from 'react';
-import { Box, Alert } from '@chakra-ui/react';
+import { Box, Alert, useMediaQuery } from '@chakra-ui/react';
 import { scaleLinear, scaleBand, scaleOrdinal, stack } from 'd3';
 import { throttle as _throttle, maxBy as _maxBy, sum as _sum, sumBy as _sumBy, flatMap as _flatMap, map as _map } from 'lodash';
 import { AxisLeft } from '~/components/elements/charts/stackedBar/modules/AxisLeft';
 import { AxisBottom } from '~/components/elements/charts/stackedBar/modules/AxisBottom';
+import {breakpoints} from "~/lib/theme/theme";
 
 interface IStackedBarChart {
     data: {
@@ -38,10 +39,14 @@ interface IMargin {
 }
 
 const StackedBarChart:any = ({ data, textColor = 'steelBlue', borderColor = 'borderColor' }:IStackedBarChart) : ReactNode => {
+    const [mediaQuery] = useMediaQuery(`(min-width: ${breakpoints.sm})`);
     const [width, setWidth] = useState<number>(null);
-    const [height, setHeight] = useState<number>(null);
+    const [height, setHeight] = useState<number>(mediaQuery ? 390 : 340);
     const margin:IMargin = { top: 30, right: 30, bottom: 50, left: 0 };
     const elementRef:any = useRef<ReactNode>();
+    const [isDataLoaded, setIsDataLoaded] = useState<boolean>(false);
+    const [hasData, setHasData] = useState<boolean>(null);
+    const [isChartVisible, setIsChartVisible] = useState<boolean>(false);
 
     const boundsWidth:number = useMemo<number>(() => {
         return width - margin.right - margin.left;
@@ -51,15 +56,21 @@ const StackedBarChart:any = ({ data, textColor = 'steelBlue', borderColor = 'bor
         return height - margin.top - margin.bottom;
     }, [height]);
 
-    const hasData:any = useMemo(() => {
+    useState(() => {
         if(data && Array.isArray(data.rows) && data.rows.length > 0) {
             const sum:number = _sumBy(data.rows, (row:IDataRow) => {
                 return Array.isArray(row.values) ? row.values.length : 0;
             });
 
-            return sum > 0;
+            setHasData(sum > 0);
         }
-        return false;
+        else {
+            setHasData(false);
+        }
+
+        setTimeout(() => {
+            setIsDataLoaded(true);
+        }, 1);
     }, [data]);
 
     const yScale:any = useMemo<any>(() => {
@@ -78,11 +89,9 @@ const StackedBarChart:any = ({ data, textColor = 'steelBlue', borderColor = 'bor
                 .range([boundsHeight, 0]);
         }
         else {
-            return scaleLinear()
-                .domain([0, 1])
-                .range([boundsHeight, 0]);
+            return null;
         }
-    }, [hasData, height]);
+    }, [data, hasData, height]);
 
     const xScale:any = useMemo<any>(() => {
         if(hasData)  {
@@ -94,12 +103,17 @@ const StackedBarChart:any = ({ data, textColor = 'steelBlue', borderColor = 'bor
                 .padding(0.5);
         }
         else {
-            return scaleBand()
-                .domain([''])
-                .range([0, width])
-                .padding(0.5);
+            return null;
         }
     }, [data, hasData, width]);
+
+    useEffect(() => {
+        if(xScale !== null && yScale !== null) {
+            setTimeout(() => {
+                setIsChartVisible(true);
+            }, 1);
+        }
+    }, [xScale, yScale]);
 
     const stacked:any = useMemo<any>(() => {
         if(data.groups && data.rows) {
@@ -139,11 +153,19 @@ const StackedBarChart:any = ({ data, textColor = 'steelBlue', borderColor = 'bor
     }, [data]);
 
     useEffect(() => {
+        if(mediaQuery) {
+            setHeight(390);
+        }
+        else {
+            setHeight(340);
+        }
+    }, [mediaQuery]);
+
+    useEffect(() => {
         const setDimension:any = () : void => {
             if(elementRef.current) {
                 const newWidth:number = elementRef.current.getBoundingClientRect().width;
                 setWidth(newWidth);
-                setHeight(390);
             }
         };
 
@@ -160,9 +182,11 @@ const StackedBarChart:any = ({ data, textColor = 'steelBlue', borderColor = 'bor
         };
     }, []);
 
-    return <Box ref={elementRef}>
+    return <Box ref={elementRef} height={height}>
         {
-            hasData ? <Box
+            isDataLoaded && <>
+            {
+                hasData ? <Box visibility={isChartVisible ? 'visible': 'hidden'}
                 sx={{
                     '.tick': {
                         fontSize: '12px',
@@ -179,47 +203,47 @@ const StackedBarChart:any = ({ data, textColor = 'steelBlue', borderColor = 'bor
                         color: borderColor
                     }
                 }}>
-                {
-                    (boundsWidth && boundsHeight) && <svg width={width} height={height} shapeRendering={"crispEdges"}>
-                        {
-                            <g
-                                width={boundsWidth}
-                                height={boundsHeight}
-                                transform={`translate(${[margin.left, margin.top].join(",")})`}
-                                overflow={"visible"}
-                            >
-                                <AxisLeft scale={yScale} chartHeight={height} width={width} />
-                                <g transform="translate(10px, 0)">
-                                    <AxisBottom scale={xScale} transform={`translate(0, ${boundsHeight})`} />
-                                    {stacked.map((data:any, index:number) => {
-                                        return (
-                                            <g key={`group-${index}`} fill={colors(data.key)}>
-                                                {data.map((d:any, innerIndex:number) => {
-                                                    const label:string = String(d.data.label);
-                                                    const y0:number = yScale(d[0]);
-                                                    const y1:number = yScale(d[1]);
+                    <svg width={width} height={height} shapeRendering={"crispEdges"}>
+                            {
+                                <g
+                                    width={boundsWidth}
+                                    height={boundsHeight}
+                                    transform={`translate(${[margin.left, margin.top].join(",")})`}
+                                    overflow={"visible"}
+                                >
+                                    <AxisLeft scale={yScale} chartHeight={height} width={width} />
+                                    <g transform="translate(10px, 0)">
+                                        <AxisBottom scale={xScale} transform={`translate(0, ${boundsHeight})`} />
+                                        {stacked.map((data:any, index:number) => {
+                                            return (
+                                                <g key={`group-${index}`} fill={colors(data.key)}>
+                                                    {data.map((d:any, innerIndex:number) => {
+                                                        const label:string = String(d.data.label);
+                                                        const y0:number = yScale(d[0]);
+                                                        const y1:number = yScale(d[1]);
 
-                                                    const height:number = Math.max(y0 - y1, 0);
+                                                        const height:number = Math.max(y0 - y1, 0);
 
-                                                    return (
-                                                        <rect
-                                                            key={`rect-${innerIndex}`}
-                                                            x={xScale(label)}
-                                                            y={y1}
-                                                            width={xScale.bandwidth()}
-                                                            height={height}
-                                                        />
-                                                    );
-                                                })}
-                                            </g>
-                                        );
-                                    })}
+                                                        return (
+                                                            <rect
+                                                                key={`rect-${innerIndex}`}
+                                                                x={xScale(label)}
+                                                                y={y1}
+                                                                width={xScale.bandwidth()}
+                                                                height={height}
+                                                            />
+                                                        );
+                                                    })}
+                                                </g>
+                                            );
+                                        })}
+                                    </g>
                                 </g>
-                            </g>
-                        }
-                    </svg>
-                }
-            </Box> : <Alert status="info">No Data</Alert>
+                            }
+                      </svg>
+              </Box> : <Alert status="info">No Data</Alert>
+            }
+            </>
         }
     </Box>;
 };

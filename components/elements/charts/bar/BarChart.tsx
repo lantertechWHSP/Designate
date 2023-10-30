@@ -30,13 +30,14 @@ interface IMargin {
 }
 
 const BarChart:any = ({ data, textColor = 'steelBlue', borderColor = 'borderColor', fillColor = 'lightGrey' }:IBarChart) : ReactNode => {
-    const [width, setWidth] = useState<number|string>('100%');
-    const [height, setHeight] = useState<number|string>(340);
+    const [mediaQuery] = useMediaQuery(`(min-width: ${breakpoints.sm})`);
+    const [width, setWidth] = useState<number>(null);
+    const [height, setHeight] = useState<number>(mediaQuery ? 390 : 340);
     const margin:IMargin = { top: 30, right: 30, bottom: 50, left: 0 };
     const elementRef:any = useRef<ReactNode>();
-    const [isDataLoaded, setIsDataLoaded] = useState(false);
-    const [hasData, setHasData] = useState(null);
-    const [mediaQuery] = useMediaQuery(`(min-width: ${breakpoints.sm})`);
+    const [isDataLoaded, setIsDataLoaded] = useState<boolean>(false);
+    const [hasData, setHasData] = useState<boolean>(null);
+    const [isChartVisible, setIsChartVisible] = useState<boolean>(false);
 
     const boundsWidth:number = useMemo<number>(() => {
         return width - margin.right - margin.left;
@@ -51,7 +52,7 @@ const BarChart:any = ({ data, textColor = 'steelBlue', borderColor = 'borderColo
 
         setTimeout(() => {
             setIsDataLoaded(true);
-        }, 100)
+        }, 1);
     }, [data]);
 
     const yScale:any = useMemo<any>(() => {
@@ -67,9 +68,7 @@ const BarChart:any = ({ data, textColor = 'steelBlue', borderColor = 'borderColo
                 .range([boundsHeight, 0]);
         }
         else {
-            return scaleLinear()
-                .domain([0, 10])
-                .range([boundsHeight, 0]);
+            return null;
         }
     }, [data, hasData, height]);
 
@@ -80,15 +79,20 @@ const BarChart:any = ({ data, textColor = 'steelBlue', borderColor = 'borderColo
                     return datum.label;
                 }))
                 .range([0, width])
-                .padding(0.6)
-        }
-        else {
-            return scaleBand()
-                .domain([''])
-                .range([0, width])
                 .padding(0.6);
         }
+        else {
+            return null;
+        }
     }, [data, hasData, width]);
+
+    useEffect(() => {
+        if(xScale !== null && yScale !== null) {
+            setTimeout(() => {
+                setIsChartVisible(true);
+            }, 1);
+        }
+    }, [xScale, yScale]);
 
     useEffect(() => {
         if(mediaQuery) {
@@ -97,7 +101,7 @@ const BarChart:any = ({ data, textColor = 'steelBlue', borderColor = 'borderColo
         else {
             setHeight(340);
         }
-    }, [mediaQuery])
+    }, [mediaQuery]);
 
     useEffect(() => {
         const setDimension:any = () : void => {
@@ -120,48 +124,43 @@ const BarChart:any = ({ data, textColor = 'steelBlue', borderColor = 'borderColo
         };
     }, []);
 
-    return <Box ref={elementRef}>
+    return <Box ref={elementRef} height={height}>
         {
             isDataLoaded && <>
                 {
-                    hasData ? <Box
-                        sx={{
-                            '.tick': {
-                                fontSize: '12px',
-                                fontFamily: 'Roboto',
-                                color: textColor
-                            },
-                            '.x-axis .domain': {
-                                display: 'none'
-                            },
-                            '.x-axis .tick line': {
-                                display: 'none'
-                            },
-                            '.y-axis .tick line': {
-                                color: borderColor
-                            },
-                            '.bar': {
-                                fill: fillColor
-                            }
-                        }}>
-                        {
-                            <svg width={width} height={height} shapeRendering={"crispEdges"}>
-                                {
-                                    (boundsWidth && boundsHeight) && <>
-                                        {
-                                            (data && data.bars) && <g width={boundsWidth}
-                                                                      height={boundsHeight}
-                                                                      transform={`translate(${[margin.left, margin.top].join(",")})`}
-                                                                      overflow={"visible"}>
-                                            <AxisLeft scale={yScale} chartHeight={height} width={width} />
-                                            <AxisBottom scale={xScale} transform={`translate(0, ${boundsHeight})`} />
-                                            <Bars values={data.bars} xScale={xScale} yScale={yScale} height={boundsHeight} />
-                                          </g>
-                                        }
-                                  </>
-                                }
-                            </svg>
+                    hasData ? <Box visibility={isChartVisible ? 'visible' : 'hidden'} sx={{
+                        '.tick': {
+                            fontSize: '12px',
+                            fontFamily: 'Roboto',
+                            color: textColor
+                        },
+                        '.x-axis .domain': {
+                            display: 'none'
+                        },
+                        '.x-axis .tick line': {
+                            display: 'none'
+                        },
+                        '.y-axis .tick line': {
+                            color: borderColor
+                        },
+                        '.bar': {
+                            fill: fillColor
                         }
+                    }}>
+                        <svg width={width} height={height} shapeRendering={"crispEdges"}>
+                            <>
+                                {
+                                    (data && data.bars) && <g width={boundsWidth}
+                                        height={boundsHeight}
+                                        transform={`translate(${[margin.left, margin.top].join(",")})`}
+                                        overflow={"visible"}>
+                                        <AxisLeft scale={yScale} chartHeight={height} width={width} />
+                                        <AxisBottom scale={xScale} transform={`translate(0, ${boundsHeight})`} />
+                                        <Bars values={data.bars} xScale={xScale} yScale={yScale} height={boundsHeight} />
+                                    </g>
+                                }
+                            </>
+                        </svg>
                     </Box> : <Alert status="info">No Data</Alert>
                 }
             </>

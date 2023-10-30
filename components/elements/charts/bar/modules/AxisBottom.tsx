@@ -1,6 +1,6 @@
 import { useEffect, useRef, ReactNode } from 'react';
 import { select, axisBottom } from 'd3';
-import { useMediaQuery } from '@chakra-ui/react'
+import { useMediaQuery } from '@chakra-ui/react';
 import { breakpoints } from '~/lib/theme/theme';
 
 interface IAxisBottom {
@@ -14,7 +14,6 @@ export const AxisBottom:any = ({ scale, transform }:IAxisBottom) : ReactNode => 
     const [mediaQuery] = useMediaQuery(`(min-width: ${breakpoints.md})`);
 
     useEffect(() => {
-        console.log(mediaQuery);
         if (elementRef.current) {
             select(elementRef.current).call(axisBottom(scale).tickValues(scale.domain().filter((datum:IData, index:number) => {
                 return mediaQuery ? true : index % 3 === 0;
