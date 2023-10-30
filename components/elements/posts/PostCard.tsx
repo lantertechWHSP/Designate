@@ -1,4 +1,4 @@
-import { Box, Text, Heading } from '@chakra-ui/react';
+import { Box, Heading } from '@chakra-ui/react';
 import { IPost } from "~/interfaces/models/post";
 import { Link } from '~/components/elements/link';
 import { Image } from '~/components/elements/image';
@@ -22,7 +22,7 @@ const PostCard:any = ({ title, image, publishDate, slug }:IPostCard) : any => {
             </Link>
         }
         {
-            publishDate && <Box mb={2} fontSize="16px" lineHeight="22px" color="blackBlur" mb={6}>
+            publishDate && <Box fontSize="16px" lineHeight="22px" color="blackBlur" mb={6}>
                 {publishDate}
             </Box>
         }

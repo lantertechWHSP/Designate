@@ -15,7 +15,7 @@ export const AxisBottom:any = ({ scale, transform }:IAxisBottom) : ReactNode => 
 
     useEffect(() => {
         if (elementRef.current) {
-            select(elementRef.current).call(axisBottom(scale).tickValues(scale.domain().filter((datum:IData, index:number) => {
+            select(elementRef.current).call(axisBottom(scale).tickValues(scale.domain().filter((datum:any, index:number) => {
                 return mediaQuery ? true : index % 3 === 0;
             })));
         }
