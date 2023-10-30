@@ -11,7 +11,6 @@ import { IPostsMeta } from '~/interfaces/models/postsMeta';
 import PostList, { DATO_QUERY_VALUES } from '~/components/elements/posts/PostList';
 import PlainLayout from '~/components/layouts/PlainLayout';
 import FeaturedPostsCarousel from '~/components/elements/posts/FeaturedPostsCarousel';
-import {featuredPosts} from "~/dato/queries";
 
 interface INextPageProps {
     layout?:ILayout;
