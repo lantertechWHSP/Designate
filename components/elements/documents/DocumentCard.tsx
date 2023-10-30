@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { IDocument } from "~/interfaces/models/document";
-import { Flex, Heading, Text, Link, Box } from '@chakra-ui/react';
+import { Flex, Heading, Text, Link } from '@chakra-ui/react';
 import { DateTime } from 'luxon';
 import { SectionLink } from "~/components/elements/sectionLink";
 
@@ -13,8 +13,8 @@ const DocumentCard:any = ({ title, date, document }:IDocumentCard) : ReactNode =
             (title && (document && document.url)) ? <Link href={document?.url}
                 display="inline"
                 as="a"
-                                                          variant="listItem"
-                                                          flex={1}
+                variant="listItem"
+                flex={1}
                 target="_blank">
                 <Heading as="h3">
                     {title}
@@ -28,11 +28,11 @@ const DocumentCard:any = ({ title, date, document }:IDocumentCard) : ReactNode =
         }
         {
             date && <Text
-            variant="listLabel"
-            textAlign={['right', ,'left']}
-            minWidth={['140px', ,'30%']}
-            maxWidth={['140px', ,'30%']}
-            mb={0}>
+                variant="listLabel"
+                textAlign={['right', ,'left']}
+                minWidth={['140px', ,'30%']}
+                maxWidth={['140px', ,'30%']}
+                mb={0}>
                 {DateTime.fromISO(date).toFormat('d/M/yyyy')}
             </Text>
         }

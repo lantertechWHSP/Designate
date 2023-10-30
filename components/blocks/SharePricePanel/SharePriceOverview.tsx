@@ -3,7 +3,7 @@ import { YourIR } from 'yourir-next';
 import { Box, Text, Badge, Heading, Flex } from '@chakra-ui/react';
 
 const SharePriceOverview:any = () : ReactNode => {
-    const commonStatus = useRef();
+    const commonStatus:any = useRef();
     const [statusStyle, setStatusStyle] = useState(null);
     let interval:any;
 

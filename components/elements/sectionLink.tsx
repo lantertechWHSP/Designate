@@ -11,7 +11,7 @@ interface ISectionLink extends IDatoLink {
 export const UnderlineLink:any = ({ ...props }:ISectionLink) => {
     return <Link {...props} color="darkBrown">
         <Flex align="center"
-              as="span"
+            as="span"
             display="inline-flex"
             borderBottom="2px solid"
             borderColor="darkBrownBlur"

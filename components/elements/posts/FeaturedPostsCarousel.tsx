@@ -4,7 +4,8 @@ import 'keen-slider/keen-slider.min.css';
 import { Flex, Container, Heading, Text, Box, Button } from '@chakra-ui/react';
 import { SectionLinkButton } from '~/components/elements/sectionLink';
 import { useState } from 'react';
-import {Icon, Icons} from "~/components/elements/icon";
+import { Icon, Icons } from '~/components/elements/icon';
+import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
 
 interface IFeaturedPostsCarousel {
     posts:IPost[];
@@ -57,7 +58,7 @@ const FeaturedPostsCarousel:any = ({ posts }:IFeaturedPostsCarousel) : any => {
                     {
                         posts.map((post:IPost, index:number) => {
                             return <Box className="keen-slider__slide" key={index}>
-                                <Box minH={"calc(100vh - 120px)"}>
+                                <Box height="550px">
                                     <Flex position="absolute"
                                         top="0"
                                         bottom="0"
@@ -77,33 +78,26 @@ const FeaturedPostsCarousel:any = ({ posts }:IFeaturedPostsCarousel) : any => {
                                         left="0"
                                         right="0"
                                         bottom="40px">
-                                        <Container >
-                                            <Box maxWidth="900px">
-                                                {
-                                                    post.title && <Heading as="h1" color="white" fontSize={['50px']} mb="6px">
-                                                        {post.title}
-                                                    </Heading>
-                                                }
-                                                {
-                                                    post.excerpt && <Text color="ghostWhite2">
-                                                        {post.excerpt}
-                                                    </Text>
-                                                }
-                                            </Box>
+                                        <Container>
+                                            <Row>
+                                                <Column width={[ColumnWidth.Full, ,ColumnWidth.TwoThirds]}>
+                                                    <Box maxWidth="900px">
+                                                        {
+                                                            post.title && <Heading as="h1" color="white" fontSize={['50px']} lineHeight="56px" mb="6px">
+                                                                {post.title}
+                                                            </Heading>
+                                                        }
+                                                        {
+                                                            post.excerpt && <Text color="ghostWhite2">
+                                                                {post.excerpt}
+                                                          </Text>
+                                                        }
+                                                    </Box>
+                                                </Column>
+                                            </Row>
                                             <SectionLinkButton href={`/news/${post.slug}`} mt={8} color="white" borderColor="whiteBlur">
                                                 Read More
                                             </SectionLinkButton>
-                                            {/*<Link w="200px"*/}
-                                            {/*    background="skyBlue"*/}
-                                            {/*    href={`news/${post.slug}`}*/}
-                                            {/*    color="white"*/}
-                                            {/*    textAlign="center"*/}
-                                            {/*    display="block"*/}
-                                            {/*    lineHeight="50px"*/}
-                                            {/*    px={4}*/}
-                                            {/*    py={0}>*/}
-                                            {/*    Read More*/}
-                                            {/*</Link>*/}
                                         </Container>
                                     </Box>
                                 </Box>
@@ -127,23 +121,31 @@ const FeaturedPostsCarousel:any = ({ posts }:IFeaturedPostsCarousel) : any => {
                 <Box position="absolute" width="100%" bottom="40px" zIndex="2">
                     <Container>
                         <Flex direction="row" justify="flex-end">
-                            <Flex mx={-1}>
+                            <Flex mx={-2}>
                                 <Button
                                     backgroundColor="whiteBlur"
-                                    mx={1}
+                                    transition="background-color 0.3s linear"
+                                    _hover={{
+                                        backgroundColor: 'white'
+                                    }}
+                                    mx={2}
                                     color="black"
-                                    width={['40px', ,'60px']}
-                                    height={['40px', ,'60px']}
+                                    width={['40px', ,'56px']}
+                                    height={['40px', ,'56px']}
                                     borderRadius="50%"
                                     onClick={prev}>
                                     <Icon icon={Icons.ArrowLeft} />
                                 </Button>
                                 <Button
                                     backgroundColor="whiteBlur"
-                                    mx={1}
+                                    transition="background-color 0.3s linear"
+                                    _hover={{
+                                        backgroundColor: 'white'
+                                    }}
+                                    mx={2}
                                     color="black"
-                                    width={['40px', ,'60px']}
-                                    height={['40px', ,'60px']}
+                                    width={['40px', ,'56px']}
+                                    height={['40px', ,'56px']}
                                     borderRadius="50%"
                                     onClick={next}>
                                     <Icon icon={Icons.ArrowRight} />

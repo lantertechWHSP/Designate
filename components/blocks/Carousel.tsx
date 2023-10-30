@@ -74,6 +74,10 @@ const CarouselBlock:any = ({ items, paddingTop, paddingBottom }:ICarouselBlock) 
                 <Box position="absolute" width="100%" top="50%" transform="translateY(-50%)" height="56px" zIndex="2">
                     <Button position="absolute"
                         backgroundColor="whiteBlur"
+                            transition="background-color 0.3s linear"
+                            _hover={{
+                                backgroundColor: 'white'
+                            }}
                         color="black"
                         left="10px"
                         width="56px"
@@ -84,6 +88,10 @@ const CarouselBlock:any = ({ items, paddingTop, paddingBottom }:ICarouselBlock) 
                     </Button>
                     <Button position="absolute"
                         backgroundColor="whiteBlur"
+                            transition="background-color 0.3s linear"
+                            _hover={{
+                                backgroundColor: 'white'
+                            }}
                         color="black"
                         right="10px"
                         width="56px"

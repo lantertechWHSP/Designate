@@ -47,7 +47,7 @@ const BarChart:any = ({ data, textColor = 'steelBlue', borderColor = 'borderColo
         return height - margin.top - margin.bottom;
     }, [height]);
 
-    useState(() => {
+    useEffect(() => {
         setHasData(data && Array.isArray(data.bars) && data.bars.length > 0);
 
         setTimeout(() => {

@@ -13,7 +13,7 @@ interface IPostsList {
 }
 
 export const DATO_QUERY_VALUES:any = {
-    ITEMS_PER_PAGE : 3,
+    ITEMS_PER_PAGE : 9,
     ORDER_BY : 'date_DESC',
 };
 
@@ -81,10 +81,10 @@ const PostList:any = ({ latestPosts }:IPostsList) : ReactNode => {
             (Array.isArray(posts) && posts.length > 0) ? <>
                 <Box position="relative">
                     <Container>
-                        <SimpleGrid columns={[1, 2, 3]} spacing={[0, ,8]}>
+                        <SimpleGrid columns={[1, 2, 3]} spacingX={[8]} spacingY={[12, ,20]}>
                             {
                                 posts.map((post:any, index:number) => {
-                                    return <PostCard {...post} key={index}/>;
+                                    return <PostCard {...post} key={index} />;
                                 })
                             }
                         </SimpleGrid>
@@ -107,22 +107,6 @@ const PostList:any = ({ latestPosts }:IPostsList) : ReactNode => {
                         {
                             couldNotLoadPosts && <Alert status="error" mt={4}>
                                 <Alert status="error">Could not load posts</Alert>
-                            </Alert>
-                        }
-                        {
-                            (noMorePosts && isNoMorePostsOpen) && <Alert status="info" mt={4}>
-                                <Box>
-                                    No more posts
-                                </Box>
-                                <Box flex="1" />
-                                <Button onClick={isNoMorePostsOnClose}>
-                                    <Icon icon={Icons.Cross} />
-                                </Button>
-                            </Alert>
-                        }
-                        {
-                            (isLoading && !noMorePosts) && <Alert status="info" mt={4}>
-                                Loading more <Spinner size='md' ml={4} />
                             </Alert>
                         }
                     </Container>

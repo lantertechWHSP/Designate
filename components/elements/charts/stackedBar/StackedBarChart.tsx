@@ -56,7 +56,7 @@ const StackedBarChart:any = ({ data, textColor = 'steelBlue', borderColor = 'bor
         return height - margin.top - margin.bottom;
     }, [height]);
 
-    useState(() => {
+    useEffect(() => {
         if(data && Array.isArray(data.rows) && data.rows.length > 0) {
             const sum:number = _sumBy(data.rows, (row:IDataRow) => {
                 return Array.isArray(row.values) ? row.values.length : 0;
@@ -185,25 +185,25 @@ const StackedBarChart:any = ({ data, textColor = 'steelBlue', borderColor = 'bor
     return <Box ref={elementRef} height={height}>
         {
             isDataLoaded && <>
-            {
-                hasData ? <Box visibility={isChartVisible ? 'visible': 'hidden'}
-                sx={{
-                    '.tick': {
-                        fontSize: '12px',
-                        fontFamily: 'Roboto',
-                        color: textColor
-                    },
-                    '.x-axis .domain': {
-                        display: 'none'
-                    },
-                    '.x-axis .tick line': {
-                        display: 'none'
-                    },
-                    '.y-axis .tick line': {
-                        color: borderColor
-                    }
-                }}>
-                    <svg width={width} height={height} shapeRendering={"crispEdges"}>
+                {
+                    hasData ? <Box visibility={isChartVisible ? 'visible': 'hidden'}
+                        sx={{
+                            '.tick': {
+                                fontSize: '12px',
+                                fontFamily: 'Roboto',
+                                color: textColor
+                            },
+                            '.x-axis .domain': {
+                                display: 'none'
+                            },
+                            '.x-axis .tick line': {
+                                display: 'none'
+                            },
+                            '.y-axis .tick line': {
+                                color: borderColor
+                            }
+                        }}>
+                        <svg width={width} height={height} shapeRendering={"crispEdges"}>
                             {
                                 <g
                                     width={boundsWidth}
@@ -240,9 +240,9 @@ const StackedBarChart:any = ({ data, textColor = 'steelBlue', borderColor = 'bor
                                     </g>
                                 </g>
                             }
-                      </svg>
-              </Box> : <Alert status="info">No Data</Alert>
-            }
+                        </svg>
+                    </Box> : <Alert status="info">No Data</Alert>
+                }
             </>
         }
     </Box>;

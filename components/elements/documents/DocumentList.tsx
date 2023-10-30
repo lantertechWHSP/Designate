@@ -1,14 +1,13 @@
 import { useState, ReactNode, useEffect } from 'react';
 import { doQuery, queries } from '~/dato/api';
 import DocumentCard from '~/components/elements/documents/DocumentCard';
-import { Box, Flex, Button, Spinner, Text, Container, Heading, Menu, MenuButton, Portal, MenuList, MenuItem, ButtonGroup, Alert } from '@chakra-ui/react';
+import { Box, Flex, Button, Spinner, Text, Container, Heading, Menu, MenuButton, Portal, MenuList, MenuItem, Alert } from '@chakra-ui/react';
 import { IDocument, IDocumentsFilters, IDocumentBundle } from '~/interfaces/models/document';
 import { IDocumentsMeta } from '~/interfaces/models/document';
 import { groupBy as _groupBy, forOwn as _forOwn } from 'lodash';
 import { DateTime } from 'luxon';
 import { Icon, Icons } from '~/components/elements/icon';
 import { IFilter } from '~/interfaces/util/filter';
-import {Theme} from "~/components/blocks/Content";
 
 interface IDocumentList {
     latestDocuments:IDocument[];
@@ -136,9 +135,9 @@ const DocumentList:any = ({ latestDocuments, documentsMeta, documentsFilters }:I
                                     {({ isOpen }) => (
                                         <>
                                             <MenuButton as={Button}
-                                                        minWidth={['100%', ,'275px']}
-                                                        variant="menuButton"
-                                                        rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} w={12} h={12} /> : <Icon icon={Icons.ChevronDown} w={12} h={12} />}>
+                                                minWidth={['100%', ,'275px']}
+                                                variant="menuButton"
+                                                rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} w={12} h={12} /> : <Icon icon={Icons.ChevronDown} w={12} h={12} />}>
                                                 {selectedTag.label ? selectedTag.label : 'Compare…'}
                                             </MenuButton>
                                             <Portal>
@@ -146,11 +145,11 @@ const DocumentList:any = ({ latestDocuments, documentsMeta, documentsFilters }:I
                                                     {
                                                         tagFilters.map((item:IFilter, index:number) => {
                                                             return <MenuItem key={index}
-                                                                             as={Button}
-                                                                             variant="menuItemFilter"
-                                                                             onClick={() => {
-                                                                                 setSelectedTag(item);
-                                                                             }}>
+                                                                as={Button}
+                                                                variant="menuItemFilter"
+                                                                onClick={() => {
+                                                                    setSelectedTag(item);
+                                                                }}>
                                                                 <Flex direction="row" align="center" width="100%">
                                                                     <Flex flex="1">{item.label}</Flex>
                                                                     {
@@ -173,9 +172,9 @@ const DocumentList:any = ({ latestDocuments, documentsMeta, documentsFilters }:I
                                     {({ isOpen }) => (
                                         <>
                                             <MenuButton as={Button}
-                                                        variant="menuButton"
-                                                        minWidth={['100%', ,'150px']}
-                                                        rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} w={12} h={12} /> : <Icon icon={Icons.ChevronDown} w={12} h={12} />}>
+                                                variant="menuButton"
+                                                minWidth={['100%', ,'150px']}
+                                                rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} w={12} h={12} /> : <Icon icon={Icons.ChevronDown} w={12} h={12} />}>
                                                 {selectedYear.label ? selectedYear.label : 'Compare…'}
                                             </MenuButton>
                                             <Portal>
@@ -183,17 +182,17 @@ const DocumentList:any = ({ latestDocuments, documentsMeta, documentsFilters }:I
                                                     {
                                                         yearFilters.map((item:IFilter, index:number) => {
                                                             return <MenuItem key={index}
-                                                                             as={Button}
-                                                                             variant="menuItemFilter"
-                                                                             onClick={() => {
-                                                                                 setSelectedYear(item);
-                                                                             }}>
+                                                                as={Button}
+                                                                variant="menuItemFilter"
+                                                                onClick={() => {
+                                                                    setSelectedYear(item);
+                                                                }}>
                                                                 <Flex direction="row" align="center" width="100%">
                                                                     <Flex flex="1">{item.label}</Flex>
                                                                     {
                                                                         selectedYear === item && <Box color="steelBlue">
                                                                             <Icon icon={Icons.Tick} h={12} w={12}  />
-                                                                         </Box>
+                                                                        </Box>
                                                                     }
                                                                 </Flex>
                                                             </MenuItem>;

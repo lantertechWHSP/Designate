@@ -9,23 +9,21 @@ interface IPostCard extends IPost {
 
 const PostCard:any = ({ title, image, publishDate, slug }:IPostCard) : any => {
     return <Box>
-        <Box mb={4}>
+        <Box mb={['20px']}>
             <Link href={`/news/${slug}`}>
                 <Image image={image} ratio={[2 / 1]} />
             </Link>
         </Box>
         {
             title && <Link href={`/news/${slug}`}>
-                <Heading as="h2" fontSize={['21px']} color="black" fontWeight={500} mb={2}>
+                <Heading as="h2" fontSize={['21px']} lineHeight="22px"  color="black" fontWeight={500} mb={2}>
                     {title}
                 </Heading>
             </Link>
         }
         {
-            publishDate && <Box mb={2}>
-                <Text as="span" fontSize="16px" lineHeight="24px" color="blackBlur">
-                    {publishDate}
-                </Text>
+            publishDate && <Box mb={2} fontSize="16px" lineHeight="22px" color="blackBlur" mb={6}>
+                {publishDate}
             </Box>
         }
         {
