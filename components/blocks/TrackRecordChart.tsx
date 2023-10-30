@@ -82,7 +82,7 @@ const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesT
         },
     ]);
 
-    const [lines, setLines] = useState([]);
+    const [data, setData] = useState(null);
 
     const updateLines:any = () : void => {
         const newLines:any = [];
@@ -107,8 +107,7 @@ const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesT
             fill: colors[3]
         });
 
-
-        setLines(newLines);
+        setData({ lines: newLines });
     };
 
     const [hasData] = useState<boolean>((australianSharesTable.data && australianSharesTable.data.length > 0) &&
@@ -188,7 +187,7 @@ const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesT
                 </Box>
             }
         </Flex>
-        <LineChart data={{ lines: lines }} textColor={textColor} fillColor={fillColor} borderColor={borderColor} />
+        <LineChart data={data} textColor={textColor} fillColor={fillColor} borderColor={borderColor} />
     </ContentBlock>;
 };
 

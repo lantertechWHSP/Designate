@@ -383,7 +383,10 @@ export const theme:any = extendBaseTheme({
             },
         },
         Alert: {
-            ...Alert
+            ...Alert,
+            // baseStyle: {
+            //     fontSize: '16px'
+            // }
         }
     },
     styles: {

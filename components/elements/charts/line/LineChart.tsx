@@ -1,11 +1,12 @@
 import React, { useEffect, useMemo, useRef, useState, ReactNode, Fragment }  from 'react';
 import { scaleLinear, scaleTime, line, area } from 'd3';
-import { Box, Alert } from '@chakra-ui/react';
+import { Box, Alert, useMediaQuery } from '@chakra-ui/react';
 import { max as _max, min as _min, throttle as _throttle, isNil as _isNil , sumBy as _sumBy} from 'lodash';
 import { DateTime } from 'luxon';
 import { ColorGenerator } from '~/lib/colorGenerator/colorGenerator';
 import { AxisLeft } from "~/components/elements/charts/line/modules/AxisLeft";
 import { AxisBottom } from "~/components/elements/charts/line/modules/AxisBottom";
+import { breakpoints } from '~/lib/theme/theme';
 
 interface ILineChart {
     data: {
@@ -42,10 +43,14 @@ interface IMargin {
 }
 
 const LineChart:any = ({ data, textColor = 'steelBlue', borderColor = 'borderColor', fillColor = 'rgba(80, 81, 60, 0.05)' }:ILineChart) : ReactNode => {
-    const [width, setWidth] = useState<number>(null);
-    const [height, setHeight] = useState<number>(null);
+    const [mediaQuery] = useMediaQuery(`(min-width: ${breakpoints.sm})`);
+    const [width, setWidth] = useState<number|string>(null);
+    const [height, setHeight] = useState<number|string>(mediaQuery ? 390 : 340);
     const margin:IMargin = { top: 30, right: 30, bottom: 30, left: 0 };
     const elementRef:any = useRef<ReactNode>();
+    const [isDataLoaded, setIsDataLoaded] = useState(false);
+    const [hasData, setHasData] = useState(false);
+    const [chartVisible, setChartVisible] = useState(false);
 
     const boundsWidth:number = useMemo<number>(() => {
         return width - margin.right - margin.left;
@@ -55,15 +60,22 @@ const LineChart:any = ({ data, textColor = 'steelBlue', borderColor = 'borderCol
         return height - margin.top - margin.bottom;
     }, [height]);
 
-    const hasData:any = useMemo(() => {
+    useEffect(() => {
         if(data && Array.isArray(data.lines) && data.lines.length > 0) {
             const sum:number = _sumBy(data.lines, (line) => {
                 return Array.isArray(line.data) ? line.data.length : 0;
             });
 
-            return sum > 0;
+            setHasData(sum > 0);
         }
-        return false;
+        else {
+            setHasData(false);
+        }
+
+        setTimeout(() => {
+            setIsDataLoaded(true);
+        }, 1);
+
     }, [data]);
 
     const yScale:any = useMemo<any>(() => {
@@ -85,9 +97,7 @@ const LineChart:any = ({ data, textColor = 'steelBlue', borderColor = 'borderCol
                 .range([boundsHeight, 0]);
         }
         else {
-            return scaleLinear()
-                .domain([0, 10])
-                .range([boundsHeight, 0]);
+            return null;
         }
     }, [data, hasData, height]);
 
@@ -111,20 +121,37 @@ const LineChart:any = ({ data, textColor = 'steelBlue', borderColor = 'borderCol
                 .range([0, width]);
         }
         else {
-            return scaleTime()
-                .domain([DateTime.now().valueOf(), DateTime.now().valueOf()])
-                .range([0, width]);
+            return null;
         }
     }, [data, hasData, width]);
 
-    const lineBuilder:any = line<IData>()
-        .x((datum:IData) => xScale(datum.date))
-        .y((datum:IData) => yScale(datum.value));
+    useEffect(() => {
+        if(xScale !== null && yScale !== null) {
+            setTimeout(() => {
+                setChartVisible(true);
+            }, 1)
+        }
+    }, [xScale, yScale])
 
-    const areaBuilder:any = area<IData>()
-        .x((datum:IData) => xScale(datum.date))
-        .y1((datum:IData) => yScale(datum.value))
-        .y0(yScale(0));
+    const lineBuilder:any = useMemo(() => {
+        if(xScale && yScale) {
+            return line<IData>()
+                .x((datum:IData) => xScale(datum.date))
+                .y((datum:IData) => yScale(datum.value));
+        }
+        return null;
+    }, [xScale, yScale])
+
+    const areaBuilder:any = useMemo(() => {
+        if(xScale && yScale) {
+            return area<IData>()
+                .x((datum:IData) => xScale(datum.date))
+                .y1((datum:IData) => yScale(datum.value))
+                .y0(yScale(0));
+        }
+        return null;
+    }, [xScale, yScale])
+
 
     const linesSVG:any = useMemo(() => {
         if(hasData) {
@@ -147,11 +174,19 @@ const LineChart:any = ({ data, textColor = 'steelBlue', borderColor = 'borderCol
     }, [data, hasData, height, width]);
 
     useEffect(() => {
+        if(mediaQuery) {
+            setHeight(390);
+        }
+        else {
+            setHeight(340);
+        }
+    }, [mediaQuery])
+
+    useEffect(() => {
         const setDimension:any = () : void => {
             if(elementRef.current) {
                 const newWidth:number = elementRef.current.getBoundingClientRect().width;
                 setWidth(newWidth);
-                setHeight(390);
             }
         };
 
@@ -168,44 +203,46 @@ const LineChart:any = ({ data, textColor = 'steelBlue', borderColor = 'borderCol
         };
     }, []);
 
-    return <Box ref={elementRef}>
+    return <Box ref={elementRef} height={height}>
         {
-            hasData ? <Box sx={{
-                '.tick': {
-                    fontSize: '12px',
-                    fontFamily: 'Roboto',
-                    color: textColor
-                },
-                '.x-axis .domain': {
-                    display: 'none'
-                },
-                '.x-axis .tick line': {
-                    display: 'none'
-                },
-                '.y-axis .tick line': {
-                    color: borderColor
-                },
-
-                '.y-axis .tick:first-of-type line': {
-                    color: 'black'
-                }
-            }}>
+            isDataLoaded && <>
                 {
-                    (boundsWidth && boundsHeight) && <svg width={width} height={height} shapeRendering={"crispEdges"}>
-                        {
-                            <g
-                                width={boundsWidth}
-                                height={boundsHeight}
-                                transform={`translate(${[margin.left, margin.top].join(",")})`}
-                                overflow={"visible"}
-                            >
-                                <AxisLeft scale={yScale} chartHeight={height} width={width} />
-                                <g>
-                                    <g transform="translate(30, 0)">
+                    hasData ? <>
+                        <Box
+                            sx={{
+                            '.tick': {
+                                fontSize: '12px',
+                                fontFamily: 'Roboto',
+                                color: textColor
+                            },
+                            '.x-axis .domain': {
+                                display: 'none'
+                            },
+                            '.x-axis .tick line': {
+                                display: 'none'
+                            },
+                            '.y-axis .tick line': {
+                                color: borderColor
+                            },
+                            '.y-axis .tick:first-of-type line': {
+                                color: 'black'
+                            },
+
+                        }} visibility={chartVisible ? 'visible': 'hidden'}>
+                            <svg width={width} height={height} shapeRendering={"crispEdges"}>
+                                    <g
+                                    width={boundsWidth}
+                                    height={boundsHeight}
+                                    transform={`translate(${[margin.left, margin.top].join(",")})`}
+                                    overflow={"visible"}
+                                  >
+                                    <AxisLeft scale={yScale} chartHeight={height} width={width} />
+                                    <g>
+                                      <g transform="translate(30, 0)">
                                         <AxisBottom scale={xScale} transform={`translate(0, ${boundsHeight})`} />
-                                    </g>
-                                    {
-                                        (Array.isArray(linesSVG) && linesSVG.length > 0) && <>
+                                      </g>
+                                        {
+                                            (Array.isArray(linesSVG) && linesSVG.length > 0) && <>
                                             <g>
                                                 {
                                                     linesSVG.map((line:ILineDataSVG, index:number) => {
@@ -213,43 +250,44 @@ const LineChart:any = ({ data, textColor = 'steelBlue', borderColor = 'borderCol
                                                             return <Fragment key={index}>
                                                                 {
                                                                     ((_isNil(line.display) || line.display) && index === 0) &&
-                                                                    <path
-                                                                        d={line.drawnArea}
-                                                                        fill={fillColor}
-                                                                        opacity={1}
-                                                                        strokeWidth={0}
-                                                                    />
+                                                                  <path
+                                                                    d={line.drawnArea}
+                                                                    fill={fillColor}
+                                                                    opacity={1}
+                                                                    strokeWidth={0}
+                                                                  />
                                                                 }
                                                             </Fragment>;
                                                         }
                                                     })
                                                 }
                                             </g>
-                                            {
-                                                linesSVG.map((line:ILineDataSVG, index:number) => {
-                                                    {
-                                                        return <Fragment key={index}>
-                                                            {
-                                                                (_isNil(line.display) || line.display) &&
-                                                                <path
+                                                {
+                                                    linesSVG.map((line:ILineDataSVG, index:number) => {
+                                                        {
+                                                            return <Fragment key={index}>
+                                                                {
+                                                                    (_isNil(line.display) || line.display) &&
+                                                                  <path
                                                                     d={line.drawnLine}
                                                                     stroke={line.stroke}
                                                                     fill="none"
                                                                     strokeWidth={2}
-                                                                />
-                                                            }
-                                                        </Fragment>;
-                                                    }
-                                                })
-                                            }
-                                        </>
-                                    }
-                                </g>
-                            </g>
-                        }
-                    </svg>
+                                                                  />
+                                                                }
+                                                            </Fragment>;
+                                                        }
+                                                    })
+                                                }
+                                          </>
+                                        }
+                                    </g>
+                                  </g>
+                              </svg>
+                        </Box>
+                    </> : <Alert status="info">No Data</Alert>
                 }
-            </Box> : <Alert status="info">No Data</Alert>
+            </>
         }
     </Box>;
 };
