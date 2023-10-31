@@ -89,7 +89,7 @@ export const getLayoutData:any = (site:ISite, page:IPage, preview:boolean) : any
         isHomePage: page?.slug ? page?.slug === 'home' : false,
         title: page?.title || null,
         preview: preview || false,
-        darkTheme: !_isNil(page.darkTheme) ? page.darkTheme : false
+        darkTheme: !_isNil(page?.darkTheme) ? page.darkTheme : false
     };
 };
 
