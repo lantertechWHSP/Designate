@@ -5,12 +5,6 @@ export const config:any = {
 };
 
 export async function middleware(request: NextRequest) : Promise<NextResponse> {
-    // Exclude structured text
-    // @TODO remove this once production does not need BasicAuth
-    if(request.nextUrl.href.endsWith('/admin/structuredText')) {
-        return NextResponse.next();
-    }
-
     // Staging Environment
     if(process.env.SITE_ENVIRONMENT === 'staging' || process.env.SITE_ENVIRONMENT === 'production') {
         const basicAuth:any = request.headers.get('authorization');

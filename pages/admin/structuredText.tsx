@@ -31,7 +31,7 @@ const StructuredTextEditor:any = () => {
                                     paddingLeft: '18px',
                                     background: 'white',
                                     position: 'relative',
-                                    listStyleType: '✓',
+                                    listStyleType: `'✓'`,
                                 }
                             }
                         ];
