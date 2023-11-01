@@ -3,7 +3,7 @@ import { StructuredText } from 'react-datocms';
 import Link  from 'next/link';
 import { isHeading, isParagraph, isCode, isListItem } from 'datocms-structured-text-utils';
 import { renderNodeRule } from 'datocms-structured-text-to-html-string';
-import { Heading, Code, Box, Text } from '@chakra-ui/react';
+import { Heading, Code, Box, Text, Flex } from '@chakra-ui/react';
 import ImageBlock from '~/components/blocks/Image';
 import VideoBlock from '~/components/blocks/Video';
 import AudioBlock from '~/components/blocks/Audio';
@@ -56,11 +56,11 @@ const StrucutredContent:any = ({ content }) : ReactNode => {
                         </Code>;
                     }),
                     renderNodeRule(isListItem, ({ node, children, key }) => {
-                        const isTickListItem = (child) => {
+                        const isTickListItem:any = (child) => {
 
                             if(child.type === 'paragraph' || child.type === 'span') {
                                 if(Array.isArray(child.marks) && child.marks.length > 0) {
-                                    const tickedNode = child.marks.find((element) => {
+                                    const tickedNode:any = child.marks.find((element) => {
                                         return element === 'ticked-list-item';
                                     });
 
@@ -76,10 +76,9 @@ const StrucutredContent:any = ({ content }) : ReactNode => {
                             return null;
                         };
 
-                        const tickedNode = isTickListItem(node.children[0]);
+                        const tickedNode:any = isTickListItem(node.children[0]);
 
-                        return tickedNode ? <Box as="li"
-                            display="flex"
+                        return tickedNode ? <Flex as="li"
                             direction="row"
                             listStyleType="none"
                             ml={-4}
@@ -91,7 +90,7 @@ const StrucutredContent:any = ({ content }) : ReactNode => {
                             <Box position="relative" top="-1px">
                                 {children}
                             </Box>
-                        </Box> : <Box as="li" key={key}>
+                        </Flex> : <Box as="li" key={key}>
                             {children}
                         </Box>;
                     })
