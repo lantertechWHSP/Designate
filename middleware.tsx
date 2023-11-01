@@ -5,6 +5,10 @@ export const config:any = {
 };
 
 export async function middleware(request: NextRequest) : Promise<NextResponse> {
+    if(request.nextUrl === '/admin/structuredText') {
+        return NextResponse.next();
+    }
+
     // Staging Environment
     if(process.env.SITE_ENVIRONMENT === 'staging' || process.env.SITE_ENVIRONMENT === 'production') {
         const basicAuth:any = request.headers.get('authorization');
