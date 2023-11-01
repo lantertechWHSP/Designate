@@ -82,7 +82,7 @@ const StrucutredContent:any = ({ content }) : ReactNode => {
                             direction="row"
                             listStyleType="none"
                             ml={-4}
-                            mb="2"
+                            mb={4}
                             key={key}>
                             <Box minWidth="24px" minHeight="24px" mr={3}>
                                 <ListTick />

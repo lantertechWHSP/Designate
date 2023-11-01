@@ -229,7 +229,7 @@ const DocumentList:any = ({ latestDocuments, documentsMeta, documentsFilters }:I
                     </Box>
                     {
                         couldNotLoadDocuments && <Box>
-                            <Text variant="caption">Could not load Documents</Text>
+                            <Alert status="error">Could not load Documents</Alert>
                         </Box>
                     }
                     {

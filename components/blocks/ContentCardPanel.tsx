@@ -6,6 +6,7 @@ import { gutter } from '~/components/elements/grid/grid';
 import { IImage } from '~/interfaces/util/image';
 import StructuredContent from '~/components/StructuredContent';
 import { IStructuredText } from '~/interfaces/util/structuredText';
+import { boxShadow } from '~/lib/theme/theme';
 
 interface IContentCardPanelBlock extends IBlock {
     title?:string;
@@ -15,13 +16,19 @@ interface IContentCardPanelBlock extends IBlock {
 
 const ContentCardPanel:any = ({ title, description, image, containerWidth, paddingTop, paddingBottom }:IContentCardPanelBlock) : ReactNode => {
     return (title || description || image) && <ContentBlock background="ghostWhite" containerWidth={containerWidth} paddingTop={paddingTop} paddingBottom={paddingBottom}>
-        <Flex direction={['column', ,'row']}>
+        <Flex direction={['column', ,'row']} mx={[0, ,'-30px']}
+              minHeight={['320px']}
+        borderRadius="3px"
+              boxShadow={boxShadow}
+        overflow="hidden">
             <Flex width={['100%', ,'50%']} background="white" direction="column" p={[6, ,gutter * 2]}>
                 {
-                    title && <Heading as="h2" mb={4}>{title}</Heading>
+                    title && <Heading as="h2" variant="h3" mb={4}>{title}</Heading>
                 }
                 {
-                    description && <StructuredContent content={description} />
+                    description && <Box color="grey" fontSize={['16px']} lineHeight={['26px']}>
+                        <StructuredContent  content={description} />
+                    </Box>
                 }
             </Flex>
             <Box width={['100%', ,'50%']}

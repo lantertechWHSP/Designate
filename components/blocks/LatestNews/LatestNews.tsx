@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
-import { Flex, Heading, Box, Text } from '@chakra-ui/react';
+import { Flex, Heading, Box, Alert } from '@chakra-ui/react';
 import ContentBlock from '~/components/blocks/Content';
 import { doQuery, queries } from '~/dato/api';
 import { IPost } from '~/interfaces/models/post';
@@ -37,7 +37,7 @@ const LatestNewsBlock:any = ({ background, textColor, paddingTop, paddingBottom,
                         })
                     }
                 </Row>
-            </Box> : <Text variant="caption">No latest news found…</Text>
+            </Box> : <Alert status="info">No latest news found…</Alert>
         }
     </ContentBlock>;
 };

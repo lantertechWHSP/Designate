@@ -38,6 +38,8 @@ const colors:any = {
     lightGrey2Blur: '#dee2e666',
     lightGrey3Blur: '#d9d9d933',
 
+    grey: '#848484',
+
     positive: '#e8f1c8',
     negative: '#f9c9c8',
 
@@ -52,6 +54,10 @@ const colors:any = {
 };
 
 colors['borderColor'] = colors.lightGrey2;
+
+// const boxShadow = '0px 4px 10px 0px rgba(0, 0, 0, 0.10)',
+
+export const boxShadow = '0px 4px 10px 0px rgba(0, 0, 0, 0.10)';
 
 export const theme:any = extendBaseTheme({
     fonts: {
@@ -441,12 +447,21 @@ export const theme:any = extendBaseTheme({
                 mb: 4
             },
             ul: {
-                ml: '10px',
-                mb: 8
+                ml: '14px',
+                mb: 8,
+                li: {
+                    pl: '14px'
+                },
+                'li::marker': {
+                    content: '"•"'
+                }
             },
             ol: {
                 ml: '20px',
-                mb: 8
+                mb: 8,
+                li: {
+                    pl: '8px'
+                }
             },
             // YourIR
             '#yourir-default-announcement': {

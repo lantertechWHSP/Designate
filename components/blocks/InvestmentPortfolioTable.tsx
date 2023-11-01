@@ -59,12 +59,34 @@ const InvestmentPortfolioTableBlock:any = ({ table, lastUpdated, paddingTop, pad
             ((Array.isArray(table?.data) && table.data.length > 0) || (Array.isArray(table?.columns) && table.columns.length > 0)) ? <TableContainer>
                 <Table variant="basic" w="100%" color="white" sx={{
                     td: {
+                        borderLeft: '1px solid',
                         borderBottom: '1px solid',
                         borderColor: 'whiteBlur2',
-                        color: 'white'
+                        color: 'white',
+                        px: 4,
+                        fontSize: ['18px'],
+                        _first: {
+                            borderLeft: '0',
+                            pl: 0,
+                            pr: 4
+                        },
+                        _last: {
+                            pl: 4,
+                            pr: 0
+                        }
                     },
                     th: {
-                        color: 'whiteBlur'
+                        fontSize: ['16px'],
+                        color: 'whiteBlur',
+                        px: 4,
+                        _first: {
+                            pl: 0,
+                            pr: 4
+                        },
+                        _last: {
+                            pl: 4,
+                            pr: 0
+                        }
                     },
                     tr: {
                         _last: {
@@ -83,7 +105,7 @@ const InvestmentPortfolioTableBlock:any = ({ table, lastUpdated, paddingTop, pad
                                     Portfolio
                                 </Th>
                                 <Th width={['35%', ,'20%']} >
-                                    Net Asset Value (M)
+                                    Net Asset Value
                                 </Th>
                                 <Th width={['15%', ,'60%']} >
                                     Weighting
@@ -102,7 +124,13 @@ const InvestmentPortfolioTableBlock:any = ({ table, lastUpdated, paddingTop, pad
                                             {row.Portfolio || '-'}
                                         </Td>
                                         <Td>
-                                            {row.NetAssetValue || '-'}
+                                            ${row.NetAssetValue || '-'}{'\u00A0'}
+                                            <Text as="span" display={['none', ,'inline']}>
+                                                Million
+                                            </Text>
+                                            <Text as="span" display={['inline', ,'none']}>
+                                                M
+                                            </Text>
                                         </Td>
                                         <Td verticalAlign="middle">
                                             {

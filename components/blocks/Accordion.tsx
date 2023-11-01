@@ -21,8 +21,8 @@ const AccordionBlock:any = ({ title, background, textColor, items }:IAccordionBl
 
     return (title || (Array.isArray(items) && items.length > 0)) && <ContentBlock background={background} color={textColor} py={8}>
         {
-            title && <Box mb={8}>
-                <Heading as="h2" variant="sectionHeading" color={selectedTextColor}>
+            title && <Box>
+                <Heading as="h2" variant="sectionHeading" color={selectedTextColor} mb={0}>
                     {title}
                 </Heading>
             </Box>
@@ -38,13 +38,16 @@ const AccordionBlock:any = ({ title, background, textColor, items }:IAccordionBl
                                         borderTop="1px solid"
                                         alignItems="center"
                                         textAlign="left"
+                                                     lineHeight="64px"
+                                                     height="64px"
                                         color={selectedTextColor}
                                         borderColor={borderColor}>
                                         <Heading as="h3"
                                             variant="h4"
                                             color={selectedTextColor}
                                             fontSize={['21px']}
-                                            fontWeight={500}>
+                                                 lineHeight={['26px']}
+                                            fontWeight={500} margin={0}>
                                             {item?.title}
                                         </Heading>
                                         <Box flex={1} />
