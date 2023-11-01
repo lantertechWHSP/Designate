@@ -51,7 +51,7 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
         }
     }).then(({ documentsMeta }) => {
         return {
-            count: documentsMeta.count,
+            count: documentsMeta?.count ? documentsMeta.count  : 0,
         };
     });
 

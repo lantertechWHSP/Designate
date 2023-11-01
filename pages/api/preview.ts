@@ -3,19 +3,7 @@
 // this function knows how to convert a DatoCMS record
 // into a canonical URL within the website
 const generatePreviewUrl = ({ item, itemType, locale }) => {
-    // switch (itemType.attributes.api_key) {
-    //     // case 'landing_page':
-    //     //     return `/landing-pages/${item.attributes.slug}`;
-    //     // case 'post':
-    //     //     // blog posts are localized:
-    //     //     const localePrefix = locale === 'en' ? '' : `/${locale}`;
-    //     //     return `${localePrefix}/blog/${item.attributes.slug[locale]}`;
-    //     // default:
-    //     //     return null;
-    //
-    //     return `${item.attributes.slug}`;
-    // }
-    return null; //`${item.attributes.slug}`;
+    return item.attributes.slug;
 
 };
 const handler = (req, res) => {
@@ -24,14 +12,21 @@ const handler = (req, res) => {
     res.setHeader('Access-Control-Allow-Methods', 'POST');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization'); // add any other headers you need
     res.setHeader('Content-Type', 'application/json');
+
     // This will allow OPTIONS request
     if (req.method === 'OPTIONS') {
         return res.status(200).send('ok');
     }
+
+    // console.log(req.body);
+    // console.log(req.body);
+
     const url = generatePreviewUrl(req.body);
+    // No Preview to speak of
     if (!url) {
         return res.status(200).json({ previewLinks: [] });
     }
+
     const baseUrl = process.env.VERCEL_URL
         // Vercel auto-populates this environment variable
         ? `https://${process.env.VERCEL_URL}`
