@@ -1,12 +1,13 @@
 import React, { ReactNode }  from 'react';
 import { StructuredText } from 'react-datocms';
 import Link  from 'next/link';
-import { isHeading, isParagraph, isCode } from 'datocms-structured-text-utils';
+import { isHeading, isParagraph, isCode, isListItem } from 'datocms-structured-text-utils';
 import { renderNodeRule } from 'datocms-structured-text-to-html-string';
 import { Heading, Code, Box, Text } from '@chakra-ui/react';
 import ImageBlock from '~/components/blocks/Image';
 import VideoBlock from '~/components/blocks/Video';
 import AudioBlock from '~/components/blocks/Audio';
+import { ListTick } from '~/components/elements/svgs/ListTick';
 
 const StrucutredContent:any = ({ content }) : ReactNode => {
     return (
@@ -53,6 +54,46 @@ const StrucutredContent:any = ({ content }) : ReactNode => {
                         return <Code key={key}>
                             {node.code}
                         </Code>;
+                    }),
+                    renderNodeRule(isListItem, ({ node, children, key }) => {
+                        const isTickListItem = (child) => {
+
+                            if(child.type === 'paragraph' || child.type === 'span') {
+                                if(Array.isArray(child.marks) && child.marks.length > 0) {
+                                    const tickedNode = child.marks.find((element) => {
+                                        return element === 'ticked-list-item';
+                                    });
+
+                                    return tickedNode;
+                                }
+
+                                if(Array.isArray(child.children)) {
+                                    return child.children.find((innerChild) => {
+                                        return isTickListItem(innerChild);
+                                    });
+                                }
+                            }
+                            return null;
+                        };
+
+                        const tickedNode = isTickListItem(node.children[0]);
+
+                        return tickedNode ? <Box as="li"
+                            display="flex"
+                            direction="row"
+                            listStyleType="none"
+                            ml={-4}
+                            mb="2"
+                            key={key}>
+                            <Box minWidth="24px" minHeight="24px" mr={3}>
+                                <ListTick />
+                            </Box>
+                            <Box position="relative" top="-1px">
+                                {children}
+                            </Box>
+                        </Box> : <Box as="li" key={key}>
+                            {children}
+                        </Box>;
                     })
                 ]}
                 renderBlock={({record}) => {

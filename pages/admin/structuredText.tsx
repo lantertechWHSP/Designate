@@ -12,7 +12,7 @@ const StructuredTextEditor:any = () => {
         } catch (e) {
             return true;
         }
-    }
+    };
 
     useEffect(() => {
         if(!isLoaded) {
