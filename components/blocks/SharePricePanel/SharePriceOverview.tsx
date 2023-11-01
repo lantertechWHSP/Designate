@@ -136,7 +136,7 @@ const SharePriceOverview:any = () : ReactNode => {
                     </Badge>
                 </Box>
             </Box>
-            <Box py={4} flex={1} borderBottom="1px solid" borderColor="borderColor" flex={1}>
+            <Box py={4} borderBottom="1px solid" borderColor="borderColor" flex={1}>
                 <Text as="label" fontSize={['16px']} lineHeight={['18px']} mb={2}>Market Cap</Text>
                 <Text fontSize={['24px']}
                     lineHeight={['26px']}

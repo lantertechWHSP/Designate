@@ -43,7 +43,7 @@ export const Bars:any = ({ values, height, xScale, yScale, borderColor }:IBars) 
                                     </PopoverContent>
                                 </Portal>
                             </Popover>
-                        </g>
+                        </g>;
                     })
                 }
             </g>

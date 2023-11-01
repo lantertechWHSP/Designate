@@ -46,14 +46,14 @@ const ShareHistoricalPricesTable:any = ({ paddingTop, paddingBottom }:ShareHisto
                 <Flex direction="row" justify="space-between" align="center" mt={8}>
                     <Box>
                         <Button variant="paginationDirection"
-                                data-yourir="prevPage"
-                                m={0}
-                                onClick={scrollToTable}>
+                            data-yourir="prevPage"
+                            m={0}
+                            onClick={scrollToTable}>
                             <Flex align="center"
-                                  display="inline-flex"
-                                  borderBottom="1px solid"
-                                  borderColor="darkBrownBlur"
-                                  fontWeight={700}>
+                                display="inline-flex"
+                                borderBottom="1px solid"
+                                borderColor="darkBrownBlur"
+                                fontWeight={700}>
                                 <Icon icon={Icons.ChevronLeft} w={12} h={12} />
                                 <Text as="span" ml={2}>
                                     Prev
@@ -100,18 +100,18 @@ const ShareHistoricalPricesTable:any = ({ paddingTop, paddingBottom }:ShareHisto
                     </Box>
                     <Box>
                         <Button variant="paginationDirection"
-                                data-yourir="nextPage"
-                                m={0}
-                                onClick={scrollToTable}>
+                            data-yourir="nextPage"
+                            m={0}
+                            onClick={scrollToTable}>
                             <Flex align="center"
-                                  display="inline-flex"
-                                  borderBottom="2px solid"
-                                  borderColor="darkBrownBlur"
-                                  transition="border-color 0.3s linear"
-                                  _hover={{
-                                      borderColor: 'darkBrown'
-                                  }}
-                                  fontWeight={700}>
+                                display="inline-flex"
+                                borderBottom="2px solid"
+                                borderColor="darkBrownBlur"
+                                transition="border-color 0.3s linear"
+                                _hover={{
+                                    borderColor: 'darkBrown'
+                                }}
+                                fontWeight={700}>
                                 <Text as="span" mr={2}>
                                     Next
                                 </Text>

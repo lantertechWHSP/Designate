@@ -37,7 +37,7 @@ export const AxisLeft:any = ({ scale, chartHeight, width }:IAxisLeft) : ReactNod
                 >
                     <text key={value}
                         fill="currentColor"
-                          display={index > 0 ? 'block' : 'none'}
+                        display={index > 0 ? 'block' : 'none'}
                         transform="translate(0, 15)">
                         {value}
                     </text>
