@@ -1,9 +1,12 @@
-// Put this code in the /pages/api directory of your Next.js website:
-// (ie. /pages/api/preview-links.js)
-// this function knows how to convert a DatoCMS record
-// into a canonical URL within the website
-const generatePreviewUrl = ({ item, itemType, locale }) => {
+
+const generatePreviewUrl = ({ item, itemType }) => {
     return item.attributes.slug;
+
+    switch (itemType.attributes.api_key) {
+        case 'page': return item.attributes.slug;
+        case 'post': return `/news/${item.attributes.slug}`;
+        default: return null;
+    }
 
 };
 const handler = (req, res) => {
@@ -18,27 +21,20 @@ const handler = (req, res) => {
         return res.status(200).send('ok');
     }
 
-    // console.log(req.body);
-    // console.log(req.body);
-
     const url = generatePreviewUrl(req.body);
-    // No Preview to speak of
     if (!url) {
         return res.status(200).json({ previewLinks: [] });
     }
 
     const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : process.env.NEXT_PUBLIC_SITE_URL;
     const previewLinks = [
-        // Public URL:
         {
             label: 'Published version',
-            url: `${baseUrl}${url}`,
+            url: `${baseUrl}/${url}`,
         },
-        // This requires an API route on your project that starts Next.js Preview Mode
-        // and redirects to the URL provided with the `redirect` parameter:
         {
             label: 'Draft version',
-            url: `${baseUrl}/api/start-preview-mode?redirect=${url}&secret=${process.env.DATOCMS_PREVIEW_SECRET}(${JSON.stringify(req.body.item)},${JSON.stringify(req.body.itemType)})`,
+            url: `${baseUrl}/api/start-preview?redirect=${url}&secret=${process.env.DATOCMS_PREVIEW_SECRET}`,
         },
     ];
     return res.status(200).json({ previewLinks });
