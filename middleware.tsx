@@ -7,7 +7,7 @@ export const config:any = {
 export async function middleware(request: NextRequest) : Promise<NextResponse> {
     // Exclude structured text
     // @TODO remove this once production does not need BasicAuth
-    if(request.nextUrl.href === '/admin/structuredText') {
+    if(request.nextUrl.href.endsWith('/admin/structuredText')) {
         return NextResponse.next();
     }
 
