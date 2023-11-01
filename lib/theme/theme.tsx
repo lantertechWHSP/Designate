@@ -23,9 +23,10 @@ const colors:any = {
     brownGrey: '#cbcbc5',
     darkBrown: '#50513c',
     darkBrownBlur: 'rgba(80, 81, 60, 0.4)',
+    darkBrownBlur2: 'rgba(80, 81, 60, 0.2)',
 
     white: '#ffffff',
-    whiteBlur: 'rgba(255, 255, 255, 0.7)',
+    whiteBlur: 'rgba(255, 255, 255, 0.6)',
     whiteBlur2: 'rgba(255, 255, 255, 0.2)',
     ghostWhite: '#f8f8f8',
     ghostWhiteBlur: 'rgba(248, 248, 248, 0.7)',

@@ -82,7 +82,7 @@ const StackedBarChart:any = ({ data, textColor = 'steelBlue', borderColor = 'bor
             }));
 
             // Bump up the value for aesthetics
-            max *= 1.05;
+            max *= 1.3;
 
             return scaleLinear()
                 .domain([0, max])

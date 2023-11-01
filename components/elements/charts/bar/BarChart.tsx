@@ -61,7 +61,7 @@ const BarChart:any = ({ data, textColor = 'steelBlue', borderColor = 'borderColo
                 return datum.value;
             }).value;
 
-            max *= 1.05;
+            max *= 1.3;
 
             return scaleLinear()
                 .domain([0, max])
@@ -156,7 +156,7 @@ const BarChart:any = ({ data, textColor = 'steelBlue', borderColor = 'borderColo
                                         overflow={"visible"}>
                                         <AxisLeft scale={yScale} chartHeight={height} width={width} />
                                         <AxisBottom scale={xScale} transform={`translate(0, ${boundsHeight})`} />
-                                        <Bars values={data.bars} xScale={xScale} yScale={yScale} height={boundsHeight} />
+                                        <Bars values={data.bars} xScale={xScale} borderColor={borderColor} yScale={yScale} height={boundsHeight} />
                                     </g>
                                 }
                             </>

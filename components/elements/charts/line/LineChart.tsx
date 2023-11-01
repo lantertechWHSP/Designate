@@ -238,7 +238,7 @@ const LineChart:any = ({ data, textColor = 'steelBlue', borderColor = 'borderCol
                             >
                                 <AxisLeft scale={yScale} chartHeight={height} width={width} />
                                 <g>
-                                    <g transform="translate(30, 0)">
+                                    <g transform="translate(15, 0)">
                                         <AxisBottom scale={xScale} transform={`translate(0, ${boundsHeight})`} />
                                     </g>
                                     {

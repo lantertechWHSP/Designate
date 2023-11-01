@@ -40,7 +40,7 @@ const HomePageOverviewBlock:any = ({ description, imageMain, imageSide, imageSid
                 </Box>
             </Flex>
         }
-        <Divider mt={8} borderColor="darkBrownBlur" />
+        <Divider mt={8} borderColor="darkBrownBlur2" />
     </ContentBlock>;
 };
 

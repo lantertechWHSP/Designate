@@ -28,7 +28,7 @@ export const AxisLeft:any = ({ scale, chartHeight, width }:IAxisLeft) : ReactNod
 
     return <g className="y-axis">
         {
-            ticks && ticks.map(({ value, offset }) => {
+            ticks && ticks.map(({ value, offset }, index:number) => {
                 return <g
                     key={value}
                     className="tick"
@@ -37,7 +37,8 @@ export const AxisLeft:any = ({ scale, chartHeight, width }:IAxisLeft) : ReactNod
                 >
                     <text key={value}
                         fill="currentColor"
-                        transform="translate(0, -10)">
+                          display={index > 0 ? 'block' : 'none'}
+                        transform="translate(0, 15)">
                         {value}
                     </text>
                     <line

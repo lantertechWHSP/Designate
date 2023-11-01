@@ -14,7 +14,7 @@ export const UnderlineLink:any = ({ ...props }:ISectionLink) => {
             as="span"
             display="inline-flex"
             borderBottom="2px solid"
-            borderColor="darkBrownBlur"
+            borderColor="darkBrownBlur2"
             transition="border-color 0.3s linear"
             lineHeight={1.4}
             _hover={{
@@ -38,7 +38,7 @@ export const SectionLinkInner:any = ({ children }) => {
     return <Flex align="center"
         display="inline-flex"
         borderBottom="2px solid"
-        borderColor="darkBrownBlur"
+        borderColor="darkBrownBlur2"
         transition="border-color 0.3s linear"
         _hover={{
             borderColor: 'darkBrown'
@@ -52,7 +52,7 @@ export const SectionLinkInner:any = ({ children }) => {
     </Flex>;
 };
 
-export const SectionLinkButton:any = ({ color = 'darkBrown', borderColor = 'darkBrownBlur', borderColorHover = 'darkBrown', ...props }:ISectionLink) => {
+export const SectionLinkButton:any = ({ color = 'darkBrown', borderColor = 'darkBrownBlur2', borderColorHover = 'darkBrown', ...props }:ISectionLink) => {
     return <Link {...props}
         display="block"
         color={color}

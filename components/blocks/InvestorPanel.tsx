@@ -118,7 +118,7 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                                     top: '-10px'
                                 },
                                 '.yourir-chart-yaxis-left .yourir-chart-yaxis-outside .yourir-chart-yaxis-label-container': {
-                                    left: '20px',
+                                    left: '0',
                                     marginRight: '0',
                                     fontSize: '12px',
                                     color: 'darkGrey'
