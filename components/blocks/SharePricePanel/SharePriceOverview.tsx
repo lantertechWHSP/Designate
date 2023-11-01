@@ -49,13 +49,13 @@ const SharePriceOverview:any = () : ReactNode => {
     }, []);
 
     return <Box sx={statusStyle}>
-        <Box as={YourIR}>
-            <Box mb={4} pb={[4, ,8]} borderBottom="1px solid" borderColor="borderColor">
+        <Flex as={YourIR}>
+            <Box mb={4} pb={[4, , ,'60px']} borderBottom="1px solid" borderColor="borderColor">
                 <Heading as="h3" fontSize={['36px']}
                     lineHeight={['42px']} fontWeight={500}
-                    mb={4}>
-                    <Text as="span" color="darkBrown" data-yourir="shortName"></Text>{'\u00A0'}
-                    <Text as="span" color="steelBlue"><span data-yourir="market"></span>:<span data-yourir="symbol"></span></Text>
+                    mb={2}>
+                    <Text as="span" color="darkBrown">Soul Patts</Text>{'\u00A0'}
+                    <Text as="span" color="steelBlue">ASX:SOL</Text>
                 </Heading>
                 <Box>
                     <Badge className="status">
@@ -129,7 +129,7 @@ const SharePriceOverview:any = () : ReactNode => {
                     </Badge>
                 </Box>
             </Box>
-            <Box py={4} borderBottom="1px solid" borderColor="borderColor">
+            <Box pt={4} pb={[4, , ,'63px']} borderBottom="1px solid" borderColor="borderColor" flex={1}>
                 <Text as="label" fontSize={['16px']} lineHeight={['18px']} mb={2}>Market Cap</Text>
                 <Text fontSize={['24px']}
                     lineHeight={['26px']}
@@ -138,7 +138,7 @@ const SharePriceOverview:any = () : ReactNode => {
                     color="black"
                     data-yourir="marketCap showCurrency=true minDecimals=2 maxDecimals=2"></Text>
             </Box>
-        </Box>
+        </Flex>
     </Box>;
 };
 

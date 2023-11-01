@@ -42,15 +42,18 @@ const SharePriceChart:any = () : ReactNode => {
                     </linearGradient>
                 </defs>
             </svg>
-            <Box w="100%"
+            <Box
+                w="100%"
                 sx={{
                     '.yourir-chart': {
-                        padding: '40px 0',
-                        borderBottomWidth: '1px',
                         borderStyle: 'solid',
                         borderColor: 'borderColor',
                         color: 'darkBrown',
-                        fontSize: '14px'
+                        fontSize: '14px',
+                        padding: '0 0 40px',
+                    },
+                    '.yourir-chart-panel': {
+                        height: '400px'
                     },
                     '.yourir-chart-price-fill': {
                         fill: `url(#priceGradient)`
@@ -61,7 +64,10 @@ const SharePriceChart:any = () : ReactNode => {
                     },
                     '.yourir-chart-yaxis-label': {
                         position: 'relative',
-                        top: '-10px'
+                        top: '12px'
+                    },
+                    '.yourir-chart-yaxis-label-container:first-of-type .yourir-chart-yaxis-label': {
+                        display: 'none'
                     },
                     '.yourir-chart-yaxis-left .yourir-chart-yaxis-outside .yourir-chart-yaxis-label-container': {
                         left: '0',
@@ -148,7 +154,7 @@ const SharePriceChart:any = () : ReactNode => {
                                             <Flex display="inlineFlex" direction="row" alignItems="center">
                                                 <Box background="lightGrey2" width="10px" height="10px" borderRadius="5px" mr={2} />
                                                 <Text as="span">
-                                                    Compare…
+                                                    Compare
                                                 </Text>
                                             </Flex>
                                         </MenuButton>
