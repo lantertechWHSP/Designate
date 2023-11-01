@@ -16,11 +16,9 @@ interface IContactsPanelBlock extends IBlock {
 
 const ContactsPanelBlock:any = ({ data: { contacts } }:IContactsPanelBlock) : ReactNode => {
     return (Array.isArray(contacts) && contacts.length > 0) && <ContentBlock background="ghostWhite">
-        <Box mb={8}>
-            <Heading as="h2" variant="sectionHeading">
-                Contacts
-            </Heading>
-        </Box>
+        <Heading as="h2" variant="sectionHeading" mb={[4, ,8]}>
+            Contacts
+        </Heading>
         <SimpleGrid columns={[1, , , 3]}>
             {
                 _orderBy(contacts, ['ordinal'], ['asc']).map((contact:IContact, index:number) => {

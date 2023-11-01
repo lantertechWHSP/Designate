@@ -10,7 +10,7 @@ interface IShareQuoteTable extends IBlock {
 const ShareQuoteTable:any = ({ paddingTop, paddingBottom }:IShareQuoteTable) : ReactNode => {
     return <ContentBlock background="ghostWhite" paddingTop={paddingTop} paddingBottom={paddingBottom}>
         <Box as={YourIR}>
-            <Heading as="h2" variant="sectionHeading" mb={8}>
+            <Heading as="h2" variant="sectionHeading" mb={[4, ,8]}>
                 Quote Table
             </Heading>
             <TableContainer>

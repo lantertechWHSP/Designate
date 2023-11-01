@@ -51,7 +51,7 @@ const InvestmentPortfolioTableBlock:any = ({ table, lastUpdated, paddingTop, pad
 
     return (table || lastUpdated) && <ContentBlock background="darkBrown" paddingTop={paddingTop} paddingBottom={paddingBottom}>
         <Box mb={8}>
-            <Heading as="h2" variant="sectionHeading" color="white">
+            <Heading as="h2" variant="sectionHeading" color="white" mb={[4, ,8]}>
                 Our Portfolio
             </Heading>
         </Box>

@@ -17,10 +17,10 @@ interface IContentCardPanelBlock extends IBlock {
 const ContentCardPanel:any = ({ title, description, image, containerWidth, paddingTop, paddingBottom }:IContentCardPanelBlock) : ReactNode => {
     return (title || description || image) && <ContentBlock background="ghostWhite" containerWidth={containerWidth} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         <Flex direction={['column', ,'row']} mx={[0, ,'-30px']}
-              minHeight={['320px']}
-        borderRadius="3px"
-              boxShadow={boxShadow}
-        overflow="hidden">
+            minHeight={['320px']}
+            borderRadius="3px"
+            boxShadow={boxShadow}
+            overflow="hidden">
             <Flex width={['100%', ,'50%']} background="white" direction="column" p={[6, ,gutter * 2]}>
                 {
                     title && <Heading as="h2" variant="h3" mb={4}>{title}</Heading>

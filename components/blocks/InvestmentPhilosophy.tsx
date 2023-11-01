@@ -18,7 +18,7 @@ interface IInvestmentPhilosophyBlock extends IBlock {
 const InvestmentPhilosophyBlock:any = ({ title, items, paddingTop, paddingBottom }:IInvestmentPhilosophyBlock) : ReactNode => {
     return (title || (Array.isArray(items) && items.length > 0)) && <ContentBlock background="ghostWhite" paddingTop={paddingTop} paddingBottom={paddingBottom}>
         {
-            title && <Heading as="h2" variant="sectionHeading" mb={8}>
+            title && <Heading as="h2" variant="sectionHeading" mb={[4, ,8]}>
                 {title}
             </Heading>
         }

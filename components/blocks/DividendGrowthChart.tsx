@@ -73,7 +73,7 @@ const DividendGrowthChart:any = ({ table, theme }:IDividendGrowthChartBlock) : R
     const [data] = useState(getValues());
 
     return <ContentBlock background={backgroundColor}>
-        <Row align="baseline" mb={[4, 6, ,8]}>
+        <Row align="baseline" mb={[4, ,8]}>
             <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half]}>
                 <Heading as="h2" variant="sectionHeading" mb={[3, , ,0]} color={textColor}>
                     Continued Dividend Growth

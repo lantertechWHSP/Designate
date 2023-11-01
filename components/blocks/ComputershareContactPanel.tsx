@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
 import ContentBlock from '~/components/blocks/Content';
 import { Row, Column, ColumnWidth } from "~/components/elements/grid/grid";
-import { Heading, Box, Text } from '@chakra-ui/react';
+import { Heading, Box, Text, Divider, Link } from '@chakra-ui/react';
 import StructuredContent from "~/components/StructuredContent";
 import { IStructuredText } from '~/interfaces/util/structuredText';
 import { Image } from '~/components/elements/image';
@@ -23,10 +23,10 @@ interface IComputershareContactPanelBlock extends IBlock {
 
 const ComputershareContactPanelBlock:any = ({ title, description, image, onlineDescription, website, contactLocal, contactInternational, email, address, paddingBottom }:IComputershareContactPanelBlock) : ReactNode => {
     return (title || description || image || onlineDescription || website || contactLocal || contactInternational || email || address) && <ContentBlock paddingBottom={paddingBottom}>
-        <Row mb={8}>
+        <Row>
             <Column width={[ColumnWidth.Full, ,ColumnWidth.FiveTwelfths]}>
                 {
-                    title && <Heading as="h2" variant="sectionHeading" fontWeight={500}>
+                    title && <Heading as="h2" variant="sectionHeading" fontWeight={500} mb={4}>
                         {title}
                     </Heading>
                 }
@@ -42,11 +42,14 @@ const ComputershareContactPanelBlock:any = ({ title, description, image, onlineD
             <Column width={[ColumnWidth.Full, ,ColumnWidth.FourTwelvfths]}>
                 {
                     image && <Box maxWidth={['300px']} mt={[8, ,0]}>
-                        <Image image={image} />
+                        <Link href="https://www.computershare.com/au" target="_blank">
+                            <Image image={image} />
+                        </Link>
                     </Box>
                 }
             </Column>
         </Row>
+        <Divider borderColor="darkBrownBlur2" my={[4, 8, 12]} />
         <Row>
             <Column width={[ColumnWidth.Full, ,ColumnWidth.OneThird]}>
                 {
@@ -55,13 +58,13 @@ const ComputershareContactPanelBlock:any = ({ title, description, image, onlineD
                             Online
                         </Heading>
                         {
-                            onlineDescription && <Box mb={4}>
+                            onlineDescription && <Box color="darkBrown" mb={6}>
                                 <StructuredContent content={onlineDescription} />
                             </Box>
                         }
                         {
                             website && <>
-                                <Heading as="h4" fontSize={['18px']} lineHeight={['26px']} fontWeight={500} mb={4}>Website</Heading>
+                                <Heading as="h4" fontSize={['18px']} lineHeight={['26px']} fontWeight={500} mb={2}>Website</Heading>
                                 <Text mb={0}>
                                     <UnderlineLink href={website}>
                                         {website}
@@ -80,7 +83,7 @@ const ComputershareContactPanelBlock:any = ({ title, description, image, onlineD
                         </Heading>
                         {
                             (contactLocal || contactInternational) && <Box>
-                                <Heading as="h4" fontSize={['18px']} lineHeight={['26px']} fontWeight={500} mb={4}>Website</Heading>
+                                <Heading as="h4" fontSize={['18px']} lineHeight={['26px']} fontWeight={500} mb={2}>Phone</Heading>
                                 {
                                     contactLocal && <Text color="darkBrown" mb={0}>
                                         <UnderlineLink href={`tel:${contactLocal}`} mr={2}>
@@ -112,7 +115,7 @@ const ComputershareContactPanelBlock:any = ({ title, description, image, onlineD
                         <Heading as="h3" variant="sectionSubheading" mb={4}>
                             Address
                         </Heading>
-                        <Box mb={4}>
+                        <Box color="darkBrown" mb={4}>
                             <StructuredContent content={address} />
                         </Box>
                     </Box>

@@ -14,21 +14,20 @@ interface IAccordionItem {
     content?:string;
 }
 
-const AccordionBlock:any = ({ title, background, textColor, items }:IAccordionBlock) : ReactNode => {
+const AccordionBlock:any = ({ title, background, textColor, items, paddingBottom }:IAccordionBlock) : ReactNode => {
     const selectedTextColor:any = getTextColor(textColor);
 
     const borderColor:any = selectedTextColor === 'white' ? 'whiteBlur2' : 'borderColor';
 
-    return (title || (Array.isArray(items) && items.length > 0)) && <ContentBlock background={background} color={textColor} py={8}>
+    return (title || (Array.isArray(items) && items.length > 0)) && <ContentBlock background={background} color={textColor} paddingBottom={paddingBottom} py={8}>
         {
-            title && <Box>
-                <Heading as="h2" variant="sectionHeading" color={selectedTextColor} mb={0}>
-                    {title}
-                </Heading>
-            </Box>
+            title && <Heading as="h2" variant="sectionHeading" color={selectedTextColor} mb={[4, ,8]}>
+                {title}
+            </Heading>
         }
         {
-            (Array.isArray(items) && items.length > 0) && <Accordion allowToggle>
+            (Array.isArray(items) && items.length > 0) && <Accordion allowToggle borderBottom="1px solid"
+                borderColor={borderColor}>
                 {
                     items.map((item:IAccordionItem, index:number) => {
                         return <AccordionItem key={index}>
@@ -38,15 +37,15 @@ const AccordionBlock:any = ({ title, background, textColor, items }:IAccordionBl
                                         borderTop="1px solid"
                                         alignItems="center"
                                         textAlign="left"
-                                                     lineHeight="64px"
-                                                     height="64px"
+                                        lineHeight="64px"
+                                        height="64px"
                                         color={selectedTextColor}
                                         borderColor={borderColor}>
                                         <Heading as="h3"
                                             variant="h4"
                                             color={selectedTextColor}
                                             fontSize={['21px']}
-                                                 lineHeight={['26px']}
+                                            lineHeight={['26px']}
                                             fontWeight={500} margin={0}>
                                             {item?.title}
                                         </Heading>

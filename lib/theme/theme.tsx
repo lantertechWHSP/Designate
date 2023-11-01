@@ -55,9 +55,7 @@ const colors:any = {
 
 colors['borderColor'] = colors.lightGrey2;
 
-// const boxShadow = '0px 4px 10px 0px rgba(0, 0, 0, 0.10)',
-
-export const boxShadow = '0px 4px 10px 0px rgba(0, 0, 0, 0.10)';
+export const boxShadow:string = '0px 4px 10px 0px rgba(0, 0, 0, 0.10)';
 
 export const theme:any = extendBaseTheme({
     fonts: {
@@ -325,7 +323,7 @@ export const theme:any = extendBaseTheme({
                     border: '1px solid',
                     borderColor: 'borderColor',
                     borderRadius: '8px',
-                    boxShadow: '0px 4px 10px 0px rgba(0, 0, 0, 0.10)',
+                    boxShadow: boxShadow,
                     overflow: 'hidden',
                     padding: 0
                 },
