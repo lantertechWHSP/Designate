@@ -38,9 +38,9 @@ const handler = (req, res) => {
         // and redirects to the URL provided with the `redirect` parameter:
         {
             label: 'Draft version',
-            url: `${baseUrl}/api/start-preview-mode?redirect=${url}&secret=${process.env.DATOCMS_PREVIEW_SECRET}`,
+            url: `${baseUrl}/api/start-preview-mode?redirect=${url}&secret=${process.env.DATOCMS_PREVIEW_SECRET}(${JSON.stringify(req.body.item)},${JSON.stringify(req.body.itemType)})`,
         },
     ];
-    return res.status(200).json({ previewLinks: previewLinks, body: req.body });
+    return res.status(200).json({ previewLinks });
 };
 export default handler;
