@@ -27,11 +27,7 @@ const handler = (req, res) => {
         return res.status(200).json({ previewLinks: [] });
     }
 
-    const baseUrl = process.env.VERCEL_URL
-        // Vercel auto-populates this environment variable
-        ? `https://${process.env.VERCEL_URL}`
-        // Netlify auto-populates this environment variable
-        : process.env.NEXT_PUBLIC_SITE_URL;
+    const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : process.env.NEXT_PUBLIC_SITE_URL;
     const previewLinks = [
         // Public URL:
         {
@@ -45,6 +41,6 @@ const handler = (req, res) => {
             url: `${baseUrl}/api/start-preview-mode?redirect=${url}&secret=${process.env.DATOCMS_PREVIEW_SECRET}`,
         },
     ];
-    return res.status(200).json({ previewLinks });
+    return res.status(200).json({ previewLinks: previewLinks, body: req.body });
 };
 export default handler;
