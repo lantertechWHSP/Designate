@@ -95,7 +95,7 @@ const FeaturedPostsCarousel:any = ({ posts }:IFeaturedPostsCarousel) : any => {
                                                     </Box>
                                                 </Column>
                                             </Row>
-                                            <SectionLinkButton href={`/news/${post.slug}`} mt={8} color="white" borderColor="whiteBlur">
+                                            <SectionLinkButton href={`/news/${post.slug}`} mt={8} color="white" borderColor="whiteBlur" borderColorHover="whiteBlur2">
                                                 Read More
                                             </SectionLinkButton>
                                         </Container>
@@ -118,11 +118,12 @@ const FeaturedPostsCarousel:any = ({ posts }:IFeaturedPostsCarousel) : any => {
                     }
                 </Box>
 
-                <Box position="absolute" width="100%" bottom="40px" zIndex="2">
+                <Box position="absolute" width="100%" pointerEvents="none" bottom="40px" zIndex="2">
                     <Container>
                         <Flex direction="row" justify="flex-end">
                             <Flex mx={-2}>
                                 <Button
+                                    pointerEvents="all"
                                     backgroundColor="whiteBlur"
                                     transition="background-color 0.3s linear"
                                     _hover={{
@@ -137,6 +138,7 @@ const FeaturedPostsCarousel:any = ({ posts }:IFeaturedPostsCarousel) : any => {
                                     <Icon icon={Icons.ArrowLeft} />
                                 </Button>
                                 <Button
+                                    pointerEvents="all"
                                     backgroundColor="whiteBlur"
                                     transition="background-color 0.3s linear"
                                     _hover={{
