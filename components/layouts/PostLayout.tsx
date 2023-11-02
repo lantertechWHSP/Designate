@@ -10,7 +10,7 @@ import SocialShare from '~/components/elements/socialShare';
 import Preview from '~/components/site/Preview';
 
 const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
-    const date:string = DateTime.fromFormat(layout?.page?.publishDate, 'yyyy-mm-dd').toFormat('DDD');
+    const date:string|null = layout?.page?.publishDate ? DateTime.fromFormat(layout?.page?.publishDate, 'yyyy-mm-dd').toFormat('DDD') : null;
 
     return (
         <Flex minHeight="100vh" direction="column">
