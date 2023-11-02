@@ -1,7 +1,8 @@
 const generatePreviewUrl = ({ item, itemType }) => {
     switch(itemType.attributes.api_key) {
+        case 'page': return item.attributes.slug;
         case 'post': return `news/${item.attributes.slug}`;
-        default: return item.attributes.slug;
+        default: return null;
     }
 };
 
