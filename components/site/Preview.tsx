@@ -1,15 +1,16 @@
 import { ReactNode } from 'react';
 import { useRouter } from 'next/router';
-import { Box, Container, Text } from '@chakra-ui/react';
-import { SectionLink } from '~/components/elements/sectionLink';
+import { Box, Container, Text, Link } from '@chakra-ui/react';
 
 const Preview:any = () : ReactNode => {
     const router = useRouter();
     let slug:string = router.asPath;
 
-    function trimSlash(str){
-        str = str.startsWith('/') ? str.substr(1) : str;
-        return str;
+    if(slug === '/') {
+        slug = 'home'
+    }
+    else {
+        slug = slug.startsWith('/') ? slug.substr(1) : slug;
     }
 
     return (
@@ -18,9 +19,9 @@ const Preview:any = () : ReactNode => {
                 <Text mb={0} mr={2} as="span">
                     You are now in Preview Mode.
                 </Text>
-                <SectionLink href={`/api/exit-preview?redirect=${trimSlash(slug)}`} zIndex="300">
+                <Link href={`/api/exit-preview?redirect=${slug}`}>
                     Click here to leave Preview Mode
-                </SectionLink>
+                </Link>
             </Container>
         </Box>
     );
