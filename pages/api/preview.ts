@@ -3,8 +3,8 @@ const generatePreviewUrl = ({ item, itemType }) => {
     return item.attributes.slug;
 
     switch(itemType.attributes.api_key) {
-        case 'page': return item.attributes.slug;
-        case 'post': return `news/${item.attributes.slug}`;
+        case 'page': return item.attributes.slug; break;
+        case 'post': return `news/${item.attributes.slug}`; break;
         default: return null;
     }
 };
@@ -33,7 +33,7 @@ const handler = (req, res) => {
         },
         {
             label: 'Draft version',
-            url: `${baseUrl}/api/start-preview?redirect=${url}${JSON.stringify(req.body.itemType)}&secret=${process.env.DATOCMS_PREVIEW_SECRET}`,
+            url: `${baseUrl}/api/start-preview?redirect=${url}${req.body.itemType.attributes.api_key}&secret=${process.env.DATOCMS_PREVIEW_SECRET}`,
         },
     ];
     return res.status(200).json({ previewLinks });
