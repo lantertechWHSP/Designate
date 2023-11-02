@@ -34,7 +34,7 @@ const handler = (req, res) => {
         },
         {
             label: 'Draft version',
-            url: `${baseUrl}/api/start-preview?redirect=${url}&secret=${process.env.DATOCMS_PREVIEW_SECRET}`,
+            url: `${baseUrl}/api/start-preview?redirect=${url}${JSON.stringify(req.body.itemType)}&secret=${process.env.DATOCMS_PREVIEW_SECRET}`,
         },
     ];
     return res.status(200).json({ previewLinks });
