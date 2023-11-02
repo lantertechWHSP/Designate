@@ -1,13 +1,10 @@
-
 const generatePreviewUrl = ({ item, itemType }) => {
-    return item.attributes.slug;
-
     switch(itemType.attributes.api_key) {
-        case 'page': return item.attributes.slug; break;
-        case 'post': return `news/${item.attributes.slug}`; break;
-        default: return null;
+        case 'post': return `news/${item.attributes.slug}`;
+        default: return item.attributes.slug;
     }
 };
+
 const handler = (req, res) => {
     // setup CORS permissions
     res.setHeader('Access-Control-Allow-Origin', '*');
