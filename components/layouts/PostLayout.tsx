@@ -7,14 +7,18 @@ import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
 import { DateTime } from 'luxon';
 import { Image } from '~/components/elements/image';
 import SocialShare from '~/components/elements/socialShare';
+import Preview from '~/components/site/Preview';
 
 const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
-    const date:string = DateTime.fromFormat(layout?.page?.publishDate, 'yyyy-mm-dd').toFormat('DDD');
+    const date:string|null = layout?.page?.publishDate ? DateTime.fromFormat(layout?.page?.publishDate, 'yyyy-mm-dd').toFormat('DDD') : null;
 
     return (
         <Flex minHeight="100vh" direction="column">
             {
                 layout?.metatags && <Meta tags={layout?.metatags} />
+            }
+            {
+                layout?.preview && <Preview />
             }
             <Header menu={layout?.menu} />
             <Flex width="100%"
