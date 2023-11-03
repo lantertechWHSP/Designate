@@ -56,7 +56,7 @@ export const ProfilesPanelBlock:any = ({ items }:IProfilesPanelBlock) : ReactNod
                             <Container>
                                 <Row>
                                     <Column width={[ColumnWidth.None, ,ColumnWidth.OneThird]}>
-                                        <Image image={activeItem?.image} ratio={[1 / 1]} display={['none', , 'block']} />
+                                        <Image image={activeItem?.person?.image} ratio={[1 / 1]} display={['none', , 'block']} />
                                     </Column>
                                     <Column  width={[ColumnWidth.Full, ,ColumnWidth.TwoThirds]}>
                                         {
@@ -71,11 +71,11 @@ export const ProfilesPanelBlock:any = ({ items }:IProfilesPanelBlock) : ReactNod
                                                 {/*        <StructuredContent content={activeItem.companyPosition} />*/}
                                                 {/*    </Heading>*/}
                                                 {/*}*/}
-                                                {/*{*/}
-                                                {/*    activeItem?.qualifications && <Text color="oliveBlur" m={0}>*/}
-                                                {/*        {activeItem?.qualifications}*/}
-                                                {/*    </Text>*/}
-                                                {/*}*/}
+                                                {
+                                                    activeItem?.person?.qualifications && <Text color="oliveBlur" m={0}>
+                                                        {activeItem?.person?.qualifications}
+                                                    </Text>
+                                                }
                                             </Box>
                                         }
                                         <Divider borderColor="oliveBlur" my={4} />
