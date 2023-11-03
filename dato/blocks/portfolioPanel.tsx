@@ -1,7 +1,5 @@
-import { textRecord } from '~/dato/blocks/text';
-import { portfolioProfilesPanelRecord } from '~/dato/blocks/portfolioProfilesPanelRecord';
-import { portfolioQuotePanelRecord } from '~/dato/blocks/portfolioQuotePanel';
-import { portfolioImageGalleryRecord } from '~/dato/blocks/portfolioImageGallery';
+import { structuredTextAttrs } from '~/dato/attrs/structuredTextAttrs';
+import { imageAttrs } from '~/dato/attrs/responsiveImageAttrs';
 
 export const portfolioPanelRecord:string = `
     __typename
@@ -9,18 +7,18 @@ export const portfolioPanelRecord:string = `
     items {
         title
         content {
-            ... on TextRecord {
-                ${textRecord}
+            ${structuredTextAttrs}
+        }
+        people {
+            id
+            name
+            companyPosition
+        }
+        companies {
+            image {
+                ${imageAttrs()}
             }
-            ... on PortfolioProfilesPanelRecord {
-                ${portfolioProfilesPanelRecord}
-            }
-            ... on PortfolioQuotePanelRecord {
-                ${portfolioQuotePanelRecord}
-            }
-            ... on PortfolioImageGalleryRecord {
-                ${portfolioImageGalleryRecord}
-            }
+            url
         }
     }
 `;
