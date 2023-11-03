@@ -60,17 +60,19 @@ export const ProfilesPanelBlock:any = ({ items }:IProfilesPanelBlock) : ReactNod
                                     </Column>
                                     <Column  width={[ColumnWidth.Full, ,ColumnWidth.TwoThirds]}>
                                         {
-                                            (activeItem?.person?.name || activeItem?.person?.companyPosition) && <Box minHeight="50px">
+                                            (activeItem?.person?.name || !isEmptyDocument(activeItem?.detailedCompanyPosition) || activeItem?.person?.companyPosition) && <Box minHeight="50px">
                                                 {
                                                     activeItem?.person?.name && <Heading as="h2" fontWeight={500} fontSize={['21px']} lineHeight={['26px']}>
                                                         {activeItem?.person?.name}
                                                     </Heading>
                                                 }
-                                                {/*{*/}
-                                                {/*    !isEmptyDocument(activeItem?.companyPosition) && <Heading as="h3" fontSize={['19px']}>*/}
-                                                {/*        <StructuredContent content={activeItem.companyPosition} />*/}
-                                                {/*    </Heading>*/}
-                                                {/*}*/}
+                                                {
+                                                    !isEmptyDocument(activeItem?.detailedCompanyPosition) ? <Heading as="h3" fontSize={['19px']}>
+                                                        <StructuredContent content={activeItem?.detailedCompanyPosition} />
+                                                    </Heading> : (activeItem?.person?.companyPosition && <Heading as="h3" fontSize={['19px']}>
+                                                        {activeItem?.person?.companyPosition}
+                                                    </Heading>)
+                                                }
                                                 {
                                                     activeItem?.person?.qualifications && <Text color="oliveBlur" m={0}>
                                                         {activeItem?.person?.qualifications}
@@ -81,7 +83,7 @@ export const ProfilesPanelBlock:any = ({ items }:IProfilesPanelBlock) : ReactNod
                                         <Divider borderColor="oliveBlur" my={4} />
                                         {
                                             <Box maxWidth="400px" display={['block', , 'none']}>
-                                                <Image image={activeItem?.image} ratio={[1 / 1]} mb={8} />
+                                                <Image image={activeItem?.person?.image} ratio={[1 / 1]} mb={8} />
                                             </Box>
                                         }
                                         {

@@ -26,10 +26,10 @@ const StrucutredContent:any = ({ content }) : ReactNode => {
                     children:any,
                     transformedMeta:any
                 }) => {
-                    const props = {
+                    const props:any = {
                         ...transformedMeta,
                         ...record
-                    }
+                    };
 
                     return <Link {...props}>
                         {children}
@@ -39,7 +39,7 @@ const StrucutredContent:any = ({ content }) : ReactNode => {
                     renderNodeRule(isLink, ({ node, children, key }) => {
                         return <Link href={node.url} key={key}>
                             {children}
-                        </Link>
+                        </Link>;
                     }),
                     renderNodeRule(isHeading, ({ node, children, key }:{
                         node:any,

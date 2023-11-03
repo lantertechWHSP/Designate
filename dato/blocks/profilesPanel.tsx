@@ -17,5 +17,8 @@ export const profilesPanelRecord:string = `
         description {
             ${structuredTextAttrs}
         }
+        detailedCompanyPosition {
+            ${structuredTextAttrs}
+        }
     }
 `;

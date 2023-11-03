@@ -7,6 +7,7 @@ import { IStructuredText } from '~/interfaces/util/structuredText';
 
 export interface IProfileCard {
     person?:IPerson;
+    detailedCompanyPosition?:IStructuredText;
     description?:IStructuredText;
     onClick:() => any;
 }
