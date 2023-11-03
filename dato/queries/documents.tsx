@@ -12,6 +12,7 @@ export const documents:string = `
             subcategory {
                 id
                 label
+                ordinal
             }
             tags {
                 id
@@ -22,6 +23,7 @@ export const documents:string = `
                 title
                 url
             }
+            ordinal
         }
     }
 `;

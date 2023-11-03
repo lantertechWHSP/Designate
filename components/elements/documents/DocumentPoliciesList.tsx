@@ -1,7 +1,7 @@
 import { ReactNode, useState, useEffect } from 'react';
 import { Heading, Box, Container, Alert } from '@chakra-ui/react';
 import { IDocument, IDocumentBundle } from '~/interfaces/models/document';
-import { forOwn as _forOwn, groupBy as _groupBy } from 'lodash';
+import { forOwn as _forOwn, groupBy as _groupBy, orderBy as _orderBy } from 'lodash';
 import DocumentCard from "~/components/elements/documents/DocumentCard";
 
 export const DATO_QUERY_VALUES:any = {
@@ -13,7 +13,7 @@ interface IDocumentBasicList {
     latestDocuments?:IDocument[];
 }
 
-const DocumentBasicList:any = ({ title, latestDocuments }:IDocumentBasicList) : ReactNode => {
+const DocumentPoliciesList:any = ({ title, latestDocuments }:IDocumentBasicList) : ReactNode => {
     const [documents] = useState(latestDocuments);
     const [documentBundles, setDocumentBundles] = useState<IDocumentBundle[]>([]);
 
@@ -25,11 +25,12 @@ const DocumentBasicList:any = ({ title, latestDocuments }:IDocumentBasicList) : 
         }), (document:IDocument[], key:string) => {
             newSortedDocumentBundles.push({
                 title: key,
-                documents: document
+                documents: _orderBy(document, ['ordinal', 'date', 'title'], ['asc', 'desc', 'asc']),
+                ordinal: document[0].subcategory.ordinal
             });
         });
 
-        setDocumentBundles(newSortedDocumentBundles.reverse());
+        setDocumentBundles(_orderBy(newSortedDocumentBundles, ['ordinal']));
     }, [documents]);
 
     return <Box bg="ghostWhite" pt={['40px', ,'60px']} pb={['120px', '120px', '120px']}>
@@ -74,4 +75,4 @@ const DocumentBasicList:any = ({ title, latestDocuments }:IDocumentBasicList) : 
     </Box>;
 };
 
-export default DocumentBasicList;
+export default DocumentPoliciesList;

@@ -10,7 +10,7 @@ import { IPage } from '~/interfaces/models/page';
 import { ILayout } from '~/interfaces/layout/layout';
 import { IBlock } from '~/interfaces/util/block';
 import {IDocument, IDocumentsFilters, IDocumentsMeta} from '~/interfaces/models/document';
-import DocumentList, { DATO_QUERY_VALUES } from '~/components/elements/documents/DocumentList';
+import DocumentReportsList, { DATO_QUERY_VALUES } from '~/components/elements/documents/DocumentReportsList';
 import { IFilter } from '~/interfaces/util/filter';
 import { uniqBy as _uniqBy, map as _map } from 'lodash';
 
@@ -117,7 +117,7 @@ const ReportsPage : NextPage = ({ layout, blocks, documents, doucmentsMeta, docu
     return (
         <DefaultLayout layout={layout}>
             <ModularContent content={blocks} />
-            <DocumentList latestDocuments={documents} documentsMeta={doucmentsMeta} documentsFilters={documentsFilters}  />
+            <DocumentReportsList latestDocuments={documents} documentsMeta={doucmentsMeta} documentsFilters={documentsFilters}  />
         </DefaultLayout>
     );
 };

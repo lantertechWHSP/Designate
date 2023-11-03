@@ -10,6 +10,7 @@ export interface IDocumentCategory {
 export interface IDocumentSubcategory {
     id?:string;
     label?:string;
+    ordinal?:number;
 }
 
 export interface IDocumentTags {

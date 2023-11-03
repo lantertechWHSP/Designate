@@ -9,7 +9,7 @@ import { IBlock } from '~/interfaces/util/block';
 import { ModularContent } from '~/components/ModularContent';
 import DefaultLayout from '~/components/layouts/DefaultLayout';
 import { IDocument } from '~/interfaces/models/document';
-import DocumentBasicList, { DATO_QUERY_VALUES } from '~/components/elements/documents/DocumentBasicList';
+import DocumentPoliciesList, { DATO_QUERY_VALUES } from '~/components/elements/documents/DocumentPoliciesList';
 
 interface INextPageProps {
     layout?:ILayout;
@@ -42,7 +42,7 @@ const NewsPage : NextPage = ({ layout, blocks, documents }:INextPageProps) : JSX
     return (
         <DefaultLayout layout={layout}>
             <ModularContent content={blocks} />
-            <DocumentBasicList title="Downloads" latestDocuments={documents} />
+            <DocumentPoliciesList title="Downloads" latestDocuments={documents} />
         </DefaultLayout>
     );
 };

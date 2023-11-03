@@ -21,7 +21,7 @@ export const DATO_QUERY_VALUES:any = {
     REPORTS_CATEGORY_ID : '190260513'
 };
 
-const DocumentList:any = ({ latestDocuments, documentsMeta, documentsFilters }:IDocumentList) : ReactNode => {
+const DocumentReportsList:any = ({ latestDocuments, documentsMeta, documentsFilters }:IDocumentList) : ReactNode => {
     const [page, setPage] = useState<number>(1);
     const [documents, setDocuments] = useState<IDocument[]>(latestDocuments);
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -252,4 +252,4 @@ const DocumentList:any = ({ latestDocuments, documentsMeta, documentsFilters }:I
     </Box>;
 };
 
-export default DocumentList;
+export default DocumentReportsList;
