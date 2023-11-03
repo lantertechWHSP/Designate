@@ -18,7 +18,7 @@ interface INextPageProps {
 }
 
 export async function getStaticProps({ preview }:GetStaticPropsContext) : Promise<GetStaticPropsResult<INextPageProps>> {
-    const slug:string = 'people-and-governance/policies-and-standards';
+    const slug:string = 'people-and-governance/policies';
     const site:ISite = await doQuery(queries.site);
     const page:IPage = await doQuery(queries.page, { slug }, preview).then(
         ({ page }) => page

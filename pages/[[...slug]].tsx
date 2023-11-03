@@ -19,7 +19,7 @@ interface INextPageProps {
 export async function getStaticPaths() : Promise<GetStaticPathsResult<any>> {
     const systemPages:string[] = [
         'news',
-        'people-and-governance/policies-and-standards',
+        'people-and-governance/policies',
         'investor-centre/key-dates',
         'investor-centre/financial-reports'
     ];

@@ -62,21 +62,23 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
             }
         }
     }).then(({ firstDate, lastDate, tags }) => {
-        // Date Filters
-
-        const startYear:number = +(firstDate[0].date?.split('-')[0]);
-        const endYear:number = +(lastDate[0].date?.split('-')[0]);
-
         const yearFilters:IFilter[] = [{
             value: 'none',
             label: 'All Years'
         }];
 
-        for(let date:number = endYear; date >= startYear; date--) {
-            yearFilters.push({
-                value: date.toString(),
-                label: date.toString()
-            });
+        if(firstDate && firstDate[0] && lastDate && lastDate[0]) {
+            // Date Filters
+
+            const startYear:number = +(firstDate[0].date?.split('-')[0]);
+            const endYear:number = +(lastDate[0].date?.split('-')[0]);
+
+            for(let date:number = endYear; date >= startYear; date--) {
+                yearFilters.push({
+                    value: date.toString(),
+                    label: date.toString()
+                });
+            }
         }
 
         // Tag Filters
@@ -85,20 +87,22 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
             label: 'All Tags'
         }];
 
-        tags.map((tag:any) => {
-            tagFilters.push(...tag.tags);
-        });
+        if(tags) {
+            tags.map((tag:any) => {
+                tagFilters.push(...tag.tags);
+            });
 
-        tagFilters = _uniqBy(tagFilters, (tag:any) => {
-            return tag.id;
-        });
+            tagFilters = _uniqBy(tagFilters, (tag:any) => {
+                return tag.id;
+            });
 
-        tagFilters = _map(tagFilters, (tag:any) => {
-            return {
-                value: tag?.id,
-                label: tag?.label
-            };
-        });
+            tagFilters = _map(tagFilters, (tag:any) => {
+                return {
+                    value: tag?.id,
+                    label: tag?.label
+                };
+            });
+        }
 
         return {
             yearFilters: yearFilters,
