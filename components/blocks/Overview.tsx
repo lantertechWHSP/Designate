@@ -22,11 +22,6 @@ const OverviewBlock:any = ({ subtitle, description, paddingTop, paddingBottom }:
                             lineHeight={['35px', '38px', '42px']}
                             color="darkBrown"
                             fontWeight={500}
-                            sx={{
-                                a: {
-                                    borderBottom: '1px solid'
-                                }
-                            }}
                             pb={[4, , ,0]}>
                             <StructuredContent content={subtitle} />
                         </Heading>
@@ -35,13 +30,7 @@ const OverviewBlock:any = ({ subtitle, description, paddingTop, paddingBottom }:
             </Column>
             <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half]}>
                 {
-                    description && <Box sx={{
-                        a: {
-                            borderBottom: '1px solid'
-                        }
-                    }}>
-                        <StructuredContent content={description} />
-                    </Box>
+                    description && <StructuredContent content={description} />
                 }
             </Column>
         </Row>

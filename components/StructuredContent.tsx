@@ -14,6 +14,9 @@ const StrucutredContent:any = ({ content }) : ReactNode => {
         <Box sx={{
             '*:last-child': {
                 marginBottom: 0
+            },
+            a: {
+                borderBottom: '1px solid'
             }
         }}>
             <StructuredText

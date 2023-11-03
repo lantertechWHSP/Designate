@@ -5,6 +5,8 @@ import { Box, Heading, Text, TableContainer, Table, Thead, Tr, Th, Tbody, Td, Fl
 import { sumBy as _sumBy, round as _round } from 'lodash';
 import { DateTime } from 'luxon';
 import { ITable } from '~/interfaces/util/table';
+import { IStructuredText } from '~/interfaces/util/structuredText';
+import StructuredText from "~/pages/admin/structuredText";
 
 interface ITableRow {
     Portfolio:string;
@@ -12,6 +14,8 @@ interface ITableRow {
 }
 
 interface InvestmentPortfolioTableBlock extends IBlock {
+    title?:string;
+    description?:IStructuredText;
     table?:ITable<ITableRow>;
     lastUpdated?:any;
 }
@@ -43,7 +47,7 @@ const PercentageBar:any = ({ value }:IPercentageBar) => {
     </Box>;
 };
 
-const InvestmentPortfolioTableBlock:any = ({ table, lastUpdated, paddingTop, paddingBottom }:InvestmentPortfolioTableBlock) : ReactNode => {
+const InvestmentPortfolioTableBlock:any = ({ title, description, table, lastUpdated, paddingTop, paddingBottom }:InvestmentPortfolioTableBlock) : ReactNode => {
     const [total] = useState<number>(table?.data ? _sumBy(table.data, (row:ITableRow) => {
         const value:number = +row.NetAssetValue;
         return value;
@@ -51,9 +55,14 @@ const InvestmentPortfolioTableBlock:any = ({ table, lastUpdated, paddingTop, pad
 
     return (table || lastUpdated) && <ContentBlock background="darkBrown" paddingTop={paddingTop} paddingBottom={paddingBottom}>
         <Box mb={8}>
-            <Heading as="h2" variant="sectionHeading" color="white" mb={[4, ,8]}>
-                Our Portfolio
-            </Heading>
+            {
+                title && <Heading as="h2" variant="sectionHeading" color="white" mb={[4, ,8]}>
+                    {title}
+                </Heading>
+            }
+            {
+                description && <StructuredText content={description} />
+            }
         </Box>
         {
             ((Array.isArray(table?.data) && table.data.length > 0) || (Array.isArray(table?.columns) && table.columns.length > 0)) ? <TableContainer>
@@ -126,10 +135,10 @@ const InvestmentPortfolioTableBlock:any = ({ table, lastUpdated, paddingTop, pad
                                         <Td>
                                             ${row.NetAssetValue || '-'}{'\u00A0'}
                                             <Text as="span" display={['none', ,'inline']}>
-                                                Million
+                                                Billion
                                             </Text>
                                             <Text as="span" display={['inline', ,'none']}>
-                                                M
+                                                B
                                             </Text>
                                         </Td>
                                         <Td verticalAlign="middle">

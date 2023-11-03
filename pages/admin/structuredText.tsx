@@ -38,9 +38,6 @@ const StructuredTextEditor:any = () => {
                     },
                 });
             }
-            else {
-                window.location.href = '/';
-            }
 
             setIsLoaded(true);
         }
