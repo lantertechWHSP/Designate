@@ -15,32 +15,31 @@ import {
     SimpleGrid,
     Text
 } from '@chakra-ui/react';
-import { IPerson } from '~/interfaces/models/person';
-import ProfileCard from '~/components/blocks/ProfilesPanel/ProfileCard';
+import ProfileCard, { IProfileCard } from '~/components/blocks/ProfilesPanel/ProfileCard';
 import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
 import { isEmptyDocument } from 'datocms-structured-text-utils';
 
 interface IProfilesPanelBlock extends IBlock {
-    people:IPerson[];
+    items:IProfileCard[];
 }
 
-export const ProfilesPanelBlock:any = ({ people }:IProfilesPanelBlock) : ReactNode => {
+export const ProfilesPanelBlock:any = ({ items }:IProfilesPanelBlock) : ReactNode => {
     const [modalOpen, setModalOpen] = useState<boolean>(false);
-    const [activePerson, setActivePerson] = useState<IPerson>(null);
+    const [activeItem, setActiveItem] = useState<IProfileCard>(null);
 
     const onProfileClick:any = (index:number) : void => {
-        setActivePerson(people[index]);
+        setActiveItem(items[index]);
         setModalOpen(true);
     };
 
-    return (Array.isArray(people) && people.length > 0) && <Box py={[6, 8, 12]}>
+    return (Array.isArray(items) && items.length > 0) && <Box py={[6, 8, 12]}>
         <Container>
             <SimpleGrid columns={[1, 2, 3]} spacing={[0, 8, 8]} mb={-8}>
                 {
-                    people.map((person:IPerson, index:number) => {
+                    items.map((item:IProfileCard, index:number) => {
                         return <Box mb={[0, ,8]} key={index}>
                             <ProfileCard
-                                {...person}
+                                {...item}
                                 onClick={() => {
                                     onProfileClick(index);
                                 }}
@@ -57,37 +56,37 @@ export const ProfilesPanelBlock:any = ({ people }:IProfilesPanelBlock) : ReactNo
                             <Container>
                                 <Row>
                                     <Column width={[ColumnWidth.None, ,ColumnWidth.OneThird]}>
-                                        <Image image={activePerson?.image} ratio={[1 / 1]} display={['none', , 'block']} />
+                                        <Image image={activeItem?.image} ratio={[1 / 1]} display={['none', , 'block']} />
                                     </Column>
                                     <Column  width={[ColumnWidth.Full, ,ColumnWidth.TwoThirds]}>
                                         {
-                                            (activePerson?.name || activePerson?.companyPosition || !isEmptyDocument(activePerson?.qualifications)) && <Box minHeight="50px">
+                                            (activeItem?.person?.name || activeItem?.person?.companyPosition) && <Box minHeight="50px">
                                                 {
-                                                    activePerson?.name && <Heading as="h2" fontWeight={500} fontSize={['21px']} lineHeight={['26px']}>
-                                                        {activePerson.name}
+                                                    activeItem?.person?.name && <Heading as="h2" fontWeight={500} fontSize={['21px']} lineHeight={['26px']}>
+                                                        {activeItem?.person?.name}
                                                     </Heading>
                                                 }
-                                                {
-                                                    !isEmptyDocument(activePerson?.companyPosition) && <Heading as="h3" fontSize={['19px']}>
-                                                        <StructuredContent content={activePerson.companyPosition} />
-                                                    </Heading>
-                                                }
-                                                {
-                                                    activePerson?.qualifications && <Text color="oliveBlur" m={0}>
-                                                        {activePerson?.qualifications}
-                                                    </Text>
-                                                }
+                                                {/*{*/}
+                                                {/*    !isEmptyDocument(activeItem?.companyPosition) && <Heading as="h3" fontSize={['19px']}>*/}
+                                                {/*        <StructuredContent content={activeItem.companyPosition} />*/}
+                                                {/*    </Heading>*/}
+                                                {/*}*/}
+                                                {/*{*/}
+                                                {/*    activeItem?.qualifications && <Text color="oliveBlur" m={0}>*/}
+                                                {/*        {activeItem?.qualifications}*/}
+                                                {/*    </Text>*/}
+                                                {/*}*/}
                                             </Box>
                                         }
                                         <Divider borderColor="oliveBlur" my={4} />
                                         {
                                             <Box maxWidth="400px" display={['block', , 'none']}>
-                                                <Image image={activePerson?.image} ratio={[1 / 1]} mb={8} />
+                                                <Image image={activeItem?.image} ratio={[1 / 1]} mb={8} />
                                             </Box>
                                         }
                                         {
-                                            activePerson?.description && <Box>
-                                                <StructuredContent content={activePerson?.description} />
+                                            activeItem?.description && <Box>
+                                                <StructuredContent content={activeItem?.description} />
                                             </Box>
                                         }
                                     </Column>

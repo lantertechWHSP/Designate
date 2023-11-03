@@ -4,18 +4,18 @@ import { structuredTextAttrs } from '~/dato/attrs/structuredTextAttrs';
 export const profilesPanelRecord:string = `
     __typename
     id
-    people {
-        id
-        name
-        companyPosition {
-            ${structuredTextAttrs}
+    items {
+        person {
+            id
+            name
+            companyPosition
+            qualifications
+            image {
+                ${imageAttrs({ width: 424, height: 310 })}
+            }
         }
         description {
             ${structuredTextAttrs}
-        }
-        qualifications
-        image {
-            ${imageAttrs({ width: 500, height: 500 })}
         }
     }
 `;
