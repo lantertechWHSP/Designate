@@ -6,7 +6,8 @@ import { sumBy as _sumBy, round as _round } from 'lodash';
 import { DateTime } from 'luxon';
 import { ITable } from '~/interfaces/util/table';
 import { IStructuredText } from '~/interfaces/util/structuredText';
-import StructuredText from "~/pages/admin/structuredText";
+import StructuredContent from '~/components/StructuredContent';
+import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
 
 interface ITableRow {
     Portfolio:string;
@@ -61,7 +62,14 @@ const InvestmentPortfolioTableBlock:any = ({ title, description, table, lastUpda
                 </Heading>
             }
             {
-                description && <StructuredText content={description} />
+                description && <Box color="white">
+                    <Row>
+                        <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
+                            <StructuredContent content={description} />
+
+                        </Column>
+                    </Row>
+                </Box>
             }
         </Box>
         {
@@ -133,13 +141,18 @@ const InvestmentPortfolioTableBlock:any = ({ title, description, table, lastUpda
                                             {row.Portfolio || '-'}
                                         </Td>
                                         <Td>
-                                            ${row.NetAssetValue || '-'}{'\u00A0'}
-                                            <Text as="span" display={['none', ,'inline']}>
-                                                Billion
-                                            </Text>
-                                            <Text as="span" display={['inline', ,'none']}>
-                                                B
-                                            </Text>
+                                            {
+                                                row.NetAssetValue ? <>
+                                                    {row.NetAssetValue}
+                                                    <Text as="span" display={['none', ,'inline']}>
+                                                        {'\u00A0'}
+                                                        Billion
+                                                    </Text>
+                                                    <Text as="span" display={['inline', ,'none']}>
+                                                        B
+                                                    </Text>
+                                                </> : <>-</>
+                                            }
                                         </Td>
                                         <Td verticalAlign="middle">
                                             {
