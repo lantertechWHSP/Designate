@@ -20,7 +20,7 @@ import KeyDatesPanelBlock from '~/components/blocks/KeyDatesPanel';
 
 // Home
 import HeroBlock from '~/components/blocks/Hero';
-import HomePageOverviewBlock from '~/components/blocks/HomePageOverview';
+import HomePageImageGalleryBlock from '~/components/blocks/HomePageImageGallery';
 import AsxAnnouncementsPanelBlock from '~/components/blocks/AsxAnnouncementsPanel';
 import SeeAlsoPanelBlock from '~/components/blocks/SeeAlsoPanel';
 
@@ -83,7 +83,7 @@ const blocks:any = {
 
     // Home
     HeroBlock,
-    HomePageOverviewBlock,
+    HomePageImageGalleryBlock,
     AsxAnnouncementsPanelBlock,
     SeeAlsoPanelBlock,
 

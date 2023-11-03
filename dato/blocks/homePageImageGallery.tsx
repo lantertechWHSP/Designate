@@ -1,12 +1,7 @@
 import { imageAttrs } from '~/dato/attrs/responsiveImageAttrs';
-import { structuredTextAttrs } from '~/dato/attrs/structuredTextAttrs';
 
-export const homePageOverviewRecord:string = `
+export const homePageImageGalleryRecord:string = `
     __typename
-    id
-    description {
-        ${structuredTextAttrs}
-    }
     imageMain {
         ${imageAttrs({ width: 652, height: 672})}
     }

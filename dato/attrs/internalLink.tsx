@@ -4,4 +4,14 @@ export const internalLinkAttrs:string = `
         title
         slug
     }
+    ... on PostRecord {
+        id
+        title
+        slug
+    }
+    ... on DocumentRecord {
+        id
+        title
+        slug
+    }
 `;

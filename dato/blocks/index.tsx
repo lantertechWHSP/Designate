@@ -20,7 +20,7 @@ import { keyDatesPanelRecord } from '~/dato/blocks/keyDatesPanel';
 
 // Home
 import { heroRecord } from '~/dato/blocks/hero';
-import { homePageOverviewRecord } from '~/dato/blocks/homePageOverview';
+import { homePageImageGalleryRecord } from "~/dato/blocks/homePageImageGallery";
 import { asxAnnouncementsPanelRecord } from '~/dato/blocks/asxAnnouncementsPanel';
 import { seeAlsoPanelRecord } from '~/dato/blocks/seeAlsoPanel';
 
@@ -116,8 +116,8 @@ export const blocks:string = `
         ... on HeroRecord {
             ${heroRecord}
         }
-        ... on HomePageOverviewRecord {
-            ${homePageOverviewRecord}
+        ... on HomePageImageGalleryRecord {
+            ${homePageImageGalleryRecord}
         }
         ... on AsxAnnouncementsPanelRecord {
             ${asxAnnouncementsPanelRecord}

@@ -5,6 +5,7 @@ import ContentBlock from '~/components/blocks/Content';
 import { Heading, Box } from '@chakra-ui/react';
 import { Column, ColumnWidth, Row } from '~/components/elements/grid/grid';
 import { IStructuredText } from '~/interfaces/util/structuredText';
+import { isEmptyDocument } from 'datocms-structured-text-utils';
 
 interface IOverviewBlock extends IBlock {
     subtitle?:IStructuredText;
@@ -14,7 +15,7 @@ interface IOverviewBlock extends IBlock {
 const OverviewBlock:any = ({ subtitle, description, paddingTop, paddingBottom, background }:IOverviewBlock) : ReactNode => {
     return (subtitle || description) && <ContentBlock background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         <Row>
-            <Column width={[ColumnWidth.Full, , ,subtitle && !description ? ColumnWidth.ThreeQuarters : ColumnWidth.Half]}>
+            <Column width={[ColumnWidth.Full, , ,subtitle && isEmptyDocument(description) ? ColumnWidth.ThreeQuarters : ColumnWidth.Half]}>
                 {
                     subtitle && <Box pr="50px">
                         <Heading as="h2"
