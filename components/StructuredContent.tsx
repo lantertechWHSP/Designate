@@ -1,6 +1,6 @@
 import React, { ReactNode }  from 'react';
 import { StructuredText } from 'react-datocms';
-import Link  from 'next/link';
+import { Link } from '~/components/elements/link';
 import { isHeading, isParagraph, isCode, isListItem } from 'datocms-structured-text-utils';
 import { renderNodeRule } from 'datocms-structured-text-to-html-string';
 import { Heading, Code, Box, Text, Flex } from '@chakra-ui/react';
@@ -26,7 +26,12 @@ const StrucutredContent:any = ({ content }) : ReactNode => {
                     children:any,
                     transformedMeta:any
                 }) => {
-                    return <Link {...transformedMeta} href={record}>
+                    const props = {
+                        ...transformedMeta,
+                        ...record
+                    }
+
+                    return <Link {...props}>
                         {children}
                     </Link>;
                 }}

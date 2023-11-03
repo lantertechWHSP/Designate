@@ -4,18 +4,20 @@ import { IBlock } from '~/interfaces/util/block';
 import { ISite } from '~/interfaces/layout/site';
 import { IPage } from '~/interfaces/models/page';
 import { isNil as _isNil } from 'lodash';
-import {IFooter} from "~/interfaces/layout/footer";
+import { IFooter } from '~/interfaces/layout/footer';
 
 export const resolveInternalLink:any = (link:ILink) : string => {
     if (!link) {
         return null;
     }
 
-    const { slug, __typename } = link;
+    const { document, slug, __typename } = link;
+    // debugger;
+    // console.log(document);
 
     switch (__typename) {
-        case 'PostRecord':
-            return `/news/${slug}`;
+        case 'PostRecord':return `/news/${slug}`;
+        case 'DocumentRecord': return document.url;
     }
 
     return `/${slug}`;

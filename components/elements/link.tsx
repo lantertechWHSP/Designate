@@ -12,12 +12,17 @@ export interface IDatoLink extends ChakraProps {
     slug:string;
 }
 
-export const Link:any = forwardRef(({ id, __typename, title, slug,  ...props }:IDatoLink, ref:any) : ReactNode => {
+export const Link:any = forwardRef(({ id, __typename, title, slug, document, ...props }:IDatoLink, ref:any) : ReactNode => {
+    if(document) {
+        debugger;
+    }
+
     const href:string = resolveInternalLink({
         id,
         __typename,
         title,
-        slug
+        slug,
+        document,
     });
 
     let newChild:string|null = null;
