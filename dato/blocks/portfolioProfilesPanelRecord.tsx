@@ -6,8 +6,6 @@ export const portfolioProfilesPanelRecord:string = `
     people {
         id
         name
-        definition
-        companyPosition
         image {
             ${imageAttrs({ width: 500, height: 500 })}
         }

@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
 import ContentBlock from '~/components/blocks/Content';
 import { IPerson } from '~/interfaces/models/person';
@@ -14,25 +14,10 @@ interface IPortfolioQuotePanelBlock extends IBlock {
 
 const PortfolioQuotePanelBlock:any = ({ contain, quote, person, paddingTop, paddingBottom }:IPortfolioQuotePanelBlock) : ReactNode => {
 
-    const [blockQuoteFooter] = useState<string>((() => {
-        if(person) {
-            if(person.name && person.companyPosition) {
-                return `${person.name}, ${person.companyPosition}`;
-            }
-            else if(person.name) {
-                return person.name;
-            }
-            else if(person.companyPosition) {
-                return person.companyPosition;
-            }
-        }
-        return '';
-    })());
-
     return (quote || person) && <ContentBlock contain={contain} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         <Row>
             {
-                (quote || blockQuoteFooter) && <Column width={ColumnWidth.TwoThirds} display="flex" justify="center">
+                (quote || person.name) && <Column width={ColumnWidth.TwoThirds} display="flex" justify="center">
                     <blockquote>
                         {
                             quote && <Text fontSize="24px" lineHeight="28px" fontWeight={700} color="olive">
@@ -40,7 +25,7 @@ const PortfolioQuotePanelBlock:any = ({ contain, quote, person, paddingTop, padd
                             </Text>
                         }
                         {
-                            blockQuoteFooter && <footer>—{blockQuoteFooter}</footer>
+                            person.name && <footer>—{person.name}</footer>
                         }
                     </blockquote>
                 </Column>

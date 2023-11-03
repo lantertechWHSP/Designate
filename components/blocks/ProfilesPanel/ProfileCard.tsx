@@ -3,6 +3,8 @@ import { Image } from '~/components/elements/image';
 import { IPerson } from "~/interfaces/models/person";
 import { Flex, Box, Heading, Text } from '@chakra-ui/react';
 import { SectionLink } from '~/components/elements/sectionLink';
+import StructuredContent from "~/components/StructuredContent";
+import { isEmptyDocument } from 'datocms-structured-text-utils';
 
 interface IProfileCard extends IPerson {
     onClick:() => any;
@@ -17,8 +19,8 @@ const ProfileCard:any = ({ image, name, companyPosition, qualifications, onClick
             </Heading>
         }
         {
-            companyPosition && <Heading as="h4" fontSize={['19px']} lineHeight={['28px']} color="steel" fontWeight={400}>
-                {companyPosition}
+            !isEmptyDocument(companyPosition) && <Heading as="h4" fontSize={['19px']} lineHeight={['28px']} color="steel" fontWeight={400}>
+                <StructuredContent content={companyPosition} />
             </Heading>
         }
         {

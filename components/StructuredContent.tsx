@@ -1,7 +1,7 @@
 import React, { ReactNode }  from 'react';
 import { StructuredText } from 'react-datocms';
 import { Link } from '~/components/elements/link';
-import { isHeading, isParagraph, isCode, isListItem } from 'datocms-structured-text-utils';
+import { isHeading, isParagraph, isCode, isListItem, isLink } from 'datocms-structured-text-utils';
 import { renderNodeRule } from 'datocms-structured-text-to-html-string';
 import { Heading, Code, Box, Text, Flex } from '@chakra-ui/react';
 import ImageBlock from '~/components/blocks/Image';
@@ -36,6 +36,11 @@ const StrucutredContent:any = ({ content }) : ReactNode => {
                     </Link>;
                 }}
                 customNodeRules={[
+                    renderNodeRule(isLink, ({ node, children, key }) => {
+                        return <Link href={node.url} key={key}>
+                            {children}
+                        </Link>
+                    }),
                     renderNodeRule(isHeading, ({ node, children, key }:{
                         node:any,
                         children:any,

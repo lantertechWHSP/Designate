@@ -7,8 +7,9 @@ export const profilesPanelRecord:string = `
     people {
         id
         name
-        definition
-        companyPosition
+        companyPosition {
+            ${structuredTextAttrs}
+        }
         description {
             ${structuredTextAttrs}
         }

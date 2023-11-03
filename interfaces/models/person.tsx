@@ -4,7 +4,6 @@ import { IStructuredText } from '~/interfaces/util/structuredText';
 export interface IPerson {
     id?:string;
     name?:string;
-    definition?:string;
     companyPosition?:string;
     qualifications?:string;
     description?:IStructuredText;

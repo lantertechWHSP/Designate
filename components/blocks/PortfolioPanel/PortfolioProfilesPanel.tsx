@@ -1,9 +1,10 @@
 import { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
 import ContentBlock from '~/components/blocks/Content';
-import { SimpleGrid, Box, Heading, Text } from '@chakra-ui/react';
+import { SimpleGrid, Box, Heading } from '@chakra-ui/react';
 import { IPerson } from '~/interfaces/models/person';
 import { Image } from '~/components/elements/image';
+import StructuredContent from "~/components/StructuredContent";
 
 interface IPeoplePanelBlock extends IBlock {
     contain?:boolean;
@@ -23,9 +24,7 @@ const PortfolioProfilesPanelBlock:any = ({ contain, people, paddingTop, paddingB
                             </Heading>
                         }
                         {
-                            person.companyPosition && <Text>
-                                {person.companyPosition}
-                            </Text>
+                            person.companyPosition && <StructuredContent content={person.companyPosition} />
                         }
                     </Box>;
                 })
