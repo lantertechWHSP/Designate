@@ -35,9 +35,6 @@ import ObjectivePanelBlock from '~/components/blocks/ObjectivePanel';
 
 // About/Investment Portfolio
 import PortfolioPanelBlock from '~/components/blocks/PortfolioPanel/PortfolioPanel';
-import PortfolioProfilesPanelBlock from '~/components/blocks/PortfolioPanel/PortfolioProfilesPanel';
-import PortfolioQuotePanelBlock from '~/components/blocks/PortfolioPanel/PortfolioQuotePanel';
-import PortfolioImageGalleryBlock from '~/components/blocks/PortfolioPanel/PortfolioImageGallery';
 
 // About/Sustainability
 import SustainabilityPanelBlock from '~/components/blocks/SustainabilityPanel';
@@ -98,9 +95,6 @@ const blocks:any = {
 
     // About/Investment Portfolio
     PortfolioPanelBlock,
-    PortfolioProfilesPanelBlock,
-    PortfolioQuotePanelBlock,
-    PortfolioImageGalleryBlock,
 
     // About/Sustainability
     SustainabilityPanelBlock,
