@@ -15,8 +15,8 @@ interface IAttributesListPanelBlock extends IBlock {
     items:AttributesListPanelItem[];
 }
 
-const AttributesListPanelBlock:any = ({ title, items, paddingTop, paddingBottom }:IAttributesListPanelBlock) : ReactNode => {
-    return (title || (Array.isArray(items) && items.length > 0)) && <ContentBlock background="ghostWhite" paddingTop={paddingTop} paddingBottom={paddingBottom}>
+const AttributesListPanelBlock:any = ({ title, items, paddingTop, paddingBottom, background }:IAttributesListPanelBlock) : ReactNode => {
+    return (title || (Array.isArray(items) && items.length > 0)) && <ContentBlock background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         {
             title && <Heading as="h2" variant="sectionHeading" mb={[4, ,8]}>
                 {title}
@@ -29,7 +29,7 @@ const AttributesListPanelBlock:any = ({ title, items, paddingTop, paddingBottom 
                         return <Box key={index} mb={8}>
                             {
                                 (item.icon && item.icon.url) && <Box mb={4}>
-                                    <img src={item.icon.url} alt={item.icon?.alt} width="90px" height="60px" />
+                                    <img src={item.icon.url} alt={item.icon?.alt} />
                                 </Box>
                             }
                             {

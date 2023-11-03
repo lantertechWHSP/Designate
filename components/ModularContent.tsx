@@ -9,7 +9,7 @@ import ContentCardPanelBlock from '~/components/blocks/ContentCardPanel';
 import AccordionBlock from '~/components/blocks/Accordion';
 import CarouselBlock from '~/components/blocks/Carousel';
 import HorizontalRuleBlock from '~/components/blocks/HorizontalRule';
-import AttributesListPanel from '~/components/blocks/AttributesListPanel';
+import AttributesListPanelBlock from '~/components/blocks/AttributesListPanel';
 
 import DocumentHeroPanelBlock from '~/components/blocks/DocumentHeroPanel';
 import CompanyValuesPanelBlock from '~/components/blocks/CompanyValuesPanel';
@@ -72,7 +72,7 @@ const blocks:any = {
     AccordionBlock,
     CarouselBlock,
     HorizontalRuleBlock,
-    AttributesListPanel,
+    AttributesListPanelBlock,
 
     DocumentHeroPanelBlock,
     CompanyValuesPanelBlock,

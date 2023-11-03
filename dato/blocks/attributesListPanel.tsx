@@ -12,4 +12,5 @@ export const attributesListPanelRecord:string = `
     }
     paddingTop
     paddingBottom
+    background
 `;
