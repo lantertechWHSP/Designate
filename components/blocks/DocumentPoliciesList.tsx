@@ -22,12 +22,12 @@ const DocumentPoliciesListBlock:any = ({ items, paddingBottom }:IDocumentPolicie
                     items.map((item:IDocumentPoliciesItemBlock, index:number) => {
                         return <Box key={index} mb={index === items.length - 1 ? 0 : 12}>
                             <Heading as="h3"
-                                     fontSize={['24px']}
-                                     lineHeight={['24px']}
-                                     fontWeight={700}
-                                     borderBottom="1px solid"
-                                     borderColor="borderColor"
-                                     py={4}>{item.title}</Heading>
+                                fontSize={['24px']}
+                                lineHeight={['24px']}
+                                fontWeight={700}
+                                borderBottom="1px solid"
+                                borderColor="borderColor"
+                                py={4}>{item.title}</Heading>
                             {
                                 (Array.isArray(item.documents) && item.documents.length > 0) && <>
                                     {
@@ -37,17 +37,17 @@ const DocumentPoliciesListBlock:any = ({ items, paddingBottom }:IDocumentPolicie
                                             </Box>;
                                         })
                                     }
-                                <Box borderBottom="1px solid" borderColor="borderColor" />
-                              </>
+                                    <Box borderBottom="1px solid" borderColor="borderColor" />
+                                </>
                             }
-                        </Box>
+                        </Box>;
                     })
                 }
             </Box> : <Box>
                 <Alert status="info">No documents</Alert>
             </Box>
         }
-    </ContentBlock>
-}
+    </ContentBlock>;
+};
 
 export default DocumentPoliciesListBlock;

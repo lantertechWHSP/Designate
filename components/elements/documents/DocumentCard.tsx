@@ -11,9 +11,9 @@ const DocumentCard:any = ({ title, date, document }:IDocumentCard) : ReactNode =
     return <Flex py={[4, ,'22px']} direction={['row']} align="center">
         {
             title && <Heading as="h3"
-                     flex={1}
-                     display="inline"
-                     variant="listItem">
+                flex={1}
+                display="inline"
+                variant="listItem">
                 {
                     (document && document.url) ? <Link href={document?.url} target="_blank">
                         {title}

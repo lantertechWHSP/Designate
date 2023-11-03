@@ -66,24 +66,24 @@ const PortfolioPanelBlock:any = ({ items, paddingBottom }:IPortfolioPanelBlock) 
                                             }
                                             {
                                                 (Array.isArray(item?.companies) && item.companies.length > 0) && <Box mx={[0, -8]} mb={8}>
-                                                <SimpleGrid background="ghostWhite" minHeight="310px" columns={[1, 2, 4]} spacing={0}>
-                                                    {
-                                                        item.companies.map((company:IPortfolioPanelCompany, index:number) => {
-                                                            return <Flex align="center" justify="center" py={12}  key={index}>
-                                                                <Flex align="center" height="100%"  minHeight="200px" borderRight={['none',index % 2 !== 1 ? '1px solid' : 'none' , index % 4 !== 3 ? '1px solid' : 'none']} borderColor={['none', 'borderColor', 'borderColor']}>
-                                                                    <Box px={8}>
-                                                                        {
-                                                                            company.url ? <Link href={company.url}>
-                                                                                <Image image={company.image} />
-                                                                            </Link> : <Image image={company.image} />
-                                                                        }
-                                                                    </Box>
-                                                                </Flex>
-                                                            </Flex>;
-                                                        })
-                                                    }
-                                                </SimpleGrid>
-                                              </Box>
+                                                    <SimpleGrid background="ghostWhite" minHeight="310px" columns={[1, 2, 4]} spacing={0}>
+                                                        {
+                                                            item.companies.map((company:IPortfolioPanelCompany, index:number) => {
+                                                                return <Flex align="center" justify="center" py={12}  key={index}>
+                                                                    <Flex align="center" height="100%"  minHeight="200px" borderRight={['none',index % 2 !== 1 ? '1px solid' : 'none' , index % 4 !== 3 ? '1px solid' : 'none']} borderColor={['none', 'borderColor', 'borderColor']}>
+                                                                        <Box px={8}>
+                                                                            {
+                                                                                company.url ? <Link href={company.url}>
+                                                                                    <Image image={company.image} />
+                                                                                </Link> : <Image image={company.image} />
+                                                                            }
+                                                                        </Box>
+                                                                    </Flex>
+                                                                </Flex>;
+                                                            })
+                                                        }
+                                                    </SimpleGrid>
+                                                </Box>
                                             }
                                             {
                                                 (Array.isArray(item?.people) && item.people.length > 0) && <SimpleGrid columns={[1, , 3]} spacing={[0, ,8]}>
@@ -94,12 +94,12 @@ const PortfolioPanelBlock:any = ({ items, paddingBottom }:IPortfolioPanelBlock) 
                                                                 {
                                                                     person.name && <Heading as="h3">
                                                                         {person.name}
-                                                                  </Heading>
+                                                                    </Heading>
                                                                 }
                                                                 {
                                                                     person.companyPosition && <Text>
                                                                         {person.companyPosition}
-                                                                  </Text>
+                                                                    </Text>
                                                                 }
                                                             </Box>;
                                                         })
