@@ -42,6 +42,9 @@ import SustainabilityPanelBlock from '~/components/blocks/SustainabilityPanel';
 // People and Governance
 import ProfilesPanelBlock from '~/components/blocks/ProfilesPanel/ProfilesPanel';
 
+// People and Governance / Policies
+import DocumentPoliciesListBlock from '~/components/blocks/DocumentPoliciesList';
+
 // Investor Center/ ASX Announcements
 import AsxNewsletterFormPanelBlock from '~/components/blocks/AsxNewsletterFormPanel';
 
@@ -117,6 +120,9 @@ const blocks:any = {
 
     // People and Governance
     ProfilesPanelBlock,
+
+    // People and Governance / Policies
+    DocumentPoliciesListBlock,
 };
 
 export const getBlock:any = (name:any) : any => {

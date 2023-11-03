@@ -57,6 +57,7 @@ import { computershareContactPanelRecord } from "~/dato/blocks/computershareCont
 
 // People and Governance
 import { profilesPanelRecord } from '~/dato/blocks/profilesPanel';
+import {documentPoliciesListRecord} from "~/dato/blocks/documentPoliciesList";
 
 export const blocks:string = `
     blocks {
@@ -157,6 +158,10 @@ export const blocks:string = `
 
         ... on ProfilesPanelRecord {
             ${profilesPanelRecord}
+        }
+
+        ... on DocumentPoliciesListRecord {
+            ${documentPoliciesListRecord}
         }
 
         ... on SharePricePanelRecord {

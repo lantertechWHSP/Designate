@@ -10,20 +10,15 @@ interface IDocumentCard extends IDocument {
 const DocumentCard:any = ({ title, date, document }:IDocumentCard) : ReactNode => {
     return <Flex py={[4, ,'22px']} direction={['row']} align="center">
         {
-            (title && (document && document.url)) ? <Link href={document?.url}
-                display="inline"
-                as="a"
-                variant="listItem"
-                flex={1}
-                target="_blank">
-                <Heading as="h3">
-                    {title}
-                </Heading>
-            </Link> : title && <Heading as="h3"
-                flex={1}
-                display="inline"
-                variant="listItem">
-                {title}
+            title && <Heading as="h3"
+                     flex={1}
+                     display="inline"
+                     variant="listItem">
+                {
+                    (document && document.url) ? <Link href={document?.url} target="_blank">
+                        {title}
+                    </Link> : <>{title}</>
+                }
             </Heading>
         }
         {

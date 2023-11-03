@@ -9,11 +9,6 @@ export const documents:string = `
                 id
                 label
             }
-            subcategory {
-                id
-                label
-                ordinal
-            }
             tags {
                 id
                 label

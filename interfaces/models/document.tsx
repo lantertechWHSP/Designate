@@ -4,13 +4,6 @@ import { IFilter } from '~/interfaces/util/filter';
 export interface IDocumentCategory {
     id?:string;
     label?:string;
-    subcategory?:IDocumentSubcategory;
-}
-
-export interface IDocumentSubcategory {
-    id?:string;
-    label?:string;
-    ordinal?:number;
 }
 
 export interface IDocumentTags {
@@ -22,7 +15,6 @@ export interface IDocument {
     title?:string;
     date?:string;
     category?:IDocumentCategory;
-    subcategory?:IDocumentSubcategory;
     tags?:IDocumentTags[];
     document?:IFile;
 }
