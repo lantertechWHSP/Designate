@@ -11,13 +11,13 @@ export enum ContainerWidth {
 
 export enum BackgroundColor {
     White = 'White',
-    BrownGrey = 'BrownGrey',
+    OliveGrey = 'OliveGrey',
+    Olive = 'Olive',
     GhostWhite = 'GhostWhite',
-    DarkBrown = 'DarkBrown'
 }
 
 export enum TextColor {
-    DarkBrown = 'DarkBrown',
+    Olive = 'Olive',
     White = 'White'
 }
 
@@ -50,7 +50,7 @@ interface IContentBlock {
 export const getTextColor:any = (color:TextColor|ResponsiveValue<any>|string) : TextColor|ResponsiveValue<any>|string => {
     switch(color) {
         case TextColor.White : return 'white';
-        case TextColor.DarkBrown : return 'darkBrown';
+        case TextColor.Olive : return 'olive';
         default : return color;
     }
 };
@@ -58,9 +58,9 @@ export const getTextColor:any = (color:TextColor|ResponsiveValue<any>|string) : 
 export const getBackgroundColor:any = (background:BackgroundColor|ResponsiveValue<any>|string) : BackgroundColor|ResponsiveValue<any>|string => {
     switch(background) {
         case BackgroundColor.White : return 'white';
-        case BackgroundColor.BrownGrey : return 'brownGrey';
+        case BackgroundColor.OliveGrey : return 'oliveGrey';
         case BackgroundColor.GhostWhite : return 'ghostWhite';
-        case BackgroundColor.DarkBrown : return 'darkBrown';
+        case BackgroundColor.Olive : return 'olive';
         default : return background;
     }
 };

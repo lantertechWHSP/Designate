@@ -32,7 +32,7 @@ const PortfolioPanelBlock:any = ({ items, paddingBottom }:IPortfolioPanelBlock) 
                                     textAlign="left"
                                     borderColor="borderColor">
                                     <Heading as="h3"
-                                        color="darkBrown"
+                                        color="olive"
                                         fontSize={['21px']}
                                         lineHeight={['26px']}
                                         fontWeight={700} mb={0}>

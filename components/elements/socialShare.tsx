@@ -13,13 +13,13 @@ const SocialShare:any = () => {
             <Heading py={2}>Share</Heading>
             <Box borderTop="1px solid" borderColor="borderColor" py={4}>
                 <Flex mx={-2}>
-                    <ShareLink href={links.twitter(link)} color="black">
+                    <ShareLink href={links.twitter(link)} color="charcoal">
                         <Icon icon={Icons.X} />
                     </ShareLink>
-                    <ShareLink href={links.threads()} color="black">
+                    <ShareLink href={links.threads()} color="charcoal">
                         <Icon icon={Icons.Threads} />
                     </ShareLink>
-                    <ShareLink href={links.linkedin(link)} color="black">
+                    <ShareLink href={links.linkedin(link)} color="charcoal">
                         <Icon icon={Icons.Linkedin} />
                     </ShareLink>
                 </Flex>

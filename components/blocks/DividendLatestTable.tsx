@@ -26,7 +26,7 @@ const DividendLatestTableBlock:any = ({ table, description, paddingTop, paddingB
         {
             description && <Row>
                 <Column width={[ColumnWidth.Full, , ColumnWidth.Half]}>
-                    <Box fontSize={['19px']} lineHeight={['29px']} color="darkBrown" mb={8}>
+                    <Box fontSize={['19px']} lineHeight={['29px']} color="olive" mb={8}>
                         {description}
                     </Box>
                 </Column>

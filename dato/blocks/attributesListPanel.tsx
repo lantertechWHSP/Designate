@@ -1,4 +1,4 @@
-export const investmentPhilosophyRecord:string = `
+export const attributesListPanelRecord:string = `
     __typename
     id
     title

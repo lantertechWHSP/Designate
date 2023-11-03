@@ -130,7 +130,7 @@ const FeaturedPostsCarousel:any = ({ posts }:IFeaturedPostsCarousel) : any => {
                                         backgroundColor: 'white'
                                     }}
                                     mx={2}
-                                    color="black"
+                                    color="charcoal"
                                     width={['40px', ,'56px']}
                                     height={['40px', ,'56px']}
                                     borderRadius="50%"
@@ -145,7 +145,7 @@ const FeaturedPostsCarousel:any = ({ posts }:IFeaturedPostsCarousel) : any => {
                                         backgroundColor: 'white'
                                     }}
                                     mx={2}
-                                    color="black"
+                                    color="charcoal"
                                     width={['40px', ,'56px']}
                                     height={['40px', ,'56px']}
                                     borderRadius="50%"

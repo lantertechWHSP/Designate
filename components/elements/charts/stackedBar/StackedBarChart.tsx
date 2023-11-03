@@ -38,7 +38,7 @@ interface IMargin {
     left:number;
 }
 
-const StackedBarChart:any = ({ data, textColor = 'steelBlue', borderColor = 'borderColor' }:IStackedBarChart) : ReactNode => {
+const StackedBarChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor' }:IStackedBarChart) : ReactNode => {
     const [mediaQuery] = useMediaQuery(`(min-width: ${breakpoints.sm})`);
     const [width, setWidth] = useState<number>(null);
     const [height, setHeight] = useState<number>(mediaQuery ? 390 : 340);

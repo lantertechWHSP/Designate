@@ -153,7 +153,7 @@ const DocumentList:any = ({ latestDocuments, documentsMeta, documentsFilters }:I
                                                                 <Flex direction="row" align="center" width="100%">
                                                                     <Flex flex="1">{item.label}</Flex>
                                                                     {
-                                                                        selectedTag === item && <Box color="steelBlue">
+                                                                        selectedTag === item && <Box color="steel">
                                                                             <Icon icon={Icons.Tick} h={12} w={12}  />
                                                                         </Box>
                                                                     }
@@ -190,7 +190,7 @@ const DocumentList:any = ({ latestDocuments, documentsMeta, documentsFilters }:I
                                                                 <Flex direction="row" align="center" width="100%">
                                                                     <Flex flex="1">{item.label}</Flex>
                                                                     {
-                                                                        selectedYear === item && <Box color="steelBlue">
+                                                                        selectedYear === item && <Box color="steel">
                                                                             <Icon icon={Icons.Tick} h={12} w={12}  />
                                                                         </Box>
                                                                     }

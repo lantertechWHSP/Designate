@@ -21,9 +21,9 @@ interface IChartFilter extends IFilter {
 }
 
 const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesTable, australianListedTable, australianBondsTable, paddingTop, paddingBottom, theme }:ITrackRecordChartBlock) : ReactNode => {
-    const backgroundColor:string = theme === Theme.Dark ? 'darkBrown' : 'white';
+    const backgroundColor:string = theme === Theme.Dark ? 'olive' : 'white';
     const colors:string[] = theme === Theme.Dark ? darkLegendColors : legendColors;
-    const textColor:string = theme === Theme.Dark ? 'white' : 'steelBlue';
+    const textColor:string = theme === Theme.Dark ? 'white' : 'steel';
     const fillColor:string = theme === Theme.Dark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(80, 81, 60, 0.05)';
     const borderColor:string = theme === Theme.Dark ? 'whiteBlur2' : 'borderColor';
 
@@ -135,7 +135,7 @@ const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesT
                                     variant="menuButton"
                                     rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} h={12} w={12} /> : <Icon icon={Icons.ChevronDown} h={12} w={12}  /> }>
                                     <Flex display="inlineFlex" direction="row" alignItems="center">
-                                        <Box background={theme === Theme.Dark ? 'white' : 'lightGrey'} width="8px" height="8px" borderRadius="4px" border="1px solid" borderColor={theme === Theme.Dark ? 'black' : 'transparent'}  mr={2} />
+                                        <Box background={theme === Theme.Dark ? 'white' : 'lightGrey'} width="8px" height="8px" borderRadius="4px" border="1px solid" borderColor={theme === Theme.Dark ? 'charcoal' : 'transparent'}  mr={2} />
                                         <Text as="span">
                                             Compare…
                                         </Text>
@@ -168,10 +168,10 @@ const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesT
                                                         }
                                                     }}>
                                                     <Flex direction="row" align="center" width="100%">
-                                                        <Box background={item.background} width="8px" height="8px" borderRadius="4px" border="1px solid" borderColor={theme === Theme.Dark ? 'black' : 'transparent'} mr={2} />
+                                                        <Box background={item.background} width="8px" height="8px" borderRadius="4px" border="1px solid" borderColor={theme === Theme.Dark ? 'charcoal' : 'transparent'} mr={2} />
                                                         <Flex flex="1">{item.label}</Flex>
                                                         {
-                                                            item.isActive && <Box color="steelBlue">
+                                                            item.isActive && <Box color="steel">
                                                                 <Icon icon={Icons.Tick} h={12} w={12}  />
                                                             </Box>
                                                         }

@@ -1,4 +1,4 @@
-const generatePreviewUrl = ({ item, itemType }) => {
+const generatePreviewUrl:any = ({ item, itemType }) : string => {
     switch(itemType.attributes.api_key) {
         case 'page': return item.attributes.slug;
         case 'post': return `news/${item.attributes.slug}`;
@@ -6,7 +6,7 @@ const generatePreviewUrl = ({ item, itemType }) => {
     }
 };
 
-const handler = (req, res) => {
+const handler:any = (req, res) : any => {
     // setup CORS permissions
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'POST');
@@ -18,13 +18,13 @@ const handler = (req, res) => {
         return res.status(200).send('ok');
     }
 
-    const url = generatePreviewUrl(req.body);
+    const url:string = generatePreviewUrl(req.body);
     if (!url) {
         return res.status(200).json({ previewLinks: [] });
     }
 
-    const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : process.env.NEXT_PUBLIC_SITE_URL;
-    const previewLinks = [
+    const baseUrl:string = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : process.env.NEXT_PUBLIC_SITE_URL;
+    const previewLinks:any = [
         {
             label: 'Published version',
             url: `${baseUrl}/${url}`,
@@ -36,4 +36,5 @@ const handler = (req, res) => {
     ];
     return res.status(200).json({ previewLinks });
 };
+
 export default handler;

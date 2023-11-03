@@ -12,26 +12,30 @@ export const breakpoints:any = {
 };
 
 const colors:any = {
-    darkGreen: '#527535',
-    highlightGreen: '#b0e70f',
-
-    black: '#1c1c1c',
-    blackBlur: 'rgba(28, 28, 28, 0.4)',
-    black2: '#1b2024',
-    black3: '#323639',
-
-    brownGrey: '#cbcbc5',
-    darkBrown: '#50513c',
-    darkBrownBlur: 'rgba(80, 81, 60, 0.4)',
-    darkBrownBlur2: 'rgba(80, 81, 60, 0.2)',
-
     white: '#ffffff',
     whiteBlur: 'rgba(255, 255, 255, 0.6)',
     whiteBlur2: 'rgba(255, 255, 255, 0.2)',
     ghostWhite: '#f8f8f8',
     ghostWhiteBlur: 'rgba(248, 248, 248, 0.7)',
 
-    steelBlue: '#667085',
+    charcoal: '#1c1c1c',
+    charcoalBlur: 'rgba(28, 28, 28, 0.4)',
+    charcoal2: '#1b2024',
+    charcoal3: '#323639',
+
+    olive: '#50513c',
+    oliveBlur: 'rgba(80, 81, 60, 0.4)',
+    oliveBlur2: 'rgba(80, 81, 60, 0.2)',
+    oliveGrey: '#cbcbc5',
+
+    stone: '#e4ddc1',
+    forest: '#527535',
+    spring: '#b0e70f',
+    steel: '#667085',
+    plum: '#673148',
+    rust: '#ac3148',
+    sky: '#0078ac',
+    deepStone: '#9e9b89',
 
     lightGrey: '#c4c4c4',
     lightGrey2: '#dee2e6',
@@ -46,14 +50,16 @@ const colors:any = {
     positiveDot: '#00CE7D',
     negativeDot: '#ea4743',
 
-    error: '#f17674',
+    error: '#ac3148',
     errorText: '#fff4f4',
-
-    success: '#93d490',
-    successText: '#1b5318',
 };
 
 colors['borderColor'] = colors.lightGrey2;
+colors['error'] = colors.rust;
+colors['errorText'] = '#fff4f4';
+
+colors['success'] = colors.spring;
+colors['successText'] = '#93d490';
 
 export const boxShadow:string = '0px 4px 10px 0px rgba(0, 0, 0, 0.10)';
 
@@ -85,7 +91,7 @@ export const theme:any = extendBaseTheme({
         Modal,
         Heading: {
             baseStyle: {
-                color: 'black',
+                color: 'charcoal',
                 fontWeight: 500
             },
             variants: {
@@ -103,13 +109,13 @@ export const theme:any = extendBaseTheme({
                     letterSpacing: ['-0.75px']
                 },
                 sectionHeading: {
-                    color: 'black',
+                    color: 'charcoal',
                     fontSize: ['32px', ,'40px'],
                     lineHeight: [1.25],
                     fontWeight: 700,
                 },
                 sectionSubheading: {
-                    color: 'black',
+                    color: 'charcoal',
                     fontSize: ['26px', ,'28px'],
                     lineHeight: [1.2],
                 },
@@ -118,21 +124,21 @@ export const theme:any = extendBaseTheme({
                     fontSize: ['18px', ,'21px'],
                     lineHeight: ['23px', ,'23px'],
                     fontWeight: 500,
-                    color: 'darkBrown',
+                    color: 'olive',
                     transition: 'color 0.3s linear',
                     _hover: {
-                        color: 'black'
+                        color: 'charcoal'
                     },
                     a: {
-                        color: 'darkBrown',
+                        color: 'olive',
                         transition: 'color 0.3s linear',
                         _hover: {
-                            color: 'black'
+                            color: 'charcoal'
                         }
                     }
                 },
                 listLabel: {
-                    color: 'darkBrownBlur',
+                    color: 'oliveBlur',
                     fontSize: ['18px', ,'21px'],
                     lineHeight: ['23px', ,'23px'],
                     fontWeight: 500,
@@ -153,14 +159,14 @@ export const theme:any = extendBaseTheme({
                     fontSize: ['21px', '21px', '21px'],
                     lineHeight: ['26px', '26px', '26px'],
                     fontWeight: 700,
-                    color: 'darkBrown',
+                    color: 'olive',
                     mb: 8
                 },
                 h4: {
                     fontSize: ['19px', '19px', '19px'],
                     lineHeight: ['26px', '26px', '26px'],
                     fontWeight: 700,
-                    color: 'darkBrown',
+                    color: 'olive',
                     mb: 8
                 },
             },
@@ -172,7 +178,7 @@ export const theme:any = extendBaseTheme({
                 sectionDescription: {
                     fontSize: ['18px'],
                     lineHeight: ['27px'],
-                    color: 'steelBlue'
+                    color: 'steel'
                 },
                 error: {
                     color: 'error'
@@ -181,11 +187,11 @@ export const theme:any = extendBaseTheme({
                     fontSize: '14px'
                 },
                 annotation: {
-                    color: 'blackBlur',
+                    color: 'charcoalBlur',
                     fontSize: '16px'
                 },
                 listLabel: {
-                    color: 'darkBrownBlur',
+                    color: 'oliveBlur',
                     fontSize: ['18px', ,'21px'],
                     lineHeight: ['23px', ,'23px'],
                     fontWeight: 500,
@@ -209,7 +215,7 @@ export const theme:any = extendBaseTheme({
         },
         Link: {
             baseStyle: {
-                color: 'darkBrown'
+                color: 'olive'
             },
             variants: {
                 siteHeader: {
@@ -239,12 +245,12 @@ export const theme:any = extendBaseTheme({
                     height: '50px',
                     lineHeight: '50px',
                     px: 4,
-                    color: 'darkBrown',
+                    color: 'olive',
                     fontSize: '16px',
                     fontWeight: 500
                 },
                 pagination: {
-                    color: 'darkBrown',
+                    color: 'olive',
                     background: 'transparent',
                     minWidth: '40px',
                     height: '40px',
@@ -254,7 +260,7 @@ export const theme:any = extendBaseTheme({
                     mx: 2
                 },
                 paginationDirection: {
-                    color: 'darkBrown',
+                    color: 'olive',
                     fontWeight: '500px',
                     fontSize: '16px'
                 },
@@ -280,10 +286,10 @@ export const theme:any = extendBaseTheme({
                     height: '50px',
                     textAlign: 'unset',
                     _hover: {
-                        borderColor: 'black'
+                        borderColor: 'charcoal'
                     },
                     _active: {
-                        borderColor: 'black'
+                        borderColor: 'charcoal'
                     }
                 },
             }
@@ -335,7 +341,7 @@ export const theme:any = extendBaseTheme({
                     fontSize: '16px',
                     minWidth: ['200px', , '270px'],
                     px: 4,
-                    color: 'black',
+                    color: 'charcoal',
                     _focus: {
                         background: 'lightGrey2Blur'
                     }
@@ -365,7 +371,7 @@ export const theme:any = extendBaseTheme({
                     _last: {
                         td: {
                             borderBottom: '1px solid',
-                            borderColor: 'black',
+                            borderColor: 'charcoal',
                         }
                     }
                 }
@@ -376,7 +382,7 @@ export const theme:any = extendBaseTheme({
                         fontSize: ['16px'],
                         fontWeight: 400,
                         lineHeight: '24px',
-                        color: 'steelBlue',
+                        color: 'steel',
                         borderBottom: '2px solid',
                         borderColor: 'borderColor',
                         py: 2
@@ -386,7 +392,7 @@ export const theme:any = extendBaseTheme({
                         fontSize: ['18px'],
                         borderBottom: '1px solid',
                         borderColor: 'borderColor',
-                        color: 'black'
+                        color: 'charcoal'
                     }
                 }
             }
@@ -400,7 +406,7 @@ export const theme:any = extendBaseTheme({
                 fontSize: '16px',
                 px: '16px',
                 background: 'lightGrey3Blur',
-                color: 'darkBrown'
+                color: 'olive'
             },
         },
         Alert: {
@@ -431,7 +437,7 @@ export const theme:any = extendBaseTheme({
                 outline: 0
             },
             body: {
-                color: 'steelBlue',
+                color: 'steel',
                 fontSize: '19px',
                 lineHeight: '29px'
             },
@@ -440,7 +446,7 @@ export const theme:any = extendBaseTheme({
             },
             blockquote: {
                 borderLeft: `4px solid`,
-                borderColor: 'darkBrownBlur',
+                borderColor: 'oliveBlur',
                 pl: 8,
                 mb: 4
             },

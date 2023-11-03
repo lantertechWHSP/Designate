@@ -35,7 +35,7 @@ const PortfolioQuotePanelBlock:any = ({ contain, quote, person, paddingTop, padd
                 (quote || blockQuoteFooter) && <Column width={ColumnWidth.TwoThirds} display="flex" justify="center">
                     <blockquote>
                         {
-                            quote && <Text fontSize="24px" lineHeight="28px" fontWeight={700} color="darkBrown">
+                            quote && <Text fontSize="24px" lineHeight="28px" fontWeight={700} color="olive">
                                 {quote}
                             </Text>
                         }

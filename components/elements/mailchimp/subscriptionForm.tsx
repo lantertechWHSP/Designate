@@ -48,7 +48,7 @@ export const SubscriptionForm:any = () : ReactNode => {
     //
     // };
 
-    return <Box background="black2">
+    return <Box background="charcoal2">
         <Container>
             <Box py={[6, 8, 12]}>
                 <Row>
@@ -104,7 +104,7 @@ export const SubscriptionForm:any = () : ReactNode => {
                                                     </Flex>
                                                     <Button type="submit"
                                                         background="white"
-                                                        color="black"
+                                                        color="charcoal"
                                                         py={0}
                                                         h="50px"
                                                         ml={[0, ,4]}

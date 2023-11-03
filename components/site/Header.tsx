@@ -174,7 +174,7 @@ const DesktopNav:any = ({menu, color}): ReactNode => {
                                             return <Box py={2} key={childIndex}>
                                                 <MenuItemLink
                                                     variant="siteHeader"
-                                                    color="black"
+                                                    color="charcoal"
                                                     title={child.title}
                                                     link={child.link}
                                                     externalLink={child.externalLink} />
@@ -231,7 +231,7 @@ const MobileNav:any = ({ background, menu, isOpen = false }): ReactNode => {
             duration: 0.3
         }}>
         <Box ref={scrollRef} overflowY="auto" h={isOpen ? '100%' : '0'}>
-            <Box color="black">
+            <Box color="charcoal">
                 {
                     Array.isArray(menu) && menu.length > 0 && menu.map((item: IMenuLink, index: number) => {
                         return <MobileNavItem item={item} key={index}/>;
@@ -255,7 +255,7 @@ const MobileNavItem:any = ({item}): ReactNode => {
     return <Box>
         <Flex px={['16px', '24px', '32px']} py={3} borderTop="1px solid" cursor={hasChildren ? 'pointer' : 'auto'} onClick={handleClick}  borderColor="borderColor">
             <MenuItemLink variant="siteHeader"
-                color="black"
+                color="charcoal"
                 fontSize="18px"
                 link={item.link}
                 externalLink={item.externalLink} >
@@ -263,7 +263,7 @@ const MobileNavItem:any = ({item}): ReactNode => {
             </MenuItemLink>
             <Box flex={1}/>
             {
-                hasChildren && <Button color="black">
+                hasChildren && <Button color="charcoal">
                     <Box
                         width="12px"
                         height="12px"
@@ -281,7 +281,7 @@ const MobileNavItem:any = ({item}): ReactNode => {
                         item.children.map((child: IMenuLink, childIndex: number) => {
                             return <Box px={['16px', '24px', '32px']} py={2} key={childIndex}>
                                 <MenuItemLink variant="siteHeader"
-                                    color="darkBrown"
+                                    color="olive"
                                     link={child.link}
                                     externalLink={child.externalLink} >
                                     {child.title}

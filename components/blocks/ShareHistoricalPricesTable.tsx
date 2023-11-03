@@ -52,7 +52,7 @@ const ShareHistoricalPricesTable:any = ({ paddingTop, paddingBottom }:ShareHisto
                             <Flex align="center"
                                 display="inline-flex"
                                 borderBottom="1px solid"
-                                borderColor="darkBrownBlur"
+                                borderColor="oliveBlur"
                                 fontWeight={700}>
                                 <Icon icon={Icons.ChevronLeft} w={12} h={12} />
                                 <Text as="span" ml={2}>
@@ -66,7 +66,7 @@ const ShareHistoricalPricesTable:any = ({ paddingTop, paddingBottom }:ShareHisto
                             sx={
                                 {
                                     '.yourir-active': {
-                                        background: 'darkBrown',
+                                        background: 'olive',
                                         color: 'white',
                                         borderRadius: '50%'
                                     },
@@ -106,10 +106,10 @@ const ShareHistoricalPricesTable:any = ({ paddingTop, paddingBottom }:ShareHisto
                             <Flex align="center"
                                 display="inline-flex"
                                 borderBottom="2px solid"
-                                borderColor="darkBrownBlur"
+                                borderColor="oliveBlur"
                                 transition="border-color 0.3s linear"
                                 _hover={{
-                                    borderColor: 'darkBrown'
+                                    borderColor: 'olive'
                                 }}
                                 fontWeight={700}>
                                 <Text as="span" mr={2}>

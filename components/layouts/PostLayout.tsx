@@ -30,7 +30,7 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
                         <Row justify="center">
                             <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths, ColumnWidth.EightTwelfths]}>
                                 {
-                                    post?.author || date && <Text color="blackBlur" mb={4}>
+                                    post?.author || date && <Text color="charcoalBlur" mb={4}>
                                         {
                                             (() => {
                                                 if (post?.author && date) {

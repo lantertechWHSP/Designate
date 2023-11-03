@@ -1,4 +1,4 @@
-export default async function startPreview(req, res) {
+export default async function startPreview(req, res) : Promise<void> {
     const { secret, redirect } = req.query;
 
     // Check the secret and next parameters

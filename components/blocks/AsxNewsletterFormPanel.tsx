@@ -9,7 +9,7 @@ interface IAsxNewsletterFormPanelBlock extends IBlock {
 }
 
 const AsxNewsletterFormPanelBlock:any = ({}:IAsxNewsletterFormPanelBlock) : ReactNode => {
-    return <ContentBlock background="darkBrown">
+    return <ContentBlock background="olive">
         <Row justify="center" textAlign="center">
             <Column width={[ColumnWidth.Full, , ColumnWidth.TenTwelfths]}>
                 <Heading as="h2" fontSize={['36px']} lineHeight={['42px']} fontWeight={500} color="white" mb={8}>

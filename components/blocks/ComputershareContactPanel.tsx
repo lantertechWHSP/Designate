@@ -49,7 +49,7 @@ const ComputershareContactPanelBlock:any = ({ title, description, image, onlineD
                 }
             </Column>
         </Row>
-        <Divider borderColor="darkBrownBlur2" my={[4, 8, 12]} />
+        <Divider borderColor="oliveBlur2" my={[4, 8, 12]} />
         <Row>
             <Column width={[ColumnWidth.Full, ,ColumnWidth.OneThird]}>
                 {
@@ -58,7 +58,7 @@ const ComputershareContactPanelBlock:any = ({ title, description, image, onlineD
                             Online
                         </Heading>
                         {
-                            onlineDescription && <Box color="darkBrown" mb={6}>
+                            onlineDescription && <Box color="olive" mb={6}>
                                 <StructuredContent content={onlineDescription} />
                             </Box>
                         }
@@ -85,7 +85,7 @@ const ComputershareContactPanelBlock:any = ({ title, description, image, onlineD
                             (contactLocal || contactInternational) && <Box>
                                 <Heading as="h4" fontSize={['18px']} lineHeight={['26px']} fontWeight={500} mb={2}>Phone</Heading>
                                 {
-                                    contactLocal && <Text color="darkBrown" mb={0}>
+                                    contactLocal && <Text color="olive" mb={0}>
                                         <UnderlineLink href={`tel:${contactLocal}`} mr={2}>
                                             {contactLocal}
                                         </UnderlineLink>
@@ -95,7 +95,7 @@ const ComputershareContactPanelBlock:any = ({ title, description, image, onlineD
                                     </Text>
                                 }
                                 {
-                                    contactInternational && <Text color="darkBrown" mb={0}>
+                                    contactInternational && <Text color="olive" mb={0}>
                                         <UnderlineLink href={`tel:${contactInternational}`} mr={2}>
                                             {contactInternational}
                                         </UnderlineLink>
@@ -115,7 +115,7 @@ const ComputershareContactPanelBlock:any = ({ title, description, image, onlineD
                         <Heading as="h3" variant="sectionSubheading" mb={4}>
                             Address
                         </Heading>
-                        <Box color="darkBrown" mb={4}>
+                        <Box color="olive" mb={4}>
                             <StructuredContent content={address} />
                         </Box>
                     </Box>

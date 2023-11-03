@@ -48,7 +48,7 @@ const SharePriceChart:any = () : ReactNode => {
                     '.yourir-chart': {
                         borderStyle: 'solid',
                         borderColor: 'borderColor',
-                        color: 'darkBrown',
+                        color: 'olive',
                         fontSize: '14px',
                         padding: '0 0 40px',
                     },
@@ -59,7 +59,7 @@ const SharePriceChart:any = () : ReactNode => {
                         fill: `url(#priceGradient)`
                     },
                     '.yourir-chart-price': {
-                        stroke: 'black',
+                        stroke: 'charcoal',
                         strokeWidth: '1px',
                     },
                     '.yourir-chart-yaxis-label': {
@@ -74,12 +74,12 @@ const SharePriceChart:any = () : ReactNode => {
                         marginRight: '0',
                         fontSize: '12px',
                         fontFamily: 'Roboto',
-                        color: 'steelBlue'
+                        color: 'steel'
                     },
                     '.yourir-chart-xaxis-label': {
                         fontSize: '12px',
                         fontFamily: 'Roboto',
-                        color: 'steelBlue'
+                        color: 'steel'
                     },
                     '.yourir-chart-panel-border-bottom': {
                         display: 'none'
@@ -116,8 +116,8 @@ const SharePriceChart:any = () : ReactNode => {
                                     {
                                         '.yourir-active, button:focus': {
                                             color: 'white',
-                                            background: 'darkBrown',
-                                            borderColor: 'darkBrown'
+                                            background: 'olive',
+                                            borderColor: 'olive'
                                         }
                                     }
                                 }>

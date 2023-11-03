@@ -9,6 +9,7 @@ import ContentCardPanelBlock from '~/components/blocks/ContentCardPanel';
 import AccordionBlock from '~/components/blocks/Accordion';
 import CarouselBlock from '~/components/blocks/Carousel';
 import HorizontalRuleBlock from '~/components/blocks/HorizontalRule';
+import AttributesListPanel from '~/components/blocks/AttributesListPanel';
 
 import DocumentHeroPanelBlock from '~/components/blocks/DocumentHeroPanel';
 import CompanyValuesPanelBlock from '~/components/blocks/CompanyValuesPanel';
@@ -29,7 +30,6 @@ import TrackRecordChartBlock from '~/components/blocks/TrackRecordChart';
 import TrackRecordDividendBlock from '~/components/blocks/TrackRecordDividend';
 
 // About/Investment Approach
-import InvestmentPhilosophyBlock from '~/components/blocks/InvestmentPhilosophy';
 import InvestmentPortfolioTableBlock from '~/components/blocks/InvestmentPortfolioTable';
 import ObjectivePanelBlock from '~/components/blocks/ObjectivePanel';
 
@@ -72,6 +72,7 @@ const blocks:any = {
     AccordionBlock,
     CarouselBlock,
     HorizontalRuleBlock,
+    AttributesListPanel,
 
     DocumentHeroPanelBlock,
     CompanyValuesPanelBlock,
@@ -92,7 +93,6 @@ const blocks:any = {
     TrackRecordDividendBlock,
 
     // About/Investment Approach
-    InvestmentPhilosophyBlock,
     InvestmentPortfolioTableBlock,
     ObjectivePanelBlock,
 

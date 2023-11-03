@@ -38,7 +38,7 @@ const PercentageBar:any = ({ value }:IPercentageBar) => {
                             {value}%
                         </Box>
                     </> : <>
-                        <Box width={`${value}%`} textAlign="right" background="white" borderRadius="3px" px={2} height="24px" color="darkBrown">
+                        <Box width={`${value}%`} textAlign="right" background="white" borderRadius="3px" px={2} height="24px" color="olive">
                             {value}%
                         </Box>
                     </>
@@ -54,7 +54,7 @@ const InvestmentPortfolioTableBlock:any = ({ title, description, table, lastUpda
         return value;
     }) : 0);
 
-    return (table || lastUpdated) && <ContentBlock background="darkBrown" paddingTop={paddingTop} paddingBottom={paddingBottom}>
+    return (table || lastUpdated) && <ContentBlock background="olive" paddingTop={paddingTop} paddingBottom={paddingBottom}>
         <Box mb={8}>
             {
                 title && <Heading as="h2" variant="sectionHeading" color="white" mb={[4, ,8]}>
@@ -66,7 +66,6 @@ const InvestmentPortfolioTableBlock:any = ({ title, description, table, lastUpda
                     <Row>
                         <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
                             <StructuredContent content={description} />
-
                         </Column>
                     </Row>
                 </Box>

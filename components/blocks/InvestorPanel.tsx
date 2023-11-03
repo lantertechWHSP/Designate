@@ -39,7 +39,7 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                                 lineHeight={['64px', ,'80px']}
                                 letterSpacing="-2px"
                                 fontWeight={500}
-                                color="darkBrown"
+                                color="olive"
                                 data-yourir="price showCurrency=true minDecimals=2 maxDecimals=2" />
                             <Box sx={{
                                 '.chakra-badge.yourir-zero': {
@@ -52,46 +52,46 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                                     background: 'negative',
                                 },
                                 '.yourir-change .yourir-positive': {
-                                    color: 'darkBrown'
+                                    color: 'olive'
                                 },
                                 '.yourir-change .yourir-negative': {
-                                    color: 'darkBrown'
+                                    color: 'olive'
                                 },
                                 '.yourir-pct-symbol .yourir-positive': {
-                                    color: 'darkBrown'
+                                    color: 'olive'
                                 },
                                 '.yourir-pct-symbol .yourir-negative': {
-                                    color: 'darkBrown'
+                                    color: 'olive'
                                 },
                                 '.yourir-pct-change .yourir-positive': {
-                                    color: 'darkBrown'
+                                    color: 'olive'
                                 },
                                 '.yourir-pct-change .yourir-negative': {
-                                    color: 'darkBrown'
+                                    color: 'olive'
                                 },
                                 '.yourir-zero .percent': {
                                     display: 'none'
                                 }
                             }}>
-                                <Badge data-yourir="changeSignCSS" color="darkBrown">
+                                <Badge data-yourir="changeSignCSS" color="olive">
                                     <Box as="span"
                                         data-yourir="changeSignCSS"
                                         mr={1}
                                         sx={{
                                             '&.yourir-positive:before': {
-                                                color: 'darkBrown',
+                                                color: 'olive',
                                                 content: "'\\2197'"
                                             },
                                             '&.yourir-negative:before': {
-                                                color: 'darkBrown',
+                                                color: 'olive',
                                                 content: "'\\2198'"
                                             }
                                         }}
                                     />
-                                    <Text as="span" color="darkBrown" data-yourir="change maxDecimals=2" />
+                                    <Text as="span" color="olive" data-yourir="change maxDecimals=2" />
                                     {'\u00A0'}
                                     <Text as="span" className="percent">
-                                        (<Text as="span" color="darkBrown" data-yourir="pctChange" />)
+                                        (<Text as="span" color="olive" data-yourir="pctChange" />)
                                     </Text>
                                 </Badge>
                             </Box>
@@ -102,15 +102,15 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                                     padding: '20px 0 0',
                                     borderBottomWidth: '1px',
                                     borderStyle: 'solid',
-                                    borderColor: 'darkBrown',
-                                    color: 'darkBrown',
+                                    borderColor: 'olive',
+                                    color: 'olive',
                                     fontSize: '14px'
                                 },
                                 '.yourir-chart-price-fill': {
                                     fill: `rgba(80, 81, 60, 0.2)`
                                 },
                                 '.yourir-chart-price': {
-                                    stroke: 'darkBrown',
+                                    stroke: 'olive',
                                     strokeWidth: '2px',
                                 },
                                 '.yourir-chart-yaxis-label': {
@@ -147,12 +147,12 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                                 '.yourir-chart-yaxis-label-container': {
                                     fontSize: '12px',
                                     fontFamily: 'Roboto',
-                                    color: 'steelBlue'
+                                    color: 'steel'
                                 },
                                 '.yourir-chart-xaxis-label-container': {
                                     fontSize: '12px',
                                     fontFamily: 'Roboto',
-                                    color: 'steelBlue'
+                                    color: 'steel'
                                 },
                                 '.yourir-chart-yaxis-outside .yourir-chart-yaxis-label-container:first-of-type': {
                                     display: 'none'
@@ -178,17 +178,17 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                         <Heading as="h3" variant="sectionSubheading" mb={4}>
                             ASX Announcements
                         </Heading>
-                        <Box data-yourir="announcements pageSize=5" borderBottom="1px solid" borderColor="darkBrown">
+                        <Box data-yourir="announcements pageSize=5" borderBottom="1px solid" borderColor="olive">
                             <Box data-yourir="items">
                                 <Flex role="group"
                                     borderTop="1px solid"
                                     borderColor="borderColor"
                                     direction="row"
-                                    color="darkBrownBlur"
+                                    color="oliveBlur"
                                     align="center"
                                     transition="color 0.3s linear"
                                     _hover={{
-                                        color: 'black'
+                                        color: 'charcoal'
                                     }}
                                     py={[4, ,'22px']}>
                                     <Box position="relative" top="1px">
@@ -206,10 +206,10 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                                         transform: 'translateX(4px)',
                                     }}>
                                         <ChakraLink  data-yourir="linkAnnouncement fileId" cursor="pointer"
-                                            color="darkBrownBlur"
+                                            color="oliveBlur"
                                             transition="color 0.3s linear"
                                             _groupHover={{
-                                                color: 'darkBrown',
+                                                color: 'olive',
                                             }}>
                                             <Icon icon={Icons.ChevronRight} />
                                         </ChakraLink>

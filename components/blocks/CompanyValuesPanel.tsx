@@ -30,7 +30,7 @@ const CompanyValuesPanelBlock:any = ({ items, paddingTop, paddingBottom, contain
                                             (item.icon && item.icon.url) && <Box mb={4}><img src={item.icon.url} alt={item.icon?.alt} /></Box>
                                         }
                                         {
-                                            item.title && <Heading as="h3" fontSize="24px" color="darkBrown" mb={2}>
+                                            item.title && <Heading as="h3" fontSize="24px" color="olive" mb={2}>
                                                 {item.title}
                                             </Heading>
                                         }

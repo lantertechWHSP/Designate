@@ -78,7 +78,7 @@ const CarouselBlock:any = ({ items, paddingTop, paddingBottom }:ICarouselBlock) 
                         _hover={{
                             backgroundColor: 'white'
                         }}
-                        color="black"
+                        color="charcoal"
                         left="10px"
                         width="56px"
                         height="56px"
@@ -92,7 +92,7 @@ const CarouselBlock:any = ({ items, paddingTop, paddingBottom }:ICarouselBlock) 
                         _hover={{
                             backgroundColor: 'white'
                         }}
-                        color="black"
+                        color="charcoal"
                         right="10px"
                         width="56px"
                         height="56px"
@@ -105,7 +105,7 @@ const CarouselBlock:any = ({ items, paddingTop, paddingBottom }:ICarouselBlock) 
                     {
                         items.map((item:ICarouselItem, index:number) => {
                             return <Button key={index} width="8px" height="8px" mx={1}
-                                background={slideIndex === index ? 'black' : 'white'}
+                                background={slideIndex === index ? 'charcoal' : 'white'}
                                 borderRadius="4px"
                                 onClick={() => {
                                     goToIndex(index);

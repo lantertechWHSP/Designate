@@ -61,8 +61,8 @@ const SharePriceOverview:any = () : ReactNode => {
                 <Heading as="h3" fontSize={['36px']}
                     lineHeight={['42px']} fontWeight={500}
                     mb={2}>
-                    <Text as="span" color="darkBrown">Soul Patts</Text>{'\u00A0'}
-                    <Text as="span" color="steelBlue">ASX:SOL</Text>
+                    <Text as="span" color="olive">Soul Patts</Text>{'\u00A0'}
+                    <Text as="span" color="steel">ASX:SOL</Text>
                 </Heading>
                 <Box>
                     <Badge className="status" mb={4}>
@@ -79,7 +79,7 @@ const SharePriceOverview:any = () : ReactNode => {
                     mb={0}
                     lineHeight={['80px']}
                     fontWeight={500}
-                    color="darkBrown"
+                    color="olive"
                     data-yourir="price showCurrency=true minDecimals=2 maxDecimals=2" />
                 <Box sx={{
                     '.chakra-badge.yourir-zero': {
@@ -92,46 +92,46 @@ const SharePriceOverview:any = () : ReactNode => {
                         background: 'negative',
                     },
                     '.yourir-change .yourir-positive': {
-                        color: 'darkBrown'
+                        color: 'olive'
                     },
                     '.yourir-change .yourir-negative': {
-                        color: 'darkBrown'
+                        color: 'olive'
                     },
                     '.yourir-pct-symbol .yourir-positive': {
-                        color: 'darkBrown'
+                        color: 'olive'
                     },
                     '.yourir-pct-symbol .yourir-negative': {
-                        color: 'darkBrown'
+                        color: 'olive'
                     },
                     '.yourir-pct-change .yourir-positive': {
-                        color: 'darkBrown'
+                        color: 'olive'
                     },
                     '.yourir-pct-change .yourir-negative': {
-                        color: 'darkBrown'
+                        color: 'olive'
                     },
                     '.yourir-zero .percent': {
                         display: 'none'
                     }
                 }}>
-                    <Badge data-yourir="changeSignCSS" color="darkBrown" mb={4}>
+                    <Badge data-yourir="changeSignCSS" color="olive" mb={4}>
                         <Box as="span"
                             data-yourir="changeSignCSS"
                             mr={1}
                             sx={{
                                 '&.yourir-positive:before': {
-                                    color: 'darkBrown',
+                                    color: 'olive',
                                     content: "'\\2197'"
                                 },
                                 '&.yourir-negative:before': {
-                                    color: 'darkBrown',
+                                    color: 'olive',
                                     content: "'\\2198'"
                                 }
                             }}
                         />
-                        <Text as="span" color="darkBrown" data-yourir="change maxDecimals=2" />
+                        <Text as="span" color="olive" data-yourir="change maxDecimals=2" />
                         {'\u00A0'}
                         <Text as="span" className="percent">
-                            (<Text as="span" color="darkBrown" data-yourir="pctChange" />)
+                            (<Text as="span" color="olive" data-yourir="pctChange" />)
                         </Text>
                     </Badge>
                 </Box>
@@ -142,7 +142,7 @@ const SharePriceOverview:any = () : ReactNode => {
                     lineHeight={['26px']}
                     fontWeight={500}
                     mb={4}
-                    color="black"
+                    color="charcoal"
                     data-yourir="marketCap showCurrency=true minDecimals=2 maxDecimals=2"></Text>
             </Box>
         </Flex>

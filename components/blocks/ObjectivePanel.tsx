@@ -27,19 +27,19 @@ const ObjectivePanelBlock:any = ({ items, containerWidth, paddingTop, paddingBot
                                     mb={[0, , ,2]}
                                     fontSize={['56px']}
                                     lineHeight={['56px']}
-                                    color="darkBrownBlur">
+                                    color="oliveBlur">
                                     {item.title}
                                 </Heading>
                             }
                             {
                                 (item.description || item.annotation) && <Box>
                                     {
-                                        item.description && <Heading as="h4" fontSize={['28px']} lineHeight={['28px']} mb={1} letterSpacing="-0.56px" color="darkBrown">
+                                        item.description && <Heading as="h4" fontSize={['28px']} lineHeight={['28px']} mb={1} letterSpacing="-0.56px" color="olive">
                                             {item.description}
                                         </Heading>
                                     }
                                     {
-                                        item.annotation && <Text color="darkBrown" m={0}>
+                                        item.annotation && <Text color="olive" m={0}>
                                             {item.annotation}
                                         </Text>
                                     }

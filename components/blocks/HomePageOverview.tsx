@@ -16,9 +16,7 @@ interface IHomePageOverviewBlock extends IBlock {
 }
 
 const HomePageOverviewBlock:any = ({ description, imageMain, imageSide, imageSide2 }:IHomePageOverviewBlock) : ReactNode => {
-    console.log(description);
-
-    return (imageMain || imageSide || imageSide2) && <ContentBlock background="brownGrey">
+    return (imageMain || imageSide || imageSide2) && <ContentBlock background="oliveGrey">
         {
             description && <Box maxW="990px" mx="auto" textAlign="center" mt="10px" mb={[6, 8, 12]}>
                 <Heading as="h2" fontSize={['20px', , ,'26px']} fontWeight={500} lineHeight={[1.45]} mb={[4, ,6]}>
@@ -44,7 +42,7 @@ const HomePageOverviewBlock:any = ({ description, imageMain, imageSide, imageSid
                 </Box>
             </Flex>
         }
-        <Divider mt={8} borderColor="darkBrownBlur2" />
+        <Divider mt={8} borderColor="oliveBlur2" />
     </ContentBlock>;
 };
 

@@ -21,7 +21,7 @@ const LatestNewsItem:any = ({ title, image, publishDate, slug }:ILatestNewsItem)
             </>
         }
         {
-            slug && title ? <Link color="black" href={`/news/${slug}`}>
+            slug && title ? <Link color="charcoal" href={`/news/${slug}`}>
                 <Heading as="h3" fontSize={['21px']} lineHeight={['30px']}>
                     {title}
                 </Heading>
@@ -30,7 +30,7 @@ const LatestNewsItem:any = ({ title, image, publishDate, slug }:ILatestNewsItem)
             </Heading>
         }
         {
-            date && <Heading as="h4" color="blackBlur" fontWeight={400} mb={4}>
+            date && <Heading as="h4" color="charcoalBlur" fontWeight={400} mb={4}>
                 {date}
             </Heading>
         }

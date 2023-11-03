@@ -9,16 +9,16 @@ interface ISectionLink extends IDatoLink {
 }
 
 export const UnderlineLink:any = ({ ...props }:ISectionLink) => {
-    return <Link {...props} color="darkBrown">
+    return <Link {...props} color="olive">
         <Flex align="center"
             as="span"
             display="inline-flex"
             borderBottom="2px solid"
-            borderColor="darkBrownBlur2"
+            borderColor="oliveBlur2"
             transition="border-color 0.3s linear"
             lineHeight={1.4}
             _hover={{
-                borderColor: 'darkBrown'
+                borderColor: 'olive'
             }}
             fontWeight={500}>
             {props.children}
@@ -39,12 +39,12 @@ export const SectionLinkInner:any = ({ children }) => {
         className="sectionLink-inner"
         display="inline-flex"
         borderBottom="2px solid"
-        borderColor="darkBrownBlur2"
+        borderColor="oliveBlur2"
         transition="border-color 0.3s linear"
         _hover={{
-            borderColor: 'darkBrown'
+            borderColor: 'olive'
         }}
-        color="darkBrown"
+        color="olive"
         fontSize={["16px"]}
         fontWeight={700}>
         <Text as="span" mr={2}>
@@ -54,7 +54,7 @@ export const SectionLinkInner:any = ({ children }) => {
     </Flex>;
 };
 
-export const SectionLinkButton:any = ({ color = 'darkBrown', borderColor = 'darkBrownBlur2', borderColorHover = 'darkBrown', ...props }:ISectionLink) => {
+export const SectionLinkButton:any = ({ color = 'olive', borderColor = 'oliveBlur2', borderColorHover = 'olive', ...props }:ISectionLink) => {
     return <Link {...props}
         display="block"
         color={color}

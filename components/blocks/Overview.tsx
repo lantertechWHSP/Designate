@@ -11,8 +11,8 @@ interface IOverviewBlock extends IBlock {
     description?:IStructuredText;
 }
 
-const OverviewBlock:any = ({ subtitle, description, paddingTop, paddingBottom }:IOverviewBlock) : ReactNode => {
-    return (subtitle || description) && <ContentBlock background="ghostWhite" paddingTop={paddingTop} paddingBottom={paddingBottom}>
+const OverviewBlock:any = ({ subtitle, description, paddingTop, paddingBottom, background }:IOverviewBlock) : ReactNode => {
+    return (subtitle || description) && <ContentBlock background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         <Row>
             <Column width={[ColumnWidth.Full, , ,subtitle && !description ? ColumnWidth.ThreeQuarters : ColumnWidth.Half]}>
                 {
@@ -20,7 +20,7 @@ const OverviewBlock:any = ({ subtitle, description, paddingTop, paddingBottom }:
                         <Heading as="h2"
                             fontSize={['28px', '32px', '36px']}
                             lineHeight={['35px', '38px', '42px']}
-                            color="darkBrown"
+                            color="olive"
                             fontWeight={500}
                             pb={[4, , ,0]}>
                             <StructuredContent content={subtitle} />

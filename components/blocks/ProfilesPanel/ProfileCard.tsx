@@ -17,12 +17,12 @@ const ProfileCard:any = ({ image, name, companyPosition, qualifications, onClick
             </Heading>
         }
         {
-            companyPosition && <Heading as="h4" fontSize={['19px']} lineHeight={['28px']} color="steelBlue" fontWeight={400}>
+            companyPosition && <Heading as="h4" fontSize={['19px']} lineHeight={['28px']} color="steel" fontWeight={400}>
                 {companyPosition}
             </Heading>
         }
         {
-            qualifications && <Text mb={0} fontSize={['16px']} color="darkBrownBlur">
+            qualifications && <Text mb={0} fontSize={['16px']} color="oliveBlur">
                 {qualifications}
             </Text>
         }

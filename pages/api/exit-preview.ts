@@ -1,4 +1,4 @@
-export default async function exit(req, res) {
+export default async function exit(req, res) : Promise<void> {
     const { redirect = '' } = req.query;
 
     // Exit the current user from "Preview Mode". This function accepts no args.

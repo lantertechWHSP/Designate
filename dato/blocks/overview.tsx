@@ -11,4 +11,5 @@ export const overviewRecord:string = `
     }
     paddingTop
     paddingBottom
+    background
 `;

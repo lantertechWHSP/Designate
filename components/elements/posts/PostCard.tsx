@@ -16,13 +16,13 @@ const PostCard:any = ({ title, image, publishDate, slug }:IPostCard) : any => {
         </Box>
         {
             title && <Link href={`/news/${slug}`}>
-                <Heading as="h2" fontSize={['21px']} lineHeight="22px"  color="black" fontWeight={500} mb={2}>
+                <Heading as="h2" fontSize={['21px']} lineHeight="22px"  color="charcoal" fontWeight={500} mb={2}>
                     {title}
                 </Heading>
             </Link>
         }
         {
-            publishDate && <Box fontSize="16px" lineHeight="22px" color="blackBlur" mb={6}>
+            publishDate && <Box fontSize="16px" lineHeight="22px" color="charcoalBlur" mb={6}>
                 {publishDate}
             </Box>
         }

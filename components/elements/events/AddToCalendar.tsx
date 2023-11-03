@@ -18,10 +18,10 @@ const AddToCalendar:any = ({ event }:IAddToCalendar) : ReactNode => {
         <Menu placement="bottom-end">
             {() => (
                 <>
-                    <MenuButton as={Button} color="darkBrown" sx={{
+                    <MenuButton as={Button} color="olive" sx={{
                         _hover: {
                             '.sectionLink-inner': {
-                                borderColor: 'darkBrown'
+                                borderColor: 'olive'
                             }
                         }
                     }}>

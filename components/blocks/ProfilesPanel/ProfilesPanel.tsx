@@ -40,7 +40,7 @@ export const ProfilesPanelBlock:any = ({ people }:IProfilesPanelBlock) : ReactNo
             {
                 <Modal isOpen={modalOpen} size="full"  onClose={() => setModalOpen(false)}>
                     <ModalOverlay />
-                    <ModalContent minWidth="100vw" minHeight="100vh" background="brownGrey">
+                    <ModalContent minWidth="100vw" minHeight="100vh" background="oliveGrey">
                         <Box my={8}>
                             <Container>
                                 <Row>
@@ -61,13 +61,13 @@ export const ProfilesPanelBlock:any = ({ people }:IProfilesPanelBlock) : ReactNo
                                                     </Heading>
                                                 }
                                                 {
-                                                    activePerson?.qualifications && <Text color="darkBrownBlur" m={0}>
+                                                    activePerson?.qualifications && <Text color="oliveBlur" m={0}>
                                                         {activePerson?.qualifications}
                                                     </Text>
                                                 }
                                             </Box>
                                         }
-                                        <Divider borderColor="darkBrownBlur" my={4} />
+                                        <Divider borderColor="oliveBlur" my={4} />
                                         {
                                             <Box maxWidth="400px" display={['block', , 'none']}>
                                                 <Image image={activePerson?.image} ratio={[1 / 1]} mb={8} />
@@ -80,7 +80,7 @@ export const ProfilesPanelBlock:any = ({ people }:IProfilesPanelBlock) : ReactNo
                                         }
                                     </Column>
                                 </Row>
-                                <Button pos="absolute" top={8} right={8} onClick={() => setModalOpen(false)} borderRadius="50%" border="2px solid" borderColor="darkBrownBlur" background="transparent" w="50px" h="50px">
+                                <Button pos="absolute" top={8} right={8} onClick={() => setModalOpen(false)} borderRadius="50%" border="2px solid" borderColor="oliveBlur" background="transparent" w="50px" h="50px">
                                     <Icon icon={Icons.Cross} w={16} h={16} />
                                 </Button>
                             </Container>
