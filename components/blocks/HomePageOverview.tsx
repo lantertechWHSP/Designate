@@ -21,9 +21,9 @@ const HomePageOverviewBlock:any = ({ description, imageMain, imageSide, imageSid
     return (imageMain || imageSide || imageSide2) && <ContentBlock background="brownGrey">
         {
             description && <Box maxW="990px" mx="auto" textAlign="center" mt="10px" mb={[6, 8, 12]}>
-                {/*<Header as="h2" fontSize={['20px', , ,'26px']} fontWeight={500} lineHeight={[1.45]} mb={[4, ,6]}>*/}
+                <Header as="h2" fontSize={['20px', , ,'26px']} fontWeight={500} lineHeight={[1.45]} mb={[4, ,6]}>
                     <StructuredContent content={description} />
-                {/*</Header>*/}
+                </Header>
                 <SectionLink href="/about/our-company" >
                     Our Company
                 </SectionLink>
