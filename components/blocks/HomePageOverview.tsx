@@ -1,25 +1,29 @@
 import { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
 import ContentBlock from '~/components/blocks/Content';
-import { Box, Heading, Flex, Divider } from '@chakra-ui/react';
+import { Box, Flex, Divider, Header } from '@chakra-ui/react';
 import { Image } from '~/components/elements/image';
 import { IImage } from '~/interfaces/util/image';
 import { SectionLink } from '~/components/elements/sectionLink';
+import { IStructuredText } from '~/interfaces/util/structuredText';
+import StructuredContent from '~/components/StructuredContent';
 
 interface IHomePageOverviewBlock extends IBlock {
-    description?:string;
+    description?:IStructuredText;
     imageMain?:IImage;
     imageSide?:IImage;
     imageSide2?:IImage;
 }
 
 const HomePageOverviewBlock:any = ({ description, imageMain, imageSide, imageSide2 }:IHomePageOverviewBlock) : ReactNode => {
-    return (description || imageMain || imageSide || imageSide2) && <ContentBlock background="brownGrey">
+    console.log(description);
+
+    return (imageMain || imageSide || imageSide2) && <ContentBlock background="brownGrey">
         {
             description && <Box maxW="990px" mx="auto" textAlign="center" mt="10px" mb={[6, 8, 12]}>
-                <Heading as="h2" fontSize={['20px', , ,'26px']} fontWeight={500} lineHeight={[1.45]} mb={[4, ,6]}>
-                    {description}
-                </Heading>
+                {/*<Header as="h2" fontSize={['20px', , ,'26px']} fontWeight={500} lineHeight={[1.45]} mb={[4, ,6]}>*/}
+                    <StructuredContent content={description} />
+                {/*</Header>*/}
                 <SectionLink href="/about/our-company" >
                     Our Company
                 </SectionLink>
