@@ -7,5 +7,6 @@ export interface IContact {
     email?:string;
     email2?:string;
     website?:string;
+    abn?:string;
     ordinal?:number;
 }

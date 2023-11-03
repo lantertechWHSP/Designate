@@ -119,7 +119,6 @@ export const theme:any = extendBaseTheme({
                     fontSize: ['26px', ,'28px'],
                     lineHeight: [1.2],
                 },
-
                 listItem: {
                     fontSize: ['18px', ,'21px'],
                     lineHeight: ['23px', ,'23px'],
@@ -214,9 +213,6 @@ export const theme:any = extendBaseTheme({
             },
         },
         Link: {
-            baseStyle: {
-                color: 'olive'
-            },
             variants: {
                 siteHeader: {
                     fontSize: ['16px'],

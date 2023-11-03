@@ -6,7 +6,7 @@ import { UnderlineLink } from '~/components/elements/sectionLink';
 interface IContactCardProps extends IContact {
 }
 
-const ContactCard:any = ({ title, address, contactName, phone, phone2, email, email2, website }:IContactCardProps) : ReactNode => {
+const ContactCard:any = ({ title, address, contactName, phone, phone2, email, email2, website, abn }:IContactCardProps) : ReactNode => {
     return <Box fontSize={['18px']} lineHeight={['32px']} color="olive">
         {
             title && <Heading as="h3" fontSize={['21px']} lineHeight={['26px']} mb={4}>
@@ -73,6 +73,18 @@ const ContactCard:any = ({ title, address, contactName, phone, phone2, email, em
                         </UnderlineLink>
                     </Box>
                 }
+            </Box>
+        }
+        {
+            abn && <Box mb={4}>
+                <Heading as="h4" mb={0}>
+                    ABN
+                </Heading>
+                <Box>
+                    <UnderlineLink href={`https://abr.business.gov.au/ABN/View?id=${abn}`}>
+                        ABN: {abn}
+                    </UnderlineLink>
+                </Box>
             </Box>
         }
         {
