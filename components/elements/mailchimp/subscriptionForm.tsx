@@ -56,9 +56,6 @@ export const SubscriptionForm:any = () : ReactNode => {
                         <Heading as="h2" variant="sectionHeading" color="white">
                             Subscribe for the latest updates
                         </Heading>
-                        <Text color="whiteBlur" mb={[4, ,0]}>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        </Text>
                     </Column>
                     <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half]} justify="flex-end">
                         <Formik
