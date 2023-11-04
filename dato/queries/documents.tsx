@@ -18,7 +18,6 @@ export const documents:string = `
                 title
                 url
             }
-            ordinal
         }
     }
 `;

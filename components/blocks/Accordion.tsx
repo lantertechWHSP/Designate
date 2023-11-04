@@ -3,6 +3,9 @@ import { IBlock } from '~/interfaces/util/block';
 import ContentBlock, {getTextColor} from '~/components/blocks/Content';
 import { Heading, Box, Accordion, AccordionItem, AccordionPanel, AccordionButton } from '@chakra-ui/react';
 import { Icon, Icons } from '~/components/elements/icon';
+import { IStructuredText } from '~/interfaces/util/structuredText';
+import { isEmptyDocument } from 'datocms-structured-text-utils';
+import StructuredContent from "~/components/StructuredContent";
 
 interface IAccordionBlock extends IBlock {
     title?:string;
@@ -11,7 +14,7 @@ interface IAccordionBlock extends IBlock {
 
 interface IAccordionItem {
     title?:string;
-    content?:string;
+    content?:IStructuredText;
 }
 
 const AccordionBlock:any = ({ title, background, textColor, items, paddingBottom }:IAccordionBlock) : ReactNode => {
@@ -56,7 +59,9 @@ const AccordionBlock:any = ({ title, background, textColor, items, paddingBottom
                                         </Box>
                                     </AccordionButton>
                                     <AccordionPanel borderTop="1px solid" borderColor={borderColor} py={4}>
-                                        {item?.content}
+                                        {
+                                            !isEmptyDocument(item?.content) && <StructuredContent content={item.content} />
+                                        }
                                     </AccordionPanel>
                                 </>
                             )}
