@@ -40,14 +40,14 @@ const ContactCard:any = ({ title, address, contactName, phone, phone2, email, em
                 </Heading>
                 {
                     phone && <Box>
-                        <UnderlineLink href={`tel:${phone}`}>
+                        <UnderlineLink href={`tel:${phone}`} fontWeight={500}>
                             {phone}
                         </UnderlineLink>
                     </Box>
                 }
                 {
                     phone2 && <Box>
-                        <UnderlineLink href={`tel:${phone2}`}>
+                        <UnderlineLink href={`tel:${phone2}`} fontWeight={500}>
                             {phone2}
                         </UnderlineLink>
                     </Box>
@@ -61,14 +61,14 @@ const ContactCard:any = ({ title, address, contactName, phone, phone2, email, em
                 </Heading>
                 {
                     email && <Box>
-                        <UnderlineLink href={`mailto:${email}`}>
+                        <UnderlineLink href={`mailto:${email}`} fontWeight={500}>
                             {email}
                         </UnderlineLink>
                     </Box>
                 }
                 {
                     email2 && <Box>
-                        <UnderlineLink href={`mailto:${email2}`}>
+                        <UnderlineLink href={`mailto:${email2}`} fontWeight={500}>
                             {email2}
                         </UnderlineLink>
                     </Box>
@@ -81,7 +81,7 @@ const ContactCard:any = ({ title, address, contactName, phone, phone2, email, em
                     ABN
                 </Heading>
                 <Box>
-                    <UnderlineLink href={`https://abr.business.gov.au/ABN/View?id=${abn}`}>
+                    <UnderlineLink href={`https://abr.business.gov.au/ABN/View?id=${abn}`} fontWeight={500}>
                         ABN: {abn}
                     </UnderlineLink>
                 </Box>
@@ -93,7 +93,7 @@ const ContactCard:any = ({ title, address, contactName, phone, phone2, email, em
                     Website
                 </Heading>
                 <Box>
-                    <UnderlineLink href={website}>
+                    <UnderlineLink href={website} fontWeight={500}>
                         {website}
                     </UnderlineLink>
                 </Box>

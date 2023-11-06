@@ -37,7 +37,7 @@ const LatestNewsBlock:any = ({ background, textColor, paddingTop, paddingBottom,
                         })
                     }
                 </Row>
-            </Box> : <Alert status="info">No latest news found…</Alert>
+            </Box> : <Alert status="info">No featured news found…</Alert>
         }
     </ContentBlock>;
 };

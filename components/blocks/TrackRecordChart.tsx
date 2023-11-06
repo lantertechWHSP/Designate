@@ -137,7 +137,7 @@ const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesT
                                     <Flex display="inlineFlex" direction="row" alignItems="center">
                                         <Box background={theme === Theme.Dark ? 'white' : 'lightGrey'} width="8px" height="8px" borderRadius="4px" border="1px solid" borderColor={theme === Theme.Dark ? 'charcoal' : 'transparent'}  mr={2} />
                                         <Text as="span">
-                                            Compare…
+                                            Compare
                                         </Text>
                                     </Flex>
                                 </MenuButton>

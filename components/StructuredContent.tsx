@@ -1,6 +1,5 @@
 import React, { ReactNode }  from 'react';
 import { StructuredText } from 'react-datocms';
-import { Link } from '~/components/elements/link';
 import { isHeading, isParagraph, isCode, isListItem, isLink } from 'datocms-structured-text-utils';
 import { renderNodeRule } from 'datocms-structured-text-to-html-string';
 import { Heading, Code, Box, Text, Flex } from '@chakra-ui/react';
@@ -8,16 +7,14 @@ import ImageBlock from '~/components/blocks/Image';
 import VideoBlock from '~/components/blocks/Video';
 import AudioBlock from '~/components/blocks/Audio';
 import { ListTick } from '~/components/elements/svgs/ListTick';
-import {PaddingTop} from "~/components/blocks/Content";
+import { PaddingTop } from "~/components/blocks/Content";
+import { UnderlineLink } from "~/components/elements/sectionLink";
 
 const StrucutredContent:any = ({ content }) : ReactNode => {
     return (
         <Box sx={{
             '*:last-child': {
                 marginBottom: 0
-            },
-            a: {
-                borderBottom: '1px solid'
             }
         }}>
             <StructuredText
@@ -32,15 +29,15 @@ const StrucutredContent:any = ({ content }) : ReactNode => {
                         ...record
                     };
 
-                    return <Link {...props}>
+                    return <UnderlineLink {...props}>
                         {children}
-                    </Link>;
+                    </UnderlineLink>;
                 }}
                 customNodeRules={[
                     renderNodeRule(isLink, ({ node, children, key }) => {
-                        return <Link href={node.url} key={key}>
+                        return <UnderlineLink href={node.url} key={key}>
                             {children}
-                        </Link>;
+                        </UnderlineLink>;
                     }),
                     renderNodeRule(isHeading, ({ node, children, key }:{
                         node:any,

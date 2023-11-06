@@ -3,10 +3,10 @@ import { IBlock } from '~/interfaces/util/block';
 import ContentBlock from '~/components/blocks/Content';
 import { ILink } from '~/interfaces/util/link';
 import { Box, Flex, Heading, Text } from '@chakra-ui/react';
-import { Link } from "~/components/elements/link";
 import { SectionLink } from "~/components/elements/sectionLink";
 import { gutter } from "~/components/elements/grid/grid";
 import { IImage } from "~/interfaces/util/image";
+import { Link } from "~/components/elements/link";
 
 enum ICardPanelAlign {
     Left = 'Left',
@@ -32,7 +32,13 @@ const CardPanelBlock:any = ({ annotation, title, description, image, link, align
                     </Text>
                 }
                 {
-                    title && <Heading as="h2" variant="sectionHeading" mb={4}>{title}</Heading>
+                    title && <Heading as="h2" variant="sectionHeading" mb={4}>
+                        {
+                            link ? <Link {...link}>
+                                {title}
+                            </Link> : {title}
+                        }
+                    </Heading>
                 }
                 {
                     description && <Text variant="sectionDescription">{description}</Text>
@@ -44,17 +50,25 @@ const CardPanelBlock:any = ({ annotation, title, description, image, link, align
                     </SectionLink>
                 }
             </Flex>
-            <Box width={['100%', ,'50%']}
-                minHeight="400px"
-                position="relative"
-                background={image?.responsiveImage ? `url('${image.responsiveImage.src}')` : 'lightGrey'}
-                backgroundPosition="center"
-                backgroundRepeat="no-repeat"
-                backgroundSize="cover">
-                {
-                    link && <Link {...link} position="absolute" top="0" bottom="0" left="0" right="0" />
-                }
-            </Box>
+            {
+                link ? <Link {...link}
+                             width={['100%', ,'50%']}
+                             minHeight="400px"
+                             position="relative"
+                             title=""
+                             background={image?.responsiveImage ? `url('${image.responsiveImage.src}')` : 'lightGrey'}
+                             backgroundPosition="center"
+                             backgroundRepeat="no-repeat"
+                             backgroundSize="cover">
+                </Link> : <Box width={['100%', ,'50%']}
+                               minHeight="400px"
+                               position="relative"
+                               background={image?.responsiveImage ? `url('${image.responsiveImage.src}')` : 'lightGrey'}
+                               backgroundPosition="center"
+                               backgroundRepeat="no-repeat"
+                               backgroundSize="cover">
+                </Box>
+            }
         </Flex>
     </ContentBlock>;
 };

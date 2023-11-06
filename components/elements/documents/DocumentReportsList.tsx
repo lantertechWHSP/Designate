@@ -138,7 +138,7 @@ const DocumentReportsList:any = ({ latestDocuments, documentsMeta, documentsFilt
                                                 minWidth={['100%', ,'275px']}
                                                 variant="menuButton"
                                                 rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} w={12} h={12} /> : <Icon icon={Icons.ChevronDown} w={12} h={12} />}>
-                                                {selectedTag.label ? selectedTag.label : 'Compare…'}
+                                                {selectedTag.label ? selectedTag.label : 'Compare'}
                                             </MenuButton>
                                             <Portal>
                                                 <MenuList>
@@ -175,7 +175,7 @@ const DocumentReportsList:any = ({ latestDocuments, documentsMeta, documentsFilt
                                                 variant="menuButton"
                                                 minWidth={['100%', ,'150px']}
                                                 rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} w={12} h={12} /> : <Icon icon={Icons.ChevronDown} w={12} h={12} />}>
-                                                {selectedYear.label ? selectedYear.label : 'Compare…'}
+                                                {selectedYear.label ? selectedYear.label : 'Compare'}
                                             </MenuButton>
                                             <Portal>
                                                 <MenuList>

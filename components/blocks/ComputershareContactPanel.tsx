@@ -67,7 +67,7 @@ const ComputershareContactPanelBlock:any = ({ title, description, image, onlineD
                             website && <>
                                 <Heading as="h4" fontSize={['18px']} lineHeight={['26px']} fontWeight={500} mb={2}>Website</Heading>
                                 <Text mb={0}>
-                                    <UnderlineLink href={website}>
+                                    <UnderlineLink href={website} fontWeight={500}>
                                         {website}
                                     </UnderlineLink>
                                 </Text>
@@ -87,7 +87,7 @@ const ComputershareContactPanelBlock:any = ({ title, description, image, onlineD
                                 <Heading as="h4" fontSize={['18px']} lineHeight={['26px']} fontWeight={500} mb={2}>Phone</Heading>
                                 {
                                     contactLocal && <Text color="olive" mb={0}>
-                                        <UnderlineLink href={`tel:${contactLocal}`} mr={2}>
+                                        <UnderlineLink href={`tel:${contactLocal}`} mr={2} fontWeight={500}>
                                             {contactLocal}
                                         </UnderlineLink>
                                         <Text as="span">
@@ -97,7 +97,7 @@ const ComputershareContactPanelBlock:any = ({ title, description, image, onlineD
                                 }
                                 {
                                     contactInternational && <Text color="olive" mb={0}>
-                                        <UnderlineLink href={`tel:${contactInternational}`} mr={2}>
+                                        <UnderlineLink href={`tel:${contactInternational}`} mr={2} fontWeight={500}>
                                             {contactInternational}
                                         </UnderlineLink>
                                         <Text as="span">

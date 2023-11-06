@@ -43,7 +43,8 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                                 data-yourir="price showCurrency=true minDecimals=2 maxDecimals=2" />
                             <Box sx={{
                                 '.chakra-badge.yourir-zero': {
-                                    background: 'lightGrey'
+                                    background: 'lightGrey',
+                                    visibility: 'hidden'
                                 },
                                 '.chakra-badge.yourir-positive': {
                                     background: 'positive'
