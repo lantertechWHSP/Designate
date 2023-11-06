@@ -25,7 +25,7 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
                 height={['550px']}
                 background="linear-gradient(270deg, #50513C 0%, rgba(228, 221, 193, 0.50) 100%)"
                 align="flex-end">
-                <Box width="100%" marginBottom="200px">
+                <Box width="100%" marginBottom={post?.image && post?.image?.responsiveImage ? '200px': '60px'}>
                     <Container>
                         <Row justify="center">
                             <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths, ColumnWidth.EightTwelfths]}>
@@ -62,20 +62,22 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
                     </Container>
                 </Box>
             </Flex>
-            <Box position="relative" marginTop="-160px">
-                <Container>
-                    <Row justify="center">
-                        <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths]}>
-                            <Image image={post?.image} />
-                            {
-                                (post?.image && post?.image?.responsiveImage && post?.image.responsiveImage?.title) && <Text variant="annotation" mt={2} mb={0}>
-                                    {post?.image.responsiveImage?.title}
-                                </Text>
-                            }
-                        </Column>
-                    </Row>
-                </Container>
-            </Box>
+            {
+                post?.image && post?.image?.responsiveImage && <Box position="relative" marginTop="-160px">
+                    <Container>
+                        <Row justify="center">
+                            <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths]}>
+                                <Image image={post?.image} />
+                                {
+                                    (post?.image.responsiveImage?.title) && <Text variant="annotation" mt={2} mb={0}>
+                                        {post?.image.responsiveImage?.title}
+                                  </Text>
+                                }
+                            </Column>
+                        </Row>
+                    </Container>
+                </Box>
+            }
             {
                 children && <Box>
                     {children}

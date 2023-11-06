@@ -14,6 +14,7 @@ export enum BackgroundColor {
     OliveGrey = 'OliveGrey',
     Olive = 'Olive',
     GhostWhite = 'GhostWhite',
+
 }
 
 export enum TextColor {

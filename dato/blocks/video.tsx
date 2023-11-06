@@ -1,5 +1,3 @@
-import { imageAttrs } from '~/dato/attrs/responsiveImageAttrs';
-
 export const videoRecord:string = `
     __typename
     id
@@ -10,9 +8,6 @@ export const videoRecord:string = `
     videoEmbed {
         url
         thumbnailUrl
-    }
-    coverImage {
-        ${imageAttrs()}
     }
     containerWidth
     paddingTop

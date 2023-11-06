@@ -8,6 +8,7 @@ import ImageBlock from '~/components/blocks/Image';
 import VideoBlock from '~/components/blocks/Video';
 import AudioBlock from '~/components/blocks/Audio';
 import { ListTick } from '~/components/elements/svgs/ListTick';
+import {PaddingTop} from "~/components/blocks/Content";
 
 const StrucutredContent:any = ({ content }) : ReactNode => {
     return (
@@ -113,11 +114,11 @@ const StrucutredContent:any = ({ content }) : ReactNode => {
                     /* eslint-disable */
                     switch (record.__typename) {
                         case 'ImageRecord':
-                            return <ImageBlock contain={false} {...record} />;
+                            return <ImageBlock contain={false} paddingTop={PaddingTop.None} {...record} />;
                         case 'VideoRecord':
-                            return <VideoBlock contain={false} {...record} />;
+                            return <VideoBlock contain={false} paddingTop={PaddingTop.None} {...record} />;
                         case 'AudioRecord':
-                            return <AudioBlock contain={false} {...record} />;
+                            return <AudioBlock contain={false} paddingTop={PaddingTop.None} {...record} />;
                         default:
                             return <></>;
                     }

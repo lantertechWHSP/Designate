@@ -21,7 +21,8 @@ const colors:any = {
     charcoal: '#1c1c1c',
     charcoalBlur: 'rgba(28, 28, 28, 0.4)',
     charcoal2: '#1b2024',
-    charcoal3: '#323639',
+
+    darkSteel: '#323639',
 
     olive: '#50513c',
     oliveBlur: 'rgba(80, 81, 60, 0.4)',
