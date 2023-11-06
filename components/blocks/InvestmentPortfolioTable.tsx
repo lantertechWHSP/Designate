@@ -8,6 +8,7 @@ import { ITable } from '~/interfaces/util/table';
 import { IStructuredText } from '~/interfaces/util/structuredText';
 import StructuredContent from '~/components/StructuredContent';
 import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
+import { isEmptyDocument } from 'datocms-structured-text-utils';
 
 interface ITableRow {
     Portfolio:string;
@@ -54,7 +55,7 @@ const InvestmentPortfolioTableBlock:any = ({ title, description, table, lastUpda
         return value;
     }) : 0);
 
-    return (table || lastUpdated) && <ContentBlock background="olive" paddingTop={paddingTop} paddingBottom={paddingBottom}>
+    return (table || title || !isEmptyDocument(description) || lastUpdated) && <ContentBlock background="olive" paddingTop={paddingTop} paddingBottom={paddingBottom}>
         <Box mb={8}>
             {
                 title && <Heading as="h2" variant="sectionHeading" color="white" mb={[4, ,8]}>
@@ -62,7 +63,7 @@ const InvestmentPortfolioTableBlock:any = ({ title, description, table, lastUpda
                 </Heading>
             }
             {
-                description && <Box color="white">
+                !isEmptyDocument(description) && <Box color="white">
                     <Row>
                         <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
                             <StructuredContent content={description} />

@@ -2,7 +2,8 @@ import { seoAttrs } from '~/dato/attrs/seo';
 import { textRecord } from '~/dato/blocks/text';
 import { imageRecord } from '~/dato/blocks/image';
 import { videoRecord } from '~/dato/blocks/video';
-import {imageAttrs} from "~/dato/attrs/responsiveImageAttrs";
+import { imageAttrs } from '~/dato/attrs/responsiveImageAttrs';
+import { structuredTextAttrs } from '~/dato/attrs/structuredTextAttrs';
 
 export const post:string = `
     query post ($slug: String!) {
@@ -10,8 +11,12 @@ export const post:string = `
             id
             slug
             title
-            excerpt
-            author
+            summary {
+                ${structuredTextAttrs}
+            }
+            author {
+                name
+            }
             image {
                 ${imageAttrs({ width: 1108, height: 550})}
             }

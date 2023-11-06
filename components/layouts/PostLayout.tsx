@@ -30,14 +30,14 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
                         <Row justify="center">
                             <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths, ColumnWidth.EightTwelfths]}>
                                 {
-                                    post?.author || date && <Text color="charcoalBlur" mb={4}>
+                                    post?.author?.name || date && <Text color="charcoalBlur" mb={4}>
                                         {
                                             (() => {
-                                                if (post?.author && date) {
-                                                    return <>{post?.author}, {date}</>;
+                                                if (post?.author?.name && date) {
+                                                    return <>{post?.author?.name}, {date}</>;
                                                 }
-                                                else if (post?.author) {
-                                                    return post?.author;
+                                                else if (post?.author?.name) {
+                                                    return post?.author?.name;
                                                 }
                                                 else if(date) {
                                                     return date;

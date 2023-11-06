@@ -1,4 +1,5 @@
-import { imageAttrs } from "~/dato/attrs/responsiveImageAttrs";
+import { imageAttrs } from '~/dato/attrs/responsiveImageAttrs';
+import { structuredTextAttrs } from '~/dato/attrs/structuredTextAttrs';
 
 export const posts:string = `
     query posts ($first: IntType, $skip: IntType, $filter: PostModelFilter, $orderBy: [PostModelOrderBy]) {
@@ -7,8 +8,12 @@ export const posts:string = `
             id
             slug
             title
-            excerpt
-            author
+            summary {
+                ${structuredTextAttrs}
+            }
+            author {
+                name
+            }
             image {
                 ${imageAttrs({ width: 800, height: 400 })}   
             }
@@ -33,8 +38,12 @@ export const latestPosts:string = `
             id
             slug
             title
-            excerpt
-            author
+            summary {
+                ${structuredTextAttrs}
+            }
+            author {
+                name
+            }
             image {
                 ${imageAttrs({ width: 840, height: 360 })}   
             }
@@ -51,8 +60,12 @@ export const featuredPosts:string = `
             id
             slug
             title
-            excerpt
-            author
+            summary {
+                ${structuredTextAttrs}
+            }
+            author {
+                name
+            }
             image {
                 ${imageAttrs({ width: 1440, height: 550 })}   
             }

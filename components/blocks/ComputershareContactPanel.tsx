@@ -8,6 +8,7 @@ import { IStructuredText } from '~/interfaces/util/structuredText';
 import { Image } from '~/components/elements/image';
 import { IImage } from '~/interfaces/util/image';
 import { UnderlineLink } from '~/components/elements/sectionLink';
+import { isEmptyDocument } from 'datocms-structured-text-utils';
 
 interface IComputershareContactPanelBlock extends IBlock {
     title?:string;
@@ -31,7 +32,7 @@ const ComputershareContactPanelBlock:any = ({ title, description, image, onlineD
                     </Heading>
                 }
                 {
-                    description && <Box
+                    !isEmptyDocument(description) && <Box
                         fontSize={['19px']}
                         lineHeight={['29px']}>
                         <StructuredContent content={description} />
@@ -53,12 +54,12 @@ const ComputershareContactPanelBlock:any = ({ title, description, image, onlineD
         <Row>
             <Column width={[ColumnWidth.Full, ,ColumnWidth.OneThird]}>
                 {
-                    (onlineDescription || website) && <Box mb={[8, ,0]}>
+                    (!isEmptyDocument(onlineDescription) || website) && <Box mb={[8, ,0]}>
                         <Heading as="h3" variant="sectionSubheading" mb={4}>
                             Online
                         </Heading>
                         {
-                            onlineDescription && <Box color="olive" mb={6}>
+                            !isEmptyDocument(onlineDescription) && <Box color="olive" mb={6}>
                                 <StructuredContent content={onlineDescription} />
                             </Box>
                         }
@@ -111,7 +112,7 @@ const ComputershareContactPanelBlock:any = ({ title, description, image, onlineD
             </Column>
             <Column width={[ColumnWidth.Full, ,ColumnWidth.OneThird]}>
                 {
-                    (address) && <Box mb={0}>
+                    !isEmptyDocument(address) && <Box mb={0}>
                         <Heading as="h3" variant="sectionSubheading" mb={4}>
                             Address
                         </Heading>

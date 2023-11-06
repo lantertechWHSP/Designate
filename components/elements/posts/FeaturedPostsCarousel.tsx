@@ -6,6 +6,8 @@ import { SectionLinkButton } from '~/components/elements/sectionLink';
 import { useState } from 'react';
 import { Icon, Icons } from '~/components/elements/icon';
 import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
+import StructuredContent from "~/components/StructuredContent";
+import { isEmptyDocument } from 'datocms-structured-text-utils';
 
 interface IFeaturedPostsCarousel {
     posts:IPost[];
@@ -88,8 +90,8 @@ const FeaturedPostsCarousel:any = ({ posts }:IFeaturedPostsCarousel) : any => {
                                                             </Heading>
                                                         }
                                                         {
-                                                            post.excerpt && <Text color="ghostWhite2">
-                                                                {post.excerpt}
+                                                            !isEmptyDocument(post.summary) && <Text color="ghostWhite2">
+                                                                <StructuredContent content={post.summary} />
                                                             </Text>
                                                         }
                                                     </Box>

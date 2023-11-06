@@ -17,7 +17,7 @@ const OverviewBlock:any = ({ subtitle, description, paddingTop, paddingBottom, b
         <Row>
             <Column width={[ColumnWidth.Full, , ,subtitle && isEmptyDocument(description) ? ColumnWidth.ThreeQuarters : ColumnWidth.Half]}>
                 {
-                    subtitle && <Box pr="50px">
+                    !isEmptyDocument(subtitle) && <Box pr="50px">
                         <Heading as="h2"
                             fontSize={['28px', '32px', '36px']}
                             lineHeight={['35px', '38px', '42px']}
@@ -31,7 +31,7 @@ const OverviewBlock:any = ({ subtitle, description, paddingTop, paddingBottom, b
             </Column>
             <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half]}>
                 {
-                    description && <StructuredContent content={description} />
+                    !isEmptyDocument(description) && <StructuredContent content={description} />
                 }
             </Column>
         </Row>

@@ -44,10 +44,6 @@ export const SubscriptionForm:any = () : ReactNode => {
         });
     };
 
-    // const handleRecaptchaChange = () : void => {
-    //
-    // };
-
     return <Box background="charcoal2">
         <Container>
             <Box py={[6, 8, 12]}>

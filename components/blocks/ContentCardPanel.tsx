@@ -7,6 +7,7 @@ import { IImage } from '~/interfaces/util/image';
 import StructuredContent from '~/components/StructuredContent';
 import { IStructuredText } from '~/interfaces/util/structuredText';
 import { boxShadow } from '~/lib/theme/theme';
+import { isEmptyDocument } from 'datocms-structured-text-utils';
 
 interface IContentCardPanelBlock extends IBlock {
     title?:string;
@@ -15,7 +16,7 @@ interface IContentCardPanelBlock extends IBlock {
 }
 
 const ContentCardPanel:any = ({ title, description, image, containerWidth, paddingTop, paddingBottom }:IContentCardPanelBlock) : ReactNode => {
-    return (title || description || image) && <ContentBlock background="ghostWhite" containerWidth={containerWidth} paddingTop={paddingTop} paddingBottom={paddingBottom}>
+    return (title || !isEmptyDocument(description) || image) && <ContentBlock background="ghostWhite" containerWidth={containerWidth} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         <Flex direction={['column', ,'row']} mx={[0, ,'-30px']}
             minHeight={['320px']}
             borderRadius="3px"
@@ -26,8 +27,8 @@ const ContentCardPanel:any = ({ title, description, image, containerWidth, paddi
                     title && <Heading as="h2" variant="h3" mb={4}>{title}</Heading>
                 }
                 {
-                    description && <Box color="grey" fontSize={['16px']} lineHeight={['26px']}>
-                        <StructuredContent  content={description} />
+                    !isEmptyDocument(description) && <Box color="grey" fontSize={['16px']} lineHeight={['26px']}>
+                        <StructuredContent content={description} />
                     </Box>
                 }
             </Flex>

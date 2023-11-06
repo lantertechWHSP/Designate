@@ -87,7 +87,7 @@ export const ProfilesPanelBlock:any = ({ items }:IProfilesPanelBlock) : ReactNod
                                             </Box>
                                         }
                                         {
-                                            activeItem?.description && <Box>
+                                            !isEmptyDocument(activeItem?.description) && <Box>
                                                 <StructuredContent content={activeItem?.description} />
                                             </Box>
                                         }
