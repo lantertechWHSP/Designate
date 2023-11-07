@@ -10,7 +10,7 @@ import {Column, ColumnWidth, Row} from "~/components/elements/grid/grid";
 interface IFooter extends IDatoFooter {
 }
 
-const Footer:any = ({ menu, address, email, phone, fax, linkedin, youtube, copyright }:IFooter) : ReactNode => {
+const Footer:any = ({ menu, address, email, phone, fax, linkedin, youtube, abn, copyright }:IFooter) : ReactNode => {
     return <Box as="footer" background="charcoal2" color="white" py={['40px', , '60px']}>
         <Container>
             <Row>
@@ -104,9 +104,13 @@ const Footer:any = ({ menu, address, email, phone, fax, linkedin, youtube, copyr
                 <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]} mb={[8, ,0]} order={[1, ,2]}>
                     <Row>
                         <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
-                            <Link href="/privacy-policy" color="whiteBlur" variant="siteFooter">
-                                Privacy Policy
-                            </Link>
+                            {
+                                abn && <Box color="whiteBlur">
+                                    ABN: <Link href={`https://abr.business.gov.au/ABN/View?id=${abn}`} color="whiteBlur" variant="siteFooter">
+                                        {abn}
+                                    </Link>
+                                </Box>
+                            }
                         </Column>
                         <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
                             {

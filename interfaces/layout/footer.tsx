@@ -8,5 +8,6 @@ export interface IFooter {
     fax?:string
     linkedin?:string;
     youtube?:string;
+    abn?:string;
     copyright?:string
 }

@@ -21,4 +21,7 @@ export const profilesPanelRecord:string = `
             ${structuredTextAttrs}
         }
     }
+    background
+    paddingTop
+    paddingBottom
 `;

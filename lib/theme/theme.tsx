@@ -177,7 +177,7 @@ export const theme:any = extendBaseTheme({
             variants: {
                 sectionDescription: {
                     fontSize: ['18px'],
-                    lineHeight: ['27px'],
+                    lineHeight: ['28px'],
                     color: 'steel'
                 },
                 error: {

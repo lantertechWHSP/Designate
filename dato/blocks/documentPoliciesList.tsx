@@ -11,4 +11,7 @@ export const documentPoliciesListRecord:string = `
             }
         }
     }
+    background
+    paddingTop
+    paddingBottom
 `;

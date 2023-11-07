@@ -24,7 +24,7 @@ interface IProfilesPanelBlock extends IBlock {
     items:IProfileCard[];
 }
 
-export const ProfilesPanelBlock:any = ({ items, paddingBottom }:IProfilesPanelBlock) : ReactNode => {
+export const ProfilesPanelBlock:any = ({ items, background, paddingBottom }:IProfilesPanelBlock) : ReactNode => {
     const [modalOpen, setModalOpen] = useState<boolean>(false);
     const [activeItem, setActiveItem] = useState<IProfileCard>(null);
 
@@ -33,7 +33,7 @@ export const ProfilesPanelBlock:any = ({ items, paddingBottom }:IProfilesPanelBl
         setModalOpen(true);
     };
 
-    return (Array.isArray(items) && items.length > 0) && <ContentBlock background="ghostWhite" paddingBottom={paddingBottom}>
+    return (Array.isArray(items) && items.length > 0) && <ContentBlock background={background} paddingBottom={paddingBottom}>
         <SimpleGrid columns={[1, 2, 3]} spacing={[0, 8, 8]} mb={-8}>
             {
                 items.map((item:IProfileCard, index:number) => {

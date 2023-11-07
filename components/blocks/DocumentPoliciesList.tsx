@@ -14,8 +14,8 @@ interface IDocumentPoliciesItemBlock {
     documents?:IDocument[];
 }
 
-const DocumentPoliciesListBlock:any = ({ items, paddingBottom }:IDocumentPoliciesListBlock) : ReactNode => {
-    return <ContentBlock paddingBottom={paddingBottom}>
+const DocumentPoliciesListBlock:any = ({ items, background, paddingTop, paddingBottom }:IDocumentPoliciesListBlock) : ReactNode => {
+    return <ContentBlock paddingTop={paddingTop} paddingBottom={paddingBottom} background={background}>
         {
             Array.isArray(items) && items.length > 0 ? <Box>
                 {
