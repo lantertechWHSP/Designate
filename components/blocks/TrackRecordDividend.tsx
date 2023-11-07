@@ -21,8 +21,10 @@ const TrackRecordDividendBlock:any = ({ title, table, paddingTop, paddingBottom,
     const chartTextColor:string = theme === Theme.Dark ? 'whiteBlur' : 'steel';
     const fillColor:string = theme === Theme.Dark ? 'white' : 'lightGrey';
     const borderColor:string = theme === Theme.Dark ? 'whiteBlur2' : 'borderColor';
+    const borderColorDark:string = theme === Theme.Dark ? 'white' : 'charcoal';
 
     const chartData:any = [];
+    const suffix:string = '(cps)';
 
     if(table && Array.isArray(table.data) && table.data.length > 0) {
         table.data.map((row:ITableRow) => {
@@ -39,7 +41,7 @@ const TrackRecordDividendBlock:any = ({ title, table, paddingTop, paddingBottom,
                 {title}
             </Heading>
         }
-        <BarChart data={{ bars: chartData }} textColor={chartTextColor} fillColor={fillColor} borderColor={borderColor} />
+        <BarChart data={{ bars: chartData }} textColor={chartTextColor} fillColor={fillColor} borderColor={borderColor} borderColorDark={borderColorDark} suffix={suffix}/>
     </ContentBlock>;
 };
 

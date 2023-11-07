@@ -13,6 +13,7 @@ interface IStackedBarChart {
     };
     textColor?:string;
     borderColor?:string;
+    borderColorDark?:string;
     fillColor?:string;
 }
 
@@ -38,7 +39,7 @@ interface IMargin {
     left:number;
 }
 
-const StackedBarChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor' }:IStackedBarChart) : ReactNode => {
+const StackedBarChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor', borderColorDark = 'charcoal' }:IStackedBarChart) : ReactNode => {
     const [mediaQuery] = useMediaQuery(`(min-width: ${breakpoints.sm})`);
     const [width, setWidth] = useState<number>(null);
     const [height, setHeight] = useState<number>(mediaQuery ? 390 : 340);
@@ -201,7 +202,10 @@ const StackedBarChart:any = ({ data, textColor = 'steel', borderColor = 'borderC
                             },
                             '.y-axis .tick line': {
                                 color: borderColor
-                            }
+                            },
+                            '.y-axis .tick:first-of-type line': {
+                                color: borderColorDark
+                            },
                         }}>
                         <svg width={width} height={height} shapeRendering={"crispEdges"}>
                             {

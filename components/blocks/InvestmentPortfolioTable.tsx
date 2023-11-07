@@ -1,9 +1,8 @@
 import { ReactNode, useState } from 'react';
 import { IBlock } from '~/interfaces/util/block';
 import ContentBlock from '~/components/blocks/Content';
-import { Box, Heading, Text, TableContainer, Table, Thead, Tr, Th, Tbody, Td, Flex, Alert } from '@chakra-ui/react';
+import { Box, Heading, TableContainer, Table, Thead, Tr, Th, Tbody, Td, Flex, Alert } from '@chakra-ui/react';
 import { sumBy as _sumBy, round as _round } from 'lodash';
-import { DateTime } from 'luxon';
 import { ITable } from '~/interfaces/util/table';
 import { IStructuredText } from '~/interfaces/util/structuredText';
 import StructuredContent from '~/components/StructuredContent';
@@ -49,13 +48,13 @@ const PercentageBar:any = ({ value }:IPercentageBar) => {
     </Box>;
 };
 
-const InvestmentPortfolioTableBlock:any = ({ title, description, table, lastUpdated, paddingTop, paddingBottom }:InvestmentPortfolioTableBlock) : ReactNode => {
+const InvestmentPortfolioTableBlock:any = ({ title, description, table, paddingTop, paddingBottom }:InvestmentPortfolioTableBlock) : ReactNode => {
     const [total] = useState<number>(table?.data ? _sumBy(table.data, (row:ITableRow) => {
         const value:number = +row.NetAssetValue;
         return value;
     }) : 0);
 
-    return (table || title || !isEmptyDocument(description) || lastUpdated) && <ContentBlock background="olive" paddingTop={paddingTop} paddingBottom={paddingBottom}>
+    return (table || title || !isEmptyDocument(description)) && <ContentBlock background="olive" paddingTop={paddingTop} paddingBottom={paddingBottom}>
         <Box mb={8}>
             {
                 title && <Heading as="h2" variant="sectionHeading" color="white" mb={[4, ,8]}>
@@ -125,7 +124,7 @@ const InvestmentPortfolioTableBlock:any = ({ title, description, table, lastUpda
                                     Net Asset Value
                                 </Th>
                                 <Th width={['15%', ,'60%']} >
-                                    Weighting
+                                    Allocation
                                 </Th>
                             </Tr>
                         </Thead>
@@ -142,16 +141,9 @@ const InvestmentPortfolioTableBlock:any = ({ title, description, table, lastUpda
                                         </Td>
                                         <Td>
                                             {
-                                                row.NetAssetValue ? <>
-                                                    {row.NetAssetValue}
-                                                    <Text as="span" display={['none', ,'inline']}>
-                                                        {'\u00A0'}
-                                                        Billion
-                                                    </Text>
-                                                    <Text as="span" display={['inline', ,'none']}>
-                                                        B
-                                                    </Text>
-                                                </> : <>-</>
+                                                row.NetAssetValue && <>
+                                                    ${row.NetAssetValue}b
+                                                </>
                                             }
                                         </Td>
                                         <Td verticalAlign="middle">
@@ -173,11 +165,6 @@ const InvestmentPortfolioTableBlock:any = ({ title, description, table, lastUpda
                     }
                 </Table>
             </TableContainer> : <Alert status="info">No Data</Alert>
-        }
-        {
-            lastUpdated && <Text mt={4} fontSize="14px" color="white">
-                Last updated at {DateTime.fromFormat(lastUpdated, "yyyy-mm-dd").toFormat('d/MM/yyyy')}
-            </Text>
         }
     </ContentBlock>;
 };

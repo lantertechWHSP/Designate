@@ -17,11 +17,11 @@ const AudioBlock:any = ({ soundcloudTrackId, omnyFmUrl, contain }:IAudioBlock) :
     return <ContentBlock contain={contain}>
         {
             soundcloudTrackId && <iframe width="100%"
-                                         height="170"
-                                         scrolling="no"
-                                         frameBorder="no"
-                                         allow="autoplay"
-                                         src={`https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${soundcloudTrackId}&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true`} />
+                height="170"
+                scrolling="no"
+                frameBorder="no"
+                allow="autoplay"
+                src={`https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${soundcloudTrackId}&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true`} />
         }
         {
             (omnyFmUrl) && <iframe src={`${omnyFmUrl}/embed?style=Cover`}

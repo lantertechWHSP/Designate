@@ -26,6 +26,7 @@ const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesT
     const textColor:string = theme === Theme.Dark ? 'white' : 'steel';
     const fillColor:string = theme === Theme.Dark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(80, 81, 60, 0.05)';
     const borderColor:string = theme === Theme.Dark ? 'whiteBlur2' : 'borderColor';
+    const borderColorDark:string = theme === Theme.Dark ? 'white' : 'charcoal';
 
     const australianShares:any = australianSharesTable.data.map((datum) => {
         return {
@@ -187,7 +188,7 @@ const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesT
                 </Box>
             }
         </Flex>
-        <LineChart data={data} textColor={textColor} fillColor={fillColor} borderColor={borderColor} />
+        <LineChart data={data} textColor={textColor} fillColor={fillColor} borderColor={borderColor} borderColorDark={borderColorDark} />
     </ContentBlock>;
 };
 

@@ -26,6 +26,7 @@ const DividendGrowthChart:any = ({ table, theme }:IDividendGrowthChartBlock) : R
     const colors:string[] = theme === Theme.Dark ? darkLegendColors : newLightLegendColors;
     const textColor:string = theme === Theme.Dark ? 'white' : 'steel';
     const borderColor:string = theme === Theme.Dark ? 'whiteBlur2' : 'borderColor';
+    const borderColorDark:string = theme === Theme.Dark ? 'white' : 'charcoal';
 
     const getValues:any = () => {
         const values:any = [];
@@ -104,7 +105,7 @@ const DividendGrowthChart:any = ({ table, theme }:IDividendGrowthChartBlock) : R
                 </Column>
             }
         </Row>
-        <StackedBarChart data={data} textColor={textColor} borderColor={borderColor} />
+        <StackedBarChart data={data} textColor={textColor} borderColor={borderColor} borderColorDark={borderColorDark} />
     </ContentBlock>;
 };
 

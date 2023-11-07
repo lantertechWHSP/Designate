@@ -8,7 +8,6 @@ export const investmentPortfolioTableRecord:string = `
         ${structuredTextAttrs}
     }
     table
-    lastUpdated
     paddingTop
     paddingBottom
 `;

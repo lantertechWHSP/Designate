@@ -73,7 +73,7 @@ const PortfolioPanelBlock:any = ({ items, paddingBottom }:IPortfolioPanelBlock) 
                                                                     <Flex align="center" height="100%"  minHeight="200px" borderRight={['none',index % 2 !== 1 ? '1px solid' : 'none' , index % 4 !== 3 ? '1px solid' : 'none']} borderColor={['none', 'borderColor', 'borderColor']}>
                                                                         <Box px={8}>
                                                                             {
-                                                                                company.url ? <Link href={company.url}>
+                                                                                company.url ? <Link href={company.url} target="_blank">
                                                                                     <Image image={company.image} />
                                                                                 </Link> : <Image image={company.image} />
                                                                             }

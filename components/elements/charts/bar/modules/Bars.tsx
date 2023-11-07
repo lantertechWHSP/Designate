@@ -7,6 +7,7 @@ interface IBars {
     xScale:any;
     yScale:any;
     borderColor?:any;
+    suffix?:any;
 }
 
 interface IData {
@@ -14,7 +15,7 @@ interface IData {
     label:string;
 }
 
-export const Bars:any = ({ values, height, xScale, yScale, borderColor }:IBars) : ReactNode =>  {
+export const Bars:any = ({ values, height, xScale, yScale, borderColor, suffix }:IBars) : ReactNode =>  {
     const borderRadius:number = 3;
 
     return <>
@@ -38,7 +39,7 @@ export const Bars:any = ({ values, height, xScale, yScale, borderColor }:IBars) 
                                 <Portal>
                                     <PopoverContent>
                                         <Box background="white" fontSize="12px" fontFamily="Roboto" borderColor={borderColor} px="10px" textAlign="center" minW="40px" py="3px">
-                                            {value}
+                                            {value} {suffix}
                                         </Box>
                                     </PopoverContent>
                                 </Portal>

@@ -439,7 +439,7 @@ export const theme:any = extendBaseTheme({
                 lineHeight: '29px'
             },
             p: {
-                mb: 8
+                mb: 6
             },
             blockquote: {
                 borderLeft: `4px solid`,

@@ -14,6 +14,7 @@ interface ILineChart {
     };
     textColor?:string;
     borderColor?:string;
+    borderColorDark?:string;
     fillColor?:string;
 }
 
@@ -42,10 +43,10 @@ interface IMargin {
     left:number;
 }
 
-const LineChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor', fillColor = 'rgba(80, 81, 60, 0.05)' }:ILineChart) : ReactNode => {
+const LineChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor', borderColorDark = 'charcoal', fillColor = 'rgba(80, 81, 60, 0.05)' }:ILineChart) : ReactNode => {
     const [mediaQuery] = useMediaQuery(`(min-width: ${breakpoints.sm})`);
     const [width, setWidth] = useState<number>(null);
-    const [height, setHeight] = useState<number>(mediaQuery ? 390 : 340);
+    const [height, setHeight] = useState<number>(mediaQuery ? 300 : 340);
     const margin:IMargin = { top: 30, right: 30, bottom: 30, left: 0 };
     const elementRef:any = useRef<ReactNode>();
     const [isDataLoaded, setIsDataLoaded] = useState<boolean>(false);
@@ -225,7 +226,7 @@ const LineChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor',
                                 color: borderColor
                             },
                             '.y-axis .tick:first-of-type line': {
-                                color: 'charcoal'
+                                color: borderColorDark
                             },
 
                         }}>

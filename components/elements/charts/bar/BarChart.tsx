@@ -15,6 +15,8 @@ interface IBarChart {
     textColor?:string;
     fillColor?:string;
     borderColor?:string;
+    borderColorDark?:string;
+    suffix?:string;
 }
 
 interface IData {
@@ -29,7 +31,7 @@ interface IMargin {
     left:number;
 }
 
-const BarChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor', fillColor = 'lightGrey' }:IBarChart) : ReactNode => {
+const BarChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor', borderColorDark = 'charcoal', fillColor = 'lightGrey', suffix = '' }:IBarChart) : ReactNode => {
     const [mediaQuery] = useMediaQuery(`(min-width: ${breakpoints.sm})`);
     const [width, setWidth] = useState<number>(null);
     const [height, setHeight] = useState<number>(mediaQuery ? 390 : 340);
@@ -143,6 +145,9 @@ const BarChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor', 
                         '.y-axis .tick line': {
                             color: borderColor
                         },
+                        '.y-axis .tick:first-of-type line': {
+                            color: borderColorDark
+                        },
                         '.bar': {
                             fill: fillColor
                         }
@@ -154,9 +159,9 @@ const BarChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor', 
                                         height={boundsHeight}
                                         transform={`translate(${[margin.left, margin.top].join(",")})`}
                                         overflow={"visible"}>
-                                        <AxisLeft scale={yScale} chartHeight={height} width={width} />
+                                        <AxisLeft scale={yScale} chartHeight={height} width={width} suffix={suffix} />
                                         <AxisBottom scale={xScale} transform={`translate(0, ${boundsHeight})`} />
-                                        <Bars values={data.bars} xScale={xScale} borderColor={borderColor} yScale={yScale} height={boundsHeight} />
+                                        <Bars values={data.bars} xScale={xScale} borderColor={borderColor} yScale={yScale} height={boundsHeight} suffix={suffix} />
                                     </g>
                                 }
                             </>

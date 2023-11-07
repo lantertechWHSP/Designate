@@ -4,9 +4,10 @@ interface IAxisLeft {
     scale:any;
     chartHeight?:number;
     width?:number;
+    suffix?:string;
 }
 
-export const AxisLeft:any = ({ scale, chartHeight, width }:IAxisLeft) : ReactNode => {
+export const AxisLeft:any = ({ scale, chartHeight, width, suffix }:IAxisLeft) : ReactNode => {
     const [tickCount, setTickCount] = useState<number>(10);
 
     const ticks:any = useMemo(() => {
@@ -39,7 +40,7 @@ export const AxisLeft:any = ({ scale, chartHeight, width }:IAxisLeft) : ReactNod
                         fill="currentColor"
                         display={index > 0 ? 'block' : 'none'}
                         transform="translate(0, 15)">
-                        {value}
+                        {value} {suffix}
                     </text>
                     <line
                         x1={-3}
