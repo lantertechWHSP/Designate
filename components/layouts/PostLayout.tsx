@@ -71,7 +71,7 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
                                 {
                                     (post?.image.responsiveImage?.title) && <Text variant="annotation" mt={2} mb={0}>
                                         {post?.image.responsiveImage?.title}
-                                  </Text>
+                                    </Text>
                                 }
                             </Column>
                         </Row>

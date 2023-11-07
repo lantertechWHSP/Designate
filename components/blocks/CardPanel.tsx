@@ -36,7 +36,7 @@ const CardPanelBlock:any = ({ annotation, title, description, image, link, align
                         {
                             link ? <Link {...link}>
                                 {title}
-                            </Link> : {title}
+                            </Link> : <>{title}</>
                         }
                     </Heading>
                 }
@@ -52,21 +52,21 @@ const CardPanelBlock:any = ({ annotation, title, description, image, link, align
             </Flex>
             {
                 link ? <Link {...link}
-                             width={['100%', ,'50%']}
-                             minHeight="400px"
-                             position="relative"
-                             title=""
-                             background={image?.responsiveImage ? `url('${image.responsiveImage.src}')` : 'lightGrey'}
-                             backgroundPosition="center"
-                             backgroundRepeat="no-repeat"
-                             backgroundSize="cover">
+                    width={['100%', ,'50%']}
+                    minHeight="400px"
+                    position="relative"
+                    title=""
+                    background={image?.responsiveImage ? `url('${image.responsiveImage.src}')` : 'lightGrey'}
+                    backgroundPosition="center"
+                    backgroundRepeat="no-repeat"
+                    backgroundSize="cover">
                 </Link> : <Box width={['100%', ,'50%']}
-                               minHeight="400px"
-                               position="relative"
-                               background={image?.responsiveImage ? `url('${image.responsiveImage.src}')` : 'lightGrey'}
-                               backgroundPosition="center"
-                               backgroundRepeat="no-repeat"
-                               backgroundSize="cover">
+                    minHeight="400px"
+                    position="relative"
+                    background={image?.responsiveImage ? `url('${image.responsiveImage.src}')` : 'lightGrey'}
+                    backgroundPosition="center"
+                    backgroundRepeat="no-repeat"
+                    backgroundSize="cover">
                 </Box>
             }
         </Flex>
