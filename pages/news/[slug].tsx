@@ -4,11 +4,11 @@ import {GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult} from 
 import {ModularContent} from '~/components/ModularContent';
 import {doQuery, queries} from '~/dato/api';
 import {getBlocks, getLayoutData} from '~/lib/utils';
-import {ILayout} from '~/interfaces/layout/layout';
-import {ISite} from '~/interfaces/layout/site';
-import {IBlock} from '~/interfaces/util/block';
-import {IPost} from '~/interfaces/models/post';
-import {ContainerWidth} from '~/components/blocks/Content';
+import { ILayout } from '~/interfaces/layout/layout';
+import { ISite } from '~/interfaces/layout/site';
+import { IBlock } from '~/interfaces/util/block';
+import { IPost } from '~/interfaces/models/post';
+import { ContainerWidth } from '~/components/blocks/Content';
 import PostLayout from '~/components/layouts/PostLayout';
 
 interface INextPageProps {
@@ -39,12 +39,18 @@ export async function getStaticProps({ params, preview }:GetStaticPropsContext) 
     return { props: { post, layout, blocks } };
 }
 
-const PostPage : NextPage = ({ post, layout, blocks}:any)  : JSX.Element => {
-    // Format the Container Width when it’s in a post…
+const PostPage : NextPage = ({ post, layout, blocks }:any)  : JSX.Element => {
+    // Format the Container Width
     if(Array.isArray(blocks) && blocks.length > 0) {
+        debugger;
         blocks.map((block:IBlock) => {
             if(block.containerWidth === ContainerWidth.Default) {
-                block.containerWidth = ContainerWidth.Narrow;
+                if(block.__typename === 'CardPanelRecord') {
+                    block.containerWidth = ContainerWidth.Wide;
+                }
+                else {
+                    block.containerWidth = ContainerWidth.Narrow;
+                }
             }
         });
     }

@@ -1,14 +1,14 @@
-import React, { ReactNode }  from 'react';
-import { StructuredText } from 'react-datocms';
-import { isHeading, isParagraph, isCode, isListItem, isLink } from 'datocms-structured-text-utils';
-import { renderNodeRule } from 'datocms-structured-text-to-html-string';
-import { Heading, Code, Box, Text, Flex } from '@chakra-ui/react';
+import React, {ReactNode} from 'react';
+import {StructuredText} from 'react-datocms';
+import {isCode, isHeading, isLink, isListItem, isParagraph} from 'datocms-structured-text-utils';
+import {renderNodeRule} from 'datocms-structured-text-to-html-string';
+import {Box, Code, Flex, Heading, Text} from '@chakra-ui/react';
 import ImageBlock from '~/components/blocks/Image';
 import VideoBlock from '~/components/blocks/Video';
 import AudioBlock from '~/components/blocks/Audio';
-import { ListTick } from '~/components/elements/svgs/ListTick';
-import { PaddingTop } from "~/components/blocks/Content";
-import { UnderlineLink } from "~/components/elements/sectionLink";
+import {ListTick} from '~/components/elements/svgs/ListTick';
+import {PaddingTop} from "~/components/blocks/Content";
+import {UnderlineLink} from "~/components/elements/sectionLink";
 
 const StrucutredContent:any = ({ content }) : ReactNode => {
     return (
@@ -108,14 +108,19 @@ const StrucutredContent:any = ({ content }) : ReactNode => {
                     })
                 ]}
                 renderBlock={({record}) => {
+                    if(record.paddingTop === PaddingTop.Default) {
+                        record.paddingTop = PaddingTop.Condensed;
+                    }
+
+                    debugger;
                     /* eslint-disable */
                     switch (record.__typename) {
                         case 'ImageRecord':
-                            return <ImageBlock contain={false} paddingTop={PaddingTop.None} {...record} />;
+                            return <ImageBlock contain={false} {...record} />;
                         case 'VideoRecord':
-                            return <VideoBlock contain={false} paddingTop={PaddingTop.None} {...record} />;
+                            return <VideoBlock contain={false} {...record} />;
                         case 'AudioRecord':
-                            return <AudioBlock contain={false} paddingTop={PaddingTop.None} {...record} />;
+                            return <AudioBlock contain={false} {...record} />;
                         default:
                             return <></>;
                     }

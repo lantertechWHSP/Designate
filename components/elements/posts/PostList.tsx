@@ -31,7 +31,11 @@ const PostList:any = ({ latestPosts }:IPostsList) : ReactNode => {
             setIsLoading(true);
 
             setTimeout(() => {
-                doQuery(queries.posts, { first: DATO_QUERY_VALUES.ITEMS_PER_PAGE, skip: page * DATO_QUERY_VALUES.ITEMS_PER_PAGE }).then(({ posts }) => posts || []).then((newPosts) => {
+                doQuery(queries.posts, {
+                    first: DATO_QUERY_VALUES.ITEMS_PER_PAGE,
+                    skip: page * DATO_QUERY_VALUES.ITEMS_PER_PAGE,
+                    orderBy: 'publishDate_DESC'
+                }).then(({ posts }) => posts || []).then((newPosts) => {
                     if(newPosts.length > 0) {
                         setPosts([...posts, ...newPosts]);
                         setPage(page + 1);

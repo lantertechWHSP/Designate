@@ -29,7 +29,7 @@ const VideoBlock:any = ({ title, video, videoEmbed, background, contain, contain
                 </AspectRatio>
             }
             {
-                title && <Text as="small">{title}</Text>
+                title && <Text as="small" display="block" mt={2}>{title}</Text>
             }
         </Box>
     </ContentBlock>;

@@ -5,7 +5,7 @@ import { videoRecord } from '~/dato/blocks/video';
 import { audioRecord } from '~/dato/blocks/audio';
 import { overviewRecord } from '~/dato/blocks/overview';
 import { cardPanelRecord } from '~/dato/blocks/cardPanel';
-import { contentCardPanel } from '~/dato/blocks/contentCardPanel';
+import { contentCardPanelRecord } from '~/dato/blocks/contentCardPanel';
 import { accordionRecord } from '~/dato/blocks/accordion';
 import { carouselRecord } from '~/dato/blocks/carousel';
 import { horizontalRuleRecord } from '~/dato/blocks/horizontalRule';
@@ -80,7 +80,7 @@ export const blocks:string = `
             ${cardPanelRecord}
         }
         ... on ContentCardPanelRecord {
-            ${contentCardPanel}        
+            ${contentCardPanelRecord}        
         }
         ... on AccordionRecord {
             ${accordionRecord}

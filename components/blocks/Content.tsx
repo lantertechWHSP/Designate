@@ -10,6 +10,7 @@ export enum ContainerWidth {
 }
 
 export enum BackgroundColor {
+    Default = '',
     White = 'White',
     OliveGrey = 'OliveGrey',
     Olive = 'Olive',
@@ -24,11 +25,14 @@ export enum TextColor {
 
 export enum PaddingTop {
     Default = 'Default',
+    Condensed = 'Condensed',
+    Spacious = 'Spacious',
     None = 'None'
 }
 
 export enum PaddingBottom {
     Default = 'Default',
+    Condensed = 'Condensed',
     Spacious = 'Spacious',
     None = 'None'
 }
@@ -52,7 +56,7 @@ export const getTextColor:any = (color:TextColor|ResponsiveValue<any>|string) : 
     switch(color) {
         case TextColor.White : return 'white';
         case TextColor.Olive : return 'olive';
-        default : return color;
+        default : return color ? color : null;
     }
 };
 
@@ -62,7 +66,7 @@ export const getBackgroundColor:any = (background:BackgroundColor|ResponsiveValu
         case BackgroundColor.OliveGrey : return 'oliveGrey';
         case BackgroundColor.GhostWhite : return 'ghostWhite';
         case BackgroundColor.Olive : return 'olive';
-        default : return background;
+        default : return background ? background : null;
     }
 };
 
@@ -89,13 +93,14 @@ const ContentBlock:any = ({
     }
 
     switch(paddingTop) {
-        case PaddingTop.Default : selectedPaddingTop = ['40px', , '60px']; break;
+        case PaddingTop.Condensed : selectedPaddingTop = ['15px', , '30px']; break;
+        case PaddingBottom.Spacious : selectedPaddingTop = ['120px', '120px', '120px']; break;
         case PaddingTop.None : selectedPaddingTop = [0]; break;
         default : selectedPaddingTop = ['40px', , '60px']; break;
     }
 
     switch(paddingBottom) {
-        case PaddingBottom.Default : selectedPaddingBottom = ['40px', , '60px']; break;
+        case PaddingTop.Condensed : selectedPaddingBottom = ['15px', , '30px']; break;
         case PaddingBottom.Spacious : selectedPaddingBottom = ['120px', '120px', '120px']; break;
         case PaddingBottom.None : selectedPaddingBottom = [0]; break;
         default : selectedPaddingBottom = ['40px', , '60px']; break;

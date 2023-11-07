@@ -22,8 +22,8 @@ interface ICardPanelBlock extends IBlock {
     link?:ILink;
 }
 
-const CardPanelBlock:any = ({ annotation, title, description, image, link, align, paddingTop, paddingBottom }:ICardPanelBlock) : ReactNode => {
-    return (annotation || title || image && image?.url || link) && <ContentBlock background="ghostWhite" paddingTop={paddingTop} paddingBottom={paddingBottom}>
+const CardPanelBlock:any = ({ annotation, title, description, image, link, align, paddingTop, paddingBottom, containerWidth }:ICardPanelBlock) : ReactNode => {
+    return (annotation || title || image && image?.url || link) && <ContentBlock background="ghostWhite" paddingTop={paddingTop} paddingBottom={paddingBottom} containerWidth={containerWidth}>
         <Flex direction={['column', ,(align === ICardPanelAlign.Right) ? 'row-reverse' : 'row']} borderRadius="3px" overflow="hidden" filter="drop-shadow(0px 1px 0px rgba(0, 0, 0, 0.10))" >
             <Flex width={['100%', ,'50%']} background="white" direction="column" p={[6, ,gutter * 2]}>
                 {

@@ -83,7 +83,7 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
                     {children}
                 </Box>
             }
-            <Box mb={['120px']}>
+            <Box mt={['40px', , '60px']} mb={['120px']}>
                 <Container>
                     <Row justify="center">
                         <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths, ColumnWidth.EightTwelfths]}>

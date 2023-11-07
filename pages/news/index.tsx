@@ -37,7 +37,10 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
         orderBy: 'publishDate_DESC'
     }).then(({ posts }) => posts || []);
 
-    const posts:IPost[] = await doQuery(queries.posts, { first: DATO_QUERY_VALUES.ITEMS_PER_PAGE }).then(({ posts }) => posts || []);
+    const posts:IPost[] = await doQuery(queries.posts, {
+        first: DATO_QUERY_VALUES.ITEMS_PER_PAGE,
+        orderBy: 'publishDate_DESC',
+    }).then(({ posts }) => posts || []);
     const postsMeta:IPostsMeta = await doQuery(queries.postsMeta).then(({ postsMeta }) => postsMeta || {});
 
     const layout:ILayout = getLayoutData(site, page, preview);

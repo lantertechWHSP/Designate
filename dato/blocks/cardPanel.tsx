@@ -8,7 +8,7 @@ export const cardPanelRecord:string = `
     title
     description
     image {
-        ${imageAttrs(700, 700)}
+        ${imageAttrs()}
     }
     align
     link {
@@ -16,4 +16,6 @@ export const cardPanelRecord:string = `
     }
     paddingTop
     paddingBottom
+    containerWidth
+    background
 `;

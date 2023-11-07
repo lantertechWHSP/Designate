@@ -2,6 +2,7 @@ import { seoAttrs } from '~/dato/attrs/seo';
 import { textRecord } from '~/dato/blocks/text';
 import { imageRecord } from '~/dato/blocks/image';
 import { videoRecord } from '~/dato/blocks/video';
+import { cardPanelRecord } from '~/dato/blocks/cardPanel';
 import { imageAttrs } from '~/dato/attrs/responsiveImageAttrs';
 import { structuredTextAttrs } from '~/dato/attrs/structuredTextAttrs';
 
@@ -33,6 +34,9 @@ export const post:string = `
                 }
                 ... on VideoRecord {
                     ${videoRecord}
+                }
+                ... on CardPanelRecord {
+                    ${cardPanelRecord}
                 }
             }
         }
