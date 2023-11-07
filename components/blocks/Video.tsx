@@ -20,7 +20,7 @@ const VideoBlock:any = ({ title, video, videoEmbed, background, contain, contain
     return (title || currentVideo) && <ContentBlock background={background} contain={contain} containerWidth={containerWidth} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         <Box>
             {
-                currentVideo && <AspectRatio ratio={[16 / 7.5]}>
+                currentVideo && <AspectRatio ratio={[16 / 9]}>
                     <ReactPlayer
                         controls
                         width="100%"
