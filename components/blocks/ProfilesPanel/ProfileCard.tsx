@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
-import { Image } from '~/components/elements/image';
-import { Flex, Box, Heading, Text } from '@chakra-ui/react';
+import { Flex, Box, Heading, Image, AspectRatio } from '@chakra-ui/react';
 import { SectionLink } from '~/components/elements/sectionLink';
 import { IPerson } from '~/interfaces/models/person';
 import { IStructuredText } from '~/interfaces/util/structuredText';
@@ -13,8 +12,14 @@ export interface IProfileCard {
 }
 
 const ProfileCard:any = ({ person, onClick }:IProfileCard) : ReactNode => {
-    return <Flex direction="column">
-        <Image image={person?.image} ratio={[424 / 310]} onClick={onClick} mb={4} cursor="pointer" />
+    return <Flex direction="column" minHeight="100%">
+        <Box mb={4} onClick={onClick} cursor="pointer">
+            {
+                person?.image?.url ? <Image src={`${person?.image?.url}?auto=format&fit=crop&w=424&h=310`} /> : <AspectRatio ratio={[424 / 310]} >
+                    <Box background="lightGrey" />
+                </AspectRatio>
+            }
+        </Box>
         {
             person?.name && <Heading as="h3" fontSize={['21px']} lineHeight={['26px']} fontWeight={500}>
                 {person.name}
@@ -24,11 +29,6 @@ const ProfileCard:any = ({ person, onClick }:IProfileCard) : ReactNode => {
             person?.companyPosition && <Heading as="h4" fontSize={['19px']} lineHeight={['28px']} color="steel" fontWeight={400}>
                 {person?.companyPosition}
             </Heading>
-        }
-        {
-            person?.qualifications && <Text mb={0} fontSize={['16px']} color="oliveBlur">
-                {person.qualifications}
-            </Text>
         }
         {
             <Box flex="1" />

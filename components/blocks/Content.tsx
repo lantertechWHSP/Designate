@@ -10,15 +10,15 @@ export enum ContainerWidth {
 }
 
 export enum BackgroundColor {
-    Default = '',
+    Default = 'Default',
     White = 'White',
     OliveGrey = 'OliveGrey',
     Olive = 'Olive',
     GhostWhite = 'GhostWhite',
-
 }
 
 export enum TextColor {
+    Default = 'Default',
     Olive = 'Olive',
     White = 'White'
 }

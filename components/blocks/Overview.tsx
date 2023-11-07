@@ -7,15 +7,21 @@ import { Column, ColumnWidth, Row } from '~/components/elements/grid/grid';
 import { IStructuredText } from '~/interfaces/util/structuredText';
 import { isEmptyDocument } from 'datocms-structured-text-utils';
 
+enum IOverviewAlign {
+    Left = 'Left',
+    Center = 'Center'
+}
+
 interface IOverviewBlock extends IBlock {
     subtitle?:IStructuredText;
     description?:IStructuredText;
+    align?:IOverviewAlign
 }
 
-const OverviewBlock:any = ({ subtitle, description, paddingTop, paddingBottom, background }:IOverviewBlock) : ReactNode => {
+const OverviewBlock:any = ({ subtitle, description, paddingTop, paddingBottom, background, align }:IOverviewBlock) : ReactNode => {
     return (subtitle || description) && <ContentBlock background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
-        <Row>
-            <Column width={[ColumnWidth.Full, , ,subtitle && isEmptyDocument(description) ? ColumnWidth.ThreeQuarters : ColumnWidth.Half]}>
+        <Row justify={align === IOverviewAlign.Center ? 'center' : '' }>
+            <Column width={[ColumnWidth.Full, , ,subtitle && isEmptyDocument(description) ? ColumnWidth.EightTwelfths : ColumnWidth.Half]}>
                 {
                     !isEmptyDocument(subtitle) && <Box pr="50px">
                         <Heading as="h2"

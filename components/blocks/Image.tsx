@@ -6,19 +6,20 @@ import { IImage } from '~/interfaces/util/image';
 import { Text } from '@chakra-ui/react';
 
 interface IImageBlock extends IBlock {
+    title?:string;
     image:IImage;
 }
 
-const ImageBlock:any = ({ image, containerWidth, paddingTop, paddingBottom }:IImageBlock) : ReactNode => {
-    return <ContentBlock containerWidth={containerWidth} paddingTop={paddingTop} paddingBottom={paddingBottom}>
-        <DatoImage data={image.responsiveImage} style={{
-            width: '100%',
-            maxWidth: 'unset'
-        }} />
+const ImageBlock:any = ({ title, image, contain, containerWidth, background, paddingTop, paddingBottom  }:IImageBlock) : ReactNode => {
+    return (title || image) && <ContentBlock contain={contain} containerWidth={containerWidth} background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         {
-            (image && image?.responsiveImage && image.responsiveImage?.title) && <Text variant="annotation" mt={2} mb={0}>
-                {image.responsiveImage?.title}
-            </Text>
+            (image && image.responsiveImage) && <DatoImage data={image.responsiveImage} style={{
+                width: '100%',
+                maxWidth: 'unset'
+            }} />
+        }
+        {
+            title && <Text as="small" display="block" variant="annotation" mt={2}>{title}</Text>
         }
     </ContentBlock>;
 };

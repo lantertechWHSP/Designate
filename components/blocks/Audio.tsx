@@ -10,13 +10,13 @@ interface IAudioBlock extends IBlock {
     omnyFmUrl?:string;
 }
 
-const AudioBlock:any = ({ title, soundcloudTrackId, omnyFmUrl, whooshkaaId, contain, paddingTop, paddingBottom, containerWidth }:IAudioBlock) : ReactNode => {
+const AudioBlock:any = ({ title, soundcloudTrackId, omnyFmUrl, whooshkaaId, contain, background, paddingTop, paddingBottom, containerWidth }:IAudioBlock) : ReactNode => {
 
     if(omnyFmUrl) {
         omnyFmUrl = omnyFmUrl.endsWith('/') ?  omnyFmUrl.slice(0, -1) : omnyFmUrl;
     }
 
-    return <ContentBlock contain={contain} paddingTop={paddingTop} paddingBottom={paddingBottom} containerWidth={containerWidth}>
+    return (title || soundcloudTrackId || omnyFmUrl || whooshkaaId) &&  <ContentBlock contain={contain} containerWidth={containerWidth} background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         {
             soundcloudTrackId && <iframe width="100%"
                 height="170"
@@ -43,7 +43,7 @@ const AudioBlock:any = ({ title, soundcloudTrackId, omnyFmUrl, whooshkaaId, cont
             />
         }
         {
-            title && <Text as="small" display="block" mt={2}>{title}</Text>
+            title && <Text as="small" display="block" variant="annotation"  mt={2}>{title}</Text>
         }
     </ContentBlock>;
 };

@@ -39,7 +39,7 @@ const HeroBlock:any = ({ title, video }:IHeroBlock) : ReactNode => {
                 backgroundSize="cover">
                 <Container h={height}>
                     <Flex minH="100%" align="flex-end">
-                        <Heading py={[6, 8, 12]} variant="hero" position="relative" zIndex="2" maxWidth={['100vw', , '500px', '500px']}>
+                        <Heading py={['40px', , '60px']} variant="hero" position="relative" zIndex="2" maxWidth={['100vw', , '500px', '500px']}>
                             {
                                 title
                             }

@@ -11,7 +11,7 @@ interface IFooter extends IDatoFooter {
 }
 
 const Footer:any = ({ menu, address, email, phone, fax, linkedin, youtube, copyright }:IFooter) : ReactNode => {
-    return <Box as="footer" background="charcoal2" color="white" py={[6, 8, 12]}>
+    return <Box as="footer" background="charcoal2" color="white" py={['40px', , '60px']}>
         <Container>
             <Row>
                 <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]} mb={[4, ,0]} display={['none', 'block']}>

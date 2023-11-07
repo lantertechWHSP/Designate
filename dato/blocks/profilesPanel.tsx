@@ -11,7 +11,7 @@ export const profilesPanelRecord:string = `
             companyPosition
             qualifications
             image {
-                ${imageAttrs({ width: 424, height: 310 })}
+                ${imageAttrs({ width: 700, height: 700 })}
             }
         }
         description {
