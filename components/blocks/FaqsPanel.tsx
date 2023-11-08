@@ -4,6 +4,7 @@ import { IBlock } from '~/interfaces/util/block';
 import { IStructuredText } from '~/interfaces/util/structuredText';
 import AccordionBlock, { IAccordionItem } from '~/components/blocks/Accordion';
 import { map as _map, orderBy as _orderBy } from 'lodash';
+import { Theme } from '~/components/blocks/Content';
 
 interface IFaq  {
     question?:string;
@@ -11,12 +12,14 @@ interface IFaq  {
 }
 
 interface IFaqsPanelBlock extends IBlock {
+    theme?:Theme;
+    displayTitle?:boolean;
     data: {
         faqs: IFaq[];
     }
 }
 
-const FaqsPanelBlock:any = ({ paddingBottom, data: { faqs }}:IFaqsPanelBlock) : ReactNode => {
+const FaqsPanelBlock:any = ({ displayTitle, theme, paddingBottom, data: { faqs }}:IFaqsPanelBlock) : ReactNode => {
     const items:IAccordionItem[] = _map(_orderBy(faqs, ['ordinal'], ['asc']), (item:IFaq) => {
         return {
             title: item.question,
@@ -24,7 +27,10 @@ const FaqsPanelBlock:any = ({ paddingBottom, data: { faqs }}:IFaqsPanelBlock) : 
         }
     })
 
-    return <AccordionBlock title="Frequently Asked Questions" background="olive" textColor="white" items={items} paddingBottom={paddingBottom} />
+    const backgroundColor:string = theme === Theme.Dark ? 'olive' : 'ghostWhite';
+    const textColor:string = theme === Theme.Dark ? 'white' : 'olive';
+
+    return <AccordionBlock title={displayTitle ? 'Frequently Asked Questions' : ''} background={backgroundColor} textColor={textColor} items={items} paddingBottom={paddingBottom} />
 };
 
 export default FaqsPanelBlock;

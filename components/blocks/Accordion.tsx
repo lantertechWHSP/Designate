@@ -19,6 +19,7 @@ export interface IAccordionItem {
 
 const AccordionBlock:any = ({ title, background, textColor, items, paddingBottom }:IAccordionBlock) : ReactNode => {
     const selectedTextColor:any = getTextColor(textColor);
+    const bodyTextColor:any = selectedTextColor === 'olive' ? 'steel' : 'white';
     const borderColor:any = selectedTextColor === 'white' ? 'whiteBlur2' : 'borderColor';
 
     return (title || (Array.isArray(items) && items.length > 0)) && <ContentBlock background={background} color={textColor} paddingBottom={paddingBottom} py={8}>
@@ -57,7 +58,7 @@ const AccordionBlock:any = ({ title, background, textColor, items, paddingBottom
                                             <Icon icon={Icons.ChevronDown} />
                                         </Box>
                                     </AccordionButton>
-                                    <AccordionPanel borderTop="1px solid" borderColor={borderColor} py={4}>
+                                    <AccordionPanel borderTop="1px solid" borderColor={borderColor} color={bodyTextColor} py={4}>
                                         {
                                             !isEmptyDocument(item?.content) && <StructuredContent content={item.content} linkColor={selectedTextColor} linkBorderColor={borderColor} />
                                         }
