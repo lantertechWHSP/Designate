@@ -2,11 +2,11 @@ import { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
 import ContentBlock from '~/components/blocks/Content';
 import { ILink } from '~/interfaces/util/link';
-import { Box, Flex, Heading, Text } from '@chakra-ui/react';
-import { SectionLink } from "~/components/elements/sectionLink";
-import { gutter } from "~/components/elements/grid/grid";
+import { Box, Heading, Text } from '@chakra-ui/react';
+import { Row, Column, ColumnWidth } from "~/components/elements/grid/grid";
 import { IImage } from "~/interfaces/util/image";
 import { Link } from "~/components/elements/link";
+import { SectionLink } from '~/components/elements/sectionLink';
 
 enum ICardPanelAlign {
     Left = 'Left',
@@ -22,54 +22,63 @@ interface ICardPanelBlock extends IBlock {
     link?:ILink;
 }
 
-const CardPanelBlock:any = ({ annotation, title, description, image, link, align, paddingTop, paddingBottom, containerWidth }:ICardPanelBlock) : ReactNode => {
-    return (annotation || title || image && image?.url || link) && <ContentBlock background="ghostWhite" paddingTop={paddingTop} paddingBottom={paddingBottom} containerWidth={containerWidth}>
-        <Flex direction={['column', ,(align === ICardPanelAlign.Right) ? 'row-reverse' : 'row']} borderRadius="3px" overflow="hidden" filter="drop-shadow(0px 1px 0px rgba(0, 0, 0, 0.10))" >
-            <Flex width={['100%', ,'50%']} background="white" direction="column" p={[6, ,gutter * 2]}>
-                {
-                    annotation && <Text variant="annotation" mb={[2, 4 ,8]}>
-                        {annotation}
-                    </Text>
-                }
-                {
-                    title && <Heading as="h2" variant="sectionHeading" mb={4}>
+const CardPanelBlock:any = ({ annotation, title, description, image, link, align, containerWidth, background, paddingTop, paddingBottom }:ICardPanelBlock) : ReactNode => {
+    return (annotation || title || image && image?.url || link) && <ContentBlock containerWidth={containerWidth} background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
+        <Box background="white" borderRadius="3px" overflow="hidden" filter="drop-shadow(0px 1px 0px rgba(0, 0, 0, 0.10))" >
+            <Row direction={['column', ,(align === ICardPanelAlign.Right) ? 'row-reverse' : 'row']}>
+                <Column width={[ColumnWidth.Full, ColumnWidth.Half]}>
+                    <Box py={[6, ,8]}
+                         pl={align === ICardPanelAlign.Right ? [0] : [6, ,8]}
+                         pr={align === ICardPanelAlign.Left ? [0] : [6, ,8]}>
                         {
-                            link ? <Link {...link}>
-                                {title}
-                            </Link> : <>{title}</>
+                            annotation && <Text variant="annotation" mb={[2, 4 ,8]}>
+                                {annotation}
+                            </Text>
                         }
-                    </Heading>
-                }
-                {
-                    description && <Text variant="sectionDescription">{description}</Text>
-                }
-                <Box flex={1} />
-                {
-                    link && <SectionLink {...link}>
-                        {link.document ? 'Download' : 'Read More'}
-                    </SectionLink>
-                }
-            </Flex>
-            {
-                link ? <Link {...link}
-                    width={['100%', ,'50%']}
-                    minHeight="400px"
-                    position="relative"
-                    title=""
-                    background={image?.responsiveImage ? `url('${image.responsiveImage.src}')` : 'lightGrey'}
-                    backgroundPosition="center"
-                    backgroundRepeat="no-repeat"
-                    backgroundSize="cover">
-                </Link> : <Box width={['100%', ,'50%']}
-                    minHeight="400px"
-                    position="relative"
-                    background={image?.responsiveImage ? `url('${image.responsiveImage.src}')` : 'lightGrey'}
-                    backgroundPosition="center"
-                    backgroundRepeat="no-repeat"
-                    backgroundSize="cover">
-                </Box>
-            }
-        </Flex>
+                        {
+                            title && <Heading as="h2" variant="sectionHeading" mb={4}>
+                                {
+                                    link ? <Link {...link}>
+                                        {title}
+                                    </Link> : <>{title}</>
+                                }
+                            </Heading>
+                        }
+                        {
+                            description && <Text variant="sectionDescription">{description}</Text>
+                        }
+                        <Box flex={1} />
+                        {
+                            link && <SectionLink {...link}>
+                                {link.document ? 'Download' : 'Read More'}
+                            </SectionLink>
+                        }
+                    </Box>
+                </Column>
+                <Column width={[ColumnWidth.Full, ColumnWidth.Half]} minHeight="400px">
+                    {
+                        link ? <Link {...link}
+                                     width="100%"
+                                     height="100%"
+                                     position="relative"
+                                     title=""
+                                     background={image?.responsiveImage ? `url('${image.responsiveImage.src}')` : 'lightGrey'}
+                                     backgroundPosition="center"
+                                     backgroundRepeat="no-repeat"
+                                     backgroundSize="cover">
+                        </Link> : <Box width="100%"
+                                       height="100%"
+                                       position="relative"
+                                       title=""
+                                       background={image?.responsiveImage ? `url('${image.responsiveImage.src}')` : 'lightGrey'}
+                                       backgroundPosition="center"
+                                       backgroundRepeat="no-repeat"
+                                       backgroundSize="cover">
+                        </Box>
+                    }
+                </Column>
+            </Row>
+        </Box>
     </ContentBlock>;
 };
 

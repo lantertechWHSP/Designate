@@ -1,12 +1,11 @@
-import {ReactNode} from 'react';
-import {IBlock} from '~/interfaces/util/block';
+import { ReactNode} from 'react';
+import { IBlock} from '~/interfaces/util/block';
 import ContentBlock from '~/components/blocks/Content';
-import {Badge, Box, Divider, Flex, Heading, Link as ChakraLink, Text} from '@chakra-ui/react';
-import {Column, ColumnWidth, Row} from "~/components/elements/grid/grid";
-import {YourIR} from 'yourir-next';
-import {Icon, Icons} from '~/components/elements/icon';
-import {SectionLink, SectionLinkButton} from '~/components/elements/sectionLink';
-
+import { Badge, Box, Divider, Flex, Heading, Link as ChakraLink, Text } from '@chakra-ui/react';
+import { Column, ColumnWidth, Row } from "~/components/elements/grid/grid";
+import { YourIR } from 'yourir-next';
+import { Icon, Icons } from '~/components/elements/icon';
+import { SectionLink, SectionLinkButton } from '~/components/elements/sectionLink';
 
 interface IInvestorPanelBlock extends IBlock {
     displayHeadline?:boolean;
@@ -157,6 +156,9 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                                 },
                                 '.yourir-chart-yaxis-outside .yourir-chart-yaxis-label-container:first-of-type': {
                                     display: 'none'
+                                },
+                                '.yourir-chart-panel-plot-area': {
+                                    padding: 0
                                 }
                             }}>
                             <div data-yourir="priceChart1 range=6m showTooltips=true" >

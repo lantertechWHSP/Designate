@@ -41,8 +41,8 @@ const SeeAlsoItem:any = ({ title, description, link }:ISeeAlsoItem) : ReactNode 
     </Flex>;
 };
 
-const SeeAlsoPanelBlock:any = ({ items, paddingTop, paddingBottom }:ISeeAlsoPanelBlock) : ReactNode => {
-    return (Array.isArray(items) && items.length > 0) && <ContentBlock background="ghostWhite" paddingTop={paddingTop} paddingBottom={paddingBottom}>
+const SeeAlsoPanelBlock:any = ({ items, background, paddingTop, paddingBottom }:ISeeAlsoPanelBlock) : ReactNode => {
+    return (Array.isArray(items) && items.length > 0) && <ContentBlock background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         <Heading variant="sectionHeading" as="h2" mb={[4, ,8]}>
             See Also
         </Heading>

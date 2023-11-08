@@ -10,7 +10,7 @@ export const attributesListPanelRecord:string = `
             alt
         }
     }
+    background
     paddingTop
     paddingBottom
-    background
 `;

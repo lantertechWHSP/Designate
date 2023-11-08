@@ -12,6 +12,7 @@ export const seeAlsoPanelRecord:string = `
             }
         }
     }
+    background
     paddingTop
     paddingBottom
 `;

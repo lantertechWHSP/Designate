@@ -11,4 +11,7 @@ export const homePageImageGalleryRecord:string = `
     imageSide2 {
         ${imageAttrs({ width: 652, height: 330})}
     }
+    background
+    paddingTop
+    paddingBottom
 `;
