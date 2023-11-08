@@ -21,4 +21,6 @@ export const portfolioPanelRecord:string = `
             url
         }
     }
+    paddingTop
+    paddingBottom
 `;

@@ -27,8 +27,8 @@ interface IPortfolioPanelBlock extends IBlock {
     items:IPortfolioPanelItem[];
 }
 
-const PortfolioPanelBlock:any = ({ items, paddingBottom }:IPortfolioPanelBlock) : ReactNode => {
-    return (Array.isArray(items) && items.length > 0) && <ContentBlock paddingBottom={paddingBottom}>
+const PortfolioPanelBlock:any = ({ items, paddingTop, paddingBottom }:IPortfolioPanelBlock) : ReactNode => {
+    return (Array.isArray(items) && items.length > 0) && <ContentBlock paddingTop={paddingTop} paddingBottom={paddingBottom}>
         <Accordion allowToggle defaultIndex={0} borderBottom="1px solid" borderColor="borderColor">
             {
                 items.map((item:IPortfolioPanelItem, index:number) => {
@@ -56,7 +56,7 @@ const PortfolioPanelBlock:any = ({ items, paddingBottom }:IPortfolioPanelBlock) 
                                         <Icon icon={Icons.ChevronDown} />
                                     </Box>
                                 </AccordionButton>
-                                <AccordionPanel borderColor="borderColor" py={8}>
+                                <AccordionPanel pt={4} pb={8}>
                                     <Row justify="center">
                                         <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths, ColumnWidth.EightTwelfths]}>
                                             {

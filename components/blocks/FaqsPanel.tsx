@@ -4,7 +4,8 @@ import { IBlock } from '~/interfaces/util/block';
 import { IStructuredText } from '~/interfaces/util/structuredText';
 import AccordionBlock, { IAccordionItem } from '~/components/blocks/Accordion';
 import { map as _map, orderBy as _orderBy } from 'lodash';
-import { Theme } from '~/components/blocks/Content';
+import {ContainerWidth, Theme} from '~/components/blocks/Content';
+import {ColumnWidth} from "~/components/elements/grid/grid";
 
 interface IFaq  {
     question?:string;
@@ -30,7 +31,7 @@ const FaqsPanelBlock:any = ({ displayTitle, theme, paddingBottom, data: { faqs }
     const backgroundColor:string = theme === Theme.Dark ? 'olive' : 'ghostWhite';
     const textColor:string = theme === Theme.Dark ? 'white' : 'olive';
 
-    return <AccordionBlock title={displayTitle ? 'Frequently Asked Questions' : ''} background={backgroundColor} textColor={textColor} items={items} paddingBottom={paddingBottom} />;
+    return <AccordionBlock title={displayTitle ? 'Frequently Asked Questions' : ''} background={backgroundColor} textColor={textColor} items={items} paddingBottom={paddingBottom} contentColumnWidth={[ColumnWidth.Full, ,ColumnWidth.EightTwelfths]} />;
 };
 
 export default FaqsPanelBlock;

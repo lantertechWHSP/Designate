@@ -9,6 +9,7 @@ export const videoRecord:string = `
         url
         thumbnailUrl
     }
+    background
     containerWidth
     paddingTop
     paddingBottom

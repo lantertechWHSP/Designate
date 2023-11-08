@@ -69,7 +69,7 @@ const SharePriceOverview:any = () : ReactNode => {
                         <Text as="span" data-yourir="commonStatus" ref={commonStatus} display="none" />
                         <Flex align="center" direction="row">
                             <Box w="6px" h="6px" borderRadius="3px" className="status-dot" mr="4px" />
-                            ASX:<Text as="span" data-yourir="commonStatusName"></Text>
+                            ASX <Text as="span" data-yourir="commonStatusName"></Text>
                         </Flex>
                     </Badge>
                 </Box>

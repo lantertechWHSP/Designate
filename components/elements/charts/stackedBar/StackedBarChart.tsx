@@ -42,7 +42,7 @@ interface IMargin {
 const StackedBarChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor', borderColorDark = 'charcoal' }:IStackedBarChart) : ReactNode => {
     const [mediaQuery] = useMediaQuery(`(min-width: ${breakpoints.sm})`);
     const [width, setWidth] = useState<number>(null);
-    const [height, setHeight] = useState<number>(mediaQuery ? 390 : 340);
+    const [height, setHeight] = useState<number>(mediaQuery ? 450 : 340);
     const margin:IMargin = { top: 30, right: 30, bottom: 50, left: 0 };
     const elementRef:any = useRef<ReactNode>();
     const [isDataLoaded, setIsDataLoaded] = useState<boolean>(false);
@@ -155,7 +155,7 @@ const StackedBarChart:any = ({ data, textColor = 'steel', borderColor = 'borderC
 
     useEffect(() => {
         if(mediaQuery) {
-            setHeight(390);
+            setHeight(450);
         }
         else {
             setHeight(340);

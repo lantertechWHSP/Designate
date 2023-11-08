@@ -1,15 +1,17 @@
 import { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
-import ContentBlock, {getTextColor} from '~/components/blocks/Content';
+import ContentBlock, { getTextColor} from '~/components/blocks/Content';
 import { Heading, Box, Accordion, AccordionItem, AccordionPanel, AccordionButton } from '@chakra-ui/react';
 import { Icon, Icons } from '~/components/elements/icon';
 import { IStructuredText } from '~/interfaces/util/structuredText';
 import { isEmptyDocument } from 'datocms-structured-text-utils';
 import StructuredContent from "~/components/StructuredContent";
+import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
 
 interface IAccordionBlock extends IBlock {
     title?:string;
     items?:IAccordionItem[];
+    contentColumnWidth?:ColumnWidth;
 }
 
 export interface IAccordionItem {
@@ -17,7 +19,7 @@ export interface IAccordionItem {
     content?:IStructuredText;
 }
 
-const AccordionBlock:any = ({ title, background, textColor, items, paddingBottom }:IAccordionBlock) : ReactNode => {
+const AccordionBlock:any = ({ title, background, textColor, items, paddingBottom, contentColumnWidth = null }:IAccordionBlock) : ReactNode => {
     const selectedTextColor:any = getTextColor(textColor);
     const bodyTextColor:any = selectedTextColor === 'olive' ? 'steel' : 'white';
     const borderColor:any = selectedTextColor === 'white' ? 'whiteBlur2' : 'borderColor';
@@ -58,9 +60,17 @@ const AccordionBlock:any = ({ title, background, textColor, items, paddingBottom
                                             <Icon icon={Icons.ChevronDown} />
                                         </Box>
                                     </AccordionButton>
-                                    <AccordionPanel borderTop="1px solid" borderColor={borderColor} color={bodyTextColor} py={4}>
+                                    <AccordionPanel color={bodyTextColor} pt={4} pb={8}>
                                         {
-                                            !isEmptyDocument(item?.content) && <StructuredContent content={item.content} linkColor={selectedTextColor} linkBorderColor={borderColor} />
+                                            !isEmptyDocument(item?.content) && <>
+                                                {
+                                                    contentColumnWidth ? <Row>
+                                                        <Column width={contentColumnWidth}>
+                                                            <StructuredContent content={item.content} />
+                                                        </Column>
+                                                    </Row> : <StructuredContent content={item.content} />
+                                                }
+                                            </>
                                         }
                                     </AccordionPanel>
                                 </>

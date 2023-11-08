@@ -15,6 +15,7 @@ export enum BackgroundColor {
     OliveGrey = 'OliveGrey',
     Olive = 'Olive',
     GhostWhite = 'GhostWhite',
+    DarkSteel = 'DarkSteel'
 }
 
 export enum TextColor {
@@ -66,6 +67,7 @@ export const getBackgroundColor:any = (background:BackgroundColor|ResponsiveValu
         case BackgroundColor.OliveGrey : return 'oliveGrey';
         case BackgroundColor.GhostWhite : return 'ghostWhite';
         case BackgroundColor.Olive : return 'olive';
+        case BackgroundColor.DarkSteel: return 'darkSteel';
         default : return background ? background : null;
     }
 };

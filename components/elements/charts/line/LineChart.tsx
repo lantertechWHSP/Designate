@@ -176,7 +176,7 @@ const LineChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor',
 
     useEffect(() => {
         if(mediaQuery) {
-            setHeight(390);
+            setHeight(300);
         }
         else {
             setHeight(340);

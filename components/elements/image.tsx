@@ -10,7 +10,7 @@ interface IImage {
 }
 
 export const Image:any = ({ image, ratio, ...props }:IImage) : ReactNode => {
-    return <Box {...props}>
+    return <Box {...props} >
         {
             image && image.responsiveImage ? <DatoImage data={image.responsiveImage} /> : <AspectRatio ratio={ratio} >
                 <Box background="lightGrey" />

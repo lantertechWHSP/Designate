@@ -8,13 +8,19 @@ import VideoBlock from '~/components/blocks/Video';
 import AudioBlock from '~/components/blocks/Audio';
 import {ListTick} from '~/components/elements/svgs/ListTick';
 import {PaddingTop} from "~/components/blocks/Content";
-import {UnderlineLink} from "~/components/elements/sectionLink";
+import { Link } from '~/components/elements/link';
 
-const StrucutredContent:any = ({ content, linkColor, linkBorderColor }) : ReactNode => {
+const StrucutredContent:any = ({ content }) : ReactNode => {
     return (
         <Box sx={{
             '*:last-child': {
                 marginBottom: 0
+            },
+            'p + h1, p + h2, p + h3, p + h4, p + h5, p + h6': {
+                marginTop: 8
+            },
+            'p + ul, p + ol': {
+                marginTop: -2,
             }
         }}>
             <StructuredText
@@ -29,15 +35,15 @@ const StrucutredContent:any = ({ content, linkColor, linkBorderColor }) : ReactN
                         ...record
                     };
 
-                    return <UnderlineLink {...props} color={linkColor} borderColor={linkBorderColor}>
+                    return <Link {...props} borderBottom="1px solid">
                         {children}
-                    </UnderlineLink>;
+                    </Link>;
                 }}
                 customNodeRules={[
                     renderNodeRule(isLink, ({ node, children, key }) => {
-                        return <UnderlineLink href={node.url} key={key} color={linkColor} borderColor={linkBorderColor}>
+                        return <Link href={node.url} key={key} borderBottom="1px solid">
                             {children}
-                        </UnderlineLink>;
+                        </Link>;
                     }),
                     renderNodeRule(isHeading, ({ node, children, key }:{
                         node:any,

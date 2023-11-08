@@ -21,9 +21,9 @@ interface IOverviewBlock extends IBlock {
 const OverviewBlock:any = ({ subtitle, description, paddingTop, paddingBottom, background, align }:IOverviewBlock) : ReactNode => {
     return (subtitle || description) && <ContentBlock background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         <Row justify={align === IOverviewAlign.Center ? 'center' : '' }>
-            <Column width={[ColumnWidth.Full, , ,subtitle && isEmptyDocument(description) ? ColumnWidth.EightTwelfths : ColumnWidth.Half]}>
+            <Column width={[ColumnWidth.Full, , ,subtitle && isEmptyDocument(description) ? (align === IOverviewAlign.Center ? ColumnWidth.EightTwelfths : ColumnWidth.NineTwelfths) : ColumnWidth.Half]}>
                 {
-                    !isEmptyDocument(subtitle) && <Box pr="50px">
+                    !isEmptyDocument(subtitle) && <Box>
                         <Heading as="h2"
                             fontSize={['28px', '32px', '36px']}
                             lineHeight={['35px', '38px', '42px']}

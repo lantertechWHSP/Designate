@@ -79,6 +79,7 @@ const InvestmentPortfolioTableBlock:any = ({ title, description, table, paddingT
                         borderBottom: '1px solid',
                         borderColor: 'whiteBlur2',
                         color: 'white',
+                        fontWeight: 400,
                         px: 4,
                         fontSize: ['18px'],
                         _first: {

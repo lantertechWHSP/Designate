@@ -32,6 +32,7 @@ const colors:any = {
     stone: '#e4ddc1',
     forest: '#527535',
     spring: '#b0e70f',
+    steelDark: '#3C596A',
     steel: '#667085',
     plum: '#673148',
     rust: '#ac3148',
@@ -144,8 +145,8 @@ export const theme:any = extendBaseTheme({
                     fontWeight: 500,
                 },
                 h1: {
-                    fontSize: ['21px', '24px', '28px'],
-                    lineHeight: ['21px', '24px', '26px'],
+                    fontSize: ['26px', '30px', '36px'],
+                    lineHeight: ['26px', '30px', '36px'],
                     fontWeight: 700,
                     mb: 8
                 },
@@ -158,11 +159,25 @@ export const theme:any = extendBaseTheme({
                 h3: {
                     fontSize: ['21px', '21px', '21px'],
                     lineHeight: ['26px', '26px', '26px'],
-                    fontWeight: 500,
+                    fontWeight: 700,
                     color: 'olive',
                     mb: 8
                 },
                 h4: {
+                    fontSize: ['19px', '19px', '19px'],
+                    lineHeight: ['26px', '26px', '26px'],
+                    fontWeight: 500,
+                    color: 'olive',
+                    mb: 8
+                },
+                h5: {
+                    fontSize: ['19px', '19px', '19px'],
+                    lineHeight: ['26px', '26px', '26px'],
+                    fontWeight: 500,
+                    color: 'olive',
+                    mb: 8
+                },
+                h6: {
                     fontSize: ['19px', '19px', '19px'],
                     lineHeight: ['26px', '26px', '26px'],
                     fontWeight: 500,
@@ -188,7 +203,8 @@ export const theme:any = extendBaseTheme({
                 },
                 annotation: {
                     color: 'charcoalBlur',
-                    fontSize: '16px'
+                    fontSize: '16px',
+                    lineHeight: '23px'
                 },
                 listLabel: {
                     color: 'oliveBlur',
@@ -452,7 +468,7 @@ export const theme:any = extendBaseTheme({
                 outline: 0
             },
             body: {
-                color: 'steel',
+                color: 'steelDark',
                 fontSize: '19px',
                 lineHeight: '29px'
             },
@@ -467,7 +483,7 @@ export const theme:any = extendBaseTheme({
             },
             ul: {
                 ml: '14px',
-                mb: 8,
+                mb: 6,
                 li: {
                     pl: '14px'
                 },
@@ -477,7 +493,7 @@ export const theme:any = extendBaseTheme({
             },
             ol: {
                 ml: '20px',
-                mb: 8,
+                mb: 6,
                 li: {
                     pl: '8px'
                 }
