@@ -23,10 +23,10 @@ const AttributesListPanelBlock:any = ({ title, items, paddingTop, paddingBottom,
             </Heading>
         }
         {
-            (Array.isArray(items) && items.length > 0) && <SimpleGrid columns={[1, ,2, items.length > 4 ? 4 : items.length]} mb={-8} spacing={[0, 0, 8, 8]}>
+            (Array.isArray(items) && items.length > 0) && <SimpleGrid columns={[1, ,2, items.length > 4 ? 4 : items.length]} spacing={[0, 0, 8, 8]}>
                 {
                     items.map((item:AttributesListPanelItem, index:number) => {
-                        return <Box key={index} mb={8}>
+                        return <Box key={index}>
                             {
                                 (item.icon && item.icon.url) && <Box mb={4}>
                                     <img src={item.icon.url} alt={item.icon?.alt} />

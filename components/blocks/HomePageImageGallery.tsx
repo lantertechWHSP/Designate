@@ -14,7 +14,7 @@ interface IHomePageImageGalleryBlock extends IBlock {
 const HomePageImageGalleryBlock:any = ({ imageMain, imageSide, imageSide2 }:IHomePageImageGalleryBlock) : ReactNode => {
     return (imageMain || imageSide || imageSide2) && <ContentBlock background="oliveGrey">
         {
-            (imageMain || imageSide || imageSide2) && <Flex direction="row" mx={[-2, -2, -4]} mt={6} overflow="hidden">
+            (imageMain || imageSide || imageSide2) && <Flex direction="row" mx={[-2, -2, -4]} overflow="hidden">
                 <Box px={[2, 2, 4]} width={['100%', ,'50%']}>
                     <Image image={imageMain} ratio={[652 / 672]} borderRadius="3px" overflow="hidden" />
                 </Box>
@@ -28,7 +28,6 @@ const HomePageImageGalleryBlock:any = ({ imageMain, imageSide, imageSide2 }:IHom
                 </Box>
             </Flex>
         }
-        <Divider mt={8} borderColor="oliveBlur2" />
     </ContentBlock>;
 };
 

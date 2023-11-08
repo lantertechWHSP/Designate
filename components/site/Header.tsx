@@ -82,7 +82,7 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
                 }}>
                 <Container>
                     <Row height={[height]} align="center">
-                        <Column width={[ColumnWidth.Half, , ,ColumnWidth.TwoTwelfths]}>
+                        <Column width={[ColumnWidth.Half, , , ,ColumnWidth.TwoTwelfths]}>
                             <Flex height="48px" align="center">
                                 <Link
                                     href="/"
@@ -99,17 +99,17 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
                                 </Link>
                             </Flex>
                         </Column>
-                        <Column display={['none', , ,'flex']} align="center" width={[ColumnWidth.None, , ,ColumnWidth.EightTwelfths]}>
+                        <Column display={['none', , , ,'flex']} align="center" width={[ColumnWidth.None, , ,ColumnWidth.EightTwelfths]}>
                             <DesktopNav menu={menu} color={color}/>
                         </Column>
-                        <Column width={[ColumnWidth.Half, , ,ColumnWidth.TwoTwelfths]}>
+                        <Column width={[ColumnWidth.Half, , , ,ColumnWidth.TwoTwelfths]}>
                             <Flex display="flex" justify="flex-end">
-                                <Button color={color} onClick={onToggle} display={['flex', , ,'none']}>
+                                <Button color={color} onClick={onToggle} display={['flex', , , ,'none']}>
                                     {
                                         isOpen ? <Icon icon={Icons.StickyMenuClose} w={34} h={34}/> : <Icon icon={Icons.StickyMenuHamburger} w={34} h={34}/>
                                     }
                                 </Button>
-                                <Link display={['none', , ,'block']}
+                                <Link display={['none', , , ,'block']}
                                     href="/contact" sx={{
                                         color: color,
                                         fontWeight: 700,
