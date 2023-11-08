@@ -18,7 +18,7 @@ interface IDividendHistoryTableBlock extends IBlock {
 }
 
 const DividendHistoryTableBlock:any = ({ table, paddingTop, paddingBottom }:IDividendHistoryTableBlock) : ReactNode => {
-    const allData = table.data;
+    const allData:ITableRow[] = table.data;
     const [paginationNumbers, setPaginationNumbers] = useState([]);
 
     const itemsPerPage:number = 15;
@@ -26,55 +26,38 @@ const DividendHistoryTableBlock:any = ({ table, paddingTop, paddingBottom }:IDiv
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [currentData, setCurrentData] = useState<ITableRow[]>(allData.slice(0, (currentPage * itemsPerPage)));
 
-    const [isLoading, setIsLoading] = useState(false);
-
     useEffect(() => {
         setPaginationNumbers(getPaginationNumbers());
-    }, [currentPage])
+    }, [currentPage]);
 
-    const loadPrevious = () => {
+    const loadPrevious:any = () => {
         const prevPageNumber:number = currentPage - 1;
         if(prevPageNumber >= 1) {
-            setIsLoading(true);
-
-            setTimeout(() => {
-                setCurrentData(allData.slice(((prevPageNumber - 1) * itemsPerPage), (prevPageNumber * itemsPerPage)))
-                setCurrentPage(prevPageNumber);
-                setIsLoading(false)
-            }, 500);
+            setCurrentData(allData.slice(((prevPageNumber - 1) * itemsPerPage), (prevPageNumber * itemsPerPage)));
+            setCurrentPage(prevPageNumber);
         }
-    }
+    };
 
-    const loadPage = (index:number) => {
-        setIsLoading(true);
+    const loadPage:any = (index:number) => {
+        setCurrentData(allData.slice(((index - 1) * itemsPerPage), (index * itemsPerPage)));
+        setCurrentPage(index);
+    };
 
-        setTimeout(() => {
-            setCurrentData(allData.slice(((index - 1) * itemsPerPage), (index * itemsPerPage)))
-            setCurrentPage(index);
-            setIsLoading(false)
-        }, 500);
-    }
-
-    const loadNext = () => {
+    const loadNext:any = () => {
         const nextPageNumber:number = currentPage + 1;
         if(nextPageNumber <= maxPages) {
-
-            setTimeout(() => {
-                setCurrentData(allData.slice(((nextPageNumber - 1) * itemsPerPage), (nextPageNumber * itemsPerPage)))
-                setCurrentPage(nextPageNumber);
-                setIsLoading(false)
-            }, 500);
+            setCurrentData(allData.slice(((nextPageNumber - 1) * itemsPerPage), (nextPageNumber * itemsPerPage)));
+            setCurrentPage(nextPageNumber);
         }
-    }
+    };
 
-
-    const getPaginationNumbers = () => {
-        const getRange = (start: number, end: number) => {
-            const length = end - start + 1;
+    const getPaginationNumbers:any = () => {
+        const getRange:any = (start: number, end: number) : any => {
+            const length:number = end - start + 1;
             return Array.from({ length }, (_, i) => start + i);
         };
 
-        const pagination = (currentPage: number, pageCount: number, delta: number) => {
+        const pagination:any = (currentPage: number, pageCount: number, delta: number) : number[] => {
             const pages: number[] = [];
 
             if (currentPage <= delta) {
@@ -89,8 +72,7 @@ const DividendHistoryTableBlock:any = ({ table, paddingTop, paddingBottom }:IDiv
         };
 
         return pagination(currentPage, maxPages, 2);
-    }
-
+    };
 
     return <ContentBlock background="ghostWhite" paddingTop={paddingTop} paddingBottom={paddingBottom}>
         <Heading as="h2" variant="sectionHeading" mb={[4, ,8]}>
@@ -159,15 +141,15 @@ const DividendHistoryTableBlock:any = ({ table, paddingTop, paddingBottom }:IDiv
                     (paginationNumbers && paginationNumbers.length > 1) && <Flex direction="row" justify="space-between" align="center" mt={8}>
                         <Box>
                             <Button variant="paginationDirection"
-                                    data-yourir="prevPage"
-                                    m={0}
-                                    isDisabled={currentPage <= 1}
-                                    onClick={loadPrevious}>
+                                data-yourir="prevPage"
+                                m={0}
+                                isDisabled={currentPage <= 1}
+                                onClick={loadPrevious}>
                                 <Flex align="center"
-                                      display="inline-flex"
-                                      borderBottom="1px solid"
-                                      borderColor="oliveBlur"
-                                      fontWeight={700}>
+                                    display="inline-flex"
+                                    borderBottom="1px solid"
+                                    borderColor="oliveBlur"
+                                    fontWeight={700}>
                                     <Icon icon={Icons.ChevronLeft} w={12} h={12} />
                                     <Text as="span" ml={2}>
                                         Prev
@@ -178,31 +160,31 @@ const DividendHistoryTableBlock:any = ({ table, paddingTop, paddingBottom }:IDiv
                         <Box>
                             <ButtonGroup spacing={0}>
                                 {
-                                    paginationNumbers.map((number:number) => {
+                                    paginationNumbers.map((number:number, index:number) => {
                                         return <Button onClick={() => {
                                             loadPage(number);
-                                        }} variant="pagination" isActive={currentPage === number}>
+                                        }} variant="pagination" isActive={currentPage === number} key={index}>
                                             {number}
-                                        </Button>
+                                        </Button>;
                                     })
                                 }
                             </ButtonGroup>
                         </Box>
                         <Box>
                             <Button variant="paginationDirection"
-                                    data-yourir="nextPage"
-                                    m={0}
-                                    isDisabled={currentPage >= maxPages}
-                                    onClick={loadNext}>
+                                data-yourir="nextPage"
+                                m={0}
+                                isDisabled={currentPage >= maxPages}
+                                onClick={loadNext}>
                                 <Flex align="center"
-                                      display="inline-flex"
-                                      borderBottom="2px solid"
-                                      borderColor="oliveBlur"
-                                      transition="border-color 0.3s linear"
-                                      _hover={{
-                                          borderColor: 'olive'
-                                      }}
-                                      fontWeight={700}>
+                                    display="inline-flex"
+                                    borderBottom="2px solid"
+                                    borderColor="oliveBlur"
+                                    transition="border-color 0.3s linear"
+                                    _hover={{
+                                        borderColor: 'olive'
+                                    }}
+                                    fontWeight={700}>
                                     <Text as="span" mr={2}>
                                         Next
                                     </Text>

@@ -101,7 +101,7 @@ export const ProfilesPanelBlock:any = ({ items, background, paddingBottom }:IPro
                 </ModalContent>
             </Modal>
         }
-    </ContentBlock>
+    </ContentBlock>;
 };
 
 export default ProfilesPanelBlock;

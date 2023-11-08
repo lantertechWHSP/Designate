@@ -8,9 +8,8 @@ import { GetStaticPropsContext, GetStaticPropsResult } from 'next';
 import { IBlock } from '~/interfaces/util/block';
 import { IPost } from '~/interfaces/models/post';
 import { IPostsMeta } from '~/interfaces/models/postsMeta';
-import PostList, { DATO_QUERY_VALUES } from '~/components/elements/posts/PostList';
-import PlainLayout from '~/components/layouts/PlainLayout';
-import FeaturedPostsCarousel from '~/components/elements/posts/FeaturedPostsCarousel';
+import { DATO_QUERY_VALUES } from '~/components/elements/posts/PostList';
+import PostListLayout from '~/components/layouts/PostListLayout';
 
 interface INextPageProps {
     layout?:ILayout;
@@ -50,10 +49,7 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
 
 const NewsPage : NextPage = ({layout, featuredPosts, posts, postsMeta}:INextPageProps) : JSX.Element => {
     return (
-        <PlainLayout layout={layout}>
-            <FeaturedPostsCarousel posts={featuredPosts} />
-            <PostList latestPosts={posts} postsMeta={postsMeta} />
-        </PlainLayout>
+        <PostListLayout layout={layout} featuredPosts={featuredPosts} posts={posts} postsMeta={postsMeta} />
     );
 };
 

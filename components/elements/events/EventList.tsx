@@ -13,18 +13,18 @@ const EventList:any = ({ events }:IEventList) : ReactNode => {
             (Array.isArray(events) && events.length > 0) ? <>
                 <Flex direction={['row']} borderBottom="3px solid" borderColor="borderColor">
                     <Text fontSize="16px"
-                          mb={2}
-                          flex="1"
-                          lineHeight="22px"
-                          letterSpacing="0.16px">
+                        mb={2}
+                        flex="1"
+                        lineHeight="22px"
+                        letterSpacing="0.16px">
                         Event
                     </Text>
                     <Text fontSize="16px"
-                          mb={2}
-                          lineHeight="22px"
-                          minWidth={['90px', ,'calc(30% + 146px)']}
-                          maxWidth={['90px', ,'calc(30% + 146px)']}
-                          letterSpacing="0.16px">
+                        mb={2}
+                        lineHeight="22px"
+                        minWidth={['90px', ,'calc(30% + 146px)']}
+                        maxWidth={['90px', ,'calc(30% + 146px)']}
+                        letterSpacing="0.16px">
                         Date
                     </Text>
                 </Flex>

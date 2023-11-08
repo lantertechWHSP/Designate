@@ -139,15 +139,15 @@ const SharePriceOverview:any = () : ReactNode => {
             <Box py={4} borderBottom="3px solid" borderColor="borderColor" flex={1}>
                 <Text as="label" fontSize={['16px']} lineHeight={['18px']} mb={2}>Market Cap</Text>
                 <Flex fontSize={['24px']}
-                      lineHeight={['26px']}
-                      fontWeight={500}
-                      mb={4}
-                      color="charcoal"
-                sx={{
-                    '.yourir-magnitude-symbol': {
-                        fontSize: '24px'
-                    }
-                }}>
+                    lineHeight={['26px']}
+                    fontWeight={500}
+                    mb={4}
+                    color="charcoal"
+                    sx={{
+                        '.yourir-magnitude-symbol': {
+                            fontSize: '24px'
+                        }
+                    }}>
                     <Text data-yourir="marketCap showCurrency=true minDecimals=2 maxDecimals=2"></Text>
                     {'\u00A0'}
                     <Text>

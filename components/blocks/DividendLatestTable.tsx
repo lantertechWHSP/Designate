@@ -65,7 +65,7 @@ const DividendLatestTableBlock:any = ({ table, description, paddingTop, paddingB
                                     </Td>
                                     <Td>
                                         {
-                                            row.ExpiryDate || '-'
+                                            row.ExDate || '-'
                                         }
                                     </Td>
                                     <Td>

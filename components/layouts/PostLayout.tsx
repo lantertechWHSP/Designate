@@ -22,10 +22,10 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
             }
             <Header menu={layout?.menu} />
             <Flex width="100%"
-                height={['550px']}
+                height={['376px']}
                 background="linear-gradient(270deg, #50513C 0%, rgba(228, 221, 193, 0.50) 100%)"
                 align="flex-end">
-                <Box width="100%" marginBottom={post?.image && post?.image?.responsiveImage ? '200px': '60px'}>
+                <Box width="100%" marginBottom={post?.image && post?.image?.responsiveImage ? '200px': '40px'}>
                     <Container>
                         <Row justify="center">
                             <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths, ColumnWidth.EightTwelfths]}>

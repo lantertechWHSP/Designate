@@ -151,8 +151,8 @@ const DestopPopoverTrigger:any  = ({item, color, isLast}): ReactNode => {
             <Flex as="span" align="baseline">
                 <Text as="span" mr={2}>{item.title}</Text>
                 <Box transition="transform 300ms linear"
-                     position="relative"
-                     top="1px"
+                    position="relative"
+                    top="1px"
                     transform={isOpen ? 'rotate(180deg)' : ''}>
                     <Icon icon={Icons.WideTriangleDown} w={12} h={12} />
                 </Box>
