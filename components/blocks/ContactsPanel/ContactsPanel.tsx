@@ -9,23 +9,28 @@ import ContactCard from '~/components/blocks/ContactsPanel/ContactCard';
 import { orderBy as _orderBy } from 'lodash';
 
 interface IContactsPanelBlock extends IBlock {
+    title?:string;
     data: {
         contacts:IContact[];
     }
 }
 
-const ContactsPanelBlock:any = ({ data: { contacts } }:IContactsPanelBlock) : ReactNode => {
-    return (Array.isArray(contacts) && contacts.length > 0) && <ContentBlock background="ghostWhite">
-        <Heading as="h2" variant="sectionHeading" mb={[4, ,8]}>
-            Contacts
-        </Heading>
-        <SimpleGrid columns={[1, , , 3]}>
-            {
-                _orderBy(contacts, ['ordinal'], ['asc']).map((contact:IContact, index:number) => {
-                    return <Box key={index} mb={[index < contacts.length - 1 ? 4 : 0, , ,0]}><ContactCard {...contact} /></Box>;
-                })
-            }
-        </SimpleGrid>
+const ContactsPanelBlock:any = ({title, background, paddingTop, paddingBottom, data: { contacts }}:IContactsPanelBlock) : ReactNode => {
+    return (Array.isArray(contacts) && contacts.length > 0 || title) && <ContentBlock background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
+        {
+            title && <Heading as="h2" variant="sectionHeading" mb={[4, ,8]}>
+                {title}
+            </Heading>
+        }
+        {
+            Array.isArray(contacts) && contacts.length > 0 && <SimpleGrid columns={[1, , , 3]}>
+                {
+                    _orderBy(contacts, ['ordinal'], ['asc']).map((contact:IContact, index:number) => {
+                        return <Box key={index} mb={[index < contacts.length - 1 ? 4 : 0, , ,0]}><ContactCard {...contact} /></Box>;
+                    })
+                }
+            </SimpleGrid>
+        }
     </ContentBlock>;
 };
 

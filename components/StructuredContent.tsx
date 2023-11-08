@@ -112,7 +112,6 @@ const StrucutredContent:any = ({ content, linkColor, linkBorderColor }) : ReactN
                         record.paddingTop = PaddingTop.Condensed;
                     }
 
-                    debugger;
                     /* eslint-disable */
                     switch (record.__typename) {
                         case 'ImageRecord':

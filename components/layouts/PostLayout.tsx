@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useState } from 'react';
 import Meta from '~/components/site/Meta';
 import Header from '~/components/site/Header';
 import Footer from '~/components/site/Footer';
@@ -8,9 +8,23 @@ import { DateTime } from 'luxon';
 import { Image } from '~/components/elements/image';
 import SocialShare from '~/components/elements/socialShare';
 import Preview from '~/components/site/Preview';
+import VectorEffect from "~/components/elements/shapes/VectorEffect";
 
 const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
-    const date:string|null = layout?.page?.publishDate ? DateTime.fromFormat(layout?.page?.publishDate, 'yyyy-mm-dd').toFormat('DDD') : null;
+    const [annotation] = useState((() => {
+        const date:string|null = layout?.page?.publishDate ? DateTime.fromFormat(layout?.page?.publishDate, 'yyyy-mm-dd').toFormat('DDD') : null;
+
+        if (post?.author?.name && date) {
+            return <>{post?.author?.name}, {date}</>;
+        }
+        else if (post?.author?.name) {
+            return post?.author?.name;
+        }
+        else if(date) {
+            return date;
+        }
+    })());
+
 
     return (
         <Flex minHeight="100vh" direction="column">
@@ -21,61 +35,82 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
                 layout?.preview && <Preview />
             }
             <Header menu={layout?.menu} />
-            <Flex width="100%"
-                height={['376px']}
-                background="linear-gradient(270deg, #50513C 0%, rgba(228, 221, 193, 0.50) 100%)"
-                align="flex-end">
-                <Box width="100%" marginBottom={post?.image && post?.image?.responsiveImage ? '200px': '40px'}>
-                    <Container>
-                        <Row justify="center">
-                            <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths, ColumnWidth.EightTwelfths]}>
-                                {
-                                    (post?.author?.name || date) && <Text color="charcoalBlur" mb={4}>
-                                        {
-                                            (() => {
-                                                if (post?.author?.name && date) {
-                                                    return <>{post?.author?.name}, {date}</>;
-                                                }
-                                                else if (post?.author?.name) {
-                                                    return post?.author?.name;
-                                                }
-                                                else if(date) {
-                                                    return date;
-                                                }
-                                            })()
-                                        }
-                                    </Text>
-                                }
-                                {
-                                    post?.title && <Heading as="h1"
-                                        fontSize={['50px']}
-                                        lineHeight={['54px']}
-                                        fontWeight={500}
-                                        maxHeight={['104px']}
-                                        overflow="hidden"
-                                        textOverflow="ellipsis">
-                                        {post?.title}
-                                    </Heading>
-                                }
-                            </Column>
-                        </Row>
-                    </Container>
-                </Box>
-            </Flex>
             {
-                post?.image && post?.image?.responsiveImage && <Box position="relative" marginTop="-160px">
+                post?.image && post?.image?.responsiveImage ? <><Flex width="100%"
+                    height={['550px']}
+                    background="linear-gradient(270deg, #50513C 0%, rgba(228, 221, 193, 0.50) 100%)"
+                    align="flex-end">
+                    <Box width="100%" marginBottom="200px">
+                        <Container>
+                            <Row justify="center">
+                                <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths, ColumnWidth.EightTwelfths]}>
+                                    {
+                                        <Text color="charcoalBlur" mb={4}>
+                                            {annotation}
+                                        </Text>
+                                    }
+                                    {
+                                        post?.title && <Heading as="h1"
+                                            fontSize={['50px']}
+                                            lineHeight={['54px']}
+                                            fontWeight={500}
+                                            maxHeight={['104px']}
+                                            overflow="hidden"
+                                            textOverflow="ellipsis">
+                                            {post?.title}
+                                        </Heading>
+                                    }
+                                </Column>
+                            </Row>
+                        </Container>
+                    </Box>
+                </Flex><Box position="relative" marginTop="-160px">
                     <Container>
                         <Row justify="center">
                             <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths]}>
                                 <Image image={post?.image} />
                                 {
-                                    (post?.image.responsiveImage?.title) && <Text variant="annotation" mt={2} mb={0}>
-                                        {post?.image.responsiveImage?.title}
+                                    (post?.image?.title) && <Text variant="annotation" mt={2} mb={0}>
+                                        {post?.image?.title}
                                     </Text>
                                 }
                             </Column>
                         </Row>
                     </Container>
+                </Box></> : <Box h={['376px']}
+                    width="100%"
+                    position="relative"
+                    background="linear-gradient(270deg, #50513C 0%, rgba(228, 221, 193, 0.50) 100%)">
+                    <Container>
+                        <Row>
+                            <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
+                                <Flex h={['376px']} align="flex-end">
+                                    <Box mb={['40px', , '60px']}>
+                                        {
+                                            post?.title && <Heading as="h1"
+                                                fontSize={['50px']}
+                                                lineHeight={['54px']}
+                                                fontWeight={500}
+                                                overflow="hidden"
+                                                color="white"
+                                                textOverflow="ellipsis">
+                                                {post?.title}
+                                            </Heading>
+                                        }
+                                        {
+                                            <Text color="whiteBlur" mb={0}>
+                                                {annotation}
+                                            </Text>
+                                        }
+                                    </Box>
+
+                                </Flex>
+                            </Column>
+                        </Row>
+                    </Container>
+                    <Box position="absolute" top="0" left="60%" height="100%">
+                        <VectorEffect />
+                    </Box>
                 </Box>
             }
             {

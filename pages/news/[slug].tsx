@@ -42,7 +42,6 @@ export async function getStaticProps({ params, preview }:GetStaticPropsContext) 
 const PostPage : NextPage = ({ post, layout, blocks }:any)  : JSX.Element => {
     // Format the Container Width
     if(Array.isArray(blocks) && blocks.length > 0) {
-        debugger;
         blocks.map((block:IBlock) => {
             if(block.containerWidth === ContainerWidth.Default) {
                 if(block.__typename === 'CardPanelRecord') {
