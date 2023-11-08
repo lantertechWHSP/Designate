@@ -18,10 +18,10 @@ interface IDividendHistoryTableBlock extends IBlock {
 }
 
 const DividendHistoryTableBlock:any = ({ table, paddingTop, paddingBottom }:IDividendHistoryTableBlock) : ReactNode => {
-    const allData = [...table.data,...table.data];
+    const allData = table.data;
     const [paginationNumbers, setPaginationNumbers] = useState([]);
 
-    const itemsPerPage:number = 1;
+    const itemsPerPage:number = 15;
     const maxPages:number = Math.ceil(allData.length / itemsPerPage);
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [currentData, setCurrentData] = useState<ITableRow[]>(allData.slice(0, (currentPage * itemsPerPage)));
@@ -156,7 +156,7 @@ const DividendHistoryTableBlock:any = ({ table, paddingTop, paddingBottom }:IDiv
                     </Table>
                 </TableContainer>
                 {
-                    (currentData.length < allData.length) && <Flex direction="row" justify="space-between" align="center" mt={8}>
+                    (paginationNumbers && paginationNumbers.length > 1) && <Flex direction="row" justify="space-between" align="center" mt={8}>
                         <Box>
                             <Button variant="paginationDirection"
                                     data-yourir="prevPage"
@@ -175,21 +175,19 @@ const DividendHistoryTableBlock:any = ({ table, paddingTop, paddingBottom }:IDiv
                                 </Flex>
                             </Button>
                         </Box>
-                        {
-                            paginationNumbers && paginationNumbers.length > 0 && <Box>
-                                <ButtonGroup spacing={0}>
-                                    {
-                                        paginationNumbers.map((number:number) => {
-                                            return <Button onClick={() => {
-                                                loadPage(number);
-                                            }} variant="pagination" isActive={currentPage === number}>
-                                                {number}
-                                            </Button>
-                                        })
-                                    }
-                                </ButtonGroup>
-                            </Box>
-                        }
+                        <Box>
+                            <ButtonGroup spacing={0}>
+                                {
+                                    paginationNumbers.map((number:number) => {
+                                        return <Button onClick={() => {
+                                            loadPage(number);
+                                        }} variant="pagination" isActive={currentPage === number}>
+                                            {number}
+                                        </Button>
+                                    })
+                                }
+                            </ButtonGroup>
+                        </Box>
                         <Box>
                             <Button variant="paginationDirection"
                                     data-yourir="nextPage"
