@@ -106,7 +106,7 @@ const Footer:any = ({ menu, address, email, phone, fax, linkedin, youtube, abn, 
                         <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
                             {
                                 abn && <Box color="whiteBlur">
-                                    ABN: <Link href={`https://abr.business.gov.au/ABN/View?id=${abn}`} color="whiteBlur" variant="siteFooter">
+                                    ABN: <Link href={`https://abr.business.gov.au/ABN/View?id=${abn}`} target="_blank" color="whiteBlur" variant="siteFooter">
                                         {abn}
                                     </Link>
                                 </Box>

@@ -81,7 +81,7 @@ const ContactCard:any = ({ title, address, contactName, phone, phone2, email, em
                     ABN
                 </Heading>
                 <Box>
-                    <UnderlineLink href={`https://abr.business.gov.au/ABN/View?id=${abn}`} fontWeight={500}>
+                    <UnderlineLink href={`https://abr.business.gov.au/ABN/View?id=${abn}`} target="_blank" fontWeight={500}>
                         ABN: {abn}
                     </UnderlineLink>
                 </Box>
@@ -93,8 +93,8 @@ const ContactCard:any = ({ title, address, contactName, phone, phone2, email, em
                     Website
                 </Heading>
                 <Box>
-                    <UnderlineLink href={website} fontWeight={500}>
-                        {website}
+                    <UnderlineLink href={website} target="_blank" fontWeight={500}>
+                        {website.replace(/^.*:\/\//i, '')}
                     </UnderlineLink>
                 </Box>
             </Box>

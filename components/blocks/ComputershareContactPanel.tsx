@@ -43,9 +43,11 @@ const ComputershareContactPanelBlock:any = ({ title, description, image, onlineD
             <Column width={[ColumnWidth.Full, ,ColumnWidth.FourTwelvfths]}>
                 {
                     image && <Box maxWidth={['300px']} mt={[8, ,0]}>
-                        <Link href="https://www.computershare.com/au" target="_blank">
-                            <Image image={image} />
-                        </Link>
+                        {
+                            website ? <Link href={website} target="_blank">
+                                <Image image={image} />
+                            </Link> : <Image image={image} />
+                        }
                     </Box>
                 }
             </Column>
@@ -67,8 +69,8 @@ const ComputershareContactPanelBlock:any = ({ title, description, image, onlineD
                             website && <>
                                 <Heading as="h4" fontSize={['18px']} lineHeight={['26px']} fontWeight={500} mb={2}>Website</Heading>
                                 <Text mb={0}>
-                                    <UnderlineLink href={website} fontWeight={500}>
-                                        {website}
+                                    <UnderlineLink href={website} target="_blank" fontWeight={500}>
+                                        {website.replace(/^.*:\/\//i, '')}
                                     </UnderlineLink>
                                 </Text>
                             </>
@@ -83,7 +85,7 @@ const ComputershareContactPanelBlock:any = ({ title, description, image, onlineD
                             Contact
                         </Heading>
                         {
-                            (contactLocal || contactInternational) && <Box>
+                            (contactLocal || contactInternational) && <Box mb={8}>
                                 <Heading as="h4" fontSize={['18px']} lineHeight={['26px']} fontWeight={500} mb={2}>Phone</Heading>
                                 {
                                     contactLocal && <Text color="olive" mb={0}>
@@ -105,6 +107,16 @@ const ComputershareContactPanelBlock:any = ({ title, description, image, onlineD
                                         </Text>
                                     </Text>
                                 }
+                            </Box>
+                        }
+                        {
+                            email && <Box>
+                                <Heading as="h4" fontSize={['18px']} lineHeight={['26px']} fontWeight={500} mb={2}>Email</Heading>
+                                <Text color="olive" mb={0}>
+                                    <UnderlineLink href={`mailto:${email}`} mr={2} fontWeight={500}>
+                                        {email}
+                                    </UnderlineLink>
+                                </Text>
                             </Box>
                         }
                     </Box>
