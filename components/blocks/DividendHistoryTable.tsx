@@ -1,12 +1,13 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode, useState, useEffect } from 'react';
 import { IBlock } from '~/interfaces/util/block';
 import ContentBlock from '~/components/blocks/Content';
 import { ITable } from '~/interfaces/util/table';
-import { Box, TableContainer, Heading, Table, Thead, Tr, Th, Tbody, Td, Alert, Button, Flex, Spinner } from '@chakra-ui/react';
+import { Box, TableContainer, Heading, Table, Thead, Tr, Th, Tbody, Td, Alert, Flex, ButtonGroup, Button, Text } from '@chakra-ui/react';
+import {Icon, Icons} from "~/components/elements/icon";
 
 interface ITableRow {
     Dividend:string;
-    ExpiryDate:string;
+    ExDate:string;
     Franking:number;
     Type:string;
     PaymentDate:string;
@@ -17,24 +18,79 @@ interface IDividendHistoryTableBlock extends IBlock {
 }
 
 const DividendHistoryTableBlock:any = ({ table, paddingTop, paddingBottom }:IDividendHistoryTableBlock) : ReactNode => {
-    const allData = table.data;
+    const allData = [...table.data,...table.data];
+    const [paginationNumbers, setPaginationNumbers] = useState([]);
 
-    const itemsPerPage:number = 10;
-    const [pageNumber, setPageNumber] = useState<number>(1);
-    const [currentData, setCurrentData] = useState<ITableRow[]>(allData.slice(0, (pageNumber * itemsPerPage)));
+    const itemsPerPage:number = 1;
+    const maxPages:number = Math.ceil(allData.length / itemsPerPage);
+    const [currentPage, setCurrentPage] = useState<number>(1);
+    const [currentData, setCurrentData] = useState<ITableRow[]>(allData.slice(0, (currentPage * itemsPerPage)));
 
     const [isLoading, setIsLoading] = useState(false);
 
-    const loadMore:any = () => {
+    useEffect(() => {
+        setPaginationNumbers(getPaginationNumbers());
+    }, [currentPage])
+
+    const loadPrevious = () => {
+        const prevPageNumber:number = currentPage - 1;
+        if(prevPageNumber >= 1) {
+            setIsLoading(true);
+
+            setTimeout(() => {
+                setCurrentData(allData.slice(((prevPageNumber - 1) * itemsPerPage), (prevPageNumber * itemsPerPage)))
+                setCurrentPage(prevPageNumber);
+                setIsLoading(false)
+            }, 500);
+        }
+    }
+
+    const loadPage = (index:number) => {
         setIsLoading(true);
 
         setTimeout(() => {
-            const newPageNumber:number = pageNumber + 1;
-            setCurrentData([...currentData, ...allData.slice((pageNumber * itemsPerPage), (newPageNumber * itemsPerPage))])
-            setPageNumber(newPageNumber);
-            setIsLoading(false);
+            setCurrentData(allData.slice(((index - 1) * itemsPerPage), (index * itemsPerPage)))
+            setCurrentPage(index);
+            setIsLoading(false)
         }, 500);
     }
+
+    const loadNext = () => {
+        const nextPageNumber:number = currentPage + 1;
+        if(nextPageNumber <= maxPages) {
+
+            setTimeout(() => {
+                setCurrentData(allData.slice(((nextPageNumber - 1) * itemsPerPage), (nextPageNumber * itemsPerPage)))
+                setCurrentPage(nextPageNumber);
+                setIsLoading(false)
+            }, 500);
+        }
+    }
+
+
+    const getPaginationNumbers = () => {
+        const getRange = (start: number, end: number) => {
+            const length = end - start + 1;
+            return Array.from({ length }, (_, i) => start + i);
+        };
+
+        const pagination = (currentPage: number, pageCount: number, delta: number) => {
+            const pages: number[] = [];
+
+            if (currentPage <= delta) {
+                pages.push(...getRange(1, Math.min(pageCount, delta * 2 + 1)));
+            } else if (currentPage > pageCount - delta) {
+                pages.push(...getRange(Math.max(1, pageCount - delta * 2), pageCount));
+            } else {
+                pages.push(...getRange(Math.max(1, currentPage - delta), Math.min(pageCount, currentPage + delta)));
+            }
+
+            return pages;
+        };
+
+        return pagination(currentPage, maxPages, 2);
+    }
+
 
     return <ContentBlock background="ghostWhite" paddingTop={paddingTop} paddingBottom={paddingBottom}>
         <Heading as="h2" variant="sectionHeading" mb={[4, ,8]}>
@@ -51,7 +107,7 @@ const DividendHistoryTableBlock:any = ({ table, paddingTop, paddingBottom }:IDiv
                                     Dividend
                                 </Th>
                                 <Th w="20%">
-                                    Expiry Date
+                                    Ex Date
                                 </Th>
                                 <Th w="20%">
                                     Franking (%)
@@ -75,7 +131,7 @@ const DividendHistoryTableBlock:any = ({ table, paddingTop, paddingBottom }:IDiv
                                         </Td>
                                         <Td>
                                             {
-                                                row.ExpiryDate || '-'
+                                                row.ExDate || '-'
                                             }
                                         </Td>
                                         <Td>
@@ -100,11 +156,70 @@ const DividendHistoryTableBlock:any = ({ table, paddingTop, paddingBottom }:IDiv
                     </Table>
                 </TableContainer>
                 {
-                    (currentData.length < allData.length) && <Flex py={8} justify="center">
-                        <Button variant="button" onClick={loadMore} rightIcon={isLoading && <Spinner size='sm' />}>
-                            Load More
-                        </Button>
+                    (currentData.length < allData.length) && <Flex direction="row" justify="space-between" align="center" mt={8}>
+                        <Box>
+                            <Button variant="paginationDirection"
+                                    data-yourir="prevPage"
+                                    m={0}
+                                    isDisabled={currentPage <= 1}
+                                    onClick={loadPrevious}>
+                                <Flex align="center"
+                                      display="inline-flex"
+                                      borderBottom="1px solid"
+                                      borderColor="oliveBlur"
+                                      fontWeight={700}>
+                                    <Icon icon={Icons.ChevronLeft} w={12} h={12} />
+                                    <Text as="span" ml={2}>
+                                        Prev
+                                    </Text>
+                                </Flex>
+                            </Button>
+                        </Box>
+                        {
+                            paginationNumbers && paginationNumbers.length > 0 && <Box>
+                                <ButtonGroup spacing={0}>
+                                    {
+                                        paginationNumbers.map((number:number) => {
+                                            return <Button onClick={() => {
+                                                loadPage(number);
+                                            }} variant="pagination" isActive={currentPage === number}>
+                                                {number}
+                                            </Button>
+                                        })
+                                    }
+                                </ButtonGroup>
+                            </Box>
+                        }
+                        <Box>
+                            <Button variant="paginationDirection"
+                                    data-yourir="nextPage"
+                                    m={0}
+                                    isDisabled={currentPage >= maxPages}
+                                    onClick={loadNext}>
+                                <Flex align="center"
+                                      display="inline-flex"
+                                      borderBottom="2px solid"
+                                      borderColor="oliveBlur"
+                                      transition="border-color 0.3s linear"
+                                      _hover={{
+                                          borderColor: 'olive'
+                                      }}
+                                      fontWeight={700}>
+                                    <Text as="span" mr={2}>
+                                        Next
+                                    </Text>
+                                    <Icon icon={Icons.ChevronRight} w={12} h={12} />
+                                </Flex>
+                            </Button>
+                        </Box>
                     </Flex>
+
+
+                    // <Flex py={8} justify="center">
+                    //     <Button variant="button" onClick={loadMore} rightIcon={isLoading && <Spinner size='sm' />}>
+                    //         Load More
+                    //     </Button>
+                    // </Flex>
                 }
             </Box>: <Alert status="info">No Dividend Data</Alert>
         }

@@ -257,13 +257,26 @@ export const theme:any = extendBaseTheme({
                     height: '40px',
                     fontSize: '14px',
                     fontWeight: 500,
+                    borderRadius: '50%',
                     p: 0,
-                    mx: 2
+                    mx: 2,
+                    _hover: {
+                        background: 'olive',
+                        color: 'white',
+                    },
+                    _active: {
+                        background: 'olive',
+                        color: 'white',
+                    }
                 },
                 paginationDirection: {
                     color: 'olive',
                     fontWeight: '500px',
-                    fontSize: '16px'
+                    fontSize: '16px',
+                    _disabled: {
+                        opacity: 0.5,
+                        cursor: 'not-allowed'
+                    }
                 },
                 tab: {
                     background: 'white',

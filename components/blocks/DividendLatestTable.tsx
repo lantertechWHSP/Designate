@@ -7,7 +7,7 @@ import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
 
 interface ITableRow {
     Dividend:string;
-    ExpiryDate:string;
+    ExDate:string;
     Franking:number;
     Type:string;
     PaymentDate:string;
@@ -41,7 +41,7 @@ const DividendLatestTableBlock:any = ({ table, description, paddingTop, paddingB
                                 Dividend
                             </Th>
                             <Th w="20%">
-                                Expiry Date
+                                ExDate
                             </Th>
                             <Th w="20%">
                                 Franking (%)
