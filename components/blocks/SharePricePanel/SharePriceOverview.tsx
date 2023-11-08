@@ -69,7 +69,7 @@ const SharePriceOverview:any = () : ReactNode => {
                         <Text as="span" data-yourir="commonStatus" ref={commonStatus} display="none" />
                         <Flex align="center" direction="row">
                             <Box w="6px" h="6px" borderRadius="3px" className="status-dot" mr="4px" />
-                            <Text as="span" data-yourir="commonStatusName"></Text>
+                            ASX:<Text as="span" data-yourir="commonStatusName"></Text>
                         </Flex>
                     </Badge>
                 </Box>
@@ -136,14 +136,24 @@ const SharePriceOverview:any = () : ReactNode => {
                     </Badge>
                 </Box>
             </Box>
-            <Box py={4} borderBottom="1px solid" borderColor="borderColor" flex={1}>
+            <Box py={4} borderBottom="3px solid" borderColor="borderColor" flex={1}>
                 <Text as="label" fontSize={['16px']} lineHeight={['18px']} mb={2}>Market Cap</Text>
-                <Text fontSize={['24px']}
-                    lineHeight={['26px']}
-                    fontWeight={500}
-                    mb={4}
-                    color="charcoal"
-                    data-yourir="marketCap showCurrency=true minDecimals=2 maxDecimals=2"></Text>
+                <Flex fontSize={['24px']}
+                      lineHeight={['26px']}
+                      fontWeight={500}
+                      mb={4}
+                      color="charcoal"
+                sx={{
+                    '.yourir-magnitude-symbol': {
+                        fontSize: '24px'
+                    }
+                }}>
+                    <Text data-yourir="marketCap showCurrency=true minDecimals=2 maxDecimals=2"></Text>
+                    {'\u00A0'}
+                    <Text>
+                        (AUD)
+                    </Text>
+                </Flex>
             </Box>
         </Flex>
     </Flex>;

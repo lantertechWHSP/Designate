@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
 import ContentBlock from '~/components/blocks/Content';
 import { ITable } from '~/interfaces/util/table';
-import { TableContainer, Table, Thead, Tr, Th, Tbody, Td, Alert } from '@chakra-ui/react';
+import { TableContainer, Heading, Table, Thead, Tr, Th, Tbody, Td, Alert } from '@chakra-ui/react';
 
 interface ITableRow {
     Dividend:string;
@@ -17,7 +17,10 @@ interface IDividendHistoryTableBlock extends IBlock {
 }
 
 const DividendHistoryTableBlock:any = ({ table, paddingTop, paddingBottom }:IDividendHistoryTableBlock) : ReactNode => {
-    return <ContentBlock paddingTop={paddingTop} paddingBottom={paddingBottom}>
+    return <ContentBlock background="ghostWhite" paddingTop={paddingTop} paddingBottom={paddingBottom}>
+        <Heading as="h2" variant="sectionHeading" mb={[4, ,8]}>
+            Dividend History
+        </Heading>
         {
             (table && table.data && Array.isArray(table?.data) && table.data.length > 0) ? <TableContainer>
                 <Table variant="basic" w="100%">

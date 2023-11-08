@@ -39,12 +39,6 @@ import PortfolioPanelBlock from '~/components/blocks/PortfolioPanel/PortfolioPan
 // About/Sustainability
 import SustainabilityPanelBlock from '~/components/blocks/SustainabilityPanel';
 
-// People and Governance
-import ProfilesPanelBlock from '~/components/blocks/ProfilesPanel/ProfilesPanel';
-
-// People and Governance / Policies
-import DocumentPoliciesListBlock from '~/components/blocks/DocumentPoliciesList';
-
 // Investor Center/ ASX Announcements
 import AsxNewsletterFormPanelBlock from '~/components/blocks/AsxNewsletterFormPanel';
 
@@ -59,6 +53,15 @@ import DividendLatestTableBlock from '~/components/blocks/DividendLatestTable';
 import DividendGrowthChartBlock from '~/components/blocks/DividendGrowthChart';
 
 import ComputershareContactPanelBlock from '~/components/blocks/ComputershareContactPanel';
+
+// Investor Center/ FAQ’s
+import FaqsPanelBlock from "~/components/blocks/FaqsPanel";
+
+// People and Governance
+import ProfilesPanelBlock from '~/components/blocks/ProfilesPanel/ProfilesPanel';
+
+// People and Governance / Policies
+import DocumentPoliciesListBlock from '~/components/blocks/DocumentPoliciesList';
 
 const blocks:any = {
     // General
@@ -117,6 +120,9 @@ const blocks:any = {
 
     // Investor Center/Share Registry
     ComputershareContactPanelBlock,
+
+    // investor Center/FAQ’s
+    FaqsPanelBlock,
 
     // People and Governance
     ProfilesPanelBlock,

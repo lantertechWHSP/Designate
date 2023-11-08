@@ -82,7 +82,8 @@ const SharePriceChart:any = () : ReactNode => {
                         color: 'steel'
                     },
                     '.yourir-chart-panel-border-bottom': {
-                        display: 'none'
+                        stroke: 'borderColor',
+                        strokeWidth: '5px'
                     },
                     '.yourir-chart-tick-bottom': {
                         display: 'none'

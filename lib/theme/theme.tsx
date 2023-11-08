@@ -380,13 +380,14 @@ export const theme:any = extendBaseTheme({
                         fontWeight: 400,
                         lineHeight: '24px',
                         color: 'steel',
-                        borderBottom: '2px solid',
+                        borderBottom: '3px solid',
                         borderColor: 'borderColor',
                         py: 2
                     },
                     td: {
                         py: 4,
                         fontSize: ['18px'],
+                        fontWeight: 500,
                         borderBottom: '1px solid',
                         borderColor: 'borderColor',
                         color: 'charcoal'

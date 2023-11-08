@@ -8,16 +8,16 @@ interface ISectionLink extends IDatoLink {
     borderColorHover?:string;
 }
 
-export const UnderlineLink:any = ({ ...props }:ISectionLink) => {
+export const UnderlineLink:any = ({ color = 'olive', borderColor = 'oliveBlur2', ...props }:ISectionLink) => {
     return <Link
         {...props}
-        color="olive"
+        color={color}
         display="inline"
         borderBottom="2px solid"
-        borderColor="oliveBlur2"
+        borderColor={borderColor}
         transition="border-color 0.3s linear"
         _hover={{
-            borderColor: 'olive'
+            borderColor: color
         }}>
         {props.children}
     </Link>;

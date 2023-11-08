@@ -6,3 +6,4 @@ export * from '~/dato/queries/posts';
 export * from '~/dato/queries/events';
 export * from '~/dato/queries/documents';
 export * from '~/dato/queries/contacts';
+export * from '~/dato/queries/faqs';

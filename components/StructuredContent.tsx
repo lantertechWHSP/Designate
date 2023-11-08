@@ -10,7 +10,7 @@ import {ListTick} from '~/components/elements/svgs/ListTick';
 import {PaddingTop} from "~/components/blocks/Content";
 import {UnderlineLink} from "~/components/elements/sectionLink";
 
-const StrucutredContent:any = ({ content }) : ReactNode => {
+const StrucutredContent:any = ({ content, linkColor, linkBorderColor }) : ReactNode => {
     return (
         <Box sx={{
             '*:last-child': {
@@ -29,13 +29,13 @@ const StrucutredContent:any = ({ content }) : ReactNode => {
                         ...record
                     };
 
-                    return <UnderlineLink {...props}>
+                    return <UnderlineLink {...props} color={linkColor} borderColor={linkBorderColor}>
                         {children}
                     </UnderlineLink>;
                 }}
                 customNodeRules={[
                     renderNodeRule(isLink, ({ node, children, key }) => {
-                        return <UnderlineLink href={node.url} key={key}>
+                        return <UnderlineLink href={node.url} key={key} color={linkColor} borderColor={linkBorderColor}>
                             {children}
                         </UnderlineLink>;
                     }),

@@ -12,14 +12,13 @@ interface IAccordionBlock extends IBlock {
     items?:IAccordionItem[];
 }
 
-interface IAccordionItem {
+export interface IAccordionItem {
     title?:string;
     content?:IStructuredText;
 }
 
 const AccordionBlock:any = ({ title, background, textColor, items, paddingBottom }:IAccordionBlock) : ReactNode => {
     const selectedTextColor:any = getTextColor(textColor);
-
     const borderColor:any = selectedTextColor === 'white' ? 'whiteBlur2' : 'borderColor';
 
     return (title || (Array.isArray(items) && items.length > 0)) && <ContentBlock background={background} color={textColor} paddingBottom={paddingBottom} py={8}>
@@ -60,7 +59,7 @@ const AccordionBlock:any = ({ title, background, textColor, items, paddingBottom
                                     </AccordionButton>
                                     <AccordionPanel borderTop="1px solid" borderColor={borderColor} py={4}>
                                         {
-                                            !isEmptyDocument(item?.content) && <StructuredContent content={item.content} />
+                                            !isEmptyDocument(item?.content) && <StructuredContent content={item.content} linkColor={selectedTextColor} linkBorderColor={borderColor} />
                                         }
                                     </AccordionPanel>
                                 </>

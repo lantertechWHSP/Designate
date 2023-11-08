@@ -55,9 +55,12 @@ import { dividendGrowthChartRecord } from '~/dato/blocks/dividendGrowthChart';
 // Investor Center/Manage Shareholdings
 import { computershareContactPanelRecord } from "~/dato/blocks/computershareContactPanel";
 
+// Investor Center/ FAQ’s
+import { faqsPanelRecord } from '~/dato/blocks/faqsPanel';
+
 // People and Governance
 import { profilesPanelRecord } from '~/dato/blocks/profilesPanel';
-import {documentPoliciesListRecord} from "~/dato/blocks/documentPoliciesList";
+import { documentPoliciesListRecord } from '~/dato/blocks/documentPoliciesList';
 
 export const blocks:string = `
     blocks {
@@ -186,6 +189,10 @@ export const blocks:string = `
 
         ... on ComputershareContactPanelRecord {
             ${computershareContactPanelRecord}
+        }
+
+        ... on FaqsPanelRecord {
+            ${faqsPanelRecord}
         }
     }
 `;

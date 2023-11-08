@@ -19,14 +19,14 @@ interface IDividendLatestTableBlock extends IBlock {
 }
 
 const DividendLatestTableBlock:any = ({ table, description, paddingTop, paddingBottom }:IDividendLatestTableBlock) : ReactNode => {
-    return <ContentBlock paddingTop={paddingTop} paddingBottom={paddingBottom}>
+    return <ContentBlock background="ghostWhite" paddingTop={paddingTop} paddingBottom={paddingBottom}>
         <Heading as="h2" variant="sectionHeading" mb={[4, ,8]}>
             Latest Dividend
         </Heading>
         {
             description && <Row>
                 <Column width={[ColumnWidth.Full, , ColumnWidth.Half]}>
-                    <Box fontSize={['19px']} lineHeight={['29px']} color="olive" mb={8}>
+                    <Box fontSize={['19px']} lineHeight={['29px']} mb={8}>
                         {description}
                     </Box>
                 </Column>
