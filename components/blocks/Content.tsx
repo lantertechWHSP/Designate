@@ -68,7 +68,7 @@ export const getBackgroundColor:any = (background:BackgroundColor|ResponsiveValu
         case BackgroundColor.GhostWhite : return 'ghostWhite';
         case BackgroundColor.Olive : return 'olive';
         case BackgroundColor.DarkSteel: return 'darkSteel';
-        default : return background ? background : null;
+        default : return background ? background : 'initial';
     }
 };
 

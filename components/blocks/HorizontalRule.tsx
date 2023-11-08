@@ -1,15 +1,20 @@
 import { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
-import ContentBlock, { PaddingBottom, PaddingTop } from '~/components/blocks/Content';
-import { Divider } from '@chakra-ui/react';
+import { Container, Divider } from '@chakra-ui/react';
+import { Theme} from "~/components/blocks/Content";
 
 interface IHorizontalRuleBlock extends IBlock {
+    theme:Theme;
 }
 
-const HorizontalRuleBlock:any = ({}:IHorizontalRuleBlock) : ReactNode => {
-    return <ContentBlock paddingTop={PaddingTop.None} paddingBottom={PaddingBottom.None}>
-        <Divider />
-    </ContentBlock>;
+const HorizontalRuleBlock:any = ({ theme }:IHorizontalRuleBlock) : ReactNode => {
+    const borderColor:string  = theme === Theme.Dark ? 'oliveBlur2' : 'borderColor';
+
+    return <Container height="0" position="relative">
+        <Divider sx={{
+            borderColor: borderColor
+        }} />
+    </Container>;
 };
 
 export default HorizontalRuleBlock;
