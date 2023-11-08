@@ -240,11 +240,15 @@ export const theme:any = extendBaseTheme({
             variants: {
                 button: {
                     height: '50px',
-                    lineHeight: '50px',
+                    lineHeight: '52px',
                     px: 4,
                     color: 'olive',
                     fontSize: '16px',
-                    fontWeight: 500
+                    fontWeight: 500,
+                    border: '1px solid',
+                    borderColor: 'oliveBlur',
+                    borderRadius: '25px',
+                    minWidth: '200px'
                 },
                 pagination: {
                     color: 'olive',
