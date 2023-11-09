@@ -1,7 +1,7 @@
 import { ReactNode, useState} from 'react';
 import { IBlock } from '~/interfaces/util/block';
 import ContentBlock from "~/components/blocks/Content";
-import { AspectRatio as AspectRatioBlock, Text, Box } from '@chakra-ui/react';
+import { AspectRatio as AspectRatioBlock, Text } from '@chakra-ui/react';
 import dynamic from 'next/dynamic';
 import { IVideo } from '~/interfaces/util/video';
 import {Column, ColumnWidth, Row} from "~/components/elements/grid/grid";

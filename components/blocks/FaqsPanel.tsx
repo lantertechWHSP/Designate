@@ -4,8 +4,8 @@ import { IBlock } from '~/interfaces/util/block';
 import { IStructuredText } from '~/interfaces/util/structuredText';
 import AccordionBlock, { IAccordionItem } from '~/components/blocks/Accordion';
 import { map as _map, orderBy as _orderBy } from 'lodash';
-import {ContainerWidth, Theme} from '~/components/blocks/Content';
-import {ColumnWidth} from "~/components/elements/grid/grid";
+import { Theme } from '~/components/blocks/Content';
+import { ColumnWidth } from "~/components/elements/grid/grid";
 
 interface IFaq  {
     question?:string;

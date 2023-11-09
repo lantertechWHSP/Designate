@@ -28,8 +28,8 @@ const CardPanelBlock:any = ({ annotation, title, description, image, link, align
             <Row direction={['column', ,(align === ICardPanelAlign.Right) ? 'row-reverse' : 'row']}>
                 <Column width={[ColumnWidth.Full, ColumnWidth.Half]}>
                     <Box py={[6, ,8]}
-                         pl={align === ICardPanelAlign.Right ? [0] : [6, ,8]}
-                         pr={align === ICardPanelAlign.Left ? [0] : [6, ,8]}>
+                        pl={align === ICardPanelAlign.Right ? [0] : [6, ,8]}
+                        pr={align === ICardPanelAlign.Left ? [0] : [6, ,8]}>
                         {
                             annotation && <Text variant="annotation" mb={[2, 4 ,8]}>
                                 {annotation}
@@ -58,22 +58,22 @@ const CardPanelBlock:any = ({ annotation, title, description, image, link, align
                 <Column width={[ColumnWidth.Full, ColumnWidth.Half]} minHeight="400px">
                     {
                         link ? <Link {...link}
-                                     width="100%"
-                                     height="100%"
-                                     position="relative"
-                                     title=""
-                                     background={image?.responsiveImage ? `url('${image.responsiveImage.src}')` : 'lightGrey'}
-                                     backgroundPosition="center"
-                                     backgroundRepeat="no-repeat"
-                                     backgroundSize="cover">
+                            width="100%"
+                            height="100%"
+                            position="relative"
+                            title=""
+                            background={image?.responsiveImage ? `url('${image.responsiveImage.src}')` : 'lightGrey'}
+                            backgroundPosition="center"
+                            backgroundRepeat="no-repeat"
+                            backgroundSize="cover">
                         </Link> : <Box width="100%"
-                                       height="100%"
-                                       position="relative"
-                                       title=""
-                                       background={image?.responsiveImage ? `url('${image.responsiveImage.src}')` : 'lightGrey'}
-                                       backgroundPosition="center"
-                                       backgroundRepeat="no-repeat"
-                                       backgroundSize="cover">
+                            height="100%"
+                            position="relative"
+                            title=""
+                            background={image?.responsiveImage ? `url('${image.responsiveImage.src}')` : 'lightGrey'}
+                            backgroundPosition="center"
+                            backgroundRepeat="no-repeat"
+                            backgroundSize="cover">
                         </Box>
                     }
                 </Column>

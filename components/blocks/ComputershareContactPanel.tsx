@@ -28,11 +28,11 @@ const ComputershareContactPanelBlock:any = ({ title, description, image, onlineD
             <Column width={[ColumnWidth.Full, ,ColumnWidth.FiveTwelfths]}>
                 {
                     title && <Heading as="h2"
-                                      fontSize={['28px', '32px', '36px']}
-                                      lineHeight={['35px', '38px', '42px']}
-                                      color="olive"
-                                      fontWeight={500}
-                                      pb={[4, , ,0]}>
+                        fontSize={['28px', '32px', '36px']}
+                        lineHeight={['35px', '38px', '42px']}
+                        color="olive"
+                        fontWeight={500}
+                        pb={[4, , ,0]}>
                         {title}
                     </Heading>
                 }
