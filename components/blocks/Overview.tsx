@@ -20,7 +20,7 @@ interface IOverviewBlock extends IBlock {
 
 const OverviewBlock:any = ({ subtitle, description, paddingTop, paddingBottom, background, align }:IOverviewBlock) : ReactNode => {
     return (subtitle || description) && <ContentBlock background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
-        <Row justify={align === IOverviewAlign.Center ? 'center' : '' }>
+        <Row justify={align === IOverviewAlign.Center ? 'center' : '' } mb={[-4, , ,0]}>
             <Column width={[ColumnWidth.Full, , ,subtitle && isEmptyDocument(description) ? (align === IOverviewAlign.Center ? ColumnWidth.EightTwelfths : ColumnWidth.NineTwelfths) : ColumnWidth.Half]}>
                 {
                     !isEmptyDocument(subtitle) && <Box>
@@ -29,7 +29,7 @@ const OverviewBlock:any = ({ subtitle, description, paddingTop, paddingBottom, b
                             lineHeight={['35px', '38px', '42px']}
                             color="olive"
                             fontWeight={500}
-                            pb={[4, , ,0]}>
+                            mb={[4, , ,0]}>
                             <StructuredContent content={subtitle} />
                         </Heading>
                     </Box>

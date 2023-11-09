@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
 import ContentBlock from '~/components/blocks/Content';
 import { Text } from '@chakra-ui/react';
+import {Column, ColumnWidth, Row} from "~/components/elements/grid/grid";
 
 interface IAudioBlock extends IBlock {
     title?:string;
@@ -43,7 +44,11 @@ const AudioBlock:any = ({ title, soundcloudTrackId, omnyFmUrl, whooshkaaId, cont
             />
         }
         {
-            title && <Text as="small" display="block" variant="annotation"  mt={2}>{title}</Text>
+            title && <Row>
+                <Column width={[ColumnWidth.Full, , ColumnWidth.NineTwelfths, ColumnWidth.EightTwelfths]}>
+                    <Text as="small" display="block" variant="annotation" mt={2}>{title}</Text>
+                </Column>
+            </Row>
         }
     </ContentBlock>;
 };

@@ -4,6 +4,7 @@ import ContentBlock from "~/components/blocks/Content";
 import { AspectRatio as AspectRatioBlock, Text, Box } from '@chakra-ui/react';
 import dynamic from 'next/dynamic';
 import { IVideo } from '~/interfaces/util/video';
+import {Column, ColumnWidth, Row} from "~/components/elements/grid/grid";
 
 const ReactPlayer:any = dynamic(() => import("react-player"), { ssr: false });
 
@@ -22,20 +23,22 @@ const VideoBlock:any = ({ title, videoEmbed, aspectRatio, contain, containerWidt
     const [currentVideo] = useState<IVideo>(videoEmbed);
 
     return (title || currentVideo) && <ContentBlock contain={contain} containerWidth={containerWidth} background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
-        <Box>
-            {
-                currentVideo && <AspectRatioBlock ratio={aspectRatio === AspectRatio.Long ? [16 / 7.5] : [16 / 9]}>
-                    <ReactPlayer
-                        controls
-                        width="100%"
-                        height="100%"
-                        url={currentVideo.url} />
-                </AspectRatioBlock>
-            }
-            {
-                title && <Text as="small" display="block" variant="annotation" mt={2}>{title}</Text>
-            }
-        </Box>
+        {
+            currentVideo && <AspectRatioBlock ratio={aspectRatio === AspectRatio.Long ? [16 / 7.5] : [16 / 9]}>
+                <ReactPlayer
+                    controls
+                    width="100%"
+                    height="100%"
+                    url={currentVideo.url} />
+            </AspectRatioBlock>
+        }
+        {
+            title && <Row>
+                <Column width={[ColumnWidth.Full, , ColumnWidth.NineTwelfths, ColumnWidth.EightTwelfths]}>
+                    <Text as="small" display="block" variant="annotation" mt={2}>{title}</Text>
+                </Column>
+            </Row>
+        }
     </ContentBlock>;
 };
 

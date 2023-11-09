@@ -64,7 +64,7 @@ const InvestmentPortfolioTableBlock:any = ({ title, description, table, paddingT
             {
                 !isEmptyDocument(description) && <Box color="white">
                     <Row>
-                        <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
+                        <Column width={[ColumnWidth.Full, ,ColumnWidth.ThreeQuarters, ColumnWidth.Half]}>
                             <StructuredContent content={description} />
                         </Column>
                     </Row>

@@ -2,9 +2,9 @@ import { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
 import ContentBlock from '~/components/blocks/Content';
 import { Image as DatoImage } from 'react-datocms';
-import { IImage} from '~/interfaces/util/image';
+import { IImage } from '~/interfaces/util/image';
 import { Box, Text } from '@chakra-ui/react';
-import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
+import { Column, Row, ColumnWidth } from '~/components/elements/grid/grid';
 
 interface IImageBlock extends IBlock {
     title?:string;
@@ -23,7 +23,7 @@ const ImageBlock:any = ({ title, image, contain, containerWidth, background, pad
         }
         {
             title && <Row>
-                <Column width={[ColumnWidth.Full, ,ColumnWidth.EightTwelfths]}>
+                <Column width={[ColumnWidth.Full, , ColumnWidth.NineTwelfths, ColumnWidth.EightTwelfths]}>
                     <Text as="small" display="block" variant="annotation" mt={2}>{title}</Text>
                 </Column>
             </Row>
