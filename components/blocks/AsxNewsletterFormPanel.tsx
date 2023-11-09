@@ -8,17 +8,17 @@ import { Box, Heading, Input, Button, Flex } from '@chakra-ui/react';
 interface IAsxNewsletterFormPanelBlock extends IBlock {
 }
 
-const AsxNewsletterFormPanelBlock:any = ({}:IAsxNewsletterFormPanelBlock) : ReactNode => {
+const AsxNewsletterFormPanelBlock:any = ({ }:IAsxNewsletterFormPanelBlock) : ReactNode => {
     return <ContentBlock background="olive">
         <Row justify="center" textAlign="center">
-            <Column width={[ColumnWidth.Full, , ColumnWidth.TenTwelfths]}>
-                <Heading as="h2" fontSize={['36px']} lineHeight={['42px']} fontWeight={500} color="white" mb={8}>
+            <Column width={[ColumnWidth.Full, , ,ColumnWidth.TenTwelfths]}>
+                <Heading as="h2" fontSize={['36px']} lineHeight={['42px']} fontWeight={500} color="white" mb={[4, ,6, 8]}>
                     Subscribe for the latest ASX notifications straight to your inbox
                 </Heading>
             </Column>
         </Row>
         <Row justify="center">
-            <Column width={[ColumnWidth.Full, ColumnWidth.Half, ColumnWidth.FourTwelvfths]}>
+            <Column width={[ColumnWidth.Full, ColumnWidth.Half, ,ColumnWidth.FourTwelvfths]}>
                 <Box as={YourIR}>
                     <form data-yourir="mailList">
                         <Flex direction="column" align="center">
@@ -42,7 +42,7 @@ const AsxNewsletterFormPanelBlock:any = ({}:IAsxNewsletterFormPanelBlock) : Reac
                             <Button data-yourir="subscribe"
                                 fontSize="16px"
                                 mt={4}
-                                minWidth={['unset', ,'300px']}
+                                minWidth={['100%', ,'300px']}
                                 borderRadius="3px"
                                 height="50px" lineHeight="50px" background="white">Subscribe</Button>
                         </Flex>

@@ -21,12 +21,12 @@ const ProfileCard:any = ({ person, onClick }:IProfileCard) : ReactNode => {
             }
         </Box>
         {
-            person?.name && <Heading as="h3" fontSize={['21px']} lineHeight={['26px']} fontWeight={500}>
+            person?.name && <Heading as="h3" fontSize={['20px', , ,'21px']} lineHeight={['26px']} fontWeight={500}>
                 {person.name}
             </Heading>
         }
         {
-            person?.companyPosition && <Heading as="h4" fontSize={['19px']} lineHeight={['28px']} color="steel" fontWeight={400}>
+            person?.companyPosition && <Heading as="h4" fontSize={['18px', , ,'19px']} lineHeight={['26px', , ,'28px']} color="steel" fontWeight={400}>
                 {person?.companyPosition}
             </Heading>
         }

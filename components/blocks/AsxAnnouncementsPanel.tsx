@@ -71,7 +71,7 @@ const AsxAnnouncementsPanelBlock:any = ({}:IAsxAnnouncementsPanelBlock) : ReactN
         window.scrollTo({ top: scrollDiv - 120, behavior: 'smooth'});
     };
 
-    return <Box id="asx-announcements-panel" background="ghostWhite">
+    return <Box id="asx-announcements-panel" background="ghostWhite" pb={['120px']}>
         <Box as={YourIR}>
             <Container>
                 <Box py={12}>
@@ -133,7 +133,7 @@ const AsxAnnouncementsPanelBlock:any = ({}:IAsxAnnouncementsPanelBlock) : ReactN
                         </Menu>
                     </ButtonGroup>
                 </Box>
-                <Box id={`announcements`} data-yourir={`announcements pageSize=10 symbol=${symbol}.asx`} pb={'120px'}>
+                <Box id={`announcements`} data-yourir={`announcements pageSize=10 symbol=${symbol}.asx`}>
                     <Box data-yourir="ifnot isEmpty">
                         <Box data-yourir="items" borderTop="1px solid" borderColor="borderColor">
                             <Box borderTop="1px solid" borderColor="borderColor">
@@ -141,6 +141,7 @@ const AsxAnnouncementsPanelBlock:any = ({}:IAsxAnnouncementsPanelBlock) : ReactN
                                     <Heading as="h3"
                                         data-yourir="$cur.heading"
                                         flex={1}
+                                        pr={2}
                                         variant="listItem" />
                                     <Text data-yourir="$cur.date format='MMM DD, YYYY'"
                                         variant="listLabel"

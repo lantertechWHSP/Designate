@@ -14,6 +14,7 @@ const EventList:any = ({ events }:IEventList) : ReactNode => {
                 <Flex direction={['row']} borderBottom="3px solid" borderColor="borderColor">
                     <Text fontSize="16px"
                         mb={2}
+                        pr={2}
                         flex="1"
                         lineHeight="22px"
                         letterSpacing="0.16px">
