@@ -32,12 +32,12 @@ interface IMargin {
 }
 
 const BarChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor', borderColorDark = 'charcoal', fillColor = 'lightGrey', suffix = '' }:IBarChart) : ReactNode => {
-    const desktopHeight:number = 450;
-    const mobileHeight:number = 300;
+    const desktopHeight:number = 510;
+    const mobileHeight:number = 360;
     const [mediaQuery] = useMediaQuery(`(min-width: ${breakpoints.sm})`);
     const [width, setWidth] = useState<number>(null);
     const [height, setHeight] = useState<number>(mediaQuery ? desktopHeight : mobileHeight);
-    const margin:IMargin = { top: 30, right: 30, bottom: 50, left: 0 };
+    const margin:IMargin = { top: 30, right: 0, bottom: 30, left: 0 };
     const elementRef:any = useRef<ReactNode>();
     const [isDataLoaded, setIsDataLoaded] = useState<boolean>(false);
     const [hasData, setHasData] = useState<boolean>(null);
@@ -65,11 +65,13 @@ const BarChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor', 
                 return datum.value;
             }).value;
 
-            max *= 1.3;
+            // Bump for aesthetics (power of 10)
+            max = Math.pow(10, Math.ceil(Math.log10(max)));
 
             return scaleLinear()
                 .domain([0, max])
-                .range([boundsHeight, 0]);
+                .range([boundsHeight, 0])
+                .nice();
         }
         else {
             return null;

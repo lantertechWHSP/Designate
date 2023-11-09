@@ -28,7 +28,7 @@ const DocumentCard:any = ({ title, date, document }:IDocumentCard) : ReactNode =
                 minWidth={['140px', ,'30%']}
                 maxWidth={['140px', ,'30%']}
                 mb={0}>
-                {DateTime.fromISO(date).toFormat('d/M/yyyy')}
+                {DateTime.fromISO(date).toFormat('MMM d, yyyy')}
             </Text>
         }
         <Flex minWidth={['unset', ,'140px']}

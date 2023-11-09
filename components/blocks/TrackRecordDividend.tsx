@@ -36,7 +36,7 @@ const TrackRecordDividendBlock:any = ({ title, table, paddingTop, paddingBottom,
 
     return <ContentBlock background={backgroundColor} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         {
-            title && <Heading as="h2" variant="sectionSubheading" color={textColor} mb={4}>
+            title && <Heading as="h2" variant="sectionSubheading" color={textColor} mb={[4, ,6, 8]}>
                 {title}
             </Heading>
         }

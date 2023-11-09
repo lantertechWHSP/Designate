@@ -44,12 +44,12 @@ interface IMargin {
 }
 
 const LineChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor', borderColorDark = 'charcoal', fillColor = 'rgba(80, 81, 60, 0.05)' }:ILineChart) : ReactNode => {
-    const desktopHeight:number = 340;
-    const mobileHeight:number = 300;
+    const desktopHeight:number = 440;
+    const mobileHeight:number = 360;
     const [mediaQuery] = useMediaQuery(`(min-width: ${breakpoints.sm})`);
     const [width, setWidth] = useState<number>(null);
     const [height, setHeight] = useState<number>(mediaQuery ? mobileHeight : desktopHeight);
-    const margin:IMargin = { top: 30, right: 30, bottom: 30, left: 0 };
+    const margin:IMargin = { top: 30, right: 0, bottom: 30, left: 0 };
     const elementRef:any = useRef<ReactNode>();
     const [isDataLoaded, setIsDataLoaded] = useState<boolean>(false);
     const [hasData, setHasData] = useState<boolean>(false);
@@ -93,11 +93,15 @@ const LineChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor',
                 }
             });
 
-            const max:number = _max(flattendValues);
+            let max:number = _max(flattendValues);
+
+            // Bump for aesthetics (power of 10)
+            max = Math.pow(10, Math.ceil(Math.log10(max)));
 
             return scaleLinear()
                 .domain([0, max])
-                .range([boundsHeight, 0]);
+                .range([boundsHeight, 0])
+                .nice();
         }
         else {
             return null;
