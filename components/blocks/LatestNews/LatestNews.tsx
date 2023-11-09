@@ -17,7 +17,7 @@ interface ILatestNewsBlock extends IBlock {
 
 const LatestNewsBlock:any = ({ background, textColor, paddingTop, paddingBottom, data: { posts } }:ILatestNewsBlock) : ReactNode => {
     return <ContentBlock background={background} color={textColor} paddingTop={paddingTop} paddingBottom={paddingBottom}>
-        <Flex align="flex-end" mb={[4, ,8]}>
+        <Flex align="flex-end" mb={[4, ,6, 8]}>
             <Heading as="h2" lineHeight={1} variant="sectionHeading" mb={0}>
                 Latest News
             </Heading>

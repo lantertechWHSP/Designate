@@ -14,7 +14,7 @@ const PageLinks:any = ({ current }:any) : ReactNode => {
     );
 
     return (
-        <Box py={['40px', , '60px']} background="ghostWhite2">
+        <Box py={['40px', ,'50px', '60px']} background="ghostWhite2">
             <Container>
                 <Heading variant="pageLinksHeading" mb={4}>
                     See Also

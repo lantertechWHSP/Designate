@@ -43,7 +43,7 @@ const SeeAlsoItem:any = ({ title, description, link }:ISeeAlsoItem) : ReactNode 
 
 const SeeAlsoPanelBlock:any = ({ items, background, paddingTop, paddingBottom }:ISeeAlsoPanelBlock) : ReactNode => {
     return (Array.isArray(items) && items.length > 0) && <ContentBlock background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
-        <Heading variant="sectionHeading" as="h2" mb={[4, ,8]}>
+        <Heading variant="sectionHeading" as="h2" mb={[4, ,6, 8]}>
             See Also
         </Heading>
         <Row>

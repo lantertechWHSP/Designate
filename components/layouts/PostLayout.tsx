@@ -85,7 +85,7 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
                         <Row>
                             <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
                                 <Flex h={['376px']} align="flex-end">
-                                    <Box mb={['40px', , '60px']}>
+                                    <Box mb={['40px', ,'50px', '60px']}>
                                         {
                                             post?.title && <Heading as="h1"
                                                 fontSize={['50px']}
@@ -118,7 +118,7 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
                     {children}
                 </Box>
             }
-            <Box mt={['40px', , '60px']} mb={['120px']}>
+            <Box mt={['40px', ,'50px', '60px']} mb={['120px']}>
                 <Container>
                     <Row justify="center">
                         <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths, ColumnWidth.EightTwelfths]}>

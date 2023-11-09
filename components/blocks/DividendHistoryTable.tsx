@@ -75,7 +75,7 @@ const DividendHistoryTableBlock:any = ({ table, paddingTop, paddingBottom }:IDiv
     };
 
     return <ContentBlock background="ghostWhite" paddingTop={paddingTop} paddingBottom={paddingBottom}>
-        <Heading as="h2" variant="sectionHeading" mb={[4, ,8]}>
+        <Heading as="h2" variant="sectionHeading" mb={[4, ,6, 8]}>
             Dividend History
         </Heading>
         {

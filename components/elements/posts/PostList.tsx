@@ -77,7 +77,7 @@ const PostList:any = ({ latestPosts }:IPostsList) : ReactNode => {
         };
     }, [onScroll]);
 
-    return <Box bg="ghostWhite" py={['40px', ,'60px']} pb={['120px', '120px', '120px']} ref={elementRef}>
+    return <Box bg="ghostWhite" py={['40px', ,'50px', '60px']} pb={['120px']} ref={elementRef}>
         {
             (Array.isArray(posts) && posts.length > 0) ? <>
                 <Box position="relative">

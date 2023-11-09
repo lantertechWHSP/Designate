@@ -46,7 +46,7 @@ export const SubscriptionForm:any = () : ReactNode => {
 
     return <Box background="charcoal2">
         <Container>
-            <Box py={['40px', , '60px']}>
+            <Box py={['40px', ,'50px', '60px']}>
                 <Row>
                     <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half]}>
                         <Heading as="h2" variant="sectionHeading" color="white">

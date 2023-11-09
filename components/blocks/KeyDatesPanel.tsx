@@ -14,7 +14,7 @@ interface IKeyDatesPanelBlock extends IBlock {
 
 const KeyDatesPanelBlock:any = ({ background, paddingTop, paddingBottom, data: { events } }:IKeyDatesPanelBlock) : ReactNode => {
     return <ContentBlock background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
-        <Heading as="h2" variant="sectionHeading" mb={[4, ,8]}>
+        <Heading as="h2" variant="sectionHeading" mb={[4, ,6, 8]}>
             Key Financial Dates
         </Heading>
         <EventList events={events} />

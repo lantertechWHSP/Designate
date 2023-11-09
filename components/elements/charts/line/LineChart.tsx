@@ -44,9 +44,11 @@ interface IMargin {
 }
 
 const LineChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor', borderColorDark = 'charcoal', fillColor = 'rgba(80, 81, 60, 0.05)' }:ILineChart) : ReactNode => {
+    const desktopHeight:number = 340;
+    const mobileHeight:number = 300;
     const [mediaQuery] = useMediaQuery(`(min-width: ${breakpoints.sm})`);
     const [width, setWidth] = useState<number>(null);
-    const [height, setHeight] = useState<number>(mediaQuery ? 300 : 340);
+    const [height, setHeight] = useState<number>(mediaQuery ? mobileHeight : desktopHeight);
     const margin:IMargin = { top: 30, right: 30, bottom: 30, left: 0 };
     const elementRef:any = useRef<ReactNode>();
     const [isDataLoaded, setIsDataLoaded] = useState<boolean>(false);
@@ -176,10 +178,10 @@ const LineChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor',
 
     useEffect(() => {
         if(mediaQuery) {
-            setHeight(300);
+            setHeight(desktopHeight);
         }
         else {
-            setHeight(340);
+            setHeight(mobileHeight);
         }
     }, [mediaQuery]);
 

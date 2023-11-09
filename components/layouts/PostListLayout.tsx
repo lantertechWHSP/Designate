@@ -26,7 +26,7 @@ const PostListLayout:any = ({ layout, featuredPosts, posts, postsMeta }:any) : R
                         position="relative"background="linear-gradient(270deg, #50513C 0%, rgba(228, 221, 193, 0.50) 100%)">
                         <Container>
                             <Flex h={['376px']} align="flex-end">
-                                <Heading as="h1" variant="defaultLayoutTitle" mb={['40px', , '60px']}>
+                                <Heading as="h1" variant="defaultLayoutTitle" mb={['40px', ,'50px', '60px']}>
                                     News
                                 </Heading>
                             </Flex>

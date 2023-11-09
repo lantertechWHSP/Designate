@@ -57,7 +57,7 @@ const InvestmentPortfolioTableBlock:any = ({ title, description, table, paddingT
     return (table || title || !isEmptyDocument(description)) && <ContentBlock background="olive" paddingTop={paddingTop} paddingBottom={paddingBottom}>
         <Box mb={8}>
             {
-                title && <Heading as="h2" variant="sectionHeading" color="white" mb={[4, ,8]}>
+                title && <Heading as="h2" variant="sectionHeading" color="white" mb={[4, ,6, 8]}>
                     {title}
                 </Heading>
             }

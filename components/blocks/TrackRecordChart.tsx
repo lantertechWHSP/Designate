@@ -20,9 +20,10 @@ interface IChartFilter extends IFilter {
     background?:string;
 }
 
-const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesTable, australianListedTable, australianBondsTable, paddingTop, paddingBottom, theme }:ITrackRecordChartBlock) : ReactNode => {
+const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesTable, australianListedTable, australianBondsTable, theme, paddingTop, paddingBottom }:ITrackRecordChartBlock) : ReactNode => {
     const backgroundColor:string = theme === Theme.Dark ? 'olive' : 'white';
     const colors:string[] = theme === Theme.Dark ? darkLegendColors : legendColors;
+    const headingTextColor:string = theme === Theme.Dark ? 'white' : 'charcoal';
     const chartTextColor:string = theme === Theme.Dark ? 'whiteBlur' : 'steel';
     const fillColor:string = theme === Theme.Dark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(80, 81, 60, 0.05)';
     const borderColor:string = theme === Theme.Dark ? 'whiteBlur2' : 'borderColor';
@@ -124,7 +125,7 @@ const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesT
 
     return <ContentBlock paddingTop={paddingTop} paddingBottom={paddingBottom} background={backgroundColor}>
         <Flex justify="space-between" mb={4}>
-            <Heading as="h2" variant="sectionSubheading">
+            <Heading as="h2" variant="sectionSubheading" color={headingTextColor}>
                 20 Year Total Shareholder Return
             </Heading>
             {

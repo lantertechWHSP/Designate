@@ -9,8 +9,8 @@ interface ITrackRecordTableBlock extends IBlock {
     table?:ITable<any>;
 }
 
-const TrackRecordTableBlock:any = ({ title, table, paddingTop, paddingBottom }:ITrackRecordTableBlock) : ReactNode => {
-    return <ContentBlock paddingTop={paddingTop} paddingBottom={paddingBottom}>
+const TrackRecordTableBlock:any = ({ title, table, background, paddingTop, paddingBottom }:ITrackRecordTableBlock) : ReactNode => {
+    return <ContentBlock background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         {
             title && <Heading as="h2" variant="sectionSubheading" mb={4}>
                 {title}

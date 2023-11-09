@@ -18,7 +18,7 @@ interface IAttributesListPanelBlock extends IBlock {
 const AttributesListPanelBlock:any = ({ title, items, paddingTop, paddingBottom, background }:IAttributesListPanelBlock) : ReactNode => {
     return (title || (Array.isArray(items) && items.length > 0)) && <ContentBlock background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         {
-            title && <Heading as="h2" variant="sectionHeading" mb={[4, ,8]}>
+            title && <Heading as="h2" variant="sectionHeading" mb={[4, ,6, 8]}>
                 {title}
             </Heading>
         }

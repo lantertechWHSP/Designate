@@ -17,7 +17,7 @@ const ShareHistoricalPricesTable:any = ({ paddingTop, paddingBottom }:ShareHisto
 
     return <ContentBlock background="ghostWhite" paddingTop={paddingTop} paddingBottom={paddingBottom} id="historical-price">
         <Box as={YourIR}>
-            <Heading as="h2" variant="sectionHeading" mb={[4, ,8]}>
+            <Heading as="h2" variant="sectionHeading" mb={[4, ,6, 8]}>
                 Historical Prices
             </Heading>
             <Box data-yourir="historicalPrices pageSize=10">

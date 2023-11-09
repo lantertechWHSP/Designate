@@ -32,9 +32,11 @@ interface IMargin {
 }
 
 const BarChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor', borderColorDark = 'charcoal', fillColor = 'lightGrey', suffix = '' }:IBarChart) : ReactNode => {
+    const desktopHeight:number = 450;
+    const mobileHeight:number = 300;
     const [mediaQuery] = useMediaQuery(`(min-width: ${breakpoints.sm})`);
     const [width, setWidth] = useState<number>(null);
-    const [height, setHeight] = useState<number>(mediaQuery ? 450 : 340);
+    const [height, setHeight] = useState<number>(mediaQuery ? desktopHeight : mobileHeight);
     const margin:IMargin = { top: 30, right: 30, bottom: 50, left: 0 };
     const elementRef:any = useRef<ReactNode>();
     const [isDataLoaded, setIsDataLoaded] = useState<boolean>(false);
@@ -98,10 +100,10 @@ const BarChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor', 
 
     useEffect(() => {
         if(mediaQuery) {
-            setHeight(450);
+            setHeight(desktopHeight);
         }
         else {
-            setHeight(340);
+            setHeight(mobileHeight);
         }
     }, [mediaQuery]);
 
