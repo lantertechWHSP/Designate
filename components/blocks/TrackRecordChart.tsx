@@ -9,18 +9,24 @@ import { IFilter } from '~/interfaces/util/filter';
 import { ITable } from '~/interfaces/util/table';
 import { darkLegendColors, legendColors } from '~/components/elements/charts/colors';
 
+interface ITableRow {
+    Date:string;
+    SOL:string; // SOL shares
+    AllOrds:string; // All Ords Accumulation
+    MSCIWorld:string; // MSCI World ex Aus
+    Property?:string; // A-REIT Total Return
+    Bonds?:string; // Bloomberg AusBond Composite
+}
+
 interface ITrackRecordChartBlock extends IBlock {
-    australianSharesTable:ITable<any>;
-    internationalSharesTable:ITable<any>;
-    australianListedTable:ITable<any>;
-    australianBondsTable:ITable<any>;
+    table: ITable<ITableRow>;
 }
 
 interface IChartFilter extends IFilter {
     background?:string;
 }
 
-const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesTable, australianListedTable, australianBondsTable, theme, paddingTop, paddingBottom }:ITrackRecordChartBlock) : ReactNode => {
+const TrackRecordChartBlock:any = ({ table, theme, paddingTop, paddingBottom }:ITrackRecordChartBlock) : ReactNode => {
     const backgroundColor:string = theme === Theme.Dark ? 'olive' : 'white';
     const colors:string[] = theme === Theme.Dark ? darkLegendColors : legendColors;
     const headingTextColor:string = theme === Theme.Dark ? 'white' : 'charcoal';
@@ -29,58 +35,77 @@ const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesT
     const borderColor:string = theme === Theme.Dark ? 'whiteBlur2' : 'borderColor';
     const borderColorDark:string = theme === Theme.Dark ? 'white' : 'charcoal';
 
-    const australianShares:any = australianSharesTable.data.map((datum) => {
-        return {
-            value: +datum.Value,
-            date: DateTime.fromFormat(datum.Date, 'd/M/yyyy')
-        };
-    });
+    const parseValue:any = (value:String) : number => {
+        return parseFloat(value.replace(/,/g, ''));
+    };
 
-    const internationalShares:any = internationalSharesTable.data.map((datum) => {
-        return {
-            value: +datum.Value,
-            date: DateTime.fromFormat(datum.Date, 'd/M/yyyy')
-        };
-    });
+    const parseDate:any = (value:string) : DateTime => {
+        return DateTime.fromFormat(value, 'd/M/yyyy');
+    };
 
-    const australianListed:any = australianListedTable.data.map((datum) => {
-        return {
-            value: +datum.Value,
-            date: DateTime.fromFormat(datum.Date, 'd/M/yyyy')
-        };
-    });
+    const SOLData:any[] = [];
+    const AllOrdsData:any[] = [];
+    const MSCIWorldData:any[] = [];
+    const PropertyData:any[] = [];
+    const BondsData:any[] = [];
 
-    const australianBonds:any = australianBondsTable.data.map((datum) => {
-        return {
-            value: +datum.Value,
-            date: DateTime.fromFormat(datum.Date, 'd/M/yyyy')
-        };
+    table.data.map((row:ITableRow) => {
+        SOLData.push({
+            value: parseValue(row.SOL),
+            date: parseDate(row.Date)
+        });
+
+        AllOrdsData.push({
+            value: parseValue(row.AllOrds),
+            date: parseDate(row.Date)
+        });
+
+        MSCIWorldData.push({
+            value: parseValue(row.MSCIWorld),
+            date: parseDate(row.Date)
+        });
+
+        PropertyData.push({
+            value: parseValue(row.Property),
+            date: parseDate(row.Date)
+        });
+
+        BondsData.push({
+            value: parseValue(row.Bonds),
+            date: parseDate(row.Date)
+        });
     });
 
     const [filters, setFilters] = useState<IChartFilter[]>([
         {
-            label: 'Australian Shares',
-            value: 'australian',
+            label: 'SOL shares',
+            value: 'sol',
             isActive: true,
             background: colors[0],
         },
         {
-            label: 'International Shares',
-            value: 'international',
+            label: 'All Ords Accumulation',
+            value: 'allOrds',
             isActive: false,
             background: colors[1],
         },
         {
-            label: 'Australian Listed',
-            value: 'listed',
+            label: 'MSCI World ex Aus',
+            value: 'msci',
             isActive: false,
             background: colors[2],
         },
         {
-            label: 'Australian Bonds',
-            value: 'bonds',
+            label: 'A-REIT Total Return',
+            value: 'property',
             isActive: false,
             background: colors[3],
+        },
+        {
+            label: 'Bloomberg AusBond Composite',
+            value: 'bonds',
+            isActive: false,
+            background: 'red',
         },
     ]);
 
@@ -88,40 +113,53 @@ const TrackRecordChartBlock:any = ({ australianSharesTable, internationalSharesT
 
     const updateLines:any = () : void => {
         const newLines:any = [];
+
         newLines.push({
-            data: australianShares,
+            data: SOLData,
             display: filters[0].isActive,
             fill: colors[0]
         });
+
         newLines.push({
-            data: internationalShares,
+            data: AllOrdsData,
             display: filters[1].isActive,
             fill: colors[1]
         });
+
         newLines.push({
-            data: australianListed,
+            data: MSCIWorldData,
             display: filters[2].isActive,
             fill: colors[2]
         });
+
         newLines.push({
-            data: australianBonds,
+            data: PropertyData,
             display: filters[3].isActive,
             fill: colors[3]
+        });
+
+        newLines.push({
+            data: BondsData,
+            display: filters[4].isActive,
+            fill: 'red'
         });
 
         setData({ lines: newLines });
     };
 
-    const [hasData] = useState<boolean>((australianSharesTable.data && australianSharesTable.data.length > 0) &&
-        (internationalSharesTable.data && internationalSharesTable.data.length > 0) &&
-        (australianListedTable.data && australianListedTable.data.length > 0) &&
-        (australianBondsTable.data && australianBondsTable.data.length > 0));
+    const [hasData] = useState<boolean>((SOLData && SOLData.length > 0) &&
+        (AllOrdsData && AllOrdsData.length > 0) &&
+        (MSCIWorldData && MSCIWorldData.length > 0) &&
+        (PropertyData && PropertyData.length > 0) &&
+        (BondsData && BondsData.length > 0)
+    );
 
     useEffect(() => {
         if(hasData) {
             updateLines();
         }
     }, []);
+
 
     return <ContentBlock paddingTop={paddingTop} paddingBottom={paddingBottom} background={backgroundColor}>
         <Flex justify="space-between" mb={4}>

@@ -96,7 +96,8 @@ const LineChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor',
             let max:number = _max(flattendValues);
 
             // Bump for aesthetics (power of 10)
-            max = Math.pow(10, Math.ceil(Math.log10(max)));
+            max *= 1.05;
+            // max = Math.pow(10, Math.ceil(Math.log10(max)));
 
             return scaleLinear()
                 .domain([0, max])
@@ -245,7 +246,7 @@ const LineChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor',
                             >
                                 <AxisLeft scale={yScale} chartHeight={height} width={width} />
                                 <g>
-                                    <g transform="translate(15, 0)">
+                                    <g>
                                         <AxisBottom scale={xScale} transform={`translate(0, ${boundsHeight})`} />
                                     </g>
                                     {
