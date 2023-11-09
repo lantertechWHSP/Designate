@@ -8,6 +8,7 @@ export const carouselRecord:string = `
             ${imageAttrs()}
         }
     }
+    background
     paddingTop
     paddingBottom
 `;

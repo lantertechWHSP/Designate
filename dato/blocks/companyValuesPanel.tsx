@@ -1,6 +1,7 @@
 export const companyValuesPanelRecord:string = `
     __typename
     id
+    title
     items {
         title
         icon {
@@ -9,6 +10,7 @@ export const companyValuesPanelRecord:string = `
         }
     }
     containerWidth
+    background
     paddingTop
     paddingBottom
 `;

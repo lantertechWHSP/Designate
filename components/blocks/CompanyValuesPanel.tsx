@@ -5,6 +5,7 @@ import { ISVGImage } from '~/interfaces/util/image';
 import { Heading, Box, Flex } from '@chakra-ui/react';
 
 interface ICompanyValuesPanelBlock extends IBlock {
+    title?:string;
     items?:ICompanyValue[];
 }
 
@@ -13,11 +14,13 @@ interface ICompanyValue {
     icon?:ISVGImage;
 }
 
-const CompanyValuesPanelBlock:any = ({ items, paddingTop, paddingBottom, containerWidth }:ICompanyValuesPanelBlock) : ReactNode => {
-    return (Array.isArray(items) && items.length > 0) && <ContentBlock paddingTop={paddingTop} paddingBottom={paddingBottom} containerWidth={containerWidth} background="ghostWhite">
-        <Heading as="h3" variant="sectionSubheading" mb={8}>
-            Our People and Values
-        </Heading>
+const CompanyValuesPanelBlock:any = ({ title, items, containerWidth, background, paddingTop, paddingBottom,  }:ICompanyValuesPanelBlock) : ReactNode => {
+    return ((Array.isArray(items) && items.length > 0) || title) && <ContentBlock containerWidth={containerWidth} background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
+        {
+            title && <Heading as="h3" variant="sectionSubheading" mb={8}>
+                Our People and Values
+            </Heading>
+        }
         <Box borderRadius="3px" overflow="hidden" mb={'-20px'}>
             <Box className="horizonalScroll" overflowX={['scroll', ,'hidden']}>
                 <Flex wrap={['nowrap', , 'wrap']} direction="row">

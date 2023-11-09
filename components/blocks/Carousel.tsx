@@ -15,7 +15,7 @@ interface ICarouselBlock extends IBlock {
     items:ICarouselItem[];
 }
 
-const CarouselBlock:any = ({ items, paddingTop, paddingBottom }:ICarouselBlock) : ReactNode => {
+const CarouselBlock:any = ({ items, background, paddingTop, paddingBottom }:ICarouselBlock) : ReactNode => {
     const [slideIndex, setSlideIndex] = useState<number>(0);
     const [sliderRef, instanceRef] = useKeenSlider({
         loop: true,
@@ -55,7 +55,7 @@ const CarouselBlock:any = ({ items, paddingTop, paddingBottom }:ICarouselBlock) 
         }
     };
 
-    return (Array.isArray(items) && items.length > 0) && <ContentBlock background="ghostWhite" paddingTop={paddingTop} paddingBottom={paddingBottom}>
+    return (Array.isArray(items) && items.length > 0) && <ContentBlock background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         <Box borderRadius="3px" overflow="hidden">
             <Box className="keen-slider" ref={sliderRef} position="relative">
                 {
