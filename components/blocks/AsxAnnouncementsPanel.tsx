@@ -68,70 +68,76 @@ const AsxAnnouncementsPanelBlock:any = ({}:IAsxAnnouncementsPanelBlock) : ReactN
 
     const scrollToTable:any = () : void => {
         const scrollDiv:number = document.getElementById("asx-announcements-panel").offsetTop;
-        window.scrollTo({ top: scrollDiv - 120, behavior: 'smooth'});
+        window.scrollTo({ top: scrollDiv - 160, behavior: 'smooth'});
     };
 
     return <Box id="asx-announcements-panel" background="ghostWhite" pb={['120px']}>
         <Box as={YourIR}>
             <Container>
-                <Box py={12}>
-                    <ButtonGroup spacing={4}>
-                        <Menu>
-                            {({ isOpen }) => (
-                                <>
-                                    <MenuButton as={Button}
-                                        variant="menuButton"
-                                        rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} h={12} w={12} /> : <Icon icon={Icons.ChevronDown} h={12} w={12}  /> }>
-                                        {filterName}
-                                    </MenuButton>
-                                    <Portal>
-                                        <MenuList>
-                                            {
-                                                filters.map((item:IFilter, index:number) => {
-                                                    return <MenuItem key={index}
-                                                        as={Button}
-                                                        onClick={() => {
-                                                            filterName = item.label;
-                                                            set(`announcements.filter`, item.value);
-                                                        }}>
-                                                        {item.label}
-                                                    </MenuItem>;
-                                                })
-                                            }
-                                        </MenuList>
-                                    </Portal>
-                                </>
-                            )}
-                        </Menu>
-                        <Menu>
-                            {({ isOpen }) => (
-                                <>
-                                    <MenuButton as={Button}
-                                        variant="menuButton"
-                                        minW={['200px', ,'270px']}
-                                        rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} h={12} w={12} /> : <Icon icon={Icons.ChevronDown} h={12} w={12} /> }>
-                                        {yearName}
-                                    </MenuButton>
-                                    <Portal>
-                                        <MenuList minW={['200px', ,'270px']}>
-                                            {
-                                                years.map((item, index) => {
-                                                    return <MenuItem key={index}
-                                                        as={Button}
-                                                        onClick={() => {
-                                                            yearName = item.label;
-                                                            set(`announcements.year`, item.value);
-                                                        }}>
-                                                        {item.label}
-                                                    </MenuItem>;
-                                                })
-                                            }
-                                        </MenuList>
-                                    </Portal>
-                                </>
-                            )}
-                        </Menu>
-                    </ButtonGroup>
+                <Box py={[4, 6, , 8]}>
+                    <Flex direction={['column', ,'row']} mx={-2} mb={-4}>
+                        <Box px={2} pb={4}>
+                            <Menu>
+                                {({ isOpen }) => (
+                                    <>
+                                        <MenuButton as={Button}
+                                            minWidth={['100%', '220px', , '270px']}
+                                            variant="menuButton"
+                                            rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} h={12} w={12} /> : <Icon icon={Icons.ChevronDown} h={12} w={12}  /> }>
+                                            {filterName}
+                                        </MenuButton>
+                                        <Portal>
+                                            <MenuList>
+                                                {
+                                                    filters.map((item:IFilter, index:number) => {
+                                                        return <MenuItem key={index}
+                                                            as={Button}
+                                                            onClick={() => {
+                                                                filterName = item.label;
+                                                                set(`announcements.filter`, item.value);
+                                                            }}>
+                                                            {item.label}
+                                                        </MenuItem>;
+                                                    })
+                                                }
+                                            </MenuList>
+                                        </Portal>
+                                    </>
+                                )}
+                            </Menu>
+                        </Box>
+                        <Box px={2} pb={4}>
+                            <Menu>
+                                {({ isOpen }) => (
+                                    <>
+                                        <MenuButton as={Button}
+                                            variant="menuButton"
+                                            minWidth={['100%', '220px', , '270px']}
+                                            rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} h={12} w={12} /> : <Icon icon={Icons.ChevronDown} h={12} w={12} /> }>
+                                            {yearName}
+                                        </MenuButton>
+                                        <Portal>
+                                            <MenuList minW={['200px', ,'270px']}>
+                                                {
+                                                    years.map((item, index) => {
+                                                        return <MenuItem key={index}
+                                                            as={Button}
+                                                            onClick={() => {
+                                                                yearName = item.label;
+                                                                set(`announcements.year`, item.value);
+                                                            }}>
+                                                            {item.label}
+                                                        </MenuItem>;
+                                                    })
+                                                }
+                                            </MenuList>
+                                        </Portal>
+                                    </>
+                                )}
+                            </Menu>
+                        </Box>
+
+                    </Flex>
                 </Box>
                 <Box id={`announcements`} data-yourir={`announcements pageSize=10 symbol=${symbol}.asx`}>
                     <Box data-yourir="ifnot isEmpty">

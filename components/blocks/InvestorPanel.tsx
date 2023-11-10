@@ -117,81 +117,81 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                         </Box>
                         <Box flex="1">
                             <Box height="100%"
-                                 minHeight="180px"
-                                 sx={{
-                                '.yourir-chart': {
-                                    padding: '20px 0 0',
-                                    borderBottomWidth: '1px',
-                                    borderStyle: 'solid',
-                                    borderColor: 'olive',
-                                    color: 'olive',
-                                    fontSize: '14px',
-                                    height: '100%'
-                                },
-                                '.yourir-chart-panels': {
-                                    height: '100%',
-                                    minHeight: '180px'
-                                },
-                                '.yourir-chart-panel': {
-                                    height: '100%',
-                                    minHeight: '180px'
-                                },
-                                '.yourir-chart-price-fill': {
-                                    fill: `rgba(80, 81, 60, 0.2)`
-                                },
-                                '.yourir-chart-price': {
-                                    stroke: 'olive',
-                                    strokeWidth: '2px',
-                                },
-                                '.yourir-chart-yaxis-label': {
-                                    position: 'relative',
-                                    top: '-10px'
-                                },
-                                '.yourir-chart-yaxis-left .yourir-chart-yaxis-outside .yourir-chart-yaxis-label-container': {
-                                    left: '0',
-                                    marginRight: '0',
-                                    fontSize: '12px',
-                                    color: 'darkGrey'
-                                },
-                                '.yourir-chart-xaxis': {
-                                    position: 'relative',
-                                    top: '-40px'
-                                },
-                                '.yourir-chart-xaxis-label': {
-                                    fontSize: '12px',
-                                    color: 'darkGrey'
-                                },
-                                '.yourir-chart-panel-border-bottom': {
-                                    display: 'none'
-                                },
-                                '.yourir-chart-tick-bottom': {
-                                    display: 'none'
-                                },
-                                '.yourir-chart-xaxis-outside': {
-                                    position: 'relative',
-                                    top: '10px'
-                                },
-                                '.yourir-chart-yaxis-gridline': {
-                                    stroke: 'borderColor'
-                                },
-                                '.yourir-chart-yaxis-label-container': {
-                                    fontSize: '12px',
-                                    fontFamily: 'Roboto',
-                                    color: 'steel'
-                                },
-                                '.yourir-chart-xaxis-label-container': {
-                                    fontSize: '12px',
-                                    fontFamily: 'Roboto',
-                                    color: 'steel',
-                                    marginLeft: 0,
-                                },
-                                '.yourir-chart-yaxis-outside .yourir-chart-yaxis-label-container:first-of-type': {
-                                    display: 'none'
-                                },
-                                '.yourir-chart-panel-plot-area': {
-                                    padding: 0
-                                }
-                            }}>
+                                minHeight="180px"
+                                sx={{
+                                    '.yourir-chart': {
+                                        padding: '20px 0 0',
+                                        borderBottomWidth: '1px',
+                                        borderStyle: 'solid',
+                                        borderColor: 'olive',
+                                        color: 'olive',
+                                        fontSize: '14px',
+                                        height: '100%'
+                                    },
+                                    '.yourir-chart-panels': {
+                                        height: '100%',
+                                        minHeight: '180px'
+                                    },
+                                    '.yourir-chart-panel': {
+                                        height: '100%',
+                                        minHeight: '180px'
+                                    },
+                                    '.yourir-chart-price-fill': {
+                                        fill: `rgba(80, 81, 60, 0.2)`
+                                    },
+                                    '.yourir-chart-price': {
+                                        stroke: 'olive',
+                                        strokeWidth: '2px',
+                                    },
+                                    '.yourir-chart-yaxis-label': {
+                                        position: 'relative',
+                                        top: '-10px'
+                                    },
+                                    '.yourir-chart-yaxis-left .yourir-chart-yaxis-outside .yourir-chart-yaxis-label-container': {
+                                        left: '0',
+                                        marginRight: '0',
+                                        fontSize: '12px',
+                                        color: 'darkGrey'
+                                    },
+                                    '.yourir-chart-xaxis': {
+                                        position: 'relative',
+                                        top: '-40px'
+                                    },
+                                    '.yourir-chart-xaxis-label': {
+                                        fontSize: '12px',
+                                        color: 'darkGrey'
+                                    },
+                                    '.yourir-chart-panel-border-bottom': {
+                                        display: 'none'
+                                    },
+                                    '.yourir-chart-tick-bottom': {
+                                        display: 'none'
+                                    },
+                                    '.yourir-chart-xaxis-outside': {
+                                        position: 'relative',
+                                        top: '10px'
+                                    },
+                                    '.yourir-chart-yaxis-gridline': {
+                                        stroke: 'borderColor'
+                                    },
+                                    '.yourir-chart-yaxis-label-container': {
+                                        fontSize: '12px',
+                                        fontFamily: 'Roboto',
+                                        color: 'steel'
+                                    },
+                                    '.yourir-chart-xaxis-label-container': {
+                                        fontSize: '12px',
+                                        fontFamily: 'Roboto',
+                                        color: 'steel',
+                                        marginLeft: 0,
+                                    },
+                                    '.yourir-chart-yaxis-outside .yourir-chart-yaxis-label-container:first-of-type': {
+                                        display: 'none'
+                                    },
+                                    '.yourir-chart-panel-plot-area': {
+                                        padding: 0
+                                    }
+                                }}>
                                 <Box height="100%" data-yourir="priceChart1 range=6m showTooltips=true" >
                                     <Box  height="100%" data-yourir="plots" />
                                 </Box>

@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { google, outlook, office365, yahoo, ics, CalendarEvent } from 'calendar-link';
-import { Portal, Button, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react';
-import {SectionLinkInner} from "~/components/elements/sectionLink";
+import { Portal, Button, Menu, MenuButton, MenuList, MenuItem, Text } from '@chakra-ui/react';
+import { SectionLinkInner } from '~/components/elements/sectionLink';
 
 interface IAddToCalendar {
     isOpen?:boolean;
@@ -9,13 +9,13 @@ interface IAddToCalendar {
     event?:CalendarEvent;
 }
 
-const AddToCalendar:any = ({ event }:IAddToCalendar) : ReactNode => {
+const AddToCalendar:any = ({ event, isOpen, onClose }:IAddToCalendar) : ReactNode => {
     if (!event) {
         return null;
     }
 
     return (
-        <Menu placement="bottom-end">
+        <Menu isLazy isOpen={isOpen} onClose={onClose}  placement="bottom-end">
             {() => (
                 <>
                     <MenuButton as={Button} color="olive" sx={{
@@ -26,7 +26,12 @@ const AddToCalendar:any = ({ event }:IAddToCalendar) : ReactNode => {
                         }
                     }}>
                         <SectionLinkInner>
-                            Add To Calendar
+                            <Text display={['inline', 'none']}>
+                                Add
+                            </Text>
+                            <Text display={['none', 'inline']}>
+                                Add To Calendar
+                            </Text>
                         </SectionLinkInner>
                     </MenuButton>
                     <Portal>

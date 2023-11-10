@@ -82,7 +82,7 @@ const PostList:any = ({ latestPosts }:IPostsList) : ReactNode => {
             (Array.isArray(posts) && posts.length > 0) ? <>
                 <Box position="relative">
                     <Container>
-                        <SimpleGrid columns={[1, 2, 3]} spacingX={[8]} spacingY={['40px', ,'50px', '60px']}>
+                        <SimpleGrid columns={[1, 2, 3]} spacingX={[8]} spacingY={[6, ,8]}>
                             {
                                 posts.map((post:any, index:number) => {
                                     return <PostCard {...post} key={index} />;

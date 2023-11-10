@@ -288,7 +288,7 @@ export const theme:any = extendBaseTheme({
                     fontWeight: 500,
                     borderRadius: '50%',
                     p: 0,
-                    mx: 2,
+                    mx: ['4px', 1, 2],
                     _hover: {
                         background: 'olive',
                         color: 'white',

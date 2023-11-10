@@ -40,7 +40,7 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
                 post?.image && post?.image?.responsiveImage ? <><Flex width="100%"
                     height={['550px']}
                     background="linear-gradient(270deg, #50513C 0%, rgba(228, 221, 193, 0.50) 100%)"
-                                                                  overflowX="hidden"
+                    overflowX="hidden"
                     align="flex-end">
                     <Box width="100%" marginBottom="200px">
                         <Container>
@@ -82,7 +82,7 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
                 </Box></> : <Box h={['376px']}
                     width="100%"
                     position="relative"
-                                 overflowX="hidden"
+                    overflowX="hidden"
                     background="linear-gradient(270deg, #50513C 0%, rgba(228, 221, 193, 0.50) 100%)">
                     <Container>
                         <Row>
@@ -111,7 +111,7 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
                             </Column>
                         </Row>
                     </Container>
-                    <Box position="absolute" top="0" left={['30%', '40%', ,'60%']} height="100%">
+                    <Box position="absolute" top="0" left={['0', '30%', '40%', ,'60%']}  height="100%">
                         <VectorEffect />
                     </Box>
                 </Box>

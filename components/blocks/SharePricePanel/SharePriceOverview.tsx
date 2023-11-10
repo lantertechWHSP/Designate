@@ -154,7 +154,7 @@ const SharePriceOverview:any = () : ReactNode => {
                         <Text as="span" color="olive" data-yourir="change maxDecimals=2" />
                         {'\u00A0'}
                         <Text as="span" className="percent">
-                            (<Text as="span" color="olive" data-yourir="pctChange" />)
+                            <Text as="span" color="olive" data-yourir="pctChange" />
                         </Text>
                     </Badge>
                 </Box>
@@ -164,16 +164,15 @@ const SharePriceOverview:any = () : ReactNode => {
                 <Flex fontSize={['24px']}
                     lineHeight={['26px']}
                     fontWeight={500}
-                    mb={4}
                     color="charcoal"
                     sx={{
                         '.yourir-magnitude-symbol': {
                             fontSize: '24px'
                         }
                     }}>
-                    <Text data-yourir="marketCap showCurrency=true minDecimals=2 maxDecimals=2"></Text>
+                    <Text as="span" mb={0} data-yourir="marketCap showCurrency=true minDecimals=2 maxDecimals=2"></Text>
                     {'\u00A0'}
-                    <Text>
+                    <Text as="span" mb={0}>
                         (AUD)
                     </Text>
                 </Flex>

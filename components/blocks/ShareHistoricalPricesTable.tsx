@@ -11,7 +11,7 @@ interface ShareHistoricalPricesTable extends IBlock {
 const ShareHistoricalPricesTable:any = ({ paddingTop, paddingBottom }:ShareHistoricalPricesTable) : ReactNode => {
     const scrollToTable:any = () : void => {
         const scrollDiv:number = document.getElementById("historical-price").offsetTop;
-        window.scrollTo({ top: scrollDiv - 120, behavior: 'smooth'});
+        window.scrollTo({ top: scrollDiv - 160, behavior: 'smooth'});
     };
 
     return <ContentBlock background="ghostWhite" paddingTop={paddingTop} paddingBottom={paddingBottom} id="historical-price">

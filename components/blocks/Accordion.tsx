@@ -26,7 +26,7 @@ const AccordionBlock:any = ({ title, background, textColor, items, paddingBottom
 
     return (title || (Array.isArray(items) && items.length > 0)) && <ContentBlock background={background} color={textColor} paddingBottom={paddingBottom} py={8}>
         {
-            title && <Heading as="h2" variant="sectionHeading" color={selectedTextColor} mb={[4, ,6, 8]}>
+            title && <Heading as="h2" variant="sectionHeading" color={selectedTextColor} mb={['40px', ,'50px', '60px']}>
                 {title}
             </Heading>
         }
@@ -43,7 +43,7 @@ const AccordionBlock:any = ({ title, background, textColor, items, paddingBottom
                                         alignItems="center"
                                         textAlign="left"
                                         lineHeight="64px"
-                                        height="64px"
+                                        minHeight="64px"
                                         color={selectedTextColor}
                                         borderColor={borderColor}>
                                         <Heading as="h3"

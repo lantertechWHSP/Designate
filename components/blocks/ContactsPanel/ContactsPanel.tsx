@@ -18,15 +18,15 @@ interface IContactsPanelBlock extends IBlock {
 const ContactsPanelBlock:any = ({title, background, paddingTop, paddingBottom, data: { contacts }}:IContactsPanelBlock) : ReactNode => {
     return (Array.isArray(contacts) && contacts.length > 0 || title) && <ContentBlock background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         {
-            title && <Heading as="h2" variant="sectionHeading" mb={[4, ,6, 8]}>
+            title && <Heading as="h2" variant="sectionHeading" mb={['40px', ,'50px', '60px']}>
                 {title}
             </Heading>
         }
         {
-            Array.isArray(contacts) && contacts.length > 0 && <SimpleGrid columns={[1, , , 3]}>
+            Array.isArray(contacts) && contacts.length > 0 && <SimpleGrid columns={[1, , , 3]} spacing={[6, , ,8]}>
                 {
                     _orderBy(contacts, ['ordinal'], ['asc']).map((contact:IContact, index:number) => {
-                        return <Box key={index} mb={[index < contacts.length - 1 ? 4 : 0, , ,0]}><ContactCard {...contact} /></Box>;
+                        return <Box key={index}><ContactCard {...contact} /></Box>;
                     })
                 }
             </SimpleGrid>

@@ -28,8 +28,8 @@ const CardPanelBlock:any = ({ annotation, title, description, image, link, align
             <Row direction={['column', ,(align === ICardPanelAlign.Right) ? 'row-reverse' : 'row']}>
                 <Column width={[ColumnWidth.Full, ColumnWidth.Half]}>
                     <Box py={[6, ,8]}
-                        pl={align === ICardPanelAlign.Right ? [0] : [6, ,8]}
-                        pr={align === ICardPanelAlign.Left ? [0] : [6, ,8]}>
+                        pl={align === ICardPanelAlign.Right ? [6, ,0] : [6, ,8]}
+                        pr={align === ICardPanelAlign.Left ? [6, ,0] : [6, ,8]}>
                         {
                             annotation && <Text variant="annotation" mb={[2, 4 ,8]}>
                                 {annotation}
@@ -55,12 +55,12 @@ const CardPanelBlock:any = ({ annotation, title, description, image, link, align
                         }
                     </Box>
                 </Column>
-                <Column width={[ColumnWidth.Full, ColumnWidth.Half]} minHeight="400px">
+                <Column width={[ColumnWidth.Full, ColumnWidth.Half]} minHeight={['320px', ,'400px']}>
                     {
                         link ? <Link {...link}
                             width="100%"
                             height="100%"
-                            position="relative"
+                            position="absolute"
                             title=""
                             background={image?.responsiveImage ? `url('${image.responsiveImage.src}')` : 'lightGrey'}
                             backgroundPosition="center"
@@ -68,7 +68,7 @@ const CardPanelBlock:any = ({ annotation, title, description, image, link, align
                             backgroundSize="cover">
                         </Link> : <Box width="100%"
                             height="100%"
-                            position="relative"
+                            position="absolute"
                             title=""
                             background={image?.responsiveImage ? `url('${image.responsiveImage.src}')` : 'lightGrey'}
                             backgroundPosition="center"

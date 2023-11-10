@@ -32,7 +32,7 @@ const PostListLayout:any = ({ layout, featuredPosts, posts, postsMeta }:any) : R
                                 </Heading>
                             </Flex>
                         </Container>
-                        <Box position="absolute" top="0" left={['30%', '40%', ,'60%']} height="100%">
+                        <Box position="absolute" top="0" left={['0', '30%', '40%', ,'60%']}  height="100%">
                             <VectorEffect />
                         </Box>
                     </Box>

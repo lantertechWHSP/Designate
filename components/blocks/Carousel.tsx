@@ -76,31 +76,31 @@ const CarouselBlock:any = ({ items, background, paddingTop, paddingBottom }:ICar
                     items.length > 1 && <>
                         <Box position="absolute" width="100%" top="50%" transform="translateY(-50%)" height="56px" zIndex={zIndex.carouselCommands}>
                             <Button position="absolute"
-                                    backgroundColor="whiteBlur"
-                                    transition="background-color 0.3s linear"
-                                    _hover={{
-                                        backgroundColor: 'white'
-                                    }}
-                                    color="charcoal"
-                                    left="10px"
-                                    width="56px"
-                                    height="56px"
-                                    borderRadius="50%"
-                                    onClick={prev}>
+                                backgroundColor="whiteBlur"
+                                transition="background-color 0.3s linear"
+                                _hover={{
+                                    backgroundColor: 'white'
+                                }}
+                                color="charcoal"
+                                left="10px"
+                                width="56px"
+                                height="56px"
+                                borderRadius="50%"
+                                onClick={prev}>
                                 <Icon icon={Icons.ArrowLeft} />
                             </Button>
                             <Button position="absolute"
-                                    backgroundColor="whiteBlur"
-                                    transition="background-color 0.3s linear"
-                                    _hover={{
-                                        backgroundColor: 'white'
-                                    }}
-                                    color="charcoal"
-                                    right="10px"
-                                    width="56px"
-                                    height="56px"
-                                    borderRadius="50%"
-                                    onClick={next}>
+                                backgroundColor="whiteBlur"
+                                transition="background-color 0.3s linear"
+                                _hover={{
+                                    backgroundColor: 'white'
+                                }}
+                                color="charcoal"
+                                right="10px"
+                                width="56px"
+                                height="56px"
+                                borderRadius="50%"
+                                onClick={next}>
                                 <Icon icon={Icons.ArrowRight} />
                             </Button>
                         </Box>
@@ -108,11 +108,11 @@ const CarouselBlock:any = ({ items, background, paddingTop, paddingBottom }:ICar
                             {
                                 items.map((item:ICarouselItem, index:number) => {
                                     return <Button key={index} width="8px" height="8px" mx={1}
-                                                   background={slideIndex === index ? 'charcoal' : 'white'}
-                                                   borderRadius="4px"
-                                                   onClick={() => {
-                                                       goToIndex(index);
-                                                   }} />;
+                                        background={slideIndex === index ? 'charcoal' : 'white'}
+                                        borderRadius="4px"
+                                        onClick={() => {
+                                            goToIndex(index);
+                                        }} />;
                                 })
                             }
                         </Box>

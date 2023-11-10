@@ -34,7 +34,7 @@ import InvestmentPortfolioTableBlock from '~/components/blocks/InvestmentPortfol
 import ObjectivePanelBlock from '~/components/blocks/ObjectivePanel';
 
 // About/Investment Portfolio
-import PortfolioPanelBlock from '~/components/blocks/PortfolioPanel/PortfolioPanel';
+import PortfolioPanelBlock from '~/components/blocks/PortfolioPanel';
 
 // About/Sustainability
 import SustainabilityPanelBlock from '~/components/blocks/SustainabilityPanel';

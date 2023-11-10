@@ -15,16 +15,16 @@ const EventList:any = ({ events }:IEventList) : ReactNode => {
                     <Text fontSize="16px"
                         mb={2}
                         pr={2}
-                        flex="1"
                         lineHeight="22px"
                         letterSpacing="0.16px">
                         Event
                     </Text>
                     <Text fontSize="16px"
                         mb={2}
+                          display={['none', 'block']}
                         lineHeight="22px"
-                        minWidth={['90px', ,'calc(30% + 146px)']}
-                        maxWidth={['90px', ,'calc(30% + 146px)']}
+                        minWidth={['unset', 'calc(20% + 146px)', 'calc(30% + 146px)']}
+                        maxWidth={['unset', 'calc(20% + 146px)', 'calc(30% + 146px)']}
                         letterSpacing="0.16px">
                         Date
                     </Text>
