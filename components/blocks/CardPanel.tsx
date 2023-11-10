@@ -26,7 +26,7 @@ const CardPanelBlock:any = ({ annotation, title, description, image, link, align
     return (annotation || title || image && image?.url || link) && <ContentBlock containerWidth={containerWidth} background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         <Box background="white" borderRadius="3px" overflow="hidden" filter="drop-shadow(0px 1px 0px rgba(0, 0, 0, 0.10))" >
             <Row direction={['column', ,(align === ICardPanelAlign.Right) ? 'row-reverse' : 'row']}>
-                <Column width={[ColumnWidth.Full, ColumnWidth.Half]}>
+                <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
                     <Box py={[6, ,8]}
                         pl={align === ICardPanelAlign.Right ? [6, ,0] : [6, ,8]}
                         pr={align === ICardPanelAlign.Left ? [6, ,0] : [6, ,8]}>
@@ -55,27 +55,30 @@ const CardPanelBlock:any = ({ annotation, title, description, image, link, align
                         }
                     </Box>
                 </Column>
-                <Column width={[ColumnWidth.Full, ColumnWidth.Half]} minHeight={['320px', ,'400px']}>
-                    {
-                        link ? <Link {...link}
-                            width="100%"
-                            height="100%"
-                            position="absolute"
-                            title=""
-                            background={image?.responsiveImage ? `url('${image.responsiveImage.src}')` : 'lightGrey'}
-                            backgroundPosition="center"
-                            backgroundRepeat="no-repeat"
-                            backgroundSize="cover">
-                        </Link> : <Box width="100%"
-                            height="100%"
-                            position="absolute"
-                            title=""
-                            background={image?.responsiveImage ? `url('${image.responsiveImage.src}')` : 'lightGrey'}
-                            backgroundPosition="center"
-                            backgroundRepeat="no-repeat"
-                            backgroundSize="cover">
-                        </Box>
-                    }
+                <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
+                    <Box position="relative" minHeight={['320px', ,'400px']}>
+                        {
+                            link ? <Link {...link}
+                                        display="block"
+                                         width="100%"
+                                         height="100%"
+                                         position="absolute"
+                                         title=""
+                                         background={image?.responsiveImage ? `url('${image.responsiveImage.src}')` : 'lightGrey'}
+                                         backgroundPosition="center"
+                                         backgroundRepeat="no-repeat"
+                                         backgroundSize="cover">
+                            </Link> : <Box width="100%"
+                                           height="100%"
+                                           position="absolute"
+                                           title=""
+                                           background={image?.responsiveImage ? `url('${image.responsiveImage.src}')` : 'lightGrey'}
+                                           backgroundPosition="center"
+                                           backgroundRepeat="no-repeat"
+                                           backgroundSize="cover">
+                            </Box>
+                        }
+                    </Box>
                 </Column>
             </Row>
         </Box>
