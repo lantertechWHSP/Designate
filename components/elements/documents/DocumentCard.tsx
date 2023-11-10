@@ -9,32 +9,32 @@ interface IDocumentCard extends IDocument {
 
 const DocumentCard:any = ({ title, date, document }:IDocumentCard) : ReactNode => {
     return <Flex py={[4, ,'22px']} direction={['row']} align="center">
-        {
-            title && <Heading as="h3"
-                flex={1}
-                display="inline"
-                pr={2}
-                variant="listItem">
-                {
-                    (document && document.url) ? <Link href={document?.url} target="_blank">
-                        {title}
-                    </Link> : <>{title}</>
-                }
-            </Heading>
-        }
-        {
-            date && <Text
-                variant="listLabel"
-                textAlign={['right', ,'left']}
-                minWidth={['140px', ,'20%', '30%']}
-                maxWidth={['140px', ,'20%', '30%']}
-                mb={0}>
-                {DateTime.fromISO(date).toFormat('MMM d, yyyy')}
-            </Text>
-        }
-        <Flex minWidth={['unset', ,'140px']}
-            justify="flex-end"
-            display={['none', ,'flex']}>
+
+        <Flex direction={['column', , 'row']}
+              flex={1}
+              pr={2}>
+            {
+                title && <Heading as="h3"
+                                  variant="listItem">
+                    {
+                        (document && document.url) ? <Link href={document?.url} target="_blank">
+                            {title}
+                        </Link> : <>{title}</>
+                    }
+                </Heading>
+            }
+            {
+                date && <Text
+                    variant="listLabel"
+                    minWidth={['100%', '20%', '30%']}
+                    maxWidth={['100%', '20%', '30%']}
+                    mb={0} >
+                    {DateTime.fromISO(date).toFormat('MMM d, yyyy')}
+                </Text>
+            }
+        </Flex>
+        <Flex minWidth={['60px', '140px']}
+            justify="flex-end">
             {
                 (document && document.url) && <SectionLink href={document?.url}
                     as="a"

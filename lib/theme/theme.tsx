@@ -73,6 +73,7 @@ export const zIndex = {
         dots: 20
     },
     heroHeading: 10,
+    menu: 30,
     header: 100,
     yourirPopup: 200,
     preview: 300
@@ -373,8 +374,8 @@ export const theme:any = extendBaseTheme({
                     borderColor: 'borderColor',
                     borderRadius: '8px',
                     boxShadow: boxShadow,
-                    overflow: 'hidden',
-                    padding: 0
+                    padding: 0,
+                    zIndex: zIndex.menu
                 },
                 item: {
                     height: '50px',

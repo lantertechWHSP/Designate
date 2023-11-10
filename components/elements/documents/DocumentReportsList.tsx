@@ -129,13 +129,13 @@ const DocumentReportsList:any = ({ latestDocuments, documentsMeta, documentsFilt
             {
                 (Array.isArray(latestDocuments) && latestDocuments.length > 0) ? <>
                     <Box pb={4} mb={8}>
-                        <Flex mx="-2" mb={-4} direction={['column', ,'row']}>
+                        <Flex direction={['column', 'row']} mx={-2} mb={-4}>
                             <Box px={2} mb={4}>
                                 <Menu>
                                     {({ isOpen }) => (
                                         <>
                                             <MenuButton as={Button}
-                                                minWidth={['100%', ,'275px']}
+                                                 minWidth={['100%', '220px', , '270px']}
                                                 variant="menuButton"
                                                 rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} w={12} h={12} /> : <Icon icon={Icons.ChevronDown} w={12} h={12} />}>
                                                 {selectedTag.label ? selectedTag.label : 'Compare'}
@@ -178,7 +178,7 @@ const DocumentReportsList:any = ({ latestDocuments, documentsMeta, documentsFilt
                                                 {selectedYear.label ? selectedYear.label : 'Compare'}
                                             </MenuButton>
                                             <Portal>
-                                                <MenuList>
+                                                <MenuList maxHeight="300px" overflowY="scroll">
                                                     {
                                                         yearFilters.map((item:IFilter, index:number) => {
                                                             return <MenuItem key={index}

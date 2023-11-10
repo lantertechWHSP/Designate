@@ -31,8 +31,8 @@ const EventCard:any = ({ title, allDay, startDate, endDate, details, location }:
                     variant="listLabel"
                     minWidth={['100%', '20%', '30%']}
                     maxWidth={['100%', '20%', '30%']}
-                    mb={0} >
-                    {DateTime.fromISO(startDate).toFormat('d/M/yyyy')}
+                    mb={0}>
+                    {DateTime.fromISO(date).toFormat('MMM d, yyyy')}
                 </Text>
             }
         </Flex>

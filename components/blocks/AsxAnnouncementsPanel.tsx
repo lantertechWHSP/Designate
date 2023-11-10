@@ -75,8 +75,8 @@ const AsxAnnouncementsPanelBlock:any = ({}:IAsxAnnouncementsPanelBlock) : ReactN
         <Box as={YourIR}>
             <Container>
                 <Box py={[4, 6, , 8]}>
-                    <Flex direction={['column', ,'row']} mx={-2} mb={-4}>
-                        <Box px={2} pb={4}>
+                    <Flex direction={['column', 'row']} mx={-2} mb={-4}>
+                        <Box px={2} mb={4}>
                             <Menu>
                                 {({ isOpen }) => (
                                     <>
@@ -106,18 +106,18 @@ const AsxAnnouncementsPanelBlock:any = ({}:IAsxAnnouncementsPanelBlock) : ReactN
                                 )}
                             </Menu>
                         </Box>
-                        <Box px={2} pb={4}>
+                        <Box px={2} mb={4}>
                             <Menu>
                                 {({ isOpen }) => (
                                     <>
                                         <MenuButton as={Button}
                                             variant="menuButton"
-                                            minWidth={['100%', '220px', , '270px']}
+                                            minWidth={['100%', ,'150px']}
                                             rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} h={12} w={12} /> : <Icon icon={Icons.ChevronDown} h={12} w={12} /> }>
                                             {yearName}
                                         </MenuButton>
                                         <Portal>
-                                            <MenuList minW={['200px', ,'270px']}>
+                                            <MenuList>
                                                 {
                                                     years.map((item, index) => {
                                                         return <MenuItem key={index}
