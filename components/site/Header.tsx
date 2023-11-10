@@ -40,7 +40,7 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
 
     const [isScrolledDown, setIsScrolledDown] = useState(false);
     const [isMinimumScrolled, setIsMinimumScrolled] = useState(false);
-    const router = useRouter();
+    const router:any = useRouter();
 
     useDocumentScroll(({previousScrollTop, currentScrollTop}) => {
         setIsScrolledDown(previousScrollTop < currentScrollTop);

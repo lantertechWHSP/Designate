@@ -21,7 +21,7 @@ const EventList:any = ({ events }:IEventList) : ReactNode => {
                     </Text>
                     <Text fontSize="16px"
                         mb={2}
-                          display={['none', 'block']}
+                        display={['none', 'block']}
                         lineHeight="22px"
                         minWidth={['unset', 'calc(20% + 146px)', 'calc(30% + 146px)']}
                         maxWidth={['unset', 'calc(20% + 146px)', 'calc(30% + 146px)']}

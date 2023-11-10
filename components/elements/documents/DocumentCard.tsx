@@ -11,11 +11,11 @@ const DocumentCard:any = ({ title, date, document }:IDocumentCard) : ReactNode =
     return <Flex py={[4, ,'22px']} direction={['row']} align="center">
 
         <Flex direction={['column', , 'row']}
-              flex={1}
-              pr={2}>
+            flex={1}
+            pr={2}>
             {
                 title && <Heading as="h3"
-                                  variant="listItem">
+                    variant="listItem">
                     {
                         (document && document.url) ? <Link href={document?.url} target="_blank">
                             {title}

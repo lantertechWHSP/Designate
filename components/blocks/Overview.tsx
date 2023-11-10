@@ -19,7 +19,7 @@ interface IOverviewBlock extends IBlock {
 }
 
 const OverviewBlock:any = ({ subtitle, description, paddingTop, paddingBottom, background, align }:IOverviewBlock) : ReactNode => {
-    const subtitleColumnWidth = (() => {
+    const subtitleColumnWidth:any = (() => {
         if(subtitle && isEmptyDocument(description)) {
             if(align === IOverviewAlign.Center) {
                 return [ColumnWidth.Full, , ,ColumnWidth.TenTwelfths, ColumnWidth.EightTwelfths];

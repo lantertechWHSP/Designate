@@ -1,6 +1,6 @@
 import { ReactNode, useState } from 'react';
 import { IEvent } from "~/interfaces/models/event";
-import { Flex, Box, Heading, Text } from '@chakra-ui/react';
+import { Flex, Heading, Text } from '@chakra-ui/react';
 import { DateTime } from 'luxon';
 import AddToCalendar from '~/components/elements/events/AddToCalendar';
 
@@ -18,8 +18,8 @@ const EventCard:any = ({ title, allDay, startDate, endDate, details, location }:
             setIsOpen(true);
         }}>
         <Flex direction={['column', , 'row']}
-              flex={1}
-              pr={2}>
+            flex={1}
+            pr={2}>
             {
                 title && <Heading as="h3"
                     variant="listItem">
@@ -32,7 +32,7 @@ const EventCard:any = ({ title, allDay, startDate, endDate, details, location }:
                     minWidth={['100%', '20%', '30%']}
                     maxWidth={['100%', '20%', '30%']}
                     mb={0}>
-                    {DateTime.fromISO(date).toFormat('MMM d, yyyy')}
+                    {DateTime.fromISO(startDate).toFormat('MMM d, yyyy')}
                 </Text>
             }
         </Flex>

@@ -59,23 +59,23 @@ const CardPanelBlock:any = ({ annotation, title, description, image, link, align
                     <Box position="relative" minHeight={['320px', ,'400px']}>
                         {
                             link ? <Link {...link}
-                                        display="block"
-                                         width="100%"
-                                         height="100%"
-                                         position="absolute"
-                                         title=""
-                                         background={image?.responsiveImage ? `url('${image.responsiveImage.src}')` : 'lightGrey'}
-                                         backgroundPosition="center"
-                                         backgroundRepeat="no-repeat"
-                                         backgroundSize="cover">
+                                display="block"
+                                width="100%"
+                                height="100%"
+                                position="absolute"
+                                title=""
+                                background={image?.responsiveImage ? `url('${image.responsiveImage.src}')` : 'lightGrey'}
+                                backgroundPosition="center"
+                                backgroundRepeat="no-repeat"
+                                backgroundSize="cover">
                             </Link> : <Box width="100%"
-                                           height="100%"
-                                           position="absolute"
-                                           title=""
-                                           background={image?.responsiveImage ? `url('${image.responsiveImage.src}')` : 'lightGrey'}
-                                           backgroundPosition="center"
-                                           backgroundRepeat="no-repeat"
-                                           backgroundSize="cover">
+                                height="100%"
+                                position="absolute"
+                                title=""
+                                background={image?.responsiveImage ? `url('${image.responsiveImage.src}')` : 'lightGrey'}
+                                backgroundPosition="center"
+                                backgroundRepeat="no-repeat"
+                                backgroundSize="cover">
                             </Box>
                         }
                     </Box>

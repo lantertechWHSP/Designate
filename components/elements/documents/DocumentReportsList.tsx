@@ -135,7 +135,7 @@ const DocumentReportsList:any = ({ latestDocuments, documentsMeta, documentsFilt
                                     {({ isOpen }) => (
                                         <>
                                             <MenuButton as={Button}
-                                                 minWidth={['100%', '220px', , '270px']}
+                                                minWidth={['100%', '220px', , '270px']}
                                                 variant="menuButton"
                                                 rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} w={12} h={12} /> : <Icon icon={Icons.ChevronDown} w={12} h={12} />}>
                                                 {selectedTag.label ? selectedTag.label : 'Compare'}

@@ -28,7 +28,7 @@ const LatestNewsBlock:any = ({ background, textColor, paddingTop, paddingBottom,
         </Flex>
         {
             (Array.isArray(posts) && posts.length > 0) ? <Box className="horizonalScroll" overflowX={[posts.length > 2 ? 'scroll' : 'hidden', , ,'hidden']}>
-                <Box wrap={['nowrap', , ,'wrap']}>
+                <Flex wrap={['nowrap', , ,'wrap']}>
                     <Row py={[4, ,0]}>
                         {
                             posts.map((post:IPost, index:number) => {
@@ -38,7 +38,7 @@ const LatestNewsBlock:any = ({ background, textColor, paddingTop, paddingBottom,
                             })
                         }
                     </Row>
-                </Box>
+                </Flex>
             </Box> : <Alert status="info">No featured news…</Alert>
         }
     </ContentBlock>;
