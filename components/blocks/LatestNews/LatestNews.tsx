@@ -27,15 +27,17 @@ const LatestNewsBlock:any = ({ background, textColor, paddingTop, paddingBottom,
             </SectionLinkButton>
         </Flex>
         {
-            (Array.isArray(posts) && posts.length > 0) ? <Box className="horizonalScroll" overflowX={['scroll', ,'hidden']}>
-                <Row wrap={['nowrap', , 'wrap']} >
-                    {
-                        posts.map((post:IPost, index:number) => {
-                            return <Column width={[ColumnWidth.Half, , ,ColumnWidth.OneThird]} key={index}>
-                                <LatestNewsItem {...post} />
-                            </Column>;
-                        })
-                    }
+            (Array.isArray(posts) && posts.length > 0) ? <Box className="horizonalScroll" overflowX={['scroll', , ,'hidden']}>
+                <Row wrap={['nowrap', , ,'wrap']}>
+                    <Box py={[4, ,0]}>
+                        {
+                            posts.map((post:IPost, index:number) => {
+                                return <Column width={[ColumnWidth.Half, , ,ColumnWidth.OneThird]} key={index}>
+                                    <LatestNewsItem {...post} />
+                                </Column>;
+                            })
+                        }
+                    </Box>
                 </Row>
             </Box> : <Alert status="info">No featured news…</Alert>
         }

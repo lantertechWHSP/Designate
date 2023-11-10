@@ -106,11 +106,14 @@ const SharePriceChart:any = () : ReactNode => {
                     },
                     '.yourir-chart-relative-price3': {
                         stroke: legendColors[3]
+                    },
+                    '.yourir-chart-panel-plot-area': {
+                        padding: 0
                     }
                 }}>
                 <Box id="priceComparisionChart" data-yourir="priceComparisonChart1 volume.visible=false range=1m ranges=1d,1m,6m,1y,5y,10y showTooltips=true">
                     <Flex direction={['column', ,'row']} mb={8}>
-                        <Box mb={[4, , 0]}>
+                        <Box mb={[4, ,0]}>
                             <ButtonGroup
                                 spacing={0}
                                 sx={

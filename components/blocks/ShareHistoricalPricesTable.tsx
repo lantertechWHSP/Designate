@@ -5,7 +5,6 @@ import { Icon, Icons } from '~/components/elements/icon';
 import { YourIR } from 'yourir-next';
 import { Heading, Flex, Text, Box, ButtonGroup, Button, TableContainer, Table, Thead, Tr, Th, Tbody, Td } from '@chakra-ui/react';
 
-
 interface ShareHistoricalPricesTable extends IBlock {
 }
 

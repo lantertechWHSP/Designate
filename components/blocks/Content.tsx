@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
-import { Box, Container, ResponsiveValue } from '@chakra-ui/react';
-import { Column, ColumnWidth, Row } from "~/components/elements/grid/grid";
+import {ReactNode} from 'react';
+import {Box, Container, ResponsiveValue} from '@chakra-ui/react';
+import {Column, ColumnWidth, Row} from "~/components/elements/grid/grid";
 
 export enum ContainerWidth {
     Default = 'Default',
@@ -88,8 +88,8 @@ const ContentBlock:any = ({
     let selectedPaddingBottom:PaddingTop|ResponsiveValue<any>|string;
 
     switch(containerWidth) {
-        case ContainerWidth.Wide : columnWidths = [ColumnWidth.Full, ,ColumnWidth.TenTwelfths]; break;
-        case ContainerWidth.Narrow : columnWidths = [ColumnWidth.Full, ,ColumnWidth.TenTwelfths, ColumnWidth.EightTwelfths]; break;
+        case ContainerWidth.Wide : columnWidths = [ColumnWidth.Full, , ,ColumnWidth.TenTwelfths]; break;
+        case ContainerWidth.Narrow : columnWidths = [ColumnWidth.Full, , ,ColumnWidth.TenTwelfths, ColumnWidth.EightTwelfths]; break;
         case ContainerWidth.Full : columnWidths = [ColumnWidth.Full]; break;
         default : columnWidths = [ColumnWidth.Full];
     }

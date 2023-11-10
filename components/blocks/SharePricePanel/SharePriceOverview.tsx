@@ -69,7 +69,9 @@ const SharePriceOverview:any = () : ReactNode => {
                         <Text as="span" data-yourir="commonStatus" ref={commonStatus} display="none" />
                         <Flex align="center" direction="row">
                             <Box w="6px" h="6px" borderRadius="3px" className="status-dot" mr="4px" />
-                            ASX <Text as="span" data-yourir="commonStatusName"></Text>
+                            <Text as="span" mb={0}>
+                                <Text as="span" mb={0}>ASX</Text>{'\u00A0'}<Text as="span" data-yourir="commonStatusName"></Text>
+                            </Text>
                         </Flex>
                     </Badge>
                 </Box>
@@ -109,8 +111,29 @@ const SharePriceOverview:any = () : ReactNode => {
                     '.yourir-pct-change .yourir-negative': {
                         color: 'olive'
                     },
-                    '.yourir-zero .percent': {
+                    '.yourir-pct': {
                         display: 'none'
+                    },
+                    '.yourir-pct.yourir-positive': {
+                        display: 'inline-block',
+                        _before: {
+                            content: '"("'
+                        },
+                        _after: {
+                            content: '")"'
+                        }
+                    },
+                    '.yourir-pct.yourir-negative': {
+                        display: 'inline-block',
+                        _before: {
+                            content: '"("'
+                        },
+                        _after: {
+                            content: '")"'
+                        }
+                    },
+                    '.yourir-pct-symbol': {
+                        fontSize: 'initial'
                     }
                 }}>
                     <Badge data-yourir="changeSignCSS" color="olive" mb={4}>

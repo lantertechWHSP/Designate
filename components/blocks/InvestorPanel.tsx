@@ -27,11 +27,11 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
         <Box as={YourIR}>
             <Row>
                 <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half, ColumnWidth.FiveTwelfths]} mr={[0, 0, 0, 0,ColumnWidth.Twelfth]}>
-                    <Flex direction="column">
+                    <Flex direction="column" flex="1">
                         <Heading as="h3" variant="sectionSubheading" mb={4}>
                             Share Price Performance
                         </Heading>
-                        <Box mb={[0, ,'13px']} borderTop="1px solid" borderColor="borderColor" py={2}>
+                        <Box borderTop="1px solid" borderColor="borderColor" py={2} mb={[4, ,6, 8]}>
                             <Text
                                 mb={0}
                                 fontSize={['64px', ,'72px']}
@@ -69,8 +69,29 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                                 '.yourir-pct-change .yourir-negative': {
                                     color: 'olive'
                                 },
-                                '.yourir-zero .percent': {
+                                '.yourir-pct': {
                                     display: 'none'
+                                },
+                                '.yourir-pct.yourir-positive': {
+                                    display: 'inline-block',
+                                    _before: {
+                                        content: '"("'
+                                    },
+                                    _after: {
+                                        content: '")"'
+                                    }
+                                },
+                                '.yourir-pct.yourir-negative': {
+                                    display: 'inline-block',
+                                    _before: {
+                                        content: '"("'
+                                    },
+                                    _after: {
+                                        content: '")"'
+                                    }
+                                },
+                                '.yourir-pct-symbol': {
+                                    fontSize: 'initial'
                                 }
                             }}>
                                 <Badge data-yourir="changeSignCSS" color="olive">
@@ -90,21 +111,30 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                                     />
                                     <Text as="span" color="olive" data-yourir="change maxDecimals=2" />
                                     {'\u00A0'}
-                                    <Text as="span" className="percent">
-                                        (<Text as="span" color="olive" data-yourir="pctChange" />)
-                                    </Text>
+                                    <Text as="span" color="olive" data-yourir="pctChange" />
                                 </Badge>
                             </Box>
                         </Box>
-                        <Box w="100%"
-                            sx={{
+                        <Box flex="1">
+                            <Box height="100%"
+                                 minHeight="180px"
+                                 sx={{
                                 '.yourir-chart': {
                                     padding: '20px 0 0',
                                     borderBottomWidth: '1px',
                                     borderStyle: 'solid',
                                     borderColor: 'olive',
                                     color: 'olive',
-                                    fontSize: '14px'
+                                    fontSize: '14px',
+                                    height: '100%'
+                                },
+                                '.yourir-chart-panels': {
+                                    height: '100%',
+                                    minHeight: '180px'
+                                },
+                                '.yourir-chart-panel': {
+                                    height: '100%',
+                                    minHeight: '180px'
                                 },
                                 '.yourir-chart-price-fill': {
                                     fill: `rgba(80, 81, 60, 0.2)`
@@ -152,7 +182,8 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                                 '.yourir-chart-xaxis-label-container': {
                                     fontSize: '12px',
                                     fontFamily: 'Roboto',
-                                    color: 'steel'
+                                    color: 'steel',
+                                    marginLeft: 0,
                                 },
                                 '.yourir-chart-yaxis-outside .yourir-chart-yaxis-label-container:first-of-type': {
                                     display: 'none'
@@ -161,11 +192,12 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                                     padding: 0
                                 }
                             }}>
-                            <div data-yourir="priceChart1 range=6m showTooltips=true" >
-                                <Box data-yourir="plots"  />
-                            </div>
+                                <Box height="100%" data-yourir="priceChart1 range=6m showTooltips=true" >
+                                    <Box  height="100%" data-yourir="plots" />
+                                </Box>
+                            </Box>
                         </Box>
-                        <Box flex="1" />
+
                         <Box pt={8}>
                             <SectionLink href="/investor-centre/share-price-information">
                                 See All

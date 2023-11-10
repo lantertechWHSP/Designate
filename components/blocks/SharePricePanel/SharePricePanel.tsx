@@ -3,18 +3,18 @@ import { IBlock } from '~/interfaces/util/block';
 import ContentBlock from "~/components/blocks/Content";
 import SharePriceOverview from '~/components/blocks/SharePricePanel/SharePriceOverview';
 import SharePriceChart from '~/components/blocks/SharePricePanel/SharePriceChart';
-import { Column, ColumnWidth, Row } from '~/components/elements/grid/grid';
+import { Column, Row, ColumnWidth } from '~/components/elements/grid/grid';
 
 interface ISharePricePanelBlock extends IBlock {
 }
 
-const SharePricePanelBlock:any = ({ paddingTop, paddingBottom }:ISharePricePanelBlock) : ReactNode => {
-    return <ContentBlock paddingTop={paddingTop} paddingBottom={paddingBottom}>
+const SharePricePanelBlock:any = ({ background, paddingTop, paddingBottom }:ISharePricePanelBlock) : ReactNode => {
+    return <ContentBlock background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         <Row>
             <Column width={[ColumnWidth.Full, , ,ColumnWidth.FourTwelvfths]}>
                 <SharePriceOverview />
             </Column>
-            <Column width={[ColumnWidth.Full, , , ColumnWidth.EightTwelfths]}>
+            <Column width={[ColumnWidth.Full, , ,ColumnWidth.EightTwelfths]}>
                 <SharePriceChart />
             </Column>
         </Row>

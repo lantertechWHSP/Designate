@@ -16,7 +16,7 @@ interface IDocumentList {
 }
 
 export const DATO_QUERY_VALUES:any = {
-    ITEMS_PER_PAGE : 100,
+    ITEMS_PER_PAGE : 15,
     ORDER_BY : 'date_DESC',
     REPORTS_CATEGORY_ID : '190260513'
 };

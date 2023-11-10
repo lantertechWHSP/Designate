@@ -9,6 +9,7 @@ import { Image } from '~/components/elements/image';
 import SocialShare from '~/components/elements/socialShare';
 import Preview from '~/components/site/Preview';
 import VectorEffect from "~/components/elements/shapes/VectorEffect";
+import {zIndex} from "~/lib/theme/theme";
 
 const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
     const [annotation] = useState((() => {
@@ -86,7 +87,7 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
                     <Container>
                         <Row>
                             <Column width={[ColumnWidth.Full, ColumnWidth.TenTwelfths, ,ColumnWidth.Half]}>
-                                <Flex h={['376px']} align="flex-end">
+                                <Flex h={['376px']} align="flex-end" zIndex={zIndex.heroHeading} position="relative">
                                     <Box mb={['40px', ,'50px', '60px']}>
                                         {
                                             post?.title && <Heading as="h1"

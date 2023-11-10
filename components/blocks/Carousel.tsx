@@ -6,6 +6,7 @@ import 'keen-slider/keen-slider.min.css';
 import { IImage } from '~/interfaces/util/image';
 import { Box, AspectRatio, Button } from '@chakra-ui/react';
 import { Icon, Icons } from '~/components/elements/icon';
+import { zIndex } from "~/lib/theme/theme";
 
 interface ICarouselItem {
     image:IImage;
@@ -71,48 +72,53 @@ const CarouselBlock:any = ({ items, background, paddingTop, paddingBottom }:ICar
                         </Box>;
                     })
                 }
-                <Box position="absolute" width="100%" top="50%" transform="translateY(-50%)" height="56px" zIndex="2">
-                    <Button position="absolute"
-                        backgroundColor="whiteBlur"
-                        transition="background-color 0.3s linear"
-                        _hover={{
-                            backgroundColor: 'white'
-                        }}
-                        color="charcoal"
-                        left="10px"
-                        width="56px"
-                        height="56px"
-                        borderRadius="50%"
-                        onClick={prev}>
-                        <Icon icon={Icons.ArrowLeft} />
-                    </Button>
-                    <Button position="absolute"
-                        backgroundColor="whiteBlur"
-                        transition="background-color 0.3s linear"
-                        _hover={{
-                            backgroundColor: 'white'
-                        }}
-                        color="charcoal"
-                        right="10px"
-                        width="56px"
-                        height="56px"
-                        borderRadius="50%"
-                        onClick={next}>
-                        <Icon icon={Icons.ArrowRight} />
-                    </Button>
-                </Box>
-                <Box position="absolute" bottom="30px" left="50%" transform="translateX(-50%)" zIndex="2">
-                    {
-                        items.map((item:ICarouselItem, index:number) => {
-                            return <Button key={index} width="8px" height="8px" mx={1}
-                                background={slideIndex === index ? 'charcoal' : 'white'}
-                                borderRadius="4px"
-                                onClick={() => {
-                                    goToIndex(index);
-                                }} />;
-                        })
-                    }
-                </Box>
+                {
+                    items.length > 1 && <>
+                        <Box position="absolute" width="100%" top="50%" transform="translateY(-50%)" height="56px" zIndex={zIndex.carouselCommands}>
+                            <Button position="absolute"
+                                    backgroundColor="whiteBlur"
+                                    transition="background-color 0.3s linear"
+                                    _hover={{
+                                        backgroundColor: 'white'
+                                    }}
+                                    color="charcoal"
+                                    left="10px"
+                                    width="56px"
+                                    height="56px"
+                                    borderRadius="50%"
+                                    onClick={prev}>
+                                <Icon icon={Icons.ArrowLeft} />
+                            </Button>
+                            <Button position="absolute"
+                                    backgroundColor="whiteBlur"
+                                    transition="background-color 0.3s linear"
+                                    _hover={{
+                                        backgroundColor: 'white'
+                                    }}
+                                    color="charcoal"
+                                    right="10px"
+                                    width="56px"
+                                    height="56px"
+                                    borderRadius="50%"
+                                    onClick={next}>
+                                <Icon icon={Icons.ArrowRight} />
+                            </Button>
+                        </Box>
+                        <Box position="absolute" bottom="30px" left="50%" transform="translateX(-50%)" zIndex={zIndex.carouselCommands}>
+                            {
+                                items.map((item:ICarouselItem, index:number) => {
+                                    return <Button key={index} width="8px" height="8px" mx={1}
+                                                   background={slideIndex === index ? 'charcoal' : 'white'}
+                                                   borderRadius="4px"
+                                                   onClick={() => {
+                                                       goToIndex(index);
+                                                   }} />;
+                                })
+                            }
+                        </Box>
+                    </>
+                }
+
             </Box>
         </Box>
     </ContentBlock>;

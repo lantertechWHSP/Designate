@@ -8,6 +8,7 @@ import { Icon, Icons } from '~/components/elements/icon';
 import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
 import StructuredContent from "~/components/StructuredContent";
 import { isEmptyDocument } from 'datocms-structured-text-utils';
+import {zIndex} from "~/lib/theme/theme";
 
 interface IFeaturedPostsCarousel {
     posts:IPost[];
@@ -76,7 +77,7 @@ const FeaturedPostsCarousel:any = ({ posts }:IFeaturedPostsCarousel) : any => {
                                         left="0"
                                         right="0" />
                                     <Box position="absolute"
-                                        zIndex="2"
+                                        zIndex={zIndex.featuredPosts.slide}
                                         left="0"
                                         right="0"
                                         bottom="40px">
@@ -107,57 +108,60 @@ const FeaturedPostsCarousel:any = ({ posts }:IFeaturedPostsCarousel) : any => {
                         })
                     }
                 </>
-                <Box position="absolute" bottom="30px" left="50%" transform="translateX(-50%)" zIndex="3">
-                    {
-                        posts.map((post:IPost, index:number) => {
-                            return <Button key={index} width="8px" height="8px" mx={1}
-                                background={slideIndex === index ? 'white' : 'whiteBlur'}
-                                borderRadius="4px"
-                                onClick={() => {
-                                    goToIndex(index);
-                                }} />;
-                        })
-                    }
-                </Box>
-
-                <Box position="absolute" width="100%" pointerEvents="none" bottom="40px" zIndex="2">
-                    <Container>
-                        <Flex direction="row" justify="flex-end">
-                            <Flex mx={-2}>
-                                <Button
-                                    pointerEvents="all"
-                                    backgroundColor="whiteBlur"
-                                    transition="background-color 0.3s linear"
-                                    _hover={{
-                                        backgroundColor: 'white'
-                                    }}
-                                    mx={2}
-                                    color="charcoal"
-                                    width={['40px', ,'56px']}
-                                    height={['40px', ,'56px']}
-                                    borderRadius="50%"
-                                    onClick={prev}>
-                                    <Icon icon={Icons.ArrowLeft} />
-                                </Button>
-                                <Button
-                                    pointerEvents="all"
-                                    backgroundColor="whiteBlur"
-                                    transition="background-color 0.3s linear"
-                                    _hover={{
-                                        backgroundColor: 'white'
-                                    }}
-                                    mx={2}
-                                    color="charcoal"
-                                    width={['40px', ,'56px']}
-                                    height={['40px', ,'56px']}
-                                    borderRadius="50%"
-                                    onClick={next}>
-                                    <Icon icon={Icons.ArrowRight} />
-                                </Button>
+                {
+                    posts.length > 1 &&  <Box position="absolute" bottom="30px" left="50%" transform="translateX(-50%)" zIndex={zIndex.featuredPosts.dots}>
+                        {
+                            posts.map((post:IPost, index:number) => {
+                                return <Button key={index} width="8px" height="8px" mx={1}
+                                               background={slideIndex === index ? 'white' : 'whiteBlur'}
+                                               borderRadius="4px"
+                                               onClick={() => {
+                                                   goToIndex(index);
+                                               }} />;
+                            })
+                        }
+                    </Box>
+                }
+                {
+                    posts.length > 1 && <Box position="absolute" width="100%" pointerEvents="none" bottom="40px" zIndex={zIndex.featuredPosts.arrows}>
+                        <Container>
+                            <Flex direction="row" justify="flex-end">
+                                <Flex mx={-2}>
+                                    <Button
+                                        pointerEvents="all"
+                                        backgroundColor="whiteBlur"
+                                        transition="background-color 0.3s linear"
+                                        _hover={{
+                                            backgroundColor: 'white'
+                                        }}
+                                        mx={2}
+                                        color="charcoal"
+                                        width={['40px', ,'56px']}
+                                        height={['40px', ,'56px']}
+                                        borderRadius="50%"
+                                        onClick={prev}>
+                                        <Icon icon={Icons.ArrowLeft} />
+                                    </Button>
+                                    <Button
+                                        pointerEvents="all"
+                                        backgroundColor="whiteBlur"
+                                        transition="background-color 0.3s linear"
+                                        _hover={{
+                                            backgroundColor: 'white'
+                                        }}
+                                        mx={2}
+                                        color="charcoal"
+                                        width={['40px', ,'56px']}
+                                        height={['40px', ,'56px']}
+                                        borderRadius="50%"
+                                        onClick={next}>
+                                        <Icon icon={Icons.ArrowRight} />
+                                    </Button>
+                                </Flex>
                             </Flex>
-                        </Flex>
-                    </Container>
-                </Box>
+                        </Container>
+                    </Box>
+                }
             </>
 
         }

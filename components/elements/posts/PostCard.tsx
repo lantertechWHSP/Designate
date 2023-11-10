@@ -1,4 +1,4 @@
-import { Box, Heading } from '@chakra-ui/react';
+import { Box, Heading, Flex } from '@chakra-ui/react';
 import { IPost } from "~/interfaces/models/post";
 import { Link } from '~/components/elements/link';
 import { Image } from '~/components/elements/image';
@@ -8,7 +8,7 @@ interface IPostCard extends IPost {
 }
 
 const PostCard:any = ({ title, image, publishDate, slug }:IPostCard) : any => {
-    return <Box>
+    return <Flex direction="column">
         <Box mb={['20px']}>
             <Link href={`/news/${slug}`} display="block" borderRadius="3px" overflow="hidden">
                 <Image image={image} ratio={[2 / 1]} />
@@ -26,12 +26,13 @@ const PostCard:any = ({ title, image, publishDate, slug }:IPostCard) : any => {
                 {publishDate}
             </Box>
         }
+        <Box flex="1" />
         {
             slug && <SectionLink href={`/news/${slug}`}>
                 Read
             </SectionLink>
         }
-    </Box>;
+    </Flex>;
 };
 
 

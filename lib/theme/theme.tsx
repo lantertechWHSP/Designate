@@ -65,6 +65,19 @@ colors['successText'] = '#93d490';
 
 export const boxShadow:string = '0px 4px 10px 0px rgba(0, 0, 0, 0.10)';
 
+export const zIndex = {
+    carouselCommands: 10,
+    featuredPosts: {
+        slide: 10,
+        arrows: 10,
+        dots: 20
+    },
+    heroHeading: 10,
+    header: 100,
+    yourirPopup: 200,
+    preview: 300
+};
+
 export const theme:any = extendBaseTheme({
     fonts: {
         heading: `'Gramatika', serif`,
@@ -296,7 +309,7 @@ export const theme:any = extendBaseTheme({
                 },
                 tab: {
                     background: 'white',
-                    width: '64px',
+                    width: ['54px', , , ,'64px'],
                     height: '44px',
                     fontSize: '14px',
                     fontWeight: 500,
@@ -310,7 +323,7 @@ export const theme:any = extendBaseTheme({
                     borderRadius: '8px',
                     border: '1px solid',
                     fontSize: '16px',
-                    minWidth: ['200px', , '270px'],
+                    minWidth: ['200px', '220px', , '270px'],
                     borderColor: 'borderColor',
                     px: 4,
                     height: '50px',
@@ -477,6 +490,7 @@ export const theme:any = extendBaseTheme({
             },
             body: {
                 color: 'steelDark',
+                background: 'ghostWhite',
                 fontSize: '19px',
                 lineHeight: '29px'
             },
@@ -512,7 +526,7 @@ export const theme:any = extendBaseTheme({
                 overflow: 'hidden'
             },
             '.yourir-announcement-popup': {
-                zIndex: '120'
+                zIndex: zIndex.yourirPopup
             },
             // Render horizonal scroll
             '.horizonalScroll::-webkit-scrollbar': {

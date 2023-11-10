@@ -13,6 +13,7 @@ const EventCard:any = ({ title, allDay, startDate, endDate, details, location }:
         {
             title && <Heading as="h3"
                 flex={1}
+                              pr={2}
                 variant="listItem">
                 {title}
             </Heading>
@@ -21,8 +22,8 @@ const EventCard:any = ({ title, allDay, startDate, endDate, details, location }:
             startDate && <Text
                 variant="listLabel"
                 textAlign={['right', ,'left']}
-                minWidth={['140px', ,'30%']}
-                maxWidth={['140px', ,'30%']}
+                minWidth={['140px', ,'20%', '30%']}
+                maxWidth={['140px', ,'20%', '30%']}
                 mb={0} >
                 {DateTime.fromISO(startDate).toFormat('d/M/yyyy')}
             </Text>

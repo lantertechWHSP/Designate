@@ -13,6 +13,7 @@ const DocumentCard:any = ({ title, date, document }:IDocumentCard) : ReactNode =
             title && <Heading as="h3"
                 flex={1}
                 display="inline"
+                pr={2}
                 variant="listItem">
                 {
                     (document && document.url) ? <Link href={document?.url} target="_blank">
@@ -25,8 +26,8 @@ const DocumentCard:any = ({ title, date, document }:IDocumentCard) : ReactNode =
             date && <Text
                 variant="listLabel"
                 textAlign={['right', ,'left']}
-                minWidth={['140px', ,'30%']}
-                maxWidth={['140px', ,'30%']}
+                minWidth={['140px', ,'20%', '30%']}
+                maxWidth={['140px', ,'20%', '30%']}
                 mb={0}>
                 {DateTime.fromISO(date).toFormat('MMM d, yyyy')}
             </Text>

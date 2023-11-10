@@ -34,7 +34,7 @@ const VideoBlock:any = ({ title, videoEmbed, aspectRatio, contain, containerWidt
         }
         {
             title && <Row>
-                <Column width={[ColumnWidth.Full, , ColumnWidth.NineTwelfths, ColumnWidth.EightTwelfths]}>
+                <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths, ColumnWidth.NineTwelfths]}>
                     <Text as="small" display="block" variant="annotation" mt={2}>{title}</Text>
                 </Column>
             </Row>

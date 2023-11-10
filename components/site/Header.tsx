@@ -27,6 +27,7 @@ import Logo from "~/components/site/Logo";
 import { Link } from '~/components/elements/link';
 import { IHeader as IDatoHeader } from "~/interfaces/layout/header";
 import { Row, Column, ColumnWidth } from "~/components/elements/grid/grid";
+import { zIndex } from "~/lib/theme/theme";
 
 const MotionBox:any = motion(Box);
 
@@ -78,7 +79,7 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
     }, [onClose]);
 
     return <Box as="header">
-        <Box pos="fixed" top={0} height={[height]} w="100%" zIndex={100}
+        <Box pos="fixed" top={0} height={[height]} w="100%" zIndex={zIndex.header}
             pointerEvents={isScrolledDown && isMinimumScrolled ? 'none' : 'all'} >
             <MotionBox
                 animate={{
@@ -231,7 +232,7 @@ const MobileNav:any = ({ background, menu, isOpen = false }): ReactNode => {
         left={0}
         right={0}
         h={'calc(100vh - 120px)'}
-        zIndex={isOpen ? 100 : 0}
+        zIndex={isOpen ? zIndex.header : 0}
         pointerEvents={!isOpen ? 'none' : 'all'}
         animate={{
             opacity: !isOpen ? 0 : 1,

@@ -23,7 +23,7 @@ const ImageBlock:any = ({ title, image, contain, containerWidth, background, pad
         }
         {
             title && <Row>
-                <Column width={[ColumnWidth.Full, , ColumnWidth.NineTwelfths, ColumnWidth.EightTwelfths]}>
+                <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths, ColumnWidth.NineTwelfths]}>
                     <Text as="small" display="block" variant="annotation" mt={2}>{title}</Text>
                 </Column>
             </Row>

@@ -7,6 +7,7 @@ import Preview from "~/components/site/Preview";
 import FeaturedPostsCarousel from "~/components/elements/posts/FeaturedPostsCarousel";
 import PostList from "~/components/elements/posts/PostList";
 import VectorEffect from "~/components/elements/shapes/VectorEffect";
+import {zIndex} from "~/lib/theme/theme";
 
 const PostListLayout:any = ({ layout, featuredPosts, posts, postsMeta }:any) : ReactNode => {
     const hasFeaturedPosts:boolean = Array.isArray(featuredPosts) && featuredPosts.length > 0;
@@ -25,7 +26,7 @@ const PostListLayout:any = ({ layout, featuredPosts, posts, postsMeta }:any) : R
                     hasFeaturedPosts ? <FeaturedPostsCarousel posts={featuredPosts} /> : <Box h={['376px']}
                         position="relative"background="linear-gradient(270deg, #50513C 0%, rgba(228, 221, 193, 0.50) 100%)">
                         <Container>
-                            <Flex h={['376px']} align="flex-end">
+                            <Flex h={['376px']} align="flex-end" zIndex={zIndex.heroHeading} position="relative">
                                 <Heading as="h1" variant="defaultLayoutTitle" mb={['40px', ,'50px', '60px']}>
                                     News
                                 </Heading>
