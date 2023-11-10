@@ -4,7 +4,8 @@ import { scaleLinear, scaleBand, scaleOrdinal, stack } from 'd3';
 import { throttle as _throttle, maxBy as _maxBy, sum as _sum, sumBy as _sumBy, flatMap as _flatMap, map as _map } from 'lodash';
 import { AxisLeft } from '~/components/elements/charts/stackedBar/modules/AxisLeft';
 import { AxisBottom } from '~/components/elements/charts/stackedBar/modules/AxisBottom';
-import {breakpoints} from "~/lib/theme/theme";
+import { breakpoints } from '~/lib/theme/theme';
+import { Bars } from '~/components/elements/charts/stackedBar/modules/Bars';
 
 interface IStackedBarChart {
     data: {
@@ -221,29 +222,7 @@ const StackedBarChart:any = ({ data, textColor = 'steel', borderColor = 'borderC
                                     <AxisLeft scale={yScale} chartHeight={height} width={width} />
                                     <g transform="translate(10px, 0)">
                                         <AxisBottom scale={xScale} transform={`translate(0, ${boundsHeight})`} />
-                                        {stacked.map((data:any, index:number) => {
-                                            return (
-                                                <g key={`group-${index}`} fill={colors(data.key)}>
-                                                    {data.map((d:any, innerIndex:number) => {
-                                                        const label:string = String(d.data.label);
-                                                        const y0:number = yScale(d[0]);
-                                                        const y1:number = yScale(d[1]);
-
-                                                        const height:number = Math.max(y0 - y1, 0);
-
-                                                        return (
-                                                            <rect
-                                                                key={`rect-${innerIndex}`}
-                                                                x={xScale(label)}
-                                                                y={y1}
-                                                                width={xScale.bandwidth()}
-                                                                height={height}
-                                                            />
-                                                        );
-                                                    })}
-                                                </g>
-                                            );
-                                        })}
+                                        <Bars xScale={xScale} yScale={yScale} stacked={stacked} boundsHeight={boundsHeight} colors={colors} groupsLength={data.groups.length} />
                                     </g>
                                 </g>
                             }

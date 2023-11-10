@@ -82,22 +82,22 @@ const DividendHistoryTableBlock:any = ({ table, paddingTop, paddingBottom }:IDiv
             (table && table.data && Array.isArray(table?.data) && table.data.length > 0) ? <Box>
 
                 <TableContainer>
-                    <Table variant="basic" w="100%">
+                    <Table variant="basic" minW="100%">
                         <Thead>
                             <Tr>
-                                <Th w="20%">
+                                <Th w={['unset', ,'20%']}>
                                     Dividend
                                 </Th>
-                                <Th w="20%">
+                                <Th w={['unset', ,'20%']}>
                                     Ex Date
                                 </Th>
-                                <Th w="20%">
+                                <Th w={['unset', ,'20%']}>
                                     Franking (%)
                                 </Th>
-                                <Th w="20%">
+                                <Th w={['unset', ,'20%']}>
                                     Type
                                 </Th>
-                                <Th w="20%">
+                                <Th w={['unset', ,'20%']}>
                                     Payment Date
                                 </Th>
                             </Tr>

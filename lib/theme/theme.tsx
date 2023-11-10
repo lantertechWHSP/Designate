@@ -387,7 +387,7 @@ export const theme:any = extendBaseTheme({
         },
         Table: {
             defaultProps: {
-                variant: 'simple'
+                variant: 'basic'
             },
             parts: ['td', 'th'],
             baseStyle: {
@@ -396,18 +396,18 @@ export const theme:any = extendBaseTheme({
                 },
                 th: {
                     textAlign: 'left',
-                },
-                tr: {
-                    _last: {
-                        td: {
-                            borderBottom: '1px solid',
-                            borderColor: 'charcoal',
-                        }
-                    }
                 }
             },
             variants: {
                 basic: {
+                    tr: {
+                        _last: {
+                            td: {
+                                borderBottom: '1px solid',
+                                borderColor: 'charcoal',
+                            }
+                        }
+                    },
                     th: {
                         fontSize: ['16px'],
                         fontWeight: 400,
@@ -415,7 +415,11 @@ export const theme:any = extendBaseTheme({
                         color: 'steel',
                         borderBottom: '3px solid',
                         borderColor: 'borderColor',
-                        py: 2
+                        py: 2,
+                        pr: 2,
+                        _last: {
+                            pr: 0
+                        }
                     },
                     td: {
                         py: 4,
@@ -423,7 +427,11 @@ export const theme:any = extendBaseTheme({
                         fontWeight: 500,
                         borderBottom: '1px solid',
                         borderColor: 'borderColor',
-                        color: 'charcoal'
+                        color: 'charcoal',
+                        pr: 2,
+                        _last: {
+                            pr: 0
+                        }
                     }
                 }
             }

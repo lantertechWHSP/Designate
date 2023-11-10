@@ -86,19 +86,19 @@ const DividendGrowthChart:any = ({ table, theme }:IDividendGrowthChartBlock) : R
                     <Flex mx={-2}>
                         <Flex align="center" px={2}>
                             <Box background={colors[0]} width="10px" height="10px" borderRadius="5px" mr={2} />
-                            <Text as="span" mb={0} lineHeight={1} color={textColor}>
+                            <Text as="span" mb={0} lineHeight={1} fontSize="16px" color={textColor}>
                                 Interim Dividend
                             </Text>
                         </Flex>
                         <Flex align="center" px={2}>
                             <Box background={colors[1]} width="10px" height="10px" borderRadius="5px" mr={2} />
-                            <Text as="span" mb={0} lineHeight={1} color={textColor}>
+                            <Text as="span" mb={0} lineHeight={1} fontSize="16px" color={textColor}>
                                 Final Dividend
                             </Text>
                         </Flex>
                         <Flex align="center" px={2}>
                             <Box background={colors[2]} width="10px" height="10px" borderRadius="5px" mr={2} />
-                            <Text as="span" mb={0} lineHeight={1} color={textColor}>
+                            <Text as="span" mb={0} lineHeight={1} fontSize="16px" color={textColor}>
                                 Special Dividend
                             </Text>
                         </Flex>
