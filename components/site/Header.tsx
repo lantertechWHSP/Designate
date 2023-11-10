@@ -1,4 +1,5 @@
 import { ReactNode, useState, useEffect, useRef, useMemo } from 'react';
+import { useRouter } from 'next/router';
 import {
     Container,
     Flex,
@@ -33,11 +34,12 @@ interface IHeader extends IDatoHeader {
 }
 
 const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
-    const { isOpen, onToggle } = useDisclosure();
+    const { isOpen, onToggle, onClose } = useDisclosure();
     const height:string = '120px';
 
     const [isScrolledDown, setIsScrolledDown] = useState(false);
     const [isMinimumScrolled, setIsMinimumScrolled] = useState(false);
+    const router = useRouter();
 
     useDocumentScroll(({previousScrollTop, currentScrollTop}) => {
         setIsScrolledDown(previousScrollTop < currentScrollTop);
@@ -67,6 +69,13 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
             }
         }
     }, [isOpen, isScrolledDown, isMinimumScrolled, darkTheme]);
+
+    useEffect(() => {
+        router.events.on('routeChangeStart', onClose);
+        return () => {
+            router.events.off('routeChangeStart', onClose);
+        };
+    }, [onClose]);
 
     return <Box as="header">
         <Box pos="fixed" top={0} height={[height]} w="100%" zIndex={100}
@@ -260,7 +269,7 @@ const MobileNavItem:any = ({item}): ReactNode => {
                 color="charcoal"
                 fontSize="18px"
                 link={item.link}
-                externalLink={item.externalLink} >
+                externalLink={item.externalLink}>
                 {item.title}
             </MenuItemLink>
             <Box flex={1}/>

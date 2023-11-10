@@ -32,7 +32,7 @@ const DefaultLayout:any = ({ layout, children }:any) : ReactNode => {
                                 }
                             </Flex>
                         </Container>
-                        <Box position="absolute" top="0" left="60%" height="100%">
+                        <Box position="absolute" top="0" left={['30%', '40%', ,'60%']} height="100%">
                             <VectorEffect />
                         </Box>
                     </Box>

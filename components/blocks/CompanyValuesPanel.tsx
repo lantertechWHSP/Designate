@@ -17,7 +17,7 @@ interface ICompanyValue {
 const CompanyValuesPanelBlock:any = ({ title, items, containerWidth, background, paddingTop, paddingBottom,  }:ICompanyValuesPanelBlock) : ReactNode => {
     return ((Array.isArray(items) && items.length > 0) || title) && <ContentBlock containerWidth={containerWidth} background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         {
-            title && <Heading as="h3" variant="sectionSubheading" mb={8}>
+            title && <Heading as="h3" variant="sectionSubheading" mb={[4, 6, ,8]}>
                 Our People and Values
             </Heading>
         }

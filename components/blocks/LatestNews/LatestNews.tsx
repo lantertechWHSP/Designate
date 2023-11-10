@@ -1,12 +1,12 @@
-import { ReactNode } from 'react';
-import { IBlock } from '~/interfaces/util/block';
-import { Flex, Heading, Box, Alert } from '@chakra-ui/react';
+import {ReactNode} from 'react';
+import {IBlock} from '~/interfaces/util/block';
+import {Alert, Box, Flex, Heading} from '@chakra-ui/react';
 import ContentBlock from '~/components/blocks/Content';
-import { doQuery, queries } from '~/dato/api';
-import { IPost } from '~/interfaces/models/post';
+import {doQuery, queries} from '~/dato/api';
+import {IPost} from '~/interfaces/models/post';
 import LatestNewsItem from '~/components/blocks/LatestNews/LatestNewsItem';
-import { SectionLinkButton } from "~/components/elements/sectionLink";
-import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
+import {SectionLinkButton} from "~/components/elements/sectionLink";
+import {Column, ColumnWidth, Row} from '~/components/elements/grid/grid';
 
 interface ILatestNewsBlock extends IBlock {
     title:string;
@@ -31,7 +31,7 @@ const LatestNewsBlock:any = ({ background, textColor, paddingTop, paddingBottom,
                 <Row wrap={['nowrap', , 'wrap']} >
                     {
                         posts.map((post:IPost, index:number) => {
-                            return <Column width={[ColumnWidth.Half, ,ColumnWidth.OneThird]} minWidth={[ColumnWidth.Half, ,'unset']} key={index}>
+                            return <Column width={[ColumnWidth.Half, , ,ColumnWidth.OneThird]} key={index}>
                                 <LatestNewsItem {...post} />
                             </Column>;
                         })
@@ -44,7 +44,7 @@ const LatestNewsBlock:any = ({ background, textColor, paddingTop, paddingBottom,
 
 LatestNewsBlock.getData = async () => {
     const result:any = await doQuery(queries.latestPosts, {
-        first: 3,
+        first: 6,
         filter: {
             isFeatured: {
                 'eq': true

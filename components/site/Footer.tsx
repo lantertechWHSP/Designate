@@ -32,7 +32,7 @@ const Footer:any = ({ menu, address, email, phone, fax, linkedin, youtube, abn, 
                         }
                     </Flex>
                 </Column>
-                <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
+                <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]} fontSize={['18px']}>
                     <Row>
                         <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half]} order={[2, , ,1]}>
                             {
@@ -101,12 +101,12 @@ const Footer:any = ({ menu, address, email, phone, fax, linkedin, youtube, abn, 
                         </Box>
                     </Link>
                 </Column>
-                <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]} mb={[8, ,0]} order={[1, ,2]}>
+                <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]} mb={[8, ,0]} order={[1, ,2]} fontSize={['16px']}>
                     <Row>
                         <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
                             {
                                 abn && <Box color="whiteBlur">
-                                    ABN: <Link href={`https://abr.business.gov.au/ABN/View?id=${abn}`} target="_blank" color="whiteBlur" variant="siteFooter">
+                                    ABN: <Link href={`https://abr.business.gov.au/ABN/View?id=${abn}`} fontSize={['16px']} target="_blank" color="whiteBlur" variant="siteFooter">
                                         {abn}
                                     </Link>
                                 </Box>

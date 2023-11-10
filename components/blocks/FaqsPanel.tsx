@@ -31,7 +31,7 @@ const FaqsPanelBlock:any = ({ displayTitle, theme, paddingBottom, data: { faqs }
     const backgroundColor:string = theme === Theme.Dark ? 'olive' : 'ghostWhite';
     const textColor:string = theme === Theme.Dark ? 'white' : 'olive';
 
-    return <AccordionBlock title={displayTitle ? 'Frequently Asked Questions' : ''} background={backgroundColor} textColor={textColor} items={items} paddingBottom={paddingBottom} contentColumnWidth={[ColumnWidth.Full, ,ColumnWidth.EightTwelfths]} />;
+    return <AccordionBlock title={displayTitle ? 'Frequently Asked Questions' : ''} background={backgroundColor} textColor={textColor} items={items} paddingBottom={paddingBottom} contentColumnWidth={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths, ColumnWidth.EightTwelfths]} />;
 };
 
 export default FaqsPanelBlock;

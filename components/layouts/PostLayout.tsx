@@ -39,6 +39,7 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
                 post?.image && post?.image?.responsiveImage ? <><Flex width="100%"
                     height={['550px']}
                     background="linear-gradient(270deg, #50513C 0%, rgba(228, 221, 193, 0.50) 100%)"
+                                                                  overflowX="hidden"
                     align="flex-end">
                     <Box width="100%" marginBottom="200px">
                         <Container>
@@ -70,7 +71,7 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
                             <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths]}>
                                 <Image image={post?.image} />
                                 {
-                                    (post?.image?.title) && <Text variant="annotation" mt={2} mb={0}>
+                                    (post?.image?.title) && <Text variant="annotation"  mt={2} mb={0}>
                                         {post?.image?.title}
                                     </Text>
                                 }
@@ -80,10 +81,11 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
                 </Box></> : <Box h={['376px']}
                     width="100%"
                     position="relative"
+                                 overflowX="hidden"
                     background="linear-gradient(270deg, #50513C 0%, rgba(228, 221, 193, 0.50) 100%)">
                     <Container>
                         <Row>
-                            <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
+                            <Column width={[ColumnWidth.Full, ColumnWidth.TenTwelfths, ,ColumnWidth.Half]}>
                                 <Flex h={['376px']} align="flex-end">
                                     <Box mb={['40px', ,'50px', '60px']}>
                                         {
@@ -92,13 +94,13 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
                                                 lineHeight={['54px']}
                                                 fontWeight={500}
                                                 overflow="hidden"
-                                                color="white"
+                                                color="charcoal"
                                                 textOverflow="ellipsis">
                                                 {post?.title}
                                             </Heading>
                                         }
                                         {
-                                            <Text color="whiteBlur" mb={0}>
+                                            <Text color="charcoalBlur" mb={0}>
                                                 {annotation}
                                             </Text>
                                         }
@@ -108,7 +110,7 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
                             </Column>
                         </Row>
                     </Container>
-                    <Box position="absolute" top="0" left="60%" height="100%">
+                    <Box position="absolute" top="0" left={['30%', '40%', ,'60%']} height="100%">
                         <VectorEffect />
                     </Box>
                 </Box>

@@ -162,7 +162,7 @@ const TrackRecordChartBlock:any = ({ table, theme, paddingTop, paddingBottom }:I
 
 
     return <ContentBlock paddingTop={paddingTop} paddingBottom={paddingBottom} background={backgroundColor}>
-        <Flex justify="space-between" mb={4}>
+        <Flex justify="space-between" align="center" mb={['']}>
             <Heading as="h2" variant="sectionSubheading" color={headingTextColor}>
                 20 Year Total Shareholder Return
             </Heading>
