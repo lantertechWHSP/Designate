@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
 import ContentBlock from '~/components/blocks/Content';
 import { ILink } from '~/interfaces/util/link';
-import { Box, Heading, Text } from '@chakra-ui/react';
+import { Box, Heading, Text, Flex } from '@chakra-ui/react';
 import { Row, Column, ColumnWidth } from "~/components/elements/grid/grid";
 import { IImage } from "~/interfaces/util/image";
 import { Link } from "~/components/elements/link";
