@@ -27,7 +27,9 @@ const CardPanelBlock:any = ({ annotation, title, description, image, link, align
         <Box background="white" borderRadius="3px" overflow="hidden" filter="drop-shadow(0px 1px 0px rgba(0, 0, 0, 0.10))" >
             <Row direction={['column', ,(align === ICardPanelAlign.Right) ? 'row-reverse' : 'row']}>
                 <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
-                    <Box py={[6, ,8]}
+                    <Flex py={[6, ,8]}
+                          flex="1"
+                          direction="column"
                         pl={align === ICardPanelAlign.Right ? [6, ,0] : [6, ,8]}
                         pr={align === ICardPanelAlign.Left ? [6, ,0] : [6, ,8]}>
                         {
@@ -53,7 +55,7 @@ const CardPanelBlock:any = ({ annotation, title, description, image, link, align
                                 {link.document ? 'Download' : 'Read More'}
                             </SectionLink>
                         }
-                    </Box>
+                    </Flex>
                 </Column>
                 <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
                     <Box position="relative" minHeight={['320px', ,'400px']}>
