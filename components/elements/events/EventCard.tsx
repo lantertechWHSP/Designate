@@ -22,6 +22,7 @@ const EventCard:any = ({ title, allDay, startDate, endDate, details, location }:
             pr={2}>
             {
                 title && <Heading as="h3"
+                                  flex={['unset', ,1]}
                     variant="listItem">
                     {title}
                 </Heading>

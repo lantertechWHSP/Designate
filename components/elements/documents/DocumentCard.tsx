@@ -15,6 +15,7 @@ const DocumentCard:any = ({ title, date, document }:IDocumentCard) : ReactNode =
             pr={2}>
             {
                 title && <Heading as="h3"
+                                  flex={['unset', ,1]}
                     variant="listItem">
                     {
                         (document && document.url) ? <Link href={document?.url} target="_blank">
