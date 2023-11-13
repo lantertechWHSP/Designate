@@ -1,6 +1,6 @@
 import { extendBaseTheme } from '@chakra-ui/react';
 import chakraTheme from '@chakra-ui/theme';
-const { Modal, Menu, Badge, Alert } = chakraTheme.components;
+const { Modal, Menu, Badge, Alert, Skeleton } = chakraTheme.components;
 
 export const breakpoints:any = {
     base: '0px',
@@ -462,27 +462,18 @@ export const theme:any = extendBaseTheme({
                 color: 'olive'
             },
         },
+        Skeleton: {
+            ...Skeleton,
+        },
         Alert: {
             ...Alert,
-            // defaultProps: {
-            //     fontSize: '16px'
-            // }
-            // ...Alert,
-            // baseStyle: {
-            //     container: {
-            //         fontSize: '16px',
-            //     },
-            //     title: {
-            //         fontSize: '16px',
-            //     },
-            //     description: {
-            //         fontSize: '16px',
-            //     }
-            // }
         }
     },
     styles: {
         global: {
+            '*': {
+                fontDisplay: 'optional'
+            },
             '*:focus': {
                 outline: 0,
             },

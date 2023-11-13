@@ -10,6 +10,7 @@ import { ILayout } from '~/interfaces/layout/layout';
 import { IBlock } from '~/interfaces/util/block';
 import { IPage } from '~/interfaces/models/page';
 import { PaddingBottom } from '~/components/blocks/Content';
+import { Box } from '@chakra-ui/react';
 
 interface INextPageProps {
     layout?:ILayout;
@@ -57,6 +58,7 @@ const Page : NextPage = ({ layout, blocks }:INextPageProps) : JSX.Element => {
 
     return (
         <DefaultLayout layout={layout}>
+            <Box background="olive" minHeight="700px" />
             <ModularContent content={blocks} />
         </DefaultLayout>
     );

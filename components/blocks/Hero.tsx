@@ -16,26 +16,25 @@ const HeroBlock:any = ({ title, video }:IHeroBlock) : ReactNode => {
     const { observe: contentWidthObserve, width: contentWidth } = useDimensions();
     const height:string[] = ['420px', '482px'];
 
-    const [isVideoPlaying, setIsPlaying] = useState(false);
-    const [isBackgroundLoaded, setIsBackgroundLoaded] = useState(false);
-    const [backgroundImg, setBackgroundImg] = useState(null);
+    // const [isVideoPlaying, setIsPlaying] = useState(false);
+    // const [isBackgroundLoaded, setIsBackgroundLoaded] = useState(false);
+    // const [backgroundImg, setBackgroundImg] = useState(null);
 
-    useEffect(() => {
-        const image:HTMLImageElement = new Image();
-        image.src = '/images/blocks/hero/background.png';
-        image.onload = () => {
-            setIsBackgroundLoaded(true);
-        };
-
-        setBackgroundImg(image);
-    }, []);
+    // useEffect(() => {
+    //     const image:HTMLImageElement = new Image();
+    //     image.src = '/images/blocks/hero/background.png';
+    //     image.onload = () => {
+    //         setIsBackgroundLoaded(true);
+    //     };
+    //
+    //     setBackgroundImg(image);
+    // }, []);
 
     return (title || video && video?.url) && <Box overflow="hidden" ref={contentWidthObserve}>
-
         {
-            (title && (video && isVideoPlaying || !video)) ? <Box h={height}
+            title && <Box h={height}
                 position="relative"
-                backgroundImage={`url(${backgroundImg.src})`}
+                backgroundImage={`url('/images/blocks/hero/background.png')`}
                 backgroundPosition="center"
                 backgroundSize="cover">
                 <Container h={height}>
@@ -50,18 +49,17 @@ const HeroBlock:any = ({ title, video }:IHeroBlock) : ReactNode => {
                 <Box position="absolute" top="0" left="40%" height="100%">
                     <HeroVectorEffect />
                 </Box>
-            </Box> : <Box h={height}/>
+            </Box>
         }
         {
-            (video) && <Box h={['300px', '420px', ,'600px']} visibility={(isBackgroundLoaded && isVideoPlaying) ? 'visible' : 'hidden'} position="relative">
+            (video) && <Box h={['300px', '420px', ,'600px']} position="relative">
                 <AspectRatio ratio={[contentWidth / 300, contentWidth / 420, , contentWidth / 600]}>
-                    <video autoPlay={true} loop={true} muted={true} preload="auto" playsInline onPlay={() => { setIsPlaying(true); }}>
+                    <video autoPlay={true} loop={true} muted={true} preload="auto" playsInline>
                         <source src={video?.url} />
                     </video>
                 </AspectRatio>
             </Box>
         }
-
     </Box>;
 };
 
