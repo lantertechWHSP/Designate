@@ -8,15 +8,15 @@ interface IDocumentCard extends IDocument {
 }
 
 const DocumentCard:any = ({ title, date, document }:IDocumentCard) : ReactNode => {
-    return <Flex py={[4, ,'22px']} direction={['row']} align="center">
+    return <Flex py={[4, ,'22px']} direction={['row']} align="center" mx={-4}>
 
         <Flex direction={['column', , 'row']}
-            flex={1}
-            pr={2}>
+              width={['83.33333333%']}
+              px={4}>
             {
                 title && <Heading as="h3"
-                    flex={['unset', ,1]}
-                    variant="listItem">
+                                  width={['unset', ,'60.3%']}
+                                  variant="listItem">
                     {
                         (document && document.url) ? <Link href={document?.url} target="_blank">
                             {title}
@@ -27,16 +27,14 @@ const DocumentCard:any = ({ title, date, document }:IDocumentCard) : ReactNode =
             {
                 date && <Text
                     variant="listLabel"
-                    minWidth={['100%', '250px', '350px']}
-                    maxWidth={['100%', '250px', '350px']}
-                    mb={0} >
+                    mb={0}>
                     {DateTime.fromISO(date).toFormat('MMM d, yyyy')}
                 </Text>
             }
         </Flex>
-        <Flex minWidth={['60px', '140px']}
-              maxWidth={['60px', '140px']}
-            justify="flex-end">
+        <Flex width={['16.6666666667%']}
+              justify="flex-end"
+              px={4}>
             {
                 (document && document.url) && <SectionLink href={document?.url}
                     as="a"

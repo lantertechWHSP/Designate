@@ -13,12 +13,12 @@ const EventCard:any = ({ title, allDay, startDate, endDate, details, location }:
     return <Flex py={[4, ,'22px']}
                  direction={['row']}
                  mx={-4}
-        align="center"
-        cursor="pointer"
-        role="group"
-        onClick={() => {
-            setIsOpen(true);
-        }}>
+                 align="center"
+                 cursor="pointer"
+                 role="group"
+                 onClick={() => {
+                     setIsOpen(true);
+                 }}>
         <Flex
             direction={['column', , 'row']}
             width={['83.33333333%']}
@@ -39,7 +39,8 @@ const EventCard:any = ({ title, allDay, startDate, endDate, details, location }:
             }
         </Flex>
         <Flex width={['16.6666666667%']}
-            justify="flex-end">
+              justify="flex-end"
+              px={4}>
             {
                 <AddToCalendar
                     isOpen={isOpen}

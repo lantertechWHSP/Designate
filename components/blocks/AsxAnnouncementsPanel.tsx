@@ -147,23 +147,14 @@ const AsxAnnouncementsPanelBlock:any = ({}:IAsxAnnouncementsPanelBlock) : ReactN
                                     <Heading as="h3"
                                         data-yourir="$cur.heading"
                                         flex={1}
-                                        pr={2}
+                                             mr={2}
                                         variant="listItem" />
                                     <Text data-yourir="$cur.date format='MMM DD, YYYY'"
+                                          width={['33%', ,'25%']}
                                         variant="listLabel"
-                                        display={['none', 'none', 'block']}
                                         textAlign={['right', ,'left']}
-                                        minWidth={['140px', ,'30%']}
-                                        maxWidth={['140px', ,'30%']}
                                         mb={0} />
-                                    <Text data-yourir="$cur.date format='DD.MM.YYYY'"
-                                        variant="listLabel"
-                                        display={['block', 'block' ,'none']}
-                                        textAlign={['right', ,'left']}
-                                        minWidth={['140px', ,'30%']}
-                                        maxWidth={['140px', ,'30%']}
-                                        mb={0} />
-                                    <Flex  minWidth={['unset', ,'140px']}
+                                    <Flex width={['8.33333333333%']}
                                         justify="flex-end"
                                         display={['none', ,'flex']}>
                                         <Link data-yourir="viewAnnouncementOnMobile {$cur.symbol} {$cur.fileID}">
