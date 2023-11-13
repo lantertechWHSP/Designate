@@ -32,7 +32,7 @@ const SharePriceChart:any = () : ReactNode => {
     ];
 
     return <Box as={YourIR}>
-        <Box mt={[8, ,16]}>
+        <Box mt={[4, 8, ,16]}>
             <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" height="0" width="0">
                 <defs>
                     <linearGradient id="priceGradient" gradientTransform="rotate(90)">

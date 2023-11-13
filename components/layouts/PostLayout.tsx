@@ -1,15 +1,15 @@
-import React, { ReactNode, useState } from 'react';
+import React, {ReactNode, useState} from 'react';
 import Meta from '~/components/site/Meta';
 import Header from '~/components/site/Header';
 import Footer from '~/components/site/Footer';
-import { Flex, Heading, Container, Box, Text } from '@chakra-ui/react';
-import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
-import { DateTime } from 'luxon';
-import { Image } from '~/components/elements/image';
+import {Box, Container, Flex, Heading, Text} from '@chakra-ui/react';
+import {Column, ColumnWidth, Row} from '~/components/elements/grid/grid';
+import {DateTime} from 'luxon';
+import {Image} from '~/components/elements/image';
 import SocialShare from '~/components/elements/socialShare';
 import Preview from '~/components/site/Preview';
 import VectorEffect from '~/components/elements/shapes/VectorEffect';
-import { zIndex } from '~/lib/theme/theme';
+import {zIndex} from '~/lib/theme/theme';
 
 const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
     const [annotation] = useState((() => {
@@ -45,7 +45,7 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
                     <Box width="100%" marginBottom="200px">
                         <Container>
                             <Row justify="center">
-                                <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths, ColumnWidth.EightTwelfths]}>
+                                <Column width={[ColumnWidth.Full, , ,ColumnWidth.TenTwelfths, ColumnWidth.EightTwelfths]}>
                                     {
                                         <Text color="charcoalBlur" mb={4}>
                                             {annotation}
@@ -69,7 +69,7 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
                 </Flex><Box position="relative" marginTop="-160px">
                     <Container>
                         <Row justify="center">
-                            <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths]}>
+                            <Column width={[ColumnWidth.Full, , ,ColumnWidth.TenTwelfths, ColumnWidth.EightTwelfths]}>
                                 <Image image={post?.image} />
                                 {
                                     (post?.image?.title) && <Text variant="annotation"  mt={2} mb={0}>
@@ -86,7 +86,7 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
                     background="linear-gradient(270deg, #50513C 0%, rgba(228, 221, 193, 0.50) 100%)">
                     <Container>
                         <Row>
-                            <Column width={[ColumnWidth.Full, ColumnWidth.TenTwelfths, ,ColumnWidth.EightTwelfths]}>
+                            <Column width={[ColumnWidth.Full, , ,ColumnWidth.TenTwelfths, ColumnWidth.EightTwelfths]}>
                                 <Flex h={['376px']} align="flex-end" zIndex={zIndex.heroHeading} position="relative">
                                     <Box mb={['40px', ,'50px', '60px']}>
                                         {
@@ -124,7 +124,7 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
             <Box mt={['40px', ,'50px', '60px']} mb={['120px']}>
                 <Container>
                     <Row justify="center">
-                        <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths, ColumnWidth.EightTwelfths]}>
+                        <Column width={[ColumnWidth.Full, , ,ColumnWidth.TenTwelfths, ColumnWidth.EightTwelfths]}>
                             <SocialShare />
                         </Column>
                     </Row>

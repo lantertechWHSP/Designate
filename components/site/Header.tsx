@@ -214,10 +214,14 @@ const MobileNav:any = ({ background, menu, isOpen = false }): ReactNode => {
     useEffect(() => {
         if (scrollRef.current) {
             if (isOpen) {
-                disableBodyScroll(scrollRef.current);
+                disableBodyScroll(scrollRef.current, {
+                    reserveScrollBarGap: true
+                });
             }
             else {
-                enableBodyScroll(scrollRef.current);
+                enableBodyScroll(scrollRef.current, {
+                    reserveScrollBarGap: true
+                });
             }
         }
         return () => {

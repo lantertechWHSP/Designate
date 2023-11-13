@@ -11,15 +11,22 @@ interface IAxisBottom {
 export const AxisBottom:any = ({ scale, transform }:IAxisBottom) : ReactNode => {
     const elementRef:any = useRef<SVGGElement>(null);
 
-    const [mediaQuery] = useMediaQuery(`(min-width: ${breakpoints.md})`);
+    const [mdMediaQuery] = useMediaQuery(`(min-width: ${breakpoints.md})`);
+    const [lgMediaQuery] = useMediaQuery(`(min-width: ${breakpoints.lg})`);
 
     useEffect(() => {
         if (elementRef.current) {
             select(elementRef.current).call(axisBottom(scale).tickValues(scale.domain().filter((datum:any, index:number) => {
-                return mediaQuery ? true : index % 3 === 0;
+                if(lgMediaQuery) {
+                    return true;
+                }
+                else if(mdMediaQuery) {
+                    return index % 2 === 0;
+                }
+                return index % 3 === 0;
             })));
         }
-    }, [scale, mediaQuery]);
+    }, [scale, lgMediaQuery, mdMediaQuery]);
 
     return <g className="x-axis">
         <g ref={elementRef} transform={transform} />

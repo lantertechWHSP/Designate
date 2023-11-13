@@ -47,7 +47,7 @@ const PortfolioPanelBlock:any = ({ items, paddingTop, paddingBottom }:IPortfolio
                                         color="olive"
                                         fontSize={['21px']}
                                         lineHeight={['26px']}
-                                        fontWeight={700} mb={0}>
+                                        fontWeight={700} mb={0} mr={4}>
                                         {item?.title}
                                     </Heading>
                                     <Box flex={1} />

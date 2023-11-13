@@ -51,7 +51,7 @@ const AccordionBlock:any = ({ title, background, textColor, items, paddingBottom
                                             color={selectedTextColor}
                                             fontSize={['21px']}
                                             lineHeight={['26px']}
-                                            fontWeight={500} margin={0}>
+                                            fontWeight={500} mb={0} mr={4}>
                                             {item?.title}
                                         </Heading>
                                         <Box flex={1} />

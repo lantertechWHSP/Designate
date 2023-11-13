@@ -147,10 +147,10 @@ const AsxAnnouncementsPanelBlock:any = ({}:IAsxAnnouncementsPanelBlock) : ReactN
                                     <Heading as="h3"
                                         data-yourir="$cur.heading"
                                         flex={1}
-                                             mr={2}
+                                        mr={2}
                                         variant="listItem" />
                                     <Text data-yourir="$cur.date format='MMM DD, YYYY'"
-                                          width={['33%', ,'25%']}
+                                        width={['33%', ,'25%']}
                                         variant="listLabel"
                                         textAlign={['right', ,'left']}
                                         mb={0} />

@@ -13,7 +13,7 @@ const EventList:any = ({ events }:IEventList) : ReactNode => {
             (Array.isArray(events) && events.length > 0) ? <>
                 <Box borderBottom="3px solid" borderColor="borderColor">
                     <Flex direction={['row']} mx={-4} pb={2} width="100%" fontSize="16px"
-                          lineHeight="22px">
+                        lineHeight="22px">
                         <Text mb={0} px={4} width={['100%', ,'50%']}>
                             Event
                         </Text>

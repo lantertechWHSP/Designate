@@ -49,7 +49,7 @@ export const SubscriptionForm:any = () : ReactNode => {
             <Box py={['40px', ,'50px', '60px']}>
                 <Row>
                     <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half]}>
-                        <Heading as="h2" variant="sectionHeading" color="white">
+                        <Heading as="h2" variant="sectionHeading" color="white" mb={[4, 0]}>
                             Subscribe for the latest updates
                         </Heading>
                     </Column>

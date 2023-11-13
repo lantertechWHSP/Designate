@@ -58,7 +58,7 @@ const CardPanelBlock:any = ({ annotation, title, description, image, link, align
                     </Flex>
                 </Column>
                 <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
-                    <Box position="relative" minHeight={['320px', ,'400px']}>
+                    <Box position="relative" height={['320px', ,'400px']} minHeight="100%">
                         {
                             link ? <Link {...link}
                                 display="block"

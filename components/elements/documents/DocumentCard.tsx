@@ -11,12 +11,12 @@ const DocumentCard:any = ({ title, date, document }:IDocumentCard) : ReactNode =
     return <Flex py={[4, ,'22px']} direction={['row']} align="center" mx={-4}>
 
         <Flex direction={['column', , 'row']}
-              width={['83.33333333%']}
-              px={4}>
+            width={['83.33333333%']}
+            px={4}>
             {
                 title && <Heading as="h3"
-                                  width={['unset', ,'60.3%']}
-                                  variant="listItem">
+                    width={['unset', ,'60.3%']}
+                    variant="listItem">
                     {
                         (document && document.url) ? <Link href={document?.url} target="_blank">
                             {title}
@@ -33,8 +33,8 @@ const DocumentCard:any = ({ title, date, document }:IDocumentCard) : ReactNode =
             }
         </Flex>
         <Flex width={['16.6666666667%']}
-              justify="flex-end"
-              px={4}>
+            justify="flex-end"
+            px={4}>
             {
                 (document && document.url) && <SectionLink href={document?.url}
                     as="a"

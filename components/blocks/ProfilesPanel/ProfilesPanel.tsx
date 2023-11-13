@@ -60,7 +60,7 @@ export const ProfilesPanelBlock:any = ({ items, background, paddingTop, paddingB
                                 </Column>
                                 <Column  width={[ColumnWidth.Full, ,ColumnWidth.TwoThirds]}>
                                     {
-                                        (activeItem?.person?.name || !isEmptyDocument(activeItem?.detailedCompanyPosition) || activeItem?.person?.companyPosition) && <Box minHeight="50px">
+                                        (activeItem?.person?.name || !isEmptyDocument(activeItem?.detailedCompanyPosition) || activeItem?.person?.companyPosition) && <Box minHeight="50px" width={['calc(100% - 70px)', ,'100%']}>
                                             {
                                                 activeItem?.person?.name && <Heading as="h2" fontWeight={500} fontSize={['21px']} lineHeight={['26px']}>
                                                     {activeItem?.person?.name}
@@ -93,7 +93,7 @@ export const ProfilesPanelBlock:any = ({ items, background, paddingTop, paddingB
                                     }
                                 </Column>
                             </Row>
-                            <Button pos="absolute" top={8} right={8} onClick={() => setModalOpen(false)} borderRadius="50%" border="2px solid" borderColor="oliveBlur" color="charcoal" background="transparent" w="50px" h="50px">
+                            <Button pos="absolute" top={8} right={['16px', '24px', '32px']}  onClick={() => setModalOpen(false)} borderRadius="50%" border="2px solid" borderColor="oliveBlur" color="charcoal" background="transparent" w="50px" h="50px">
                                 <Icon icon={Icons.Cross} w={10} h={10} />
                             </Button>
                         </Container>

@@ -78,7 +78,7 @@ const SharePriceOverview:any = () : ReactNode => {
             </Box>
             <Box py={4} flex={1} borderBottom="1px solid" borderColor="borderColor">
                 <Text fontSize={['72px']}
-                    mb={0}
+                    mb={2}
                     lineHeight={['80px']}
                     fontWeight={500}
                     color="olive"
