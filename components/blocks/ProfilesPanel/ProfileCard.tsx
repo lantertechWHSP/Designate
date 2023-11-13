@@ -32,7 +32,7 @@ const ProfileCard:any = ({ person, onClick }:IProfileCard) : ReactNode => {
         }
         <Box flex="1" />
         {
-            <Box mt={[4, 6, 8]}>
+            <Box mt={[4, ,6, 8]}>
                 <SectionLink onClick={onClick} href="javacript:void(0)">
                     Read More
                 </SectionLink>

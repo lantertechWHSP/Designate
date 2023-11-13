@@ -11,24 +11,17 @@ const EventList:any = ({ events }:IEventList) : ReactNode => {
     return <Box>
         {
             (Array.isArray(events) && events.length > 0) ? <>
-                <Flex direction={['row']} borderBottom="3px solid" borderColor="borderColor">
-                    <Text fontSize="16px"
-                        mb={2}
-                        pr={2}
-                        lineHeight="22px"
-                        letterSpacing="0.16px">
-                        Event
-                    </Text>
-                    <Text fontSize="16px"
-                        mb={2}
-                        display={['none', 'block']}
-                        lineHeight="22px"
-                        minWidth={['unset', 'calc(20% + 146px)', 'calc(30% + 146px)']}
-                        maxWidth={['unset', 'calc(20% + 146px)', 'calc(30% + 146px)']}
-                        letterSpacing="0.16px">
-                        Date
-                    </Text>
-                </Flex>
+                <Box borderBottom="3px solid" borderColor="borderColor">
+                    <Flex direction={['row']} mx={-4} pb={2} width="100%" fontSize="16px"
+                          lineHeight="22px">
+                        <Text mb={0} px={4} width={['100%', ,'50%']}>
+                            Event
+                        </Text>
+                        <Text mb={0} px={4} width="50%" display={['none', ,'block']}>
+                            Date
+                        </Text>
+                    </Flex>
+                </Box>
                 {
                     events.map((event:IEvent, index:number) => {
                         return <Box borderBottom="1px solid" borderColor="borderColor" key={index}>

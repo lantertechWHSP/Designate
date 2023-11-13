@@ -8,8 +8,8 @@ import { DateTime } from 'luxon';
 import { Image } from '~/components/elements/image';
 import SocialShare from '~/components/elements/socialShare';
 import Preview from '~/components/site/Preview';
-import VectorEffect from "~/components/elements/shapes/VectorEffect";
-import {zIndex} from "~/lib/theme/theme";
+import VectorEffect from '~/components/elements/shapes/VectorEffect';
+import { zIndex } from '~/lib/theme/theme';
 
 const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
     const [annotation] = useState((() => {
@@ -86,7 +86,7 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
                     background="linear-gradient(270deg, #50513C 0%, rgba(228, 221, 193, 0.50) 100%)">
                     <Container>
                         <Row>
-                            <Column width={[ColumnWidth.Full, ColumnWidth.TenTwelfths, ,ColumnWidth.Half]}>
+                            <Column width={[ColumnWidth.Full, ColumnWidth.TenTwelfths, ,ColumnWidth.EightTwelfths]}>
                                 <Flex h={['376px']} align="flex-end" zIndex={zIndex.heroHeading} position="relative">
                                     <Box mb={['40px', ,'50px', '60px']}>
                                         {

@@ -12,7 +12,7 @@ interface IImageBlock extends IBlock {
 }
 
 const ImageBlock:any = ({ title, image, contain, containerWidth, background, paddingTop, paddingBottom  }:IImageBlock) : ReactNode => {
-    return (title || image) && <ContentBlock contain={contain} containerWidth={containerWidth} background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
+    return (title || image) && <ContentBlock className="ImageBlock" contain={contain} containerWidth={containerWidth} background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         {
             (image && image.responsiveImage) && <Box borderRadius="3px" overflow="hidden">
                 <DatoImage data={image.responsiveImage} style={{

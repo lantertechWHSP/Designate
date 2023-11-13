@@ -10,19 +10,22 @@ interface IEventCard extends IEvent {
 const EventCard:any = ({ title, allDay, startDate, endDate, details, location }:IEventCard) : ReactNode => {
     const [isOpen, setIsOpen] = useState(false);
 
-    return <Flex py={[4, ,'22px']} direction={['row']}
+    return <Flex py={[4, ,'22px']}
+                 direction={['row']}
+                 mx={-4}
         align="center"
         cursor="pointer"
         role="group"
         onClick={() => {
             setIsOpen(true);
         }}>
-        <Flex direction={['column', , 'row']}
-            flex={1}
-            pr={2}>
+        <Flex
+            direction={['column', , 'row']}
+            width={['83.33333333%']}
+            px={4}>
             {
                 title && <Heading as="h3"
-                                  flex={['unset', ,1]}
+                    width={['unset', ,'60.3%']}
                     variant="listItem">
                     {title}
                 </Heading>
@@ -30,14 +33,12 @@ const EventCard:any = ({ title, allDay, startDate, endDate, details, location }:
             {
                 startDate && <Text
                     variant="listLabel"
-                    minWidth={['100%', '20%', '30%']}
-                    maxWidth={['100%', '20%', '30%']}
                     mb={0}>
                     {DateTime.fromISO(startDate).toFormat('MMM d, yyyy')}
                 </Text>
             }
         </Flex>
-        <Flex minWidth={['60px', '140px']}
+        <Flex width={['16.6666666667%']}
             justify="flex-end">
             {
                 <AddToCalendar

@@ -23,13 +23,13 @@ interface ICardPanelBlock extends IBlock {
 }
 
 const CardPanelBlock:any = ({ annotation, title, description, image, link, align, containerWidth, background, paddingTop, paddingBottom }:ICardPanelBlock) : ReactNode => {
-    return (annotation || title || image && image?.url || link) && <ContentBlock containerWidth={containerWidth} background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
+    return (annotation || title || image && image?.url || link) && <ContentBlock className="CardPanelBlock" containerWidth={containerWidth} background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         <Box background="white" borderRadius="3px" overflow="hidden" filter="drop-shadow(0px 1px 0px rgba(0, 0, 0, 0.10))" >
             <Row direction={['column', ,(align === ICardPanelAlign.Right) ? 'row-reverse' : 'row']}>
                 <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
                     <Flex py={[6, ,8]}
-                          flex="1"
-                          direction="column"
+                        flex="1"
+                        direction="column"
                         pl={align === ICardPanelAlign.Right ? [6, ,0] : [6, ,8]}
                         pr={align === ICardPanelAlign.Left ? [6, ,0] : [6, ,8]}>
                         {

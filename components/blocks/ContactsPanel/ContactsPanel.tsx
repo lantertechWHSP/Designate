@@ -18,7 +18,7 @@ interface IContactsPanelBlock extends IBlock {
 const ContactsPanelBlock:any = ({title, background, paddingTop, paddingBottom, data: { contacts }}:IContactsPanelBlock) : ReactNode => {
     return (Array.isArray(contacts) && contacts.length > 0 || title) && <ContentBlock background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         {
-            title && <Heading as="h2" variant="sectionHeading" mb={['40px', ,'50px', '60px']}>
+            title && <Heading as="h2" variant="sectionHeading" mb={[4, ,6, 8]}>
                 {title}
             </Heading>
         }

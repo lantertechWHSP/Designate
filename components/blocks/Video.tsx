@@ -16,13 +16,14 @@ enum AspectRatio {
 interface IVideoBlock extends IBlock {
     title?:string;
     aspectRatio?:AspectRatio;
+    video?:IVideo;
     videoEmbed?:IVideo;
 }
 
-const VideoBlock:any = ({ title, videoEmbed, aspectRatio, contain, containerWidth, background, paddingTop, paddingBottom }:IVideoBlock) : ReactNode => {
-    const [currentVideo] = useState<IVideo>(videoEmbed);
+const VideoBlock:any = ({ title, video, videoEmbed, aspectRatio, contain, containerWidth, background, paddingTop, paddingBottom }:IVideoBlock) : ReactNode => {
+    const [currentVideo] = useState<IVideo>(video ? video : videoEmbed);
 
-    return (title || currentVideo) && <ContentBlock contain={contain} containerWidth={containerWidth} background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
+    return (title || currentVideo) && <ContentBlock className="VideoBlock" contain={contain} containerWidth={containerWidth} background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         {
             currentVideo && <AspectRatioBlock ratio={aspectRatio === AspectRatio.Long ? [16 / 7.5] : [16 / 9]}>
                 <ReactPlayer

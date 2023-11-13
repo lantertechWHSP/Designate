@@ -5,6 +5,9 @@ export const videoRecord:string = `
     videoEmbed {
         url
     }
+    video {
+        url
+    }
     aspectRatio
     background
     containerWidth

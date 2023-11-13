@@ -4,6 +4,7 @@ export const audioRecord:string = `
     soundcloudTrackId
     whooshkaaId
     omnyFmUrl
+    megaphoneId
     title
     background
     paddingTop

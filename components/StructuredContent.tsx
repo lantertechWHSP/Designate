@@ -1,13 +1,13 @@
-import React, {ReactNode} from 'react';
-import {StructuredText} from 'react-datocms';
-import {isCode, isHeading, isLink, isListItem, isParagraph} from 'datocms-structured-text-utils';
-import {renderNodeRule} from 'datocms-structured-text-to-html-string';
-import {Box, Code, Flex, Heading, Text} from '@chakra-ui/react';
+import React, { ReactNode } from 'react';
+import { StructuredText} from 'react-datocms';
+import { isCode, isHeading, isLink, isListItem, isParagraph } from 'datocms-structured-text-utils';
+import { renderNodeRule } from 'datocms-structured-text-to-html-string';
+import { Box, Code, Flex, Heading, Text } from '@chakra-ui/react';
 import ImageBlock from '~/components/blocks/Image';
 import VideoBlock from '~/components/blocks/Video';
 import AudioBlock from '~/components/blocks/Audio';
-import {ListTick} from '~/components/elements/svgs/ListTick';
-import {PaddingTop} from "~/components/blocks/Content";
+import { ListTick } from '~/components/elements/svgs/ListTick';
+import { PaddingBottom, PaddingTop } from "~/components/blocks/Content";
 import { Link } from '~/components/elements/link';
 
 const StrucutredContent:any = ({ content }) : ReactNode => {
@@ -21,6 +21,9 @@ const StrucutredContent:any = ({ content }) : ReactNode => {
             },
             'p + ul, p + ol': {
                 marginTop: -2,
+            },
+            'p + .ImageBlock, p + .VideoBlock, p + TextBlock, p + .CardPanelBlock': {
+                marginTop: "-24px",
             }
         }}>
             <StructuredText
@@ -116,6 +119,9 @@ const StrucutredContent:any = ({ content }) : ReactNode => {
                 renderBlock={({record}) => {
                     if(record.paddingTop === PaddingTop.Default) {
                         record.paddingTop = PaddingTop.Condensed;
+                    }
+                    if(record.paddingBottom === PaddingTop.Default) {
+                        record.paddingBottom = PaddingBottom.Condensed;
                     }
 
                     /* eslint-disable */

@@ -2,22 +2,22 @@ import { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
 import ContentBlock from '~/components/blocks/Content';
 import { Text } from '@chakra-ui/react';
-import {Column, ColumnWidth, Row} from "~/components/elements/grid/grid";
+import { Column, ColumnWidth, Row } from '~/components/elements/grid/grid';
 
 interface IAudioBlock extends IBlock {
     title?:string;
     soundcloudTrackId?:string;
     whooshkaaId?:string;
+    megaphoneId?:string;
     omnyFmUrl?:string;
 }
 
-const AudioBlock:any = ({ title, soundcloudTrackId, omnyFmUrl, whooshkaaId, contain, background, paddingTop, paddingBottom, containerWidth }:IAudioBlock) : ReactNode => {
-
+const AudioBlock:any = ({ title, soundcloudTrackId, omnyFmUrl, whooshkaaId, megaphoneId, contain, background, paddingTop, paddingBottom, containerWidth }:IAudioBlock) : ReactNode => {
     if(omnyFmUrl) {
         omnyFmUrl = omnyFmUrl.endsWith('/') ?  omnyFmUrl.slice(0, -1) : omnyFmUrl;
     }
 
-    return (title || soundcloudTrackId || omnyFmUrl || whooshkaaId) &&  <ContentBlock contain={contain} containerWidth={containerWidth} background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
+    return (title || soundcloudTrackId || omnyFmUrl || whooshkaaId || megaphoneId) &&  <ContentBlock contain={contain} containerWidth={containerWidth} background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         {
             soundcloudTrackId && <iframe width="100%"
                 height="170"
@@ -42,6 +42,14 @@ const AudioBlock:any = ({ title, soundcloudTrackId, omnyFmUrl, whooshkaaId, cont
                 allow="autoplay"
                 src={`https://webplayer.whooshkaa.com/player/episode/id/${whooshkaaId}?theme=light&waveform-progress-color=%23FA6800&play-video-if-available=true`}
             />
+        }
+        {
+            megaphoneId && <iframe width="100%"
+                height="170"
+                scrolling="no"
+                frameBorder="no"
+                allow="autoplay"
+                src={`https://playlist.megaphone.fm/?e=${megaphoneId}`} />
         }
         {
             title && <Row>

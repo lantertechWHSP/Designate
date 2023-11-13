@@ -1,6 +1,6 @@
-import {ReactNode} from 'react';
-import {Box, Container, ResponsiveValue} from '@chakra-ui/react';
-import {Column, ColumnWidth, Row} from "~/components/elements/grid/grid";
+import { ReactNode } from 'react';
+import { Box, Container, ResponsiveValue } from '@chakra-ui/react';
+import { Column, ColumnWidth, Row } from "~/components/elements/grid/grid";
 
 export enum ContainerWidth {
     Default = 'Default',
