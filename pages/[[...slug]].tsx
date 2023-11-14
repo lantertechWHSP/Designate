@@ -58,7 +58,7 @@ const Page : NextPage = ({ layout, blocks }:INextPageProps) : JSX.Element => {
 
     return (
         <DefaultLayout layout={layout}>
-            <ModularContent content={blocks} />
+            <ModularContent content={[blocks[1]]} />
         </DefaultLayout>
     );
 };
