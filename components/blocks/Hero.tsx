@@ -17,8 +17,8 @@ const HeroBlock:any = ({ title, video }:IHeroBlock) : ReactNode => {
     const { observe: contentWidthObserve, width: contentWidth } = useDimensions();
     const height:string[] = ['420px', '482px'];
     const [hideSkeleton, setHideSkeleton] = useState<boolean>(false);
-    const delaySkeletonTime = 200;
-    // const [isVideoPlaying, setIsPlaying] = useState(false);
+    const delaySkeletonTime = 300;
+    const [isVideoPlaying, setIsPlaying] = useState(false);
     // const [isBackgroundLoaded, setIsBackgroundLoaded] = useState(false);
     // const [backgroundImg, setBackgroundImg] = useState(null);
 
@@ -43,7 +43,7 @@ const HeroBlock:any = ({ title, video }:IHeroBlock) : ReactNode => {
             title && <Box h={height}
                 position="relative"
                 backgroundImage={`url('/images/blocks/hero/background.png')`}
-                backgroundColor="olive"
+                backgroundColor="#9b9681"
                 backgroundPosition="center"
                 backgroundSize="cover">
                 <Container h={height}>
@@ -65,12 +65,19 @@ const HeroBlock:any = ({ title, video }:IHeroBlock) : ReactNode => {
             </Box>
         }
         {
-            (video) && <Box h={['300px', '420px', ,'600px']} position="relative">
-                <AspectRatio ratio={[contentWidth / 300, contentWidth / 420, , contentWidth / 600]}>
-                    <video autoPlay={true} loop={true} muted={true} preload="auto" playsInline>
-                        <source src={video?.url} />
-                    </video>
-                </AspectRatio>
+            video && <Box h={['300px', '420px', ,'600px']}>
+                <Box visibility={(isVideoPlaying) ? 'visible' : 'hidden'} height={!isVideoPlaying ? 0 : 'initial'}>
+                    <AspectRatio ratio={[contentWidth / 300, contentWidth / 420, , contentWidth / 600]}>
+                        <video autoPlay={true} loop={true} muted={true} preload="auto" playsInline onPlay={() => { setIsPlaying(true); }}>
+                            <source src={video?.url} />
+                        </video>
+                    </AspectRatio>
+                </Box>
+                {
+                    (!hideSkeleton && !isVideoPlaying) && <Box width="100%" height="100%" backgroundColor="#230d05">
+                        <Skeleton width="100%" height="100%" startColor="#0f0403" endColor="#1a0505" />
+                    </Box>
+                }
             </Box>
         }
     </Box>;

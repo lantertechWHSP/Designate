@@ -58,7 +58,7 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
     }, [isOpen, isScrolledDown, isMinimumScrolled, darkTheme]);
 
     const [hideSkeleton, setHideSkeleton] = useState<boolean>(false);
-    const delaySkeletonTime:number = 200;
+    const delaySkeletonTime:number = 300;
 
     const color:any = useMemo(() => {
         if(isOpen || (!isScrolledDown && isMinimumScrolled)) {
@@ -196,7 +196,7 @@ const ContactSkeleton:any = ({color}) : ReactNode => {
         endColor = 'oliveBlur';
     }
 
-    return <Skeleton width={['120px', ,'180px']} startColor={startColor} endColor={endColor} />
+    return <Skeleton display={['none', , , ,'block']} width={['120px', ,'180px']} startColor={startColor} endColor={endColor} />
 }
 
 const DesktopNavSkeleton:any = ({menu, color}) : ReactNode => {
