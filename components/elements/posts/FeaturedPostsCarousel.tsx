@@ -98,7 +98,7 @@ const FeaturedPostsCarousel:any = ({ posts }:IFeaturedPostsCarousel) : any => {
                                                     </Box>
                                                 </Column>
                                             </Row>
-                                            <SectionLinkButton href={`/news/${post.slug}`} mt={8} color="white" borderColor="whiteBlur" borderColorHover="whiteBlur2">
+                                            <SectionLinkButton href={`/news/${post.slug}`} mt={8} color="white" borderColor="whiteBlur2" borderColorHover="white">
                                                 Read More
                                             </SectionLinkButton>
                                         </Container>

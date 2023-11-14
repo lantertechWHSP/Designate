@@ -222,7 +222,7 @@ const StackedBarChart:any = ({ data, textColor = 'steel', borderColor = 'borderC
                                     <AxisLeft scale={yScale} chartHeight={height} width={width} />
                                     <g transform="translate(10, 0)">
                                         <AxisBottom scale={xScale} transform={`translate(0, ${boundsHeight})`} />
-                                        <Bars xScale={xScale} yScale={yScale} stacked={stacked} boundsHeight={boundsHeight} colors={colors} groupsLength={data.groups.length} />
+                                        <Bars xScale={xScale} yScale={yScale} stacked={stacked} boundsHeight={boundsHeight} colors={colors} borderColor={borderColor} groupsLength={data.groups.length} />
                                     </g>
                                 </g>
                             }

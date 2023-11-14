@@ -77,15 +77,17 @@ const PostList:any = ({ latestPosts }:IPostsList) : ReactNode => {
         };
     }, [onScroll]);
 
-    return <Box bg="ghostWhite" py={['40px', ,'50px', '60px']} pb={['120px']} ref={elementRef}>
+    return <Box bg="ghostWhite" pt={['40px', ,'50px', '60px']} pb={['120px']} ref={elementRef}>
         {
             (Array.isArray(posts) && posts.length > 0) ? <>
                 <Box position="relative">
                     <Container>
-                        <SimpleGrid columns={[1, 2, 3]} spacingX={[8]} spacingY={[6, ,8]}>
+                        <SimpleGrid columns={[1, 2, 3]} spacingX={[8]} spacingY={[6, ,8]} mb={[0, -8, -12]}>
                             {
                                 posts.map((post:any, index:number) => {
-                                    return <PostCard {...post} key={index} />;
+                                    return <Box mb={[0, 8, 12]}>
+                                        <PostCard {...post} key={index} />
+                                    </Box>;
                                 })
                             }
                         </SimpleGrid>
@@ -97,8 +99,8 @@ const PostList:any = ({ latestPosts }:IPostsList) : ReactNode => {
                             bottom: 0,
                             left: 0,
                             right: 0,
-                            height: ['350px'],
-                            background: 'linear-gradient(0deg, rgba(248,248,248,1) 0%, rgba(248,248,248, 0.4) 20%)',
+                            height: ['100%'],
+                            background: 'linear-gradient(0deg, rgba(248,248,248,1) 0%, rgba(255,255,255, 0) 20%)',
                             pointerEvents: 'none'
                         }} />
                     }

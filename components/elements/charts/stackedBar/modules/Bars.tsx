@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { Popover, PopoverTrigger, Portal, PopoverContent, Box } from '@chakra-ui/react';
 
 interface IBars {
     xScale?:any;
@@ -8,7 +9,7 @@ interface IBars {
     colors?:any;
 }
 
-export const Bars:any = ({ xScale, yScale, stacked, colors }:IBars) : ReactNode => {
+export const Bars:any = ({ xScale, yScale, stacked, colors, borderColor }:IBars) : ReactNode => {
     const borderRadius:number = 3;
 
     return <>
@@ -18,6 +19,7 @@ export const Bars:any = ({ xScale, yScale, stacked, colors }:IBars) : ReactNode 
                     {
                         data.map((d:any, innerIndex:number) => {
                             const label:string = String(d.data.label);
+                            const value:string = String(d.data[data.key]);
                             const y0:number = yScale(d[0]);
                             const y1:number = yScale(d[1]);
 
@@ -37,14 +39,25 @@ export const Bars:any = ({ xScale, yScale, stacked, colors }:IBars) : ReactNode 
                             // Set the height accordingly
                             const height:number = Math.max((y0 - y1) + (hasBorderRadius ? borderRadius : 0), 0);
 
-                            return <rect clipPath={hasBorderRadius ? `inset(0 0 ${borderRadius}px 0)` : ''}
-                                rx={hasBorderRadius ? borderRadius : 0}
-                                ry={hasBorderRadius ? borderRadius : 0}
-                                key={`rect-${innerIndex}`}
-                                x={xScale(label)}
-                                y={y1}
-                                width={xScale.bandwidth()}
-                                height={height}/>;
+                            return <Popover placement="top" trigger="hover" isLazy>
+                                <PopoverTrigger>
+                                    <rect clipPath={hasBorderRadius ? `inset(0 0 ${borderRadius}px 0)` : ''}
+                                          rx={hasBorderRadius ? borderRadius : 0}
+                                          ry={hasBorderRadius ? borderRadius : 0}
+                                          key={`rect-${innerIndex}`}
+                                          x={xScale(label)}
+                                          y={y1}
+                                          width={xScale.bandwidth()}
+                                          height={height}/>
+                                </PopoverTrigger>
+                                <Portal>
+                                    <PopoverContent>
+                                        <Box background="white" fontSize="12px" fontFamily="Roboto" borderColor={borderColor} px="10px" textAlign="center" minW="40px" py="3px">
+                                            {value}
+                                        </Box>
+                                    </PopoverContent>
+                                </Portal>
+                            </Popover>
                         })
                     }
                 </g>;

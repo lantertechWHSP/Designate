@@ -6,7 +6,7 @@ import { ITable} from '~/interfaces/util/table';
 import { isFinite as _isFinite } from 'lodash';
 import { Box, Flex, Heading, Text } from '@chakra-ui/react';
 import { Column, ColumnWidth, Row } from '~/components/elements/grid/grid';
-import {darkLegendColors, legendColors} from "~/components/elements/charts/colors";
+import { darkLegendColors, legendColors } from '~/components/elements/charts/colors';
 
 interface ITableRow {
     Year:string;
@@ -19,7 +19,7 @@ interface IDividendGrowthChartBlock extends IBlock {
     table:ITable<ITableRow>;
 }
 
-const DividendGrowthChart:any = ({ table, theme }:IDividendGrowthChartBlock) : ReactNode => {
+const DividendGrowthChart:any = ({ table, theme, paddingTop, paddingBottom }:IDividendGrowthChartBlock) : ReactNode => {
     const backgroundColor:string = theme === Theme.Dark ? 'olive' : 'white';
     const newLightLegendColors:string[] = [...legendColors];
     newLightLegendColors.shift();
@@ -74,7 +74,7 @@ const DividendGrowthChart:any = ({ table, theme }:IDividendGrowthChartBlock) : R
 
     const [data] = useState(getValues());
 
-    return <ContentBlock background={backgroundColor}>
+    return <ContentBlock background={backgroundColor} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         <Row align="baseline" mb={[4, ,6, 8]}>
             <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half]}>
                 <Heading as="h2" variant="sectionHeading" mb={[3, , ,0]} color={textColor}>

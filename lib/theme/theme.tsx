@@ -214,10 +214,7 @@ export const theme:any = extendBaseTheme({
                     color: 'error'
                 },
                 caption: {
-                    fontSize: '14px'
-                },
-                annotation: {
-                    color: 'charcoalBlur',
+                    color: 'steel',
                     fontSize: '16px',
                     lineHeight: '23px'
                 },

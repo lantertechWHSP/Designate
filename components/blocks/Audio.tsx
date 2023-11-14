@@ -54,7 +54,7 @@ const AudioBlock:any = ({ title, soundcloudTrackId, omnyFmUrl, whooshkaaId, mega
         {
             title && <Row>
                 <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths, ColumnWidth.NineTwelfths]}>
-                    <Text as="small" display="block" variant="annotation" mt={2}>{title}</Text>
+                    <Text as="small" display="block" variant="caption" mt={2}>{title}</Text>
                 </Column>
             </Row>
         }
