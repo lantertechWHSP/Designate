@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useRef } from 'react';
 import { Box } from '@chakra-ui/react';
 import { motion, useScroll } from 'framer-motion';
 const MotionBox:any = motion(Box);
