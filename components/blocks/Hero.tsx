@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useState } from 'react';
 import { IBlock } from '~/interfaces/util/block';
 import { Box, Container, Flex, Heading } from '@chakra-ui/react';
 import { AspectRatio } from '@chakra-ui/react';
@@ -6,7 +6,9 @@ import useDimensions from 'react-cool-dimensions';
 import { IVideo } from '~/interfaces/util/video';
 import HeroVectorEffect from '~/components/elements/shapes/HeroVectorEffect';
 import { zIndex } from "~/lib/theme/theme";
-import {Skeleton} from "~/components/elements/skeleton/skeleton";
+import { Skeleton } from '~/components/elements/skeleton/skeleton';
+import { motion } from 'framer-motion';
+const MotionHeading:any = motion(Heading);
 
 interface IHeroBlock extends IBlock {
     title?:string;
@@ -16,27 +18,7 @@ interface IHeroBlock extends IBlock {
 const HeroBlock:any = ({ title, video }:IHeroBlock) : ReactNode => {
     const { observe: contentWidthObserve, width: contentWidth } = useDimensions();
     const height:string[] = ['420px', '482px'];
-    const [hideSkeleton, setHideSkeleton] = useState<boolean>(false);
-    const delaySkeletonTime = 300;
-    const [isVideoPlaying, setIsPlaying] = useState(false);
-    // const [isBackgroundLoaded, setIsBackgroundLoaded] = useState(false);
-    // const [backgroundImg, setBackgroundImg] = useState(null);
-
-    // useEffect(() => {
-    //     const image:HTMLImageElement = new Image();
-    //     image.src = '/images/blocks/hero/background.png';
-    //     image.onload = () => {
-    //         setIsBackgroundLoaded(true);
-    //     };
-    //
-    //     setBackgroundImg(image);
-    // }, []);
-
-    useEffect(() => {
-        setTimeout(() => {
-            setHideSkeleton(true);
-        }, delaySkeletonTime)
-    }, [])
+    const [isVideoPlaying, setIsPlaying] = useState<boolean>(false);
 
     return (title || video && video?.url) && <Box overflow="hidden" ref={contentWidthObserve}>
         {
@@ -49,12 +31,34 @@ const HeroBlock:any = ({ title, video }:IHeroBlock) : ReactNode => {
                 <Container h={height}>
                     <Flex minH="100%" align="flex-end">
                         {
-                            hideSkeleton ? <Heading py={['40px', ,'50px', '60px']} variant="hero" position="relative" zIndex={zIndex.heroTitle} maxWidth={['100vw', , '500px', '500px']}>
-                                {title}
-                            </Heading> : <Box py={['40px', ,'50px', '60px']}>
-                                <Skeleton startColor="white" endColor="whiteBlur" width={['100vw', '300px']} height={['30px', '40px', '50px']} mb={3} />
-                                <Skeleton startColor="white" endColor="whiteBlur" width={['100vw', '260px']} height={['30px', '40px', '50px']} mb={3} />
-                                <Skeleton startColor="white" endColor="whiteBlur" width={['100vw', '280px']} height={['30px', '40px', '50px']}  />
+                            <Box py={['40px', ,'50px', '60px']} position="relative" zIndex={zIndex.heroTitle} maxWidth={['100vw', , '500px', '500px']}>
+                                <Box overflow="hidden">
+                                    <MotionHeading variant="hero"
+                                                   transition={{ ease: "linear", duration: 0.3 }}
+                                                   initial={{ transform: 'translateY(100%)' }}
+                                                   whileInView={{ transform: 'translateY(0%)' }}
+                                                   viewport={{ once: true }}>
+                                        Generating
+                                    </MotionHeading>
+                                </Box>
+                                <Box overflow="hidden">
+                                    <MotionHeading variant="hero"
+                                                   transition={{ ease: "linear", duration: 0.3, delay: 0.1 }}
+                                                   initial={{ transform: 'translateY(100%)' }}
+                                                   whileInView={{ transform: 'translateY(0%)' }}
+                                                   viewport={{ once: true }}>
+                                        Enduring
+                                    </MotionHeading>
+                                </Box>
+                                <Box overflow="hidden">
+                                    <MotionHeading variant="hero"
+                                                   transition={{ ease: "linear", duration: 0.3, delay: 0.2 }}
+                                                   initial={{ transform: 'translateY(100%)' }}
+                                                   whileInView={{ transform: 'translateY(0%)' }}
+                                                   viewport={{ once: true }}>
+                                        Success
+                                    </MotionHeading>
+                                </Box>
                             </Box>
                         }
                     </Flex>
@@ -74,7 +78,7 @@ const HeroBlock:any = ({ title, video }:IHeroBlock) : ReactNode => {
                     </AspectRatio>
                 </Box>
                 {
-                    (!hideSkeleton && !isVideoPlaying) && <Box width="100%" height="100%" backgroundColor="#230d05">
+                    (!isVideoPlaying) && <Box width="100%" height="100%" backgroundColor="#230d05">
                         <Skeleton width="100%" height="100%" startColor="#0f0403" endColor="#1a0505" />
                     </Box>
                 }

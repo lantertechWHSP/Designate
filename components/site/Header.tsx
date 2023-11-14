@@ -13,7 +13,7 @@ import {
     Collapse,
     Text,
 } from '@chakra-ui/react';
-import {motion} from 'framer-motion';
+import { motion } from 'framer-motion';
 import useDocumentScroll from '~/hooks/useDocumentScroll';
 import {
     enableBodyScroll,
@@ -28,7 +28,6 @@ import { Link } from '~/components/elements/link';
 import { IHeader as IDatoHeader } from "~/interfaces/layout/header";
 import { Row, Column, ColumnWidth } from "~/components/elements/grid/grid";
 import { zIndex } from "~/lib/theme/theme";
-import { Skeleton } from '~/components/elements/skeleton/skeleton';
 
 const MotionBox:any = motion(Box);
 
@@ -48,6 +47,7 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
         setIsMinimumScrolled(currentScrollTop > 80);
     });
 
+
     const background:any = useMemo(() => {
         if(isOpen || (!isScrolledDown && isMinimumScrolled)) {
             return 'rgba(255, 255, 255, 1)';
@@ -56,9 +56,6 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
             return 'rgba(0, 0, 0, 0)';
         }
     }, [isOpen, isScrolledDown, isMinimumScrolled, darkTheme]);
-
-    const [hideSkeleton, setHideSkeleton] = useState<boolean>(false);
-    const delaySkeletonTime:number = 300;
 
     const color:any = useMemo(() => {
         if(isOpen || (!isScrolledDown && isMinimumScrolled)) {
@@ -80,12 +77,6 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
             router.events.off('routeChangeStart', onClose);
         };
     }, [onClose]);
-
-    useEffect(() => {
-        setTimeout(() => {
-            setHideSkeleton(true);
-        }, delaySkeletonTime);
-    }, [])
 
     return <Box as="header">
         <Box pos="fixed" top={0} height={[height]} w="100%" zIndex={zIndex.header}
@@ -119,9 +110,7 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
                             </Flex>
                         </Column>
                         <Column display={['none', , , ,'flex']} align="center" width={[ColumnWidth.None, , ,ColumnWidth.EightTwelfths]}>
-                            {
-                                hideSkeleton ? <DesktopNav menu={menu} color={color} /> : <DesktopNavSkeleton menu={menu} color={color} />
-                            }
+                            <DesktopNav menu={menu} color={color}/>
                         </Column>
                         <Column width={[ColumnWidth.Half, , , ,ColumnWidth.TwoTwelfths]}>
                             <Flex display="flex" justify="flex-end">
@@ -130,9 +119,8 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
                                         isOpen ? <Icon icon={Icons.StickyMenuClose} w={34} h={34}/> : <Icon icon={Icons.StickyMenuHamburger} w={34} h={34}/>
                                     }
                                 </Button>
-                                {
-                                    hideSkeleton ? <Link display={['none', , , ,'block']}
-                                                         href="/contact" sx={{
+                                <Link display={['none', , , ,'block']}
+                                    href="/contact" sx={{
                                         color: color,
                                         fontWeight: 700,
                                         minWidth: ['120px', ,'180px'],
@@ -148,9 +136,8 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
                                         borderRadius: '24px',
                                         textAlign: 'center'
                                     }}>
-                                        Contact
-                                    </Link> : <ContactSkeleton color={color} />
-                                }
+                                    Contact
+                                </Link>
                             </Flex>
                         </Column>
                     </Row>
@@ -161,7 +148,7 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
     </Box>;
 };
 
-const DestopPopoverTrigger:any  = ({ item, color }): ReactNode => {
+const DestopPopoverTrigger:any  = ({item, color}): ReactNode => {
     const { isOpen } = usePopoverContext();
 
     return <PopoverTrigger>
@@ -183,90 +170,40 @@ const DestopPopoverTrigger:any  = ({ item, color }): ReactNode => {
     </PopoverTrigger>;
 };
 
-const ContactSkeleton:any = ({color}) : ReactNode => {
-    let startColor:string;
-    let endColor:string;
-
-    if(color === '#ffffff') {
-        startColor = 'white';
-        endColor = 'whiteBlur';
-    }
-    else {
-        startColor = 'olive';
-        endColor = 'oliveBlur';
-    }
-
-    return <Skeleton display={['none', , , ,'block']} width={['120px', ,'180px']} startColor={startColor} endColor={endColor} />
-}
-
-const DesktopNavSkeleton:any = ({menu, color}) : ReactNode => {
-    let startColor:string;
-    let endColor:string;
-
-    if(color === '#ffffff') {
-        startColor = 'white';
-        endColor = 'whiteBlur';
-    }
-    else {
-        startColor = 'olive';
-        endColor = 'oliveBlur';
-    }
-
-    return <Flex direction="row" mx={-5}>
-        {
-            menu.map((item: IMenuLink, index: number) => {
-                return <Flex align="center" key={index} px={5}>
-                    <Box mr={2}>
-                        <Skeleton width="initial" px="3px" startColor={startColor} endColor={endColor}>
-                            <Text mb={0} fontSize="16px" fontWeight="bold">
-                                {item.title}
-                            </Text>
-                        </Skeleton>
-                    </Box>
-                    {
-                        item.children.length > 0 && <Text color={startColor} mb={0}>
-                            <Icon icon={Icons.WideTriangleDown} w={12} h={12} />
-                        </Text>
-                    }
-                </Flex>
-            })
-        }
-    </Flex>
-}
-
-const DesktopNav:any = ({ menu, color }): ReactNode => {
+const DesktopNav:any = ({menu, color}): ReactNode => {
     return <Flex as="nav"  height="48px" align="center" mx={-5}>
         {
             Array.isArray(menu) && menu.length > 0 && menu.map((item: IMenuLink, index: number) => {
                 return <Box px={5}>
-                        {
-                            Array.isArray(item.children) && item.children.length > 0 ? <Popover trigger="hover" placement="bottom-start" key={index} closeOnBlur={true}>
-                             <DestopPopoverTrigger item={item} color={color} />
-                            <PopoverContent>
-                                {
-                                    item.children && <Box background="white" py={2} px={3}>
-                                        {
-                                            item.children.map((child: IMenuLink, childIndex: number) => {
-                                                return <Box py={2} key={childIndex}>
-                                                    <MenuItemLink
-                                                        variant="siteHeader"
-                                                        color="charcoal"
-                                                        title={child.title}
-                                                        link={child.link}
-                                                        externalLink={child.externalLink} />
-                                                </Box>;
-                                            })
-                                        }
-                                  </Box>
-                                }
-                            </PopoverContent>
-                        </Popover> : <MenuItemLink
-                            variant="siteHeader"
-                            color={color}
-                            px={5}
-                            key={index} title={item.title}
-                            link={item.link}
-                            externalLink={item.externalLink} />
+                    {
+                        Array.isArray(item.children) && item.children.length > 0 ?
+                            <Popover trigger="hover" placement="bottom-start" key={index} closeOnBlur={true}>
+                                <DestopPopoverTrigger item={item} color={color} isLast={index === menu.length - 1} />
+                                <PopoverContent>
+                                    {
+                                        item.children && <Box background="white" py={2} px={3}>
+                                            {
+                                                item.children.map((child: IMenuLink, childIndex: number) => {
+                                                    return <Box py={2} key={childIndex}>
+                                                        <MenuItemLink
+                                                            variant="siteHeader"
+                                                            color="charcoal"
+                                                            title={child.title}
+                                                            link={child.link}
+                                                            externalLink={child.externalLink} />
+                                                    </Box>;
+                                                })
+                                            }
+                                      </Box>
+                                    }
+                                </PopoverContent>
+                            </Popover> : <MenuItemLink
+                                variant="siteHeader"
+                                color={color}
+                                px={5}
+                                key={index} title={item.title}
+                                link={item.link}
+                                externalLink={item.externalLink} />
                     }
                 </Box>
             })
