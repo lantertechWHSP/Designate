@@ -105,7 +105,7 @@ const TrackRecordChartBlock:any = ({ table, theme, paddingTop, paddingBottom }:I
             label: 'Bloomberg AusBond Composite',
             value: 'bonds',
             isActive: false,
-            background: 'red',
+            background: colors[4],
         },
     ]);
 
@@ -141,7 +141,7 @@ const TrackRecordChartBlock:any = ({ table, theme, paddingTop, paddingBottom }:I
         newLines.push({
             data: BondsData,
             display: filters[4].isActive,
-            fill: 'red'
+            fill: colors[4]
         });
 
         setData({ lines: newLines });

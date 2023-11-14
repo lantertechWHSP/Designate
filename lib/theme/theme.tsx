@@ -1,5 +1,6 @@
 import { extendBaseTheme } from '@chakra-ui/react';
 import chakraTheme from '@chakra-ui/theme';
+import { fontGramatika } from '~/pages/_fonts';
 const { Modal, Menu, Badge, Alert } = chakraTheme.components;
 
 export const breakpoints:any = {
@@ -81,8 +82,8 @@ export const zIndex:any = {
 
 export const theme:any = extendBaseTheme({
     fonts: {
-        heading: `'Gramatika', serif`,
-        body: `'Gramatika', serif`,
+        heading: fontGramatika.style.fontFamily,
+        body: fontGramatika.style.fontFamily,
     },
     fontWeights: {
         extraLight: 200,
