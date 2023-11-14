@@ -8,7 +8,7 @@ interface IPostCard extends IPost {
 }
 
 const PostCard:any = ({ title, image, publishDate, slug }:IPostCard) : any => {
-    return <Flex direction="column">
+    return <Flex direction="column" height="100%">
         <Box mb={['20px']}>
             <Link href={`/news/${slug}`} display="block" borderRadius="3px" overflow="hidden">
                 <Image image={image} ratio={[2 / 1]} />

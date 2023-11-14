@@ -34,10 +34,10 @@ export const ProfilesPanelBlock:any = ({ items, background, paddingTop, paddingB
     };
 
     return (Array.isArray(items) && items.length > 0) && <ContentBlock background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
-        <SimpleGrid columns={[1, 2, 3]} spacing={[6, ,8]}>
+        <SimpleGrid columns={[1, 2, 3]} spacing={[6, ,8]} mb={[0, -12, -16]}>
             {
                 items.map((item:IProfileCard, index:number) => {
-                    return <Box key={index}>
+                    return <Box key={index} mb={[0, 12, 16]}>
                         <ProfileCard
                             {...item}
                             onClick={() => {

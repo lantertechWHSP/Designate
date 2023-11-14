@@ -6,6 +6,7 @@ import { AxisLeft } from '~/components/elements/charts/stackedBar/modules/AxisLe
 import { AxisBottom } from '~/components/elements/charts/stackedBar/modules/AxisBottom';
 import { breakpoints } from '~/lib/theme/theme';
 import { Bars } from '~/components/elements/charts/stackedBar/modules/Bars';
+import { fontRoboto } from '~/pages/_fonts';
 
 interface IStackedBarChart {
     data: {
@@ -187,7 +188,7 @@ const StackedBarChart:any = ({ data, textColor = 'steel', borderColor = 'borderC
         };
     }, []);
 
-    return <Box ref={elementRef} height={height}>
+    return <Box ref={elementRef} height={height} fontFamily={`${fontRoboto.style.fontFamily}`}>
         {
             isDataLoaded && <>
                 {
@@ -195,7 +196,6 @@ const StackedBarChart:any = ({ data, textColor = 'steel', borderColor = 'borderC
                         sx={{
                             '.tick': {
                                 fontSize: '12px',
-                                fontFamily: 'Roboto',
                                 color: textColor
                             },
                             '.x-axis .domain': {
@@ -222,7 +222,7 @@ const StackedBarChart:any = ({ data, textColor = 'steel', borderColor = 'borderC
                                     <AxisLeft scale={yScale} chartHeight={height} width={width} />
                                     <g transform="translate(10, 0)">
                                         <AxisBottom scale={xScale} transform={`translate(0, ${boundsHeight})`} />
-                                        <Bars xScale={xScale} yScale={yScale} stacked={stacked} boundsHeight={boundsHeight} colors={colors} groupsLength={data.groups.length} />
+                                        <Bars xScale={xScale} yScale={yScale} stacked={stacked} boundsHeight={boundsHeight} colors={colors} borderColor={borderColor} groupsLength={data.groups.length} />
                                     </g>
                                 </g>
                             }

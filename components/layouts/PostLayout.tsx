@@ -72,7 +72,7 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
                             <Column width={[ColumnWidth.Full, , ,ColumnWidth.TenTwelfths, ColumnWidth.EightTwelfths]}>
                                 <Image image={post?.image} />
                                 {
-                                    (post?.image?.title) && <Text variant="annotation"  mt={2} mb={0}>
+                                    (post?.image?.title) && <Text variant="caption"  mt={2} mb={0}>
                                         {post?.image?.title}
                                     </Text>
                                 }

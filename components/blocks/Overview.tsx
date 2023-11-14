@@ -29,12 +29,19 @@ const OverviewBlock:any = ({ subtitle, description, paddingTop, paddingBottom, b
                 return [ColumnWidth.Full, , ,ColumnWidth.TenTwelfths, ColumnWidth.NineTwelfths];
             }
         }
-        return [ColumnWidth.Full, , ,ColumnWidth.Half];
+        return [ColumnWidth.Full, , ,ColumnWidth.FiveTwelfths];
+    })();
+
+    const subtitleMarginOffset:any = (() => {
+        if(subtitle && isEmptyDocument(description)) {
+            return [0];
+        }
+        return [0, , ,ColumnWidth.Twelfth];
     })();
 
     return (subtitle || description) && <ContentBlock background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         <Row justify={align === IOverviewAlign.Center ? 'center' : '' } mb={[-4, , ,0]}>
-            <Column width={subtitleColumnWidth}>
+            <Column width={subtitleColumnWidth} marginRight={subtitleMarginOffset}>
                 {
                     !isEmptyDocument(subtitle) && <Box>
                         <TextAnimate>

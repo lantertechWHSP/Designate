@@ -4,9 +4,9 @@ import { scaleLinear, scaleBand } from 'd3';
 import { AxisLeft } from "~/components/elements/charts/bar/modules/AxisLeft";
 import { AxisBottom } from "~/components/elements/charts/bar/modules/AxisBottom";
 import { Bars } from "~/components/elements/charts/bar/modules/Bars";
-
 import { maxBy as _maxBy, throttle as _throttle } from 'lodash';
 import { breakpoints } from '~/lib/theme/theme';
+import { fontRoboto } from '~/pages/_fonts';
 
 interface IBarChart {
     data: {
@@ -130,14 +130,13 @@ const BarChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor', 
         };
     }, []);
 
-    return <Box ref={elementRef} height={height}>
+    return <Box ref={elementRef} height={height} fontFamily={`${fontRoboto.style.fontFamily}`}>
         {
             isDataLoaded && <>
                 {
                     hasData ? <Box visibility={isChartVisible ? 'visible' : 'hidden'} sx={{
                         '.tick': {
                             fontSize: '12px',
-                            fontFamily: 'Roboto',
                             color: textColor
                         },
                         '.x-axis .domain': {

@@ -7,6 +7,7 @@ import { ColorGenerator } from '~/lib/colorGenerator/colorGenerator';
 import { AxisLeft } from "~/components/elements/charts/line/modules/AxisLeft";
 import { AxisBottom } from "~/components/elements/charts/line/modules/AxisBottom";
 import { breakpoints } from '~/lib/theme/theme';
+import { fontRoboto } from '~/pages/_fonts';
 
 interface ILineChart {
     data: {
@@ -211,7 +212,7 @@ const LineChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor',
         };
     }, []);
 
-    return <Box ref={elementRef} height={height}>
+    return <Box ref={elementRef} height={height} fontFamily={`${fontRoboto.style.fontFamily}`}>
         {
             isDataLoaded && <>
                 {
@@ -220,7 +221,6 @@ const LineChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor',
                         sx={{
                             '.tick': {
                                 fontSize: '12px',
-                                fontFamily: 'Roboto',
                                 color: textColor
                             },
                             '.x-axis .domain': {

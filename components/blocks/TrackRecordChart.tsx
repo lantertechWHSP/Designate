@@ -19,6 +19,7 @@ interface ITableRow {
 }
 
 interface ITrackRecordChartBlock extends IBlock {
+    title?:string;
     table: ITable<ITableRow>;
 }
 
@@ -26,7 +27,7 @@ interface IChartFilter extends IFilter {
     background?:string;
 }
 
-const TrackRecordChartBlock:any = ({ table, theme, paddingTop, paddingBottom }:ITrackRecordChartBlock) : ReactNode => {
+const TrackRecordChartBlock:any = ({ title, table, theme, paddingTop, paddingBottom }:ITrackRecordChartBlock) : ReactNode => {
     const backgroundColor:string = theme === Theme.Dark ? 'olive' : 'white';
     const colors:string[] = theme === Theme.Dark ? darkLegendColors : legendColors;
     const headingTextColor:string = theme === Theme.Dark ? 'white' : 'charcoal';
@@ -105,7 +106,7 @@ const TrackRecordChartBlock:any = ({ table, theme, paddingTop, paddingBottom }:I
             label: 'Bloomberg AusBond Composite',
             value: 'bonds',
             isActive: false,
-            background: 'red',
+            background: colors[4],
         },
     ]);
 
@@ -141,7 +142,7 @@ const TrackRecordChartBlock:any = ({ table, theme, paddingTop, paddingBottom }:I
         newLines.push({
             data: BondsData,
             display: filters[4].isActive,
-            fill: 'red'
+            fill: colors[4]
         });
 
         setData({ lines: newLines });
@@ -160,12 +161,13 @@ const TrackRecordChartBlock:any = ({ table, theme, paddingTop, paddingBottom }:I
         }
     }, []);
 
-
     return <ContentBlock paddingTop={paddingTop} paddingBottom={paddingBottom} background={backgroundColor}>
         <Flex direction={['column', ,'row']} mb={[4, 6, ,8]} mx={-2}>
-            <Heading as="h2" variant="sectionSubheading" color={headingTextColor} px={2} mb={[4, 6, 0]} >
-                20 Year Total Shareholder Return
-            </Heading>
+            {
+                title && <Heading as="h2" variant="sectionSubheading" color={headingTextColor} px={2} mb={[4, 6, 0]} >
+                    {title}
+                </Heading>
+            }
             <Box flex={1} />
             {
                 hasData && <Box px={2}>

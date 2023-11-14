@@ -2,6 +2,7 @@ import { useEffect, useRef, ReactNode } from 'react';
 import { select, axisBottom } from 'd3';
 import { useMediaQuery } from '@chakra-ui/react';
 import { breakpoints } from '~/lib/theme/theme';
+import { fontRoboto } from '~/pages/_fonts';
 
 interface IAxisBottom {
     scale:any;
@@ -29,6 +30,6 @@ export const AxisBottom:any = ({ scale, transform }:IAxisBottom) : ReactNode => 
     }, [scale, lgMediaQuery, mdMediaQuery]);
 
     return <g className="x-axis">
-        <g ref={elementRef} transform={transform} />
+        <g ref={elementRef} transform={transform} style={{ fontFamily: `${fontRoboto.style.fontFamily}` }} />
     </g>;
 };

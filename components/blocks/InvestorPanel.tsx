@@ -31,7 +31,7 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                         <Heading as="h3" variant="sectionSubheading" mb={4}>
                             Share Price Performance
                         </Heading>
-                        <Box borderTop="1px solid" borderColor="borderColor" py={2} mb={[4, ,6, 8]}>
+                        <Box borderTop="1px solid" borderColor="borderColor" py={2} mb={[6]}>
                             <Text
                                 mb={0}
                                 fontSize={['64px', ,'72px']}
@@ -117,10 +117,10 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                         </Box>
                         <Box flex="1">
                             <Box height="100%"
-                                minHeight="180px"
+                                minHeight="214px"
                                 sx={{
                                     '.yourir-chart': {
-                                        padding: '20px 0 0',
+                                        padding: '0',
                                         borderBottomWidth: '1px',
                                         borderStyle: 'solid',
                                         borderColor: 'olive',
@@ -129,12 +129,12 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                                         height: '100%'
                                     },
                                     '.yourir-chart-panels': {
-                                        height: '100%',
-                                        minHeight: '180px'
+                                        height: '214px',
+                                        minHeight: '100%'
                                     },
                                     '.yourir-chart-panel': {
-                                        height: '100%',
-                                        minHeight: '180px'
+                                        height: '214px',
+                                        minHeight: '100%'
                                     },
                                     '.yourir-chart-price-fill': {
                                         fill: `rgba(80, 81, 60, 0.2)`
@@ -176,12 +176,10 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                                     },
                                     '.yourir-chart-yaxis-label-container': {
                                         fontSize: '12px',
-                                        fontFamily: 'Roboto',
                                         color: 'steel'
                                     },
                                     '.yourir-chart-xaxis-label-container': {
                                         fontSize: '12px',
-                                        fontFamily: 'Roboto',
                                         color: 'steel',
                                         marginLeft: 0,
                                     },

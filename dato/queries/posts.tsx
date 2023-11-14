@@ -45,7 +45,7 @@ export const latestPosts:string = `
                 name
             }
             image {
-                ${imageAttrs({ width: 840, height: 360 })}   
+                ${imageAttrs({ width: 840, height: 420 })}   
             }
             publishDate
             isFeatured
