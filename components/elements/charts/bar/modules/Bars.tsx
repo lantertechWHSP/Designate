@@ -1,5 +1,6 @@
 import { ReactNode, Fragment } from 'react';
 import { Popover, PopoverTrigger, Portal, PopoverContent, Box } from '@chakra-ui/react';
+import {fontRoboto} from "~/pages/_fonts";
 
 interface IBars {
     values: IData[];
@@ -40,13 +41,13 @@ export const Bars:any = ({ values, height, xScale, yScale, borderColor, suffix }
                                 </PopoverTrigger>
                                 <Portal>
                                     <PopoverContent>
-                                        <Box background="white" fontSize="12px" fontFamily="Roboto" borderColor={borderColor} px="10px" textAlign="center" minW="40px" py="3px">
+                                        <Box background="white" fontSize="12px" fontFamily={`${fontRoboto.style.fontFamily}`} borderColor={borderColor} px="10px" textAlign="center" minW="40px" py="3px">
                                             {value} {suffix}
                                         </Box>
                                     </PopoverContent>
                                 </Portal>
                             </Popover>
-                        </Fragment>
+                        </Fragment>;
                     })
                 }
             </g>

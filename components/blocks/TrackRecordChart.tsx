@@ -19,6 +19,7 @@ interface ITableRow {
 }
 
 interface ITrackRecordChartBlock extends IBlock {
+    title?:string;
     table: ITable<ITableRow>;
 }
 

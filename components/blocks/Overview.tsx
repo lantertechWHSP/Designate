@@ -33,9 +33,9 @@ const OverviewBlock:any = ({ subtitle, description, paddingTop, paddingBottom, b
 
     const subtitleMarginOffset:any = (() => {
         if(subtitle && isEmptyDocument(description)) {
-            return [0]
+            return [0];
         }
-        return [0, , ,ColumnWidth.Twelfth]
+        return [0, , ,ColumnWidth.Twelfth];
     })();
 
     return (subtitle || description) && <ContentBlock background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>

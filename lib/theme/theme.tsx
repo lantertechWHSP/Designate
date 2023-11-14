@@ -1,6 +1,6 @@
 import { extendBaseTheme } from '@chakra-ui/react';
 import chakraTheme from '@chakra-ui/theme';
-import { fontGramatika } from '~/pages/_fonts';
+import {fontGramatika, fontRoboto} from '~/pages/_fonts';
 const { Modal, Menu, Badge, Alert } = chakraTheme.components;
 
 export const breakpoints:any = {
@@ -462,21 +462,6 @@ export const theme:any = extendBaseTheme({
         },
         Alert: {
             ...Alert,
-            // defaultProps: {
-            //     fontSize: '16px'
-            // }
-            // ...Alert,
-            // baseStyle: {
-            //     container: {
-            //         fontSize: '16px',
-            //     },
-            //     title: {
-            //         fontSize: '16px',
-            //     },
-            //     description: {
-            //         fontSize: '16px',
-            //     }
-            // }
         }
     },
     styles: {
@@ -520,6 +505,9 @@ export const theme:any = extendBaseTheme({
                 }
             },
             // YourIR
+            '.yourir-chart': {
+                fontFamily: fontRoboto.style.fontFamily,
+            },
             '#yourir-default-announcement': {
                 height: '0',
                 overflow: 'hidden'

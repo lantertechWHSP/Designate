@@ -5,8 +5,6 @@ import { Box, ChakraProvider } from '@chakra-ui/react';
 import { theme } from '~/lib/theme/theme';
 import Head from 'next/head';
 
-
-
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
     getLayout?: (page: ReactElement) => ReactNode
 }
@@ -20,7 +18,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) : Reac
         <Head>
             <title>WHSP</title>
             <meta name="viewport" content="width=device-width, initial-scale=1" />
-            <meta name="version" content="0.7.0" />
+            <meta name="version" content="0.7.1" />
         </Head>
         <Box>
             <Component {...pageProps} />

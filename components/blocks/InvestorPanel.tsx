@@ -117,8 +117,8 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                         </Box>
                         <Box flex="1">
                             <Box height="100%"
-                                 minHeight="214px"
-                                 sx={{
+                                minHeight="214px"
+                                sx={{
                                     '.yourir-chart': {
                                         padding: '0',
                                         borderBottomWidth: '1px',
@@ -176,12 +176,10 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                                     },
                                     '.yourir-chart-yaxis-label-container': {
                                         fontSize: '12px',
-                                        fontFamily: 'Roboto',
                                         color: 'steel'
                                     },
                                     '.yourir-chart-xaxis-label-container': {
                                         fontSize: '12px',
-                                        fontFamily: 'Roboto',
                                         color: 'steel',
                                         marginLeft: 0,
                                     },
