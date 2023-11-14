@@ -6,6 +6,7 @@ import {Column, ColumnWidth, Row} from '~/components/elements/grid/grid';
 import {IStructuredText} from '~/interfaces/util/structuredText';
 import {isEmptyDocument} from 'datocms-structured-text-utils';
 import { Box, Heading } from '@chakra-ui/react';
+import {TextAnimate} from "~/components/elements/animation/textAnimate";
 
 enum IOverviewAlign {
     Left = 'Left',
@@ -36,20 +37,24 @@ const OverviewBlock:any = ({ subtitle, description, paddingTop, paddingBottom, b
             <Column width={subtitleColumnWidth}>
                 {
                     !isEmptyDocument(subtitle) && <Box>
-                        <Heading as="h2"
-                            fontSize={['28px', '32px', '36px']}
-                            lineHeight={['35px', '38px', '42px']}
-                            color="olive"
-                            fontWeight={500}
-                            mb={[4, , ,0]}>
+                        <TextAnimate>
+                          <Heading as="h2"
+                                   fontSize={['28px', '32px', '36px']}
+                                   lineHeight={['35px', '38px', '42px']}
+                                   color="olive"
+                                   fontWeight={500}
+                                   mb={[4, , ,0]}>
                             <StructuredContent content={subtitle} />
-                        </Heading>
+                          </Heading>
+                        </TextAnimate>
                     </Box>
                 }
             </Column>
             <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half]}>
                 {
-                    !isEmptyDocument(description) && <StructuredContent content={description} />
+                    !isEmptyDocument(description) && <TextAnimate delay={0.1}>
+                    <StructuredContent content={description} />
+                    </TextAnimate>
                 }
             </Column>
         </Row>

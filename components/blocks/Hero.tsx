@@ -34,7 +34,7 @@ const HeroBlock:any = ({ title, video }:IHeroBlock) : ReactNode => {
                             <Box py={['40px', ,'50px', '60px']} position="relative" zIndex={zIndex.heroTitle} maxWidth={['100vw', , '500px', '500px']}>
                                 <Box overflow="hidden">
                                     <MotionHeading variant="hero"
-                                                   transition={{ ease: "linear", duration: 0.3 }}
+                                                   transition={{ ease: "easeOut", duration: 0.3 }}
                                                    initial={{ transform: 'translateY(100%)' }}
                                                    whileInView={{ transform: 'translateY(0%)' }}
                                                    viewport={{ once: true }}>
@@ -43,7 +43,7 @@ const HeroBlock:any = ({ title, video }:IHeroBlock) : ReactNode => {
                                 </Box>
                                 <Box overflow="hidden">
                                     <MotionHeading variant="hero"
-                                                   transition={{ ease: "linear", duration: 0.3, delay: 0.1 }}
+                                                   transition={{ ease: "easeOut", duration: 0.3, delay: 0.1 }}
                                                    initial={{ transform: 'translateY(100%)' }}
                                                    whileInView={{ transform: 'translateY(0%)' }}
                                                    viewport={{ once: true }}>
@@ -52,7 +52,7 @@ const HeroBlock:any = ({ title, video }:IHeroBlock) : ReactNode => {
                                 </Box>
                                 <Box overflow="hidden">
                                     <MotionHeading variant="hero"
-                                                   transition={{ ease: "linear", duration: 0.3, delay: 0.2 }}
+                                                   transition={{ ease: "easeOut", duration: 0.3, delay: 0.2 }}
                                                    initial={{ transform: 'translateY(100%)' }}
                                                    whileInView={{ transform: 'translateY(0%)' }}
                                                    viewport={{ once: true }}>
