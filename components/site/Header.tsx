@@ -58,7 +58,7 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
     }, [isOpen, isScrolledDown, isMinimumScrolled, darkTheme]);
 
     const [hideSkeleton, setHideSkeleton] = useState<boolean>(false);
-    const delayTime:number = 200;
+    const delaySkeletonTime:number = 200;
 
     const color:any = useMemo(() => {
         if(isOpen || (!isScrolledDown && isMinimumScrolled)) {
@@ -84,7 +84,7 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
     useEffect(() => {
         setTimeout(() => {
             setHideSkeleton(true);
-        }, delayTime);
+        }, delaySkeletonTime);
     }, [])
 
     return <Box as="header">
