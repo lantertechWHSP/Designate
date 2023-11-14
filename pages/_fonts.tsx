@@ -114,5 +114,5 @@ export const fontRoboto:any = localFont({
 });
 
 export default function fonts() : ReactNode {
-    return <></>
+    return <></>;
 }

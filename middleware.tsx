@@ -14,7 +14,10 @@ export async function middleware(request: NextRequest) : Promise<NextResponse> {
             const authValue:any = basicAuth.split(' ')[1];
             const [user, pwd] = atob(authValue).split(':');
 
-            if ((user === 'designate' && pwd === 'GVvAqUNXjpex0N6RgBYl')) {
+            if (
+                (user === 'designate' && pwd === 'GVvAqUNXjpex0N6RgBYl') ||
+                (user === 'soulpatts' && pwd === '6Hcd3aMiTkxTNSX8')
+            ) {
                 return NextResponse.next();
             }
         }

@@ -14,15 +14,18 @@ interface ITableRow {
 }
 
 interface IDividendLatestTableBlock extends IBlock {
+    title?:string;
     description:string;
     table:ITable<ITableRow>;
 }
 
-const DividendLatestTableBlock:any = ({ table, description, paddingTop, paddingBottom }:IDividendLatestTableBlock) : ReactNode => {
+const DividendLatestTableBlock:any = ({ title, table, description, paddingTop, paddingBottom }:IDividendLatestTableBlock) : ReactNode => {
     return <ContentBlock background="ghostWhite" paddingTop={paddingTop} paddingBottom={paddingBottom}>
-        <Heading as="h2" variant="sectionHeading" mb={[4, ,6, 8]}>
-            Latest Dividend
-        </Heading>
+        {
+            title && <Heading as="h2" variant="sectionHeading" mb={[4, ,6, 8]}>
+                {title}
+            </Heading>
+        }
         {
             description && <Row>
                 <Column width={[ColumnWidth.Full, , ColumnWidth.Half]}>

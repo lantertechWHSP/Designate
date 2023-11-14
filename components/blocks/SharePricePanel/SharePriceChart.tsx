@@ -59,8 +59,8 @@ const SharePriceChart:any = () : ReactNode => {
                         fill: `url(#priceGradient)`
                     },
                     '.yourir-chart-price': {
-                        stroke: 'charcoal',
-                        strokeWidth: '1px',
+                        stroke: 'olive',
+                        strokeWidth: '2px',
                     },
                     '.yourir-chart-yaxis-label': {
                         position: 'relative',

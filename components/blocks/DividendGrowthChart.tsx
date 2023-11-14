@@ -16,10 +16,11 @@ interface ITableRow {
 }
 
 interface IDividendGrowthChartBlock extends IBlock {
+    title?:string;
     table:ITable<ITableRow>;
 }
 
-const DividendGrowthChart:any = ({ table, theme, paddingTop, paddingBottom }:IDividendGrowthChartBlock) : ReactNode => {
+const DividendGrowthChart:any = ({ title, table, theme, paddingTop, paddingBottom }:IDividendGrowthChartBlock) : ReactNode => {
     const backgroundColor:string = theme === Theme.Dark ? 'olive' : 'white';
     const newLightLegendColors:string[] = [...legendColors];
     newLightLegendColors.shift();
@@ -77,9 +78,11 @@ const DividendGrowthChart:any = ({ table, theme, paddingTop, paddingBottom }:IDi
     return <ContentBlock background={backgroundColor} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         <Row align="baseline" mb={[4, ,6, 8]}>
             <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half]}>
-                <Heading as="h2" variant="sectionHeading" mb={[3, , ,0]} color={textColor}>
-                    Continued Dividend Growth
-                </Heading>
+                {
+                    title && <Heading as="h2" variant="sectionHeading" mb={[3, , ,0]} color={textColor}>
+                        {title}
+                    </Heading>
+                }
             </Column>
             {
                 (Array.isArray(data?.rows) && data.rows.length > 0) && <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half]} align={['flex-start', , ,'flex-end']}>

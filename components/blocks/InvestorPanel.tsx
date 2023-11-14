@@ -43,7 +43,6 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                             <Box sx={{
                                 '.chakra-badge.yourir-zero': {
                                     background: 'lightGrey',
-                                    visibility: 'hidden'
                                 },
                                 '.chakra-badge.yourir-positive': {
                                     background: 'positive'
@@ -147,19 +146,13 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                                         position: 'relative',
                                         top: '-10px'
                                     },
-                                    '.yourir-chart-yaxis-left .yourir-chart-yaxis-outside .yourir-chart-yaxis-label-container': {
-                                        left: '0',
-                                        marginRight: '0',
-                                        fontSize: '12px',
-                                        color: 'darkGrey'
-                                    },
                                     '.yourir-chart-xaxis': {
                                         position: 'relative',
                                         top: '-40px'
                                     },
                                     '.yourir-chart-xaxis-label': {
                                         fontSize: '12px',
-                                        color: 'darkGrey'
+                                        color: 'steel'
                                     },
                                     '.yourir-chart-panel-border-bottom': {
                                         display: 'none'
@@ -174,14 +167,16 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                                     '.yourir-chart-yaxis-gridline': {
                                         stroke: 'borderColor'
                                     },
-                                    '.yourir-chart-yaxis-label-container': {
-                                        fontSize: '12px',
-                                        color: 'steel'
-                                    },
                                     '.yourir-chart-xaxis-label-container': {
+                                        marginLeft: 0,
                                         fontSize: '12px',
                                         color: 'steel',
-                                        marginLeft: 0,
+                                    },
+                                    '.yourir-chart-yaxis-label-container': {
+                                        left: 0,
+                                        marginRight: 0,
+                                        fontSize: '12px',
+                                        color: 'steel'
                                     },
                                     '.yourir-chart-yaxis-outside .yourir-chart-yaxis-label-container:first-of-type': {
                                         display: 'none'

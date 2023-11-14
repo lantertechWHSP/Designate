@@ -14,10 +14,11 @@ interface ITableRow {
 }
 
 interface IDividendHistoryTableBlock extends IBlock {
+    title?:string;
     table:ITable<ITableRow>;
 }
 
-const DividendHistoryTableBlock:any = ({ table, paddingTop, paddingBottom }:IDividendHistoryTableBlock) : ReactNode => {
+const DividendHistoryTableBlock:any = ({ title, table, paddingTop, paddingBottom }:IDividendHistoryTableBlock) : ReactNode => {
     const allData:ITableRow[] = table.data;
     const [paginationNumbers, setPaginationNumbers] = useState([]);
 
@@ -75,9 +76,11 @@ const DividendHistoryTableBlock:any = ({ table, paddingTop, paddingBottom }:IDiv
     };
 
     return <ContentBlock background="ghostWhite" paddingTop={paddingTop} paddingBottom={paddingBottom}>
-        <Heading as="h2" variant="sectionHeading" mb={[4, ,6, 8]}>
-            Dividend History
-        </Heading>
+        {
+            title && <Heading as="h2" variant="sectionHeading" mb={[4, ,6, 8]}>
+                {title}
+            </Heading>
+        }
         {
             (table && table.data && Array.isArray(table?.data) && table.data.length > 0) ? <Box>
 

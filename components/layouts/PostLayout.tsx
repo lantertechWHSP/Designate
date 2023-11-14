@@ -70,7 +70,7 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
                     <Container>
                         <Row justify="center">
                             <Column width={[ColumnWidth.Full, , ,ColumnWidth.TenTwelfths, ColumnWidth.EightTwelfths]}>
-                                <Image image={post?.image} />
+                                <Image image={post?.image} borderRadius="3px" overflow="hidden" />
                                 {
                                     (post?.image?.title) && <Text variant="caption"  mt={2} mb={0}>
                                         {post?.image?.title}
