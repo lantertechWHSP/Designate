@@ -3,11 +3,11 @@ import { scaleLinear, scaleTime, line, area } from 'd3';
 import { Box, Alert, useMediaQuery } from '@chakra-ui/react';
 import { max as _max, min as _min, throttle as _throttle, isNil as _isNil , sumBy as _sumBy} from 'lodash';
 import { DateTime } from 'luxon';
-import { ColorGenerator } from '~/lib/colorGenerator/colorGenerator';
 import { AxisLeft } from "~/components/elements/charts/line/modules/AxisLeft";
 import { AxisBottom } from "~/components/elements/charts/line/modules/AxisBottom";
 import { breakpoints } from '~/lib/theme/theme';
 import { fontRoboto } from '~/pages/_fonts';
+import { ChartTooltip } from "~/components/elements/charts/line/modules/ChartTooltip";
 
 interface ILineChart {
     data: {
@@ -17,11 +17,14 @@ interface ILineChart {
     borderColor?:string;
     borderColorDark?:string;
     fillColor?:string;
+    tooltipLegendBorderColor?:string;
+    tooltipPointFillColor?:string;
 }
 
 interface ILine {
     data:IData[];
     fill?:string;
+    label?:string;
     display:boolean;
 }
 
@@ -44,7 +47,7 @@ interface IMargin {
     left:number;
 }
 
-const LineChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor', borderColorDark = 'charcoal', fillColor = 'rgba(80, 81, 60, 0.05)' }:ILineChart) : ReactNode => {
+const LineChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor', borderColorDark = 'charcoal', tooltipLegendBorderColor = 'transparent', tooltipPointFillColor = 'charcoal', fillColor = 'rgba(80, 81, 60, 0.05)' }:ILineChart) : ReactNode => {
     const desktopHeight:number = 440;
     const mobileHeight:number = 360;
     const [mediaQuery] = useMediaQuery(`(min-width: ${breakpoints.sm})`);
@@ -89,7 +92,7 @@ const LineChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor',
             data.lines.map((line:ILine) => {
                 if(line.data) {
                     line.data.map((datum:IData) => {
-                        flattendValues.push(datum.value);
+                        flattendValues.push(+datum.value);
                     });
                 }
             });
@@ -157,6 +160,7 @@ const LineChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor',
                 .x((datum:IData) => xScale(datum.date))
                 .y1((datum:IData) => yScale(datum.value))
                 .y0(yScale(0));
+
         }
         return null;
     }, [xScale, yScale]);
@@ -164,7 +168,6 @@ const LineChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor',
 
     const linesSVG:any = useMemo(() => {
         if(hasData) {
-            const colorGenerator:ColorGenerator = new ColorGenerator();
             const newLines:ILineDataSVG[] = [];
 
             data.lines.map((line:ILine) => {
@@ -172,7 +175,7 @@ const LineChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor',
                     newLines.push({
                         drawnArea: areaBuilder(line.data),
                         drawnLine: lineBuilder(line.data),
-                        stroke: line.fill ? line.fill : colorGenerator.next(),
+                        stroke: line.fill,
                         display: line.display
                     });
                 }
@@ -237,12 +240,11 @@ const LineChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor',
                             },
 
                         }}>
-                        <svg width={width} height={height} shapeRendering={"crispEdges"}>
+                        <svg width={width} height={height} shapeRendering={"crispEdges"} overflow="visible">
                             <g
                                 width={boundsWidth}
                                 height={boundsHeight}
                                 transform={`translate(${[margin.left, margin.top].join(",")})`}
-                                overflow={"visible"}
                             >
                                 <AxisLeft scale={yScale} chartHeight={height} width={width} />
                                 <g>
@@ -289,8 +291,10 @@ const LineChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor',
                                             }
                                         </>
                                     }
+
                                 </g>
                             </g>
+                            <ChartTooltip width={boundsWidth} height={boundsHeight} data={data.lines} xScale={xScale} yScale={yScale} transform={`translate(${[margin.left, margin.top].join(",")})`} tooltipLegendBorderColor={tooltipLegendBorderColor} tooltipPointFillColor={tooltipPointFillColor} />
                         </svg>
                     </Box> : <Alert status="info">No Data</Alert>
                 }

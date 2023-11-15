@@ -35,6 +35,8 @@ const TrackRecordChartBlock:any = ({ title, table, theme, paddingTop, paddingBot
     const fillColor:string = theme === Theme.Dark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(80, 81, 60, 0.05)';
     const borderColor:string = theme === Theme.Dark ? 'whiteBlur2' : 'borderColor';
     const borderColorDark:string = theme === Theme.Dark ? 'white' : 'charcoal';
+    const tooltipLegendBorderColor:string = theme === Theme.Dark ? 'charcoal' : 'transparent';
+    const tooltipPointFillColor:string = theme === Theme.Dark ? 'olive' : 'charcoal';
 
     const parseValue:any = (value:String) : number => {
         return parseFloat(value.replace(/,/g, ''));
@@ -116,30 +118,35 @@ const TrackRecordChartBlock:any = ({ title, table, theme, paddingTop, paddingBot
         const newLines:any = [];
 
         newLines.push({
+            label: 'SOL shares',
             data: SOLData,
             display: filters[0].isActive,
             fill: colors[0]
         });
 
         newLines.push({
+            label: 'All Ords Accumulation',
             data: AllOrdsData,
             display: filters[1].isActive,
             fill: colors[1]
         });
 
         newLines.push({
+            label: 'MSCI World ex Aus',
             data: MSCIWorldData,
             display: filters[2].isActive,
             fill: colors[2]
         });
 
         newLines.push({
+            label: 'A-REIT Total Return',
             data: PropertyData,
             display: filters[3].isActive,
             fill: colors[3]
         });
 
         newLines.push({
+            label: 'Bloomberg AusBond Composite',
             data: BondsData,
             display: filters[4].isActive,
             fill: colors[4]
@@ -198,7 +205,7 @@ const TrackRecordChartBlock:any = ({ title, table, theme, paddingTop, paddingBot
                                                         const newFilters:IChartFilter[] = [...filters];
 
                                                         newFilters.map((innerFilter) => {
-                                                            if(innerFilter.value === item.value) {
+                                                            if(innerFilter.value === item.value && index !== 0) {
                                                                 innerFilter.isActive = !innerFilter.isActive;
 
                                                                 isToggled = true;
@@ -211,7 +218,7 @@ const TrackRecordChartBlock:any = ({ title, table, theme, paddingTop, paddingBot
                                                         }
                                                     }}>
                                                     <Flex direction="row" align="center" width="100%">
-                                                        <Box background={item.background} width="8px" height="8px" borderRadius="4px" border="1px solid" borderColor={theme === Theme.Dark ? 'charcoal' : 'transparent'} mr={2} />
+                                                        <Box background={item.background} width="8px" height="8px" borderRadius="4px" border="1px solid" borderColor={tooltipLegendBorderColor} mr={2} />
                                                         <Flex flex="1">{item.label}</Flex>
                                                         {
                                                             item.isActive && <Box color="steel">
@@ -230,7 +237,7 @@ const TrackRecordChartBlock:any = ({ title, table, theme, paddingTop, paddingBot
                 </Box>
             }
         </Flex>
-        <LineChart data={data} textColor={chartTextColor} fillColor={fillColor} borderColor={borderColor} borderColorDark={borderColorDark} />
+        <LineChart data={data} textColor={chartTextColor} fillColor={fillColor} borderColor={borderColor} borderColorDark={borderColorDark} tooltipPointFillColor={tooltipPointFillColor} tooltipLegendBorderColor={tooltipLegendBorderColor} />
     </ContentBlock>;
 };
 

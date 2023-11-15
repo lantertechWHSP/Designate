@@ -1,5 +1,5 @@
 import { ReactNode, Fragment } from 'react';
-import { Popover, PopoverTrigger, Portal, PopoverContent, Box } from '@chakra-ui/react';
+import { Popover, PopoverTrigger, Portal, PopoverContent, Box, Text } from '@chakra-ui/react';
 import { Tooltip } from '~/components/elements/tooltip';
 
 interface IBars {
@@ -24,7 +24,7 @@ export const Bars:any = ({ values, height, xScale, yScale, suffix }:IBars) : Rea
                 {
                     values.map(({ value, label }, index:number) => {
                         return <Fragment key={index}>
-                            <Popover placement="top" trigger="click" isLazy>
+                            <Popover placement="top" trigger="hover" isLazy>
                                 <PopoverTrigger>
                                     <g clipPath={`inset(0 0 ${borderRadius}px 0)`} className="bar">
                                         <rect

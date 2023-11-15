@@ -138,7 +138,7 @@ const StackedBarChart:any = ({ data, textColor = 'steel', borderColor = 'borderC
                 values.push(object);
             });
 
-            let newStack = stack().keys(_map(data.groups, (group:IDataGroup) => {
+            const newStack:any = stack().keys(_map(data.groups, (group:IDataGroup) => {
                 return group.key;
             }))(values);
 
@@ -147,9 +147,7 @@ const StackedBarChart:any = ({ data, textColor = 'steel', borderColor = 'borderC
                 stackItem['label'] = _find(data.groups, (group) => {
                     return group.key === stackItem.key;
                 }).label;
-            })
-
-            console.log(newStack);
+            });
 
             return newStack;
         }

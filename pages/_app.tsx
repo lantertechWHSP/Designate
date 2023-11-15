@@ -18,7 +18,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) : Reac
         <Head>
             <title>WHSP</title>
             <meta name="viewport" content="width=device-width, initial-scale=1" />
-            <meta name="version" content="0.7.1" />
+            <meta name="version" content="0.7.2" />
         </Head>
         <Box>
             <Component {...pageProps} />

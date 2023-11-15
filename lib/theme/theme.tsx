@@ -205,6 +205,7 @@ export const theme:any = extendBaseTheme({
         },
         Text: {
             baseStyle: {
+                mb: 0,
             },
             variants: {
                 sectionDescription: {
@@ -510,7 +511,7 @@ export const theme:any = extendBaseTheme({
             '.yourir-chart': {
                 fontFamily: fontRoboto.style.fontFamily,
             },
-            '.yourir-chart-tooltip': {
+            '.yourir-chart-tooltip, .chart-tooltip': {
                 fontSize: '14px',
                 border: '0',
                 borderRadius: '3px',

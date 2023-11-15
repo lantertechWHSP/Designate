@@ -24,8 +24,6 @@ export const Bars:any = ({ xScale, yScale, stacked, colors }:IBars) : ReactNode 
                             const y0:number = yScale(d[0]);
                             const y1:number = yScale(d[1]);
 
-                            console.log(data);
-
                             // Loop down per xScale to determine the topmost bar to put a border radius
                             let borderRadiusIndex:number = stacked.length - 1;
                             for(let k:number = (stacked.length - 1); k >= 0; k--) {
