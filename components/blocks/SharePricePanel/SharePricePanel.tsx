@@ -11,10 +11,10 @@ interface ISharePricePanelBlock extends IBlock {
 const SharePricePanelBlock:any = ({ background, paddingTop, paddingBottom }:ISharePricePanelBlock) : ReactNode => {
     return <ContentBlock background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         <Row>
-            <Column width={[ColumnWidth.Full, , ,ColumnWidth.FourTwelvfths]} marginRight={[0, , ,ColumnWidth.Twelfth]}>
+            <Column width={[ColumnWidth.Full, , ,ColumnWidth.FourTwelvfths]}>
                 <SharePriceOverview />
             </Column>
-            <Column width={[ColumnWidth.Full, , ,ColumnWidth.SevenTwelfths]}>
+            <Column width={[ColumnWidth.Full, , ,ColumnWidth.EightTwelfths]}>
                 <SharePriceChart />
             </Column>
         </Row>
