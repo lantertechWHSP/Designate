@@ -1,6 +1,6 @@
 import { ReactNode, Fragment } from 'react';
-import { Popover, PopoverTrigger, Portal, PopoverContent, Box } from '@chakra-ui/react';
-import { fontRoboto } from '~/pages/_fonts';
+import { Popover, PopoverTrigger, Portal, PopoverContent, Box, Text } from '@chakra-ui/react';
+import { Tooltip } from "~/components/elements/tooltip";
 
 interface IBars {
     xScale?:any;
@@ -8,10 +8,9 @@ interface IBars {
     stacked?:any;
     boundsHeight:number;
     colors?:any;
-    borderColor?:any;
 }
 
-export const Bars:any = ({ xScale, yScale, stacked, colors, borderColor }:IBars) : ReactNode => {
+export const Bars:any = ({ xScale, yScale, stacked, colors }:IBars) : ReactNode => {
     const borderRadius:number = 3;
 
     return <>
@@ -24,6 +23,8 @@ export const Bars:any = ({ xScale, yScale, stacked, colors, borderColor }:IBars)
                             const value:string = String(d.data[data.key]);
                             const y0:number = yScale(d[0]);
                             const y1:number = yScale(d[1]);
+
+                            console.log(data);
 
                             // Loop down per xScale to determine the topmost bar to put a border radius
                             let borderRadiusIndex:number = stacked.length - 1;
@@ -54,9 +55,17 @@ export const Bars:any = ({ xScale, yScale, stacked, colors, borderColor }:IBars)
                                     </PopoverTrigger>
                                     <Portal>
                                         <PopoverContent>
-                                            <Box background="white" fontSize="12px" fontFamily={`${fontRoboto.style.fontFamily}`} borderColor={borderColor} px="10px" textAlign="center" minW="40px" py="3px">
-                                                {value}
-                                            </Box>
+                                            <Tooltip>
+                                                <Box>
+                                                    {label}
+                                                </Box>
+                                                <Box>
+                                                    <Text mb={0} as="label" mr={2}>
+                                                        {data.label}:
+                                                    </Text>
+                                                    <Text mb={0} as="span">{value}</Text>
+                                                </Box>
+                                            </Tooltip>
                                         </PopoverContent>
                                     </Portal>
                                 </Popover>

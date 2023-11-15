@@ -514,15 +514,17 @@ export const theme:any = extendBaseTheme({
                 fontSize: '14px',
                 border: '0',
                 borderRadius: '3px',
-                padding: 2,
+                px: 4,
+                py: 3,
                 background: 'rgba(255, 255, 255, 0.9)',
                 boxShadow: boxShadow,
-                color: 'charcoal'
+                color: 'charcoal',
+                minWidth: '190px'
             },
             'td.yourir-chart-tooltip-date-time': {
                 fontWeight: 400
             },
-            '.yourir-chart-tooltip-legend': {
+            'table.yourir-chart-tooltip-legend': {
                 margin: 0
             },
             '#yourir-default-announcement': {

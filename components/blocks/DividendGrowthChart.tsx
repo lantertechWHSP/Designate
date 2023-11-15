@@ -61,13 +61,16 @@ const DividendGrowthChart:any = ({ title, table, theme, paddingTop, paddingBotto
         return {
             groups: [{
                 fill: colors[0],
-                label: 'InterimDividend',
+                label: 'Interim Dividend',
+                key: 'InterimDividend',
             }, {
                 fill: colors[1],
-                label: 'FinalDividend',
+                label: 'Final Dividend',
+                key: 'FinalDividend',
             }, {
                 fill: colors[2],
-                label: 'SpecialDividend'
+                label: 'Special Dividend',
+                key: 'SpecialDividend',
             }],
             rows: values
         };
