@@ -1,3 +1,5 @@
+import { structuredTextAttrs } from '~/dato/attrs/structuredTextAttrs';
+
 const menuItemFrag:string = `
     fragment menuItemFrag on MenuItemRecord {
         id
@@ -38,7 +40,9 @@ export const site:string = `
         footer {
             id
             email
-            address
+            address {
+                ${structuredTextAttrs}
+            }
             phone
             fax
             linkedin
