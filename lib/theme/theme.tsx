@@ -66,6 +66,8 @@ colors['successText'] = '#93d490';
 
 export const boxShadow:string = '0px 4px 10px 0px rgba(0, 0, 0, 0.10)';
 
+// drop-shadow(0px 1px 0px rgba(0, 0, 0, 0.10))
+
 export const zIndex:any = {
     carouselCommands: 10,
     featuredPosts: {
@@ -507,6 +509,21 @@ export const theme:any = extendBaseTheme({
             // YourIR
             '.yourir-chart': {
                 fontFamily: fontRoboto.style.fontFamily,
+            },
+            '.yourir-chart-tooltip': {
+                fontSize: '14px',
+                border: '0',
+                borderRadius: '3px',
+                padding: 2,
+                background: 'rgba(255, 255, 255, 0.9)',
+                boxShadow: boxShadow,
+                color: 'charcoal'
+            },
+            'td.yourir-chart-tooltip-date-time': {
+                fontWeight: 400
+            },
+            '.yourir-chart-tooltip-legend': {
+                margin: 0
             },
             '#yourir-default-announcement': {
                 height: '0',

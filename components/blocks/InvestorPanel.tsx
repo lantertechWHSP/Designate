@@ -183,7 +183,7 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                                     },
                                     '.yourir-chart-panel-plot-area': {
                                         padding: 0
-                                    }
+                                    },
                                 }}>
                                 <Box height="100%" data-yourir="priceChart1 range=6m showTooltips=true" >
                                     <Box  height="100%" data-yourir="plots" />
