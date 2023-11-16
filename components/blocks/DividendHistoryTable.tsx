@@ -82,8 +82,7 @@ const DividendHistoryTableBlock:any = ({ title, table, paddingTop, paddingBottom
             </Heading>
         }
         {
-            (table && table.data && Array.isArray(table?.data) && table.data.length > 0) ? <Box>
-
+            (table && table.data && Array.isArray(table?.data) && table.data.length > 0) ? <Box mr={['-16px', '-24px', '-32px', 0]}>
                 <TableContainer>
                     <Table variant="basic" minW="100%">
                         <Thead>
@@ -196,13 +195,6 @@ const DividendHistoryTableBlock:any = ({ title, table, paddingTop, paddingBottom
                             </Button>
                         </Box>
                     </Flex>
-
-
-                    // <Flex py={8} justify="center">
-                    //     <Button variant="button" onClick={loadMore} rightIcon={isLoading && <Spinner size='sm' />}>
-                    //         Load More
-                    //     </Button>
-                    // </Flex>
                 }
             </Box>: <Alert status="info">No Dividend Data</Alert>
         }

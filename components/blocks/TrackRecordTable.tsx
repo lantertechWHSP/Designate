@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
 import ContentBlock from '~/components/blocks/Content';
-import { Heading, TableContainer, Table, Thead, Tr, Th, Tbody, Td, Alert } from '@chakra-ui/react';
+import { Heading, TableContainer, Table, Thead, Tr, Th, Tbody, Td, Alert, Box } from '@chakra-ui/react';
 import { ITable } from '~/interfaces/util/table';
 
 interface ITrackRecordTableBlock extends IBlock {
@@ -17,7 +17,7 @@ const TrackRecordTableBlock:any = ({ title, table, background, paddingTop, paddi
             </Heading>
         }
         {
-            table.data && table.data.length > 0 ? <TableContainer mb="20px">
+            table.data && table.data.length > 0 ? <Box mr={['-16px', '-24px', '-32px', 0]}><TableContainer mb="20px">
                 <Table variant="basic" w="100%">
                     {
                         Array.isArray(table.columns) && table.columns.length > 0 && <Thead>
@@ -50,7 +50,7 @@ const TrackRecordTableBlock:any = ({ title, table, background, paddingTop, paddi
                         </Tbody>
                     }
                 </Table>
-            </TableContainer> : <Alert status="info">No Data Availiable</Alert>
+            </TableContainer></Box> : <Alert status="info">No Data Availiable</Alert>
         }
     </ContentBlock>;
 };

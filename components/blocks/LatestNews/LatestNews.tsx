@@ -27,11 +27,11 @@ const LatestNewsBlock:any = ({ background, textColor, paddingTop, paddingBottom,
             </SectionLinkButton>
         </Flex>
         {
-            (Array.isArray(posts) && posts.length > 0) ? <Box className="horizonalScroll" overflowX={[posts.length > 2 ? 'scroll' : 'hidden', , ,'hidden']}>
+            (Array.isArray(posts) && posts.length > 0) ? <Box mr={['-16px', '-24px', '-32px', 0]} className="horizonalScroll" overflowX={[posts.length > 2 ? 'scroll' : 'hidden', , ,'hidden']}>
                 <Row wrap={['nowrap', , ,'wrap']}>
                     {
                         posts.map((post:IPost, index:number) => {
-                            return <Column width={[ColumnWidth.Half, , ,ColumnWidth.FourTwelvfths]} key={index}>
+                            return <Column width={[ColumnWidth.EightTwelfths, , ,ColumnWidth.FourTwelvfths]} key={index}>
                                 <LatestNewsItem {...post} />
                             </Column>;
                         })

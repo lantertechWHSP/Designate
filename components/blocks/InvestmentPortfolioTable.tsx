@@ -72,7 +72,7 @@ const InvestmentPortfolioTableBlock:any = ({ title, description, table, paddingT
             }
         </Box>
         {
-            ((Array.isArray(table?.data) && table.data.length > 0) || (Array.isArray(table?.columns) && table.columns.length > 0)) ? <TableContainer>
+            ((Array.isArray(table?.data) && table.data.length > 0) || (Array.isArray(table?.columns) && table.columns.length > 0)) ? <Box mr={['-16px', '-24px', '-32px',  0]}><TableContainer>
                 <Table variant="basic" w="100%" color="white" sx={{
                     td: {
                         borderLeft: '1px solid',
@@ -165,7 +165,7 @@ const InvestmentPortfolioTableBlock:any = ({ title, description, table, paddingT
                         </Tbody>
                     }
                 </Table>
-            </TableContainer> : <Alert status="info">No Data</Alert>
+            </TableContainer></Box> : <Alert status="info">No Data</Alert>
         }
     </ContentBlock>;
 };

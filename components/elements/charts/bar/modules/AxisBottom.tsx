@@ -24,7 +24,7 @@ export const AxisBottom:any = ({ scale, transform }:IAxisBottom) : ReactNode => 
                 else if(mdMediaQuery) {
                     return index % 2 === 0;
                 }
-                return index % 3 === 0;
+                return index % 3 === 0 && index !== 0;
             })));
         }
     }, [scale, lgMediaQuery, mdMediaQuery]);

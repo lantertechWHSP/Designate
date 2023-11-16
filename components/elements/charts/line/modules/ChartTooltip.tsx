@@ -8,6 +8,8 @@ interface IChartToolip {
     yScale?:any;
     width?:number;
     height?:number;
+    boundsWidth?:number;
+    boundsHeight?:number;
     data?:any;
     transform?:string;
     tooltipLegendBorderColor?:string;
@@ -17,14 +19,15 @@ interface IChartToolip {
 interface IPoint {
     x?:number;
     y?:number;
-    tooltipXOffset?:number;
-    tooltipYOffset?:number;
+    tooltipX?:number;
+    tooltipY?:number;
 }
 
 export const ChartTooltip:any = ({ xScale, yScale, width, height, data, transform, tooltipLegendBorderColor = 'transparent', tooltipPointFillColor = 'charcoal' }:IChartToolip) => {
-    const elementRef:any = useRef<HTMLElement>();
+    const chartRef:any = useRef<HTMLElement>();
     // All the lines
     const [values, setValues] = useState([]);
+    const [indicatorOpacity, setIndicatorOpacity] = useState(0);
     const [point, setPoint] = useState<IPoint>({});
     const [sortedData, setSortedData] = useState([]);
     const tooltipWidth:number = 300;
@@ -68,26 +71,48 @@ export const ChartTooltip:any = ({ xScale, yScale, width, height, data, transfor
             });
         });
 
+        // Dot
+        const xValue:number = newValues[0].x;
+        const yValue:number = newValues[0].y;
+
+        // Toolip
+        let toolTipX:number;
+        const toolTipY:number = yValue + 30;
+
+        if(xValue <= tooltipWidth) {
+            toolTipX = 0;
+        }
+        else if((width - xValue) < tooltipWidth) {
+            toolTipX = xValue - tooltipWidth;
+        }
+        else {
+            toolTipX = xValue;
+        }
+
         setValues(newValues);
         setPoint({
-            x: newValues[0].x,
-            y: newValues[0].y,
-            tooltipXOffset: (width - newValues[0].x) < 300 ? -300 : 0,
-            tooltipYOffset: 30,
+            x: xValue,
+            y: yValue,
+            tooltipX: toolTipX,
+            tooltipY: toolTipY,
         });
     }, [sortedData]);
 
     return <g transform={transform}>
-        <Box as="rect" width={width} height={height} ref={elementRef} opacity={0} onMouseMove={followPoints}>
+        <Box as="rect" width={width} height={height} ref={chartRef} opacity={0} onMouseOver={() => {
+            setIndicatorOpacity(1);
+        }} onMouseMove={followPoints} onMouseOut={() => {
+            setIndicatorOpacity(0);
+        }}>
         </Box>
         {
-            (Array.isArray(values) && values.length > 0) && <>
-                <g transform={`translate(${point.x}, ${point.y})`} >
+            (Array.isArray(values) && values.length > 0) && <g opacity={indicatorOpacity} pointerEvents="none">
+                <g transform={`translate(${point.x}, ${point.y})`}>
                     <Box as="circle" r={18} fill="white" fillOpacity="0.5" />
                     <Box as="circle" r={6} fill="olive" />
                     <Box as="circle" r={2} fill={tooltipPointFillColor} />
                 </g>
-                <g transform={`translate(${point.x +  + point.tooltipXOffset}, ${point.y + point.tooltipYOffset})`}>
+                <g transform={`translate(${point.tooltipX}, ${point.tooltipY})`}>
                     <foreignObject width={tooltipWidth} height={30 + (30 * values.filter(point => point.line?.display).length)}>
                         <Tooltip>
                             {
@@ -112,7 +137,7 @@ export const ChartTooltip:any = ({ xScale, yScale, width, height, data, transfor
                         </Tooltip>
                     </foreignObject>
                 </g>
-            </>
+            </g>
         }
     </g>;
 };

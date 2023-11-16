@@ -86,10 +86,10 @@ const PortfolioPanelBlock:any = ({ items, paddingTop, paddingBottom }:IPortfolio
                                                 </Box>
                                             }
                                             {
-                                                (Array.isArray(item?.people) && item.people.length > 0) && <SimpleGrid columns={[1, , 3]} spacing={[0, ,8]}>
+                                                (Array.isArray(item?.people) && item.people.length > 0) && <SimpleGrid columns={[1, , 3]} spacing={[0, ,8]} mb={-8}>
                                                     {
                                                         item?.people.map((person:IPerson, index:number) => {
-                                                            return <Box key={index}>
+                                                            return <Box key={index} mb={8}>
                                                                 <Image image={person.image} ratio={[1 / 1]} mb={4} />
                                                                 {
                                                                     person.name && <Heading as="h3">

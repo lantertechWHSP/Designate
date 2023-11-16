@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode, useState, useEffect } from 'react';
 import { IBlock } from '~/interfaces/util/block';
 import { Box, Container, Flex, Heading } from '@chakra-ui/react';
 import { AspectRatio } from '@chakra-ui/react';
@@ -16,7 +16,13 @@ interface IHeroBlock extends IBlock {
 const HeroBlock:any = ({ title, video }:IHeroBlock) : ReactNode => {
     const { observe: contentWidthObserve, width: contentWidth } = useDimensions();
     const height:string[] = ['420px', '482px'];
-    const [isVideoPlaying, setIsPlaying] = useState<boolean>(false);
+    const [isVideoPlaying, setIsVideoPlaying] = useState<boolean>(false);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setIsVideoPlaying(true);
+        }, 100);
+    }, []);
 
     return (title || video && video?.url) && <Box overflow="hidden" ref={contentWidthObserve}>
         {
@@ -44,7 +50,7 @@ const HeroBlock:any = ({ title, video }:IHeroBlock) : ReactNode => {
             video && <Box h={['300px', '420px', ,'600px']}>
                 <Box visibility={(isVideoPlaying) ? 'visible' : 'hidden'} height={!isVideoPlaying ? 0 : 'initial'}>
                     <AspectRatio ratio={[contentWidth / 300, contentWidth / 420, , contentWidth / 600]}>
-                        <video autoPlay={true} loop={true} muted={true} preload="auto" playsInline onPlay={() => { setIsPlaying(true); }}>
+                        <video autoPlay={true} loop={true} muted={true} playsInline={true} preload="auto">
                             <source src={video?.url} />
                         </video>
                     </AspectRatio>

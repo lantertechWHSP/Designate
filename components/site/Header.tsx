@@ -235,7 +235,7 @@ const MobileNav:any = ({ background, menu, isOpen = false }): ReactNode => {
         position="sticky"
         left={0}
         right={0}
-        h={'calc(100vh - 120px)'}
+        h={'calc(100dvh - 120px)'}
         zIndex={isOpen ? zIndex.header : 0}
         pointerEvents={!isOpen ? 'none' : 'all'}
         animate={{

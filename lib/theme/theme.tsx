@@ -168,14 +168,14 @@ export const theme:any = extendBaseTheme({
                     mb: 8
                 },
                 h2: {
-                    fontSize: ['21px', '24px', '28px'],
-                    lineHeight: ['21px', '24px', '26px'],
+                    fontSize: ['22px', '24px', '28px'],
+                    lineHeight: ['24px', '24px', '26px'],
                     fontWeight: 500,
                     mb: 8
                 },
                 h3: {
                     fontSize: ['21px', '21px', '21px'],
-                    lineHeight: ['26px', '26px', '26px'],
+                    lineHeight: ['28px', '26px', '26px'],
                     fontWeight: 700,
                     color: 'olive',
                     mb: 8
@@ -501,7 +501,7 @@ export const theme:any = extendBaseTheme({
                 }
             },
             ol: {
-                ml: '20px',
+                ml: '24px',
                 mb: 6,
                 li: {
                     pl: '8px'

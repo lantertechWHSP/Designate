@@ -86,7 +86,7 @@ const FeaturedPostsCarousel:any = ({ posts }:IFeaturedPostsCarousel) : any => {
                                                 <Column width={[ColumnWidth.Full, ,ColumnWidth.TwoThirds]}>
                                                     <Box maxWidth="900px">
                                                         {
-                                                            post.title && <Heading as="h1" color="white" fontSize={['50px']} lineHeight="56px" mb="6px">
+                                                            post.title && <Heading as="h1" color="white" fontSize={['30px', '40px', '50px']} lineHeight={['36px', '46px', '56px']} mb="6px">
                                                                 {post.title}
                                                             </Heading>
                                                         }

@@ -36,7 +36,7 @@ const DividendLatestTableBlock:any = ({ title, table, description, paddingTop, p
             </Row>
         }
         {
-            (table && table.data && Array.isArray(table?.data) && table.data.length > 0) ? <TableContainer>
+            (table && table.data && Array.isArray(table?.data) && table.data.length > 0) ? <Box mr={['-16px', '-24px', '-32px', 0]}><TableContainer>
                 <Table variant="basic" w="100%">
                     <Thead>
                         <Tr>
@@ -91,7 +91,7 @@ const DividendLatestTableBlock:any = ({ title, table, description, paddingTop, p
                         }
                     </Tbody>
                 </Table>
-            </TableContainer> : <Alert status="info">No Dividend Data</Alert>
+            </TableContainer></Box> : <Alert status="info">No Dividend Data</Alert>
         }
     </ContentBlock>;
 };
