@@ -59,7 +59,7 @@ const OverviewBlock:any = ({ subtitle, description, paddingTop, paddingBottom, b
             </Column>
             <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half]}>
                 {
-                    !isEmptyDocument(description) && <TextAnimate delay={0.1}>
+                    !isEmptyDocument(description) && <TextAnimate delay={0.3}>
                     <StructuredContent content={description} />
                     </TextAnimate>
                 }
