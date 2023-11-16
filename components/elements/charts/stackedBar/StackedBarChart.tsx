@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState, ReactNode }  from 'react';
 import { Box, Alert, useMediaQuery } from '@chakra-ui/react';
 import { scaleLinear, scaleBand, scaleOrdinal, stack } from 'd3';
-import { throttle as _throttle, maxBy as _maxBy, sum as _sum, sumBy as _sumBy, flatMap as _flatMap, map as _map } from 'lodash';
+import { throttle as _throttle, maxBy as _maxBy, sum as _sum, sumBy as _sumBy, flatMap as _flatMap, map as _map, find as _find } from 'lodash';
 import { AxisLeft } from '~/components/elements/charts/stackedBar/modules/AxisLeft';
 import { AxisBottom } from '~/components/elements/charts/stackedBar/modules/AxisBottom';
 import { breakpoints } from '~/lib/theme/theme';
@@ -21,6 +21,7 @@ interface IStackedBarChart {
 
 interface IDataGroup {
     label:string;
+    key:string;
     fill:string;
 }
 
@@ -137,9 +138,18 @@ const StackedBarChart:any = ({ data, textColor = 'steel', borderColor = 'borderC
                 values.push(object);
             });
 
-            return stack().keys(_map(data.groups, (group:IDataGroup) => {
-                return group.label;
+            const newStack:any = stack().keys(_map(data.groups, (group:IDataGroup) => {
+                return group.key;
             }))(values);
+
+            // Attach the display label
+            newStack.map((stackItem) => {
+                stackItem['label'] = _find(data.groups, (group) => {
+                    return group.key === stackItem.key;
+                }).label;
+            });
+
+            return newStack;
         }
         return [];
     }, [data]);
@@ -153,7 +163,7 @@ const StackedBarChart:any = ({ data, textColor = 'steel', borderColor = 'borderC
             });
 
             return scaleOrdinal().domain(_map(data.groups, (group:IDataGroup) => {
-                return group.label;
+                return group.key;
             })).range(values);
         }
     }, [data]);
@@ -220,10 +230,8 @@ const StackedBarChart:any = ({ data, textColor = 'steel', borderColor = 'borderC
                                     overflow={"visible"}
                                 >
                                     <AxisLeft scale={yScale} chartHeight={height} width={width} />
-                                    <g transform="translate(10, 0)">
-                                        <AxisBottom scale={xScale} transform={`translate(0, ${boundsHeight})`} />
-                                        <Bars xScale={xScale} yScale={yScale} stacked={stacked} boundsHeight={boundsHeight} colors={colors} borderColor={borderColor} groupsLength={data.groups.length} />
-                                    </g>
+                                    <AxisBottom scale={xScale} transform={`translate(0, ${boundsHeight})`} />
+                                    <Bars xScale={xScale} yScale={yScale} stacked={stacked} boundsHeight={boundsHeight} colors={colors} groupsLength={data.groups.length} />
                                 </g>
                             }
                         </svg>

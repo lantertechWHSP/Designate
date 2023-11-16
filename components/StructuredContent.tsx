@@ -63,7 +63,7 @@ const StrucutredContent:any = ({ content }) : ReactNode => {
                         children:any,
                         key:any
                     }) => {
-                        return <Text as="p" key={key}>
+                        return <Text as="p" key={key} mb={6}>
                             {children}
                         </Text>;
                     }),

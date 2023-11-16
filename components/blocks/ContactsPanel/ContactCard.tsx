@@ -2,6 +2,8 @@ import { ReactNode } from 'react';
 import { IContact } from '~/interfaces/models/contact';
 import { Heading, Box } from '@chakra-ui/react';
 import { UnderlineLink } from '~/components/elements/sectionLink';
+import StructuredContent from "~/components/StructuredContent";
+import { isEmptyDocument } from 'datocms-structured-text-utils';
 
 interface IContactCardProps extends IContact {
 }
@@ -14,12 +16,12 @@ const ContactCard:any = ({ title, address, contactName, phone, phone2, email, em
             </Heading>
         }
         {
-            address && <Box mb={4}>
+            !isEmptyDocument(address) && <Box mb={4}>
                 <Heading as="h4" mb={0}>
                     Address
                 </Heading>
                 <Box>
-                    {address}
+                    <StructuredContent content={address} />
                 </Box>
             </Box>
         }

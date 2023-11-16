@@ -51,7 +51,7 @@ const CardPanelBlock:any = ({ annotation, title, description, image, link, align
                         }
                         <Box flex={1} />
                         {
-                            link && <SectionLink {...link}>
+                            link && <SectionLink {...link} mt={4}>
                                 {link.document ? 'Download' : 'Read More'}
                             </SectionLink>
                         }

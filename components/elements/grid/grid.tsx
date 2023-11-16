@@ -55,8 +55,15 @@ export const Row:any = ({ wrap = ['wrap'], direction = ['row'], justify = ['flex
     </Flex>;
 };
 
-export const Column:any = ({ width = [ColumnWidth.Full], direction = ['column'], children, ...props }:IColumn) : ReactNode => {
-    return <Flex direction={direction} width={width} px={gutter} {...props}>
+export const Column:any = ({ width, minWidth, direction = ['column'], children, ...props }:IColumn) : ReactNode => {
+    if(!width) {
+        width = [ColumnWidth.Full];
+    }
+    if(!minWidth) {
+        minWidth = width;
+    }
+
+    return <Flex direction={direction} minWidth={minWidth} width={width} px={gutter} {...props}>
         {children}
     </Flex>;
 };

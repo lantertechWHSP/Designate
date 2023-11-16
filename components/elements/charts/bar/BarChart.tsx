@@ -164,7 +164,7 @@ const BarChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor', 
                                         overflow={"visible"}>
                                         <AxisLeft scale={yScale} chartHeight={height} width={width} suffix={suffix} />
                                         <AxisBottom scale={xScale} transform={`translate(0, ${boundsHeight})`} />
-                                        <Bars values={data.bars} xScale={xScale} borderColor={borderColor} yScale={yScale} height={boundsHeight} suffix={suffix} />
+                                        <Bars values={data.bars} xScale={xScale} yScale={yScale} height={boundsHeight} suffix={suffix} />
                                     </g>
                                 }
                             </>

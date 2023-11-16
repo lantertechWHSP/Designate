@@ -20,7 +20,7 @@ const ShareHistoricalPricesTable:any = ({ paddingTop, paddingBottom }:ShareHisto
                 Historical Prices
             </Heading>
             <Box data-yourir="historicalPrices pageSize=10">
-                <Box overflowX="auto">
+                <Box mr={['-16px', '-24px', '-32px', 0]}>
                     <TableContainer>
                         <Table variant="basic" w="100%">
                             <Thead>

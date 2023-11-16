@@ -1,16 +1,18 @@
-import {ReactNode} from 'react';
-import {Box, Container, Flex, Text} from '@chakra-ui/react';
-import {Link} from '~/components/elements/link';
-import {IFooter as IDatoFooter} from '~/interfaces/layout/footer';
-import Logo from "~/components/site/Logo";
-import {IMenuLink} from '~/interfaces/models/menuLink';
-import {MenuItemLink} from '~/components/elements/menuItemLink';
-import {Column, ColumnWidth, Row} from "~/components/elements/grid/grid";
+import { ReactNode} from 'react';
+import { Box, Container, Flex, Text } from '@chakra-ui/react';
+import { Link} from '~/components/elements/link';
+import { IFooter as IDatoFooter} from '~/interfaces/layout/footer';
+import Logo from '~/components/site/Logo';
+import { IMenuLink } from '~/interfaces/models/menuLink';
+import { MenuItemLink } from '~/components/elements/menuItemLink';
+import { Column, ColumnWidth, Row } from '~/components/elements/grid/grid';
+import StructuredContent from '~/components/StructuredContent';
+import { isEmptyDocument } from 'datocms-structured-text-utils';
 
 interface IFooter extends IDatoFooter {
 }
 
-const Footer:any = ({ menu, address, email, phone, fax, linkedin, youtube, abn, copyright }:IFooter) : ReactNode => {
+const Footer:any = ({ menu, address, email, phone, fax, linkedin, youtube, copyright }:IFooter) : ReactNode => {
     return <Box as="footer" background="charcoal2" color="white" py={['40px', ,'50px', '60px']}>
         <Container>
             <Row>
@@ -59,8 +61,8 @@ const Footer:any = ({ menu, address, email, phone, fax, linkedin, youtube, abn, 
                         </Column>
                         <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half]}  mb={[4, , ,0]}  order={[1, , ,2]}>
                             {
-                                address && <Box mb={[4, ,8]}>
-                                    {address}
+                                !isEmptyDocument(address) && <Box mb={[4, ,8]}>
+                                    <StructuredContent content={address} />
                                 </Box>
                             }
                             {
@@ -105,19 +107,15 @@ const Footer:any = ({ menu, address, email, phone, fax, linkedin, youtube, abn, 
                     <Row>
                         <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
                             {
-                                abn && <Box color="whiteBlur">
-                                    ABN: <Link href={`https://abr.business.gov.au/ABN/View?id=${abn}`} fontSize={['16px']} target="_blank" color="whiteBlur" variant="siteFooter">
-                                        {abn}
-                                    </Link>
-                                </Box>
-                            }
-                        </Column>
-                        <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
-                            {
                                 copyright && <Text mb={0} color="whiteBlur">
                                     {copyright}
                                 </Text>
                             }
+                        </Column>
+                        <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
+                            <Box color="whiteBlur">
+                                Created by <Link href="https://designate.com.au" target="_blank" borderBottom="1px solid">Designate</Link>
+                            </Box>
                         </Column>
                     </Row>
                 </Column>

@@ -14,10 +14,11 @@ interface ITableRow {
 }
 
 interface IDividendHistoryTableBlock extends IBlock {
+    title?:string;
     table:ITable<ITableRow>;
 }
 
-const DividendHistoryTableBlock:any = ({ table, paddingTop, paddingBottom }:IDividendHistoryTableBlock) : ReactNode => {
+const DividendHistoryTableBlock:any = ({ title, table, paddingTop, paddingBottom }:IDividendHistoryTableBlock) : ReactNode => {
     const allData:ITableRow[] = table.data;
     const [paginationNumbers, setPaginationNumbers] = useState([]);
 
@@ -75,12 +76,13 @@ const DividendHistoryTableBlock:any = ({ table, paddingTop, paddingBottom }:IDiv
     };
 
     return <ContentBlock background="ghostWhite" paddingTop={paddingTop} paddingBottom={paddingBottom}>
-        <Heading as="h2" variant="sectionHeading" mb={[4, ,6, 8]}>
-            Dividend History
-        </Heading>
         {
-            (table && table.data && Array.isArray(table?.data) && table.data.length > 0) ? <Box>
-
+            title && <Heading as="h2" variant="sectionHeading" mb={[4, ,6, 8]}>
+                {title}
+            </Heading>
+        }
+        {
+            (table && table.data && Array.isArray(table?.data) && table.data.length > 0) ? <Box mr={['-16px', '-24px', '-32px', 0]}>
                 <TableContainer>
                     <Table variant="basic" minW="100%">
                         <Thead>
@@ -193,13 +195,6 @@ const DividendHistoryTableBlock:any = ({ table, paddingTop, paddingBottom }:IDiv
                             </Button>
                         </Box>
                     </Flex>
-
-
-                    // <Flex py={8} justify="center">
-                    //     <Button variant="button" onClick={loadMore} rightIcon={isLoading && <Spinner size='sm' />}>
-                    //         Load More
-                    //     </Button>
-                    // </Flex>
                 }
             </Box>: <Alert status="info">No Dividend Data</Alert>
         }

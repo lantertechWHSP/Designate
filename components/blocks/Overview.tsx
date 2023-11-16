@@ -2,9 +2,9 @@ import {ReactNode} from 'react';
 import {IBlock} from '~/interfaces/util/block';
 import StructuredContent from "~/components/StructuredContent";
 import ContentBlock from '~/components/blocks/Content';
-import {Column, ColumnWidth, Row} from '~/components/elements/grid/grid';
-import {IStructuredText} from '~/interfaces/util/structuredText';
-import {isEmptyDocument} from 'datocms-structured-text-utils';
+import { Column, ColumnWidth, Row } from '~/components/elements/grid/grid';
+import { IStructuredText } from '~/interfaces/util/structuredText';
+import { isEmptyDocument } from 'datocms-structured-text-utils';
 import { Box, Heading } from '@chakra-ui/react';
 import {TextAnimate} from "~/components/elements/animation/textAnimate";
 

@@ -1,13 +1,12 @@
 import { ReactNode, Fragment } from 'react';
-import { Popover, PopoverTrigger, Portal, PopoverContent, Box } from '@chakra-ui/react';
-import {fontRoboto} from "~/pages/_fonts";
+import { Popover, PopoverTrigger, Portal, PopoverContent, Box, Text } from '@chakra-ui/react';
+import { Tooltip } from '~/components/elements/tooltip';
 
 interface IBars {
     values: IData[];
     height:number;
     xScale:any;
     yScale:any;
-    borderColor?:any;
     suffix?:any;
 }
 
@@ -16,7 +15,7 @@ interface IData {
     label:string;
 }
 
-export const Bars:any = ({ values, height, xScale, yScale, borderColor, suffix }:IBars) : ReactNode =>  {
+export const Bars:any = ({ values, height, xScale, yScale, suffix }:IBars) : ReactNode =>  {
     const borderRadius:number = 3;
 
     return <>
@@ -41,9 +40,17 @@ export const Bars:any = ({ values, height, xScale, yScale, borderColor, suffix }
                                 </PopoverTrigger>
                                 <Portal>
                                     <PopoverContent>
-                                        <Box background="white" fontSize="12px" fontFamily={`${fontRoboto.style.fontFamily}`} borderColor={borderColor} px="10px" textAlign="center" minW="40px" py="3px">
-                                            {value} {suffix}
-                                        </Box>
+                                        <Tooltip>
+                                            <Box>
+                                                {label}
+                                            </Box>
+                                            <Box>
+                                                <Text mb={0} as="label" mr={2}>
+                                                    Value:
+                                                </Text>
+                                                <Text mb={0} as="span">{value} {suffix}</Text>
+                                            </Box>
+                                        </Tooltip>
                                     </PopoverContent>
                                 </Portal>
                             </Popover>

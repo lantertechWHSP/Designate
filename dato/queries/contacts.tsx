@@ -1,9 +1,13 @@
+import { structuredTextAttrs } from '~/dato/attrs/structuredTextAttrs';
+
 const contactsFrag:string = `
     fragment contactFrag on ContactRecord {
         __typename
         id
         title
-        address
+        address {
+            ${structuredTextAttrs} 
+        }
         contactName
         phone
         phone2

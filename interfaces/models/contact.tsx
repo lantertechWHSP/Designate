@@ -1,6 +1,8 @@
+import { IStructuredText } from '~/interfaces/util/structuredText';
+
 export interface IContact {
     title?:string;
-    address?:string;
+    address?:IStructuredText;
     contactName?:string;
     phone?:string;
     phone2?:string;

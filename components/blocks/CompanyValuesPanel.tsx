@@ -21,7 +21,7 @@ const CompanyValuesPanelBlock:any = ({ title, items, containerWidth, background,
                 Our People and Values
             </Heading>
         }
-        <Box borderRadius="3px" overflow="hidden" mb={'-20px'}>
+        <Box borderRadius="3px" overflow="hidden" mb={'-20px'} mr={['-16px', '-24px', 0]}>
             <Box className="horizonalScroll" overflowX={['scroll', ,'hidden']}>
                 <Flex wrap={['nowrap', , 'wrap']} direction="row">
                     {

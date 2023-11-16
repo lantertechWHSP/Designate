@@ -66,6 +66,8 @@ colors['successText'] = '#93d490';
 
 export const boxShadow:string = '0px 4px 10px 0px rgba(0, 0, 0, 0.10)';
 
+// drop-shadow(0px 1px 0px rgba(0, 0, 0, 0.10))
+
 export const zIndex:any = {
     carouselCommands: 10,
     featuredPosts: {
@@ -166,14 +168,14 @@ export const theme:any = extendBaseTheme({
                     mb: 8
                 },
                 h2: {
-                    fontSize: ['21px', '24px', '28px'],
-                    lineHeight: ['21px', '24px', '26px'],
+                    fontSize: ['22px', '24px', '28px'],
+                    lineHeight: ['24px', '24px', '26px'],
                     fontWeight: 500,
                     mb: 8
                 },
                 h3: {
                     fontSize: ['21px', '21px', '21px'],
-                    lineHeight: ['26px', '26px', '26px'],
+                    lineHeight: ['28px', '26px', '26px'],
                     fontWeight: 700,
                     color: 'olive',
                     mb: 8
@@ -203,6 +205,7 @@ export const theme:any = extendBaseTheme({
         },
         Text: {
             baseStyle: {
+                mb: 0,
             },
             variants: {
                 sectionDescription: {
@@ -501,7 +504,7 @@ export const theme:any = extendBaseTheme({
                 }
             },
             ol: {
-                ml: '20px',
+                ml: '24px',
                 mb: 6,
                 li: {
                     pl: '8px'
@@ -510,6 +513,23 @@ export const theme:any = extendBaseTheme({
             // YourIR
             '.yourir-chart': {
                 fontFamily: fontRoboto.style.fontFamily,
+            },
+            '.yourir-chart-tooltip, .chart-tooltip': {
+                fontSize: '14px',
+                border: '0',
+                borderRadius: '3px',
+                px: 4,
+                py: 3,
+                background: 'rgba(255, 255, 255, 0.9)',
+                boxShadow: boxShadow,
+                color: 'charcoal',
+                minWidth: '190px'
+            },
+            'td.yourir-chart-tooltip-date-time': {
+                fontWeight: 400
+            },
+            'table.yourir-chart-tooltip-legend': {
+                margin: 0
             },
             '#yourir-default-announcement': {
                 height: '0',
