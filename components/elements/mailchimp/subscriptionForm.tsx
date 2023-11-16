@@ -86,7 +86,7 @@ export const SubscriptionForm:any = () : ReactNode => {
                                                             }}
                                                             color="white"
                                                             height="50px"
-                                                               lineHeight="50px"
+                                                            lineHeight="50px"
                                                             id="email"
                                                             name="email"
                                                             borderRadius="3px"

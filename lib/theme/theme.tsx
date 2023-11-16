@@ -1,6 +1,6 @@
 import { extendBaseTheme } from '@chakra-ui/react';
 import chakraTheme from '@chakra-ui/theme';
-import {fontGramatika, fontRoboto} from '~/pages/_fonts';
+import { fontGramatika, fontRoboto } from '~/pages/_fonts';
 const { Modal, Menu, Badge, Alert } = chakraTheme.components;
 
 export const breakpoints:any = {
@@ -65,11 +65,8 @@ colors['success'] = colors.spring;
 colors['successText'] = '#93d490';
 
 export const boxShadow:string = '0px 4px 10px 0px rgba(0, 0, 0, 0.10)';
-
-export const tableOverflowMargin = ['-16px', '-24px', 0];
-export const horizontalScrollMargin = ['-16px', '-24px', '-32px', 0];
-// drop-shadow(0px 1px 0px rgba(0, 0, 0, 0.10))
-
+export const tableOverflowMargin:any = ['-16px', '-24px', 0];
+export const horizontalScrollMargin:any  = ['-16px', '-24px', '-32px', 0];
 export const zIndex:any = {
     carouselCommands: 10,
     featuredPosts: {
