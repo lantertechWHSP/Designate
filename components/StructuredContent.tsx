@@ -17,7 +17,7 @@ const StrucutredContent:any = ({ content }) : ReactNode => {
                 marginBottom: 0
             },
             'p + h1, p + h2, p + h3, p + h4, p + h5, p + h6': {
-                marginTop: 8
+                marginTop: [6, 8]
             },
             'p + ul, p + ol': {
                 marginTop: -2,

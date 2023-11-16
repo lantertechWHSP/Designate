@@ -66,6 +66,8 @@ colors['successText'] = '#93d490';
 
 export const boxShadow:string = '0px 4px 10px 0px rgba(0, 0, 0, 0.10)';
 
+export const tableOverflowMargin = ['-16px', '-24px', 0];
+export const horizontalScrollMargin = ['-16px', '-24px', '-32px', 0];
 // drop-shadow(0px 1px 0px rgba(0, 0, 0, 0.10))
 
 export const zIndex:any = {
@@ -77,6 +79,7 @@ export const zIndex:any = {
     },
     heroHeading: 10,
     menu: 30,
+    tooltip: 50,
     header: 100,
     yourirPopup: 200,
     preview: 300

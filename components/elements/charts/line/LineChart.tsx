@@ -294,7 +294,7 @@ const LineChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor',
 
                                 </g>
                             </g>
-                            <ChartTooltip width={width} height={height} data={data.lines} xScale={xScale} yScale={yScale} transform={`translate(${[margin.left, margin.top].join(",")})`} tooltipLegendBorderColor={tooltipLegendBorderColor} tooltipPointFillColor={tooltipPointFillColor} />
+                            <ChartTooltip width={boundsWidth} height={boundsHeight} data={data.lines} xScale={xScale} yScale={yScale} transform={`translate(${[margin.left, margin.top].join(",")})`} tooltipLegendBorderColor={tooltipLegendBorderColor} tooltipPointFillColor={tooltipPointFillColor} />
                         </svg>
                     </Box> : <Alert status="info">No Data</Alert>
                 }

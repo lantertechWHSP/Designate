@@ -291,7 +291,7 @@ const MobileNavItem:any = ({item}): ReactNode => {
             }
         </Flex>
         {
-            hasChildren && <Collapse in={isOpen} animateOpacity>
+            hasChildren && <Collapse in={isOpen}>
                 <Box borderTop="1px solid" borderColor="borderColor">
                     {
                         item.children.map((child: IMenuLink, childIndex: number) => {

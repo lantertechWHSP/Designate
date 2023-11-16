@@ -1,13 +1,13 @@
-import { IPost } from '~/interfaces/models/post';
-import { useKeenSlider } from 'keen-slider/react';
+import {IPost} from '~/interfaces/models/post';
+import {useKeenSlider} from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
-import { Flex, Container, Heading, Text, Box, Button } from '@chakra-ui/react';
-import { SectionLinkButton } from '~/components/elements/sectionLink';
-import { useState } from 'react';
-import { Icon, Icons } from '~/components/elements/icon';
-import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
+import {Box, Button, Container, Flex, Heading, Text} from '@chakra-ui/react';
+import {SectionLinkButton} from '~/components/elements/sectionLink';
+import {useState} from 'react';
+import {Icon, Icons} from '~/components/elements/icon';
+import {Column, ColumnWidth, Row} from '~/components/elements/grid/grid';
 import StructuredContent from "~/components/StructuredContent";
-import { isEmptyDocument } from 'datocms-structured-text-utils';
+import {isEmptyDocument} from 'datocms-structured-text-utils';
 import {zIndex} from "~/lib/theme/theme";
 
 interface IFeaturedPostsCarousel {
@@ -83,19 +83,17 @@ const FeaturedPostsCarousel:any = ({ posts }:IFeaturedPostsCarousel) : any => {
                                         bottom="40px">
                                         <Container>
                                             <Row>
-                                                <Column width={[ColumnWidth.Full, ,ColumnWidth.TwoThirds]}>
-                                                    <Box maxWidth="900px">
-                                                        {
-                                                            post.title && <Heading as="h1" color="white" fontSize={['30px', '40px', '50px']} lineHeight={['36px', '46px', '56px']} mb="6px">
-                                                                {post.title}
-                                                            </Heading>
-                                                        }
-                                                        {
-                                                            !isEmptyDocument(post.summary) && <Text color="ghostWhite2">
-                                                                <StructuredContent content={post.summary} />
-                                                            </Text>
-                                                        }
-                                                    </Box>
+                                                <Column width={[ColumnWidth.Full, , ,ColumnWidth.TwoThirds]}>
+                                                    {
+                                                        post.title && <Heading as="h1" color="white" fontSize={['30px', '40px', '50px']} lineHeight={['36px', '46px', '56px']} mb="6px">
+                                                            {post.title}
+                                                        </Heading>
+                                                    }
+                                                    {
+                                                        !isEmptyDocument(post.summary) && <Text color="ghostWhite2">
+                                                            <StructuredContent content={post.summary} />
+                                                        </Text>
+                                                    }
                                                 </Column>
                                             </Row>
                                             <SectionLinkButton href={`/news/${post.slug}`} mt={8} color="white" borderColor="whiteBlur2" borderColorHover="white">

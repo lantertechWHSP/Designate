@@ -8,6 +8,7 @@ import { IStructuredText } from '~/interfaces/util/structuredText';
 import StructuredContent from '~/components/StructuredContent';
 import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
 import { isEmptyDocument } from 'datocms-structured-text-utils';
+import {tableOverflowMargin} from "~/lib/theme/theme";
 
 interface ITableRow {
     Portfolio:string;
@@ -72,7 +73,7 @@ const InvestmentPortfolioTableBlock:any = ({ title, description, table, paddingT
             }
         </Box>
         {
-            ((Array.isArray(table?.data) && table.data.length > 0) || (Array.isArray(table?.columns) && table.columns.length > 0)) ? <Box mr={['-16px', '-24px', '-32px',  0]}><TableContainer>
+            ((Array.isArray(table?.data) && table.data.length > 0) || (Array.isArray(table?.columns) && table.columns.length > 0)) ? <Box mr={tableOverflowMargin}><TableContainer>
                 <Table variant="basic" w="100%" color="white" sx={{
                     td: {
                         borderLeft: '1px solid',

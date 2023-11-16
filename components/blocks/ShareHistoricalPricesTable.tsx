@@ -4,6 +4,7 @@ import ContentBlock from "~/components/blocks/Content";
 import { Icon, Icons } from '~/components/elements/icon';
 import { YourIR } from 'yourir-next';
 import { Heading, Flex, Text, Box, ButtonGroup, Button, TableContainer, Table, Thead, Tr, Th, Tbody, Td } from '@chakra-ui/react';
+import {tableOverflowMargin} from "~/lib/theme/theme";
 
 interface ShareHistoricalPricesTable extends IBlock {
 }
@@ -20,7 +21,7 @@ const ShareHistoricalPricesTable:any = ({ paddingTop, paddingBottom }:ShareHisto
                 Historical Prices
             </Heading>
             <Box data-yourir="historicalPrices pageSize=10">
-                <Box mr={['-16px', '-24px', '-32px', 0]}>
+                <Box mr={tableOverflowMargin}>
                     <TableContainer>
                         <Table variant="basic" w="100%">
                             <Thead>

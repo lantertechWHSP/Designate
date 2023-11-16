@@ -3,6 +3,7 @@ import { IBlock } from '~/interfaces/util/block';
 import ContentBlock from '~/components/blocks/Content';
 import { YourIR } from 'yourir-next';
 import { Heading, Box, TableContainer, Table, Thead, Tr, Th, Tbody, Td } from '@chakra-ui/react';
+import { tableOverflowMargin } from '~/lib/theme/theme';
 
 interface IShareQuoteTable extends IBlock {
 }
@@ -13,7 +14,7 @@ const ShareQuoteTable:any = ({ paddingTop, paddingBottom }:IShareQuoteTable) : R
             <Heading as="h2" variant="sectionHeading" mb={[4, ,6, 8]}>
                 Quote Table
             </Heading>
-            <Box mr={['-16px', '-24px', '-32px', 0]}>
+            <Box mr={tableOverflowMargin}>
                 <TableContainer>
                     <Table variant="basic" w="100%">
                         <Thead>
