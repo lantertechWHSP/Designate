@@ -16,13 +16,17 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
     return <ContentBlock background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         {
             displayHeadline && <Flex align="center" mb={[4, ,6, 8]}>
-                <Heading as="h2" variant="sectionHeading">
-                    Investors
-                </Heading>
+                <AnimateTranslateUp translateYPosition={30}>
+                    <Heading as="h2" variant="sectionHeading">
+                        Investors
+                    </Heading>
+                </AnimateTranslateUp>
                 <Box flex="1" />
-                <SectionLinkButton href="/news">
-                    Overview
-                </SectionLinkButton>
+                <AnimateTranslateUp translateYPosition={30} delay={1}>
+                    <SectionLinkButton href="/news">
+                        Overview
+                    </SectionLinkButton>
+                </AnimateTranslateUp>
             </Flex>
         }
         <Box as={YourIR}>

@@ -7,7 +7,7 @@ interface IAnimateTranslateUp {
     children?:any;
 }
 
-export const AnimateTranslateUp:any = ({ offset = 0, translateYPosition = 120, children }:IAnimateTranslateUp): ReactNode => {
+export const AnimateTranslateUp:any = ({ offset = 0, delay = 0, translateYPosition = 120, children }:IAnimateTranslateUp): ReactNode => {
     const elementRef = useRef();
     const { scrollYProgress } = useScroll({
         target: elementRef,
@@ -17,7 +17,8 @@ export const AnimateTranslateUp:any = ({ offset = 0, translateYPosition = 120, c
     return <Box ref={elementRef} height="100%">
         <MotionBox height="100%" transition={{
             ease: [0.215, 0.61, 0.355, 1],
-            duration: 0.5
+            duration: 0.5,
+            delay: delay
         }}
         style={{
             translateY: useTransform(useSpring(scrollYProgress, {

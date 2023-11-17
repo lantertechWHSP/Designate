@@ -20,13 +20,17 @@ interface ILatestNewsBlock extends IBlock {
 const LatestNewsBlock:any = ({ background, textColor, paddingTop, paddingBottom, data: { posts } }:ILatestNewsBlock) : ReactNode => {
     return <ContentBlock background={background} color={textColor} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         <Flex align="flex-end" mb={[4, ,6, 8]}>
-            <Heading as="h2" lineHeight={1} variant="sectionHeading" mb={0}>
-                Latest News
-            </Heading>
+            <AnimateTranslateUp translateYPosition={30}>
+                <Heading as="h2" lineHeight={1} variant="sectionHeading" mb={0}>
+                    Latest News
+                </Heading>
+            </AnimateTranslateUp>
             <Box flex="1" />
-            <SectionLinkButton href="/news">
-                All News
-            </SectionLinkButton>
+            <AnimateTranslateUp translateYPosition={30} delay={1}>
+                <SectionLinkButton href="/news">
+                    All News
+                </SectionLinkButton>
+            </AnimateTranslateUp>
         </Flex>
         {
             (Array.isArray(posts) && posts.length > 0) ? <Box mr={horizontalScrollMargin} className="horizonalScroll" overflowX={[(posts.length > 3 ? 'scroll' : 'initial'), , ,'initial']} overflowY="initial">
