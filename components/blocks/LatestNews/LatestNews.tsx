@@ -8,6 +8,7 @@ import LatestNewsItem from '~/components/blocks/LatestNews/LatestNewsItem';
 import {SectionLinkButton} from "~/components/elements/sectionLink";
 import {Column, ColumnWidth, Row} from '~/components/elements/grid/grid';
 import {horizontalScrollMargin} from "~/lib/theme/theme";
+import {AnimateTranslateUp} from "~/components/elements/animation/AnimateTranslateUp";
 
 interface ILatestNewsBlock extends IBlock {
     title:string;
@@ -28,13 +29,15 @@ const LatestNewsBlock:any = ({ background, textColor, paddingTop, paddingBottom,
             </SectionLinkButton>
         </Flex>
         {
-            (Array.isArray(posts) && posts.length > 0) ? <Box mr={horizontalScrollMargin} className="horizonalScroll" overflowX={[posts.length > 2 ? 'scroll' : 'hidden', , ,'hidden']}>
+            (Array.isArray(posts) && posts.length > 0) ? <Box mr={horizontalScrollMargin} className="horizonalScroll" overflowX={[posts.length > 2 ? 'scroll' : 'hidden', , ,'hidden']} overflowY="hidden">
                 <Row wrap={['nowrap', , ,'wrap']}>
                     {
                         posts.map((post:IPost, index:number) => {
                             return <Column width={[ColumnWidth.EightTwelfths, , ,ColumnWidth.FourTwelvfths]} key={index}>
-                                <LatestNewsItem {...post} />
-                            </Column>;
+                                <AnimateTranslateUp offset={(index * 30)}>
+                                    <LatestNewsItem {...post} />
+                                </AnimateTranslateUp>
+                            </Column>
                         })
                     }
                 </Row>

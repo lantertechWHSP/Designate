@@ -1,9 +1,10 @@
-import { ReactNode } from 'react';
+import { ReactNode, useRef } from 'react';
 import { IBlock } from '~/interfaces/util/block';
 import ContentBlock from '~/components/blocks/Content';
 import { Box, Flex } from '@chakra-ui/react';
 import { Image } from '~/components/elements/image';
 import { IImage } from '~/interfaces/util/image';
+import {AnimateTranslateUp} from "~/components/elements/animation/AnimateTranslateUp";
 
 interface IHomePageImageGalleryBlock extends IBlock {
     imageMain?:IImage;
@@ -12,7 +13,9 @@ interface IHomePageImageGalleryBlock extends IBlock {
 }
 
 const HomePageImageGalleryBlock:any = ({ imageMain, imageSide, imageSide2, background, paddingTop, paddingBottom }:IHomePageImageGalleryBlock) : ReactNode => {
-    return (imageMain || imageSide || imageSide2) && <ContentBlock background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
+    const ref = useRef(null)
+
+    return (imageMain || imageSide || imageSide2) && <ContentBlock ref={ref} background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         {
             (imageMain || imageSide || imageSide2) && <Flex direction="row" mx={[-2, -2, -4]} overflow="hidden">
                 <Box px={[2, 2, 4]} width={['100%', ,'50%']}>

@@ -5,6 +5,7 @@ import { Box, Heading, Text, Flex } from '@chakra-ui/react';
 import { ILink} from '~/interfaces/util/link';
 import { SectionLink } from '~/components/elements/sectionLink';
 import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
+import {AnimateTranslateUp} from "~/components/elements/animation/AnimateTranslateUp";
 
 
 interface ISeeAlsoItem {
@@ -50,7 +51,9 @@ const SeeAlsoPanelBlock:any = ({ items, background, paddingTop, paddingBottom }:
             {
                 items.map((item:ISeeAlsoItem, index:number) => {
                     return <Column key={index} width={[ColumnWidth.Full, , ColumnWidth.Half, ColumnWidth.OneQuarter]}>
-                        <SeeAlsoItem {...item} />
+                        <AnimateTranslateUp offset={index * 30}>
+                            <SeeAlsoItem {...item} />
+                        </AnimateTranslateUp>
                     </Column>;
                 })
             }
