@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, Fragment } from 'react';
 import { IBlock } from '~/interfaces/util/block';
 import ContentBlock from '~/components/blocks/Content';
 import { ISVGImage } from '~/interfaces/util/image';
@@ -27,25 +27,27 @@ const AttributesListPanelBlock:any = ({ title, items, paddingTop, paddingBottom,
             (Array.isArray(items) && items.length > 0) && <SimpleGrid columns={[1, ,2, items.length > 4 ? 4 : items.length]} spacing={[6, ,8]}>
                 {
                     items.map((item:AttributesListPanelItem, index:number) => {
-                        return <AnimateTranslateUp offset={(60 * index)}>
-                            <Box key={index}>
-                                {
-                                    (item.icon && item.icon.url) && <Box mb={4}>
-                                        <img src={item.icon.url} alt={item.icon?.alt} />
-                                    </Box>
-                                }
-                                {
-                                    item.title && <Heading as="h3" fontSize={["21px"]} color="olive" fontWeight={700} mb={2}>
-                                        {item.title}
-                                    </Heading>
-                                }
-                                {
-                                    item.content && <Box fontSize={['16px']} lineHeight={['24px']}>
-                                        {item.content}
-                                    </Box>
-                                }
-                            </Box>
-                        </AnimateTranslateUp>
+                        return <Fragment key={index}>
+                            <AnimateTranslateUp offset={(60 * index)}>
+                                <Box>
+                                    {
+                                        (item.icon && item.icon.url) && <Box mb={4}>
+                                            <img src={item.icon.url} alt={item.icon?.alt} />
+                                        </Box>
+                                    }
+                                    {
+                                        item.title && <Heading as="h3" fontSize={["21px"]} color="olive" fontWeight={700} mb={2}>
+                                            {item.title}
+                                        </Heading>
+                                    }
+                                    {
+                                        item.content && <Box fontSize={['16px']} lineHeight={['24px']}>
+                                            {item.content}
+                                        </Box>
+                                    }
+                                </Box>
+                            </AnimateTranslateUp>
+                        </Fragment>
                     })
                 }
             </SimpleGrid>

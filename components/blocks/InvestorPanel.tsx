@@ -7,6 +7,7 @@ import { YourIR } from 'yourir-next';
 import { Icon, Icons } from '~/components/elements/icon';
 import { SectionLink, SectionLinkButton } from '~/components/elements/sectionLink';
 import {AnimateTranslateUp} from "~/components/elements/animation/AnimateTranslateUp";
+import {AnimateOverflowText} from "~/components/elements/animation/AnimateOverflowText";
 
 interface IInvestorPanelBlock extends IBlock {
     displayHeadline?:boolean;
@@ -16,17 +17,17 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
     return <ContentBlock background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         {
             displayHeadline && <Flex align="center" mb={[4, ,6, 8]}>
-                <AnimateTranslateUp translateYPosition={30}>
+                <AnimateOverflowText>
                     <Heading as="h2" variant="sectionHeading">
                         Investors
                     </Heading>
-                </AnimateTranslateUp>
+                </AnimateOverflowText>
                 <Box flex="1" />
-                <AnimateTranslateUp translateYPosition={30} delay={1}>
+                <AnimateOverflowText delay={0.25}>
                     <SectionLinkButton href="/news">
                         Overview
                     </SectionLinkButton>
-                </AnimateTranslateUp>
+                </AnimateOverflowText>
             </Flex>
         }
         <Box as={YourIR}>

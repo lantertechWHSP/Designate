@@ -27,7 +27,7 @@ import Logo from "~/components/site/Logo";
 import { Link } from '~/components/elements/link';
 import { IHeader as IDatoHeader } from "~/interfaces/layout/header";
 import { Row, Column, ColumnWidth } from "~/components/elements/grid/grid";
-import { zIndex } from "~/lib/theme/theme";
+import {baseAnimationBezier, zIndex} from "~/lib/theme/theme";
 
 const MotionBox:any = motion(Box);
 
@@ -87,8 +87,8 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
                     background: background
                 }}
                 transition={{
-                    ease: 'linear',
-                    duration: 0.3
+                    ease: baseAnimationBezier,
+                    duration: 0.5
                 }}>
                 <Container>
                     <Row height={[height]} align="center">
@@ -246,8 +246,8 @@ const MobileNav:any = ({ background, menu, isOpen = false }): ReactNode => {
             background: background
         }}
         transition={{
-            ease: 'linear',
-            duration: 0.3
+            ease: baseAnimationBezier,
+            duration: 0.5
         }}>
         <Box ref={scrollRef} overflowY="auto" h={isOpen ? '100%' : '0'}>
             <Box color="charcoal">

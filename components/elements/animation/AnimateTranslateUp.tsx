@@ -1,6 +1,7 @@
 import { ReactNode, useRef } from 'react';
 import { Box } from '@chakra-ui/react';
-import { motion, useScroll, useSpring, useTransform  } from 'framer-motion';
+import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
+import { baseAnimationBezier } from '~/lib/theme/theme';
 const MotionBox:any = motion(Box);
 
 interface IAnimateTranslateUp {
@@ -14,9 +15,8 @@ export const AnimateTranslateUp:any = ({ offset = 0, delay = 0, translateYPositi
         offset: [`${offset}px end`, 'end']
     });
 
-    return <Box ref={elementRef} height="100%">
-        <MotionBox height="100%" transition={{
-            ease: [0.215, 0.61, 0.355, 1],
+    return <MotionBox ref={elementRef} transition={{
+            ease: baseAnimationBezier,
             duration: 0.5,
             delay: delay
         }}
@@ -28,6 +28,5 @@ export const AnimateTranslateUp:any = ({ offset = 0, delay = 0, translateYPositi
             }), [0, 1], [`${translateYPosition}px`, '0px'])
         }}>
             {children}
-        </MotionBox>
-    </Box>
+    </MotionBox>
 }

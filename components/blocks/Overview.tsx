@@ -60,7 +60,7 @@ const OverviewBlock:any = ({ subtitle, description, paddingTop, paddingBottom, b
             <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half]}>
                 {
                     !isEmptyDocument(description) &&
-                    <AnimateTranslateUp offset={60}>
+                    <AnimateTranslateUp delay={0.5}>
                         <StructuredContent content={description} />
                     </AnimateTranslateUp>
                 }
