@@ -20,6 +20,7 @@ interface ITableRow {
 
 interface ITrackRecordChartBlock extends IBlock {
     title?:string;
+    subtitle?:string;
     table: ITable<ITableRow>;
 }
 
@@ -27,7 +28,7 @@ interface IChartFilter extends IFilter {
     background?:string;
 }
 
-const TrackRecordChartBlock:any = ({ title, table, theme, paddingTop, paddingBottom }:ITrackRecordChartBlock) : ReactNode => {
+const TrackRecordChartBlock:any = ({ title, subtitle, table, theme, paddingTop, paddingBottom }:ITrackRecordChartBlock) : ReactNode => {
     const backgroundColor:string = theme === Theme.Dark ? 'olive' : 'white';
     const colors:string[] = theme === Theme.Dark ? darkLegendColors : legendColors;
     const headingTextColor:string = theme === Theme.Dark ? 'white' : 'charcoal';
@@ -171,9 +172,18 @@ const TrackRecordChartBlock:any = ({ title, table, theme, paddingTop, paddingBot
     return <ContentBlock paddingTop={paddingTop} paddingBottom={paddingBottom} background={backgroundColor}>
         <Flex direction={['column', ,'row']} mb={[4, 6, ,8]} mx={-2}>
             {
-                title && <Heading as="h2" variant="sectionSubheading" color={headingTextColor} px={2} mb={[4, 6, 0]} >
-                    {title}
-                </Heading>
+                (title || subtitle) && <Box mb={[4, 6, 0]} px={2}>
+                    {
+                        title && <Heading as="h2" variant="sectionSubheading" color={headingTextColor} mb='4px'>
+                            {title}
+                        </Heading>
+                    }
+                    {
+                        subtitle && <Heading as="h3" variant="sectionSubsubheading">
+                            {subtitle}
+                        </Heading>
+                    }
+                </Box>
             }
             <Box flex={1} />
             {
