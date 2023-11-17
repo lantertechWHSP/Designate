@@ -14,17 +14,17 @@ export const AnimateTranslateUp:any = ({ offset = 0, translateYPosition = 120, c
         offset: [`${offset}px end`, 'end']
     });
 
-    return <Box ref={elementRef}>
-        <MotionBox transition={{
+    return <Box ref={elementRef} height="100%">
+        <MotionBox height="100%" transition={{
             ease: [0.215, 0.61, 0.355, 1],
-            duration: 0.5,
+            duration: 0.5
         }}
         style={{
             translateY: useTransform(useSpring(scrollYProgress, {
                 bounce: 0,
                 mass: 0.3,
                 stiffness: 50
-            }), [0, 1], [`${translateYPosition}`, '0px'])
+            }), [0, 1], [`${translateYPosition}px`, '0px'])
         }}>
             {children}
         </MotionBox>

@@ -1,7 +1,7 @@
 import { ReactNode, useRef } from 'react';
 import { IBlock } from '~/interfaces/util/block';
 import ContentBlock from '~/components/blocks/Content';
-import { Box, Flex } from '@chakra-ui/react';
+import { Box, Flex, Grid, GridItem, AspectRatio } from '@chakra-ui/react';
 import { Image } from '~/components/elements/image';
 import { IImage } from '~/interfaces/util/image';
 import {AnimateTranslateUp} from "~/components/elements/animation/AnimateTranslateUp";
@@ -16,21 +16,22 @@ const HomePageImageGalleryBlock:any = ({ imageMain, imageSide, imageSide2, backg
     const ref = useRef(null)
 
     return (imageMain || imageSide || imageSide2) && <ContentBlock ref={ref} background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
-        {
-            (imageMain || imageSide || imageSide2) && <Flex direction="row" mx={[-2, -2, -4]} overflow="hidden">
-                <Box px={[2, 2, 4]} width={['100%', ,'50%']}>
-                    <Image image={imageMain} ratio={[652 / 672]} borderRadius="3px" overflow="hidden" />
-                </Box>
-                <Box px={[2, 2, 4]} my={[-4, -4, -8]} width={['100%', ,'50%']}>
-                    <Box py={[2, 2, 4]}>
-                        <Image image={imageSide} ratio={[ 652 / 330 ]} borderRadius="3px" overflow="hidden" />
-                    </Box>
-                    <Box py={[2, 2, 4]}>
-                        <Image image={imageSide2}  ratio={[ 652 / 330 ]} borderRadius="3px" overflow="hidden" />
-                    </Box>
-                </Box>
-            </Flex>
-        }
+        <Grid
+            gap={8}
+            templateRows='repeat(2, 1fr)'
+            templateColumns='repeat(2, 1fr)'>
+            <GridItem rowSpan={2} colSpan={1}>
+                    <AspectRatio ratio={[652 / 672]} >
+                        <Box backgroundImage={`url(${imageMain.url})`} backgroundSize="cover" />
+                    </AspectRatio>
+            </GridItem>
+            <GridItem>
+                <Box top="0" left="0" right="0" bottom="0" backgroundImage={`url(${imageSide.url})`} backgroundSize="cover" height="100%" />
+            </GridItem>
+            <GridItem>
+                <Box top="0" left="0" right="0" bottom="0" backgroundImage={`url(${imageSide2.url})`} backgroundSize="cover" height="100%" />
+            </GridItem>
+        </Grid>
     </ContentBlock>;
 };
 

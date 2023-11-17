@@ -51,7 +51,7 @@ const SeeAlsoPanelBlock:any = ({ items, background, paddingTop, paddingBottom }:
             {
                 items.map((item:ISeeAlsoItem, index:number) => {
                     return <Column key={index} width={[ColumnWidth.Full, , ColumnWidth.Half, ColumnWidth.OneQuarter]}>
-                        <AnimateTranslateUp offset={index * 30}>
+                        <AnimateTranslateUp offset={index * 30} translateYPosition={60}>
                             <SeeAlsoItem {...item} />
                         </AnimateTranslateUp>
                     </Column>;
