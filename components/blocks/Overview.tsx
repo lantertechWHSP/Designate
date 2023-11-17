@@ -44,7 +44,7 @@ const OverviewBlock:any = ({ subtitle, description, paddingTop, paddingBottom, b
             <Column width={subtitleColumnWidth} marginRight={subtitleMarginOffset}>
                 {
                     !isEmptyDocument(subtitle) && <Box>
-                        <AnimateTranslateUp offset={30}>
+                        <AnimateTranslateUp>
                             <Heading as="h2"
                                    fontSize={['28px', '32px', '36px']}
                                    lineHeight={['35px', '38px', '42px']}

@@ -27,7 +27,7 @@ const AttributesListPanelBlock:any = ({ title, items, paddingTop, paddingBottom,
             (Array.isArray(items) && items.length > 0) && <SimpleGrid columns={[1, ,2, items.length > 4 ? 4 : items.length]} spacing={[6, ,8]}>
                 {
                     items.map((item:AttributesListPanelItem, index:number) => {
-                        return <AnimateTranslateUp offset={(20 * index)}>
+                        return <AnimateTranslateUp offset={(60 * index)}>
                             <Box key={index}>
                                 {
                                     (item.icon && item.icon.url) && <Box mb={4}>

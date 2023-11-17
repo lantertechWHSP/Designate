@@ -34,7 +34,7 @@ const LatestNewsBlock:any = ({ background, textColor, paddingTop, paddingBottom,
                     {
                         posts.map((post:IPost, index:number) => {
                             return <Column width={[ColumnWidth.EightTwelfths, , ,ColumnWidth.FourTwelvfths]} key={index}>
-                                <AnimateTranslateUp offset={(index * 30)}>
+                                <AnimateTranslateUp offset={(index * 60)}>
                                     <LatestNewsItem {...post} />
                                 </AnimateTranslateUp>
                             </Column>

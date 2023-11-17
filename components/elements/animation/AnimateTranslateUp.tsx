@@ -1,15 +1,18 @@
 import { ReactNode, useRef } from 'react';
 import { Box } from '@chakra-ui/react';
-import { motion, useScroll, useTransform  } from 'framer-motion';
+import { motion, useScroll, useSpring, useTransform  } from 'framer-motion';
 const MotionBox:any = motion(Box);
 
 interface IAnimateTranslateUp {
     children?:any;
 }
 
-export const AnimateTranslateUp:any = ({ offset = 0, yOffsetPosition = 120, children }:IAnimateTranslateUp): ReactNode => {
+export const AnimateTranslateUp:any = ({ offset = 0, translateYPosition = 120, children }:IAnimateTranslateUp): ReactNode => {
     const elementRef = useRef();
-    const { scrollY } = useScroll();
+    const { scrollYProgress } = useScroll({
+        target: elementRef,
+        offset: [`${offset}px end`, 'end']
+    });
 
     return <Box ref={elementRef}>
         <MotionBox transition={{
@@ -17,18 +20,11 @@ export const AnimateTranslateUp:any = ({ offset = 0, yOffsetPosition = 120, chil
             duration: 0.5,
         }}
         style={{
-            translateY: useTransform(scrollY, () => {
-                if(elementRef.current) {
-                    const position = ((elementRef.current.getBoundingClientRect().top) - window.innerHeight) + offset;
-
-                    if(position < 0) {
-                        return Math.max(0, yOffsetPosition + position);
-                    }
-                    else {
-                        return yOffsetPosition;
-                    }
-                }
-            })
+            translateY: useTransform(useSpring(scrollYProgress, {
+                bounce: 0,
+                mass: 0.3,
+                stiffness: 50
+            }), [0, 1], [`${translateYPosition}`, '0px'])
         }}>
             {children}
         </MotionBox>
