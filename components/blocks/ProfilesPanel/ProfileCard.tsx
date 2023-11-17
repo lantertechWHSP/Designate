@@ -1,17 +1,18 @@
 import { ReactNode } from 'react';
-import { Flex, Box, Heading, Image, AspectRatio } from '@chakra-ui/react';
+import { Flex, Box, Heading, Text, Image, AspectRatio } from '@chakra-ui/react';
 import { SectionLink } from '~/components/elements/sectionLink';
 import { IPerson } from '~/interfaces/models/person';
 import { IStructuredText } from '~/interfaces/util/structuredText';
 
 export interface IProfileCard {
     person?:IPerson;
+    showQualifications?:boolean;
     detailedCompanyPosition?:IStructuredText;
     description?:IStructuredText;
     onClick:() => any;
 }
 
-const ProfileCard:any = ({ person, onClick }:IProfileCard) : ReactNode => {
+const ProfileCard:any = ({ person, showQualifications = false, onClick }:IProfileCard) : ReactNode => {
     return <Flex direction="column" minHeight="100%">
         <Box mb={4} onClick={onClick} cursor="pointer">
             {
@@ -29,6 +30,11 @@ const ProfileCard:any = ({ person, onClick }:IProfileCard) : ReactNode => {
             person?.companyPosition && <Heading as="h4" fontSize={['18px', , ,'19px']} lineHeight={['26px', , ,'28px']} color="steel" fontWeight={400}>
                 {person?.companyPosition}
             </Heading>
+        }
+        {
+            showQualifications && person?.qualifications && <Text mb={0} fontSize={['16px']} color="oliveBlur">
+                {person.qualifications}
+            </Text>
         }
         <Box flex="1" />
         {

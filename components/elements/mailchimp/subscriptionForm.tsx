@@ -85,7 +85,8 @@ export const SubscriptionForm:any = () : ReactNode => {
                                                                 color: 'whiteBlur'
                                                             }}
                                                             color="white"
-                                                            h="50px"
+                                                            height="50px"
+                                                            lineHeight="50px"
                                                             id="email"
                                                             name="email"
                                                             borderRadius="3px"
@@ -99,7 +100,8 @@ export const SubscriptionForm:any = () : ReactNode => {
                                                         background="white"
                                                         color="charcoal"
                                                         py={0}
-                                                        h="50px"
+                                                        height="50px"
+                                                        lineHeight="50px"
                                                         ml={[0, ,4]}
                                                         mt={[4, ,0]}
                                                         borderRadius="3px"

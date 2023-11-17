@@ -3,6 +3,7 @@ import { IBlock } from '~/interfaces/util/block';
 import ContentBlock from '~/components/blocks/Content';
 import { Heading, TableContainer, Table, Thead, Tr, Th, Tbody, Td, Alert, Box } from '@chakra-ui/react';
 import { ITable } from '~/interfaces/util/table';
+import {horizontalScrollMargin} from "~/lib/theme/theme";
 
 interface ITrackRecordTableBlock extends IBlock {
     title?:string;
@@ -17,7 +18,7 @@ const TrackRecordTableBlock:any = ({ title, table, background, paddingTop, paddi
             </Heading>
         }
         {
-            table.data && table.data.length > 0 ? <Box mr={['-16px', '-24px', '-32px', 0]}><TableContainer mb="20px">
+            table.data && table.data.length > 0 ? <Box mr={horizontalScrollMargin}><TableContainer mb="20px">
                 <Table variant="basic" w="100%">
                     {
                         Array.isArray(table.columns) && table.columns.length > 0 && <Thead>

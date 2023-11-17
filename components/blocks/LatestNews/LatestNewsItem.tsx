@@ -10,7 +10,7 @@ interface ILatestNewsItem extends IPost {
 }
 
 const LatestNewsItem:any = ({ title, image, publishDate, slug }:ILatestNewsItem) : ReactNode => {
-    const date:string = DateTime.fromFormat(publishDate, 'yyyy-mm-dd').toFormat('DDD');
+    const date:string = DateTime.fromISO(publishDate).toFormat('MMM d, yyyy');
 
     return <Flex direction="column" height="100%">
         {

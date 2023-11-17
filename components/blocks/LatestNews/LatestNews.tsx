@@ -7,6 +7,7 @@ import {IPost} from '~/interfaces/models/post';
 import LatestNewsItem from '~/components/blocks/LatestNews/LatestNewsItem';
 import {SectionLinkButton} from "~/components/elements/sectionLink";
 import {Column, ColumnWidth, Row} from '~/components/elements/grid/grid';
+import {horizontalScrollMargin} from "~/lib/theme/theme";
 
 interface ILatestNewsBlock extends IBlock {
     title:string;
@@ -27,7 +28,7 @@ const LatestNewsBlock:any = ({ background, textColor, paddingTop, paddingBottom,
             </SectionLinkButton>
         </Flex>
         {
-            (Array.isArray(posts) && posts.length > 0) ? <Box mr={['-16px', '-24px', '-32px', 0]} className="horizonalScroll" overflowX={[posts.length > 2 ? 'scroll' : 'hidden', , ,'hidden']}>
+            (Array.isArray(posts) && posts.length > 0) ? <Box mr={horizontalScrollMargin} className="horizonalScroll" overflowX={[posts.length > 2 ? 'scroll' : 'hidden', , ,'hidden']}>
                 <Row wrap={['nowrap', , ,'wrap']}>
                     {
                         posts.map((post:IPost, index:number) => {

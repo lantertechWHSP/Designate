@@ -21,6 +21,8 @@ export const profilesPanelRecord:string = `
             ${structuredTextAttrs}
         }
     }
+    showQualifications
+    columnCount
     background
     paddingTop
     paddingBottom

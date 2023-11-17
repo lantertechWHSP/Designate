@@ -77,8 +77,11 @@ export const ChartTooltip:any = ({ xScale, yScale, width, height, data, transfor
 
         // Toolip
         let toolTipX:number;
-        const toolTipY:number = yValue + 30;
+        let toolTipY:number;
+        // Line height of 30 + another 30 per point
+        const tooltipHeight:number = (30 + (30 * values.filter(point => point.line?.display).length));
 
+        // Calculate tooltipX
         if(xValue <= tooltipWidth) {
             toolTipX = 0;
         }
@@ -87,6 +90,16 @@ export const ChartTooltip:any = ({ xScale, yScale, width, height, data, transfor
         }
         else {
             toolTipX = xValue;
+        }
+
+        // Calculate tooltipY
+        // Above the dot (when the toolip goes past the bottom of the char)
+        if((Math.abs(yValue - height) < tooltipHeight + 30)) {
+            toolTipY = yValue - tooltipHeight - 30;
+        }
+        // Below the dot
+        else {
+            toolTipY = yValue + 30;
         }
 
         setValues(newValues);

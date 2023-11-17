@@ -4,6 +4,7 @@ import ContentBlock from '~/components/blocks/Content';
 import { ITable } from '~/interfaces/util/table';
 import { Heading, Box, TableContainer, Table, Thead, Tr, Th, Tbody, Td, Alert } from '@chakra-ui/react';
 import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
+import {tableOverflowMargin} from "~/lib/theme/theme";
 
 interface ITableRow {
     Dividend:string;
@@ -36,7 +37,7 @@ const DividendLatestTableBlock:any = ({ title, table, description, paddingTop, p
             </Row>
         }
         {
-            (table && table.data && Array.isArray(table?.data) && table.data.length > 0) ? <Box mr={['-16px', '-24px', '-32px', 0]}><TableContainer>
+            (table && table.data && Array.isArray(table?.data) && table.data.length > 0) ? <Box mr={tableOverflowMargin}><TableContainer>
                 <Table variant="basic" w="100%">
                     <Thead>
                         <Tr>

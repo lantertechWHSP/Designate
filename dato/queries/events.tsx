@@ -13,7 +13,7 @@ const eventFrag:string = `
 
 export const events:string = `
     query events ($limit: IntType) {
-        events: allEvents(first: $limit, orderBy: startDate_DESC) {
+        events: allEvents(first: $limit, orderBy: startDate_ASC) {
             ...eventFrag
         }
     }

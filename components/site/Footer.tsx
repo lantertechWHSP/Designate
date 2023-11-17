@@ -103,7 +103,7 @@ const Footer:any = ({ menu, address, email, phone, fax, linkedin, youtube, copyr
                         </Box>
                     </Link>
                 </Column>
-                <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]} mb={[8, ,0]} order={[1, ,2]} fontSize={['16px']}>
+                <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]} mb={[8, ,0]} order={[1, ,2]} fontSize={['16px']} lineHeight={['24px']}>
                     <Row>
                         <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
                             {

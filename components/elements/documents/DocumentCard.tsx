@@ -5,9 +5,10 @@ import { DateTime } from 'luxon';
 import { SectionLink } from "~/components/elements/sectionLink";
 
 interface IDocumentCard extends IDocument {
+    hideDate?:boolean;
 }
 
-const DocumentCard:any = ({ title, date, document }:IDocumentCard) : ReactNode => {
+const DocumentCard:any = ({ title, date, document, hideDate = false }:IDocumentCard) : ReactNode => {
     return <Flex py={[4, ,'22px']} direction={['row']} align="center" mx={-4}>
 
         <Flex direction={['column', , 'row']}
@@ -25,7 +26,7 @@ const DocumentCard:any = ({ title, date, document }:IDocumentCard) : ReactNode =
                 </Heading>
             }
             {
-                date && <Text
+                (date && !hideDate) && <Text
                     variant="listLabel"
                     mb={0}>
                     {DateTime.fromISO(date).toFormat('MMM d, yyyy')}

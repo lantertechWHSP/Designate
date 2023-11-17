@@ -3,6 +3,7 @@ import { IBlock } from '~/interfaces/util/block';
 import ContentBlock from '~/components/blocks/Content';
 import { ISVGImage } from '~/interfaces/util/image';
 import { Heading, Box, Flex } from '@chakra-ui/react';
+import {tableOverflowMargin} from "~/lib/theme/theme";
 
 interface ICompanyValuesPanelBlock extends IBlock {
     title?:string;
@@ -21,7 +22,7 @@ const CompanyValuesPanelBlock:any = ({ title, items, containerWidth, background,
                 Our People and Values
             </Heading>
         }
-        <Box borderRadius="3px" overflow="hidden" mb={'-20px'} mr={['-16px', '-24px', 0]}>
+        <Box borderRadius="3px" overflow="hidden" mb={'-20px'} mr={tableOverflowMargin}>
             <Box className="horizonalScroll" overflowX={['scroll', ,'hidden']}>
                 <Flex wrap={['nowrap', , 'wrap']} direction="row">
                     {

@@ -65,9 +65,8 @@ colors['success'] = colors.spring;
 colors['successText'] = '#93d490';
 
 export const boxShadow:string = '0px 4px 10px 0px rgba(0, 0, 0, 0.10)';
-
-// drop-shadow(0px 1px 0px rgba(0, 0, 0, 0.10))
-
+export const tableOverflowMargin:any = ['-16px', '-24px', 0];
+export const horizontalScrollMargin:any  = ['-16px', '-24px', '-32px', 0];
 export const zIndex:any = {
     carouselCommands: 10,
     featuredPosts: {
@@ -77,6 +76,7 @@ export const zIndex:any = {
     },
     heroHeading: 10,
     menu: 30,
+    tooltip: 50,
     header: 100,
     yourirPopup: 200,
     preview: 300
@@ -116,7 +116,7 @@ export const theme:any = extendBaseTheme({
             variants: {
                 hero: {
                     fontSize: ['50px', '56px', '72px'],
-                    fontWeight: 500,
+                    fontWeight: 700,
                     lineHeight: ['46px', '60px', '68px'],
                     letterSpacing: ['-0.75px'],
                     color: 'white'

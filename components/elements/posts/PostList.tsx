@@ -1,7 +1,7 @@
 import { ReactNode, useState, useEffect, useRef, useCallback } from 'react';
 import { doQuery, queries } from '~/dato/api';
 import PostCard from '~/components/elements/posts/PostCard';
-import { SimpleGrid, Box, Alert, Container } from '@chakra-ui/react';
+import { SimpleGrid, Box, Alert, Container, Spinner } from '@chakra-ui/react';
 import { IPost } from '~/interfaces/models/post';
 import { IPostsMeta } from '~/interfaces/models/postsMeta';
 import { throttle as _throttle } from 'lodash';
@@ -12,7 +12,7 @@ interface IPostsList {
 }
 
 export const DATO_QUERY_VALUES:any = {
-    ITEMS_PER_PAGE : 9,
+    ITEMS_PER_PAGE : 50,
     ORDER_BY : 'date_DESC',
 };
 
@@ -77,10 +77,10 @@ const PostList:any = ({ latestPosts }:IPostsList) : ReactNode => {
         };
     }, [onScroll]);
 
-    return <Box bg="ghostWhite" pt={['40px', ,'50px', '60px']} pb={['120px']} ref={elementRef}>
+    return <Box bg="ghostWhite" pt={['40px', ,'50px', '60px']} pb={['120px']} ref={elementRef}  position="relative">
         {
             (Array.isArray(posts) && posts.length > 0) ? <>
-                <Box position="relative">
+                <Box>
                     <Container>
                         <SimpleGrid columns={[1, 2, 3]} spacingX={[8]} spacingY={[6, ,8]} mb={[0, -8, -12]}>
                             {
@@ -92,18 +92,6 @@ const PostList:any = ({ latestPosts }:IPostsList) : ReactNode => {
                             }
                         </SimpleGrid>
                     </Container>
-                    {
-                        <Box sx={{
-                            position: 'absolute',
-                            display: (noMorePosts) ? 'none' : 'block',
-                            bottom: 0,
-                            left: 0,
-                            right: 0,
-                            height: ['100%'],
-                            background: 'linear-gradient(0deg, rgba(248,248,248,1) 0%, rgba(255,255,255, 0) 20%)',
-                            pointerEvents: 'none'
-                        }} />
-                    }
                 </Box>
                 <Box>
                     <Container>
@@ -114,6 +102,23 @@ const PostList:any = ({ latestPosts }:IPostsList) : ReactNode => {
                         }
                     </Container>
                 </Box>
+                {
+                    <Box sx={{
+                        position: 'absolute',
+                        display: (noMorePosts) ? 'none' : 'block',
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        height: ['100%'],
+                        background: 'linear-gradient(0deg, rgba(248,248,248,1) 0, rgba(255,255,255, 0) 700px)',
+                        pointerEvents: 'none'
+                    }} />
+                }
+                {
+                    isLoading && <Box width="48px" height="48px" mx="auto" position="absolute" bottom="50px" left="0" right="0">
+                        <Spinner width="48px" height="48px" mx="auto" />
+                    </Box>
+                }
             </> : <>
                 <Container>
                     <Alert status="info" mt={4}>
