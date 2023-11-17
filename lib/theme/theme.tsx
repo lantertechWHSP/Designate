@@ -116,7 +116,7 @@ export const theme:any = extendBaseTheme({
             variants: {
                 hero: {
                     fontSize: ['50px', '56px', '72px'],
-                    fontWeight: 500,
+                    fontWeight: 700,
                     lineHeight: ['46px', '60px', '68px'],
                     letterSpacing: ['-0.75px'],
                     color: 'white'

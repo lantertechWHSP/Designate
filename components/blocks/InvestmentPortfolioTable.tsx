@@ -135,7 +135,7 @@ const InvestmentPortfolioTableBlock:any = ({ title, description, table, paddingT
                         (Array.isArray(table?.data) && table.data.length > 0) && <Tbody>
                             {
                                 table.data.map((row:ITableRow, index:number) => {
-                                    const percentage:number = _round(((+row.NetAssetValue / total) * 100), 1);
+                                    const percentage:number = _round(((+row.NetAssetValue / total) * 100), 0);
 
                                     return <Tr key={index}>
                                         <Td>

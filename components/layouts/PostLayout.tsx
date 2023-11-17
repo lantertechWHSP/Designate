@@ -2,18 +2,18 @@ import React, {ReactNode, useState} from 'react';
 import Meta from '~/components/site/Meta';
 import Header from '~/components/site/Header';
 import Footer from '~/components/site/Footer';
-import {Box, Container, Flex, Heading, Text} from '@chakra-ui/react';
-import {Column, ColumnWidth, Row} from '~/components/elements/grid/grid';
-import {DateTime} from 'luxon';
-import {Image} from '~/components/elements/image';
+import { Box, Container, Flex, Heading, Text } from '@chakra-ui/react';
+import { Column, ColumnWidth, Row } from '~/components/elements/grid/grid';
+import { DateTime } from 'luxon';
+import { Image } from '~/components/elements/image';
 import SocialShare from '~/components/elements/socialShare';
 import Preview from '~/components/site/Preview';
 import VectorEffect from '~/components/elements/shapes/VectorEffect';
-import {zIndex} from '~/lib/theme/theme';
+import { zIndex } from '~/lib/theme/theme';
 
 const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
     const [annotation] = useState((() => {
-        const date:string|null = layout?.page?.publishDate ? DateTime.fromFormat(layout?.page?.publishDate, 'yyyy-mm-dd').toFormat('DDD') : null;
+        const date:string|null = layout?.page?.publishDate ? DateTime.fromISO(layout?.page?.publishDate).toFormat('MMM d, yyyy') : null;
 
         if (post?.author?.name && date) {
             return <>{post?.author?.name}, {date}</>;
@@ -25,7 +25,6 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
             return date;
         }
     })());
-
 
     return (
         <Flex minHeight="100vh" direction="column">

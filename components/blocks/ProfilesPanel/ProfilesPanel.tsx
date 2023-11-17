@@ -22,9 +22,11 @@ import ContentBlock from "~/components/blocks/Content";
 
 interface IProfilesPanelBlock extends IBlock {
     items:IProfileCard[];
+    columnCount?:number;
+    showQualifications?:boolean;
 }
 
-export const ProfilesPanelBlock:any = ({ items, background, paddingTop, paddingBottom }:IProfilesPanelBlock) : ReactNode => {
+export const ProfilesPanelBlock:any = ({ items, showQualifications, columnCount = 3, background, paddingTop, paddingBottom }:IProfilesPanelBlock) : ReactNode => {
     const [modalOpen, setModalOpen] = useState<boolean>(false);
     const [activeItem, setActiveItem] = useState<IProfileCard>(null);
 
@@ -34,12 +36,13 @@ export const ProfilesPanelBlock:any = ({ items, background, paddingTop, paddingB
     };
 
     return (Array.isArray(items) && items.length > 0) && <ContentBlock background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
-        <SimpleGrid columns={[1, 2, 3]} spacing={[6, ,8]} mb={[0, -12, -16]}>
+        <SimpleGrid columns={[1, 2, columnCount]} spacing={[6, ,8]} mb={[0, -12, -16]}>
             {
                 items.map((item:IProfileCard, index:number) => {
                     return <Box key={index} mb={[0, 12, 16]}>
                         <ProfileCard
                             {...item}
+                            showQualifications={showQualifications}
                             onClick={() => {
                                 onProfileClick(index);
                             }}
@@ -74,7 +77,7 @@ export const ProfilesPanelBlock:any = ({ items, background, paddingTop, paddingB
                                                 </Heading>)
                                             }
                                             {
-                                                (activeItem?.person?.qualifications) && <Text color="charcoalBlur" fontSize="16px" m={0}>
+                                                (showQualifications && activeItem?.person?.qualifications) && <Text color="charcoalBlur" fontSize="16px" m={0}>
                                                     {activeItem?.person?.qualifications}
                                                 </Text>
                                             }

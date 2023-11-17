@@ -216,7 +216,7 @@ const DocumentReportsList:any = ({ latestDocuments, documentsMeta, documentsFilt
                                             {
                                                 documentBundle.documents.map((document:IDocument, innerIndex:number) => {
                                                     return <Box borderTop="1px solid" borderColor="borderColor" key={innerIndex}>
-                                                        <DocumentCard {...document} />
+                                                        <DocumentCard {...document} hideDate={false} />
                                                     </Box>;
                                                 })
                                             }
