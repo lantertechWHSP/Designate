@@ -5,7 +5,12 @@ import { baseAnimationBezier } from '~/lib/theme/theme';
 
 const MotionBox:any = motion(Box);
 
-export const AnimateOverflowText:any = ({children, delay = 0}) : ReactNode => {
+interface IAnimateOverflowText {
+    children?:any;
+    delay?:number;
+}
+
+export const AnimateOverflowText:any = ({children, delay = 0}:IAnimateOverflowText) : ReactNode => {
     return <Box overflow="hidden">
         <MotionBox transition={{
                     ease: baseAnimationBezier,

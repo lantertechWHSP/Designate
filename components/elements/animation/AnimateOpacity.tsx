@@ -5,7 +5,12 @@ import { baseAnimationBezier } from '~/lib/theme/theme';
 
 const MotionBox:any = motion(Box);
 
-export const AnimateOpacity:any = ({children, delay = 0 }) : ReactNode => {
+interface IAnimateOpacity {
+    children?:any;
+    delay?:number;
+}
+
+export const AnimateOpacity:any = ({children, delay = 0 }:IAnimateOpacity) : ReactNode => {
     const elementRef = useRef();
     const { scrollYProgress } = useScroll({
         target: elementRef,

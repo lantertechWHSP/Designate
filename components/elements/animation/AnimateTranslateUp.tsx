@@ -5,10 +5,13 @@ import { baseAnimationBezier } from '~/lib/theme/theme';
 const MotionBox:any = motion(Box);
 
 interface IAnimateTranslateUp {
+    offset?:number;
+    delay?:number;
+    translateYPosition?:number;
     children?:any;
 }
 
-export const AnimateTranslateUp:any = ({ offset = 0, delay = 0, translateYPosition = 120, children }:IAnimateTranslateUp): ReactNode => {
+export const AnimateTranslateUp:any = ({ children, offset = 0, delay = 0, translateYPosition = 120}:IAnimateTranslateUp): ReactNode => {
     const elementRef = useRef();
     const { scrollYProgress } = useScroll({
         target: elementRef,
