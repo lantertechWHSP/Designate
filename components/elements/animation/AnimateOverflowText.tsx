@@ -18,7 +18,8 @@ export const AnimateOverflowText:any = ({children, delay = 0}:IAnimateOverflowTe
                     delay: delay
         }}
                initial={{ translateY: '100%' }}
-               whileInView={{ translateY: '0' }}>
+               whileInView={{ translateY: '0' }}
+               viewport={{ once: true }}>
             {children}
         </MotionBox>
     </Box>
