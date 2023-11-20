@@ -4,7 +4,8 @@ import ContentBlock from "~/components/blocks/Content";
 import { AspectRatio as AspectRatioBlock, Text } from '@chakra-ui/react';
 import dynamic from 'next/dynamic';
 import { IVideo } from '~/interfaces/util/video';
-import {Column, ColumnWidth, Row} from "~/components/elements/grid/grid";
+import { Column, ColumnWidth, Row } from "~/components/elements/grid/grid";
+import { AnimateOpacity } from "~/components/elements/animation/AnimateOpacity";
 
 const ReactPlayer:any = dynamic(() => import("react-player"), { ssr: false });
 
@@ -24,22 +25,24 @@ const VideoBlock:any = ({ title, video, videoEmbed, aspectRatio, contain, contai
     const [currentVideo] = useState<IVideo>(video ? video : videoEmbed);
 
     return (title || currentVideo) && <ContentBlock className="VideoBlock" contain={contain} containerWidth={containerWidth} background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
-        {
-            currentVideo && <AspectRatioBlock ratio={aspectRatio === AspectRatio.Long ? [16 / 7.5] : [16 / 9]}>
-                <ReactPlayer
-                    controls
-                    width="100%"
-                    height="100%"
-                    url={currentVideo.url} />
-            </AspectRatioBlock>
-        }
-        {
-            title && <Row>
-                <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths, ColumnWidth.NineTwelfths]}>
-                    <Text as="small" display="block" variant="caption" mt={2}>{title}</Text>
-                </Column>
-            </Row>
-        }
+        <AnimateOpacity>
+            {
+                currentVideo && <AspectRatioBlock ratio={aspectRatio === AspectRatio.Long ? [16 / 7.5] : [16 / 9]}>
+                    <ReactPlayer
+                        controls
+                        width="100%"
+                        height="100%"
+                        url={currentVideo.url} />
+                </AspectRatioBlock>
+            }
+            {
+                title && <Row>
+                    <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths, ColumnWidth.NineTwelfths]}>
+                        <Text as="small" display="block" variant="caption" mt={2}>{title}</Text>
+                    </Column>
+                </Row>
+            }
+        </AnimateOpacity>
     </ContentBlock>;
 };
 

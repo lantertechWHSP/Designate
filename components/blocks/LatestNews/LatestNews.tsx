@@ -9,7 +9,7 @@ import {SectionLinkButton} from "~/components/elements/sectionLink";
 import {Column, ColumnWidth, Row} from '~/components/elements/grid/grid';
 import {horizontalScrollMargin} from "~/lib/theme/theme";
 import {AnimateTranslateUp} from "~/components/elements/animation/AnimateTranslateUp";
-import {AnimateOverflowText} from "~/components/elements/animation/AnimateOverflowText";
+import {AnimateOverflow} from "~/components/elements/animation/AnimateOverflow";
 
 interface ILatestNewsBlock extends IBlock {
     title:string;
@@ -21,17 +21,17 @@ interface ILatestNewsBlock extends IBlock {
 const LatestNewsBlock:any = ({ background, textColor, paddingTop, paddingBottom, data: { posts } }:ILatestNewsBlock) : ReactNode => {
     return <ContentBlock background={background} color={textColor} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         <Flex align="flex-end" mb={[4, ,6, 8]}>
-            <AnimateOverflowText>
+            <AnimateOverflow>
                 <Heading as="h2" lineHeight={1} variant="sectionHeading" mb={0}>
                     Latest News
                 </Heading>
-            </AnimateOverflowText>
+            </AnimateOverflow>
             <Box flex="1" />
-            <AnimateOverflowText delay={0.25}>
+            <AnimateOverflow delay={0.25}>
                 <SectionLinkButton href="/news">
                     All News
                 </SectionLinkButton>
-            </AnimateOverflowText>
+            </AnimateOverflow>
         </Flex>
         {
             (Array.isArray(posts) && posts.length > 0) ? <Box mr={horizontalScrollMargin} className="horizonalScroll" overflowX={[(posts.length > 3 ? 'scroll' : 'initial'), , ,'initial']} overflowY="initial">

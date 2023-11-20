@@ -8,6 +8,9 @@ import { Icon, Icons } from '~/components/elements/icon';
 import { IFilter } from '~/interfaces/util/filter';
 import { ITable } from '~/interfaces/util/table';
 import { darkLegendColors, legendColors } from '~/components/elements/charts/colors';
+import {AnimateOverflow} from "~/components/elements/animation/AnimateOverflow";
+import {AnimateOpacity} from "~/components/elements/animation/AnimateOpacity";
+import {AnimateTranslateUp} from "~/components/elements/animation/AnimateTranslateUp";
 
 interface ITableRow {
     Date:string;
@@ -171,73 +174,79 @@ const TrackRecordChartBlock:any = ({ title, table, theme, paddingTop, paddingBot
     return <ContentBlock paddingTop={paddingTop} paddingBottom={paddingBottom} background={backgroundColor}>
         <Flex direction={['column', ,'row']} mb={[4, 6, ,8]} mx={-2}>
             {
-                title && <Heading as="h2" variant="sectionSubheading" color={headingTextColor} px={2} mb={[4, 6, 0]} >
-                    {title}
-                </Heading>
+                title && <AnimateOverflow>
+                    <Heading as="h2" variant="sectionSubheading" color={headingTextColor} px={2} mb={[4, 6, 0]} >
+                        {title}
+                    </Heading>
+                </AnimateOverflow>
             }
             <Box flex={1} />
             {
                 hasData && <Box px={2}>
-                    <Menu>
-                        {({ isOpen }) => (
-                            <>
-                                <MenuButton as={Button}
-                                    variant="menuButton"
-                                    rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} h={12} w={12} /> : <Icon icon={Icons.ChevronDown} h={12} w={12}  /> }>
-                                    <Flex display="inlineFlex" direction="row" alignItems="center">
-                                        <Box background={theme === Theme.Dark ? 'white' : 'lightGrey'} width="8px" height="8px" borderRadius="4px" border="1px solid" borderColor={theme === Theme.Dark ? 'charcoal' : 'transparent'}  mr={2} />
-                                        <Text as="span">
-                                            Compare
-                                        </Text>
-                                    </Flex>
-                                </MenuButton>
-                                <Portal>
-                                    <MenuList>
-                                        {
-                                            filters.map((item:IChartFilter, index:number) => {
-                                                return <MenuItem key={index}
-                                                    as={Button}
-                                                    variant="menuItemFilter"
-                                                    isActive={item.isActive}
-                                                    onClick={() => {
-                                                        let isToggled:boolean = false;
+                    <AnimateOverflow>
+                        <Menu>
+                            {({ isOpen }) => (
+                                <>
+                                    <MenuButton as={Button}
+                                                variant="menuButton"
+                                                rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} h={12} w={12} /> : <Icon icon={Icons.ChevronDown} h={12} w={12}  /> }>
+                                        <Flex display="inlineFlex" direction="row" alignItems="center">
+                                            <Box background={theme === Theme.Dark ? 'white' : 'lightGrey'} width="8px" height="8px" borderRadius="4px" border="1px solid" borderColor={theme === Theme.Dark ? 'charcoal' : 'transparent'}  mr={2} />
+                                            <Text as="span">
+                                                Compare
+                                            </Text>
+                                        </Flex>
+                                    </MenuButton>
+                                    <Portal>
+                                        <MenuList>
+                                            {
+                                                filters.map((item:IChartFilter, index:number) => {
+                                                    return <MenuItem key={index}
+                                                                     as={Button}
+                                                                     variant="menuItemFilter"
+                                                                     isActive={item.isActive}
+                                                                     onClick={() => {
+                                                                         let isToggled:boolean = false;
 
-                                                        const newFilters:IChartFilter[] = [...filters];
+                                                                         const newFilters:IChartFilter[] = [...filters];
 
-                                                        newFilters.map((innerFilter) => {
-                                                            if(innerFilter.value === item.value && index !== 0) {
-                                                                innerFilter.isActive = !innerFilter.isActive;
+                                                                         newFilters.map((innerFilter) => {
+                                                                             if(innerFilter.value === item.value && index !== 0) {
+                                                                                 innerFilter.isActive = !innerFilter.isActive;
 
-                                                                isToggled = true;
+                                                                                 isToggled = true;
+                                                                             }
+                                                                         });
+
+                                                                         if(isToggled) {
+                                                                             setFilters(newFilters);
+                                                                             updateLines();
+                                                                         }
+                                                                     }}>
+                                                        <Flex direction="row" align="center" width="100%">
+                                                            <Box background={item.background} width="8px" height="8px" borderRadius="4px" border="1px solid" borderColor={tooltipLegendBorderColor} mr={2} />
+                                                            <Flex flex="1">{item.label}</Flex>
+                                                            {
+                                                                item.isActive && <Box color="steel">
+                                                                    <Icon icon={Icons.Tick} h={12} w={12}  />
+                                                                </Box>
                                                             }
-                                                        });
-
-                                                        if(isToggled) {
-                                                            setFilters(newFilters);
-                                                            updateLines();
-                                                        }
-                                                    }}>
-                                                    <Flex direction="row" align="center" width="100%">
-                                                        <Box background={item.background} width="8px" height="8px" borderRadius="4px" border="1px solid" borderColor={tooltipLegendBorderColor} mr={2} />
-                                                        <Flex flex="1">{item.label}</Flex>
-                                                        {
-                                                            item.isActive && <Box color="steel">
-                                                                <Icon icon={Icons.Tick} h={12} w={12}  />
-                                                            </Box>
-                                                        }
-                                                    </Flex>
-                                                </MenuItem>;
-                                            })
-                                        }
-                                    </MenuList>
-                                </Portal>
-                            </>
-                        )}
-                    </Menu>
+                                                        </Flex>
+                                                    </MenuItem>;
+                                                })
+                                            }
+                                        </MenuList>
+                                    </Portal>
+                                </>
+                            )}
+                        </Menu>
+                    </AnimateOverflow>
                 </Box>
             }
         </Flex>
-        <LineChart data={data} textColor={chartTextColor} fillColor={fillColor} borderColor={borderColor} borderColorDark={borderColorDark} tooltipPointFillColor={tooltipPointFillColor} tooltipLegendBorderColor={tooltipLegendBorderColor} />
+        <AnimateTranslateUp>
+            <LineChart data={data} textColor={chartTextColor} fillColor={fillColor} borderColor={borderColor} borderColorDark={borderColorDark} tooltipPointFillColor={tooltipPointFillColor} tooltipLegendBorderColor={tooltipLegendBorderColor} />
+        </AnimateTranslateUp>
     </ContentBlock>;
 };
 

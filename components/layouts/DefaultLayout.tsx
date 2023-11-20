@@ -8,7 +8,7 @@ import { Heading, Container, Flex, Box } from '@chakra-ui/react';
 import { SubscriptionForm } from '~/components/elements/mailchimp/subscriptionForm';
 import VectorEffect from '~/components/elements/shapes/VectorEffect';
 import {zIndex} from "~/lib/theme/theme";
-import {AnimateOverflowText} from "~/components/elements/animation/AnimateOverflowText";
+import {AnimateOverflow} from "~/components/elements/animation/AnimateOverflow";
 
 const DefaultLayout:any = ({ layout, children }:any) : ReactNode => {
     return (
@@ -29,9 +29,9 @@ const DefaultLayout:any = ({ layout, children }:any) : ReactNode => {
                             <Flex h={['376px']} align="flex-end" zIndex={zIndex.heroHeading} position="relative">
                                 {
                                     layout?.title && <Heading as="h1" variant="defaultLayoutTitle" mb={['40px', ,'50px', '60px']}>
-                                        <AnimateOverflowText>
+                                        <AnimateOverflow>
                                             {layout.title}
-                                        </AnimateOverflowText>
+                                        </AnimateOverflow>
                                     </Heading>
                                 }
                             </Flex>

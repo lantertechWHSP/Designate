@@ -7,6 +7,7 @@ import { IStructuredText } from '~/interfaces/util/structuredText';
 import { isEmptyDocument } from 'datocms-structured-text-utils';
 import { Box, Heading } from '@chakra-ui/react';
 import { AnimateTranslateUp } from "~/components/elements/animation/AnimateTranslateUp";
+import {AnimateOverflow} from "~/components/elements/animation/AnimateOverflow";
 
 enum IOverviewAlign {
     Left = 'Left',
@@ -44,7 +45,7 @@ const OverviewBlock:any = ({ subtitle, description, paddingTop, paddingBottom, b
             <Column width={subtitleColumnWidth} marginRight={subtitleMarginOffset}>
                 {
                     !isEmptyDocument(subtitle) && <Box>
-                        <AnimateTranslateUp>
+                        <AnimateOverflow>
                             <Heading as="h2"
                                    fontSize={['28px', '32px', '36px']}
                                    lineHeight={['35px', '38px', '42px']}
@@ -53,16 +54,15 @@ const OverviewBlock:any = ({ subtitle, description, paddingTop, paddingBottom, b
                                    mb={[4, , ,0]}>
                                 <StructuredContent content={subtitle} />
                             </Heading>
-                        </AnimateTranslateUp>
+                        </AnimateOverflow>
                     </Box>
                 }
             </Column>
             <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half]}>
                 {
-                    !isEmptyDocument(description) &&
-                    <AnimateTranslateUp delay={0.5}>
+                    !isEmptyDocument(description) && <AnimateOverflow>
                         <StructuredContent content={description} />
-                    </AnimateTranslateUp>
+                    </AnimateOverflow>
                 }
             </Column>
         </Row>

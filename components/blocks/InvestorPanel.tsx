@@ -6,8 +6,8 @@ import { Column, ColumnWidth, Row } from "~/components/elements/grid/grid";
 import { YourIR } from 'yourir-next';
 import { Icon, Icons } from '~/components/elements/icon';
 import { SectionLink, SectionLinkButton } from '~/components/elements/sectionLink';
-import {AnimateTranslateUp} from "~/components/elements/animation/AnimateTranslateUp";
-import {AnimateOverflowText} from "~/components/elements/animation/AnimateOverflowText";
+import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
+import { AnimateOpacity } from '~/components/elements/animation/AnimateOpacity';
 
 interface IInvestorPanelBlock extends IBlock {
     displayHeadline?:boolean;
@@ -17,23 +17,23 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
     return <ContentBlock background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         {
             displayHeadline && <Flex align="center" mb={[4, ,6, 8]}>
-                <AnimateOverflowText>
+                <AnimateOverflow>
                     <Heading as="h2" variant="sectionHeading">
                         Investors
                     </Heading>
-                </AnimateOverflowText>
+                </AnimateOverflow>
                 <Box flex="1" />
-                <AnimateOverflowText delay={0.25}>
+                <AnimateOverflow delay={0.25}>
                     <SectionLinkButton href="/news">
                         Overview
                     </SectionLinkButton>
-                </AnimateOverflowText>
+                </AnimateOverflow>
             </Flex>
         }
         <Box as={YourIR}>
             <Row>
                 <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half, ColumnWidth.FiveTwelfths]} mr={[0, 0, 0, 0,ColumnWidth.Twelfth]}>
-                    <AnimateTranslateUp>
+                    <AnimateOpacity>
                         <Flex direction="column" flex="1">
                             <Heading as="h3" variant="sectionSubheading" mb={4}>
                                 Share Price Performance
@@ -207,10 +207,10 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                                 <Divider />
                             </Box>
                         </Flex>
-                    </AnimateTranslateUp>
+                    </AnimateOpacity>
                 </Column>
                 <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half, ColumnWidth.Half]}>
-                    <AnimateTranslateUp offset={180}>
+                    <AnimateOpacity>
                         <Flex direction="column">
                             <Heading as="h3" variant="sectionSubheading" mb={4}>
                                 ASX Announcements
@@ -262,7 +262,7 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                                 </SectionLink>
                             </Box>
                         </Flex>
-                    </AnimateTranslateUp>
+                    </AnimateOpacity>
                 </Column>
             </Row>
         </Box>
