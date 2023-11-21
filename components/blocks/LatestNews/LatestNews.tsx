@@ -8,8 +8,6 @@ import LatestNewsItem from '~/components/blocks/LatestNews/LatestNewsItem';
 import {SectionLinkButton} from "~/components/elements/sectionLink";
 import {Column, ColumnWidth, Row} from '~/components/elements/grid/grid';
 import {horizontalScrollMargin} from "~/lib/theme/theme";
-import {AnimateTranslateUp} from "~/components/elements/animation/AnimateTranslateUp";
-import {AnimateOverflow} from "~/components/elements/animation/AnimateOverflow";
 
 interface ILatestNewsBlock extends IBlock {
     title:string;
@@ -21,28 +19,22 @@ interface ILatestNewsBlock extends IBlock {
 const LatestNewsBlock:any = ({ background, textColor, paddingTop, paddingBottom, data: { posts } }:ILatestNewsBlock) : ReactNode => {
     return <ContentBlock background={background} color={textColor} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         <Flex align="flex-end" mb={[4, ,6, 8]}>
-            <AnimateOverflow>
-                <Heading as="h2" lineHeight={1} variant="sectionHeading" mb={0}>
-                    Latest News
-                </Heading>
-            </AnimateOverflow>
+            <Heading as="h2" lineHeight={1} variant="sectionHeading" mb={0}>
+                Latest News
+            </Heading>
             <Box flex="1" />
-            <AnimateOverflow delay={0.25}>
-                <SectionLinkButton href="/news">
-                    All News
-                </SectionLinkButton>
-            </AnimateOverflow>
+            <SectionLinkButton href="/news">
+                All News
+            </SectionLinkButton>
         </Flex>
         {
-            (Array.isArray(posts) && posts.length > 0) ? <Box mr={horizontalScrollMargin} className="horizonalScroll" overflowX={[(posts.length > 3 ? 'scroll' : 'initial'), , ,'initial']} overflowY="initial">
+            (Array.isArray(posts) && posts.length > 0) ? <Box mr={horizontalScrollMargin} className="horizonalScroll" overflowX={[posts.length > 2 ? 'scroll' : 'hidden', , ,'hidden']}>
                 <Row wrap={['nowrap', , ,'wrap']}>
                     {
                         posts.map((post:IPost, index:number) => {
                             return <Column width={[ColumnWidth.EightTwelfths, , ,ColumnWidth.FourTwelvfths]} key={index}>
-                                <AnimateTranslateUp offset={(index * 120)}>
-                                    <LatestNewsItem {...post} />
-                                </AnimateTranslateUp>
-                            </Column>
+                                <LatestNewsItem {...post} />
+                            </Column>;
                         })
                     }
                 </Row>

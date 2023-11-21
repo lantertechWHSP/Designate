@@ -10,7 +10,6 @@ import { ILayout } from '~/interfaces/layout/layout';
 import { IBlock } from '~/interfaces/util/block';
 import { IPage } from '~/interfaces/models/page';
 import { PaddingBottom } from '~/components/blocks/Content';
-import { Box } from '@chakra-ui/react';
 
 interface INextPageProps {
     layout?:ILayout;

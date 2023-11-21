@@ -15,7 +15,7 @@ const ImageBlock:any = ({ title, image, contain, containerWidth, background, pad
     return (title || image) && <ContentBlock className="ImageBlock" contain={contain} containerWidth={containerWidth} background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         {
             (image && image.responsiveImage) && <Box borderRadius="3px" overflow="hidden">
-                <DatoImage data={image.responsiveImage} fadeInDuration={0} style={{
+                <DatoImage data={image.responsiveImage} style={{
                     width: '100%',
                     maxWidth: 'unset'
                 }} />

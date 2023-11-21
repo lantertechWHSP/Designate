@@ -6,8 +6,7 @@ import { Column, ColumnWidth, Row } from '~/components/elements/grid/grid';
 import { IStructuredText } from '~/interfaces/util/structuredText';
 import { isEmptyDocument } from 'datocms-structured-text-utils';
 import { Box, Heading } from '@chakra-ui/react';
-import { AnimateTranslateUp } from "~/components/elements/animation/AnimateTranslateUp";
-import {AnimateOverflow} from "~/components/elements/animation/AnimateOverflow";
+import {AnimateFadeInTranslate} from "~/components/elements/animation/AnimateFadeInTranslate";
 
 enum IOverviewAlign {
     Left = 'Left',
@@ -45,24 +44,24 @@ const OverviewBlock:any = ({ subtitle, description, paddingTop, paddingBottom, b
             <Column width={subtitleColumnWidth} marginRight={subtitleMarginOffset}>
                 {
                     !isEmptyDocument(subtitle) && <Box>
-                        <AnimateOverflow>
+                        <AnimateFadeInTranslate>
                             <Heading as="h2"
-                                   fontSize={['28px', '32px', '36px']}
-                                   lineHeight={['35px', '38px', '42px']}
-                                   color="olive"
-                                   fontWeight={500}
-                                   mb={[4, , ,0]}>
+                                     fontSize={['28px', '32px', '36px']}
+                                     lineHeight={['35px', '38px', '42px']}
+                                     color="olive"
+                                     fontWeight={500}
+                                     mb={[4, , ,0]}>
                                 <StructuredContent content={subtitle} />
                             </Heading>
-                        </AnimateOverflow>
+                        </AnimateFadeInTranslate>
                     </Box>
                 }
             </Column>
             <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half]}>
                 {
-                    !isEmptyDocument(description) && <AnimateOverflow>
+                    !isEmptyDocument(description) && <AnimateFadeInTranslate offset={60}>
                         <StructuredContent content={description} />
-                    </AnimateOverflow>
+                    </AnimateFadeInTranslate>
                 }
             </Column>
         </Row>

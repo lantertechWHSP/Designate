@@ -5,8 +5,6 @@ import { Box, Heading, Text, Flex } from '@chakra-ui/react';
 import { ILink} from '~/interfaces/util/link';
 import { SectionLink } from '~/components/elements/sectionLink';
 import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
-import {AnimateTranslateUp} from "~/components/elements/animation/AnimateTranslateUp";
-import {AnimateOverflow} from "~/components/elements/animation/AnimateOverflow";
 
 
 interface ISeeAlsoItem {
@@ -45,18 +43,14 @@ const SeeAlsoItem:any = ({ title, description, link }:ISeeAlsoItem) : ReactNode 
 
 const SeeAlsoPanelBlock:any = ({ items, background, paddingTop, paddingBottom }:ISeeAlsoPanelBlock) : ReactNode => {
     return (Array.isArray(items) && items.length > 0) && <ContentBlock background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
-        <AnimateOverflow>
-            <Heading variant="sectionHeading" as="h2" mb={[4, ,6, 8]}>
-                See Also
-            </Heading>
-        </AnimateOverflow>
+        <Heading variant="sectionHeading" as="h2" mb={[4, ,6, 8]}>
+            See Also
+        </Heading>
         <Row>
             {
                 items.map((item:ISeeAlsoItem, index:number) => {
                     return <Column key={index} width={[ColumnWidth.Full, , ColumnWidth.Half, ColumnWidth.OneQuarter]}>
-                        <AnimateTranslateUp offset={index * 30} translateYPosition={60}>
-                            <SeeAlsoItem {...item} />
-                        </AnimateTranslateUp>
+                        <SeeAlsoItem {...item} />
                     </Column>;
                 })
             }
