@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 import { IBlock } from '~/interfaces/util/block';
 import ContentBlock from '~/components/blocks/Content';
 import { ILink } from '~/interfaces/util/link';
@@ -23,7 +23,17 @@ interface ICardPanelBlock extends IBlock {
 }
 
 const CardPanelBlock:any = ({ annotation, title, description, image, link, align, containerWidth, background, paddingTop, paddingBottom }:ICardPanelBlock) : ReactNode => {
-    return (annotation || title || image && image?.url || link) && <ContentBlock className="CardPanelBlock" containerWidth={containerWidth} background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
+    // Use the image in the block, otherwise use the document cover image assuming that it’s a document
+    const [currentImage] = useState((() => {
+        if(image && image.url) {
+            return image.url;
+        }
+        else if(link && link.__typename === 'DocumentRecord' && link.coverImage)
+            return link.coverImage.url;
+        return null;
+    })());
+
+    return (annotation || title || currentImage || link) && <ContentBlock className="CardPanelBlock" containerWidth={containerWidth} background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         <Box background="white" borderRadius="3px" overflow="hidden" filter="drop-shadow(0px 1px 0px rgba(0, 0, 0, 0.10))" >
             <Row direction={['column', ,(align === ICardPanelAlign.Right) ? 'row-reverse' : 'row']}>
                 <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
@@ -66,7 +76,7 @@ const CardPanelBlock:any = ({ annotation, title, description, image, link, align
                                 height="100%"
                                 position="absolute"
                                 title=""
-                                background={image?.responsiveImage ? `url('${image.responsiveImage.src}')` : 'lightGrey'}
+                                background={currentImage ? `url('${currentImage}')` : 'lightGrey'}
                                 backgroundPosition="center"
                                 backgroundRepeat="no-repeat"
                                 backgroundSize="cover">
@@ -74,7 +84,7 @@ const CardPanelBlock:any = ({ annotation, title, description, image, link, align
                                 height="100%"
                                 position="absolute"
                                 title=""
-                                background={image?.responsiveImage ? `url('${image.responsiveImage.src}')` : 'lightGrey'}
+                                background={currentImage ? `url('${currentImage}')` : 'lightGrey'}
                                 backgroundPosition="center"
                                 backgroundRepeat="no-repeat"
                                 backgroundSize="cover">
