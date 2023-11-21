@@ -137,7 +137,13 @@ export const theme:any = extendBaseTheme({
                 sectionSubheading: {
                     color: 'charcoal',
                     fontSize: ['26px', ,'28px'],
-                    lineHeight: [1.2],
+                    lineHeight: [1.25],
+                },
+                sectionSubsubheading: {
+                    color: 'steelDark',
+                    fontSize: ['19px'],
+                    fontWeight: 400,
+                    lineHeight: [1.25],
                 },
                 listItem: {
                     fontSize: ['18px', ,'21px'],

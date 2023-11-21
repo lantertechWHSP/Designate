@@ -1,5 +1,6 @@
 import { IFile } from '~/interfaces/util/file';
 import { IFilter } from '~/interfaces/util/filter';
+import {IImage} from "~/interfaces/util/image";
 
 export interface IDocumentCategory {
     id?:string;
@@ -17,6 +18,7 @@ export interface IDocument {
     category?:IDocumentCategory;
     tags?:IDocumentTags[];
     document?:IFile;
+    coverImage?:IImage;
 }
 
 export interface IDocumentBundle {

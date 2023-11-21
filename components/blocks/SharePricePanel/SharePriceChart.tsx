@@ -180,7 +180,12 @@ const SharePriceChart:any = () : ReactNode => {
                                                                 });
                                                             }}>
                                                             <Box background={item.background} width="10px" height="10px" borderRadius="5px" mr={2} />
-                                                            <Text as="span">{item.label}</Text>
+                                                            <Flex flex="1">{item.label}</Flex>
+                                                            {
+                                                                item.isActive && <Box color="steel">
+                                                                    <Icon icon={Icons.Tick} h={12} w={12}  />
+                                                                </Box>
+                                                            }
                                                         </MenuItem>;
                                                     })
                                                 }

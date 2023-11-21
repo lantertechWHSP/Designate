@@ -17,5 +17,8 @@ export const internalLinkAttrs:string = `
         document {
             url
         }
+        coverImage {
+            url
+        }
     }
 `;
