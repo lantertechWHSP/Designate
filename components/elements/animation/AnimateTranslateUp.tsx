@@ -1,8 +1,8 @@
-import { ReactNode, useRef, useState } from 'react';
+import { ReactNode, useState } from 'react';
 import { Box } from '@chakra-ui/react';
-import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
+import { useScroll, useSpring } from 'framer-motion';
 import { baseAnimationBezier } from '~/lib/theme/theme';
-const MotionBox:any = motion(Box);
+import { useAnimate, transform, useMotionValueEvent } from "framer-motion";
 
 interface IAnimateTranslateUp {
     offset?:number;
@@ -11,25 +11,42 @@ interface IAnimateTranslateUp {
     children?:any;
 }
 
-export const AnimateTranslateUp:any = ({ children, offset = 0, delay = 0, translateYPosition = 90 }:IAnimateTranslateUp): ReactNode => {
-    const elementRef = useRef();
+export const AnimateTranslateUp:any = ({ children, offset = 0, delay = 0, translateYPosition = 120 }:IAnimateTranslateUp): ReactNode => {
+    const [isAnimated, setIsAnimated] = useState(false);
+    const [scope, animate] = useAnimate();
     const { scrollYProgress } = useScroll({
-        target: elementRef,
+        target: scope,
         offset: [`${offset}px end`, 'end']
     });
+    const spring = useSpring(scrollYProgress, {
+        bounce: 0,
+        mass: 0.3,
+        stiffness: 50
+    });
 
-    return <MotionBox ref={elementRef} transition={{
-            ease: baseAnimationBezier,
-            duration: 0.5,
-            delay: delay
-        }}
-              style={{
-                  translateY: useTransform(useSpring(scrollYProgress, {
-                      bounce: 0,
-                      mass: 0.3,
-                      stiffness: 50
-                  }), [0, 1], [`${translateYPosition}px`, '0px'])
-              }}>
-            {children}
-      </MotionBox>
+    useMotionValueEvent(scrollYProgress, 'change', (latest) => {
+        if(!isAnimated) {
+            spring.set(latest);
+        }
+    });
+
+    useMotionValueEvent(spring, 'change', (latest) => {
+        if(latest <= 1 && !isAnimated)  {
+            animate(scope.current, {
+                translateY: transform([0, 1], [`${translateYPosition}px`, '0px'])(latest),
+            }, { ease: baseAnimationBezier, duration: 0.5, delay: delay });
+
+            setTimeout(() => {
+                if(latest === 1) {
+                    setIsAnimated(true);
+                }
+            }, 500)
+        }
+    });
+
+    return <Box ref={scope} sx={{
+        transform: `translateY(${translateYPosition}px) translateZ(0)`,
+    }}>
+        {children}
+    </Box>
 }

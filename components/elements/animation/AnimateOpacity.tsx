@@ -16,9 +16,9 @@ export const AnimateOpacity:any = ({children, delay = 0 }:IAnimateOpacity) : Rea
         duration: 1,
         delay: delay
     }}
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1.01 }}
-                      viewport={{ once: true }}>
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1.01 }}
+              viewport={{ once: true }}>
         {children}
     </MotionBox>
 }

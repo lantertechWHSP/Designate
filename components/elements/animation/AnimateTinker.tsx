@@ -11,7 +11,7 @@ interface IAnimateTranslateUp {
     children?:any;
 }
 
-export const AnimateFadeInTranslate:any = ({ children, offset = 0, delay = 0, translateYPosition = 120 }:IAnimateTranslateUp): ReactNode => {
+export const AnimateTinker:any = ({ children, offset = 0, delay = 0, translateYPosition = 120 }:IAnimateTranslateUp): ReactNode => {
     const [isAnimated, setIsAnimated] = useState(false);
     const [scope, animate] = useAnimate();
     const { scrollYProgress } = useScroll({
