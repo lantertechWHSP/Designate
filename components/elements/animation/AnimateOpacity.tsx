@@ -13,7 +13,7 @@ interface IAnimateOpacity {
 export const AnimateOpacity:any = ({children, delay = 0 }:IAnimateOpacity) : ReactNode => {
     return <MotionBox transition={{
         ease: baseAnimationBezier,
-        duration: 1,
+        duration: 0.7,
         delay: delay
     }}
               initial={{ opacity: 0 }}
