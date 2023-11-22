@@ -174,7 +174,7 @@ const DesktopNav:any = ({menu, color}): ReactNode => {
     return <Flex as="nav"  height="48px" align="center" mx={-5}>
         {
             Array.isArray(menu) && menu.length > 0 && menu.map((item: IMenuLink, index: number) => {
-                return <Box px={5}>
+                return <Box px={5} key={index}>
                     {
                         Array.isArray(item.children) && item.children.length > 0 ?
                             <Popover trigger="hover" placement="bottom-start" key={index} closeOnBlur={true}>

@@ -37,15 +37,13 @@ const HeroBlock:any = ({ title, video }:IHeroBlock) : ReactNode => {
                     <Flex minH="100%" align="flex-end">
                         <Heading py={['40px', ,'50px', '60px']} variant="hero" position="relative" zIndex={zIndex.heroTitle} maxWidth={['100vw', , '500px', '500px']}>
                             <AnimateOverflow>
-                                <AnimateOverflow>
-                                    Generating
-                                </AnimateOverflow>
-                                <AnimateOverflow delay={0.02}>
-                                    Enduring
-                                </AnimateOverflow>
-                                <AnimateOverflow delay={0.03}>
-                                    Success
-                                </AnimateOverflow>
+                                Generating
+                            </AnimateOverflow>
+                            <AnimateOverflow delay={0.02}>
+                                Enduring
+                            </AnimateOverflow>
+                            <AnimateOverflow delay={0.03}>
+                                Success
                             </AnimateOverflow>
                         </Heading>
                     </Flex>

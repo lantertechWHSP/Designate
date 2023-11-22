@@ -7,6 +7,7 @@ import { IStructuredText } from '~/interfaces/util/structuredText';
 import { isEmptyDocument } from 'datocms-structured-text-utils';
 import StructuredContent from "~/components/StructuredContent";
 import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
+import {AnimateOverflow} from "~/components/elements/animation/AnimateOverflow";
 
 interface IAccordionBlock extends IBlock {
     title?:string;
@@ -27,7 +28,9 @@ const AccordionBlock:any = ({ title, background, textColor, items, paddingBottom
     return (title || (Array.isArray(items) && items.length > 0)) && <ContentBlock background={background} color={textColor} paddingBottom={paddingBottom} py={8}>
         {
             title && <Heading as="h2" variant="sectionHeading" color={selectedTextColor} mb={['40px', ,'50px', '60px']}>
-                {title}
+                <AnimateOverflow>
+                    {title}
+                </AnimateOverflow>
             </Heading>
         }
         {
@@ -52,7 +55,9 @@ const AccordionBlock:any = ({ title, background, textColor, items, paddingBottom
                                             fontSize={['21px']}
                                             lineHeight={['26px']}
                                             fontWeight={500} mb={0} mr={4}>
-                                            {item?.title}
+                                            <AnimateOverflow>
+                                                {item?.title}
+                                            </AnimateOverflow>
                                         </Heading>
                                         <Box flex={1} />
                                         <Box transition="transform 300ms linear"

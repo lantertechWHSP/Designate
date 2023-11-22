@@ -3,6 +3,7 @@ import { IDocument } from "~/interfaces/models/document";
 import { Flex, Heading, Text, Link } from '@chakra-ui/react';
 import { DateTime } from 'luxon';
 import { SectionLink } from "~/components/elements/sectionLink";
+import {AnimateOverflow} from "~/components/elements/animation/AnimateOverflow";
 
 interface IDocumentCard extends IDocument {
     hideDate?:boolean;
@@ -18,18 +19,22 @@ const DocumentCard:any = ({ title, date, document, hideDate = false }:IDocumentC
                 title && <Heading as="h3"
                     width={['unset', ,'60.3%']}
                     variant="listItem">
-                    {
-                        (document && document.url) ? <Link href={document?.url} target="_blank">
-                            {title}
-                        </Link> : <>{title}</>
-                    }
+                    <AnimateOverflow>
+                        {
+                            (document && document.url) ? <Link href={document?.url} target="_blank">
+                                {title}
+                            </Link> : <>{title}</>
+                        }
+                    </AnimateOverflow>
                 </Heading>
             }
             {
                 (date && !hideDate) && <Text
                     variant="listLabel"
                     mb={0}>
-                    {DateTime.fromISO(date).toFormat('MMM d, yyyy')}
+                    <AnimateOverflow>
+                        {DateTime.fromISO(date).toFormat('MMM d, yyyy')}
+                    </AnimateOverflow>
                 </Text>
             }
         </Flex>
@@ -37,11 +42,13 @@ const DocumentCard:any = ({ title, date, document, hideDate = false }:IDocumentC
             justify="flex-end"
             px={4}>
             {
-                (document && document.url) && <SectionLink href={document?.url}
-                    as="a"
-                    target="_blank">
-                    View
-                </SectionLink>
+                (document && document.url) && <AnimateOverflow>
+                    <SectionLink href={document?.url}
+                                 as="a"
+                                 target="_blank">
+                        View
+                    </SectionLink>
+                </AnimateOverflow>
             }
         </Flex>
     </Flex>;

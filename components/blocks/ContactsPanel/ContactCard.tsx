@@ -4,6 +4,7 @@ import { Heading, Box } from '@chakra-ui/react';
 import { UnderlineLink } from '~/components/elements/sectionLink';
 import StructuredContent from "~/components/StructuredContent";
 import { isEmptyDocument } from 'datocms-structured-text-utils';
+import {AnimateOverflow} from "~/components/elements/animation/AnimateOverflow";
 
 interface IContactCardProps extends IContact {
 }
@@ -12,46 +13,62 @@ const ContactCard:any = ({ title, address, contactName, phone, phone2, email, em
     return <Box fontSize={['18px']} lineHeight={['32px']} color="olive">
         {
             title && <Heading as="h3" fontSize={['21px']} lineHeight={['26px']} mb={4}>
-                {title}
+                <AnimateOverflow>
+                    {title}
+                </AnimateOverflow>
             </Heading>
         }
         {
             !isEmptyDocument(address) && <Box mb={4}>
                 <Heading as="h4" mb={0}>
-                    Address
+                    <AnimateOverflow>
+                        Address
+                    </AnimateOverflow>
                 </Heading>
                 <Box>
-                    <StructuredContent content={address} />
+                    <AnimateOverflow>
+                        <StructuredContent content={address} />
+                    </AnimateOverflow>
                 </Box>
             </Box>
         }
         {
             contactName && <Box mb={4}>
                 <Heading as="h4" mb={0}>
-                    Contact
+                    <AnimateOverflow>
+                        Contact
+                    </AnimateOverflow>
                 </Heading>
                 <Box>
-                    {contactName}
+                    <AnimateOverflow>
+                        {contactName}
+                    </AnimateOverflow>
                 </Box>
             </Box>
         }
         {
             (phone || phone2) && <Box mb={4}>
                 <Heading  as="h4" mb={0}>
-                    Phone
+                    <AnimateOverflow>
+                        Phone
+                    </AnimateOverflow>
                 </Heading>
                 {
                     phone && <Box>
-                        <UnderlineLink href={`tel:${phone}`} fontWeight={500}>
-                            {phone}
-                        </UnderlineLink>
+                        <AnimateOverflow>
+                            <UnderlineLink href={`tel:${phone}`} fontWeight={500}>
+                                {phone}
+                            </UnderlineLink>
+                        </AnimateOverflow>
                     </Box>
                 }
                 {
                     phone2 && <Box>
-                        <UnderlineLink href={`tel:${phone2}`} fontWeight={500}>
-                            {phone2}
-                        </UnderlineLink>
+                        <AnimateOverflow>
+                            <UnderlineLink href={`tel:${phone2}`} fontWeight={500}>
+                                {phone2}
+                            </UnderlineLink>
+                        </AnimateOverflow>
                     </Box>
                 }
             </Box>
@@ -59,20 +76,26 @@ const ContactCard:any = ({ title, address, contactName, phone, phone2, email, em
         {
             (email || email2) && <Box mb={4}>
                 <Heading as="h4" mb={0}>
-                    Email
+                    <AnimateOverflow>
+                        Email
+                    </AnimateOverflow>
                 </Heading>
                 {
                     email && <Box>
-                        <UnderlineLink href={`mailto:${email}`} fontWeight={500}>
-                            {email}
-                        </UnderlineLink>
+                        <AnimateOverflow>
+                            <UnderlineLink href={`mailto:${email}`} fontWeight={500}>
+                                {email}
+                            </UnderlineLink>
+                        </AnimateOverflow>
                     </Box>
                 }
                 {
                     email2 && <Box>
-                        <UnderlineLink href={`mailto:${email2}`} fontWeight={500}>
-                            {email2}
-                        </UnderlineLink>
+                        <AnimateOverflow>
+                            <UnderlineLink href={`mailto:${email2}`} fontWeight={500}>
+                                {email2}
+                            </UnderlineLink>
+                        </AnimateOverflow>
                     </Box>
                 }
             </Box>
@@ -80,24 +103,32 @@ const ContactCard:any = ({ title, address, contactName, phone, phone2, email, em
         {
             abn && <Box mb={4}>
                 <Heading as="h4" mb={0}>
-                    ABN
+                    <AnimateOverflow>
+                        ABN
+                    </AnimateOverflow>
                 </Heading>
                 <Box>
-                    <UnderlineLink href={`https://abr.business.gov.au/ABN/View?id=${abn}`} target="_blank" fontWeight={500}>
-                        ABN: {abn}
-                    </UnderlineLink>
+                    <AnimateOverflow>
+                        <UnderlineLink href={`https://abr.business.gov.au/ABN/View?id=${abn}`} target="_blank" fontWeight={500}>
+                            ABN: {abn}
+                        </UnderlineLink>
+                    </AnimateOverflow>
                 </Box>
             </Box>
         }
         {
             website && <Box mb={4}>
                 <Heading as="h4" mb={0}>
-                    Website
+                    <AnimateOverflow>
+                        Website
+                    </AnimateOverflow>
                 </Heading>
                 <Box>
-                    <UnderlineLink href={website} target="_blank" fontWeight={500}>
-                        {website.replace(/^.*:\/\//i, '')}
-                    </UnderlineLink>
+                    <AnimateOverflow>
+                        <UnderlineLink href={website} target="_blank" fontWeight={500}>
+                            {website.replace(/^.*:\/\//i, '')}
+                        </UnderlineLink>
+                    </AnimateOverflow>
                 </Box>
             </Box>
         }

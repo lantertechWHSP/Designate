@@ -4,6 +4,7 @@ import { IDocument } from '~/interfaces/models/document';
 import ContentBlock from '~/components/blocks/Content';
 import { Box, Alert, Heading } from '@chakra-ui/react';
 import DocumentCard from '~/components/elements/documents/DocumentCard';
+import {AnimateOverflow} from "~/components/elements/animation/AnimateOverflow";
 
 interface IDocumentPoliciesListBlock extends IBlock {
     items?:IDocumentPoliciesItemBlock[]
@@ -27,7 +28,11 @@ const DocumentPoliciesListBlock:any = ({ items, background, paddingTop, paddingB
                                 fontWeight={700}
                                 borderBottom="1px solid"
                                 borderColor="borderColor"
-                                py={4}>{item.title}</Heading>
+                                py={4}>
+                                <AnimateOverflow>
+                                    {item.title}
+                                </AnimateOverflow>
+                            </Heading>
                             {
                                 (Array.isArray(item.documents) && item.documents.length > 0) && <>
                                     {

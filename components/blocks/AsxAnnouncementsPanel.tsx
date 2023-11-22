@@ -6,6 +6,7 @@ import { Icon, Icons } from '~/components/elements/icon';
 import { symbol } from '~/consts/yourir';
 import { IFilter } from '~/interfaces/util/filter';
 import { SectionLinkInner } from '~/components/elements/sectionLink';
+import {AnimateOverflow} from "~/components/elements/animation/AnimateOverflow";
 
 interface IAsxAnnouncementsPanelBlock extends IBlock {
 }
@@ -77,66 +78,69 @@ const AsxAnnouncementsPanelBlock:any = ({}:IAsxAnnouncementsPanelBlock) : ReactN
                 <Box py={[4, 6, , 8]}>
                     <Flex direction={['column', 'row']} mx={-2} mb={-4}>
                         <Box px={2} mb={4}>
-                            <Menu>
-                                {({ isOpen }) => (
-                                    <>
-                                        <MenuButton as={Button}
-                                            minWidth={['100%', '220px', , '270px']}
-                                            variant="menuButton"
-                                            rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} h={12} w={12} /> : <Icon icon={Icons.ChevronDown} h={12} w={12}  /> }>
-                                            {filterName}
-                                        </MenuButton>
-                                        <Portal>
-                                            <MenuList>
-                                                {
-                                                    filters.map((item:IFilter, index:number) => {
-                                                        return <MenuItem key={index}
-                                                            as={Button}
-                                                            onClick={() => {
-                                                                filterName = item.label;
-                                                                set(`announcements.filter`, item.value);
-                                                            }}>
-                                                            {item.label}
-                                                        </MenuItem>;
-                                                    })
-                                                }
-                                            </MenuList>
-                                        </Portal>
-                                    </>
-                                )}
-                            </Menu>
+                            <AnimateOverflow>
+                                <Menu>
+                                    {({ isOpen }) => (
+                                        <>
+                                            <MenuButton as={Button}
+                                                        minWidth={['100%', '220px', , '270px']}
+                                                        variant="menuButton"
+                                                        rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} h={12} w={12} /> : <Icon icon={Icons.ChevronDown} h={12} w={12}  /> }>
+                                                {filterName}
+                                            </MenuButton>
+                                            <Portal>
+                                                <MenuList>
+                                                    {
+                                                        filters.map((item:IFilter, index:number) => {
+                                                            return <MenuItem key={index}
+                                                                             as={Button}
+                                                                             onClick={() => {
+                                                                                 filterName = item.label;
+                                                                                 set(`announcements.filter`, item.value);
+                                                                             }}>
+                                                                {item.label}
+                                                            </MenuItem>;
+                                                        })
+                                                    }
+                                                </MenuList>
+                                            </Portal>
+                                        </>
+                                    )}
+                                </Menu>
+                            </AnimateOverflow>
                         </Box>
                         <Box px={2} mb={4}>
-                            <Menu>
-                                {({ isOpen }) => (
-                                    <>
-                                        <MenuButton as={Button}
-                                            variant="menuButton"
-                                            minWidth={['100%', ,'150px']}
-                                            rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} h={12} w={12} /> : <Icon icon={Icons.ChevronDown} h={12} w={12} /> }>
-                                            {yearName}
-                                        </MenuButton>
-                                        <Portal>
-                                            <MenuList>
-                                                {
-                                                    years.map((item, index) => {
-                                                        return <MenuItem key={index}
-                                                            as={Button}
-                                                            onClick={() => {
-                                                                yearName = item.label;
-                                                                set(`announcements.year`, item.value);
-                                                            }}>
-                                                            {item.label}
-                                                        </MenuItem>;
-                                                    })
-                                                }
-                                            </MenuList>
-                                        </Portal>
-                                    </>
-                                )}
-                            </Menu>
+                            <AnimateOverflow>
+                                <Menu>
+                                    {({ isOpen }) => (
+                                        <>
+                                            <MenuButton as={Button}
+                                                        variant="menuButton"
+                                                        minWidth={['100%', ,'150px']}
+                                                        rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} h={12} w={12} /> : <Icon icon={Icons.ChevronDown} h={12} w={12} /> }>
+                                                {yearName}
+                                            </MenuButton>
+                                            <Portal>
+                                                <MenuList>
+                                                    {
+                                                        years.map((item, index) => {
+                                                            return <MenuItem key={index}
+                                                                             as={Button}
+                                                                             onClick={() => {
+                                                                                 yearName = item.label;
+                                                                                 set(`announcements.year`, item.value);
+                                                                             }}>
+                                                                {item.label}
+                                                            </MenuItem>;
+                                                        })
+                                                    }
+                                                </MenuList>
+                                            </Portal>
+                                        </>
+                                    )}
+                                </Menu>
+                            </AnimateOverflow>
                         </Box>
-
                     </Flex>
                 </Box>
                 <Box id={`announcements`} data-yourir={`announcements pageSize=10 symbol=${symbol}.asx`}>

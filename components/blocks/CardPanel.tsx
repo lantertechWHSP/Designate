@@ -45,11 +45,11 @@ const CardPanelBlock:any = ({ annotation, title, description, image, link, align
                         pl={align === ICardPanelAlign.Right ? [6, ,0] : [6, ,8]}
                         pr={align === ICardPanelAlign.Left ? [6, ,0] : [6, ,8]}>
                         {
-                            annotation && <Text variant="caption" mb={[2, ,4, 8]}>
-                                <AnimateOverflow>
+                            annotation && <AnimateOverflow>
+                                <Text variant="caption" mb={[2, ,4, 8]}>
                                     {annotation}
-                                </AnimateOverflow>
-                            </Text>
+                                </Text>
+                            </AnimateOverflow>
                         }
                         {
                             title && <Heading as="h2" variant="sectionHeading" mb={4}>

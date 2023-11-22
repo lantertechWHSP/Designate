@@ -7,6 +7,7 @@ import { Box, Heading, SimpleGrid } from '@chakra-ui/react';
 import { IContact } from '~/interfaces/models/contact';
 import ContactCard from '~/components/blocks/ContactsPanel/ContactCard';
 import { orderBy as _orderBy } from 'lodash';
+import {AnimateOverflow} from "~/components/elements/animation/AnimateOverflow";
 
 interface IContactsPanelBlock extends IBlock {
     title?:string;
@@ -19,7 +20,9 @@ const ContactsPanelBlock:any = ({title, background, paddingTop, paddingBottom, d
     return (Array.isArray(contacts) && contacts.length > 0 || title) && <ContentBlock background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         {
             title && <Heading as="h2" variant="sectionHeading" mb={[4, ,6, 8]}>
-                {title}
+                <AnimateOverflow>
+                    {title}
+                </AnimateOverflow>
             </Heading>
         }
         {

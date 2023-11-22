@@ -5,6 +5,7 @@ import { ITable } from '~/interfaces/util/table';
 import { Heading, Box, TableContainer, Table, Thead, Tr, Th, Tbody, Td, Alert } from '@chakra-ui/react';
 import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
 import {tableOverflowMargin} from "~/lib/theme/theme";
+import {AnimateOverflow} from "~/components/elements/animation/AnimateOverflow";
 
 interface ITableRow {
     Dividend:string;
@@ -24,14 +25,18 @@ const DividendLatestTableBlock:any = ({ title, table, description, paddingTop, p
     return <ContentBlock background="ghostWhite" paddingTop={paddingTop} paddingBottom={paddingBottom}>
         {
             title && <Heading as="h2" variant="sectionHeading" mb={[4, ,6, 8]}>
-                {title}
+                <AnimateOverflow>
+                    {title}
+                </AnimateOverflow>
             </Heading>
         }
         {
             description && <Row>
                 <Column width={[ColumnWidth.Full, , ColumnWidth.Half]}>
                     <Box fontSize={['19px']} lineHeight={['29px']} mb={8}>
-                        {description}
+                        <AnimateOverflow>
+                            {description}
+                        </AnimateOverflow>
                     </Box>
                 </Column>
             </Row>
@@ -42,19 +47,29 @@ const DividendLatestTableBlock:any = ({ title, table, description, paddingTop, p
                     <Thead>
                         <Tr>
                             <Th w="20%">
-                                Dividend
+                                <AnimateOverflow>
+                                    Dividend
+                                </AnimateOverflow>
                             </Th>
                             <Th w="20%">
-                                ExDate
+                                <AnimateOverflow>
+                                    ExDate
+                                </AnimateOverflow>
                             </Th>
                             <Th w="20%">
-                                Franking (%)
+                                <AnimateOverflow>
+                                    Franking (%)
+                                </AnimateOverflow>
                             </Th>
                             <Th w="20%">
-                                Type
+                                <AnimateOverflow>
+                                    Type
+                                </AnimateOverflow>
                             </Th>
                             <Th w="20%">
-                                Payment Date
+                                <AnimateOverflow>
+                                    Payment Date
+                                </AnimateOverflow>
                             </Th>
                         </Tr>
                     </Thead>
@@ -63,29 +78,39 @@ const DividendLatestTableBlock:any = ({ title, table, description, paddingTop, p
                             table.data.map((row:ITableRow, index:number) => {
                                 return <Tr key={index}>
                                     <Td>
-                                        {
-                                            row.Dividend || '-'
-                                        }
+                                        <AnimateOverflow>
+                                            {
+                                                row.Dividend || '-'
+                                            }
+                                        </AnimateOverflow>
                                     </Td>
                                     <Td>
-                                        {
-                                            row.ExDate || '-'
-                                        }
+                                        <AnimateOverflow>
+                                            {
+                                                row.ExDate || '-'
+                                            }
+                                        </AnimateOverflow>
                                     </Td>
                                     <Td>
-                                        {
-                                            row.Franking || '-'
-                                        }
+                                        <AnimateOverflow>
+                                            {
+                                                row.Franking || '-'
+                                            }
+                                        </AnimateOverflow>
                                     </Td>
                                     <Td>
-                                        {
-                                            row.Type || '-'
-                                        }
+                                        <AnimateOverflow>
+                                            {
+                                                row.Type || '-'
+                                            }
+                                        </AnimateOverflow>
                                     </Td>
                                     <Td>
-                                        {
-                                            row.PaymentDate || '-'
-                                        }
+                                        <AnimateOverflow>
+                                            {
+                                                row.PaymentDate || '-'
+                                            }
+                                        </AnimateOverflow>
                                     </Td>
                                 </Tr>;
                             })
