@@ -10,6 +10,8 @@ import SocialShare from '~/components/elements/socialShare';
 import Preview from '~/components/site/Preview';
 import VectorEffect from '~/components/elements/shapes/VectorEffect';
 import { zIndex } from '~/lib/theme/theme';
+import {AnimateOverflow} from "~/components/elements/animation/AnimateOverflow";
+import {AnimateOpacity} from "~/components/elements/animation/AnimateOpacity";
 
 const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
     const [annotation] = useState((() => {
@@ -46,19 +48,24 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
                             <Row justify="center">
                                 <Column width={[ColumnWidth.Full, , ,ColumnWidth.TenTwelfths, ColumnWidth.EightTwelfths]}>
                                     {
-                                        <Text color="charcoalBlur" mb={4}>
-                                            {annotation}
-                                        </Text>
+                                        <Box color="charcoalBlur" mb={4}>
+                                            <AnimateOverflow>
+                                                {annotation}
+                                            </AnimateOverflow>
+                                        </Box>
                                     }
                                     {
                                         post?.title && <Heading as="h1"
                                             fontSize={['50px']}
                                             lineHeight={['54px']}
                                             fontWeight={500}
-                                            maxHeight={['104px']}
-                                            overflow="hidden"
-                                            textOverflow="ellipsis">
-                                            {post?.title}
+                                            maxHeight={['104px']}>
+                                            <AnimateOverflow>
+                                                <Box overflow="hidden"
+                                                     textOverflow="ellipsis">
+                                                    {post.title}
+                                                </Box>
+                                            </AnimateOverflow>
                                         </Heading>
                                     }
                                 </Column>
@@ -69,7 +76,9 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
                     <Container>
                         <Row justify="center">
                             <Column width={[ColumnWidth.Full, , ,ColumnWidth.TenTwelfths, ColumnWidth.EightTwelfths]}>
-                                <Image image={post?.image} borderRadius="3px" overflow="hidden" />
+                                <AnimateOpacity>
+                                    <Image image={post?.image} borderRadius="3px" overflow="hidden" />
+                                </AnimateOpacity>
                                 {
                                     (post?.image?.title) && <Text variant="caption"  mt={2} mb={0}>
                                         {post?.image?.title}
@@ -93,16 +102,21 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
                                                 fontSize={['50px']}
                                                 lineHeight={['54px']}
                                                 fontWeight={500}
-                                                overflow="hidden"
-                                                color="charcoal"
-                                                textOverflow="ellipsis">
-                                                {post?.title}
+                                                color="charcoal">
+                                                <AnimateOverflow>
+                                                    <Box overflow="hidden"
+                                                         textOverflow="ellipsis">
+                                                        {post?.title}
+                                                    </Box>
+                                                </AnimateOverflow>
                                             </Heading>
                                         }
                                         {
-                                            <Text color="charcoalBlur" mb={0}>
-                                                {annotation}
-                                            </Text>
+                                            <Box color="charcoalBlur" mb={0}>
+                                                <AnimateOverflow>
+                                                    {annotation}
+                                                </AnimateOverflow>
+                                            </Box>
                                         }
                                     </Box>
 

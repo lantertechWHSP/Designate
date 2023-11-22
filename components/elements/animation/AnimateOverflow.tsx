@@ -10,7 +10,7 @@ interface IAnimateOverflowText {
     delay?:number;
 }
 
-export const AnimateOverflow:any = ({ children, delay = 0 }:IAnimateOverflowText) : ReactNode => {
+export const AnimateOverflow:any = ({ children, delay = 0, once = true }:IAnimateOverflowText) : ReactNode => {
     return <Box overflow="hidden">
         <MotionBox transition={{
             ease: baseAnimationBezier,
@@ -19,7 +19,7 @@ export const AnimateOverflow:any = ({ children, delay = 0 }:IAnimateOverflowText
         }}
                initial={{ translateY: '100%' }}
                whileInView={{ translateY: '0' }}
-               viewport={{ once: true }}>
+               viewport={{ once: once }}>
             {children}
         </MotionBox>
     </Box>
