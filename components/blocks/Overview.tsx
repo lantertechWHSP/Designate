@@ -6,8 +6,7 @@ import { Column, ColumnWidth, Row } from '~/components/elements/grid/grid';
 import { IStructuredText } from '~/interfaces/util/structuredText';
 import { isEmptyDocument } from 'datocms-structured-text-utils';
 import { Box, Heading } from '@chakra-ui/react';
-import {AnimateTinker} from "~/components/elements/animation/AnimateTinker";
-import {AnimateOverflow} from "~/components/elements/animation/AnimateOverflow";
+import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
 
 enum IOverviewAlign {
     Left = 'Left',
