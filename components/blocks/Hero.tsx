@@ -7,7 +7,7 @@ import { IVideo } from '~/interfaces/util/video';
 import HeroVectorEffect from '~/components/elements/shapes/HeroVectorEffect';
 import { zIndex } from "~/lib/theme/theme";
 import { Skeleton } from '~/components/elements/skeleton/skeleton';
-import {AnimateOverflow} from "~/components/elements/animation/AnimateOverflow";
+import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
 
 interface IHeroBlock extends IBlock {
     title?:string;

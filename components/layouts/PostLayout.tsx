@@ -10,8 +10,8 @@ import SocialShare from '~/components/elements/socialShare';
 import Preview from '~/components/site/Preview';
 import VectorEffect from '~/components/elements/shapes/VectorEffect';
 import { zIndex } from '~/lib/theme/theme';
-import {AnimateOverflow} from "~/components/elements/animation/AnimateOverflow";
-import {AnimateOpacity} from "~/components/elements/animation/AnimateOpacity";
+import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
+import { AnimateOpacity } from '~/components/elements/animation/AnimateOpacity';
 
 const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
     const [annotation] = useState((() => {
@@ -62,7 +62,7 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
                                             maxHeight={['104px']}>
                                             <AnimateOverflow>
                                                 <Box overflow="hidden"
-                                                     textOverflow="ellipsis">
+                                                    textOverflow="ellipsis">
                                                     {post.title}
                                                 </Box>
                                             </AnimateOverflow>
@@ -80,9 +80,11 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
                                     <Image image={post?.image} borderRadius="3px" overflow="hidden" />
                                 </AnimateOpacity>
                                 {
-                                    (post?.image?.title) && <Text variant="caption"  mt={2} mb={0}>
-                                        {post?.image?.title}
-                                    </Text>
+                                    (post?.image?.title) && <AnimateOverflow>
+                                        <Text variant="caption"  mt={2} mb={0}>
+                                            {post?.image?.title}
+                                        </Text>
+                                    </AnimateOverflow>
                                 }
                             </Column>
                         </Row>
@@ -105,7 +107,7 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
                                                 color="charcoal">
                                                 <AnimateOverflow>
                                                     <Box overflow="hidden"
-                                                         textOverflow="ellipsis">
+                                                        textOverflow="ellipsis">
                                                         {post?.title}
                                                     </Box>
                                                 </AnimateOverflow>

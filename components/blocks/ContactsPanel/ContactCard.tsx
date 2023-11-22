@@ -4,7 +4,7 @@ import { Heading, Box } from '@chakra-ui/react';
 import { UnderlineLink } from '~/components/elements/sectionLink';
 import StructuredContent from "~/components/StructuredContent";
 import { isEmptyDocument } from 'datocms-structured-text-utils';
-import {AnimateOverflow} from "~/components/elements/animation/AnimateOverflow";
+import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
 
 interface IContactCardProps extends IContact {
 }

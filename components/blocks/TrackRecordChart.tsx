@@ -8,8 +8,7 @@ import { Icon, Icons } from '~/components/elements/icon';
 import { IFilter } from '~/interfaces/util/filter';
 import { ITable } from '~/interfaces/util/table';
 import { darkLegendColors, legendColors } from '~/components/elements/charts/colors';
-import {AnimateOverflow} from "~/components/elements/animation/AnimateOverflow";
-import {AnimateOpacity} from "~/components/elements/animation/AnimateOpacity";
+import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
 
 interface ITableRow {
     Date:string;
@@ -38,8 +37,6 @@ const TrackRecordChartBlock:any = ({ title, subtitle, table, theme, paddingTop, 
     const fillColor:string = theme === Theme.Dark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(80, 81, 60, 0.05)';
     const borderColor:string = theme === Theme.Dark ? 'whiteBlur2' : 'borderColor';
     const borderColorDark:string = theme === Theme.Dark ? 'white' : 'charcoal';
-    const skeletonStartColor:string = theme === Theme.Dark ? 'whiteBlur2': 'borderColor';
-    const skeletonEndColor:string = theme === Theme.Dark ? 'white': 'lightGrey2Blur';
     const tooltipLegendBorderColor:string = theme === Theme.Dark ? 'charcoal' : 'transparent';
     const tooltipPointFillColor:string = theme === Theme.Dark ? 'olive' : 'charcoal';
 
@@ -201,8 +198,8 @@ const TrackRecordChartBlock:any = ({ title, subtitle, table, theme, paddingTop, 
                             {({ isOpen }) => (
                                 <>
                                     <MenuButton as={Button}
-                                                variant="menuButton"
-                                                rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} h={12} w={12} /> : <Icon icon={Icons.ChevronDown} h={12} w={12}  /> }>
+                                        variant="menuButton"
+                                        rightIcon={isOpen ? <Icon icon={Icons.ChevronUp} h={12} w={12} /> : <Icon icon={Icons.ChevronDown} h={12} w={12}  /> }>
                                         <Flex display="inlineFlex" direction="row" alignItems="center">
                                             <Box background={theme === Theme.Dark ? 'white' : 'lightGrey'} width="8px" height="8px" borderRadius="4px" border="1px solid" borderColor={theme === Theme.Dark ? 'charcoal' : 'transparent'}  mr={2} />
                                             <Text as="span">
@@ -215,27 +212,27 @@ const TrackRecordChartBlock:any = ({ title, subtitle, table, theme, paddingTop, 
                                             {
                                                 filters.map((item:IChartFilter, index:number) => {
                                                     return <MenuItem key={index}
-                                                                     as={Button}
-                                                                     variant="menuItemFilter"
-                                                                     isActive={item.isActive}
-                                                                     onClick={() => {
-                                                                         let isToggled:boolean = false;
+                                                        as={Button}
+                                                        variant="menuItemFilter"
+                                                        isActive={item.isActive}
+                                                        onClick={() => {
+                                                            let isToggled:boolean = false;
 
-                                                                         const newFilters:IChartFilter[] = [...filters];
+                                                            const newFilters:IChartFilter[] = [...filters];
 
-                                                                         newFilters.map((innerFilter) => {
-                                                                             if(innerFilter.value === item.value && index !== 0) {
-                                                                                 innerFilter.isActive = !innerFilter.isActive;
+                                                            newFilters.map((innerFilter) => {
+                                                                if(innerFilter.value === item.value && index !== 0) {
+                                                                    innerFilter.isActive = !innerFilter.isActive;
 
-                                                                                 isToggled = true;
-                                                                             }
-                                                                         });
+                                                                    isToggled = true;
+                                                                }
+                                                            });
 
-                                                                         if(isToggled) {
-                                                                             setFilters(newFilters);
-                                                                             updateLines();
-                                                                         }
-                                                                     }}>
+                                                            if(isToggled) {
+                                                                setFilters(newFilters);
+                                                                updateLines();
+                                                            }
+                                                        }}>
                                                         <Flex direction="row" align="center" width="100%">
                                                             <Box background={item.background} width="8px" height="8px" borderRadius="4px" border="1px solid" borderColor={tooltipLegendBorderColor} mr={2} />
                                                             <Flex flex="1">{item.label}</Flex>
@@ -257,7 +254,7 @@ const TrackRecordChartBlock:any = ({ title, subtitle, table, theme, paddingTop, 
                 </Box>
             }
         </Flex>
-        <LineChart data={data} textColor={chartTextColor} fillColor={fillColor} borderColor={borderColor} borderColorDark={borderColorDark} skeletonStartColor={skeletonStartColor} skeletonEndColor={skeletonEndColor} tooltipPointFillColor={tooltipPointFillColor} tooltipLegendBorderColor={tooltipLegendBorderColor} />
+        <LineChart data={data} textColor={chartTextColor} fillColor={fillColor} borderColor={borderColor} borderColorDark={borderColorDark} tooltipPointFillColor={tooltipPointFillColor} tooltipLegendBorderColor={tooltipLegendBorderColor} />
     </ContentBlock>;
 };
 

@@ -5,7 +5,7 @@ import { Box, Heading, Text, Flex } from '@chakra-ui/react';
 import { ILink} from '~/interfaces/util/link';
 import { SectionLink } from '~/components/elements/sectionLink';
 import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
-import {AnimateOverflow} from "~/components/elements/animation/AnimateOverflow";
+import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
 
 
 interface ISeeAlsoItem {

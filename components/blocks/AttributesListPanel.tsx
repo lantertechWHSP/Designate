@@ -3,7 +3,7 @@ import { IBlock } from '~/interfaces/util/block';
 import ContentBlock from '~/components/blocks/Content';
 import { ISVGImage } from '~/interfaces/util/image';
 import { Heading, Box, SimpleGrid } from '@chakra-ui/react';
-import {AnimateOverflow} from "~/components/elements/animation/AnimateOverflow";
+import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
 
 interface AttributesListPanelItem {
     title?:string;

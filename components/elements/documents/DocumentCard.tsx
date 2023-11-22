@@ -3,7 +3,7 @@ import { IDocument } from "~/interfaces/models/document";
 import { Flex, Heading, Text, Link } from '@chakra-ui/react';
 import { DateTime } from 'luxon';
 import { SectionLink } from "~/components/elements/sectionLink";
-import {AnimateOverflow} from "~/components/elements/animation/AnimateOverflow";
+import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
 
 interface IDocumentCard extends IDocument {
     hideDate?:boolean;
@@ -44,8 +44,8 @@ const DocumentCard:any = ({ title, date, document, hideDate = false }:IDocumentC
             {
                 (document && document.url) && <AnimateOverflow>
                     <SectionLink href={document?.url}
-                                 as="a"
-                                 target="_blank">
+                        as="a"
+                        target="_blank">
                         View
                     </SectionLink>
                 </AnimateOverflow>

@@ -50,158 +50,158 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                                     data-yourir="price showCurrency=true minDecimals=2 maxDecimals=2" />
                             </Box>
                             <Box as={YourIR}>
-                                    <Box sx={{
-                                        '.chakra-badge.yourir-zero': {
-                                            background: 'lightGrey',
+                                <Box sx={{
+                                    '.chakra-badge.yourir-zero': {
+                                        background: 'lightGrey',
+                                    },
+                                    '.chakra-badge.yourir-positive': {
+                                        background: 'positive'
+                                    },
+                                    '.chakra-badge.yourir-negative': {
+                                        background: 'negative',
+                                    },
+                                    '.yourir-change .yourir-positive': {
+                                        color: 'olive'
+                                    },
+                                    '.yourir-change .yourir-negative': {
+                                        color: 'olive'
+                                    },
+                                    '.yourir-pct-symbol .yourir-positive': {
+                                        color: 'olive'
+                                    },
+                                    '.yourir-pct-symbol .yourir-negative': {
+                                        color: 'olive'
+                                    },
+                                    '.yourir-pct-change .yourir-positive': {
+                                        color: 'olive'
+                                    },
+                                    '.yourir-pct-change .yourir-negative': {
+                                        color: 'olive'
+                                    },
+                                    '.yourir-pct': {
+                                        display: 'none'
+                                    },
+                                    '.yourir-pct.yourir-positive': {
+                                        display: 'inline-block',
+                                        _before: {
+                                            content: '"("'
                                         },
-                                        '.chakra-badge.yourir-positive': {
-                                            background: 'positive'
-                                        },
-                                        '.chakra-badge.yourir-negative': {
-                                            background: 'negative',
-                                        },
-                                        '.yourir-change .yourir-positive': {
-                                            color: 'olive'
-                                        },
-                                        '.yourir-change .yourir-negative': {
-                                            color: 'olive'
-                                        },
-                                        '.yourir-pct-symbol .yourir-positive': {
-                                            color: 'olive'
-                                        },
-                                        '.yourir-pct-symbol .yourir-negative': {
-                                            color: 'olive'
-                                        },
-                                        '.yourir-pct-change .yourir-positive': {
-                                            color: 'olive'
-                                        },
-                                        '.yourir-pct-change .yourir-negative': {
-                                            color: 'olive'
-                                        },
-                                        '.yourir-pct': {
-                                            display: 'none'
-                                        },
-                                        '.yourir-pct.yourir-positive': {
-                                            display: 'inline-block',
-                                            _before: {
-                                                content: '"("'
-                                            },
-                                            _after: {
-                                                content: '")"'
-                                            }
-                                        },
-                                        '.yourir-pct.yourir-negative': {
-                                            display: 'inline-block',
-                                            _before: {
-                                                content: '"("'
-                                            },
-                                            _after: {
-                                                content: '")"'
-                                            }
-                                        },
-                                        '.yourir-pct-symbol': {
-                                            fontSize: 'initial'
+                                        _after: {
+                                            content: '")"'
                                         }
-                                    }}>
-                                        <Badge data-yourir="changeSignCSS" color="olive">
-                                            <Box as="span"
-                                                 data-yourir="changeSignCSS"
-                                                 mr={1}
-                                                 sx={{
-                                                     '&.yourir-positive:before': {
-                                                         color: 'olive',
-                                                         content: "'\\2197'"
-                                                     },
-                                                     '&.yourir-negative:before': {
-                                                         color: 'olive',
-                                                         content: "'\\2198'"
-                                                     }
-                                                 }}
-                                            />
-                                            <Text as="span" color="olive" data-yourir="change maxDecimals=2" />
-                                            {'\u00A0'}
-                                            <Text as="span" color="olive" data-yourir="pctChange" />
-                                        </Badge>
-                                    </Box>
+                                    },
+                                    '.yourir-pct.yourir-negative': {
+                                        display: 'inline-block',
+                                        _before: {
+                                            content: '"("'
+                                        },
+                                        _after: {
+                                            content: '")"'
+                                        }
+                                    },
+                                    '.yourir-pct-symbol': {
+                                        fontSize: 'initial'
+                                    }
+                                }}>
+                                    <Badge data-yourir="changeSignCSS" color="olive">
+                                        <Box as="span"
+                                            data-yourir="changeSignCSS"
+                                            mr={1}
+                                            sx={{
+                                                '&.yourir-positive:before': {
+                                                    color: 'olive',
+                                                    content: "'\\2197'"
+                                                },
+                                                '&.yourir-negative:before': {
+                                                    color: 'olive',
+                                                    content: "'\\2198'"
+                                                }
+                                            }}
+                                        />
+                                        <Text as="span" color="olive" data-yourir="change maxDecimals=2" />
+                                        {'\u00A0'}
+                                        <Text as="span" color="olive" data-yourir="pctChange" />
+                                    </Badge>
                                 </Box>
+                            </Box>
                         </Box>
                         <Box flex="1">
                             <Box as={YourIR}>
-                                    <Box height="100%"
-                                         minHeight="214px"
-                                         sx={{
-                                             '.yourir-chart': {
-                                                 padding: '0',
-                                                 borderBottomWidth: '1px',
-                                                 borderStyle: 'solid',
-                                                 borderColor: 'olive',
-                                                 color: 'olive',
-                                                 fontSize: '14px',
-                                                 height: '100%'
-                                             },
-                                             '.yourir-chart-panels': {
-                                                 height: '214px',
-                                                 minHeight: '100%'
-                                             },
-                                             '.yourir-chart-panel': {
-                                                 height: '214px',
-                                                 minHeight: '100%'
-                                             },
-                                             '.yourir-chart-price-fill': {
-                                                 fill: `rgba(80, 81, 60, 0.2)`
-                                             },
-                                             '.yourir-chart-price': {
-                                                 stroke: 'olive',
-                                                 strokeWidth: '2px',
-                                             },
-                                             '.yourir-chart-yaxis-label': {
-                                                 position: 'relative',
-                                                 top: '-10px'
-                                             },
-                                             '.yourir-chart-xaxis': {
-                                                 position: 'relative',
-                                                 top: '-40px'
-                                             },
-                                             '.yourir-chart-xaxis-label': {
-                                                 fontSize: '12px',
-                                                 color: 'steel'
-                                             },
-                                             '.yourir-chart-panel-border-bottom': {
-                                                 display: 'none'
-                                             },
-                                             '.yourir-chart-tick-bottom': {
-                                                 display: 'none'
-                                             },
-                                             '.yourir-chart-xaxis-outside': {
-                                                 position: 'relative',
-                                                 top: '10px'
-                                             },
-                                             '.yourir-chart-yaxis-gridline': {
-                                                 stroke: 'borderColor'
-                                             },
-                                             '.yourir-chart-xaxis-label-container': {
-                                                 marginLeft: 0,
-                                                 fontSize: '12px',
-                                                 color: 'steel',
-                                             },
-                                             '.yourir-chart-yaxis-label-container': {
-                                                 left: 0,
-                                                 marginRight: 0,
-                                                 fontSize: '12px',
-                                                 color: 'steel'
-                                             },
-                                             '.yourir-chart-yaxis-outside .yourir-chart-yaxis-label-container:first-of-type': {
-                                                 display: 'none'
-                                             },
-                                             '.yourir-chart-panel-plot-area': {
-                                                 padding: 0
-                                             },
-                                         }}>
-                                        <Box height="100%" data-yourir="priceChart1 range=6m showTooltips=true" >
-                                            <Box  height="100%" data-yourir="plots" />
-                                        </Box>
+                                <Box height="100%"
+                                    minHeight="214px"
+                                    sx={{
+                                        '.yourir-chart': {
+                                            padding: '0',
+                                            borderBottomWidth: '1px',
+                                            borderStyle: 'solid',
+                                            borderColor: 'olive',
+                                            color: 'olive',
+                                            fontSize: '14px',
+                                            height: '100%'
+                                        },
+                                        '.yourir-chart-panels': {
+                                            height: '214px',
+                                            minHeight: '100%'
+                                        },
+                                        '.yourir-chart-panel': {
+                                            height: '214px',
+                                            minHeight: '100%'
+                                        },
+                                        '.yourir-chart-price-fill': {
+                                            fill: `rgba(80, 81, 60, 0.2)`
+                                        },
+                                        '.yourir-chart-price': {
+                                            stroke: 'olive',
+                                            strokeWidth: '2px',
+                                        },
+                                        '.yourir-chart-yaxis-label': {
+                                            position: 'relative',
+                                            top: '-10px'
+                                        },
+                                        '.yourir-chart-xaxis': {
+                                            position: 'relative',
+                                            top: '-40px'
+                                        },
+                                        '.yourir-chart-xaxis-label': {
+                                            fontSize: '12px',
+                                            color: 'steel'
+                                        },
+                                        '.yourir-chart-panel-border-bottom': {
+                                            display: 'none'
+                                        },
+                                        '.yourir-chart-tick-bottom': {
+                                            display: 'none'
+                                        },
+                                        '.yourir-chart-xaxis-outside': {
+                                            position: 'relative',
+                                            top: '10px'
+                                        },
+                                        '.yourir-chart-yaxis-gridline': {
+                                            stroke: 'borderColor'
+                                        },
+                                        '.yourir-chart-xaxis-label-container': {
+                                            marginLeft: 0,
+                                            fontSize: '12px',
+                                            color: 'steel',
+                                        },
+                                        '.yourir-chart-yaxis-label-container': {
+                                            left: 0,
+                                            marginRight: 0,
+                                            fontSize: '12px',
+                                            color: 'steel'
+                                        },
+                                        '.yourir-chart-yaxis-outside .yourir-chart-yaxis-label-container:first-of-type': {
+                                            display: 'none'
+                                        },
+                                        '.yourir-chart-panel-plot-area': {
+                                            padding: 0
+                                        },
+                                    }}>
+                                    <Box height="100%" data-yourir="priceChart1 range=6m showTooltips=true" >
+                                        <Box  height="100%" data-yourir="plots" />
                                     </Box>
                                 </Box>
+                            </Box>
                         </Box>
                         <Box pt={8}>
                             <AnimateOverflow>
@@ -226,36 +226,36 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                             <Box data-yourir="announcements pageSize=5" borderBottom="1px solid" borderColor="olive">
                                 <Box data-yourir="items">
                                     <Flex role="group"
-                                          borderTop="1px solid"
-                                          borderColor="borderColor"
-                                          direction="row"
-                                          color="oliveBlur"
-                                          align="center"
-                                          transition="color 0.3s linear"
-                                          _hover={{
-                                              color: 'charcoal'
-                                          }}
-                                          py={[4, ,'22px']}>
+                                        borderTop="1px solid"
+                                        borderColor="borderColor"
+                                        direction="row"
+                                        color="oliveBlur"
+                                        align="center"
+                                        transition="color 0.3s linear"
+                                        _hover={{
+                                            color: 'charcoal'
+                                        }}
+                                        py={[4, ,'22px']}>
                                         <Box position="relative" top="1px">
                                             <Heading data-yourir="$cur.heading"
-                                                     as="h3"
-                                                     display="inline"
-                                                     variant="listItem" mr={3} />
+                                                as="h3"
+                                                display="inline"
+                                                variant="listItem" mr={3} />
                                             <Heading data-yourir="$cur.date format='DD.MM.YY'"
-                                                     as="span"
-                                                     display="inline"
-                                                     variant="listLabel" mr={2} />
+                                                as="span"
+                                                display="inline"
+                                                variant="listLabel" mr={2} />
                                         </Box>
                                         <Box flex={1} />
                                         <Box ml={2} transition="transform 0.3s linear" _groupHover={{
                                             transform: 'translateX(4px)',
                                         }}>
                                             <ChakraLink  data-yourir="linkAnnouncement fileId" cursor="pointer"
-                                                         color="oliveBlur"
-                                                         transition="color 0.3s linear"
-                                                         _groupHover={{
-                                                             color: 'olive',
-                                                         }}>
+                                                color="oliveBlur"
+                                                transition="color 0.3s linear"
+                                                _groupHover={{
+                                                    color: 'olive',
+                                                }}>
                                                 <Icon icon={Icons.ChevronRight} />
                                             </ChakraLink>
                                         </Box>

@@ -194,7 +194,7 @@ const DesktopNav:any = ({menu, color}): ReactNode => {
                                                     </Box>;
                                                 })
                                             }
-                                      </Box>
+                                        </Box>
                                     }
                                 </PopoverContent>
                             </Popover> : <MenuItemLink
@@ -205,7 +205,7 @@ const DesktopNav:any = ({menu, color}): ReactNode => {
                                 link={item.link}
                                 externalLink={item.externalLink} />
                     }
-                </Box>
+                </Box>;
             })
         }
     </Flex>;

@@ -8,7 +8,7 @@ import LatestNewsItem from '~/components/blocks/LatestNews/LatestNewsItem';
 import {SectionLinkButton} from "~/components/elements/sectionLink";
 import {Column, ColumnWidth, Row} from '~/components/elements/grid/grid';
 import {horizontalScrollMargin} from "~/lib/theme/theme";
-import {AnimateOverflow} from "~/components/elements/animation/AnimateOverflow";
+import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
 
 interface ILatestNewsBlock extends IBlock {
     title:string;

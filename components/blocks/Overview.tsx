@@ -44,16 +44,16 @@ const OverviewBlock:any = ({ subtitle, description, paddingTop, paddingBottom, b
             <Column width={subtitleColumnWidth} marginRight={subtitleMarginOffset}>
                 {
                     !isEmptyDocument(subtitle) && <Box>
-                            <Heading as="h2"
-                                     fontSize={['28px', '32px', '36px']}
-                                     lineHeight={['35px', '38px', '42px']}
-                                     color="olive"
-                                     fontWeight={500}
-                                     mb={[4, , ,0]}>
-                                <AnimateOverflow>
-                                    <StructuredContent content={subtitle} />
-                                </AnimateOverflow>
-                            </Heading>
+                        <Heading as="h2"
+                            fontSize={['28px', '32px', '36px']}
+                            lineHeight={['35px', '38px', '42px']}
+                            color="olive"
+                            fontWeight={500}
+                            mb={[4, , ,0]}>
+                            <AnimateOverflow>
+                                <StructuredContent content={subtitle} />
+                            </AnimateOverflow>
+                        </Heading>
                     </Box>
                 }
             </Column>

@@ -5,8 +5,8 @@ import { DateTime } from 'luxon';
 import { SectionLink } from '~/components/elements/sectionLink';
 import { Image } from '~/components/elements/image';
 import { Link } from '~/components/elements/link';
-import {AnimateOverflow} from "~/components/elements/animation/AnimateOverflow";
-import {AnimateOpacity} from "~/components/elements/animation/AnimateOpacity";
+import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
+import { AnimateOpacity } from '~/components/elements/animation/AnimateOpacity';
 
 interface ILatestNewsItem extends IPost {
 }

@@ -7,7 +7,7 @@ import { isFinite as _isFinite } from 'lodash';
 import { Box, Flex, Heading, Text } from '@chakra-ui/react';
 import { Column, ColumnWidth, Row } from '~/components/elements/grid/grid';
 import { darkLegendColors, legendColors } from '~/components/elements/charts/colors';
-import {AnimateOverflow} from "~/components/elements/animation/AnimateOverflow";
+import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
 
 interface ITableRow {
     Year:string;

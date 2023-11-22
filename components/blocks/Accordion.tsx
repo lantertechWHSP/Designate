@@ -7,7 +7,7 @@ import { IStructuredText } from '~/interfaces/util/structuredText';
 import { isEmptyDocument } from 'datocms-structured-text-utils';
 import StructuredContent from "~/components/StructuredContent";
 import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
-import {AnimateOverflow} from "~/components/elements/animation/AnimateOverflow";
+import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
 
 interface IAccordionBlock extends IBlock {
     title?:string;

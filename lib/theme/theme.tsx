@@ -67,7 +67,7 @@ colors['successText'] = '#93d490';
 export const boxShadow:string = '0px 4px 10px 0px rgba(0, 0, 0, 0.10)';
 export const tableOverflowMargin:any = ['-16px', '-24px', 0];
 export const horizontalScrollMargin:any  = ['-16px', '-24px', '-32px', 0];
-export const baseAnimationBezier = [0.215, 0.61, 0.355, 1];
+export const baseAnimationBezier:any = [0.215, 0.61, 0.355, 1];
 export const zIndex:any = {
     carouselCommands: 10,
     featuredPosts: {

@@ -4,8 +4,7 @@ import ContentBlock from '~/components/blocks/Content';
 import { Box, Flex } from '@chakra-ui/react';
 import { Image } from '~/components/elements/image';
 import { IImage } from '~/interfaces/util/image';
-import {AnimateOverflow} from "~/components/elements/animation/AnimateOverflow";
-import {AnimateOpacity} from "~/components/elements/animation/AnimateOpacity";
+import { AnimateOpacity } from '~/components/elements/animation/AnimateOpacity';
 
 interface IHomePageImageGalleryBlock extends IBlock {
     imageMain?:IImage;

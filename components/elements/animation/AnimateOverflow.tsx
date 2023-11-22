@@ -8,6 +8,7 @@ const MotionBox:any = motion(Box);
 interface IAnimateOverflowText {
     children?:any;
     delay?:number;
+    once?:boolean;
 }
 
 export const AnimateOverflow:any = ({ children, delay = 0, once = true }:IAnimateOverflowText) : ReactNode => {
@@ -17,10 +18,10 @@ export const AnimateOverflow:any = ({ children, delay = 0, once = true }:IAnimat
             duration: 0.5,
             delay: delay
         }}
-               initial={{ translateY: '100%' }}
-               whileInView={{ translateY: '0' }}
-               viewport={{ once: once }}>
+        initial={{ translateY: '100%' }}
+        whileInView={{ translateY: '0' }}
+        viewport={{ once: once }}>
             {children}
         </MotionBox>
-    </Box>
-}
+    </Box>;
+};

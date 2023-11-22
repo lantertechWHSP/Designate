@@ -12,15 +12,14 @@ import {
     Modal,
     ModalContent,
     ModalOverlay,
-    SimpleGrid,
-    Text
+    SimpleGrid
 } from '@chakra-ui/react';
 import ProfileCard, { IProfileCard } from '~/components/blocks/ProfilesPanel/ProfileCard';
 import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
 import { isEmptyDocument } from 'datocms-structured-text-utils';
 import ContentBlock from "~/components/blocks/Content";
-import {AnimateOpacity} from "~/components/elements/animation/AnimateOpacity";
-import {AnimateOverflow} from "~/components/elements/animation/AnimateOverflow";
+import { AnimateOpacity } from '~/components/elements/animation/AnimateOpacity';
+import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
 
 interface IProfilesPanelBlock extends IBlock {
     items:IProfileCard[];

@@ -3,8 +3,8 @@ import { IPost } from "~/interfaces/models/post";
 import { Link } from '~/components/elements/link';
 import { Image } from '~/components/elements/image';
 import { SectionLink } from '~/components/elements/sectionLink';
-import {AnimateOpacity} from "~/components/elements/animation/AnimateOpacity";
-import {AnimateOverflow} from "~/components/elements/animation/AnimateOverflow";
+import { AnimateOpacity } from '~/components/elements/animation/AnimateOpacity';
+import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
 
 interface IPostCard extends IPost {
 }

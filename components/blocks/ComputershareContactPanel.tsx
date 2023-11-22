@@ -9,8 +9,8 @@ import { Image } from '~/components/elements/image';
 import { IImage } from '~/interfaces/util/image';
 import { UnderlineLink } from '~/components/elements/sectionLink';
 import { isEmptyDocument } from 'datocms-structured-text-utils';
-import {AnimateOverflow} from "~/components/elements/animation/AnimateOverflow";
-import {AnimateOpacity} from "~/components/elements/animation/AnimateOpacity";
+import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
+import { AnimateOpacity } from '~/components/elements/animation/AnimateOpacity';
 
 interface IComputershareContactPanelBlock extends IBlock {
     title?:string;

@@ -7,7 +7,7 @@ import { Box, Heading, SimpleGrid } from '@chakra-ui/react';
 import { IContact } from '~/interfaces/models/contact';
 import ContactCard from '~/components/blocks/ContactsPanel/ContactCard';
 import { orderBy as _orderBy } from 'lodash';
-import {AnimateOverflow} from "~/components/elements/animation/AnimateOverflow";
+import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
 
 interface IContactsPanelBlock extends IBlock {
     title?:string;

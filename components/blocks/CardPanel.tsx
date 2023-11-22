@@ -7,8 +7,8 @@ import { Row, Column, ColumnWidth } from "~/components/elements/grid/grid";
 import { IImage } from "~/interfaces/util/image";
 import { Link } from "~/components/elements/link";
 import { SectionLink } from '~/components/elements/sectionLink';
-import {AnimateOverflow} from "~/components/elements/animation/AnimateOverflow";
-import {AnimateOpacity} from "~/components/elements/animation/AnimateOpacity";
+import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
+import { AnimateOpacity } from '~/components/elements/animation/AnimateOpacity';
 
 enum ICardPanelAlign {
     Left = 'Left',
@@ -82,23 +82,23 @@ const CardPanelBlock:any = ({ annotation, title, description, image, link, align
                         <Box position="relative" height={['320px', ,'400px']} minHeight="100%">
                             {
                                 link ? <Link {...link}
-                                             display="block"
-                                             width="100%"
-                                             height="100%"
-                                             position="absolute"
-                                             title=""
-                                             background={currentImage ? `url('${currentImage}')` : 'lightGrey'}
-                                             backgroundPosition="center"
-                                             backgroundRepeat="no-repeat"
-                                             backgroundSize="cover">
+                                    display="block"
+                                    width="100%"
+                                    height="100%"
+                                    position="absolute"
+                                    title=""
+                                    background={currentImage ? `url('${currentImage}')` : 'lightGrey'}
+                                    backgroundPosition="center"
+                                    backgroundRepeat="no-repeat"
+                                    backgroundSize="cover">
                                 </Link> : <Box width="100%"
-                                               height="100%"
-                                               position="absolute"
-                                               title=""
-                                               background={currentImage ? `url('${currentImage}')` : 'lightGrey'}
-                                               backgroundPosition="center"
-                                               backgroundRepeat="no-repeat"
-                                               backgroundSize="cover">
+                                    height="100%"
+                                    position="absolute"
+                                    title=""
+                                    background={currentImage ? `url('${currentImage}')` : 'lightGrey'}
+                                    backgroundPosition="center"
+                                    backgroundRepeat="no-repeat"
+                                    backgroundSize="cover">
                                 </Box>
                             }
                         </Box>

@@ -4,7 +4,7 @@ import { IDocument } from '~/interfaces/models/document';
 import ContentBlock from '~/components/blocks/Content';
 import { Box, Alert, Heading } from '@chakra-ui/react';
 import DocumentCard from '~/components/elements/documents/DocumentCard';
-import {AnimateOverflow} from "~/components/elements/animation/AnimateOverflow";
+import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
 
 interface IDocumentPoliciesListBlock extends IBlock {
     items?:IDocumentPoliciesItemBlock[]

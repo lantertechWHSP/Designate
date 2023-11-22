@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { Box, Alert, Flex } from '@chakra-ui/react';
 import EventCard from '~/components/elements/events/EventCard';
 import { IEvent } from '~/interfaces/models/event';
-import {AnimateOverflow} from "~/components/elements/animation/AnimateOverflow";
+import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
 
 interface IEventList {
     events:IEvent[];

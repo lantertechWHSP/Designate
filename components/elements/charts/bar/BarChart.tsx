@@ -60,7 +60,7 @@ const BarChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor', 
         if(!_isNil(hasData)) {
             setIsDataLoaded(true);
         }
-    }, [hasData])
+    }, [hasData]);
 
     const yScale:any = useMemo<any>(() => {
         if(hasData) {

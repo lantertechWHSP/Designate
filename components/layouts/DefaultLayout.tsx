@@ -8,7 +8,7 @@ import { Heading, Container, Flex, Box } from '@chakra-ui/react';
 import { SubscriptionForm } from '~/components/elements/mailchimp/subscriptionForm';
 import VectorEffect from '~/components/elements/shapes/VectorEffect';
 import {zIndex} from "~/lib/theme/theme";
-import {AnimateOverflow} from "~/components/elements/animation/AnimateOverflow";
+import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
 
 const DefaultLayout:any = ({ layout, children }:any) : ReactNode => {
     return (

@@ -9,7 +9,7 @@ import {Column, ColumnWidth, Row} from '~/components/elements/grid/grid';
 import StructuredContent from "~/components/StructuredContent";
 import {isEmptyDocument} from 'datocms-structured-text-utils';
 import {zIndex} from "~/lib/theme/theme";
-import {AnimateOverflow} from "~/components/elements/animation/AnimateOverflow";
+import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
 
 interface IFeaturedPostsCarousel {
     posts:IPost[];

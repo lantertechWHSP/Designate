@@ -1,10 +1,10 @@
 import { ReactNode } from 'react';
-import { Flex, Box, Heading, Text, Image, AspectRatio } from '@chakra-ui/react';
+import { Flex, Box, Heading, Image, AspectRatio } from '@chakra-ui/react';
 import { SectionLink } from '~/components/elements/sectionLink';
 import { IPerson } from '~/interfaces/models/person';
 import { IStructuredText } from '~/interfaces/util/structuredText';
 import { AnimateOpacity } from '~/components/elements/animation/AnimateOpacity';
-import {AnimateOverflow} from "~/components/elements/animation/AnimateOverflow";
+import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
 
 export interface IProfileCard {
     person?:IPerson;

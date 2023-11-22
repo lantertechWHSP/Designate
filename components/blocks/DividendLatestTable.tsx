@@ -5,7 +5,7 @@ import { ITable } from '~/interfaces/util/table';
 import { Heading, Box, TableContainer, Table, Thead, Tr, Th, Tbody, Td, Alert } from '@chakra-ui/react';
 import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
 import {tableOverflowMargin} from "~/lib/theme/theme";
-import {AnimateOverflow} from "~/components/elements/animation/AnimateOverflow";
+import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
 
 interface ITableRow {
     Dividend:string;

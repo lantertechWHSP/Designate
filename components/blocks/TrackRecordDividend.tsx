@@ -4,7 +4,7 @@ import ContentBlock, {Theme} from '~/components/blocks/Content';
 import BarChart from '~/components/elements/charts/bar/BarChart';
 import { ITable } from '~/interfaces/util/table';
 import { Heading } from '@chakra-ui/react';
-import {AnimateOverflow} from "~/components/elements/animation/AnimateOverflow";
+import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
 
 interface ITableRow {
     Year:string;

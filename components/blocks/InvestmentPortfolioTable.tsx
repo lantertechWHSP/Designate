@@ -29,39 +29,54 @@ interface IPercentageBar {
     value:number;
 }
 
-const AnimateBar = ({ value, remainder }) => {
+interface IAnimateBar {
+    value?:number;
+    remainder?:number;
+}
+
+interface IAnimateCount {
+    from?:number;
+    to?:number;
+}
+
+const AnimateBar:any = ({ value, remainder }:IAnimateBar) => {
     return <>
         <MotionBox transition={{
             ease: baseAnimationBezier,
             duration: 2
         }}
-                   initial={{ width: '0' }}
-                   whileInView={{ width: `${value}%` }}
-                   viewport={{ once: true }} background="white" borderRadius="3px" height="24px" />
+        initial={{ width: '0' }}
+        whileInView={{ width: `${value}%` }}
+        viewport={{ once: true }}
+        background="white" borderRadius="3px" height="24px" />
 
         <MotionBox transition={{
             ease: baseAnimationBezier,
             duration: 2
         }}
-                   initial={{ width: '100%' }}
-                   whileInView={{ width: `${remainder}%` }} px={2}>
+        initial={{ width: '100%' }}
+        whileInView={{ width: `${remainder}%` }}
+        viewport={{ once: true }}
+        px={2}>
             <AnimateCount from={0} to={value} />%
         </MotionBox>
-    </>
-}
+    </>;
+};
 
-const AnimateBarRemainder = ({value}) => {
+const AnimateBarRemainder:any = ({value}:IAnimateBar) => {
     return <MotionBox transition={{
         ease: baseAnimationBezier,
         duration: 2
     }}  initial={{ width: '0' }}
-        whileInView={{ width: `${value}%` }} textAlign="right" background="white" borderRadius="3px" px={2} height="24px" color="olive">
+    whileInView={{ width: `${value}%` }}
+    viewport={{ once: true }}
+    textAlign="right" background="white" borderRadius="3px" px={2} height="24px" color="olive">
         <AnimateCount from={0} to={value} />%
-    </MotionBox>
-}
+    </MotionBox>;
+};
 
-function AnimateCount({ from, to }) {
-    const elementRef = useRef();
+const AnimateCount:any = ({ from, to }:IAnimateCount) => {
+    const elementRef:any = useRef();
 
     useEffect(() => {
         const node:any = elementRef.current;
@@ -77,7 +92,7 @@ function AnimateCount({ from, to }) {
     }, [from, to]);
 
     return <Box as="span" ref={elementRef} />;
-}
+};
 
 const PercentageBar:any = ({ value }:IPercentageBar) => {
     const remainder:number = value - 100;

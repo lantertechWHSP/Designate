@@ -8,8 +8,6 @@ import { AxisBottom } from "~/components/elements/charts/line/modules/AxisBottom
 import { breakpoints } from '~/lib/theme/theme';
 import { fontRoboto } from '~/pages/_fonts';
 import { ChartTooltip } from "~/components/elements/charts/line/modules/ChartTooltip";
-import {Skeleton} from "~/components/elements/skeleton/skeleton";
-import {ChartSkeleton} from "~/components/elements/charts/skeleton/ChartSkeleton";
 
 interface ILineChart {
     data: {
@@ -51,7 +49,7 @@ interface IMargin {
     left:number;
 }
 
-const LineChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor', borderColorDark = 'charcoal', skeletonStartColor = 'borderColor', skeletonEndColor = 'lightGrey2Blur', tooltipLegendBorderColor = 'transparent', tooltipPointFillColor = 'charcoal', fillColor = 'rgba(80, 81, 60, 0.05)' }:ILineChart) : ReactNode => {
+const LineChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor', borderColorDark = 'charcoal', tooltipLegendBorderColor = 'transparent', tooltipPointFillColor = 'charcoal', fillColor = 'rgba(80, 81, 60, 0.05)' }:ILineChart) : ReactNode => {
     const desktopHeight:number = 440;
     const mobileHeight:number = 360;
     const [mediaQuery] = useMediaQuery(`(min-width: ${breakpoints.sm})`);
@@ -88,7 +86,7 @@ const LineChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor',
         if(!_isNil(hasData)) {
             setIsDataLoaded(true);
         }
-    }, [hasData])
+    }, [hasData]);
 
     const yScale:any = useMemo<any>(() => {
         if(hasData) {
