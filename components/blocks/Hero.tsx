@@ -22,7 +22,7 @@ const HeroBlock:any = ({ title, video }:IHeroBlock) : ReactNode => {
     useEffect(() => {
         setTimeout(() => {
             setIsVideoPlaying(true);
-        }, 100);
+        }, 500);
     }, []);
 
     return (title || video && video?.url) && <Box overflow="hidden" ref={contentWidthObserve}>

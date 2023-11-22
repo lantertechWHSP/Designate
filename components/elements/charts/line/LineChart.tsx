@@ -8,6 +8,8 @@ import { AxisBottom } from "~/components/elements/charts/line/modules/AxisBottom
 import { breakpoints } from '~/lib/theme/theme';
 import { fontRoboto } from '~/pages/_fonts';
 import { ChartTooltip } from "~/components/elements/charts/line/modules/ChartTooltip";
+import {Skeleton} from "~/components/elements/skeleton/skeleton";
+import {ChartSkeleton} from "~/components/elements/charts/skeleton/ChartSkeleton";
 
 interface ILineChart {
     data: {
@@ -16,6 +18,8 @@ interface ILineChart {
     textColor?:string;
     borderColor?:string;
     borderColorDark?:string;
+    skeletonStartColor?:string;
+    skeletonEndColor?:string;
     fillColor?:string;
     tooltipLegendBorderColor?:string;
     tooltipPointFillColor?:string;
@@ -47,7 +51,7 @@ interface IMargin {
     left:number;
 }
 
-const LineChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor', borderColorDark = 'charcoal', tooltipLegendBorderColor = 'transparent', tooltipPointFillColor = 'charcoal', fillColor = 'rgba(80, 81, 60, 0.05)' }:ILineChart) : ReactNode => {
+const LineChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor', borderColorDark = 'charcoal', skeletonStartColor = 'borderColor', skeletonEndColor = 'lightGrey2Blur', tooltipLegendBorderColor = 'transparent', tooltipPointFillColor = 'charcoal', fillColor = 'rgba(80, 81, 60, 0.05)' }:ILineChart) : ReactNode => {
     const desktopHeight:number = 440;
     const mobileHeight:number = 360;
     const [mediaQuery] = useMediaQuery(`(min-width: ${breakpoints.sm})`);
@@ -56,7 +60,7 @@ const LineChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor',
     const margin:IMargin = { top: 30, right: 0, bottom: 30, left: 0 };
     const elementRef:any = useRef<ReactNode>();
     const [isDataLoaded, setIsDataLoaded] = useState<boolean>(false);
-    const [hasData, setHasData] = useState<boolean>(false);
+    const [hasData, setHasData] = useState<boolean>(null);
     const [isChartVisible, setIsChartVisible] = useState<boolean>(false);
 
     const boundsWidth:number = useMemo<number>(() => {
@@ -78,12 +82,13 @@ const LineChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor',
         else {
             setHasData(false);
         }
-
-        setTimeout(() => {
-            setIsDataLoaded(true);
-        }, 1);
-
     }, [data]);
+
+    useEffect(() => {
+        if(!_isNil(hasData)) {
+            setIsDataLoaded(true);
+        }
+    }, [hasData])
 
     const yScale:any = useMemo<any>(() => {
         if(hasData) {
