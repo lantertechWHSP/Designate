@@ -247,9 +247,7 @@ const TrackRecordChartBlock:any = ({ title, subtitle, table, theme, paddingTop, 
                 </Box>
             }
         </Flex>
-        <AnimateTranslateUp>
-            <LineChart data={data} textColor={chartTextColor} fillColor={fillColor} borderColor={borderColor} borderColorDark={borderColorDark} tooltipPointFillColor={tooltipPointFillColor} tooltipLegendBorderColor={tooltipLegendBorderColor} />
-        </AnimateTranslateUp>
+        <LineChart data={data} textColor={chartTextColor} fillColor={fillColor} borderColor={borderColor} borderColorDark={borderColorDark} tooltipPointFillColor={tooltipPointFillColor} tooltipLegendBorderColor={tooltipLegendBorderColor} />
     </ContentBlock>;
 };
 
