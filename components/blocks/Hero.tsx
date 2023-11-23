@@ -20,9 +20,9 @@ const HeroBlock:any = ({ title, video }:IHeroBlock) : ReactNode => {
     const [isVideoPlaying, setIsVideoPlaying] = useState<boolean>(false);
 
     useEffect(() => {
-        setTimeout(() => {
-            setIsVideoPlaying(true);
-        }, 500);
+        // setTimeout(() => {
+        //     setIsVideoPlaying(true);
+        // }, 500);
     }, []);
 
     return (title || video && video?.url) && <Box overflow="hidden" ref={contentWidthObserve}>
@@ -57,7 +57,9 @@ const HeroBlock:any = ({ title, video }:IHeroBlock) : ReactNode => {
             video && <Box h={['300px', '420px', ,'600px']}>
                 <Box visibility={(isVideoPlaying) ? 'visible' : 'hidden'} height={!isVideoPlaying ? 0 : 'initial'}>
                     <AspectRatio ratio={[contentWidth / 300, contentWidth / 420, , contentWidth / 600]}>
-                        <video autoPlay={true} loop={true} muted={true} playsInline={true} preload="auto">
+                        <video autoPlay={true} loop={true} muted={true} playsInline={true} preload="auto" onPlay={() => {
+                            setIsVideoPlaying(true);
+                        }}>
                             <source src={video?.url} />
                         </video>
                     </AspectRatio>
