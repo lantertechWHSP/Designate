@@ -13,7 +13,7 @@ import {
     Collapse,
     Text,
 } from '@chakra-ui/react';
-import {motion} from 'framer-motion';
+import { motion } from 'framer-motion';
 import useDocumentScroll from '~/hooks/useDocumentScroll';
 import {
     enableBodyScroll,
@@ -27,7 +27,7 @@ import Logo from "~/components/site/Logo";
 import { Link } from '~/components/elements/link';
 import { IHeader as IDatoHeader } from "~/interfaces/layout/header";
 import { Row, Column, ColumnWidth } from "~/components/elements/grid/grid";
-import { zIndex } from "~/lib/theme/theme";
+import {baseAnimationBezier, zIndex} from "~/lib/theme/theme";
 
 const MotionBox:any = motion(Box);
 
@@ -87,8 +87,8 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
                     background: background
                 }}
                 transition={{
-                    ease: 'linear',
-                    duration: 0.3
+                    ease: baseAnimationBezier,
+                    duration: 0.5
                 }}>
                 <Container>
                     <Row height={[height]} align="center">
@@ -148,7 +148,7 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
     </Box>;
 };
 
-const DestopPopoverTrigger:any  = ({item, color, isLast}): ReactNode => {
+const DestopPopoverTrigger:any  = ({item, color}): ReactNode => {
     const { isOpen } = usePopoverContext();
 
     return <PopoverTrigger>
@@ -156,7 +156,6 @@ const DestopPopoverTrigger:any  = ({item, color, isLast}): ReactNode => {
             color={color}
             title={item.title}
             ink={item.link}
-            mr={!isLast ? 10 : 0}
             externalLink={item.externalLink}>
             <Flex as="span" align="baseline">
                 <Text as="span" mr={2}>{item.title}</Text>
@@ -172,37 +171,41 @@ const DestopPopoverTrigger:any  = ({item, color, isLast}): ReactNode => {
 };
 
 const DesktopNav:any = ({menu, color}): ReactNode => {
-    return <Flex as="nav"  height="48px" align="center">
+    return <Flex as="nav"  height="48px" align="center" mx={-5}>
         {
             Array.isArray(menu) && menu.length > 0 && menu.map((item: IMenuLink, index: number) => {
-                return Array.isArray(item.children) && item.children.length > 0 ?
-                    <Popover trigger="hover" placement="bottom-start" key={index} closeOnBlur={true}>
-                        <DestopPopoverTrigger item={item} color={color} isLast={index === menu.length - 1} />
-                        <PopoverContent>
-                            {
-                                item.children && <Box background="white" py={2} px={3}>
+                return <Box px={5} key={index}>
+                    {
+                        Array.isArray(item.children) && item.children.length > 0 ?
+                            <Popover trigger="hover" placement="bottom-start" key={index} closeOnBlur={true}>
+                                <DestopPopoverTrigger item={item} color={color} isLast={index === menu.length - 1} />
+                                <PopoverContent>
                                     {
-                                        item.children.map((child: IMenuLink, childIndex: number) => {
-                                            return <Box py={2} key={childIndex}>
-                                                <MenuItemLink
-                                                    variant="siteHeader"
-                                                    color="charcoal"
-                                                    title={child.title}
-                                                    link={child.link}
-                                                    externalLink={child.externalLink} />
-                                            </Box>;
-                                        })
+                                        item.children && <Box background="white" py={2} px={3}>
+                                            {
+                                                item.children.map((child: IMenuLink, childIndex: number) => {
+                                                    return <Box py={2} key={childIndex}>
+                                                        <MenuItemLink
+                                                            variant="siteHeader"
+                                                            color="charcoal"
+                                                            title={child.title}
+                                                            link={child.link}
+                                                            externalLink={child.externalLink} />
+                                                    </Box>;
+                                                })
+                                            }
+                                        </Box>
                                     }
-                                </Box>
-                            }
-                        </PopoverContent>
-                    </Popover> : <MenuItemLink
-                        variant="siteHeader"
-                        color={color}
-                        px={5}
-                        key={index} title={item.title}
-                        link={item.link}
-                        externalLink={item.externalLink} />;
+                                </PopoverContent>
+                            </Popover> : <MenuItemLink
+                                variant="siteHeader"
+                                color={color}
+                                px={5}
+                                key={index} title={item.title}
+                                link={item.link}
+                                externalLink={item.externalLink} />
+                    }
+                </Box>;
             })
         }
     </Flex>;
@@ -243,8 +246,8 @@ const MobileNav:any = ({ background, menu, isOpen = false }): ReactNode => {
             background: background
         }}
         transition={{
-            ease: 'linear',
-            duration: 0.3
+            ease: baseAnimationBezier,
+            duration: 0.5
         }}>
         <Box ref={scrollRef} overflowY="auto" h={isOpen ? '100%' : '0'}>
             <Box color="charcoal">

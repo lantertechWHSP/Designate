@@ -12,13 +12,14 @@ import {
     Modal,
     ModalContent,
     ModalOverlay,
-    SimpleGrid,
-    Text
+    SimpleGrid
 } from '@chakra-ui/react';
 import ProfileCard, { IProfileCard } from '~/components/blocks/ProfilesPanel/ProfileCard';
 import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
 import { isEmptyDocument } from 'datocms-structured-text-utils';
 import ContentBlock from "~/components/blocks/Content";
+import { AnimateOpacity } from '~/components/elements/animation/AnimateOpacity';
+import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
 
 interface IProfilesPanelBlock extends IBlock {
     items:IProfileCard[];
@@ -59,39 +60,53 @@ export const ProfilesPanelBlock:any = ({ items, showQualifications, columnCount 
                         <Container>
                             <Row>
                                 <Column width={[ColumnWidth.None, ,ColumnWidth.OneThird]}>
-                                    <Image image={activeItem?.person?.image} ratio={[1 / 1]} display={['none', , 'block']} />
+                                    <AnimateOpacity>
+                                        <Image image={activeItem?.person?.image} ratio={[1 / 1]} display={['none', , 'block']} />
+                                    </AnimateOpacity>
                                 </Column>
                                 <Column  width={[ColumnWidth.Full, ,ColumnWidth.TwoThirds]}>
                                     {
                                         (activeItem?.person?.name || !isEmptyDocument(activeItem?.detailedCompanyPosition) || activeItem?.person?.companyPosition) && <Box minHeight="50px" width={['calc(100% - 70px)', ,'100%']}>
                                             {
                                                 activeItem?.person?.name && <Heading as="h2" fontWeight={500} fontSize={['21px']} lineHeight={['26px']}>
-                                                    {activeItem?.person?.name}
+                                                    <AnimateOverflow>
+                                                        {activeItem?.person?.name}
+                                                    </AnimateOverflow>
                                                 </Heading>
                                             }
                                             {
                                                 !isEmptyDocument(activeItem?.detailedCompanyPosition) ? <Heading as="h3" fontSize={['19px']}>
-                                                    <StructuredContent content={activeItem?.detailedCompanyPosition} />
+                                                    <AnimateOverflow>
+                                                        <StructuredContent content={activeItem?.detailedCompanyPosition} />
+                                                    </AnimateOverflow>
                                                 </Heading> : (activeItem?.person?.companyPosition && <Heading as="h3" fontSize={['19px']}>
-                                                    {activeItem?.person?.companyPosition}
+                                                    <AnimateOverflow>
+                                                        {activeItem?.person?.companyPosition}
+                                                    </AnimateOverflow>
                                                 </Heading>)
                                             }
                                             {
-                                                (showQualifications && activeItem?.person?.qualifications) && <Text color="charcoalBlur" fontSize="16px" m={0}>
-                                                    {activeItem?.person?.qualifications}
-                                                </Text>
+                                                (showQualifications && activeItem?.person?.qualifications) && <Box color="charcoalBlur" fontSize="16px" m={0}>
+                                                    <AnimateOverflow>
+                                                        {activeItem?.person?.qualifications}
+                                                    </AnimateOverflow>
+                                                </Box>
                                             }
                                         </Box>
                                     }
                                     <Divider borderColor="charcoalBlur" my={4} />
                                     {
                                         <Box display={['block', , 'none']}>
-                                            <Image image={activeItem?.person?.image} ratio={[1 / 1]} mb={8} />
+                                            <AnimateOpacity>
+                                                <Image image={activeItem?.person?.image} ratio={[1 / 1]} mb={8} />
+                                            </AnimateOpacity>
                                         </Box>
                                     }
                                     {
                                         !isEmptyDocument(activeItem?.description) && <Box color="charcoal">
-                                            <StructuredContent content={activeItem?.description} />
+                                            <AnimateOverflow>
+                                                <StructuredContent content={activeItem?.description} />
+                                            </AnimateOverflow>
                                         </Box>
                                     }
                                 </Column>

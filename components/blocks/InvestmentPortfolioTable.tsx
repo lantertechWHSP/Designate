@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode, useState, useRef, useEffect } from 'react';
 import { IBlock } from '~/interfaces/util/block';
 import ContentBlock from '~/components/blocks/Content';
 import { Box, Heading, TableContainer, Table, Thead, Tr, Th, Tbody, Td, Flex, Alert } from '@chakra-ui/react';
@@ -8,7 +8,10 @@ import { IStructuredText } from '~/interfaces/util/structuredText';
 import StructuredContent from '~/components/StructuredContent';
 import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
 import { isEmptyDocument } from 'datocms-structured-text-utils';
-import {tableOverflowMargin} from "~/lib/theme/theme";
+import {baseAnimationBezier, tableOverflowMargin} from '~/lib/theme/theme';
+import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
+import { motion, animate } from 'framer-motion';
+const MotionBox:any = motion(Box);
 
 interface ITableRow {
     Portfolio:string;
@@ -26,6 +29,71 @@ interface IPercentageBar {
     value:number;
 }
 
+interface IAnimateBar {
+    value?:number;
+    remainder?:number;
+}
+
+interface IAnimateCount {
+    from?:number;
+    to?:number;
+}
+
+const AnimateBar:any = ({ value, remainder }:IAnimateBar) => {
+    return <>
+        <MotionBox transition={{
+            ease: baseAnimationBezier,
+            duration: 2
+        }}
+        initial={{ width: '0' }}
+        whileInView={{ width: `${value}%` }}
+        viewport={{ once: true }}
+        background="white" borderRadius="3px" height="24px" />
+
+        <MotionBox transition={{
+            ease: baseAnimationBezier,
+            duration: 2
+        }}
+        initial={{ width: '100%' }}
+        whileInView={{ width: `${remainder}%` }}
+        viewport={{ once: true }}
+        px={2}>
+            <AnimateCount from={0} to={value} />%
+        </MotionBox>
+    </>;
+};
+
+const AnimateBarRemainder:any = ({value}:IAnimateBar) => {
+    return <MotionBox transition={{
+        ease: baseAnimationBezier,
+        duration: 2
+    }}  initial={{ width: '0' }}
+    whileInView={{ width: `${value}%` }}
+    viewport={{ once: true }}
+    textAlign="right" background="white" borderRadius="3px" px={2} height="24px" color="olive">
+        <AnimateCount from={0} to={value} />%
+    </MotionBox>;
+};
+
+const AnimateCount:any = ({ from, to }:IAnimateCount) => {
+    const elementRef:any = useRef();
+
+    useEffect(() => {
+        const node:any = elementRef.current;
+
+        const controls:any = animate(from, to, {
+            duration: 2,
+            onUpdate(value) {
+                node.textContent = value.toFixed(0);
+            },
+        });
+
+        return () => controls.stop();
+    }, [from, to]);
+
+    return <Box as="span" ref={elementRef} />;
+};
+
 const PercentageBar:any = ({ value }:IPercentageBar) => {
     const remainder:number = value - 100;
 
@@ -34,14 +102,9 @@ const PercentageBar:any = ({ value }:IPercentageBar) => {
             (value >= 0 && value <= 100) ? <Flex height="24px" direction="row" width={'100%'} borderRadius="3px" background="rgba(255, 255, 255, 0.1)">
                 {
                     value >= 0 && value <= 80 ? <>
-                        <Box width={`${value}%`} background="white" borderRadius="3px" height="24px" />
-                        <Box width={`${remainder}%`} px={2}>
-                            {value}%
-                        </Box>
+                        <AnimateBar value={value} remainder={remainder} />
                     </> : <>
-                        <Box width={`${value}%`} textAlign="right" background="white" borderRadius="3px" px={2} height="24px" color="olive">
-                            {value}%
-                        </Box>
+                        <AnimateBarRemainder value={value} />
                     </>
                 }
             </Flex> : '-'
@@ -59,14 +122,18 @@ const InvestmentPortfolioTableBlock:any = ({ title, description, table, paddingT
         <Box mb={8}>
             {
                 title && <Heading as="h2" variant="sectionHeading" color="white" mb={[4, ,6, 8]}>
-                    {title}
+                    <AnimateOverflow>
+                        {title}
+                    </AnimateOverflow>
                 </Heading>
             }
             {
                 !isEmptyDocument(description) && <Box color="white">
                     <Row>
                         <Column width={[ColumnWidth.Full, ,ColumnWidth.ThreeQuarters, ColumnWidth.Half]}>
-                            <StructuredContent content={description} />
+                            <AnimateOverflow>
+                                <StructuredContent content={description} />
+                            </AnimateOverflow>
                         </Column>
                     </Row>
                 </Box>
@@ -120,13 +187,19 @@ const InvestmentPortfolioTableBlock:any = ({ title, description, table, paddingT
                         Array.isArray(table.columns) && table.columns.length > 0 && <Thead>
                             <Tr>
                                 <Th width={['50%', ,'20%']}>
-                                    Portfolio
+                                    <AnimateOverflow>
+                                        Portfolio
+                                    </AnimateOverflow>
                                 </Th>
                                 <Th width={['35%', ,'20%']} >
-                                    Net Asset Value
+                                    <AnimateOverflow>
+                                        Net Asset Value
+                                    </AnimateOverflow>
                                 </Th>
                                 <Th width={['15%', ,'60%']} >
-                                    Allocation
+                                    <AnimateOverflow>
+                                        Allocation
+                                    </AnimateOverflow>
                                 </Th>
                             </Tr>
                         </Thead>
@@ -139,14 +212,18 @@ const InvestmentPortfolioTableBlock:any = ({ title, description, table, paddingT
 
                                     return <Tr key={index}>
                                         <Td>
-                                            {row.Portfolio || '-'}
+                                            <AnimateOverflow>
+                                                {row.Portfolio || '-'}
+                                            </AnimateOverflow>
                                         </Td>
                                         <Td>
-                                            {
-                                                row.NetAssetValue && <>
-                                                    ${row.NetAssetValue}b
-                                                </>
-                                            }
+                                            <AnimateOverflow>
+                                                {
+                                                    row.NetAssetValue && <>
+                                                        ${row.NetAssetValue}b
+                                                    </>
+                                                }
+                                            </AnimateOverflow>
                                         </Td>
                                         <Td verticalAlign="middle">
                                             {

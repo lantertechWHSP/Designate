@@ -1,7 +1,8 @@
 import { ReactNode } from 'react';
-import { Box, Alert, Flex, Text } from '@chakra-ui/react';
+import { Box, Alert, Flex } from '@chakra-ui/react';
 import EventCard from '~/components/elements/events/EventCard';
 import { IEvent } from '~/interfaces/models/event';
+import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
 
 interface IEventList {
     events:IEvent[];
@@ -14,12 +15,16 @@ const EventList:any = ({ events }:IEventList) : ReactNode => {
                 <Box borderBottom="3px solid" borderColor="borderColor">
                     <Flex direction={['row']} mx={-4} pb={2} width="100%" fontSize="16px"
                         lineHeight="22px">
-                        <Text mb={0} px={4} width={['100%', ,'50%']}>
-                            Event
-                        </Text>
-                        <Text mb={0} px={4} width="50%" display={['none', ,'block']}>
-                            Date
-                        </Text>
+                        <Box mb={0} px={4} width={['100%', ,'50%']}>
+                            <AnimateOverflow>
+                                Event
+                            </AnimateOverflow>
+                        </Box>
+                        <Box mb={0} px={4} width="50%" display={['none', ,'block']}>
+                            <AnimateOverflow>
+                                Date
+                            </AnimateOverflow>
+                        </Box>
                     </Flex>
                 </Box>
                 {

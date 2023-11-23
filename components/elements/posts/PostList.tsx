@@ -12,7 +12,7 @@ interface IPostsList {
 }
 
 export const DATO_QUERY_VALUES:any = {
-    ITEMS_PER_PAGE : 50,
+    ITEMS_PER_PAGE : 12,
     ORDER_BY : 'date_DESC',
 };
 

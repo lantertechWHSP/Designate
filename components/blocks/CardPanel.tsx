@@ -7,6 +7,8 @@ import { Row, Column, ColumnWidth } from "~/components/elements/grid/grid";
 import { IImage } from "~/interfaces/util/image";
 import { Link } from "~/components/elements/link";
 import { SectionLink } from '~/components/elements/sectionLink';
+import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
+import { AnimateOpacity } from '~/components/elements/animation/AnimateOpacity';
 
 enum ICardPanelAlign {
     Left = 'Left',
@@ -43,54 +45,64 @@ const CardPanelBlock:any = ({ annotation, title, description, image, link, align
                         pl={align === ICardPanelAlign.Right ? [6, ,0] : [6, ,8]}
                         pr={align === ICardPanelAlign.Left ? [6, ,0] : [6, ,8]}>
                         {
-                            annotation && <Text variant="caption" mb={[2, ,4, 8]}>
-                                {annotation}
-                            </Text>
+                            annotation && <AnimateOverflow>
+                                <Text variant="caption" mb={[2, ,4, 8]}>
+                                    {annotation}
+                                </Text>
+                            </AnimateOverflow>
                         }
                         {
                             title && <Heading as="h2" variant="sectionHeading" mb={4}>
-                                {
-                                    link ? <Link {...link}>
-                                        {title}
-                                    </Link> : <>{title}</>
-                                }
+                                <AnimateOverflow>
+                                    {
+                                        link ? <Link {...link}>
+                                            {title}
+                                        </Link> : <>{title}</>
+                                    }
+                                </AnimateOverflow>
                             </Heading>
                         }
                         {
-                            description && <Text variant="sectionDescription">{description}</Text>
+                            description && <AnimateOverflow>
+                                <Text variant="sectionDescription">{description}</Text>
+                            </AnimateOverflow>
                         }
                         <Box flex={1} />
                         {
-                            link && <SectionLink {...link} mt={4}>
-                                {link.document ? 'Download' : 'Read More'}
-                            </SectionLink>
+                            link && <AnimateOverflow>
+                                <SectionLink {...link} mt={4}>
+                                    {link.document ? 'Download' : 'Read More'}
+                                </SectionLink>
+                            </AnimateOverflow>
                         }
                     </Flex>
                 </Column>
                 <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
-                    <Box position="relative" height={['320px', ,'400px']} minHeight="100%">
-                        {
-                            link ? <Link {...link}
-                                display="block"
-                                width="100%"
-                                height="100%"
-                                position="absolute"
-                                title=""
-                                background={currentImage ? `url('${currentImage}')` : 'lightGrey'}
-                                backgroundPosition="center"
-                                backgroundRepeat="no-repeat"
-                                backgroundSize="cover">
-                            </Link> : <Box width="100%"
-                                height="100%"
-                                position="absolute"
-                                title=""
-                                background={currentImage ? `url('${currentImage}')` : 'lightGrey'}
-                                backgroundPosition="center"
-                                backgroundRepeat="no-repeat"
-                                backgroundSize="cover">
-                            </Box>
-                        }
-                    </Box>
+                    <AnimateOpacity>
+                        <Box position="relative" height={['320px', ,'400px']} minHeight="100%">
+                            {
+                                link ? <Link {...link}
+                                    display="block"
+                                    width="100%"
+                                    height="100%"
+                                    position="absolute"
+                                    title=""
+                                    background={currentImage ? `url('${currentImage}')` : 'lightGrey'}
+                                    backgroundPosition="center"
+                                    backgroundRepeat="no-repeat"
+                                    backgroundSize="cover">
+                                </Link> : <Box width="100%"
+                                    height="100%"
+                                    position="absolute"
+                                    title=""
+                                    background={currentImage ? `url('${currentImage}')` : 'lightGrey'}
+                                    backgroundPosition="center"
+                                    backgroundRepeat="no-repeat"
+                                    backgroundSize="cover">
+                                </Box>
+                            }
+                        </Box>
+                    </AnimateOpacity>
                 </Column>
             </Row>
         </Box>

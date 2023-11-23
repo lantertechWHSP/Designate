@@ -9,6 +9,7 @@ import {Column, ColumnWidth, Row} from '~/components/elements/grid/grid';
 import StructuredContent from "~/components/StructuredContent";
 import {isEmptyDocument} from 'datocms-structured-text-utils';
 import {zIndex} from "~/lib/theme/theme";
+import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
 
 interface IFeaturedPostsCarousel {
     posts:IPost[];
@@ -86,7 +87,9 @@ const FeaturedPostsCarousel:any = ({ posts }:IFeaturedPostsCarousel) : any => {
                                                 <Column width={[ColumnWidth.Full, , ,ColumnWidth.TwoThirds]}>
                                                     {
                                                         post.title && <Heading as="h1" color="white" fontSize={['30px', '40px', '50px']} lineHeight={['36px', '46px', '56px']} mb="6px">
-                                                            {post.title}
+                                                            <AnimateOverflow once={false}>
+                                                                {post.title}
+                                                            </AnimateOverflow>
                                                         </Heading>
                                                     }
                                                     {
@@ -96,9 +99,11 @@ const FeaturedPostsCarousel:any = ({ posts }:IFeaturedPostsCarousel) : any => {
                                                     }
                                                 </Column>
                                             </Row>
-                                            <SectionLinkButton href={`/news/${post.slug}`} mt={8} color="white" borderColor="whiteBlur2" borderColorHover="white">
-                                                Read More
-                                            </SectionLinkButton>
+                                            <AnimateOverflow once={false}>
+                                                <SectionLinkButton href={`/news/${post.slug}`} mt={8} color="white" borderColor="whiteBlur2" borderColorHover="white">
+                                                    Read More
+                                                </SectionLinkButton>
+                                            </AnimateOverflow>
                                         </Container>
                                     </Box>
                                 </Box>

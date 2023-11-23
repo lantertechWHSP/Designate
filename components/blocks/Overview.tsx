@@ -6,6 +6,7 @@ import { Column, ColumnWidth, Row } from '~/components/elements/grid/grid';
 import { IStructuredText } from '~/interfaces/util/structuredText';
 import { isEmptyDocument } from 'datocms-structured-text-utils';
 import { Box, Heading } from '@chakra-ui/react';
+import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
 
 enum IOverviewAlign {
     Left = 'Left',
@@ -49,14 +50,18 @@ const OverviewBlock:any = ({ subtitle, description, paddingTop, paddingBottom, b
                             color="olive"
                             fontWeight={500}
                             mb={[4, , ,0]}>
-                            <StructuredContent content={subtitle} />
+                            <AnimateOverflow>
+                                <StructuredContent content={subtitle} />
+                            </AnimateOverflow>
                         </Heading>
                     </Box>
                 }
             </Column>
             <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half]}>
                 {
-                    !isEmptyDocument(description) && <StructuredContent content={description} />
+                    !isEmptyDocument(description) && <AnimateOverflow>
+                        <StructuredContent content={description} />
+                    </AnimateOverflow>
                 }
             </Column>
         </Row>

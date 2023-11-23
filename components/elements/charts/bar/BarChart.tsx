@@ -4,7 +4,7 @@ import { scaleLinear, scaleBand } from 'd3';
 import { AxisLeft } from "~/components/elements/charts/bar/modules/AxisLeft";
 import { AxisBottom } from "~/components/elements/charts/bar/modules/AxisBottom";
 import { Bars } from "~/components/elements/charts/bar/modules/Bars";
-import { maxBy as _maxBy, throttle as _throttle } from 'lodash';
+import { maxBy as _maxBy, throttle as _throttle, isNil as _isNil } from 'lodash';
 import { breakpoints } from '~/lib/theme/theme';
 import { fontRoboto } from '~/pages/_fonts';
 
@@ -53,11 +53,14 @@ const BarChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor', 
 
     useEffect(() => {
         setHasData(data && Array.isArray(data.bars) && data.bars.length > 0);
-
-        setTimeout(() => {
-            setIsDataLoaded(true);
-        }, 1);
+        setIsDataLoaded(true);
     }, [data]);
+
+    useEffect(() => {
+        if(!_isNil(hasData)) {
+            setIsDataLoaded(true);
+        }
+    }, [hasData]);
 
     const yScale:any = useMemo<any>(() => {
         if(hasData) {

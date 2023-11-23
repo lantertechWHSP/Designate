@@ -7,6 +7,7 @@ import { isFinite as _isFinite } from 'lodash';
 import { Box, Flex, Heading, Text } from '@chakra-ui/react';
 import { Column, ColumnWidth, Row } from '~/components/elements/grid/grid';
 import { darkLegendColors, legendColors } from '~/components/elements/charts/colors';
+import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
 
 interface ITableRow {
     Year:string;
@@ -83,31 +84,39 @@ const DividendGrowthChart:any = ({ title, table, theme, paddingTop, paddingBotto
             <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half]}>
                 {
                     title && <Heading as="h2" variant="sectionHeading" mb={[3, , ,0]} color={textColor}>
-                        {title}
+                        <AnimateOverflow>
+                            {title}
+                        </AnimateOverflow>
                     </Heading>
                 }
             </Column>
             {
                 (Array.isArray(data?.rows) && data.rows.length > 0) && <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half]} align={['flex-start', , ,'flex-end']}>
                     <Flex direction={['column', 'row']} mx={-2} mb={-2}>
-                        <Flex align="center" px={2} mb={2}>
-                            <Box background={colors[0]} width="10px" height="10px" borderRadius="5px" mr={2} />
-                            <Text as="span" mb={0} lineHeight={1} fontSize="16px" color={textColor}>
-                                Interim Dividend
-                            </Text>
-                        </Flex>
-                        <Flex align="center" px={2} mb={2}>
-                            <Box background={colors[1]} width="10px" height="10px" borderRadius="5px" mr={2} />
-                            <Text as="span" mb={0} lineHeight={1} fontSize="16px" color={textColor}>
-                                Final Dividend
-                            </Text>
-                        </Flex>
-                        <Flex align="center" px={2} mb={2}>
-                            <Box background={colors[2]} width="10px" height="10px" borderRadius="5px" mr={2} />
-                            <Text as="span" mb={0} lineHeight={1} fontSize="16px" color={textColor}>
-                                Special Dividend
-                            </Text>
-                        </Flex>
+                        <AnimateOverflow>
+                            <Flex align="center" px={2} mb={2}>
+                                <Box background={colors[0]} width="10px" height="10px" borderRadius="5px" mr={2} />
+                                <Text as="span" mb={0} lineHeight={1} fontSize="16px" color={textColor}>
+                                    Interim Dividend
+                                </Text>
+                            </Flex>
+                        </AnimateOverflow>
+                        <AnimateOverflow>
+                            <Flex align="center" px={2} mb={2}>
+                                <Box background={colors[1]} width="10px" height="10px" borderRadius="5px" mr={2} />
+                                <Text as="span" mb={0} lineHeight={1} fontSize="16px" color={textColor}>
+                                    Final Dividend
+                                </Text>
+                            </Flex>
+                        </AnimateOverflow>
+                        <AnimateOverflow>
+                            <Flex align="center" px={2} mb={2}>
+                                <Box background={colors[2]} width="10px" height="10px" borderRadius="5px" mr={2} />
+                                <Text as="span" mb={0} lineHeight={1} fontSize="16px" color={textColor}>
+                                    Special Dividend
+                                </Text>
+                            </Flex>
+                        </AnimateOverflow>
                     </Flex>
                 </Column>
             }

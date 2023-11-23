@@ -16,6 +16,8 @@ interface ILineChart {
     textColor?:string;
     borderColor?:string;
     borderColorDark?:string;
+    skeletonStartColor?:string;
+    skeletonEndColor?:string;
     fillColor?:string;
     tooltipLegendBorderColor?:string;
     tooltipPointFillColor?:string;
@@ -56,7 +58,7 @@ const LineChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor',
     const margin:IMargin = { top: 30, right: 0, bottom: 30, left: 0 };
     const elementRef:any = useRef<ReactNode>();
     const [isDataLoaded, setIsDataLoaded] = useState<boolean>(false);
-    const [hasData, setHasData] = useState<boolean>(false);
+    const [hasData, setHasData] = useState<boolean>(null);
     const [isChartVisible, setIsChartVisible] = useState<boolean>(false);
 
     const boundsWidth:number = useMemo<number>(() => {
@@ -78,12 +80,13 @@ const LineChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor',
         else {
             setHasData(false);
         }
-
-        setTimeout(() => {
-            setIsDataLoaded(true);
-        }, 1);
-
     }, [data]);
+
+    useEffect(() => {
+        if(!_isNil(hasData)) {
+            setIsDataLoaded(true);
+        }
+    }, [hasData]);
 
     const yScale:any = useMemo<any>(() => {
         if(hasData) {

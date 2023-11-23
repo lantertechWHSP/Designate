@@ -1,4 +1,4 @@
-import { ReactNode, useState, useEffect } from 'react';
+import { ReactNode, useState } from 'react';
 import { IBlock } from '~/interfaces/util/block';
 import { Box, Container, Flex, Heading } from '@chakra-ui/react';
 import { AspectRatio } from '@chakra-ui/react';
@@ -7,6 +7,7 @@ import { IVideo } from '~/interfaces/util/video';
 import HeroVectorEffect from '~/components/elements/shapes/HeroVectorEffect';
 import { zIndex } from "~/lib/theme/theme";
 import { Skeleton } from '~/components/elements/skeleton/skeleton';
+import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
 
 interface IHeroBlock extends IBlock {
     title?:string;
@@ -17,12 +18,6 @@ const HeroBlock:any = ({ title, video }:IHeroBlock) : ReactNode => {
     const { observe: contentWidthObserve, width: contentWidth } = useDimensions();
     const height:string[] = ['420px', '482px'];
     const [isVideoPlaying, setIsVideoPlaying] = useState<boolean>(false);
-
-    useEffect(() => {
-        setTimeout(() => {
-            setIsVideoPlaying(true);
-        }, 100);
-    }, []);
 
     return (title || video && video?.url) && <Box overflow="hidden" ref={contentWidthObserve}>
         {
@@ -35,9 +30,15 @@ const HeroBlock:any = ({ title, video }:IHeroBlock) : ReactNode => {
                 <Container h={height}>
                     <Flex minH="100%" align="flex-end">
                         <Heading py={['40px', ,'50px', '60px']} variant="hero" position="relative" zIndex={zIndex.heroTitle} maxWidth={['100vw', , '500px', '500px']}>
-                            {
-                                title
-                            }
+                            <AnimateOverflow>
+                                Generating
+                            </AnimateOverflow>
+                            <AnimateOverflow delay={0.02}>
+                                Enduring
+                            </AnimateOverflow>
+                            <AnimateOverflow delay={0.03}>
+                                Success
+                            </AnimateOverflow>
                         </Heading>
                     </Flex>
                 </Container>
@@ -50,7 +51,9 @@ const HeroBlock:any = ({ title, video }:IHeroBlock) : ReactNode => {
             video && <Box h={['300px', '420px', ,'600px']}>
                 <Box visibility={(isVideoPlaying) ? 'visible' : 'hidden'} height={!isVideoPlaying ? 0 : 'initial'}>
                     <AspectRatio ratio={[contentWidth / 300, contentWidth / 420, , contentWidth / 600]}>
-                        <video autoPlay={true} loop={true} muted={true} playsInline={true} preload="auto">
+                        <video autoPlay={true} loop={true} muted={true} playsInline={true} preload="auto" onPlay={() => {
+                            setIsVideoPlaying(true);
+                        }}>
                             <source src={video?.url} />
                         </video>
                     </AspectRatio>

@@ -3,7 +3,8 @@ import { IBlock } from '~/interfaces/util/block';
 import ContentBlock from '~/components/blocks/Content';
 import { Heading, TableContainer, Table, Thead, Tr, Th, Tbody, Td, Alert, Box } from '@chakra-ui/react';
 import { ITable } from '~/interfaces/util/table';
-import {horizontalScrollMargin} from "~/lib/theme/theme";
+import { horizontalScrollMargin } from "~/lib/theme/theme";
+import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
 
 interface ITrackRecordTableBlock extends IBlock {
     title?:string;
@@ -14,7 +15,9 @@ const TrackRecordTableBlock:any = ({ title, table, background, paddingTop, paddi
     return <ContentBlock background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         {
             title && <Heading as="h2" variant="sectionSubheading" mb={4}>
-                {title}
+                <AnimateOverflow>
+                    {title}
+                </AnimateOverflow>
             </Heading>
         }
         {
@@ -26,7 +29,9 @@ const TrackRecordTableBlock:any = ({ title, table, background, paddingTop, paddi
                                 {
                                     table.columns.map((column:string, index:number) => {
                                         return <Th key={index}>
-                                            {column}
+                                            <AnimateOverflow>
+                                                {column}
+                                            </AnimateOverflow>
                                         </Th>;
                                     })
                                 }
@@ -41,7 +46,9 @@ const TrackRecordTableBlock:any = ({ title, table, background, paddingTop, paddi
                                         {
                                             table.columns.map((column:string, columnIndex:number) => {
                                                 return <Td key={columnIndex} fontWeight={500} minWidth="80px" pr={2}>
-                                                    {row[column]}
+                                                    <AnimateOverflow>
+                                                        {row[column]}
+                                                    </AnimateOverflow>
                                                 </Td>;
                                             })
                                         }

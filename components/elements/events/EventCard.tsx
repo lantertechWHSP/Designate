@@ -3,6 +3,7 @@ import { IEvent } from "~/interfaces/models/event";
 import { Flex, Heading, Text } from '@chakra-ui/react';
 import { DateTime } from 'luxon';
 import AddToCalendar from '~/components/elements/events/AddToCalendar';
+import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
 
 interface IEventCard extends IEvent {
 }
@@ -27,14 +28,18 @@ const EventCard:any = ({ title, allDay, startDate, endDate, details, location }:
                 title && <Heading as="h3"
                     width={['unset', ,'60.3%']}
                     variant="listItem">
-                    {title}
+                    <AnimateOverflow>
+                        {title}
+                    </AnimateOverflow>
                 </Heading>
             }
             {
                 startDate && <Text
                     variant="listLabel"
                     mb={0}>
-                    {DateTime.fromISO(startDate).toFormat('MMM d, yyyy')}
+                    <AnimateOverflow>
+                        {DateTime.fromISO(startDate).toFormat('MMM d, yyyy')}
+                    </AnimateOverflow>
                 </Text>
             }
         </Flex>
@@ -42,20 +47,22 @@ const EventCard:any = ({ title, allDay, startDate, endDate, details, location }:
             justify="flex-end"
             px={4}>
             {
-                <AddToCalendar
-                    isOpen={isOpen}
-                    onClose={() => {
-                        setIsOpen(false);
-                    }}
-                    event={{
-                        title: title,
-                        description: details,
-                        location: location,
-                        start: startDate,
-                        end: endDate !== startDate ? endDate : null,
-                        allDay: allDay || false
-                    }}>
-                </AddToCalendar>
+                <AnimateOverflow>
+                    <AddToCalendar
+                        isOpen={isOpen}
+                        onClose={() => {
+                            setIsOpen(false);
+                        }}
+                        event={{
+                            title: title,
+                            description: details,
+                            location: location,
+                            start: startDate,
+                            end: endDate !== startDate ? endDate : null,
+                            allDay: allDay || false
+                        }}>
+                    </AddToCalendar>
+                </AnimateOverflow>
             }
         </Flex>
     </Flex>;

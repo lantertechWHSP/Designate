@@ -9,6 +9,8 @@ import { Image } from '~/components/elements/image';
 import { IImage } from '~/interfaces/util/image';
 import { UnderlineLink } from '~/components/elements/sectionLink';
 import { isEmptyDocument } from 'datocms-structured-text-utils';
+import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
+import { AnimateOpacity } from '~/components/elements/animation/AnimateOpacity';
 
 interface IComputershareContactPanelBlock extends IBlock {
     title?:string;
@@ -33,28 +35,34 @@ const ComputershareContactPanelBlock:any = ({ title, description, image, onlineD
                         color="olive"
                         fontWeight={500}
                         pb={[4, , ,0]}>
-                        {title}
+                        <AnimateOverflow>
+                            {title}
+                        </AnimateOverflow>
                     </Heading>
                 }
                 {
                     !isEmptyDocument(description) && <Box
                         fontSize={['19px']}
                         lineHeight={['29px']}>
-                        <StructuredContent content={description} />
+                        <AnimateOverflow>
+                            <StructuredContent content={description} />
+                        </AnimateOverflow>
                     </Box>
                 }
             </Column>
             <Column width={[ColumnWidth.Full, ,ColumnWidth.ThreeTwelfths]} />
             <Column width={[ColumnWidth.Full, ,ColumnWidth.FourTwelvfths]}>
-                {
-                    image && <Box maxWidth={['300px']} mt={[8, ,0]}>
-                        {
-                            website ? <Link href={website} target="_blank">
-                                <Image image={image} />
-                            </Link> : <Image image={image} />
-                        }
-                    </Box>
-                }
+                <AnimateOpacity>
+                    {
+                        image && <Box maxWidth={['300px']} mt={[8, ,0]}>
+                            {
+                                website ? <Link href={website} target="_blank">
+                                    <Image image={image} />
+                                </Link> : <Image image={image} />
+                            }
+                        </Box>
+                    }
+                </AnimateOpacity>
             </Column>
         </Row>
         <Divider borderColor="oliveBlur2" my={[4, 8, 12]} />
@@ -63,21 +71,31 @@ const ComputershareContactPanelBlock:any = ({ title, description, image, onlineD
                 {
                     (!isEmptyDocument(onlineDescription) || website) && <Box mb={[8, ,0]}>
                         <Heading as="h3" variant="sectionSubheading" mb={4}>
-                            Online
+                            <AnimateOverflow>
+                                Online
+                            </AnimateOverflow>
                         </Heading>
                         {
                             !isEmptyDocument(onlineDescription) && <Box color="olive" mb={6}>
-                                <StructuredContent content={onlineDescription} />
+                                <AnimateOverflow>
+                                    <StructuredContent content={onlineDescription} />
+                                </AnimateOverflow>
                             </Box>
                         }
                         {
                             website && <>
-                                <Heading as="h4" fontSize={['18px']} lineHeight={['26px']} fontWeight={500} mb={2}>Website</Heading>
-                                <Text mb={0}>
-                                    <UnderlineLink href={website} target="_blank" fontWeight={500}>
-                                        {website.replace(/^.*:\/\//i, '')}
-                                    </UnderlineLink>
-                                </Text>
+                                <Heading as="h4" fontSize={['18px']} lineHeight={['26px']} fontWeight={500} mb={2}>
+                                    <AnimateOverflow>
+                                        Website
+                                    </AnimateOverflow>
+                                </Heading>
+                                <Box>
+                                    <AnimateOverflow>
+                                        <UnderlineLink href={website} target="_blank" fontWeight={500}>
+                                            {website.replace(/^.*:\/\//i, '')}
+                                        </UnderlineLink>
+                                    </AnimateOverflow>
+                                </Box>
                             </>
                         }
                     </Box>
@@ -87,41 +105,57 @@ const ComputershareContactPanelBlock:any = ({ title, description, image, onlineD
                 {
                     (contactLocal || contactInternational || email) && <Box mb={[8, ,0]}>
                         <Heading as="h3" variant="sectionSubheading" mb={4}>
-                            Contact
+                            <AnimateOverflow>
+                                Contact
+                            </AnimateOverflow>
                         </Heading>
                         {
                             (contactLocal || contactInternational) && <Box mb={8}>
-                                <Heading as="h4" fontSize={['18px']} lineHeight={['26px']} fontWeight={500} mb={2}>Phone</Heading>
+                                <Heading as="h4" fontSize={['18px']} lineHeight={['26px']} fontWeight={500} mb={2}>
+                                    <AnimateOverflow>
+                                        Phone
+                                    </AnimateOverflow>
+                                </Heading>
                                 {
-                                    contactLocal && <Text color="olive" mb={0}>
-                                        <UnderlineLink href={`tel:${contactLocal}`} mr={2} fontWeight={500}>
-                                            {contactLocal}
-                                        </UnderlineLink>
-                                        <Text as="span">
-                                            (Australia)
-                                        </Text>
-                                    </Text>
+                                    contactLocal && <Box color="olive" mb={0}>
+                                        <AnimateOverflow>
+                                            <UnderlineLink href={`tel:${contactLocal}`} mr={2} fontWeight={500}>
+                                                {contactLocal}
+                                            </UnderlineLink>
+                                            <Text as="span">
+                                                (Australia)
+                                            </Text>
+                                        </AnimateOverflow>
+                                    </Box>
                                 }
                                 {
-                                    contactInternational && <Text color="olive" mb={0}>
-                                        <UnderlineLink href={`tel:${contactInternational}`} mr={2} fontWeight={500}>
-                                            {contactInternational}
-                                        </UnderlineLink>
-                                        <Text as="span">
-                                            (International)
-                                        </Text>
-                                    </Text>
+                                    contactInternational && <Box color="olive" mb={0}>
+                                        <AnimateOverflow>
+                                            <UnderlineLink href={`tel:${contactInternational}`} mr={2} fontWeight={500}>
+                                                {contactInternational}
+                                            </UnderlineLink>
+                                            <Text as="span">
+                                                (International)
+                                            </Text>
+                                        </AnimateOverflow>
+                                    </Box>
                                 }
                             </Box>
                         }
                         {
                             email && <Box>
-                                <Heading as="h4" fontSize={['18px']} lineHeight={['26px']} fontWeight={500} mb={2}>Email</Heading>
-                                <Text color="olive" mb={0}>
-                                    <UnderlineLink href={`mailto:${email}`} mr={2} fontWeight={500}>
-                                        {email}
-                                    </UnderlineLink>
-                                </Text>
+                                <Heading as="h4" fontSize={['18px']} lineHeight={['26px']} fontWeight={500} mb={2}>
+                                    <AnimateOverflow>
+                                        Email
+                                    </AnimateOverflow>
+                                </Heading>
+                                <Box color="olive" mb={0}>
+                                    <AnimateOverflow>
+                                        <UnderlineLink href={`mailto:${email}`} mr={2} fontWeight={500}>
+                                            {email}
+                                        </UnderlineLink>
+                                    </AnimateOverflow>
+                                </Box>
                             </Box>
                         }
                     </Box>
@@ -131,14 +165,17 @@ const ComputershareContactPanelBlock:any = ({ title, description, image, onlineD
                 {
                     !isEmptyDocument(address) && <Box mb={0}>
                         <Heading as="h3" variant="sectionSubheading" mb={4}>
-                            Address
+                            <AnimateOverflow>
+                                Address
+                            </AnimateOverflow>
                         </Heading>
                         <Box color="olive" mb={4}>
-                            <StructuredContent content={address} />
+                            <AnimateOverflow>
+                                <StructuredContent content={address} />
+                            </AnimateOverflow>
                         </Box>
                     </Box>
                 }
-
             </Column>
         </Row>
     </ContentBlock>;
