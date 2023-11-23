@@ -1,4 +1,4 @@
-import { ReactNode, useState, useEffect } from 'react';
+import { ReactNode, useState } from 'react';
 import { IBlock } from '~/interfaces/util/block';
 import { Box, Container, Flex, Heading } from '@chakra-ui/react';
 import { AspectRatio } from '@chakra-ui/react';
@@ -18,12 +18,6 @@ const HeroBlock:any = ({ title, video }:IHeroBlock) : ReactNode => {
     const { observe: contentWidthObserve, width: contentWidth } = useDimensions();
     const height:string[] = ['420px', '482px'];
     const [isVideoPlaying, setIsVideoPlaying] = useState<boolean>(false);
-
-    useEffect(() => {
-        // setTimeout(() => {
-        //     setIsVideoPlaying(true);
-        // }, 500);
-    }, []);
 
     return (title || video && video?.url) && <Box overflow="hidden" ref={contentWidthObserve}>
         {
