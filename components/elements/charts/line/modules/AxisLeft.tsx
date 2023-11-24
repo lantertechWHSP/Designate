@@ -1,12 +1,14 @@
 import { useMemo, useState, useEffect, ReactNode } from 'react';
+import { isFunction as _isFunction } from 'lodash';
 
 interface IAxisLeft {
     scale:any;
     chartHeight?:number;
     width?:number;
+    format?:(value:number) => string;
 }
 
-export const AxisLeft:any = ({ scale, chartHeight, width }:IAxisLeft) : ReactNode => {
+export const AxisLeft:any = ({ scale, chartHeight, width, format }:IAxisLeft) : ReactNode => {
     const [tickCount, setTickCount] = useState<number>(10);
 
     const ticks:any = useMemo(() => {
@@ -39,7 +41,7 @@ export const AxisLeft:any = ({ scale, chartHeight, width }:IAxisLeft) : ReactNod
                         fill="currentColor"
                         display={index > 0 ? 'block' : 'none'}
                         transform="translate(0, 15)">
-                        {value}
+                        {_isFunction(format) ? format(value) : value}
                     </text>
                     <line
                         x1={0}

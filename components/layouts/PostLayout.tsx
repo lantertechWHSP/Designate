@@ -15,10 +15,10 @@ import { AnimateOpacity } from '~/components/elements/animation/AnimateOpacity';
 
 const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
     const [annotation] = useState((() => {
-        const date:string|null = layout?.page?.publishDate ? DateTime.fromISO(layout?.page?.publishDate).toFormat('MMM d, yyyy') : null;
+        const date:string = layout?.page?.publishDate ? DateTime.fromISO(layout?.page?.publishDate).toFormat('MMM d, yyyy') : '';
 
         if (post?.author?.name && date) {
-            return <>{post?.author?.name}, {date}</>;
+            return `${post?.author?.name}, ${date}`;
         }
         else if (post?.author?.name) {
             return post?.author?.name;
@@ -26,6 +26,7 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
         else if(date) {
             return date;
         }
+        return '';
     })());
 
     return (
@@ -50,7 +51,9 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
                                     {
                                         <Box color="charcoalBlur" mb={4}>
                                             <AnimateOverflow>
-                                                {annotation}
+                                                <Box>
+                                                    {annotation}
+                                                </Box>
                                             </AnimateOverflow>
                                         </Box>
                                     }
@@ -59,7 +62,7 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
                                             fontSize={['50px']}
                                             lineHeight={['54px']}
                                             fontWeight={500}
-                                            maxHeight={['104px']}>
+                                            mb={0}>
                                             <AnimateOverflow>
                                                 <Box overflow="hidden"
                                                     textOverflow="ellipsis">
@@ -72,10 +75,10 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
                             </Row>
                         </Container>
                     </Box>
-                </Flex><Box position="relative" marginTop="-160px">
+                </Flex><Box position="relative" marginTop="-180px">
                     <Container>
                         <Row justify="center">
-                            <Column width={[ColumnWidth.Full, , ,ColumnWidth.TenTwelfths, ColumnWidth.EightTwelfths]}>
+                            <Column width={[ColumnWidth.Full, , ,ColumnWidth.TenTwelfths]}>
                                 <AnimateOpacity>
                                     <Image image={post?.image} borderRadius="3px" overflow="hidden" />
                                 </AnimateOpacity>
@@ -116,12 +119,13 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
                                         {
                                             <Box color="charcoalBlur" mb={0}>
                                                 <AnimateOverflow>
-                                                    {annotation}
+                                                    <Box>
+                                                        {annotation}
+                                                    </Box>
                                                 </AnimateOverflow>
                                             </Box>
                                         }
                                     </Box>
-
                                 </Flex>
                             </Column>
                         </Row>

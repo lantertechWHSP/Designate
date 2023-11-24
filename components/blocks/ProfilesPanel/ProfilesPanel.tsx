@@ -55,7 +55,7 @@ export const ProfilesPanelBlock:any = ({ items, showQualifications, columnCount 
         {
             <Modal isOpen={modalOpen} size="full"  onClose={() => setModalOpen(false)}>
                 <ModalOverlay />
-                <ModalContent minWidth="100vw" minHeight="100vh" background="oliveGrey">
+                <ModalContent minHeight="100vh" background="oliveGrey">
                     <Box my={8}>
                         <Container>
                             <Row>

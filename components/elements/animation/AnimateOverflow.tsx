@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { Box } from '@chakra-ui/react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { baseAnimationBezier } from '~/lib/theme/theme';
 
 const MotionBox:any = motion(Box);

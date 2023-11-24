@@ -1,6 +1,6 @@
 import { ReactNode, useState } from 'react';
 import { IEvent } from "~/interfaces/models/event";
-import { Flex, Heading, Text } from '@chakra-ui/react';
+import { Flex, Heading, Text, Box } from '@chakra-ui/react';
 import { DateTime } from 'luxon';
 import AddToCalendar from '~/components/elements/events/AddToCalendar';
 import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
@@ -34,13 +34,14 @@ const EventCard:any = ({ title, allDay, startDate, endDate, details, location }:
                 </Heading>
             }
             {
-                startDate && <Text
-                    variant="listLabel"
-                    mb={0}>
-                    <AnimateOverflow>
+                startDate && <Box>
+                    <AnimateOverflow><Text
+                        variant="listLabel"
+                        mb={0}>
                         {DateTime.fromISO(startDate).toFormat('MMM d, yyyy')}
+                    </Text>
                     </AnimateOverflow>
-                </Text>
+                </Box>
             }
         </Flex>
         <Flex width={['16.6666666667%']}

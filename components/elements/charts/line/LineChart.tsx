@@ -21,6 +21,7 @@ interface ILineChart {
     fillColor?:string;
     tooltipLegendBorderColor?:string;
     tooltipPointFillColor?:string;
+    format?:(value:number) => string;
 }
 
 interface ILine {
@@ -49,7 +50,7 @@ interface IMargin {
     left:number;
 }
 
-const LineChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor', borderColorDark = 'charcoal', tooltipLegendBorderColor = 'transparent', tooltipPointFillColor = 'charcoal', fillColor = 'rgba(80, 81, 60, 0.05)' }:ILineChart) : ReactNode => {
+const LineChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor', borderColorDark = 'charcoal', tooltipLegendBorderColor = 'transparent', tooltipPointFillColor = 'charcoal', fillColor = 'rgba(80, 81, 60, 0.05)', format }:ILineChart) : ReactNode => {
     const desktopHeight:number = 440;
     const mobileHeight:number = 360;
     const [mediaQuery] = useMediaQuery(`(min-width: ${breakpoints.sm})`);
@@ -249,7 +250,7 @@ const LineChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor',
                                 height={boundsHeight}
                                 transform={`translate(${[margin.left, margin.top].join(",")})`}
                             >
-                                <AxisLeft scale={yScale} chartHeight={height} width={width} />
+                                <AxisLeft scale={yScale} chartHeight={height} width={width} format={format} />
                                 <g>
                                     <g>
                                         <AxisBottom scale={xScale} transform={`translate(0, ${boundsHeight})`} />
