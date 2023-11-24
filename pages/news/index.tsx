@@ -29,9 +29,9 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
     const featuredPosts:IPost[] = await doQuery(queries.featuredPosts, {
         first: 6,
         filter: {
-            isFeatured: {
-                'eq': true
-            }
+            // isFeatured: {
+            //     'eq': true
+            // }
         },
         orderBy: 'publishDate_DESC'
     }).then(({ posts }) => posts || []);

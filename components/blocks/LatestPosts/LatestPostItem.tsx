@@ -11,7 +11,7 @@ import { AnimateOpacity } from '~/components/elements/animation/AnimateOpacity';
 interface ILatestNewsItem extends IPost {
 }
 
-const LatestNewsItem:any = ({ title, image, publishDate, slug }:ILatestNewsItem) : ReactNode => {
+const LatestPostItem:any = ({ title, image, publishDate, slug }:ILatestNewsItem) : ReactNode => {
     const date:string = DateTime.fromISO(publishDate).toFormat('MMM d, yyyy');
 
     return <Flex direction="column" height="100%">
@@ -55,4 +55,4 @@ const LatestNewsItem:any = ({ title, image, publishDate, slug }:ILatestNewsItem)
     </Flex>;
 };
 
-export default LatestNewsItem;
+export default LatestPostItem;

@@ -12,7 +12,7 @@ import { attributesListPanelRecord } from '~/dato/blocks/attributesListPanel';
 
 import { documentHeroPanelRecord } from '~/dato/blocks/documentHeroPanel';
 import { companyValuesPanelRecord } from '~/dato/blocks/companyValuesPanel';
-import { latestNewsRecord } from '~/dato/blocks/latestNews';
+import { latestPostsPanelRecord } from '~/dato/blocks/latestPostsPanel';
 import { contactsPanelRecord } from '~/dato/blocks/contactsPanel';
 import { investorPanelRecord } from '~/dato/blocks/investorPanel';
 import { keyDatesPanelRecord } from '~/dato/blocks/keyDatesPanel';
@@ -100,8 +100,8 @@ export const blocks:string = `
         ... on CompanyValuesPanelRecord {
             ${companyValuesPanelRecord}
         }
-        ... on LatestNewsRecord {
-            ${latestNewsRecord}
+        ... on LatestPostsPanelRecord {
+            ${latestPostsPanelRecord}
         }
         ... on ContactsPanelRecord {
             ${contactsPanelRecord}

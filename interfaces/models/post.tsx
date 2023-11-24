@@ -11,7 +11,7 @@ export interface IPost {
     summary?:IStructuredText;
     image?:IImage;
     publishDate?:string;
-    isFeatured?:boolean;
+    // isFeatured?:boolean;
     slug?:string;
     seo?:ISEO;
     blocks?:IBlock[];

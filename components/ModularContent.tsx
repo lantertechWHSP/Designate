@@ -13,7 +13,7 @@ import AttributesListPanelBlock from '~/components/blocks/AttributesListPanel';
 
 import DocumentHeroPanelBlock from '~/components/blocks/DocumentHeroPanel';
 import CompanyValuesPanelBlock from '~/components/blocks/CompanyValuesPanel';
-import LatestNewsBlock from '~/components/blocks/LatestNews/LatestNews';
+import LatestPostsPanelBlock from '~/components/blocks/LatestPosts/LatestPostsPanel';
 import ContactsPanelBlock from '~/components/blocks/ContactsPanel/ContactsPanel';
 import InvestorPanelBlock from '~/components/blocks/InvestorPanel';
 import KeyDatesPanelBlock from '~/components/blocks/KeyDatesPanel';
@@ -79,7 +79,7 @@ const blocks:any = {
 
     DocumentHeroPanelBlock,
     CompanyValuesPanelBlock,
-    LatestNewsBlock,
+    LatestPostsPanelBlock,
     ContactsPanelBlock,
     InvestorPanelBlock,
     KeyDatesPanelBlock,

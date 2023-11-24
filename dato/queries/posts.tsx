@@ -18,7 +18,6 @@ export const posts:string = `
                 ${imageAttrs({ width: 800, height: 400 })}   
             }
             publishDate
-            isFeatured
         }
     }
 `;
@@ -48,7 +47,6 @@ export const latestPosts:string = `
                 ${imageAttrs({ width: 840, height: 420 })}   
             }
             publishDate
-            isFeatured
         }
     }
 `;
@@ -70,7 +68,6 @@ export const featuredPosts:string = `
                 ${imageAttrs({ width: 1440, height: 550 })}   
             }
             publishDate
-            isFeatured
         }
     }
 `;
