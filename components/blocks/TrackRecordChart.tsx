@@ -40,9 +40,8 @@ const TrackRecordChartBlock:any = ({ title, subtitle, table, theme, paddingTop, 
     const borderColorDark:string = theme === Theme.Dark ? 'white' : 'charcoal';
     const tooltipLegendBorderColor:string = theme === Theme.Dark ? 'charcoal' : 'transparent';
     const tooltipPointFillColor:string = theme === Theme.Dark ? 'olive' : 'charcoal';
-    const prefix:string = '$';
 
-    const parseValue:any = (value:String) : number => {
+    const parseValue:any = (value:string) : number => {
         return parseFloat(value.replace(/,/g, ''));
     };
 
@@ -257,15 +256,15 @@ const TrackRecordChartBlock:any = ({ title, subtitle, table, theme, paddingTop, 
             }
         </Flex>
         <LineChart data={data}
-                   textColor={chartTextColor}
-                   fillColor={fillColor}
-                   borderColor={borderColor}
-                   borderColorDark={borderColorDark}
-                   tooltipPointFillColor={tooltipPointFillColor}
-                   tooltipLegendBorderColor={tooltipLegendBorderColor}
-                   format={(value:number) => {
-                       return currency(value, { fromCents: false, precision: 0 }).format();
-                   }} />
+            textColor={chartTextColor}
+            fillColor={fillColor}
+            borderColor={borderColor}
+            borderColorDark={borderColorDark}
+            tooltipPointFillColor={tooltipPointFillColor}
+            tooltipLegendBorderColor={tooltipLegendBorderColor}
+            format={(value:number) => {
+                return currency(value, { fromCents: false, precision: 0 }).format();
+            }} />
     </ContentBlock>;
 };
 

@@ -59,16 +59,16 @@ LatestPostsPanelBlock.getData = async () => {
     const posts:any = await doQuery(queries.latestPosts, {
         first: 6,
         orderBy: 'publishDate_DESC'
-    });
+    }).then(({ posts }) => posts || []);
 
     featuredPosts.map((pinnedPost:IPost) => {
-        _remove(posts.posts, (post) => {
+        _remove(posts, (post:IPost) => {
             return post.id === pinnedPost.id;
-        })
+        });
     });
 
     return {
-        posts: [...featuredPosts, ...posts.posts].slice(0, 6)
+        posts: [...featuredPosts, ...posts].slice(0, 6)
     };
 };
 
