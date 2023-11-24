@@ -18,16 +18,13 @@ import ProfileCard, { IProfileCard } from '~/components/blocks/ProfilesPanel/Pro
 import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
 import { isEmptyDocument } from 'datocms-structured-text-utils';
 import ContentBlock from "~/components/blocks/Content";
-import { AnimateOpacity } from '~/components/elements/animation/AnimateOpacity';
-import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
 
 interface IProfilesPanelBlock extends IBlock {
     items:IProfileCard[];
     columnCount?:number;
-    showQualifications?:boolean;
 }
 
-export const ProfilesPanelBlock:any = ({ items, showQualifications, columnCount = 3, background, paddingTop, paddingBottom }:IProfilesPanelBlock) : ReactNode => {
+export const ProfilesPanelBlock:any = ({ items, columnCount = 3, background, paddingTop, paddingBottom }:IProfilesPanelBlock) : ReactNode => {
     const [modalOpen, setModalOpen] = useState<boolean>(false);
     const [activeItem, setActiveItem] = useState<IProfileCard>(null);
 
@@ -43,7 +40,6 @@ export const ProfilesPanelBlock:any = ({ items, showQualifications, columnCount 
                     return <Box key={index} mb={[0, 12, 16]}>
                         <ProfileCard
                             {...item}
-                            showQualifications={showQualifications}
                             onClick={() => {
                                 onProfileClick(index);
                             }}
@@ -60,36 +56,26 @@ export const ProfilesPanelBlock:any = ({ items, showQualifications, columnCount 
                         <Container>
                             <Row>
                                 <Column width={[ColumnWidth.None, ,ColumnWidth.OneThird]}>
-                                    <AnimateOpacity>
-                                        <Image image={activeItem?.person?.image} ratio={[1 / 1]} display={['none', , 'block']} />
-                                    </AnimateOpacity>
+                                    <Image image={activeItem?.person?.image} ratio={[1 / 1]} display={['none', , 'block']} />
                                 </Column>
                                 <Column  width={[ColumnWidth.Full, ,ColumnWidth.TwoThirds]}>
                                     {
                                         (activeItem?.person?.name || !isEmptyDocument(activeItem?.detailedCompanyPosition) || activeItem?.person?.companyPosition) && <Box minHeight="50px" width={['calc(100% - 70px)', ,'100%']}>
                                             {
                                                 activeItem?.person?.name && <Heading as="h2" fontWeight={500} fontSize={['21px']} lineHeight={['26px']}>
-                                                    <AnimateOverflow>
-                                                        {activeItem?.person?.name}
-                                                    </AnimateOverflow>
+                                                    {activeItem?.person?.name}
                                                 </Heading>
                                             }
                                             {
                                                 !isEmptyDocument(activeItem?.detailedCompanyPosition) ? <Heading as="h3" fontSize={['19px']}>
-                                                    <AnimateOverflow>
-                                                        <StructuredContent content={activeItem?.detailedCompanyPosition} />
-                                                    </AnimateOverflow>
+                                                    <StructuredContent content={activeItem?.detailedCompanyPosition} />
                                                 </Heading> : (activeItem?.person?.companyPosition && <Heading as="h3" fontSize={['19px']}>
-                                                    <AnimateOverflow>
-                                                        {activeItem?.person?.companyPosition}
-                                                    </AnimateOverflow>
+                                                    {activeItem?.person?.companyPosition}
                                                 </Heading>)
                                             }
                                             {
-                                                (showQualifications && activeItem?.person?.qualifications) && <Box color="charcoalBlur" fontSize="16px" m={0}>
-                                                    <AnimateOverflow>
-                                                        {activeItem?.person?.qualifications}
-                                                    </AnimateOverflow>
+                                                (activeItem?.person?.qualifications) && <Box color="charcoalBlur" fontSize="16px" m={0}>
+                                                    {activeItem?.person?.qualifications}
                                                 </Box>
                                             }
                                         </Box>
@@ -97,16 +83,12 @@ export const ProfilesPanelBlock:any = ({ items, showQualifications, columnCount 
                                     <Divider borderColor="charcoalBlur" my={4} />
                                     {
                                         <Box display={['block', , 'none']}>
-                                            <AnimateOpacity>
-                                                <Image image={activeItem?.person?.image} ratio={[1 / 1]} mb={8} />
-                                            </AnimateOpacity>
+                                            <Image image={activeItem?.person?.image} ratio={[1 / 1]} mb={8} />
                                         </Box>
                                     }
                                     {
                                         !isEmptyDocument(activeItem?.description) && <Box color="charcoal">
-                                            <AnimateOverflow>
-                                                <StructuredContent content={activeItem?.description} />
-                                            </AnimateOverflow>
+                                            <StructuredContent content={activeItem?.description} />
                                         </Box>
                                     }
                                 </Column>

@@ -8,13 +8,12 @@ import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow
 
 export interface IProfileCard {
     person?:IPerson;
-    showQualifications?:boolean;
     detailedCompanyPosition?:IStructuredText;
     description?:IStructuredText;
     onClick:() => any;
 }
 
-const ProfileCard:any = ({ person, showQualifications = false, onClick }:IProfileCard) : ReactNode => {
+const ProfileCard:any = ({ person, onClick }:IProfileCard) : ReactNode => {
     return <Flex direction="column" minHeight="100%">
         <Box mb={4} onClick={onClick} cursor="pointer">
             <AnimateOpacity>
@@ -38,13 +37,6 @@ const ProfileCard:any = ({ person, showQualifications = false, onClick }:IProfil
                     {person?.companyPosition}
                 </AnimateOverflow>
             </Heading>
-        }
-        {
-            showQualifications && person?.qualifications && <Box fontSize={['16px']} color="oliveBlur">
-                <AnimateOverflow>
-                    {person.qualifications}
-                </AnimateOverflow>
-            </Box>
         }
         <Box flex="1" />
         {
