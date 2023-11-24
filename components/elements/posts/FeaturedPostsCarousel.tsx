@@ -1,14 +1,14 @@
-import {IPost} from '~/interfaces/models/post';
-import {useKeenSlider} from 'keen-slider/react';
+import { IPost} from '~/interfaces/models/post';
+import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
-import {Box, Button, Container, Flex, Heading, Text} from '@chakra-ui/react';
-import {SectionLinkButton} from '~/components/elements/sectionLink';
-import {useState} from 'react';
-import {Icon, Icons} from '~/components/elements/icon';
-import {Column, ColumnWidth, Row} from '~/components/elements/grid/grid';
+import { Box, Button, Container, Flex, Heading, Text } from '@chakra-ui/react';
+import { SectionLinkButton } from '~/components/elements/sectionLink';
+import { useState } from 'react';
+import { Icon, Icons } from '~/components/elements/icon';
+import { Column, ColumnWidth, Row } from '~/components/elements/grid/grid';
 import StructuredContent from "~/components/StructuredContent";
-import {isEmptyDocument} from 'datocms-structured-text-utils';
-import {zIndex} from "~/lib/theme/theme";
+import { isEmptyDocument } from 'datocms-structured-text-utils';
+import { zIndex } from "~/lib/theme/theme";
 import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
 
 interface IFeaturedPostsCarousel {

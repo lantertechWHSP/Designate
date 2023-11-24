@@ -30,6 +30,31 @@ export const postsMeta:string = `
     }
 `;
 
+export const featuredLatestPosts:string = `
+    query featuredPosts {
+        featuredPostsList {
+            posts {
+                ... on PostRecord {
+                    __typename
+                    id
+                    slug
+                    title
+                    summary {
+                        ${structuredTextAttrs}
+                    }
+                    author {
+                        name
+                    }
+                    image {
+                        ${imageAttrs({ width: 840, height: 420 })}   
+                    }
+                    publishDate
+                }
+            }
+        }
+    }
+`;
+
 export const latestPosts:string = `
     query posts ($first: IntType, $skip: IntType, $filter: PostModelFilter, $orderBy: [PostModelOrderBy]) {
         posts: allPosts(first: $first, skip: $skip, filter: $filter, orderBy: $orderBy) {
@@ -52,22 +77,26 @@ export const latestPosts:string = `
 `;
 
 export const featuredPosts:string = `
-    query posts ($first: IntType, $skip: IntType, $filter: PostModelFilter, $orderBy: [PostModelOrderBy]) {
-        posts: allPosts(first: $first, skip: $skip, filter: $filter, orderBy: $orderBy) {
-            __typename
-            id
-            slug
-            title
-            summary {
-                ${structuredTextAttrs}
+    query featuredPosts {
+        featuredPostsList {
+            posts {
+                ... on PostRecord {
+                    __typename
+                    id
+                    slug
+                    title
+                    summary {
+                        ${structuredTextAttrs}
+                    }
+                    author {
+                        name
+                    }
+                    image {
+                        ${imageAttrs({ width: 1440, height: 550 })}   
+                    }
+                    publishDate
+                }
             }
-            author {
-                name
-            }
-            image {
-                ${imageAttrs({ width: 1440, height: 550 })}   
-            }
-            publishDate
         }
     }
 `;

@@ -27,14 +27,8 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
     );
 
     const featuredPosts:IPost[] = await doQuery(queries.featuredPosts, {
-        first: 6,
-        filter: {
-            // isFeatured: {
-            //     'eq': true
-            // }
-        },
         orderBy: 'publishDate_DESC'
-    }).then(({ posts }) => posts || []);
+    }).then(({ featuredPostsList }) => featuredPostsList.posts || []);
 
     const posts:IPost[] = await doQuery(queries.posts, {
         first: DATO_QUERY_VALUES.ITEMS_PER_PAGE,
