@@ -13,6 +13,9 @@ export const portfolioPanelRecord:string = `
             id
             name
             companyPosition
+            image {
+                ${imageAttrs({ width: 700, height: 700 })}
+            }
         }
         companies {
             image {

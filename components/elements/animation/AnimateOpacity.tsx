@@ -1,24 +1,39 @@
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 import { Box } from '@chakra-ui/react';
-import { motion } from 'framer-motion';
 import { baseAnimationBezier } from '~/lib/theme/theme';
+import { useAnimate, useMotionValueEvent, useScroll } from 'framer-motion';
 
-const MotionBox:any = motion(Box);
-
-interface IAnimateOpacity {
+interface IAnimateOverflowText {
     children?:any;
     delay?:number;
 }
 
-export const AnimateOpacity:any = ({children, delay = 0 }:IAnimateOpacity) : ReactNode => {
-    return <MotionBox transition={{
-        ease: baseAnimationBezier,
-        duration: 0.7,
-        delay: delay
-    }}
-    initial={{ opacity: 0 }}
-    whileInView={{ opacity: 1.01 }}
-    viewport={{ once: true }}>
+export const AnimateOpacity:any = ({ children, delay =  0}:IAnimateOverflowText) : ReactNode => {
+    const [scope, animate] = useAnimate();
+    const { scrollYProgress } = useScroll({
+        target: scope,
+        offset: [`start end`, 'end']
+    });
+
+    const [isAnimated, setIsAnimated] = useState(false);
+
+    useMotionValueEvent(scrollYProgress, 'change', (latest) => {
+        if(!isAnimated && latest >= 0) {
+            animate(scope.current, {
+                opacity: 1.01
+            }, {
+                ease: baseAnimationBezier,
+                duration: 0.7,
+                delay: delay
+            });
+
+            setIsAnimated(true);
+        }
+    });
+
+    return <Box ref={scope} sx={{
+        opacity: 0
+    }}>
         {children}
-    </MotionBox>;
+    </Box>;
 };

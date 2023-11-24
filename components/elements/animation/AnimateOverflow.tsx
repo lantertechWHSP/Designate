@@ -1,27 +1,41 @@
-import { ReactNode} from 'react';
+import { ReactNode, useState } from 'react';
 import { Box } from '@chakra-ui/react';
-import { motion } from 'framer-motion';
 import { baseAnimationBezier } from '~/lib/theme/theme';
-
-const MotionBox:any = motion(Box);
+import { useAnimate, useMotionValueEvent, useScroll } from 'framer-motion';
 
 interface IAnimateOverflowText {
     children?:any;
     delay?:number;
-    once?:boolean;
 }
 
-export const AnimateOverflow:any = ({ children, delay = 0, once = true }:IAnimateOverflowText) : ReactNode => {
+export const AnimateOverflow:any = ({ children, delay = 0 }:IAnimateOverflowText) : ReactNode => {
+    const [scope, animate] = useAnimate();
+    const { scrollYProgress } = useScroll({
+        target: scope,
+        offset: [`start end`, 'end']
+    });
+
+    const [isAnimated, setIsAnimated] = useState(false);
+
+    useMotionValueEvent(scrollYProgress, 'change', (latest) => {
+        if(!isAnimated && latest >= 0) {
+            animate(scope.current, {
+                transform: 'translateY(0)'
+            }, {
+                ease: baseAnimationBezier,
+                duration: 0.5,
+                delay: delay
+            });
+
+            setIsAnimated(true);
+        }
+    });
+
     return <Box overflow="hidden">
-        <MotionBox transition={{
-            ease: baseAnimationBezier,
-            duration: 0.5,
-            delay: delay
-        }}
-        initial={{ translateY: '100%' }}
-        whileInView={{ translateY: '0' }}
-        viewport={{ once: once }}>
+        <Box ref={scope} sx={{
+            transform: 'translateY(100%)'
+        }}>
             {children}
-        </MotionBox>
+        </Box>
     </Box>;
 };
