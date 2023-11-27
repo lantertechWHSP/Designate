@@ -22,6 +22,7 @@ export const post:string = `
             image {
                 ${imageAttrs({ width: 1108, height: 550})}
             }
+            imageCaption
             publishDate
             seo: _seoMetaTags {
                 ${seoAttrs}

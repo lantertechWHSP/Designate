@@ -10,8 +10,8 @@ export interface IPost {
     author?:IAuthor;
     summary?:IStructuredText;
     image?:IImage;
+    imageCaption?:string;
     publishDate?:string;
-    // isFeatured?:boolean;
     slug?:string;
     seo?:ISEO;
     blocks?:IBlock[];

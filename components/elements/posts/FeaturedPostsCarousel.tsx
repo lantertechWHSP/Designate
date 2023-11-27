@@ -10,6 +10,7 @@ import StructuredContent from "~/components/StructuredContent";
 import { isEmptyDocument } from 'datocms-structured-text-utils';
 import { zIndex } from "~/lib/theme/theme";
 import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
+import {Link} from "~/components/elements/link";
 
 interface IFeaturedPostsCarousel {
     posts:IPost[];
@@ -88,7 +89,9 @@ const FeaturedPostsCarousel:any = ({ posts }:IFeaturedPostsCarousel) : any => {
                                                     {
                                                         post.title && <Heading as="h1" color="white" fontSize={['30px', '40px', '50px']} lineHeight={['36px', '46px', '56px']} mb="6px">
                                                             <AnimateOverflow once={false}>
-                                                                {post.title}
+                                                                <Link href={`/news/${post.slug}`}>
+                                                                    {post.title}
+                                                                </Link>
                                                             </AnimateOverflow>
                                                         </Heading>
                                                     }

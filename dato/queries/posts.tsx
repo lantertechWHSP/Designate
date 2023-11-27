@@ -17,6 +17,7 @@ export const posts:string = `
             image {
                 ${imageAttrs({ width: 800, height: 400 })}   
             }
+            imageCaption
             publishDate
         }
     }

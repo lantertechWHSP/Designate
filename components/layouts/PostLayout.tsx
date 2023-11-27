@@ -83,9 +83,9 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
                                     <Image image={post?.image} borderRadius="3px" overflow="hidden" />
                                 </AnimateOpacity>
                                 {
-                                    (post?.image?.title) && <AnimateOverflow>
+                                    (post?.imageCaption) && <AnimateOverflow>
                                         <Text variant="caption"  mt={2} mb={0}>
-                                            {post?.image?.title}
+                                            {post?.imageCaption}
                                         </Text>
                                     </AnimateOverflow>
                                 }
