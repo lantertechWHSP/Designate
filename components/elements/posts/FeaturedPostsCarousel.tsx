@@ -11,6 +11,8 @@ import { isEmptyDocument } from 'datocms-structured-text-utils';
 import { zIndex } from "~/lib/theme/theme";
 import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
 import {Link} from "~/components/elements/link";
+import {IImage} from "~/interfaces/util/image";
+import {IBlock} from "~/interfaces/util/block";
 
 interface IFeaturedPostsCarousel {
     posts:IPost[];
@@ -56,6 +58,30 @@ const FeaturedPostsCarousel:any = ({ posts }:IFeaturedPostsCarousel) : any => {
         }
     };
 
+    const getImage = (post:IPost) => {
+        let currentImage:IImage = {}
+        if(post.image) {
+            currentImage = post.image;
+        }
+
+        post.blocks.map((block:IBlock) => {
+            if(block.__typename === 'ImageRecord') {
+                currentImage = block['image'];
+                return;
+            }
+            else if(block.__typename === 'TextRecord') {
+                block.content.blocks.map((innerBlock:IBlock) => {
+                    if(innerBlock.__typename === 'ImageRecord') {
+                        currentImage = innerBlock['image'];
+                        return;
+                    }
+                });
+            }
+        });
+
+        return currentImage;
+    }
+
     return <Box className="keen-slider" ref={sliderRef}>
         {
             (Array.isArray(posts) && posts.length > 0) && <>
@@ -69,7 +95,7 @@ const FeaturedPostsCarousel:any = ({ posts }:IFeaturedPostsCarousel) : any => {
                                         bottom="0"
                                         left="0"
                                         right="0"
-                                        backgroundImage={post?.image?.responsiveImage?.src}
+                                        backgroundImage={`url(${getImage(post)?.url})`}
                                         backgroundSize="cover"
                                         backgroundPosition="center" />
                                     <Box background="linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%)"

@@ -4,7 +4,7 @@ import { Alert, Box, Flex, Heading } from '@chakra-ui/react';
 import ContentBlock from '~/components/blocks/Content';
 import { doQuery, queries} from '~/dato/api';
 import { IPost } from '~/interfaces/models/post';
-import LatestNewsItem from '~/components/blocks/LatestPosts/LatestPostItem';
+import LatestPostCard from '~/components/blocks/LatestPosts/LatestPostCard';
 import { SectionLinkButton } from "~/components/elements/sectionLink";
 import { Column, ColumnWidth, Row } from '~/components/elements/grid/grid';
 import { horizontalScrollMargin } from "~/lib/theme/theme";
@@ -19,6 +19,8 @@ interface ILatestPostsPanelBlock extends IBlock {
 }
 
 const LatestPostsPanelBlock:any = ({ background, textColor, paddingTop, paddingBottom, data: { posts } }:ILatestPostsPanelBlock) : ReactNode => {
+    console.log(posts);
+
     return <ContentBlock background={background} color={textColor} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         <Flex align="flex-end" mb={[4, ,6, 8]}>
             <Heading as="h2" lineHeight={1} variant="sectionHeading" mb={0}>
@@ -40,7 +42,7 @@ const LatestPostsPanelBlock:any = ({ background, textColor, paddingTop, paddingB
                         posts.map((post:IPost, index:number) => {
                             return <Column width={[ColumnWidth.EightTwelfths, , ,ColumnWidth.FourTwelvfths]} key={index}>
                                 <Box mb={[0, , ,8]}>
-                                    <LatestNewsItem {...post} />
+                                    <LatestPostCard {...post} />
                                 </Box>
                             </Column>;
                         })

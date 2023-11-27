@@ -23,8 +23,7 @@ const nextConfig = {
                 permanent: true
             }
         ];
-    },
-    output: "standalone",
+    }
 };
 
 module.exports = nextConfig;

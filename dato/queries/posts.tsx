@@ -19,6 +19,30 @@ export const posts:string = `
             }
             imageCaption
             publishDate
+            blocks {
+                ... on ImageRecord {
+                    __typename
+                    id
+                    image {
+                        ${imageAttrs({ width: 800, height: 400 })}   
+                    }
+                }
+                ... on TextRecord {
+                    __typename
+                    id
+                    content {
+                        blocks {
+                            ... on ImageRecord {
+                                __typename
+                                id
+                                image {
+                                    ${imageAttrs({ width: 800, height: 400 })}   
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 `;
@@ -49,6 +73,30 @@ export const featuredLatestPosts:string = `
                     image {
                         ${imageAttrs({ width: 840, height: 420 })}   
                     }
+                    blocks {
+                        ... on ImageRecord {
+                            __typename
+                            id
+                            image {
+                                ${imageAttrs({ width: 840, height: 420 })}   
+                            }
+                        }
+                        ... on TextRecord {
+                            __typename
+                            id
+                            content {
+                                blocks {
+                                    ... on ImageRecord {
+                                        __typename
+                                        id
+                                        image {
+                                            ${imageAttrs({ width: 840, height: 420 })}   
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                     publishDate
                 }
             }
@@ -72,6 +120,30 @@ export const latestPosts:string = `
             image {
                 ${imageAttrs({ width: 840, height: 420 })}   
             }
+            blocks {
+                ... on ImageRecord {
+                    __typename
+                    id
+                    image {
+                        ${imageAttrs({ width: 840, height: 420 })}   
+                    }
+                }
+                ... on TextRecord {
+                    __typename
+                    id
+                    content {
+                        blocks {
+                            ... on ImageRecord {
+                                __typename
+                                id
+                                image {
+                                    ${imageAttrs({ width: 840, height: 420 })}   
+                                }
+                            }
+                        }
+                    }
+                }
+            }
             publishDate
         }
     }
@@ -94,6 +166,30 @@ export const featuredPosts:string = `
                     }
                     image {
                         ${imageAttrs({ width: 1440, height: 550 })}   
+                    }
+                    blocks {
+                        ... on ImageRecord {
+                            __typename
+                            id
+                            image {
+                                ${imageAttrs({ width: 1440, height: 550 })}   
+                            }
+                        }
+                        ... on TextRecord {
+                            __typename
+                            id
+                            content {
+                                blocks {
+                                    ... on ImageRecord {
+                                        __typename
+                                        id
+                                        image {
+                                            ${imageAttrs({ width: 1440, height: 550 })}   
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                     publishDate
                 }

@@ -11,7 +11,9 @@ export interface IBlock {
     paddingBottom?:PaddingBottom;
     theme?:Theme;
     contain?:boolean;
-
+    content?: {
+        blocks?:IBlock[];
+    }
     // External
     data?:any;
     getData?:() => any;

@@ -7,20 +7,41 @@ import { Image } from '~/components/elements/image';
 import { Link } from '~/components/elements/link';
 import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
 import { AnimateOpacity } from '~/components/elements/animation/AnimateOpacity';
+import { IBlock } from '~/interfaces/util/block';
+import { IImage } from '~/interfaces/util/image';
 
 interface ILatestNewsItem extends IPost {
 }
 
-const LatestPostItem:any = ({ title, image, publishDate, slug }:ILatestNewsItem) : ReactNode => {
+const LatestPostCard:any = ({ title, image, publishDate, slug, blocks }:ILatestNewsItem) : ReactNode => {
     const date:string = DateTime.fromISO(publishDate).toFormat('MMM d, yyyy');
+    let currentImage:IImage;
+    if(image) {
+        currentImage = image;
+    }
+
+    blocks.map((block:IBlock) => {
+        if(block.__typename === 'ImageRecord') {
+            currentImage = block['image'];
+            return;
+        }
+        else if(block.__typename === 'TextRecord') {
+            block.content.blocks.map((innerBlock:IBlock) => {
+                if(innerBlock.__typename === 'ImageRecord') {
+                    currentImage = innerBlock['image'];
+                    return;
+                }
+            });
+        }
+    });
 
     return <Flex direction="column" height="100%">
         <AnimateOpacity>
             {
                 slug ? <Link href={`news/${slug}`}>
-                    <Image image={image} ratio={2/1} mb={4} borderRadius="3px" overflow="hidden" />
+                    <Image image={currentImage} ratio={2/1} mb={4} borderRadius="3px" overflow="hidden" />
                 </Link> : <>
-                    <Image image={image} ratio={2/1} mb={4} borderRadius="3px" overflow="hidden" />
+                    <Image image={currentImage} ratio={2/1} mb={4} borderRadius="3px" overflow="hidden" />
                 </>
             }
         </AnimateOpacity>
@@ -55,4 +76,4 @@ const LatestPostItem:any = ({ title, image, publishDate, slug }:ILatestNewsItem)
     </Flex>;
 };
 
-export default LatestPostItem;
+export default LatestPostCard;

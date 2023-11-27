@@ -36,6 +36,7 @@ const PostList:any = ({ latestPosts }:IPostsList) : ReactNode => {
                     skip: page * DATO_QUERY_VALUES.ITEMS_PER_PAGE,
                     orderBy: 'publishDate_DESC'
                 }).then(({ posts }) => posts || []).then((newPosts) => {
+                    console.log(newPosts);
                     if(newPosts.length > 0) {
                         setPosts([...posts, ...newPosts]);
                         setPage(page + 1);
@@ -85,7 +86,7 @@ const PostList:any = ({ latestPosts }:IPostsList) : ReactNode => {
                         <SimpleGrid columns={[1, 2, 3]} spacingX={[8]} spacingY={[6, ,8]} mb={[0, -8, -12]}>
                             {
                                 posts.map((post:any, index:number) => {
-                                    return <Box mb={[0, 8, 12]} key={index}>
+                                    return <Box mb={[0, 8, 12]} key={index} height="100%">
                                         <PostCard {...post} />
                                     </Box>;
                                 })

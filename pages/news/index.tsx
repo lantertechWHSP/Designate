@@ -42,6 +42,8 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
 }
 
 const NewsPage : NextPage = ({layout, featuredPosts, posts, postsMeta}:INextPageProps) : JSX.Element => {
+    // console.log(posts);
+
     return (
         <PostListLayout layout={layout} featuredPosts={featuredPosts} posts={posts} postsMeta={postsMeta} />
     );
