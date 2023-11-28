@@ -135,7 +135,7 @@ const FeaturedPostsCarousel:any = ({ posts }:IFeaturedPostsCarousel) : any => {
                     }
                 </>
                 {
-                    (posts.length > 1 && posts.length < 10) && <Box position="absolute" bottom="30px" left="50%" transform="translateX(-50%)" zIndex={zIndex.featuredPosts.dots}>
+                    posts.length > 1 &&  <Box position="absolute" bottom="30px" left="50%" transform="translateX(-50%)" zIndex={zIndex.featuredPosts.dots}>
                         {
                             posts.map((post:IPost, index:number) => {
                                 return <Button key={index} width="8px" height="8px" mx={1}

@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { Image as DatoImage } from 'react-datocms';
-import { Box } from '@chakra-ui/react';
+import { Box, AspectRatio } from '@chakra-ui/react';
 import { IImage as IDatoImage } from '~/interfaces/util/image';
 
 interface IImage {

@@ -18,7 +18,7 @@ interface ICarouselBlock extends IBlock {
     autoSwitch?:boolean;
 }
 
-const CarouselBlock:any = ({ items, background, paddingTop, paddingBottom, autoSwitch = false }:ICarouselBlock) : ReactNode => {
+const CarouselBlock:any = ({ items, background, paddingTop, paddingBottom }:ICarouselBlock) : ReactNode => {
     const [slideIndex, setSlideIndex] = useState<number>(0);
     const [sliderRef, instanceRef] = useKeenSlider({
         loop: true,
@@ -31,46 +31,12 @@ const CarouselBlock:any = ({ items, background, paddingTop, paddingBottom, autoS
         },
     }, [
         (slider) => {
-            if(autoSwitch) {
-                let timeout;
-                let mouseOver = false;
-                const clearNextTimeout = () => {
-                    clearTimeout(timeout);
-                };
-                const nextTimeout = () => {
-                    clearTimeout(timeout);
-                    if (mouseOver) {
-                        return;
-                    }
-                    timeout = setTimeout(() => {
-                        slider.next();
-                    }, 3000)
-                };
-
-                slider.on('created', () => {
-                    setSlideIndex(slider.track.details.rel);
-                    slider.container.addEventListener('mouseover', () => {
-                        mouseOver = true
-                        clearNextTimeout()
-                    })
-                    slider.container.addEventListener('mouseout', () => {
-                        mouseOver = false
-                        nextTimeout()
-                    })
-                    nextTimeout();
-                })
-                slider.on('dragStarted', clearNextTimeout);
-                slider.on('animationEnded', nextTimeout);
-                slider.on('updated', nextTimeout);
-            }
-            else {
-                slider.on('created', () => {
-                    setSlideIndex(slider.track.details.rel);
-                });
-                slider.on('slideChanged', () => {
-                    setSlideIndex(slider.track.details.rel);
-                });
-            }
+            slider.on("created", () => {
+                setSlideIndex(slider.track.details.rel);
+            });
+            slider.on("slideChanged", () => {
+                setSlideIndex(slider.track.details.rel);
+            });
         },
     ]);
 
@@ -110,7 +76,7 @@ const CarouselBlock:any = ({ items, background, paddingTop, paddingBottom, autoS
                         })
                     }
                     {
-                        (items.length > 1 && items.length < 10) && <>
+                        items.length > 1 && <>
                             <Box position="absolute" width="100%" top="50%" transform="translateY(-50%)" height="56px" zIndex={zIndex.carouselCommands}>
                                 <Button position="absolute"
                                     backgroundColor="whiteBlur"
@@ -155,7 +121,6 @@ const CarouselBlock:any = ({ items, background, paddingTop, paddingBottom, autoS
                             </Box>
                         </>
                     }
-
                 </Box>
             </Box>
         </AnimateOpacity>

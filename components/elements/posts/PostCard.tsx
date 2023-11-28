@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { Box, Heading, Flex } from '@chakra-ui/react';
-import { IPost, PostCategory } from "~/interfaces/models/post";
+import { IPost, PostCategory } from '~/interfaces/models/post';
 import { Link } from '~/components/elements/link';
 import { Image } from '~/components/elements/image';
 import { SectionLink } from '~/components/elements/sectionLink';
@@ -9,14 +9,14 @@ import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow
 import { IBlock } from '~/interfaces/util/block';
 import { IImage } from '~/interfaces/util/image';
 import { Icon, Icons } from '~/components/elements/icon';
-import VectorShape1 from "~/components/elements/posts/shapes/VectorShape1";
+import VectorShape1 from '~/components/elements/posts/shapes/VectorShape1';
 import VectorShape2 from '~/components/elements/posts/shapes/VectorShape2';
 import VectorShape3 from '~/components/elements/posts/shapes/VectorShape3';
 
 interface IPostCard extends IPost {
 }
 
-const VectorEffect = ({category}) : ReactNode => {
+const VectorEffect:any = ({category}) : ReactNode => {
     switch(category) {
         case PostCategory.Blog: return <>
             <Box position="absolute" top="0" left="0" bottom="0" right="0">
@@ -28,7 +28,7 @@ const VectorEffect = ({category}) : ReactNode => {
                     <Icon icon={Icons.PostCategoryBlog} w={40} h={40} />
                 </Box>
             }
-        </>
+        </>;
         case PostCategory.Audio: return <>
             <Box position="absolute" top="0" left="0" bottom="0" right="0">
                 <VectorShape1 />
@@ -39,7 +39,7 @@ const VectorEffect = ({category}) : ReactNode => {
                     <Icon icon={Icons.PostCategoryAudio} w={40} h={40} />
                 </Box>
             }
-        </>
+        </>;
         case PostCategory.Video: return <>
             <Box position="absolute" top="0" left="0" bottom="0" right="0">
                 <VectorShape2 />
@@ -50,21 +50,21 @@ const VectorEffect = ({category}) : ReactNode => {
                     <Icon icon={Icons.PostCategoryVideo} w={40} h={40} />
                 </Box>
             }
-        </>
-        case PostCategory.Blog: return <>
+        </>;
+        case PostCategory.Download: return <>
             <Box position="absolute" top="0" left="0" bottom="0" right="0">
                 <VectorShape3 />
             </Box>
             <Box background="oliveBlur" position="absolute" top="0" left="0" bottom="0" right="0" />
             {
                 <Box position="absolute" top="20px" left="20px" color="white">
-                    <Icon icon={Icons.PostCategoryBlog} w={40} h={40} />
+                    <Icon icon={Icons.PostCategoryDownload} w={40} h={40} />
                 </Box>
             }
-        </>
+        </>;
         default: return <></>;
     }
-}
+};
 
 const PostCard:any = ({ title, coverImage, publishDate, category, slug, blocks }:IPostCard) : ReactNode => {
     let currentImage:IImage;
