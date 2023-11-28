@@ -37,10 +37,10 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
             }
             <Header menu={layout?.menu} />
             <Box h={['376px']}
-                    width="100%"
-                    position="relative"
-                    overflowX="hidden"
-                    background="linear-gradient(270deg, #50513C 0%, rgba(228, 221, 193, 0.50) 100%)">
+                width="100%"
+                position="relative"
+                overflowX="hidden"
+                background="linear-gradient(270deg, #50513C 0%, rgba(228, 221, 193, 0.50) 100%)">
                 <Container>
                     <Row>
                         <Column width={[ColumnWidth.Full, , ,ColumnWidth.TenTwelfths, ColumnWidth.EightTwelfths]}>

@@ -64,7 +64,7 @@ export const featuredLatestPosts:string = `
                     author {
                         name
                     }
-                    image {
+                    coverImage {
                         ${imageAttrs({ width: 840, height: 420 })}   
                     }
                     blocks {

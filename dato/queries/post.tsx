@@ -15,10 +15,10 @@ export const post:string = `
             author {
                 name
             }
-            image {
+            coverImage {
                 ${imageAttrs({ width: 1108, height: 550})}
             }
-            imageCaption
+            coverImageCaption
             category
             publishDate
             seo: _seoMetaTags {

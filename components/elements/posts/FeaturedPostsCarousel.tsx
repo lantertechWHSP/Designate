@@ -56,8 +56,8 @@ const FeaturedPostsCarousel:any = ({ posts }:IFeaturedPostsCarousel) : any => {
         }
     };
 
-    const getImage = (post:IPost) => {
-        let currentImage:IImage = {}
+    const getImage:any = (post:IPost) : IImage => {
+        let currentImage:IImage = {};
         if(post.coverImage) {
             currentImage = post.coverImage;
         }
@@ -79,7 +79,7 @@ const FeaturedPostsCarousel:any = ({ posts }:IFeaturedPostsCarousel) : any => {
         }
 
         return currentImage;
-    }
+    };
 
     return <Box className="keen-slider" ref={sliderRef}>
         {
