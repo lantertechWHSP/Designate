@@ -7,35 +7,53 @@ import { AnimateOpacity } from '~/components/elements/animation/AnimateOpacity';
 import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
 import { IBlock } from '~/interfaces/util/block';
 import { IImage } from '~/interfaces/util/image';
+import { Icon, Icons } from '~/components/elements/icon';
 
 interface IPostCard extends IPost {
 }
 
-const PostCard:any = ({ title, image, publishDate, slug, blocks }:IPostCard) : any => {
+enum PostIconType {
+    Text = 'Text',
+    Audio = 'Audio',
+    Video = 'Video',
+    Download = 'Download'
+}
+
+const PostCard:any = ({ title, image, publishDate, iconType, slug, blocks }:IPostCard) : any => {
     let currentImage:IImage;
     if(image) {
         currentImage = image;
     }
+    else {
+        blocks.map((block:IBlock) => {
+            if(block.__typename === 'ImageRecord') {
+                currentImage = block['image'];
+                return;
+            }
+            else if(block.__typename === 'TextRecord') {
+                block.content.blocks.map((innerBlock:IBlock) => {
+                    if(innerBlock.__typename === 'ImageRecord') {
+                        currentImage = innerBlock['image'];
+                        return;
+                    }
+                });
+            }
+        });
+    }
 
-    blocks.map((block:IBlock) => {
-        if(block.__typename === 'ImageRecord') {
-            currentImage = block['image'];
-            return;
-        }
-        else if(block.__typename === 'TextRecord') {
-            block.content.blocks.map((innerBlock:IBlock) => {
-                if(innerBlock.__typename === 'ImageRecord') {
-                    currentImage = innerBlock['image'];
-                    return;
-                }
-            });
-        }
-    });
+    let postIcon;
+
+    switch(iconType) {
+        case iconType === PostIconType.Text.toString() : postIcon = Icons.PostTypeText; break;
+        case iconType === PostIconType.Download.toString() : postIcon = Icons.PostTypeDownload; break;
+        case iconType === PostIconType.Video.toString() : postIcon = Icons.PostTypeVideo; break;
+    }
 
     return <Flex direction="column" height="100%">
         <Box mb={['20px']}>
             <AnimateOpacity>
                 <Link href={`/news/${slug}`} display="block" borderRadius="3px" overflow="hidden">
+                    <Icon icons={postIcon} />
                     <Image image={currentImage} ratio={[2 / 1]} />
                 </Link>
             </AnimateOpacity>

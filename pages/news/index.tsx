@@ -32,7 +32,7 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
 
     const posts:IPost[] = await doQuery(queries.posts, {
         first: DATO_QUERY_VALUES.ITEMS_PER_PAGE,
-        orderBy: 'publishDate_DESC',
+        orderBy: 'publishDate_ASC',
     }).then(({ posts }) => posts || []);
     const postsMeta:IPostsMeta = await doQuery(queries.postsMeta).then(({ postsMeta }) => postsMeta || {});
 
@@ -42,8 +42,6 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
 }
 
 const NewsPage : NextPage = ({layout, featuredPosts, posts, postsMeta}:INextPageProps) : JSX.Element => {
-    // console.log(posts);
-
     return (
         <PostListLayout layout={layout} featuredPosts={featuredPosts} posts={posts} postsMeta={postsMeta} />
     );

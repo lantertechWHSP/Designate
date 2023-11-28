@@ -1,18 +1,16 @@
 import { IPost} from '~/interfaces/models/post';
 import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
-import { Box, Button, Container, Flex, Heading, Text } from '@chakra-ui/react';
+import { Box, Button, Container, Flex, Heading } from '@chakra-ui/react';
 import { SectionLinkButton } from '~/components/elements/sectionLink';
 import { useState } from 'react';
 import { Icon, Icons } from '~/components/elements/icon';
 import { Column, ColumnWidth, Row } from '~/components/elements/grid/grid';
-import StructuredContent from "~/components/StructuredContent";
-import { isEmptyDocument } from 'datocms-structured-text-utils';
-import { zIndex } from "~/lib/theme/theme";
+import { zIndex } from '~/lib/theme/theme';
 import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
-import {Link} from "~/components/elements/link";
-import {IImage} from "~/interfaces/util/image";
-import {IBlock} from "~/interfaces/util/block";
+import { Link } from '~/components/elements/link';
+import { IImage } from '~/interfaces/util/image';
+import { IBlock } from '~/interfaces/util/block';
 
 interface IFeaturedPostsCarousel {
     posts:IPost[];
@@ -22,7 +20,7 @@ const FeaturedPostsCarousel:any = ({ posts }:IFeaturedPostsCarousel) : any => {
     const [slideIndex, setSlideIndex] = useState<number>(0);
     const [sliderRef, instanceRef] = useKeenSlider({
         loop: true,
-        mode: "snap",
+        mode: 'snap',
         defaultAnimation: {
             duration: 750,
             easing: (x:number) => {
@@ -31,10 +29,10 @@ const FeaturedPostsCarousel:any = ({ posts }:IFeaturedPostsCarousel) : any => {
         },
     }, [
         (slider) => {
-            slider.on("created", () => {
+            slider.on('created', () => {
                 setSlideIndex(slider.track.details.rel);
             });
-            slider.on("slideChanged", () => {
+            slider.on('slideChanged', () => {
                 setSlideIndex(slider.track.details.rel);
             });
         },
@@ -63,21 +61,22 @@ const FeaturedPostsCarousel:any = ({ posts }:IFeaturedPostsCarousel) : any => {
         if(post.image) {
             currentImage = post.image;
         }
-
-        post.blocks.map((block:IBlock) => {
-            if(block.__typename === 'ImageRecord') {
-                currentImage = block['image'];
-                return;
-            }
-            else if(block.__typename === 'TextRecord') {
-                block.content.blocks.map((innerBlock:IBlock) => {
-                    if(innerBlock.__typename === 'ImageRecord') {
-                        currentImage = innerBlock['image'];
-                        return;
-                    }
-                });
-            }
-        });
+        else {
+            post.blocks.map((block:IBlock) => {
+                if(block.__typename === 'ImageRecord') {
+                    currentImage = block['image'];
+                    return;
+                }
+                else if(block.__typename === 'TextRecord') {
+                    block.content.blocks.map((innerBlock:IBlock) => {
+                        if(innerBlock.__typename === 'ImageRecord') {
+                            currentImage = innerBlock['image'];
+                            return;
+                        }
+                    });
+                }
+            });
+        }
 
         return currentImage;
     }
@@ -120,11 +119,6 @@ const FeaturedPostsCarousel:any = ({ posts }:IFeaturedPostsCarousel) : any => {
                                                                 </Link>
                                                             </AnimateOverflow>
                                                         </Heading>
-                                                    }
-                                                    {
-                                                        !isEmptyDocument(post.summary) && <Text color="ghostWhite2">
-                                                            <StructuredContent content={post.summary} />
-                                                        </Text>
                                                     }
                                                 </Column>
                                             </Row>

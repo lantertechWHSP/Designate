@@ -19,21 +19,22 @@ const LatestPostCard:any = ({ title, image, publishDate, slug, blocks }:ILatestN
     if(image) {
         currentImage = image;
     }
-
-    blocks.map((block:IBlock) => {
-        if(block.__typename === 'ImageRecord') {
-            currentImage = block['image'];
-            return;
-        }
-        else if(block.__typename === 'TextRecord') {
-            block.content.blocks.map((innerBlock:IBlock) => {
-                if(innerBlock.__typename === 'ImageRecord') {
-                    currentImage = innerBlock['image'];
-                    return;
-                }
-            });
-        }
-    });
+    else {
+        blocks.map((block:IBlock) => {
+            if(block.__typename === 'ImageRecord') {
+                currentImage = block['image'];
+                return;
+            }
+            else if(block.__typename === 'TextRecord') {
+                block.content.blocks.map((innerBlock:IBlock) => {
+                    if(innerBlock.__typename === 'ImageRecord') {
+                        currentImage = innerBlock['image'];
+                        return;
+                    }
+                });
+            }
+        });
+    }
 
     return <Flex direction="column" height="100%">
         <AnimateOpacity>

@@ -1,5 +1,4 @@
 import { imageAttrs } from '~/dato/attrs/responsiveImageAttrs';
-import { structuredTextAttrs } from '~/dato/attrs/structuredTextAttrs';
 
 export const posts:string = `
     query posts ($first: IntType, $skip: IntType, $filter: PostModelFilter, $orderBy: [PostModelOrderBy]) {
@@ -8,9 +7,6 @@ export const posts:string = `
             id
             slug
             title
-            summary {
-                ${structuredTextAttrs}
-            }
             author {
                 name
             }
@@ -18,6 +14,7 @@ export const posts:string = `
                 ${imageAttrs({ width: 800, height: 400 })}   
             }
             imageCaption
+            iconType
             publishDate
             blocks {
                 ... on ImageRecord {
@@ -64,9 +61,6 @@ export const featuredLatestPosts:string = `
                     id
                     slug
                     title
-                    summary {
-                        ${structuredTextAttrs}
-                    }
                     author {
                         name
                     }
@@ -111,9 +105,6 @@ export const latestPosts:string = `
             id
             slug
             title
-            summary {
-                ${structuredTextAttrs}
-            }
             author {
                 name
             }
@@ -158,9 +149,6 @@ export const featuredPosts:string = `
                     id
                     slug
                     title
-                    summary {
-                        ${structuredTextAttrs}
-                    }
                     author {
                         name
                     }

@@ -5,7 +5,6 @@ import { audioRecord } from '~/dato/blocks/audio';
 import { videoRecord } from '~/dato/blocks/video';
 import { cardPanelRecord } from '~/dato/blocks/cardPanel';
 import { imageAttrs } from '~/dato/attrs/responsiveImageAttrs';
-import { structuredTextAttrs } from '~/dato/attrs/structuredTextAttrs';
 
 export const post:string = `
     query post ($slug: String!) {
@@ -13,9 +12,6 @@ export const post:string = `
             id
             slug
             title
-            summary {
-                ${structuredTextAttrs}
-            }
             author {
                 name
             }
@@ -23,6 +19,7 @@ export const post:string = `
                 ${imageAttrs({ width: 1108, height: 550})}
             }
             imageCaption
+            iconType
             publishDate
             seo: _seoMetaTags {
                 ${seoAttrs}
