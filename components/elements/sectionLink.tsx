@@ -8,7 +8,7 @@ interface ISectionLink extends IDatoLink {
     borderColorHover?:string;
 }
 
-export const UnderlineLink:any = ({ color = 'olive', borderColor = 'oliveBlur2', ...props }:ISectionLink) => {
+export const UnderlineLink:any = ({ color = 'olive', borderColor = 'oliveBlur3', ...props }:ISectionLink) => {
     return <Link
         {...props}
         color={color}
@@ -36,7 +36,7 @@ export const SectionLinkInner:any = ({ children }) => {
         className="sectionLink-inner"
         display="inline-flex"
         borderBottom="2px solid"
-        borderColor="oliveBlur2"
+        borderColor="oliveBlur3"
         transition="border-color 0.3s linear"
         _hover={{
             borderColor: 'olive'
@@ -51,7 +51,7 @@ export const SectionLinkInner:any = ({ children }) => {
     </Flex>;
 };
 
-export const SectionLinkButton:any = ({ color = 'olive', borderColor = 'oliveBlur2', borderColorHover = 'olive', ...props }:ISectionLink) => {
+export const SectionLinkButton:any = ({ color = 'olive', borderColor = 'oliveBlur3', borderColorHover = 'olive', ...props }:ISectionLink) => {
     return <Link {...props}
         display="block"
         color={color}

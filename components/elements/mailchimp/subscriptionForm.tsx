@@ -39,7 +39,6 @@ export const SubscriptionForm:any = () : ReactNode => {
                 resetForm();
             }
         }).catch((error) => {
-            console.log(error);
             setStatus('error');
         });
     };

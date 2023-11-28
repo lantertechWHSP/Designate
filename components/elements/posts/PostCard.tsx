@@ -1,5 +1,5 @@
 import { Box, Heading, Flex } from '@chakra-ui/react';
-import { IPost } from "~/interfaces/models/post";
+import { IPost, PostCategory } from "~/interfaces/models/post";
 import { Link } from '~/components/elements/link';
 import { Image } from '~/components/elements/image';
 import { SectionLink } from '~/components/elements/sectionLink';
@@ -12,17 +12,10 @@ import { Icon, Icons } from '~/components/elements/icon';
 interface IPostCard extends IPost {
 }
 
-enum PostIconType {
-    Text = 'Text',
-    Audio = 'Audio',
-    Video = 'Video',
-    Download = 'Download'
-}
-
-const PostCard:any = ({ title, image, publishDate, iconType, slug, blocks }:IPostCard) : any => {
+const PostCard:any = ({ title, coverImage, publishDate, category, slug, blocks }:IPostCard) : any => {
     let currentImage:IImage;
-    if(image) {
-        currentImage = image;
+    if(coverImage) {
+        currentImage = coverImage;
     }
     else {
         blocks.map((block:IBlock) => {
@@ -41,20 +34,35 @@ const PostCard:any = ({ title, image, publishDate, iconType, slug, blocks }:IPos
         });
     }
 
-    let postIcon;
+    let postIcon:Icons;
 
-    switch(iconType) {
-        case iconType === PostIconType.Text.toString() : postIcon = Icons.PostTypeText; break;
-        case iconType === PostIconType.Download.toString() : postIcon = Icons.PostTypeDownload; break;
-        case iconType === PostIconType.Video.toString() : postIcon = Icons.PostTypeVideo; break;
+    switch(category) {
+        case PostCategory.Blog: {
+            postIcon = Icons.PostCategoryBlog; break;
+        }
+        case PostCategory.Download: {
+            postIcon = Icons.PostCategoryDownload; break;
+        }
+        case PostCategory.Video: {
+            postIcon = Icons.PostCategoryVideo; break;
+        }
+        case PostCategory.Audio: {
+            postIcon = Icons.PostCategoryAudio; break;
+        }
+        default: postIcon = null;
     }
 
     return <Flex direction="column" height="100%">
         <Box mb={['20px']}>
             <AnimateOpacity>
-                <Link href={`/news/${slug}`} display="block" borderRadius="3px" overflow="hidden">
-                    <Icon icons={postIcon} />
+                <Link href={`/news/${slug}`} display="block" borderRadius="3px" overflow="hidden" position="relative">
                     <Image image={currentImage} ratio={[2 / 1]} />
+                    <Box background="oliveBlur" position="absolute" top="0" left="0" bottom="0" right="0" />
+                    {
+                        postIcon && <Box position="absolute" top="20px" left="20px" color="white">
+                            <Icon icon={postIcon} w={40} h={40} />
+                        </Box>
+                    }
                 </Link>
             </AnimateOpacity>
         </Box>

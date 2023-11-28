@@ -93,7 +93,7 @@ export const ProfilesPanelBlock:any = ({ items, columnCount = 3, background, pad
                                     }
                                 </Column>
                             </Row>
-                            <Button pos="absolute" top={8} right={['16px', '24px', '32px']}  onClick={() => setModalOpen(false)} borderRadius="50%" border="2px solid" borderColor="oliveBlur" color="charcoal" background="transparent" w="50px" h="50px">
+                            <Button pos="absolute" top={8} right={['16px', '24px', '32px']}  onClick={() => setModalOpen(false)} borderRadius="50%" border="2px solid" borderColor="oliveBlur2" color="charcoal" background="transparent" w="50px" h="50px">
                                 <Icon icon={Icons.Cross} w={10} h={10} />
                             </Button>
                         </Container>

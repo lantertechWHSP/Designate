@@ -8,7 +8,7 @@ interface IHorizontalRuleBlock extends IBlock {
 }
 
 const HorizontalRuleBlock:any = ({ theme }:IHorizontalRuleBlock) : ReactNode => {
-    const borderColor:string  = theme === Theme.Dark ? 'oliveBlur2' : 'borderColor';
+    const borderColor:string  = theme === Theme.Dark ? 'oliveBlur3' : 'borderColor';
 
     return <Container height="0" position="relative">
         <Divider sx={{

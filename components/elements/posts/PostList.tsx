@@ -12,7 +12,7 @@ interface IPostsList {
 }
 
 export const DATO_QUERY_VALUES:any = {
-    ITEMS_PER_PAGE : 12,
+    ITEMS_PER_PAGE : 60,
     ORDER_BY : 'date_DESC',
 };
 
@@ -36,7 +36,6 @@ const PostList:any = ({ latestPosts }:IPostsList) : ReactNode => {
                     skip: page * DATO_QUERY_VALUES.ITEMS_PER_PAGE,
                     orderBy: 'publishDate_DESC'
                 }).then(({ posts }) => posts || []).then((newPosts) => {
-                    console.log(newPosts);
                     if(newPosts.length > 0) {
                         setPosts([...posts, ...newPosts]);
                         setPage(page + 1);

@@ -26,8 +26,9 @@ const colors:any = {
     darkSteel: '#323639',
 
     olive: '#50513c',
-    oliveBlur: 'rgba(80, 81, 60, 0.4)',
-    oliveBlur2: 'rgba(80, 81, 60, 0.2)',
+    oliveBlur: 'rgba(80, 81, 60, 0.8)',
+    oliveBlur2: 'rgba(80, 81, 60, 0.4)',
+    oliveBlur3: 'rgba(80, 81, 60, 0.2)',
     oliveGrey: '#cbcbc5',
 
     stone: '#e4ddc1',
@@ -163,7 +164,7 @@ export const theme:any = extendBaseTheme({
                     }
                 },
                 listLabel: {
-                    color: 'oliveBlur',
+                    color: 'oliveBlur2',
                     fontSize: ['18px', ,'21px'],
                     lineHeight: ['23px', ,'23px'],
                     fontWeight: 500,
@@ -229,7 +230,7 @@ export const theme:any = extendBaseTheme({
                     lineHeight: '23px'
                 },
                 listLabel: {
-                    color: 'oliveBlur',
+                    color: 'oliveBlur2',
                     fontSize: ['18px', ,'21px'],
                     lineHeight: ['23px', ,'23px'],
                     fontWeight: 500,
@@ -284,7 +285,7 @@ export const theme:any = extendBaseTheme({
                     fontSize: '16px',
                     fontWeight: 500,
                     border: '1px solid',
-                    borderColor: 'oliveBlur',
+                    borderColor: 'oliveBlur2',
                     borderRadius: '25px',
                     minWidth: '200px'
                 },
@@ -496,7 +497,7 @@ export const theme:any = extendBaseTheme({
             },
             blockquote: {
                 borderLeft: `4px solid`,
-                borderColor: 'oliveBlur',
+                borderColor: 'oliveBlur2',
                 pl: 8,
                 mb: 4
             },

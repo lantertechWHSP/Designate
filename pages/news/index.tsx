@@ -32,7 +32,7 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
 
     const posts:IPost[] = await doQuery(queries.posts, {
         first: DATO_QUERY_VALUES.ITEMS_PER_PAGE,
-        orderBy: 'publishDate_ASC',
+        orderBy: 'publishDate_DESC',
     }).then(({ posts }) => posts || []);
     const postsMeta:IPostsMeta = await doQuery(queries.postsMeta).then(({ postsMeta }) => postsMeta || {});
 

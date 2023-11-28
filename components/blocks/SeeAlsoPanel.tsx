@@ -20,7 +20,7 @@ interface ISeeAlsoPanelBlock extends IBlock {
 }
 
 const SeeAlsoItem:any = ({ title, description, link }:ISeeAlsoItem) : ReactNode => {
-    return (title || description || link) && <Flex direction={['row', ,'column']} align={['center', ,'unset']} borderTop="1px solid" borderColor="oliveBlur" py={4}>
+    return (title || description || link) && <Flex direction={['row', ,'column']} align={['center', ,'unset']} borderTop="1px solid" borderColor="oliveBlur2" py={4}>
         {
             title && <Heading as="h3" fontSize={['24px']} fontWeight={700} mb={[0, ,2]}>
                 <AnimateOverflow>

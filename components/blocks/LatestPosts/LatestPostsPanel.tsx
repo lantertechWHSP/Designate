@@ -19,8 +19,6 @@ interface ILatestPostsPanelBlock extends IBlock {
 }
 
 const LatestPostsPanelBlock:any = ({ background, textColor, paddingTop, paddingBottom, data: { posts } }:ILatestPostsPanelBlock) : ReactNode => {
-    console.log(posts);
-
     return <ContentBlock background={background} color={textColor} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         <Flex align="flex-end" mb={[4, ,6, 8]}>
             <Heading as="h2" lineHeight={1} variant="sectionHeading" mb={0}>

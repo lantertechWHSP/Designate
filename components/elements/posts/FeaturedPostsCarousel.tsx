@@ -58,8 +58,8 @@ const FeaturedPostsCarousel:any = ({ posts }:IFeaturedPostsCarousel) : any => {
 
     const getImage = (post:IPost) => {
         let currentImage:IImage = {}
-        if(post.image) {
-            currentImage = post.image;
+        if(post.coverImage) {
+            currentImage = post.coverImage;
         }
         else {
             post.blocks.map((block:IBlock) => {

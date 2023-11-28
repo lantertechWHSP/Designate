@@ -10,11 +10,11 @@ export const posts:string = `
             author {
                 name
             }
-            image {
+            coverImage {
                 ${imageAttrs({ width: 800, height: 400 })}   
             }
-            imageCaption
-            iconType
+            coverImageCaption
+            category
             publishDate
             blocks {
                 ... on ImageRecord {
@@ -108,7 +108,7 @@ export const latestPosts:string = `
             author {
                 name
             }
-            image {
+            coverImage {
                 ${imageAttrs({ width: 840, height: 420 })}   
             }
             blocks {
@@ -152,7 +152,7 @@ export const featuredPosts:string = `
                     author {
                         name
                     }
-                    image {
+                    coverImage {
                         ${imageAttrs({ width: 1440, height: 550 })}   
                     }
                     blocks {

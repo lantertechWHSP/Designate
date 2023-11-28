@@ -27,7 +27,7 @@ const ObjectivePanelBlock:any = ({ items, containerWidth, paddingTop, paddingBot
                                     mb={[0, , ,2]}
                                     fontSize={['56px']}
                                     lineHeight={['56px']}
-                                    color="oliveBlur">
+                                    color="oliveBlur2">
                                     {item.title}
                                 </Heading>
                             }

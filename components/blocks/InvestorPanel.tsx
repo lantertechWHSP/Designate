@@ -229,7 +229,7 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                                         borderTop="1px solid"
                                         borderColor="borderColor"
                                         direction="row"
-                                        color="oliveBlur"
+                                        color="oliveBlur2"
                                         align="center"
                                         transition="color 0.3s linear"
                                         _hover={{
@@ -251,7 +251,7 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                                             transform: 'translateX(4px)',
                                         }}>
                                             <ChakraLink  data-yourir="linkAnnouncement fileId" cursor="pointer"
-                                                color="oliveBlur"
+                                                color="oliveBlur2"
                                                 transition="color 0.3s linear"
                                                 _groupHover={{
                                                     color: 'olive',

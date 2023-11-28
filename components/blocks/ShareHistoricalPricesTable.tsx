@@ -52,7 +52,7 @@ const ShareHistoricalPricesTable:any = ({ paddingTop, paddingBottom }:ShareHisto
                             <Flex align="center"
                                 display="inline-flex"
                                 borderBottom="1px solid"
-                                borderColor="oliveBlur"
+                                borderColor="oliveBlur2"
                                 fontWeight={700}>
                                 <Icon icon={Icons.ChevronLeft} w={12} h={12} />
                                 <Text as="span" ml={2}>
@@ -106,7 +106,7 @@ const ShareHistoricalPricesTable:any = ({ paddingTop, paddingBottom }:ShareHisto
                             <Flex align="center"
                                 display="inline-flex"
                                 borderBottom="2px solid"
-                                borderColor="oliveBlur"
+                                borderColor="oliveBlur2"
                                 transition="border-color 0.3s linear"
                                 _hover={{
                                     borderColor: 'olive'

@@ -13,11 +13,11 @@ import { IImage } from '~/interfaces/util/image';
 interface ILatestNewsItem extends IPost {
 }
 
-const LatestPostCard:any = ({ title, image, publishDate, slug, blocks }:ILatestNewsItem) : ReactNode => {
+const LatestPostCard:any = ({ title, coverImage, publishDate, slug, blocks }:ILatestNewsItem) : ReactNode => {
     const date:string = DateTime.fromISO(publishDate).toFormat('MMM d, yyyy');
     let currentImage:IImage;
-    if(image) {
-        currentImage = image;
+    if(coverImage) {
+        currentImage = coverImage;
     }
     else {
         blocks.map((block:IBlock) => {

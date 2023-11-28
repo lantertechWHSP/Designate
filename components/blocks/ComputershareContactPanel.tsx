@@ -65,7 +65,7 @@ const ComputershareContactPanelBlock:any = ({ title, description, image, onlineD
                 </AnimateOpacity>
             </Column>
         </Row>
-        <Divider borderColor="oliveBlur2" my={[4, 8, 12]} />
+        <Divider borderColor="oliveBlur3" my={[4, 8, 12]} />
         <Row>
             <Column width={[ColumnWidth.Full, ,ColumnWidth.OneThird]}>
                 {
