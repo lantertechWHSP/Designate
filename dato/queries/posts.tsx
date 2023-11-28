@@ -67,6 +67,8 @@ export const featuredLatestPosts:string = `
                     coverImage {
                         ${imageAttrs({ width: 840, height: 420 })}   
                     }
+                    coverImageCaption
+                    category
                     blocks {
                         ... on ImageRecord {
                             __typename
@@ -111,6 +113,8 @@ export const latestPosts:string = `
             coverImage {
                 ${imageAttrs({ width: 840, height: 420 })}   
             }
+            coverImageCaption
+            category
             blocks {
                 ... on ImageRecord {
                     __typename
@@ -155,6 +159,8 @@ export const featuredPosts:string = `
                     coverImage {
                         ${imageAttrs({ width: 1440, height: 550 })}   
                     }
+                    coverImageCaption
+                    category
                     blocks {
                         ... on ImageRecord {
                             __typename

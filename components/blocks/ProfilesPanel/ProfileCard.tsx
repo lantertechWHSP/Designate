@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Flex, Box, Heading, Image, AspectRatio } from '@chakra-ui/react';
+import { Flex, Box, Heading, Image } from '@chakra-ui/react';
 import { SectionLink } from '~/components/elements/sectionLink';
 import { IPerson } from '~/interfaces/models/person';
 import { IStructuredText } from '~/interfaces/util/structuredText';

@@ -4,12 +4,12 @@ import { Alert, Box, Flex, Heading } from '@chakra-ui/react';
 import ContentBlock from '~/components/blocks/Content';
 import { doQuery, queries} from '~/dato/api';
 import { IPost } from '~/interfaces/models/post';
-import LatestPostCard from '~/components/blocks/LatestPosts/LatestPostCard';
 import { SectionLinkButton } from "~/components/elements/sectionLink";
 import { Column, ColumnWidth, Row } from '~/components/elements/grid/grid';
 import { horizontalScrollMargin } from "~/lib/theme/theme";
 import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
 import { remove as _remove } from 'lodash';
+import PostCard from "~/components/elements/posts/PostCard";
 
 interface ILatestPostsPanelBlock extends IBlock {
     title:string;
@@ -40,7 +40,7 @@ const LatestPostsPanelBlock:any = ({ background, textColor, paddingTop, paddingB
                         posts.map((post:IPost, index:number) => {
                             return <Column width={[ColumnWidth.EightTwelfths, , ,ColumnWidth.FourTwelvfths]} key={index}>
                                 <Box mb={[0, , ,8]}>
-                                    <LatestPostCard {...post} />
+                                    <PostCard {...post} />
                                 </Box>
                             </Column>;
                         })

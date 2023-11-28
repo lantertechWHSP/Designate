@@ -92,7 +92,7 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
                     </Row>
                 </Container>
             </Box>
-            <Footer {...layout?.footer} ratio={[3, 2]} />
+            <Footer {...layout?.footer} />
         </Flex>
     );
 };

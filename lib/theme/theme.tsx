@@ -26,7 +26,7 @@ const colors:any = {
     darkSteel: '#323639',
 
     olive: '#50513c',
-    oliveBlur: 'rgba(80, 81, 60, 0.8)',
+    oliveBlur: 'rgba(80, 81, 60, 0.7)',
     oliveBlur2: 'rgba(80, 81, 60, 0.4)',
     oliveBlur3: 'rgba(80, 81, 60, 0.2)',
     oliveGrey: '#cbcbc5',

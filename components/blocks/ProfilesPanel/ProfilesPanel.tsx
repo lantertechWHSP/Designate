@@ -83,7 +83,7 @@ export const ProfilesPanelBlock:any = ({ items, columnCount = 3, background, pad
                                     <Divider borderColor="charcoalBlur" my={4} />
                                     {
                                         <Box display={['block', , 'none']}>
-                                            <Image image={activeItem?.person?.image} ratio={[1 / 1]} mb={8} />
+                                            <Image image={activeItem?.person?.image} mb={8} />
                                         </Box>
                                     }
                                     {

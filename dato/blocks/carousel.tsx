@@ -11,4 +11,5 @@ export const carouselRecord:string = `
     background
     paddingTop
     paddingBottom
+    autoSwitch
 `;
