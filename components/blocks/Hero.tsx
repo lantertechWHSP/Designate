@@ -14,25 +14,30 @@ interface IHeroBlock extends IBlock {
     video?:IVideo;
 }
 
-const InlineVideo:any = ({ url, onPlay, contentWidth }) => {
-    let videoContainer:HTMLVideoElement;
+const HeroBlock:any = ({ title, video }:IHeroBlock) : ReactNode => {
+    const { observe: contentWidthObserve, width: contentWidth } = useDimensions();
+    const height:string[] = ['420px', '482px'];
+    const [isVideoPlaying, setIsVideoPlaying] = useState<boolean>(false);
+    let videoContainer:HTMLElement;
 
     useEffect(() => {
-        const video = document.createElement('video');
-        video.autoplay = true;
-        video.loop = true;
-        video.preload = 'auto';
-        video.muted = true;
-        video.setAttribute('playsinline', 'true');
-        video.addEventListener('play', () => {
-            onPlay();
+        const videoElement:HTMLVideoElement = document.createElement('video');
+        videoElement.autoplay = true;
+        videoElement.loop = true;
+        videoElement.preload = 'auto';
+        videoElement.muted = true;
+        videoElement.setAttribute('playsinline', 'true');
+        videoElement.addEventListener('play', () => {
+            setTimeout(() => {
+                setIsVideoPlaying(true);
+            }, 100);
         });
 
-        const source = document.createElement('source');
-        source.src = url;
+        const source:any = document.createElement('source');
+        source.src = video.url;
         source.type = 'video/mp4';
-        video.appendChild(source);
-        videoContainer.children[0].appendChild(video);
+        videoElement.appendChild(source);
+        videoContainer.children[0].appendChild(videoElement);
 
         return () => {
             if(videoContainer && videoContainer.children[0]) {
@@ -40,20 +45,8 @@ const InlineVideo:any = ({ url, onPlay, contentWidth }) => {
                     videoContainer.children[0].removeChild(videoContainer.children[0].lastChild);
                 }
             }
-        }
-    }, [])
-
-    return <Box ref={(ref) => { videoContainer = ref; }}>
-        <AspectRatio ratio={[contentWidth / 300, contentWidth / 420, , contentWidth / 600]}>
-            <Fragment />
-        </AspectRatio>
-    </Box>
-}
-
-const HeroBlock:any = ({ title, video }:IHeroBlock) : ReactNode => {
-    const { observe: contentWidthObserve, width: contentWidth } = useDimensions();
-    const height:string[] = ['420px', '482px'];
-    const [isVideoPlaying, setIsVideoPlaying] = useState<boolean>(false);
+        };
+    }, []);
 
     return (title || video && video?.url) && <Box overflow="hidden" ref={contentWidthObserve}>
         {
@@ -80,14 +73,11 @@ const HeroBlock:any = ({ title, video }:IHeroBlock) : ReactNode => {
         {
             (video && video?.url) && <Box h={['300px', '420px', ,'600px']}>
                 <Box visibility={(isVideoPlaying) ? 'visible' : 'hidden'} height={!isVideoPlaying ? 0 : 'initial'}>
-                  <AspectRatio ratio={[contentWidth / 300, contentWidth / 420, , contentWidth / 600]}>
-                    <video autoPlay={true} loop={true} muted={true} playsInline={true} preload="auto" >
-                      <source src={video?.url} />
-                    </video>
-                  </AspectRatio>
-                  <InlineVideo url={video.url} onPlay={() => {
-                      setIsVideoPlaying(true);
-                  }} contentWidth={contentWidth} />
+                    <Box ref={(ref) => { videoContainer = ref; }}>
+                        <AspectRatio ratio={[contentWidth / 300, contentWidth / 420, , contentWidth / 600]}>
+                            <Fragment />
+                        </AspectRatio>
+                    </Box>
                 </Box>
                 {
                     (!isVideoPlaying) && <Box width="100%" height="100%" backgroundColor="#230d05">

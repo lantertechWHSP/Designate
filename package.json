@@ -23,7 +23,6 @@
     "@emotion/styled": "^11.11.0",
     "@fontsource/heebo": "^5.0.8",
     "@mailchimp/mailchimp_marketing": "^3.0.80",
-    "@next/font": "^14.0.2",
     "@types/d3": "^7.4.0",
     "@types/luxon": "^3.3.2",
     "@types/node": "20.4.8",

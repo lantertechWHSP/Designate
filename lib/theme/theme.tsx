@@ -524,7 +524,7 @@ export const theme:any = extendBaseTheme({
                 overflow: 'hidden'
             },
             '.yourir-announcement-popup': {
-                zIndex: '120'
+                zIndex: zIndex.yourirPopup
             },
             '.yourir-chart': {
                 fontFamily: fontRoboto.style.fontFamily,
@@ -545,13 +545,6 @@ export const theme:any = extendBaseTheme({
             },
             'table.yourir-chart-tooltip-legend': {
                 margin: 0
-            },
-            '#yourir-default-announcement': {
-                height: '0',
-                overflow: 'hidden'
-            },
-            '.yourir-announcement-popup': {
-                zIndex: zIndex.yourirPopup
             },
             // Render horizonal scroll
             '.horizonalScroll::-webkit-scrollbar': {
