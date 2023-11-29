@@ -519,6 +519,13 @@ export const theme:any = extendBaseTheme({
                 }
             },
             // YourIR
+            '#yourir-default-announcement': {
+                height: '0',
+                overflow: 'hidden'
+            },
+            '.yourir-announcement-popup': {
+                zIndex: '120'
+            },
             '.yourir-chart': {
                 fontFamily: fontRoboto.style.fontFamily,
             },
