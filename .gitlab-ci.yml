@@ -27,7 +27,7 @@ cache:
 
 test_version:
   script:
-    - node version
+    - node -v
 
 
 deploy:
