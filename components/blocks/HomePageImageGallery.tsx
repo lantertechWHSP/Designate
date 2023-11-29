@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
 import ContentBlock from '~/components/blocks/Content';
-import { Box, Flex } from '@chakra-ui/react';
+import { Grid, GridItem, AspectRatio } from '@chakra-ui/react';
 import { Image } from '~/components/elements/image';
 import { IImage } from '~/interfaces/util/image';
 import { AnimateOpacity } from '~/components/elements/animation/AnimateOpacity';
@@ -15,25 +15,28 @@ interface IHomePageImageGalleryBlock extends IBlock {
 const HomePageImageGalleryBlock:any = ({ imageMain, imageSide, imageSide2, background, paddingTop, paddingBottom }:IHomePageImageGalleryBlock) : ReactNode => {
     return (imageMain || imageSide || imageSide2) && <ContentBlock background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         {
-            (imageMain || imageSide || imageSide2) && <Flex direction="row" mx={[-2, -2, -4]} overflow="hidden">
-                <Box px={[2, 2, 4]} width={['100%', ,'50%']}>
-                    <AnimateOpacity>
-                        <Image image={imageMain} ratio={[652 / 672]} borderRadius="3px" overflow="hidden" />
-                    </AnimateOpacity>
-                </Box>
-                <Box px={[2, 2, 4]} my={[-4, -4, -8]} width={['100%', ,'50%']}>
-                    <Box py={[2, 2, 4]}>
+            <Grid
+                gap={[4, 4, 8]}
+                templateRows="repeat(2, 1fr)"
+                templateColumns="repeat(2, 1fr)">
+                <GridItem rowSpan={2} borderRadius="3px" overflow="hidden">
+                    <AspectRatio ratio={[652 / 672]}>
                         <AnimateOpacity delay={0.1}>
-                            <Image image={imageSide} ratio={[ 652 / 330 ]} borderRadius="3px" overflow="hidden" />
+                            <Image image={imageMain} ratio={[652 / 672]} />
                         </AnimateOpacity>
-                    </Box>
-                    <Box py={[2, 2, 4]}>
-                        <AnimateOpacity delay={0.2}>
-                            <Image image={imageSide2}  ratio={[ 652 / 330 ]} borderRadius="3px" overflow="hidden" />
-                        </AnimateOpacity>
-                    </Box>
-                </Box>
-            </Flex>
+                    </AspectRatio>
+                </GridItem>
+                <GridItem overflow="hidden" position="relative" borderRadius="3px">
+                    <AnimateOpacity delay={0.2} height="100%" width="100%">
+                        <Image position="absolute" top="0" image={imageSide} ratio={[ 652 / 332 ]} borderRadius="3px" overflow="hidden" />
+                    </AnimateOpacity>
+                </GridItem>
+                <GridItem overflow="hidden" position="relative" borderRadius="3px">
+                    <AnimateOpacity delay={0.3} height="100%" width="100%">
+                        <Image position="absolute" top="0" image={imageSide2} ratio={[ 652 / 332 ]} borderRadius="3px" overflow="hidden" />
+                    </AnimateOpacity>
+                </GridItem>
+            </Grid>
         }
     </ContentBlock>;
 };

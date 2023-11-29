@@ -69,11 +69,11 @@ const CardPanelBlock:any = ({ annotation, title, description, image, link, align
                         }
                         <Box flex={1} />
                         {
-                            link && <AnimateOverflow>
-                                <SectionLink {...link} mt={4}>
+                            link && <Box  mt={4} mb={2}><AnimateOverflow>
+                                <SectionLink {...link}>
                                     {link.document ? 'Download' : 'Read More'}
                                 </SectionLink>
-                            </AnimateOverflow>
+                            </AnimateOverflow></Box>
                         }
                     </Flex>
                 </Column>

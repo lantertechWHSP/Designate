@@ -8,7 +8,7 @@ interface IAnimateOverflowText {
     delay?:number;
 }
 
-export const AnimateOpacity:any = ({ children, delay =  0}:IAnimateOverflowText) : ReactNode => {
+export const AnimateOpacity:any = ({ children, delay =  0, ...props}:IAnimateOverflowText) : ReactNode => {
     const [scope, animate] = useAnimate();
     const { scrollYProgress } = useScroll({
         target: scope,
@@ -33,7 +33,7 @@ export const AnimateOpacity:any = ({ children, delay =  0}:IAnimateOverflowText)
 
     return <Box ref={scope} sx={{
         opacity: 0
-    }}>
+    }} {...props}>
         {children}
     </Box>;
 };

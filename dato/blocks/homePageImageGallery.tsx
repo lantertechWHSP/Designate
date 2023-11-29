@@ -6,10 +6,10 @@ export const homePageImageGalleryRecord:string = `
         ${imageAttrs({ width: 652, height: 672})}
     }
     imageSide {
-        ${imageAttrs({ width: 652, height: 330})}
+        ${imageAttrs({ width: 652, height: 332 })}
     }
     imageSide2 {
-        ${imageAttrs({ width: 652, height: 330})}
+        ${imageAttrs({ width: 652, height: 332 })}
     }
     background
     paddingTop
