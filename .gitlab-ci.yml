@@ -12,4 +12,4 @@ install:
 build:
   stage: build
   script:
-    - npm build
+    - npm run build
