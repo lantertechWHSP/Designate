@@ -1,7 +1,15 @@
-image: node:latest
+image: node:18.12.1
 
 stages:
+  - install
   - build
 
+install:
+  stage: install
+  script:
+    - npm install
+
 build:
-  script: npm run build
+  stage: build
+  script:
+    - npm run build
