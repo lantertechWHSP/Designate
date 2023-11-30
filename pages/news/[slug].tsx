@@ -18,7 +18,7 @@ interface INextPageProps {
 }
 
 export async function getStaticPaths() : Promise<GetStaticPathsResult<any>> {
-    const posts:any = await doQuery(queries.posts).then(({ posts }) => posts);
+    const posts:any = await doQuery(queries.posts, { first: 100 }).then(({ posts }) => posts);
     const paths:any = (Array.isArray(posts) && posts.length > 0) ? posts.map((post) => ({
         params: { slug: post.slug }
     })) : [];
