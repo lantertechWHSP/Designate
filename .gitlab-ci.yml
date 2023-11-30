@@ -1,5 +1,9 @@
 image: node:18.12.1
 
+cache:
+  paths:
+    - node_modules/
+
 stages:
   - install
   - build
@@ -7,7 +11,7 @@ stages:
 install:
   stage: install
   script:
-    - npm install
+    - npm install --global
 
 build:
   stage: build
