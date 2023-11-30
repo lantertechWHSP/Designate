@@ -25,7 +25,7 @@
 #  paths:
 #    - node_modules/
 
-#test_version:
+# test_version:
 #  script:
 #    - node -v
 
