@@ -5,15 +5,10 @@ cache:
     - node_modules/
 
 stages:
-  - install
-  - build
+  - setup
 
 install:
-  stage: install
+  stage: setup
   script:
-    - npm install --global
-
-build:
-  stage: build
-  script:
+    - npm ci
     - npm run build
