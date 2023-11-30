@@ -1,0 +1,7 @@
+image: node:latest
+
+stages:
+  - build
+
+build:
+  script: npm run build
