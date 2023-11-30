@@ -23,11 +23,7 @@ const PostListLayout:any = ({ layout, featuredPosts, posts, postsMeta }:any) : R
             <Header darkTheme={hasFeaturedPosts ? layout?.darkTheme : false} menu={layout?.menu} />
             <Box flex="1">
                 {
-                    hasFeaturedPosts ? <Box background="rgba(0, 0, 0, 0.9)">
-                        <Container minW="1500px">
-                            <FeaturedPostsCarousel posts={featuredPosts} />
-                        </Container>
-                    </Box>
+                    hasFeaturedPosts ?  <FeaturedPostsCarousel posts={featuredPosts} />
                         : <Box h={['376px']} position="relative"background="linear-gradient(270deg, #50513C 0%, rgba(228, 221, 193, 0.50) 100%)">
                             <Container>
                                 <Flex h={['376px']} align="flex-end" zIndex={zIndex.heroHeading} position="relative">
