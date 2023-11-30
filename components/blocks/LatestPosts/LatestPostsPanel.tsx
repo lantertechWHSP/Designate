@@ -56,8 +56,9 @@ LatestPostsPanelBlock.getData = async () => {
         orderBy: 'publishDate_DESC'
     }).then(({ featuredPostsList }) => featuredPostsList.posts || []);
 
+    const postCount:number = 3;
     const posts:any = await doQuery(queries.latestPosts, {
-        first: 6,
+        first: postCount,
         orderBy: 'publishDate_DESC'
     }).then(({ posts }) => posts || []);
 
@@ -68,7 +69,7 @@ LatestPostsPanelBlock.getData = async () => {
     });
 
     return {
-        posts: [...featuredPosts, ...posts].slice(0, 6)
+        posts: [...featuredPosts, ...posts].slice(0, postCount)
     };
 };
 
