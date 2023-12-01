@@ -15,7 +15,3 @@ setup:
     - echo "$ENVIRONMENT_VARIABLES" >> ".env"
     - npm ci
     - npm run build
-
-# 2) Deploy to private server (copying over the .next/server)
-deploy:
-  stage: deploy
