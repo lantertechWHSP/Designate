@@ -44,4 +44,3 @@ setup:
 # 2) Deploy to private server (copying over the .next/server)
 deploy:
   stage: deploy
-  # Talk to the server
