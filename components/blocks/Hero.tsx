@@ -71,16 +71,16 @@ const HeroBlock:any = ({ title, video }:IHeroBlock) : ReactNode => {
             </Box>
         }
         {
-            (video && video?.url) && <Box h={['300px', '420px', ,'600px']}>
+            (video && video?.url) && <Box>
                 <Box visibility={(isVideoPlaying) ? 'visible' : 'hidden'} height={!isVideoPlaying ? 0 : 'initial'}>
                     <Box ref={(ref) => { videoContainer = ref; }}>
-                        <AspectRatio ratio={[contentWidth / 300, contentWidth / 420, , contentWidth / 600]}>
+                        <AspectRatio ratio={[contentWidth / 300, contentWidth / 420, ,contentWidth / 600, (1 / 0.4)]}>
                             <Fragment />
                         </AspectRatio>
                     </Box>
                 </Box>
                 {
-                    (!isVideoPlaying) && <Box width="100%" height="100%" backgroundColor="#230d05">
+                    (!isVideoPlaying) && <Box h={['300px', '420px', ,'600px', '40vh']} width="100%" height="100%" backgroundColor="#230d05">
                         <Skeleton width="100%" height="100%" startColor="#0f0403" endColor="#1a0505" />
                     </Box>
                 }
