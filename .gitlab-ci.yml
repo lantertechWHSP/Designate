@@ -10,5 +10,6 @@ stages:
 install:
   stage: setup
   script:
+    - echo "$ENVIRONMENT_VARIABLES" > ".env"
     - npm ci
-#    - npm run build
+    - npm run build
