@@ -12,6 +12,6 @@ install:
   script:
     - pwd
     - echo "$ENVIRONMENT_VARIABLES"
-    - echo "$ENVIRONMENT_VARIABLES" > ".env"
+    - sudo echo "$ENVIRONMENT_VARIABLES" > ".env"
     - npm ci
     - npm run build
