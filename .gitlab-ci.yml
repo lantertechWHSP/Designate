@@ -27,12 +27,15 @@ before_script:
   ##
   - ssh-keyscan 20.157.214.14 >> ~/.ssh/known_hosts
   - chmod 644 ~/.ssh/known_hosts
+build:
   ##
-  ## Optionally, if you will be using any Git commands, set the user name and
-  ## and email.
-  ##
-  # - git config --global user.email "user@example.com"
-  # - git config --global user.name "User name"
-tunnel:
+  ## Build the code
+  ## “cd /opt/whsp”: go to directory
+  ## “git pull”: pull the latest code
+  ## “rm -f package-lock.json”: Remove package lock
+  ## “npm install”: Install package
+  ## “rm -rf .next”: Remove .next file
+  ## “npm run build”: Build the .next file
+  ## “sudo systemctl restart nextjs”: Restart the server
   script:
-    - ssh -tt gitlab@20.157.214.14 "cd /opt/whsp && git pull && rm package-lock.json && npm install && rm -rf .next && npm run build && sudo systemctl restart nextjs"
+    - ssh -tt gitlab@20.157.214.14 "cd /opt/whsp && git pull && rm -f package-lock.json && npm install && rm -rf .next && npm run build && sudo systemctl restart nextjs"
