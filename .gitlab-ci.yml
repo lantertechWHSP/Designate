@@ -39,6 +39,11 @@ cache:
   paths:
     - node_modules/
 
+default:
+  artifacts:
+    paths:
+      - .next/
+
 stages:
   - build
   - deploy
