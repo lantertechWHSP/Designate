@@ -30,7 +30,7 @@ before_script:
   ##
   ## Add Rsync
   ##
-  - apt-get install rsync
+  - apt install rsync
 
 image: node:18.12.1
 
