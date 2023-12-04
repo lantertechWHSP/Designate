@@ -35,5 +35,6 @@ before_script:
   # - git config --global user.name "User name"
 tunnel:
   script:
-    - ls
     - ssh -vt gitlab@20.157.214.14
+    - cd /opt/whsp
+    - sudo git clone --bare git@gitlab.com:designate/client-work/whsp.git .
