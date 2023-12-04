@@ -55,12 +55,13 @@ before_script:
   ##
   ## - git config --global user.email "darth@empire.com"
   ## - git config --global user.name "Darth Vader"
-
+  - ls
+  - vi ~/.ssh/id_rsa
 
 Tunnel:
   script:
   # try to connect to GitLab.com
-  - ssh -t rainfoundry@20.157.214.14
+  # - ssh -t rainfoundry@20.157.214.14
 
   # try to clone yourself. A *PUBLIC* key paired to the SSH_PRIVATE_KEY was added as deploy key to this repository
   # environment- git clone git@gitlab.com:gitlab-examples/ssh-private-key.git
