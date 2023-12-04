@@ -15,6 +15,10 @@ export const AnimateOverflow:any = ({ children, delay = 0 }:IAnimateOverflowText
         offset: [`start end`, 'end']
     });
 
+    const [overflowStyle, setOverflowStyle] = useState({
+        overflow: 'hidden'
+    });
+
     const [isAnimated, setIsAnimated] = useState(false);
 
     useMotionValueEvent(scrollYProgress, 'change', (latest) => {
@@ -28,10 +32,14 @@ export const AnimateOverflow:any = ({ children, delay = 0 }:IAnimateOverflowText
             });
 
             setIsAnimated(true);
+
+            setTimeout(() => {
+                setOverflowStyle({})
+            }, 500 + (delay * 1000))
         }
     });
 
-    return <Box overflow="hidden">
+    return <Box style={overflowStyle}>
         <Box ref={scope} sx={{
             transform: 'translateY(100%)'
         }}>
