@@ -36,9 +36,9 @@ cache:
 
 testBuild:
   script:
-    - npm install
+    - echo "$ENVIRONMENT_VARIABLES" >> ".env"
+    - npm ci
     - npm run build
-    - ls
 # build:
 #   ##
 #   ## Build the code
