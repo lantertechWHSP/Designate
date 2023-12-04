@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
-import { Flex, Box, Heading, Image, AspectRatio } from '@chakra-ui/react';
-import { SectionLink } from '~/components/elements/sectionLink';
+import { Flex, Box, Heading, Image, AspectRatio, Button } from '@chakra-ui/react';
+import { SectionLinkInner} from '~/components/elements/sectionLink';
 import { IPerson } from '~/interfaces/models/person';
 import { IStructuredText } from '~/interfaces/util/structuredText';
 import { AnimateOpacity } from '~/components/elements/animation/AnimateOpacity';
@@ -42,9 +42,11 @@ const ProfileCard:any = ({ person, onClick }:IProfileCard) : ReactNode => {
         {
             <Box mt={[4, ,6, 8]}>
                 <AnimateOverflow>
-                    <SectionLink onClick={onClick} href="javacript:void(0)">
-                        Read More
-                    </SectionLink>
+                    <Button onClick={onClick}>
+                        <SectionLinkInner>
+                            Read More
+                        </SectionLinkInner>
+                    </Button>
                 </AnimateOverflow>
             </Box>
         }

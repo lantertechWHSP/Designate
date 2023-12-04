@@ -11,4 +11,5 @@ export const imageRecord:string = `
     paddingTop
     paddingBottom
     background
+    imageWidth
 `;

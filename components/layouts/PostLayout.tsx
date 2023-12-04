@@ -48,8 +48,8 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
                                 <Box mb={['40px', ,'50px', '60px']}>
                                     {
                                         post?.title && <Heading as="h1"
-                                            fontSize={['50px']}
-                                            lineHeight={['54px']}
+                                            fontSize={['32px', , ,'44px', '50px']}
+                                            lineHeight={['36px', , ,'48px', '54px']}
                                             fontWeight={500}
                                             color="charcoal">
                                             <AnimateOverflow>

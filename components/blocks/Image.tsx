@@ -11,16 +11,17 @@ import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow
 interface IImageBlock extends IBlock {
     title?:string;
     image:IImage;
+    imageWidth?:number;
 }
 
-const ImageBlock:any = ({ title, image, contain, containerWidth, background, paddingTop, paddingBottom  }:IImageBlock) : ReactNode => {
+const ImageBlock:any = ({ title, image, contain, containerWidth, background, paddingTop, paddingBottom, imageWidth  }:IImageBlock) : ReactNode => {
     return (title || image) && <ContentBlock className="ImageBlock" contain={contain} containerWidth={containerWidth} background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         {
             (image && image.responsiveImage) && <AnimateOpacity>
                 <Box borderRadius="3px" overflow="hidden">
                     <DatoImage data={image.responsiveImage} style={{
-                        width: '100%',
-                        maxWidth: 'unset'
+                        width: imageWidth ? `${imageWidth}px` : '100%',
+                        maxWidth: imageWidth ? '100%' : 'unset'
                     }} />
                 </Box>
             </AnimateOpacity>
