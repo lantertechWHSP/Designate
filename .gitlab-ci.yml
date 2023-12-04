@@ -58,8 +58,8 @@ before_script:
   - ls
   - vi ~/.ssh/id_rsa
 
-Tunnel:
-  script:
+  # Tunnel:
+  # script:
   # try to connect to GitLab.com
   # - ssh -t rainfoundry@20.157.214.14
 
