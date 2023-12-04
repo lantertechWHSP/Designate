@@ -57,10 +57,10 @@ deploy:
   stage: deploy
   script:
     # Transfer files to the server
-    - rsync -azP next.config.js gitlab@20.157.214.14:/opt/whsp/guff/ 
-    - rsync -azP package.json gitlab@20.157.214.14:/opt/whsp/guff/
-    - rsync -azP node_modules gitlab@20.157.214.14:/opt/whsp/guff/
-    - rsync -azP .next gitlab@20.157.214.14:/opt/whsp/guff/
+    - rsync -az next.config.js gitlab@20.157.214.14:/opt/whsp/guff/ 
+    - rsync -az package.json gitlab@20.157.214.14:/opt/whsp/guff/
+    - rsync -az node_modules gitlab@20.157.214.14:/opt/whsp/guff/
+    - rsync -az .next gitlab@20.157.214.14:/opt/whsp/guff/
     # - ssh -tt gitlab@20.157.214.14 "scp next.config.js /opt/whsp/guff/"
 # build:
 #   ##
