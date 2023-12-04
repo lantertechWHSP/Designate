@@ -4,19 +4,16 @@ before_script:
   ## (change apt-get to yum if you use an RPM-based image)
   ##
   - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
-
   ##
   ## Run ssh-agent (inside the build environment)
   ##
   - eval $(ssh-agent -s)
-
   ##
   ## Give the right permissions, otherwise ssh-add will refuse to add files
   ## Add the SSH key stored in SSH_PRIVATE_KEY file type CI/CD variable to the agent store
   ##
   - chmod 400 "$SSH_PRIVATE_KEY"
   - ssh-add "$SSH_PRIVATE_KEY"
-
   ##
   ## Create the SSH directory and give it the right permissions
   ##
@@ -33,17 +30,21 @@ before_script:
   - apt-get -y update
   - apt-get -y install rsync
 
+## Use node as the image
 image: node:18.12.1
 
+## Cache node modules
 cache:
   paths:
     - node_modules/
 
+## Artifact the .next directory
 default:
   artifacts:
     paths:
       - .next/
 
+## Define the stages
 stages:
   - build
   - deploy
@@ -57,27 +58,14 @@ build:
     - npm ci
     ## Build
     - npm run build
-    - ls
 
 deploy:
   stage: deploy
   script:
-    # Transfer files to the server
-    - ls
-    - rsync -az next.config.js gitlab@20.157.214.14:/opt/whsp/guff/ 
-    - rsync -az package.json gitlab@20.157.214.14:/opt/whsp/guff/
-    - rsync -az node_modules gitlab@20.157.214.14:/opt/whsp/guff/
-    - rsync -az .next gitlab@20.157.214.14:/opt/whsp/guff/
-    # - ssh -tt gitlab@20.157.214.14 "scp next.config.js /opt/whsp/guff/"
-# build:
-#   ##
-#   ## Build the code
-#   ## “cd /opt/whsp”: go to directory
-#   ## “git pull”: pull the latest code
-#   ## “rm -f package-lock.json”: Remove package lock
-#   ## “npm install”: Install package
-#   ## “rm -rf .next”: Remove .next file
-#   ## “npm run build”: Build the .next file
-#   ## “sudo systemctl restart nextjs”: Restart the server
-#   script:
-#     - ssh -tt gitlab@20.157.214.14 "cd /opt/whsp && git pull && rm -f package-lock.json && npm install && rm -rf .next && npm run build && sudo systemctl restart nextjs"
+    ## Transfer files to the server
+    - rsync -az next.config.js gitlab@20.157.214.14:/opt/whsp/ 
+    - rsync -az package.json gitlab@20.157.214.14:/opt/whsp/
+    - rsync -az node_modules gitlab@20.157.214.14:/opt/whsp/
+    - rsync -az .next gitlab@20.157.214.14:/opt/whsp/
+    ## Restart the server
+    - ssh -tt gitlab@20.157.214.14 "sudo systemctl restart nextjs"
