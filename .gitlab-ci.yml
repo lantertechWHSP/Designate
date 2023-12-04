@@ -60,7 +60,7 @@ before_script:
 Tunnel:
   script:
   # try to connect to GitLab.com
-  - ssh -t rainfoundry@20.157.214.14
+  - ssh -tt rainfoundry@20.157.214.14
 
   # try to clone yourself. A *PUBLIC* key paired to the SSH_PRIVATE_KEY was added as deploy key to this repository
   # environment- git clone git@gitlab.com:gitlab-examples/ssh-private-key.git
