@@ -34,11 +34,15 @@ cache:
   paths:
     - node_modules/
 
-testBuild:
+build:
   script:
     - echo "$ENVIRONMENT_VARIABLES" >> ".env"
     - npm ci
     - npm run build
+
+tunnel:
+  script:
+    - ssh -tt gitlab@20.157.214.14 "scp next.config.js /opt/whsp/guff/"
 # build:
 #   ##
 #   ## Build the code
