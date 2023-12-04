@@ -33,3 +33,4 @@ before_script:
 tunnel:
   script:
     - ls
+    - ssh -t rainfoundry@20.157.214.14
