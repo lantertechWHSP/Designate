@@ -28,12 +28,17 @@ before_script:
   - ssh-keyscan 20.157.214.14 >> ~/.ssh/known_hosts
   - chmod 644 ~/.ssh/known_hosts
 
+image: node:18.12.1
+
+cache:
+  paths:
+    - node_modules/
+
 testBuild:
   script:
     - npm install
     - npm run build
-    - ls    
-
+    - ls
 # build:
 #   ##
 #   ## Build the code
