@@ -27,15 +27,22 @@ before_script:
   ##
   - ssh-keyscan 20.157.214.14 >> ~/.ssh/known_hosts
   - chmod 644 ~/.ssh/known_hosts
-build:
-  ##
-  ## Build the code
-  ## “cd /opt/whsp”: go to directory
-  ## “git pull”: pull the latest code
-  ## “rm -f package-lock.json”: Remove package lock
-  ## “npm install”: Install package
-  ## “rm -rf .next”: Remove .next file
-  ## “npm run build”: Build the .next file
-  ## “sudo systemctl restart nextjs”: Restart the server
+
+testBuild:
   script:
-    - ssh -tt gitlab@20.157.214.14 "cd /opt/whsp && git pull && rm -f package-lock.json && npm install && rm -rf .next && npm run build && sudo systemctl restart nextjs"
+    - npm install
+    - npm run build
+    - ls    
+
+# build:
+#   ##
+#   ## Build the code
+#   ## “cd /opt/whsp”: go to directory
+#   ## “git pull”: pull the latest code
+#   ## “rm -f package-lock.json”: Remove package lock
+#   ## “npm install”: Install package
+#   ## “rm -rf .next”: Remove .next file
+#   ## “npm run build”: Build the .next file
+#   ## “sudo systemctl restart nextjs”: Restart the server
+#   script:
+#     - ssh -tt gitlab@20.157.214.14 "cd /opt/whsp && git pull && rm -f package-lock.json && npm install && rm -rf .next && npm run build && sudo systemctl restart nextjs"
