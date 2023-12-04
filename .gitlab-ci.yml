@@ -23,6 +23,7 @@ before_script:
   - mkdir -p ~/.ssh
   - chmod 700 ~/.ssh
   - curl ifconfig.me
+  ## Guff
   ##
   ## Optionally, if you will be using any Git commands, set the user name and
   ## and email.
