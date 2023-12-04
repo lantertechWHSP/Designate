@@ -39,17 +39,28 @@ cache:
   paths:
     - node_modules/
 
+stages:
+  - build
+  - deploy
+
 build:
+  stage: build
   script:
+    ## Add the environment variables and echo it to a .env file for building
     - echo "$ENVIRONMENT_VARIABLES" >> ".env"
+    ## Install
     - npm ci
+    ## Build
     - npm run build
 
-transfer:
+deploy:
+  stage: deploy
   script:
-    - ls
+    # Transfer files to the server
     - rsync -azP next.config.js gitlab@20.157.214.14:/opt/whsp/guff/ 
     - rsync -azP package.json gitlab@20.157.214.14:/opt/whsp/guff/
+    - rsync -azP node_modules gitlab@20.157.214.14:/opt/whsp/guff/
+    - rsync -azP .next gitlab@20.157.214.14:/opt/whsp/guff/
     # - ssh -tt gitlab@20.157.214.14 "scp next.config.js /opt/whsp/guff/"
 # build:
 #   ##
