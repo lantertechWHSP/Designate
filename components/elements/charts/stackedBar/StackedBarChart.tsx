@@ -6,7 +6,7 @@ import { AxisLeft } from '~/components/elements/charts/stackedBar/modules/AxisLe
 import { AxisBottom } from '~/components/elements/charts/stackedBar/modules/AxisBottom';
 import { breakpoints } from '~/lib/theme/theme';
 import { Bars } from '~/components/elements/charts/stackedBar/modules/Bars';
-import { fontRoboto } from '~/pages/_fonts';
+import { fontRoboto } from '~/app/_fonts';
 
 interface IStackedBarChart {
     data: {

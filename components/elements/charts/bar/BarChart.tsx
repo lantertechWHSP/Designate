@@ -6,7 +6,7 @@ import { AxisBottom } from "~/components/elements/charts/bar/modules/AxisBottom"
 import { Bars } from "~/components/elements/charts/bar/modules/Bars";
 import { maxBy as _maxBy, throttle as _throttle, isNil as _isNil } from 'lodash';
 import { breakpoints } from '~/lib/theme/theme';
-import { fontRoboto } from '~/pages/_fonts';
+import { fontRoboto } from '~/app/_fonts';
 
 interface IBarChart {
     data: {

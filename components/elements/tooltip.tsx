@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { Box } from '@chakra-ui/react';
-import { fontRoboto } from '~/pages/_fonts';
+import { fontRoboto } from '~/app/_fonts';
 import { boxShadow } from '~/lib/theme/theme';
 import { zIndex } from "~/lib/theme/theme";
 

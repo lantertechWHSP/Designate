@@ -1,6 +1,6 @@
 import { extendBaseTheme } from '@chakra-ui/react';
 import chakraTheme from '@chakra-ui/theme';
-import { fontGramatika, fontRoboto } from '~/pages/_fonts';
+import { fontGramatika, fontRoboto } from '~/app/_fonts';
 const { Modal, Menu, Badge, Alert, Skeleton } = chakraTheme.components;
 
 export const breakpoints:any = {

@@ -2,7 +2,7 @@ import { useEffect, useRef, ReactNode } from 'react';
 import { select, axisBottom } from 'd3';
 import { useMediaQuery } from '@chakra-ui/react';
 import { breakpoints } from '~/lib/theme/theme';
-import { fontRoboto } from '~/pages/_fonts';
+import { fontRoboto } from '~/app/_fonts';
 
 interface IAxisBottom {
     scale:any;

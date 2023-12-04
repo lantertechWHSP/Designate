@@ -6,7 +6,7 @@ import { DateTime } from 'luxon';
 import { AxisLeft } from "~/components/elements/charts/line/modules/AxisLeft";
 import { AxisBottom } from "~/components/elements/charts/line/modules/AxisBottom";
 import { breakpoints } from '~/lib/theme/theme';
-import { fontRoboto } from '~/pages/_fonts';
+import { fontRoboto } from '~/app/_fonts';
 import { ChartTooltip } from "~/components/elements/charts/line/modules/ChartTooltip";
 
 interface ILineChart {

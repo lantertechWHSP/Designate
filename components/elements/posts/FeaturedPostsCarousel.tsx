@@ -89,8 +89,8 @@ const FeaturedPostsCarousel:any = ({ posts }:IFeaturedPostsCarousel) : any => {
                         posts.map((post:IPost, index:number) => {
                             return <Box className="keen-slider__slide" key={index} minWidth="100%">
                                 <Box minHeight={['580px']}
-                                     height={['780px']}
-                                     maxHeight={['100vh']}>
+                                    height={['780px']}
+                                    maxHeight={['100vh']}>
                                     <Flex position="absolute"
                                         top="0"
                                         bottom="0"
