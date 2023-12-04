@@ -22,14 +22,13 @@ before_script:
   ##
   - mkdir -p ~/.ssh
   - chmod 700 ~/.ssh
-  - curl ifconfig.me
-  ## Guff
   ##
   ## Optionally, if you will be using any Git commands, set the user name and
   ## and email.
   ##
   # - git config --global user.email "user@example.com"
   # - git config --global user.name "User name"
+
 
 tunnel:
   script:
