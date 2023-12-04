@@ -35,4 +35,4 @@ before_script:
   # - git config --global user.name "User name"
 tunnel:
   script:
-    - ssh -tt gitlab@20.157.214.14 
+    - ssh -t gitlab@20.157.214.14 "cd /opt/wshp && git pull && npm install && npm run build && sudo systemctl restart nextjs"
