@@ -23,13 +23,16 @@ before_script:
   - mkdir -p ~/.ssh
   - chmod 700 ~/.ssh
   ##
+  ## Add Known Hosts
+  ##
+  - ssh-keyscan 20.157.214.14 >> ~/.ssh/known_hosts
+  - chmod 644 ~/.ssh/known_hosts
+  ##
   ## Optionally, if you will be using any Git commands, set the user name and
   ## and email.
   ##
   # - git config --global user.email "user@example.com"
   # - git config --global user.name "User name"
-
-
 tunnel:
   script:
     - ls
