@@ -22,3 +22,12 @@ before_script:
   ##
   - mkdir -p ~/.ssh
   - chmod 700 ~/.ssh
+
+stages:
+  - setup
+  - deploy
+
+setup:
+  stage: setup
+  script:
+    - ssh -t rainfoundry@20.157.214.14
