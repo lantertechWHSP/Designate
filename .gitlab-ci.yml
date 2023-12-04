@@ -29,7 +29,9 @@ before_script:
   - chmod 644 ~/.ssh/known_hosts
   ##
   ## Add Rsync
-  - apk add rsync
+  ##
+  - apt-get add rsync
+
 image: node:18.12.1
 
 cache:
