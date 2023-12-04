@@ -17,36 +17,6 @@ interface IHeroBlock extends IBlock {
 const HeroBlock:any = ({ title, video }:IHeroBlock) : ReactNode => {
     const { observe: contentWidthObserve, width: contentWidth } = useDimensions();
     const height:string[] = ['420px', '482px'];
-    const [isVideoPlaying, setIsVideoPlaying] = useState<boolean>(false);
-    let videoContainer:HTMLElement;
-
-    useEffect(() => {
-        const videoElement:HTMLVideoElement = document.createElement('video');
-        videoElement.autoplay = true;
-        videoElement.loop = true;
-        videoElement.preload = 'auto';
-        videoElement.muted = true;
-        videoElement.setAttribute('playsinline', 'true');
-        videoElement.addEventListener('play', () => {
-            setTimeout(() => {
-                setIsVideoPlaying(true);
-            }, 100);
-        });
-
-        const source:any = document.createElement('source');
-        source.src = video.url;
-        source.type = 'video/mp4';
-        videoElement.appendChild(source);
-        videoContainer.children[0].appendChild(videoElement);
-
-        return () => {
-            if(videoContainer && videoContainer.children[0]) {
-                while (videoContainer.children[0].firstChild) {
-                    videoContainer.children[0].removeChild(videoContainer.children[0].lastChild);
-                }
-            }
-        };
-    }, []);
 
     return (title || video && video?.url) && <Box overflow="hidden" ref={contentWidthObserve}>
         {
@@ -72,18 +42,11 @@ const HeroBlock:any = ({ title, video }:IHeroBlock) : ReactNode => {
         }
         {
             (video && video?.url) && <Box>
-                <Box visibility={(isVideoPlaying) ? 'visible' : 'hidden'} height={!isVideoPlaying ? 0 : 'initial'}>
-                    <Box ref={(ref) => { videoContainer = ref; }}>
-                        <AspectRatio ratio={[contentWidth / 300, contentWidth / 420, ,contentWidth / 600, (1 / 0.4)]}>
-                            <Fragment />
-                        </AspectRatio>
-                    </Box>
-                </Box>
-                {
-                    (!isVideoPlaying) && <Box h={['300px', '420px', ,'600px', '40vh']} width="100%" height="100%" backgroundColor="#230d05">
-                        <Skeleton width="100%" height="100%" startColor="#0f0403" endColor="#1a0505" />
-                    </Box>
-                }
+                <AspectRatio ratio={[contentWidth / 300, contentWidth / 420, ,contentWidth / 600]}>
+                    <video autoPlay={true} loop={true} muted={true} playsInline>
+                        <source src={video?.url} />
+                    </video>
+                </AspectRatio>
             </Box>
         }
     </Box>;
