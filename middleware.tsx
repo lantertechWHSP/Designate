@@ -16,7 +16,8 @@ export async function middleware(request: NextRequest) : Promise<NextResponse> {
 
             if (
                 (user === 'designate' && pwd === 'GVvAqUNXjpex0N6RgBYl') ||
-                (user === 'soulpatts' && pwd === '6Hcd3aMiTkxTNSX8')
+                (user === 'soulpatts' && pwd === '6Hcd3aMiTkxTNSX8') ||
+                (user === 'iguana2' && pwd === 'JxmK5XDR8K4DGpbt')
             ) {
                 return NextResponse.next();
             }
