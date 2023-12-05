@@ -109,9 +109,9 @@ const ContactCard:any = ({ title, address, contactName, phone, phone2, email, em
                 </Heading>
                 <Box>
                     <AnimateOverflow>
-                        <UnderlineLink href={`https://abr.business.gov.au/ABN/View?id=${abn}`} target="_blank" fontWeight={500}>
+                        <Box>
                             ABN: {abn}
-                        </UnderlineLink>
+                        </Box>
                     </AnimateOverflow>
                 </Box>
             </Box>

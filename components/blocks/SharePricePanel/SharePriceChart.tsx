@@ -106,7 +106,7 @@ const SharePriceChart:any = () : ReactNode => {
                         stroke: legendColors[3]
                     },
                     '.yourir-chart-panel-plot-area': {
-                        padding: '0 0 0 40px'
+                        padding: '0 20px 0 40px'
                     }
                 }}>
                 <Box id="priceComparisionChart" data-yourir="priceComparisonChart1 volume.visible=false range=1m ranges=1d,1m,6m,1y,5y,10y showTooltips=true">

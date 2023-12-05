@@ -17,6 +17,7 @@ const HeroBlock:any = ({ title, video }:IHeroBlock) : ReactNode => {
     const { observe: contentWidthObserve, width: contentWidth } = useDimensions();
     const height:string[] = ['420px', '482px'];
 
+
     return (title || video && video?.url) && <Box overflow="hidden" ref={contentWidthObserve}>
         {
             title && <Box h={height}
@@ -41,7 +42,7 @@ const HeroBlock:any = ({ title, video }:IHeroBlock) : ReactNode => {
         }
         {
             (video && video?.url) && <Box>
-                <AspectRatio ratio={[contentWidth / 300, contentWidth / 420, ,contentWidth / 600]}>
+                <AspectRatio ratio={[contentWidth / 300, contentWidth / 420, ,contentWidth / 600, contentWidth / (contentWidth * 0.45)]}>
                     <video autoPlay={true} loop={true} muted={true} playsInline>
                         <source src={video?.url} />
                     </video>

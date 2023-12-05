@@ -19,8 +19,8 @@ const colors:any = {
     ghostWhite: '#f8f8f8',
     ghostWhiteBlur: 'rgba(248, 248, 248, 0.7)',
 
-    charcoal: '#1c1c1c',
     charcoalBlur: 'rgba(28, 28, 28, 0.4)',
+    charcoal: '#1c1c1c',
     charcoal2: '#1b2024',
 
     darkSteel: '#323639',
@@ -278,16 +278,20 @@ export const theme:any = extendBaseTheme({
             },
             variants: {
                 button: {
-                    height: '50px',
-                    lineHeight: '52px',
-                    px: 4,
                     color: 'olive',
-                    fontSize: '16px',
-                    fontWeight: 500,
-                    border: '1px solid',
-                    borderColor: 'oliveBlur2',
-                    borderRadius: '25px',
-                    minWidth: '200px'
+                    height: ['40px', ,'50px'],
+                    lineHeight: ['40px', ,'50px'],
+                    borderRadius: ['20px', ,'25px'],
+                    px: 4,
+                    border: "2px solid",
+                    borderColor: 'oliveBlur3',
+                    textAlign: "center",
+                    transition: "border-color 0.3s linear",
+                    fontSize: ["16px"],
+                    fontWeight: 700,
+                    _hover: {
+                        borderColor: 'olive'
+                    }
                 },
                 pagination: {
                     color: 'olive',

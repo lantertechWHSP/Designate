@@ -2,6 +2,7 @@ import { useRef, useCallback, useState, useEffect, Fragment } from 'react';
 import { Flex, Box, Text } from '@chakra-ui/react';
 import { bisector, pointer } from 'd3';
 import { Tooltip } from '~/components/elements/tooltip';
+import { DateTime } from 'luxon';
 
 interface IChartToolip {
     xScale?:any;
@@ -65,6 +66,7 @@ export const ChartTooltip:any = ({ xScale, yScale, width, height, data, transfor
                 value: d0.value,
                 line: {
                     label: sortedDatum.label,
+                    date: DateTime.fromISO(d0.date).toFormat('LLL dd, yyyy'),
                     display: sortedDatum.display,
                     fill: sortedDatum.fill
                 }
@@ -136,7 +138,7 @@ export const ChartTooltip:any = ({ xScale, yScale, width, height, data, transfor
                                                 <Flex direction="row" align="center">
                                                     <Box background={value.line.fill} width="8px" height="8px" borderRadius="4px" border="1px solid" borderColor={tooltipLegendBorderColor} mr={2} />
                                                     <Text mb={0}>
-                                                        {value.line.label}
+                                                        {value.line.label} ({value.line.date})
                                                     </Text>
                                                 </Flex>
                                                 <Box>

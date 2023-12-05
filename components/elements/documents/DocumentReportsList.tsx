@@ -234,7 +234,8 @@ const DocumentReportsList:any = ({ latestDocuments, documentsMeta, documentsFilt
                     }
                     {
                         documents.length < totalDocumentCount && <Flex py={8} justify="center">
-                            <Button variant="button" onClick={loadMore} rightIcon={isLoading && <Spinner size='sm' />} minWidth="200px" border="1px solid" height="50px" width="50px" borderRadius="25px" borderColor="darkGrey">
+                            <Button variant="button"
+                                    onClick={loadMore} rightIcon={isLoading && <Spinner size='sm' />} minWidth="200px" border="1px solid" height="50px" width="50px" borderRadius="25px" borderColor="darkGrey">
                                 Load More
                             </Button>
                         </Flex>

@@ -117,7 +117,7 @@ const PostCard:any = ({ title, coverImage, publishDate, category, slug, blocks }
         {
             slug && <AnimateOverflow>
                 <SectionLink href={`/news/${slug}`}>
-                    Read
+                    View
                 </SectionLink>
             </AnimateOverflow>
         }

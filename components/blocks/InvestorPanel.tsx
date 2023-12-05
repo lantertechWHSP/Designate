@@ -23,7 +23,7 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                 </Heading>
                 <Box flex="1" />
                 <AnimateOverflow>
-                    <SectionLinkButton href="/news">
+                    <SectionLinkButton href="/investor-centre/investor-overview">
                         Overview
                     </SectionLinkButton>
                 </AnimateOverflow>
@@ -174,7 +174,7 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                                         },
                                         '.yourir-chart-xaxis-outside': {
                                             position: 'relative',
-                                            top: '10px'
+                                            top: '10px',
                                         },
                                         '.yourir-chart-yaxis-gridline': {
                                             stroke: 'borderColor'
@@ -194,7 +194,7 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                                             display: 'none'
                                         },
                                         '.yourir-chart-panel-plot-area': {
-                                            padding: '0 0 0 26px'
+                                            padding: '0 20px 0 26px'
                                         },
                                     }}>
                                     <Box height="100%" data-yourir="priceChart1 range=6m showTooltips=true" >
@@ -223,7 +223,7 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                             </AnimateOverflow>
                         </Heading>
                         <Box as={YourIR}>
-                            <Box data-yourir="announcements pageSize=5" borderBottom="1px solid" borderColor="olive">
+                            <Box data-yourir="announcements alwaysOpenInNewWindow=true pageSize=5" borderBottom="1px solid" borderColor="olive">
                                 <Box data-yourir="items">
                                     <Flex role="group"
                                         borderTop="1px solid"
@@ -250,7 +250,7 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                                         <Box ml={2} transition="transform 0.3s linear" _groupHover={{
                                             transform: 'translateX(4px)',
                                         }}>
-                                            <ChakraLink  data-yourir="linkAnnouncement fileId" cursor="pointer"
+                                            <ChakraLink  data-yourir="linkAnnouncement alwaysOpenInNewWindow" cursor="pointer"
                                                 color="oliveBlur2"
                                                 transition="color 0.3s linear"
                                                 _groupHover={{

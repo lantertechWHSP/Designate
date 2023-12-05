@@ -26,10 +26,10 @@ const AddToCalendar:any = ({ event, isOpen, onClose }:IAddToCalendar) : ReactNod
                         }
                     }}>
                         <SectionLinkInner>
-                            <Text display={['inline', 'none']}>
+                            <Text display={['inline', ,'none']}>
                                 Add
                             </Text>
-                            <Text display={['none', 'inline']}>
+                            <Text display={['none', ,'inline']}>
                                 Add To Calendar
                             </Text>
                         </SectionLinkInner>
