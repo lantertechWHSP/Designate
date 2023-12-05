@@ -190,9 +190,6 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                                             fontSize: '12px',
                                             color: 'steel'
                                         },
-                                        '.yourir-chart-yaxis-outside .yourir-chart-yaxis-label-container:first-of-type': {
-                                            display: 'none'
-                                        },
                                         '.yourir-chart-panel-plot-area': {
                                             padding: '0 20px 0 26px'
                                         },

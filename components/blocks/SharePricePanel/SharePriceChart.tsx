@@ -66,9 +66,6 @@ const SharePriceChart:any = () : ReactNode => {
                         position: 'relative',
                         top: '12px'
                     },
-                    '.yourir-chart-yaxis-label-container:first-of-type .yourir-chart-yaxis-label': {
-                        display: 'none'
-                    },
                     '.yourir-chart-yaxis-left .yourir-chart-yaxis-outside .yourir-chart-yaxis-label-container': {
                         left: '0',
                         marginRight: '0',
