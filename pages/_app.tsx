@@ -36,7 +36,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) : Reac
                 />
                 <Script
                     id="gtag-init"
-                    strategy="afterInteractive"
+                    strategy="lazyOnload"
                     dangerouslySetInnerHTML={{
                         __html: `
             window.dataLayer = window.dataLayer || [];
