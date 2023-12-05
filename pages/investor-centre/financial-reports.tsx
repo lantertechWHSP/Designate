@@ -84,7 +84,7 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
         // Tag Filters
         let tagFilters:any[] = [{
             id: 'none',
-            label: 'All Tags'
+            label: 'All Document Types'
         }];
 
         if(tags) {

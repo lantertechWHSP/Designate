@@ -14,7 +14,7 @@ interface IAsxAnnouncementsPanelBlock extends IBlock {
 const AsxAnnouncementsPanelBlock:any = ({}:IAsxAnnouncementsPanelBlock) : ReactNode => {
     const filters:IFilter[] = [
         {
-            label: 'All Tags',
+            label: 'All Document Types',
             value: 'none'
         },
         {
