@@ -42,7 +42,7 @@ const HeroBlock:any = ({ title, video }:IHeroBlock) : ReactNode => {
         }
         {
             (video && video?.url) && <Box>
-                <AspectRatio ratio={[contentWidth / 300, contentWidth / 420, ,contentWidth / 600, contentWidth / (contentWidth * 0.45)]}>
+                <AspectRatio ratio={[contentWidth / 300, contentWidth / 420, ,contentWidth / 600, contentWidth / (contentWidth * 0.40)]}>
                     <video autoPlay={true} loop={true} muted={true} playsInline>
                         <source src={video?.url} />
                     </video>
