@@ -31,7 +31,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) : Reac
         {GA_TRACKING_ID && (
             <>
                 <Script
-                    strategy="lazyOnLoad"
+                    strategy="lazyOnload"
                     src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
                 />
                 <Script
@@ -53,13 +53,3 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) : Reac
         <Component {...pageProps} />
     </ChakraProvider>;
 }
-
-
-// <script async src="https://www.googletagmanager.com/gtag/js?id=G-656BTQQDXW"></script>
-// <script>
-//     window.dataLayer = window.dataLayer || [];
-//     function gtag(){dataLayer.push(arguments);}
-//     gtag('js', new Date());
-//
-//     gtag('config', 'G-656BTQQDXW');
-// </script>
