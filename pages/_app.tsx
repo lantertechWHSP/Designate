@@ -47,8 +47,9 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) : Reac
         {
             GA_TRACKING_ID && <>
                 <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
-                        strategy="afterInteractive" />
+                    strategy="afterInteractive" />
                 <Script
+                    id="google-analytics"
                     dangerouslySetInnerHTML={{
                         __html: `
                     window.dataLayer = window.dataLayer || [];
