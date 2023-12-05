@@ -17,7 +17,7 @@ export const AxisBottom:any = ({ scale, transform }:IAxisBottom) : ReactNode => 
     useEffect(() => {
         if (elementRef.current) {
             // @ts-ignore
-            select(elementRef.current).call(axisBottom(scale).ticks(timeYear.every(mediaQuery ? 2 : 3)).tickFormat(timeFormat("%Y")));
+            select(elementRef.current).call(axisBottom(scale).ticks(timeYear.every(mdMediaQuery ? 2 : 3)).tickFormat(timeFormat("%Y")));
         }
     }, [scale, mdMediaQuery]);
 
