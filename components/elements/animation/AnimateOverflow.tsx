@@ -34,8 +34,10 @@ export const AnimateOverflow:any = ({ children, delay = 0 }:IAnimateOverflowText
             setIsAnimated(true);
 
             setTimeout(() => {
-                setOverflowStyle({})
-            }, 500 + (delay * 1000))
+                setOverflowStyle({
+                    overflow: 'unset'
+                });
+            }, 500 + (delay * 1000));
         }
     });
 

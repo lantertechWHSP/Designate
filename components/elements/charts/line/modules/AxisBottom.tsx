@@ -12,7 +12,7 @@ interface IAxisBottom {
 export const AxisBottom:any = ({ scale, transform }:IAxisBottom) : ReactNode => {
     const elementRef:any = useRef<SVGGElement>(null);
     const [mdMediaQuery] = useMediaQuery(`(min-width: ${breakpoints.md})`);
-    const [lgMediaQuery] = useMediaQuery(`(min-width: ${breakpoints.lg})`);
+    const [_lgMediaQuery] = useMediaQuery(`(min-width: ${breakpoints.lg})`);
 
     useEffect(() => {
         if (elementRef.current) {

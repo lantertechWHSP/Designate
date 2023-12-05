@@ -223,7 +223,7 @@ const InvestorPanelBlock:any = ({ background, displayHeadline, paddingTop, paddi
                             </AnimateOverflow>
                         </Heading>
                         <Box as={YourIR}>
-                            <Box data-yourir="announcements alwaysOpenInNewWindow=true pageSize=5" borderBottom="1px solid" borderColor="olive">
+                            <Box data-yourir="announcements alwaysOpenInNewWindow=true pageSize=5 live=live" borderBottom="1px solid" borderColor="olive">
                                 <Box data-yourir="items">
                                     <Flex role="group"
                                         borderTop="1px solid"
