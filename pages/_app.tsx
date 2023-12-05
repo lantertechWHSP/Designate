@@ -1,4 +1,4 @@
-import type { ReactElement, ReactNode } from 'react';
+import type { ReactElement, ReactNode, useEffect } from 'react';
 import type { NextPage } from 'next';
 import type { AppProps } from 'next/app';
 import { ChakraProvider } from '@chakra-ui/react';
@@ -19,6 +19,14 @@ type AppPropsWithLayout = AppProps & {
     Component: NextPageWithLayout
 }
 
+declare global {
+    interface Window {
+        dataLayer: any;
+        gtag: any;
+    }
+}
+
+
 Router.events.on('routeChangeComplete', gtag.pageview);
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) : ReactNode {
@@ -28,28 +36,16 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) : Reac
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <meta name="version" content="0.9.0" />
         </Head>
-        {GA_TRACKING_ID && (
-            <>
-                <Script
-                    strategy="lazyOnload"
-                    src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
-                />
-                <Script
-                    id="gtag-init"
-                    strategy="lazyOnload"
-                    dangerouslySetInnerHTML={{
-                        __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${GA_TRACKING_ID}', {
-              page_path: window.location.pathname,
-            });
-          `
-                    }}
-                />
-            </>
-        )}
+        <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`} />
+        <Script id="google-analytics">
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+     
+              gtag('config', '${GA_TRACKING_ID}');
+            `}
+        </Script>
         <Component {...pageProps} />
     </ChakraProvider>;
 }
