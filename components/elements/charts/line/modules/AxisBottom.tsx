@@ -1,8 +1,9 @@
 import { useEffect, useRef, ReactNode } from 'react';
-import { select, axisBottom, timeFormat, timeYear } from 'd3';
+import { select, axisBottom, timeMonth } from 'd3';
 import { useMediaQuery } from '@chakra-ui/react';
 import { breakpoints } from '~/lib/theme/theme';
 import { fontRoboto } from '~/app/_fonts';
+import { DateTime } from 'luxon';
 
 interface IAxisBottom {
     scale:any;
@@ -17,7 +18,18 @@ export const AxisBottom:any = ({ scale, transform }:IAxisBottom) : ReactNode => 
     useEffect(() => {
         if (elementRef.current) {
             // @ts-ignore
-            select(elementRef.current).call(axisBottom(scale).ticks(timeYear.every(mdMediaQuery ? 2 : 3)).tickFormat(timeFormat("%Y")));
+            let currentYear:string;
+            select(elementRef.current).call(axisBottom(scale).ticks(timeMonth.every(1)).tickFormat((value, index, data) => {
+                if(index % 12 === 0 || index === data.length - 1) {
+                    let newYear = DateTime.fromJSDate(value).toFormat('yyyy');
+                    
+                    if(currentYear !== newYear) {
+                        currentYear = newYear;
+                        return newYear;
+                    }
+                }
+                return '';
+            }));
         }
     }, [scale, mdMediaQuery]);
 
