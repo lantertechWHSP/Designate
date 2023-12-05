@@ -36,16 +36,20 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) : Reac
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <meta name="version" content="0.9.0" />
         </Head>
-        <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`} />
-        <Script id="google-analytics">
-            {`
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-     
-              gtag('config', '${GA_TRACKING_ID}');
-            `}
-        </Script>
+        <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+                strategy="afterInteractive" />
+        <Script
+            dangerouslySetInnerHTML={{
+                __html: `
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', '${GA_TRACKING_ID}', {
+                      page_path: window.location.pathname,
+                    });
+              `,
+            }}
+        />
         <Component {...pageProps} />
     </ChakraProvider>;
 }
