@@ -6,10 +6,10 @@ import { theme } from '~/lib/theme/theme';
 import Head from 'next/head';
 import Script from 'next/script';
 import Router from 'next/router';
-// import ReactGA from 'react-ga4';
+import ReactGA from 'react-ga4';
 
 export const GA_TRACKING_ID:string = process.env.NEXT_PUBLIC_GA_ID;
-import * as gtag from 'lib/gtag';
+// import * as gtag from 'lib/gtag';
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
     getLayout?: (page: ReactElement) => ReactNode
@@ -26,8 +26,15 @@ declare global {
     }
 }
 
+ReactGA.initialize([
+    {
+        trackingId: GA_TRACKING_ID,
+    },
+]);
 
-Router.events.on('routeChangeComplete', gtag.pageview);
+Router.events.on('routeChangeComplete', (url) => {
+    ReactGA.send({ hitType: "pageview", page: url });
+});
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) : ReactNode {
     return <ChakraProvider theme={theme}>
