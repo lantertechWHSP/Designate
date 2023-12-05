@@ -8,6 +8,8 @@ declare global {
 
 // https://developers.google.com/analytics/devguides/collection/gtagjs/pages
 export const pageview:any = (url:string) : void => {
+    alert('!');
+    alert(url);
     GA_TRACKING_ID &&
     window.gtag('config', GA_TRACKING_ID, {
         page_path: url
