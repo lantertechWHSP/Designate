@@ -17,9 +17,9 @@ export const AxisBottom:any = ({ scale, transform }:IAxisBottom) : ReactNode => 
 
     useEffect(() => {
         if (elementRef.current) {
-            // @ts-ignore
             let currentYear:string;
             const modulo:number = mdMediaQuery ? 12 : 24;
+            // @ts-ignore
             select(elementRef.current).call(axisBottom(scale).ticks(timeMonth.every(1)).tickFormat((value, index, data) => {
                 if(index % modulo === 0 || index === data.length - 1) {
                     const newYear:string = DateTime.fromJSDate(value).toFormat('yyyy');
