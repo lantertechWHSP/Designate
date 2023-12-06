@@ -42,7 +42,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) : Reac
         <Head>
             <title>Soul Patts</title>
             <meta name="viewport" content="width=device-width, initial-scale=1" />
-            <meta name="version" content="0.9.0" />
+            <meta name="version" content="1.0.0" />
         </Head>
         {
             GA_TRACKING_ID && <>
