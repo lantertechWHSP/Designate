@@ -30,7 +30,7 @@ const HeroBlock:any = ({ title, video }:IHeroBlock) : ReactNode => {
                     <Flex minH="100%" align="flex-end">
                         <Heading py={['40px', ,'50px', '60px']} variant="hero" position="relative" zIndex={zIndex.heroTitle} maxWidth={['100vw', , '500px', '500px']}>
                             <AnimateOverflow>
-                                {title} Guff the Tough!
+                                {title}
                             </AnimateOverflow>
                         </Heading>
                     </Flex>
