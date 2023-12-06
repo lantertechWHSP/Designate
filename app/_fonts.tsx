@@ -1,5 +1,4 @@
 import localFont from 'next/font/local';
-import { ReactNode } from 'react';
 
 export const fontGramatika:any = localFont({
     src: [
@@ -112,7 +111,3 @@ export const fontRoboto:any = localFont({
         }
     ]
 });
-
-export default function fonts() : ReactNode {
-    return <></>;
-}
