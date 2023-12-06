@@ -57,7 +57,7 @@ export const ChartTooltip:any = ({ xScale, yScale, width, height, data, transfor
         const newValues:any = [];
 
         sortedData.map((sortedDatum) => {
-            const x0:any = bisectDate(sortedDatum.data, xDate.valueOf(), 1);
+            const x0:any = bisectDate(sortedDatum.data, xDate.valueOf(), 0);
             const d0:any = sortedDatum.data[x0];
 
             newValues.push({
