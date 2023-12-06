@@ -47,7 +47,7 @@ export const ChartTooltip:any = ({ xScale, yScale, width, height, data, transfor
         });
 
         setSortedData(newSortedData);
-    }, [data]);
+    }, [data, width, height]);
 
     const followPoints:any = useCallback((event:any) => {
         const [x] = pointer(event);
@@ -61,12 +61,12 @@ export const ChartTooltip:any = ({ xScale, yScale, width, height, data, transfor
             const d0:any = sortedDatum.data[x0];
 
             newValues.push({
-                x: xScale(d0.date),
-                y: yScale(d0.value),
-                value: d0.value,
+                x: xScale(d0?.date),
+                y: yScale(d0?.value),
+                value: d0?.value,
                 line: {
                     label: sortedDatum.label,
-                    date: DateTime.fromISO(d0.date).toFormat('LLL dd, yyyy'),
+                    date: DateTime.fromISO(d0?.date).toFormat('LLL dd, yyyy'),
                     display: sortedDatum.display,
                     fill: sortedDatum.fill
                 }

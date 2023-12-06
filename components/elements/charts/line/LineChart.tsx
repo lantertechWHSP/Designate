@@ -233,7 +233,7 @@ const LineChart:any = ({ data, textColor = 'steel', borderColor = 'borderColor',
                             '.x-axis .domain': {
                                 display: 'none'
                             },
-                            '.x-axis .tick text': {
+                            '.x-axis.compact .tick text': {
                                 transform: 'rotate(-60deg) translate(-20px, 2px)'
                             },
                             '.x-axis .tick line': {
