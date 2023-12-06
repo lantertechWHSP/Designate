@@ -51,8 +51,6 @@ stages:
 
 build:
   stage: build
-  only:
-    - master
   script:
     ## Add the environment variables and echo it to a .env file for building
     - echo "$ENVIRONMENT_VARIABLES" >> ".env"
@@ -60,11 +58,11 @@ build:
     - npm ci
     ## Build
     - npm run build
+  only:
+    - master
 
 deploy:
   stage: deploy
-  only:
-    - master
   script:
     ## Transfer relevant NextJS files to the server
     - rsync -az next.config.js gitlab@20.157.214.14:/opt/whsp/ 
@@ -73,3 +71,5 @@ deploy:
     - rsync -az .next gitlab@20.157.214.14:/opt/whsp/
     ## Restart the server
     - ssh -tt gitlab@20.157.214.14 "sudo systemctl restart nextjs"
+  only:
+    - master
