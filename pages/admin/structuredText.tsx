@@ -52,7 +52,7 @@ export default withSecureHeaders({
     frameGuard: false,
     contentSecurityPolicy: {
         directives: {
-            frameAncestors: 'https://whsp.admin.datocms.com/'
+            frameAncestors: 'https://soulpatts.admin.datocms.com/'
         }
     },
 })(StructuredTextEditor);
