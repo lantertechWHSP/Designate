@@ -48,9 +48,6 @@ const DefaultLayout:any = ({ layout, children }:any) : ReactNode => {
             {
                 layout?.isHomePage && <PageLinks current={layout?.breadcrumbs[0]?.node} />
             }
-            {
-                layout?.isHomePage && <SubscriptionForm />
-            }
             <Footer {...layout?.footer} />
         </Flex>
     );
