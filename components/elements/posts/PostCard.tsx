@@ -92,7 +92,7 @@ const PostCard:any = ({ title, coverImage, publishDate, category, slug, blocks }
         <Box mb={['20px']}>
             <AnimateOpacity>
                 <Link href={`/news/${slug}`} display="block" borderRadius="3px" overflow="hidden" position="relative">
-                    <Image image={currentImage} />
+                    <Image image={currentImage} ratio={[424/212]} />
                     <VectorEffect category={category} />
                 </Link>
             </AnimateOpacity>
