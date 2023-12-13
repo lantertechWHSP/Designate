@@ -3,7 +3,7 @@ export default async function startPreview(req, res) : Promise<void> {
 
     // Check the secret and next parameters
     // This secret should only be known to this API route and the CMS
-    if (secret !== process.env.DATOCMS_PREVIEW_SECRET || !redirect) {
+    if (secret !== process.env.NEXT_PUBLIC_DATO_PREVIEW_SECRET || !redirect) {
         return res.status(401).json({ message: 'Invalid token' });
     }
 

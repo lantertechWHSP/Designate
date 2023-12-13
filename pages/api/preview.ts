@@ -23,7 +23,7 @@ const handler:any = (req, res) : any => {
         return res.status(200).json({ previewLinks: [] });
     }
 
-    const baseUrl:string = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : process.env.NEXT_PUBLIC_SITE_URL;
+    const baseUrl:string = process.env.NEXT_PUBLIC_SITE_URL;
     const previewLinks:any = [
         {
             label: 'Published version',
@@ -31,7 +31,7 @@ const handler:any = (req, res) : any => {
         },
         {
             label: 'Draft version',
-            url: `${baseUrl}/api/start-preview?redirect=${url}&secret=${process.env.DATOCMS_PREVIEW_SECRET}`,
+            url: `${baseUrl}/api/start-preview?redirect=${url}&secret=${process.env.NEXT_PUBLIC_DATO_PREVIEW_SECRET}`,
         },
     ];
     return res.status(200).json({ previewLinks });
