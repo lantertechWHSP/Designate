@@ -48,8 +48,7 @@ before_script:
   - chmod 644 ~/.ssh/known_hosts
 
   ## Test Node
-  - node -v
-  - npm -v
+  - which npm
 
 ## Cache node modules
 cache:
