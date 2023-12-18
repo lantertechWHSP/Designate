@@ -15,7 +15,8 @@ before_script:
   - docker info
   - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
   - docker run registry.gitlab.com/designate/client-work/whsp
-
+  - node -v
+  - npm -v
 
 ## Cache node modules
 cache:
@@ -38,15 +39,15 @@ stages:
 build:
   stage: build
   script:
+    - echo "Guff"
     ## Add the environment variables and echo it to a .env file for building
-    - echo "$ENVIRONMENT_VARIABLES" >> ".env"
+    # - echo "$ENVIRONMENT_VARIABLES" >> ".env"
     ## Install
-    - npm ci
+    # - npm ci
     ## Build
-    - npm run build
+    # - npm run build
   only:
     - master
-
 
 # deploy:
 #   stage: deploy
