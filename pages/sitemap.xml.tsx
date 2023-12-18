@@ -18,7 +18,7 @@ function generateSiteMap(paths) : string {
 function SitemapXml() : any {
 }
 
-export async function getServerSideProps({ res }) : any {
+export async function getServerSideProps({ res }) : Promise<any> {
     const siteUrl:string = 'https://soulpatts.com.au';
     const paths:any[] = [];
 
