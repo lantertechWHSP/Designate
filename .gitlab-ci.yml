@@ -29,6 +29,10 @@ before_script:
   ## Clear the .ssh directory
   - rm -rf ~/.ssh
   ##
+  ## Run ssh-agent (inside the build environment)
+  ##
+  - eval $(ssh-agent -s)
+  ##
   ## Give the right permissions, otherwise ssh-add will refuse to add files
   ## Add the SSH key stored in SSH_PRIVATE_KEY file type CI/CD variable to the agent store
   ##
