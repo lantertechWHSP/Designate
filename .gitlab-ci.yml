@@ -14,21 +14,21 @@ default:
 
 ## Define the stages
 stages:
-  - build
+  # - build
   - deploy
 
-build:
-  stage: build
-  image: node:latest
-  script:
-    ## Add the environment variables and echo it to a .env file for building
-    - echo "$ENVIRONMENT_VARIABLES" >> ".env"
-    ## Install
-    - npm ci 
-    ## Build
-    - npm run build
-  only:
-    - master
+# build:
+#   stage: build
+#   image: node:latest
+#   script:
+#     ## Add the environment variables and echo it to a .env file for building
+#     - echo "$ENVIRONMENT_VARIABLES" >> ".env"
+#     ## Install
+#     - npm ci 
+#     ## Build
+#     - npm run build
+#   only:
+#     - master
 
 
 deploy:
@@ -36,7 +36,8 @@ deploy:
   image: docker:latest
   before_script:
   # Login to Docker
-  - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
+  # - docker login -u $CI_REGISTRY_USER --password-stdin $CI_JOB_TOKEN $CI_REGISTRY
+  - echo "$CI_JOB_TOKEN $CI_REGISTRY" | docker login --username $CI_REGISTRY_USER --password-stdin
   ## Run the Docker image
   - docker run registry.gitlab.com/designate/client-work/whsp
   ## Clear the .ssh directory
