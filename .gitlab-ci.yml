@@ -1,5 +1,44 @@
+before_script:
+  ##
+  ## Install ssh-agent if not already installed, it is required by Docker.
+  ## (change apt-get to yum if you use an RPM-based image)
+  ##
+  - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
+  ##
+  ## Run ssh-agent (inside the build environment)
+  ##
+  - eval $(ssh-agent -s)
+  ##
+  ## Give the right permissions, otherwise ssh-add will refuse to add files
+  ## Add the SSH key stored in SSH_PRIVATE_KEY file type CI/CD variable to the agent store
+  ##
+  - chmod 400 "$SSH_PRIVATE_KEY"
+  - ssh-add "$SSH_PRIVATE_KEY"
+  ##
+  ## Create the SSH directory and give it the right permissions
+  ##
+  - mkdir -p ~/.ssh
+  - chmod 700 ~/.ssh
+  ##
+  ## Add Known Hosts
+  ##
+  - ssh-keyscan 20.157.214.14 >> ~/.ssh/known_hosts
+  - chmod 644 ~/.ssh/known_hosts
+  ##
+  ## Add Rsync
+  ##
+  - apt-get -y update
+  - apt-get -y install rsync
+
 ## Use node as the image
 image: node:18.12.1
+
+## Cache node modules
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
+    - .next/cache/
 
 ## Artifact the .next directory
 default:
@@ -15,12 +54,6 @@ stages:
 
 build:
   stage: build
-  ## Cache node modules
-  cache:
-    key: ${CI_COMMIT_REF_SLUG}
-    paths:
-      - node_modules/
-      - .next/cache/
   script:
     ## Add the environment variables and echo it to a .env file for building
     - echo "$ENVIRONMENT_VARIABLES" >> ".env"
@@ -33,37 +66,6 @@ build:
 
 deploy:
   stage: deploy
-  before_script:
-    ##
-    ## Install ssh-agent if not already installed, it is required by Docker.
-    ## (change apt-get to yum if you use an RPM-based image)
-    ##
-    - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
-    ##
-    ## Run ssh-agent (inside the build environment)
-    ##
-    - eval $(ssh-agent -s)
-    ##
-    ## Give the right permissions, otherwise ssh-add will refuse to add files
-    ## Add the SSH key stored in SSH_PRIVATE_KEY file type CI/CD variable to the agent store
-    ##
-    - chmod 400 "$SSH_PRIVATE_KEY"
-    - ssh-add "$SSH_PRIVATE_KEY"
-    ##
-    ## Create the SSH directory and give it the right permissions
-    ##
-    - mkdir -p ~/.ssh
-    - chmod 700 ~/.ssh
-    ##
-    ## Add Known Hosts
-    ##
-    - ssh-keyscan 20.157.214.14 >> ~/.ssh/known_hosts
-    - chmod 644 ~/.ssh/known_hosts
-    ##
-    ## Add Rsync
-    ##
-    - apt-get -y update
-    - apt-get -y install rsync
   script:
     ## Transfer relevant NextJS files to the server
     - rsync -az next.config.js gitlab@20.157.214.14:/opt/whsp/
