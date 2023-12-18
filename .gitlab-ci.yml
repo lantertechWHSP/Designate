@@ -21,7 +21,7 @@ services:
 
 before_script:
   # Login to Docker
-  - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
+  - docker login -u $CI_REGISTRY_USER --password-stdin $CI_JOB_TOKEN $CI_REGISTRY
   ## Run the Docker image
   - docker run registry.gitlab.com/designate/client-work/whsp
   ## Clear the .ssh directory
