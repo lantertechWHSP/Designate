@@ -15,7 +15,7 @@ default:
 ## Define the stages
 stages:
   - build
-  # - deploy
+  - deploy
 
 build:
   stage: build
