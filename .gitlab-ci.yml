@@ -33,22 +33,19 @@ before_script:
   ##
   - ssh-keyscan 20.157.214.14 >> ~/.ssh/known_hosts
   - chmod 644 ~/.ssh/known_hosts
-
-  ## Test Node
-  - npm -v
 ## Cache node modules
-# cache:
-#   key: ${CI_COMMIT_REF_SLUG}
-#   paths:
-#     - node_modules/
-#     - .next/cache/
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
+    - .next/cache/
 
 ## Artifact the .next directory
-# default:
-#   artifacts:
-#     expire_in: 10 min
-#     paths:
-#       - .next/
+default:
+  artifacts:
+    expire_in: 10 min
+    paths:
+      - .next/
 
 ## Define the stages
 stages:
@@ -57,15 +54,16 @@ stages:
 
 build:
   stage: build
+  image: node:latest
   script:
     - echo "Guff"
     ## Add the environment variables and echo it to a .env file for building
     - echo "$ENVIRONMENT_VARIABLES" >> ".env"
     ## Install
-    #- npm -v
-    #- npm ci
+    - npm -v
+    - npm ci
     ## Build
-    #- npm run build
+    - npm run build
   only:
     - master
 
