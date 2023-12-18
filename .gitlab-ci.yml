@@ -11,7 +11,6 @@ stages:
 
 build:
   stage: build
-  image: node:latest
   script:
     # - node -v
     - npm -v
