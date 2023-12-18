@@ -23,7 +23,6 @@ before_script:
   - docker info
   - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
   - docker run registry.gitlab.com/designate/client-work/whsp
-  - docker exec -i <container_id_1>  dpkg -l
 
 ## Cache node modules
 cache:
