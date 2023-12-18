@@ -35,14 +35,8 @@ before_script:
   - chmod 644 ~/.ssh/known_hosts
 
   ## Test Node
-  - whoami
-  - pwd
-  - locate npm
-  - echo ${PATH}
-  - which npm
-  - ls -lh $(which npm)
+  - npm -v
   - node -v
-
 ## Cache node modules
 # cache:
 #   key: ${CI_COMMIT_REF_SLUG}
