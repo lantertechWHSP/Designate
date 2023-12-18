@@ -34,6 +34,8 @@ stages:
 deploy:
   stage: deploy
   image: docker:latest
+  variables:
+    DOCKER_DRIVER: overlay2
   services:
   - docker:dind
   before_script:
