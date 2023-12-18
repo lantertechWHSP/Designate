@@ -1,26 +1,26 @@
 import { doQuery, queries } from '~/dato/api';
 
-function generateSiteMap(paths) {
+function generateSiteMap(paths) : string {
     return `<?xml version="1.0" encoding="UTF-8"?>
    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
         ${paths.map((path) => {
-            return `
+        return `
                <url>
                    <loc>${path}</loc>
                </url>
              `;
-        })
+    })
         .join('')}
     </urlset>
  `;
 }
 
-function SitemapXml() {
+function SitemapXml() : any {
 }
 
-export async function getServerSideProps({ res }) {
+export async function getServerSideProps({ res }) : any {
     const siteUrl:string = 'https://soulpatts.com.au';
-    const paths = [];
+    const paths:any[] = [];
 
     const pages:any = await doQuery(queries.pages).then(({ pages }) => pages);
     const posts:any = await doQuery(queries.posts, { first: 100 }).then(({ posts }) => posts);
@@ -38,7 +38,7 @@ export async function getServerSideProps({ res }) {
     paths.push(...pagePaths);
     paths.push(...postPaths);
 
-    const sitemap = generateSiteMap(paths);
+    const sitemap:string = generateSiteMap(paths);
 
     res.setHeader('Content-Type', 'text/xml');
     res.write(sitemap);
