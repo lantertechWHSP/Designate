@@ -34,6 +34,8 @@ stages:
 deploy:
   stage: deploy
   image: docker:latest
+  services:
+  - docker:dind
   before_script:
   # Login to Docker
   # - docker login -u $CI_REGISTRY_USER --password-stdin $CI_JOB_TOKEN $CI_REGISTRY
