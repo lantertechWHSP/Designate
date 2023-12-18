@@ -29,8 +29,39 @@ build:
     - npm run build
   only:
     - master
-# deploy:
-#   stage: deploy
+
+
+deploy:
+  stage: deploy
+  before_script:
+  # Login to Docker
+  - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
+  ## Run the Docker image
+  - docker run registry.gitlab.com/designate/client-work/whsp
+  ## Clear the .ssh directory
+  - rm -rf ~/.ssh
+  ##
+  ## Run ssh-agent (inside the build environment)
+  ##
+  - eval $(ssh-agent -s)
+  ##
+  ## Give the right permissions, otherwise ssh-add will refuse to add files
+  ## Add the SSH key stored in SSH_PRIVATE_KEY file type CI/CD variable to the agent store
+  ##
+  - chmod 400 "$SSH_PRIVATE_KEY"
+  - ssh-add "$SSH_PRIVATE_KEY"
+  ##
+  ## Create the SSH directory and give it the right permissions
+  ##
+  - mkdir -p ~/.ssh
+  - chmod 700 ~/.ssh
+  ##
+  ## Add Known Hosts
+  ##
+  - ssh-keyscan 20.157.214.14 >> ~/.ssh/known_hosts
+  - chmod 644 ~/.ssh/known_hosts
+  script:
+  - echo "Guff"
 #   script:
 #     ## Transfer relevant NextJS files to the server
 #     - rsync -az next.config.js gitlab@20.157.214.14:/opt/whsp/
