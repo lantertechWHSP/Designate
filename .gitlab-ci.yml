@@ -1,53 +1,57 @@
-before_script:
-  ##
-  ## Install ssh-agent if not already installed, it is required by Docker.
-  ## (change apt-get to yum if you use an RPM-based image)
-  ##
-  - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
-  ##
-  ## Run ssh-agent (inside the build environment)
-  ##
-  - eval $(ssh-agent -s)
-  ##
-  ## Give the right permissions, otherwise ssh-add will refuse to add files
-  ## Add the SSH key stored in SSH_PRIVATE_KEY file type CI/CD variable to the agent store
-  ##
-  - chmod 400 "$SSH_PRIVATE_KEY"
-  - ssh-add "$SSH_PRIVATE_KEY"
-  ##
-  ## Create the SSH directory and give it the right permissions
-  ##
-  - mkdir -p ~/.ssh
-  - chmod 700 ~/.ssh
-  ##
-  ## Add Known Hosts
-  ##
-  - ssh-keyscan 20.157.214.14 >> ~/.ssh/known_hosts
-  - chmod 644 ~/.ssh/known_hosts
-  ##
-  ## Add Rsync
-  ##
-  - apt-get -y update
-  - apt-get -y install rsync
+# before_script:
+#   ##
+#   ## Install ssh-agent if not already installed, it is required by Docker.
+#   ## (change apt-get to yum if you use an RPM-based image)
+#   ##
+#   - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
+#   ##
+#   ## Run ssh-agent (inside the build environment)
+#   ##
+#   - eval $(ssh-agent -s)
+#   ##
+#   ## Give the right permissions, otherwise ssh-add will refuse to add files
+#   ## Add the SSH key stored in SSH_PRIVATE_KEY file type CI/CD variable to the agent store
+#   ##
+#   - chmod 400 "$SSH_PRIVATE_KEY"
+#   - ssh-add "$SSH_PRIVATE_KEY"
+#   ##
+#   ## Create the SSH directory and give it the right permissions
+#   ##
+#   - mkdir -p ~/.ssh
+#   - chmod 700 ~/.ssh
+#   ##
+#   ## Add Known Hosts
+#   ##
+#   - ssh-keyscan 20.157.214.14 >> ~/.ssh/known_hosts
+#   - chmod 644 ~/.ssh/known_hosts
+#   ##
+#   ## Add Rsync
+#   ##
+#   - apt-get -y update
+#   - apt-get -y install rsync
+
 
 ## Use node as the image
-image: node:18.12.1
+# image: node:18.12.1
+before_script:
+  - docker login -u $CI_DEPLOY_USER -p $CI_DEPLOY_PASSWORD $CI_REGISTRY
+  - docker run registry.gitlab.com/designate/client-work/whsp
 
 ## Cache node modules
-cache:
-  paths:
-    - node_modules/
+# cache:
+#   paths:
+#     - node_modules/
 
 ## Artifact the .next directory
-default:
-  artifacts:
-    paths:
-      - .next/
+# default:
+#   artifacts:
+#     paths:
+#       - .next/
 
 ## Define the stages
 stages:
   - build
-  - deploy
+  # - deploy
 
 build:
   stage: build
@@ -61,15 +65,15 @@ build:
   only:
     - master
 
-deploy:
-  stage: deploy
-  script:
-    ## Transfer relevant NextJS files to the server
-    - rsync -az next.config.js gitlab@20.157.214.14:/opt/whsp/ 
-    - rsync -az package.json gitlab@20.157.214.14:/opt/whsp/
-    - rsync -az node_modules gitlab@20.157.214.14:/opt/whsp/
-    - rsync -az .next gitlab@20.157.214.14:/opt/whsp/
-    ## Restart the server
-    - ssh -tt gitlab@20.157.214.14 "sudo systemctl restart nextjs"
-  only:
-    - master
+# deploy:
+#   stage: deploy
+#   script:
+#     ## Transfer relevant NextJS files to the server
+#     - rsync -az next.config.js gitlab@20.157.214.14:/opt/whsp/ 
+#     - rsync -az package.json gitlab@20.157.214.14:/opt/whsp/
+#     - rsync -az node_modules gitlab@20.157.214.14:/opt/whsp/
+#     - rsync -az .next gitlab@20.157.214.14:/opt/whsp/
+#     ## Restart the server
+#     - ssh -tt gitlab@20.157.214.14 "sudo systemctl restart nextjs"
+#   only:
+#     - master
