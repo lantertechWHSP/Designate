@@ -1,18 +1,9 @@
-image: docker:latest
-
-variables:
-  DOCKER_DRIVER: overlay2
-
-services:
-  - docker:dind
-
 before_script:
-  # Login to Docker
-  - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
-  ## Run the Docker image
-  - docker run registry.gitlab.com/designate/client-work/whsp
-  ## Clear the .ssh directory
-  - rm -rf ~/.ssh
+  ##
+  ## Install ssh-agent if not already installed, it is required by Docker.
+  ## (change apt-get to yum if you use an RPM-based image)
+  ##
+  - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
   ##
   ## Run ssh-agent (inside the build environment)
   ##
@@ -33,48 +24,52 @@ before_script:
   ##
   - ssh-keyscan 20.157.214.14 >> ~/.ssh/known_hosts
   - chmod 644 ~/.ssh/known_hosts
+  ##
+  ## Add Rsync
+  ##
+  - apt-get -y update
+  - apt-get -y install rsync
+
+## Use node as the image
+image: node:18.12.1
+
 ## Cache node modules
 cache:
-  key: ${CI_COMMIT_REF_SLUG}
   paths:
     - node_modules/
-    - .next/cache/
 
 ## Artifact the .next directory
 default:
   artifacts:
-    expire_in: 10 min
     paths:
       - .next/
 
 ## Define the stages
 stages:
   - build
-  # - deploy
+  - deploy
 
 build:
   stage: build
   script:
-    - echo "Guff"
-    # - node -v
-    # - npm -v
-    # ## Add the environment variables and echo it to a .env file for building
-    # - echo "$ENVIRONMENT_VARIABLES" >> ".env"
-    # ## Install
-    # - npm ci
-    # ## Build
-    # - npm run build
+    ## Add the environment variables and echo it to a .env file for building
+    - echo "$ENVIRONMENT_VARIABLES" >> ".env"
+    ## Install
+    - npm ci
+    ## Build
+    - npm run build
   only:
     - master
-# deploy:
-#   stage: deploy
-#   script:
-#     ## Transfer relevant NextJS files to the server
-#     - rsync -az next.config.js gitlab@20.157.214.14:/opt/whsp/ 
-#     - rsync -az package.json gitlab@20.157.214.14:/opt/whsp/
-#     - rsync -az node_modules gitlab@20.157.214.14:/opt/whsp/
-#     - rsync -az .next gitlab@20.157.214.14:/opt/whsp/
-#     ## Restart the server
-#     - ssh -tt gitlab@20.157.214.14 "sudo systemctl restart nextjs"
-#   only:
-#     - master
+
+deploy:
+  stage: deploy
+  script:
+    ## Transfer relevant NextJS files to the server
+    - rsync -az next.config.js gitlab@20.157.214.14:/opt/whsp/ 
+    - rsync -az package.json gitlab@20.157.214.14:/opt/whsp/
+    - rsync -az node_modules gitlab@20.157.214.14:/opt/whsp/
+    - rsync -az .next gitlab@20.157.214.14:/opt/whsp/
+    ## Restart the server
+    - ssh -tt gitlab@20.157.214.14 "sudo systemctl restart nextjs"
+  only:
+    - master
