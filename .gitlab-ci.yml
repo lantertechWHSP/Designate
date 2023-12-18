@@ -50,6 +50,10 @@ before_script:
   ## Test Node
   - whoami
   - pwd
+  - locate npm
+  - echo ${PATH}
+  - which npm
+  - ls -lh $(which npm)
   - node -v
   - npm -v
 ## Cache node modules
