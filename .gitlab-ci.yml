@@ -54,7 +54,6 @@ stages:
 
 build:
   stage: build
-  image: node:latest
   script:
     - echo "Guff"
     ## Add the environment variables and echo it to a .env file for building
