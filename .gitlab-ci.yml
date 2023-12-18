@@ -17,9 +17,11 @@ before_script:
   - docker run registry.gitlab.com/designate/client-work/whsp
 
 ## Cache node modules
-# cache:
-#   paths:
-#     - node_modules/
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
+    - .next/cache/
 
 ## Artifact the .next directory
 # default:
