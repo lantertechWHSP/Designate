@@ -16,6 +16,7 @@ before_script:
   - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
   - docker run registry.gitlab.com/designate/client-work/whsp:latest
 
+
 ## Cache node modules
 cache:
   key: ${CI_COMMIT_REF_SLUG}
