@@ -46,7 +46,13 @@ export async function getStaticProps({ params, preview }:GetStaticPropsContext) 
     const layout:ILayout = getLayoutData(site, page, preview);
     const blocks:IBlock[] = await getBlocks(page?.blocks);
 
-    return { props: { layout, blocks } };
+    return {
+        props: {
+            layout,
+            blocks
+        },
+        revalidate: 10
+    };
 }
 
 const Page : NextPage = ({ layout, blocks }:INextPageProps) : JSX.Element => {

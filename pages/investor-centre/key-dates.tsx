@@ -32,7 +32,14 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
         ({ events }) => events || []
     );
 
-    return { props: { layout, blocks, events } };
+    return {
+        props: {
+            layout,
+            blocks,
+            events
+        },
+        revalidate: 10
+    };
 }
 
 const KeyDatesPage : NextPage = ({ layout, blocks, events }:INextPageProps)  : JSX.Element => {

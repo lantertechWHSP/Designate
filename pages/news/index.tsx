@@ -38,7 +38,15 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
 
     const layout:ILayout = getLayoutData(site, page, preview);
 
-    return { props: { layout, featuredPosts, posts, postsMeta } };
+    return {
+        props: {
+            layout,
+            featuredPosts,
+            posts,
+            postsMeta
+        },
+        revalidate: 10
+    };
 }
 
 const NewsPage : NextPage = ({layout, featuredPosts, posts, postsMeta}:INextPageProps) : JSX.Element => {

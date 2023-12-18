@@ -110,7 +110,16 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
         };
     });
 
-    return { props: { layout, blocks, documents, doucmentsMeta, documentsFilters } };
+    return {
+        props: {
+            layout,
+            blocks,
+            documents,
+            doucmentsMeta,
+            documentsFilters
+        },
+        revalidate: 10
+    };
 }
 
 const ReportsPage : NextPage = ({ layout, blocks, documents, doucmentsMeta, documentsFilters }:INextPageProps) : JSX.Element => {
