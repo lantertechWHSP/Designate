@@ -73,11 +73,12 @@ build:
   script:
     - echo "Guff"
     ## Add the environment variables and echo it to a .env file for building
-    # - echo "$ENVIRONMENT_VARIABLES" >> ".env"
+    - echo "$ENVIRONMENT_VARIABLES" >> ".env"
     ## Install
-    # - npm ci
+    - npm -v
+    - npm ci
     ## Build
-    # - npm run build
+    - npm run build
   only:
     - master
 
