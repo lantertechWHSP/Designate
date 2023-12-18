@@ -13,8 +13,10 @@ services:
 
 before_script:
   - docker info
-  - docker login -u $CI_DEPLOY_USER -p $CI_DEPLOY_PASSWORD $CI_REGISTRY
-  - docker run registry.gitlab.com/designate/client-work/whsp
+  - echo $CI_REGISTRY
+  - echo $CI_DEPLOY_USER
+  # - docker login -u $CI_DEPLOY_USER -p $CI_DEPLOY_PASSWORD $CI_REGISTRY
+  # - docker run registry.gitlab.com/designate/client-work/whsp
 
 ## Cache node modules
 # cache:
