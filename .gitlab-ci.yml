@@ -1,3 +1,6 @@
+## Use node as the image
+image: node:18.12.1
+
 ## Artifact the .next directory
 default:
   artifacts:
@@ -12,7 +15,6 @@ stages:
 
 build:
   stage: build
-  image: node:latest
   ## Cache node modules
   cache:
     key: ${CI_COMMIT_REF_SLUG}
@@ -23,48 +25,45 @@ build:
     ## Add the environment variables and echo it to a .env file for building
     - echo "$ENVIRONMENT_VARIABLES" >> ".env"
     ## Install
-    - npm ci 
+    - npm ci
     ## Build
     - npm run build
   only:
     - master
 
-
 deploy:
   stage: deploy
-  image: docker:latest
-  variables:
-    DOCKER_DRIVER: overlay2
-  services:
-  - docker:dind
   before_script:
-  # Login to Docker
-  - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
-  # - echo "$CI_JOB_TOKEN $CI_REGISTRY" | docker login --username $CI_REGISTRY_USER --password-stdin
-  ## Run the Docker image
-  - docker run registry.gitlab.com/designate/client-work/whsp
-  ## Clear the .ssh directory
-  - rm -rf ~/.ssh
-  ##
-  ## Run ssh-agent (inside the build environment)
-  ##
-  - eval $(ssh-agent -s)
-  ##
-  ## Give the right permissions, otherwise ssh-add will refuse to add files
-  ## Add the SSH key stored in SSH_PRIVATE_KEY file type CI/CD variable to the agent store
-  ##
-  - chmod 400 "$SSH_PRIVATE_KEY"
-  - ssh-add "$SSH_PRIVATE_KEY"
-  ##
-  ## Create the SSH directory and give it the right permissions
-  ##
-  - mkdir -p ~/.ssh
-  - chmod 700 ~/.ssh
-  ##
-  ## Add Known Hosts
-  ##
-  - ssh-keyscan 20.157.214.14 >> ~/.ssh/known_hosts
-  - chmod 644 ~/.ssh/known_hosts
+    ##
+    ## Install ssh-agent if not already installed, it is required by Docker.
+    ## (change apt-get to yum if you use an RPM-based image)
+    ##
+    - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
+    ##
+    ## Run ssh-agent (inside the build environment)
+    ##
+    - eval $(ssh-agent -s)
+    ##
+    ## Give the right permissions, otherwise ssh-add will refuse to add files
+    ## Add the SSH key stored in SSH_PRIVATE_KEY file type CI/CD variable to the agent store
+    ##
+    - chmod 400 "$SSH_PRIVATE_KEY"
+    - ssh-add "$SSH_PRIVATE_KEY"
+    ##
+    ## Create the SSH directory and give it the right permissions
+    ##
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    ##
+    ## Add Known Hosts
+    ##
+    - ssh-keyscan 20.157.214.14 >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+    ##
+    ## Add Rsync
+    ##
+    - apt-get -y update
+    - apt-get -y install rsync
   script:
     ## Transfer relevant NextJS files to the server
     - rsync -az next.config.js gitlab@20.157.214.14:/opt/whsp/
