@@ -1,39 +1,18 @@
-# before_script:
-#   ##
-#   ## Install ssh-agent if not already installed, it is required by Docker.
-#   ## (change apt-get to yum if you use an RPM-based image)
-#   ##
-#   - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
-#   ##
-#   ## Run ssh-agent (inside the build environment)
-#   ##
-#   - eval $(ssh-agent -s)
-#   ##
-#   ## Give the right permissions, otherwise ssh-add will refuse to add files
-#   ## Add the SSH key stored in SSH_PRIVATE_KEY file type CI/CD variable to the agent store
-#   ##
-#   - chmod 400 "$SSH_PRIVATE_KEY"
-#   - ssh-add "$SSH_PRIVATE_KEY"
-#   ##
-#   ## Create the SSH directory and give it the right permissions
-#   ##
-#   - mkdir -p ~/.ssh
-#   - chmod 700 ~/.ssh
-#   ##
-#   ## Add Known Hosts
-#   ##
-#   - ssh-keyscan 20.157.214.14 >> ~/.ssh/known_hosts
-#   - chmod 644 ~/.ssh/known_hosts
-#   ##
-#   ## Add Rsync
-#   ##
-#   - apt-get -y update
-#   - apt-get -y install rsync
+image: docker:19.03.0
 
+variables:
+  DOCKER_DRIVER: overlay2
+  # Create the certificates inside this directory for both the server
+  # and client. The certificates used by the client will be created in
+  # /certs/client so we only need to share this directory with the
+  # volume mount in `config.toml`.
+  DOCKER_TLS_CERTDIR: "/certs"
 
-## Use node as the image
-# image: node:18.12.1
+services:
+  - docker:19.03.0-dind
+
 before_script:
+  - docker info
   - docker login -u $CI_DEPLOY_USER -p $CI_DEPLOY_PASSWORD $CI_REGISTRY
   - docker run registry.gitlab.com/designate/client-work/whsp
 
