@@ -24,8 +24,6 @@ before_script:
   - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
   ## Run the Docker image
   - docker run registry.gitlab.com/designate/client-work/whsp
-  ## List the items
-  - ls
   ## Clear the .ssh directory
   - rm -rf ~/.ssh
   ##
@@ -48,6 +46,10 @@ before_script:
   ##
   - ssh-keyscan 20.157.214.14 >> ~/.ssh/known_hosts
   - chmod 644 ~/.ssh/known_hosts
+
+  ## Test Node
+  - node -v
+  - npm -v
 
 ## Cache node modules
 cache:
