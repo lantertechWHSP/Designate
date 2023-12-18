@@ -36,7 +36,6 @@ before_script:
 
   ## Test Node
   - npm -v
-  - node -v
 ## Cache node modules
 # cache:
 #   key: ${CI_COMMIT_REF_SLUG}
