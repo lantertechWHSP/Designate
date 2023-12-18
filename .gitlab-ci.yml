@@ -47,7 +47,6 @@ build:
   only:
     - master
 
-
 # deploy:
 #   stage: deploy
 #   script:
