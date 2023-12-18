@@ -60,10 +60,11 @@ cache:
     - .next/cache/
 
 ## Artifact the .next directory
-# default:
-#   artifacts:
-#     paths:
-#       - .next/
+default:
+  artifacts:
+    expire_in: 10 min
+    paths:
+      - .next/
 
 ## Define the stages
 stages:
