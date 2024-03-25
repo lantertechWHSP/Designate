@@ -49,6 +49,13 @@ export const site:string = `
             youtube
             abn
             copyright
+            privacyPolicyDocument {
+                document {
+                    id
+                    title
+                    url
+                }
+            }
         }
     },
     ${menuItemFrag}
