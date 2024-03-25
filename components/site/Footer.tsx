@@ -58,11 +58,6 @@ const Footer:any = ({ menu, address, email, phone, fax, linkedin, youtube, copyr
                                     </Link>
                                 </Box>
                             }
-                            {
-                                privacyPolicyDocument?.document?.url && <Box>
-                                    <Link target="_blank" variant="siteFooter" href={privacyPolicyDocument?.document?.url}>Privacy Policy</Link>
-                                </Box>
-                            }
                         </Column>
                         <Column width={[ColumnWidth.Full, , ,ColumnWidth.Half]}  mb={[4, , ,0]}  order={[1, , ,2]}>
                             {
@@ -110,14 +105,21 @@ const Footer:any = ({ menu, address, email, phone, fax, linkedin, youtube, copyr
                 </Column>
                 <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]} mb={[8, ,0]} order={[1, ,2]} fontSize={['16px']} lineHeight={['24px']}>
                     <Row>
-                        <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
+                        <Column width={[ColumnWidth.Full, ,ColumnWidth.OneThird]}>
                             {
                                 copyright && <Text mb={0} color="whiteBlur">
                                     {copyright}
                                 </Text>
                             }
                         </Column>
-                        <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
+                        {
+                            privacyPolicyDocument?.document?.url && <Column width={[ColumnWidth.Full, ,ColumnWidth.OneThird]}>
+                                <Box color="whiteBlur">
+                                    <Link target="_blank" href={privacyPolicyDocument?.document?.url} borderBottom="1px solid">Privacy Policy</Link>
+                                </Box>
+                            </Column>
+                        }
+                        <Column width={[ColumnWidth.Full, ,ColumnWidth.OneThird]}>
                             <Box color="whiteBlur">
                                 Created by <Link href="https://designate.com.au" target="_blank" borderBottom="1px solid">Designate</Link>
                             </Box>
