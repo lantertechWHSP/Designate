@@ -35,7 +35,7 @@ const EventRSVP:any = ({ events }:IEventRSVP) : ReactNode => {
 
     const SCHEMA:any = yup.object({
         name: yup.string().required('Please enter your Name').matches(REGEXP.NAME, 'Please enter a valid First Name'),
-        isShareHolder: yup.boolean(),
+        isShareholder: yup.boolean(),
         events: yup.array().of(yup.object({
             id: yup.string().required(),
             attending: yup.boolean()
@@ -45,7 +45,25 @@ const EventRSVP:any = ({ events }:IEventRSVP) : ReactNode => {
 
     const submit:any = (values, resetForm) : void => {
         setStatus('');
-        console.log(values);
+        // console.log(values);
+
+        fetch('/api/events/rsvp/create', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(values)
+        }).then(response => response.json()).then((data) => {
+            if(data.success) {
+                setStatus('success');
+                console.log(data.message);
+                // setMessage(data.message);
+                resetForm();
+            }
+        }).catch((_error) => {
+            setStatus('error');
+        });
     };
 
     return <Box py={['40px', ,'50px', '60px']}>
@@ -73,11 +91,10 @@ const EventRSVP:any = ({ events }:IEventRSVP) : ReactNode => {
                             }
                         </Flex>
                         <Flex direction="column">
-                            <label htmlFor="isShareholder">Is Shareholder
-                                <Field as={Checkbox} name="isShareHolder" onChange={(event:any) => {
-                                    setFieldValue('isShareHolder', event.target.checked);
-                                }} />
-                            </label>
+                            <label htmlFor="isShareholder">Is Shareholder</label>
+                            <Field as={Checkbox} name="isShareholder" onChange={(event:any) => {
+                                setFieldValue('isShareholder', event.target.checked);
+                            }} />
                         </Flex>
                         <Flex direction="column">
                             <label>Events</label>
