@@ -35,41 +35,40 @@ export default async function handler(request: NextApiRequest, response: NextApi
         }
 
         try {
-            // const client = buildClient({
-            //     apiToken: process.env.NEXT_PUBLIC_DATO_KEY,
-            //     environment: process.env.NEXT_PUBLIC_DATO_ENVIRONMENT
-            // });
-            //
-            // const DATO_ITEM_TYPE_EVENT_RSVP_ID = process.env.NEXT_PUBLIC_DATO_ITEM_TYPE_EVENT_RSVP_ID;
-            //
-            // await Promise.all(
-            //     body.events.map(async (event: any) => {
-            //         // Create the Event RSVP item type
-            //         const datoEventRSVP:any = await client.items.create({
-            //             item_type: { type: "item_type", id: DATO_ITEM_TYPE_EVENT_RSVP_ID },
-            //             name: body.name,
-            //             is_shareholder: body.isShareholder,
-            //             email: body.email,
-            //             event: event.id,
-            //             attending: event.attending
-            //         });
-            //
-            //         const retreiveEvent:any = await client.items.find(event.id);
-            //         const newRSVP:string[] = retreiveEvent.rsvp;
-            //         newRSVP.push(datoEventRSVP.id);
-            //
-            //         // Place the EventRSVP to the Event item type
-            //         await client.items.update(event.id, {
-            //             rsvp: newRSVP
-            //         });
-            //     })
-            // ).catch(() => {
-            //     return response.status(500).json({
-            //         message: ERROR_MESSAGE,
-            //     });
-            // });
-            //
-            // console.log('!!');
+            const client = buildClient({
+                apiToken: process.env.NEXT_PUBLIC_DATO_KEY,
+                environment: process.env.NEXT_PUBLIC_DATO_ENVIRONMENT
+            });
+
+            const DATO_ITEM_TYPE_EVENT_RSVP_ID = process.env.NEXT_PUBLIC_DATO_ITEM_TYPE_EVENT_RSVP_ID;
+
+            await Promise.all(
+                body.events.map(async (event: any) => {
+                    // Create the Event RSVP item type
+                    const datoEventRSVP:any = await client.items.create({
+                        item_type: { type: "item_type", id: DATO_ITEM_TYPE_EVENT_RSVP_ID },
+                        name: body.name,
+                        is_shareholder: body.isShareholder,
+                        email: body.email,
+                        event: event.id,
+                        attending: event.attending
+                    });
+
+                    const retreiveEvent:any = await client.items.find(event.id);
+                    const newRSVP:string[] = retreiveEvent.rsvp;
+                    newRSVP.push(datoEventRSVP.id);
+
+                    // Place the EventRSVP to the Event item type
+                    await client.items.update(event.id, {
+                        rsvp: newRSVP
+                    });
+                })
+            ).catch(() => {
+                return response.status(500).json({
+                    success: false,
+                    message: ERROR_MESSAGE,
+                });
+            });
 
             return response.status(200).json({
                 success: true,

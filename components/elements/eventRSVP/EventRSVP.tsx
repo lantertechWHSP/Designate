@@ -45,12 +45,6 @@ const EventRSVP:any = ({ events }:IEventRSVP) : ReactNode => {
 
     const submit:any = (values, resetForm) : void => {
         setStatus('');
-        // console.log(values);
-
-        // values['name'] = '';
-        // values['email']  = '';
-
-        console.log(values);
 
         fetch('/api/events/rsvp/create', {
             method: 'POST',
@@ -62,8 +56,7 @@ const EventRSVP:any = ({ events }:IEventRSVP) : ReactNode => {
         }).then(response => response.json()).then((data) => {
             if(data.success) {
                 setStatus('success');
-                console.log(data.message);
-                // setMessage(data.message);
+                setMessage(data.message);
                 resetForm();
             }
         }).catch((_error) => {
