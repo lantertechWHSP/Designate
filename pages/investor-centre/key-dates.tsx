@@ -10,8 +10,10 @@ import { IPage } from '~/interfaces/models/page';
 import { ILayout } from '~/interfaces/layout/layout';
 import { IBlock } from '~/interfaces/util/block';
 import EventList from '~/components/elements/events/EventList';
+import EventRSVP from '~/components/elements/eventRSVP/EventRSVP';
 import { IEvent } from '~/interfaces/models/event';
 import { Container, Box } from '@chakra-ui/react';
+import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
 
 interface INextPageProps {
     layout?:ILayout;
@@ -49,6 +51,15 @@ const KeyDatesPage : NextPage = ({ layout, blocks, events }:INextPageProps)  : J
             <Box background="ghostWhite" pt={['40px', ,'50px', '60px']} pb={['120px']}>
                 <Container>
                     <EventList events={events} />
+                </Container>
+            </Box>
+            <Box>
+                <Container>
+                    <Row>
+                        <Column width={[ColumnWidth.Full, ColumnWidth.Half]}>
+                            <EventRSVP />
+                        </Column>
+                    </Row>
                 </Container>
             </Box>
         </DefaultLayout>
