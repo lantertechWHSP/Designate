@@ -15,13 +15,13 @@ type AppPropsWithLayout = AppProps & {
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) : any {
     const router = useRouter();
-    
+
     let getLayout:any;
 
     if(Component.getLayout) {
         getLayout = Component.getLayout;
     }
-    else if(/^admin/.test(router.route)) {
+    else if(/^\/admin/.test(router.route)) {
         getLayout = ((page) => <AdminLayout>{page}</AdminLayout>);
     }
     else {
