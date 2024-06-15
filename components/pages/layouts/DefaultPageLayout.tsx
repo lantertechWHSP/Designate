@@ -9,7 +9,7 @@ import VectorEffect from '~/components/elements/shapes/VectorEffect';
 import { zIndex } from '~/lib/theme/theme';
 import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
 
-const DefaultLayout:any = ({ layout, children }:any) : ReactNode => {
+const DefaultPageLayout:any = ({ layout, children }:any) : ReactNode => {
     return (
         <Flex minHeight="100vh" direction="column" overflowX="hidden">
             {
@@ -52,4 +52,4 @@ const DefaultLayout:any = ({ layout, children }:any) : ReactNode => {
     );
 };
 
-export default DefaultLayout;
+export default DefaultPageLayout;

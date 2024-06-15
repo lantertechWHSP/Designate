@@ -1,6 +1,6 @@
 import React from 'react';
 import type { NextPage } from 'next';
-import DefaultLayout from '~/components/layouts/DefaultLayout';
+import DefaultPageLayout from '~/components/pages/layouts/DefaultPageLayout';
 import { ModularContent } from '~/components/ModularContent';
 import { doQuery, queries } from '~/dato/api';
 import { getLayoutData, getBlocks } from '~/lib/utils';
@@ -46,7 +46,7 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
 
 const KeyDatesPage : NextPage = ({ layout, blocks, events }:INextPageProps)  : JSX.Element => {
     return (
-        <DefaultLayout layout={layout}>
+        <DefaultPageLayout layout={layout}>
             <ModularContent content={blocks} />
             <Box background="ghostWhite" pt={['40px', ,'50px', '60px']} pb={['120px']}>
                 <Container>
@@ -62,7 +62,7 @@ const KeyDatesPage : NextPage = ({ layout, blocks, events }:INextPageProps)  : J
                     </Row>
                 </Container>
             </Box>
-        </DefaultLayout>
+        </DefaultPageLayout>
     );
 };
 

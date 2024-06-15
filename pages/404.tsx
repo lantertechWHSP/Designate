@@ -1,6 +1,6 @@
 import React from 'react';
 import type { NextPage } from 'next';
-import DefaultLayout from '~/components/layouts/DefaultLayout';
+import DefaultPageLayout from '~/components/pages/layouts/DefaultPageLayout';
 import { doQuery, queries } from "~/dato/api";
 import { getLayoutData } from '~/lib/utils';
 import { ISite } from '~/interfaces/layout/site';
@@ -26,13 +26,13 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
 }
 
 const ErrorPage : NextPage = ({ layout }:INextPageProps) : JSX.Element => {
-    return <DefaultLayout layout={layout}>
+    return <DefaultPageLayout layout={layout}>
         <Container>
             <Box py={8}>
                 Page Not Found
             </Box>
         </Container>
-    </DefaultLayout>;
+    </DefaultPageLayout>;
 };
 
 export default ErrorPage;

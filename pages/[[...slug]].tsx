@@ -1,7 +1,7 @@
 import React from 'react';
 import type {NextPage} from 'next';
 import {GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult} from 'next';
-import DefaultLayout from '~/components/layouts/DefaultLayout';
+import DefaultPageLayout from '~/components/pages/layouts/DefaultPageLayout';
 import { ModularContent } from '~/components/ModularContent';
 import { doQuery, queries } from '~/dato/api';
 import { getBlocks, getLayoutData } from '~/lib/utils';
@@ -10,6 +10,7 @@ import { ILayout } from '~/interfaces/layout/layout';
 import { IBlock } from '~/interfaces/util/block';
 import { IPage } from '~/interfaces/models/page';
 import { PaddingBottom } from '~/components/blocks/Content';
+import SiteLayout from "~/components/layouts/SiteLayout";
 
 interface INextPageProps {
     layout?:ILayout;
@@ -63,9 +64,9 @@ const Page : NextPage = ({ layout, blocks }:INextPageProps) : JSX.Element => {
     }
 
     return (
-        <DefaultLayout layout={layout}>
+        <DefaultPageLayout layout={layout}>
             <ModularContent content={blocks} />
-        </DefaultLayout>
+        </DefaultPageLayout>
     );
 };
 

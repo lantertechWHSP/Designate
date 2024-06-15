@@ -9,7 +9,7 @@ import { ISite } from '~/interfaces/layout/site';
 import { IBlock } from '~/interfaces/util/block';
 import { IPost } from '~/interfaces/models/post';
 import { ContainerWidth } from '~/components/blocks/Content';
-import PostLayout from '~/components/layouts/PostLayout';
+import PostPageLayout from '~/components/pages/layouts/PostPageLayout';
 
 interface INextPageProps {
     post?:IPost;
@@ -62,9 +62,9 @@ const PostPage : NextPage = ({ post, layout, blocks }:any)  : JSX.Element => {
     }
 
     return (
-        <PostLayout layout={layout} post={post}>
+        <PostPageLayout layout={layout} post={post}>
             <ModularContent content={blocks} />
-        </PostLayout>
+        </PostPageLayout>
     );
 };
 

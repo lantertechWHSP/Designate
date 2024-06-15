@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { createRoot } from 'react-dom/client';
 import { withSecureHeaders } from 'next-secure-headers';
-import { connect, RenderFieldExtensionCtx } from 'datocms-plugin-sdk';
+import { connect, RenderFieldExtensionCtx, IntentCtx } from 'datocms-plugin-sdk';
+import { Box } from '@chakra-ui/react';
+import AdminLayout from "~/components/layouts/AdminLayout";
 
-const EventsRSVP:any = () => {
+const EventsRSVP = () => {
     const [isLoaded, setIsLoaded] = useState<boolean>(false);
 
     const isInIframe:any = () : boolean => {
@@ -13,29 +16,30 @@ const EventsRSVP:any = () => {
         }
     };
 
+    const render:any = (component: React.ReactNode) => {
+        createRoot(document.getElementById('__next')).render(<React.StrictMode>{component}</React.StrictMode>);
+    };
+
     useEffect(() => {
         if(!isLoaded) {
             if(isInIframe()) {
                 connect({
-                    // renderFieldExtension
-                    // customMarksForStructuredTextField(_field, _ctx) {
-                    //     return [
-                    //         {
-                    //             id: 'ticked-list-item',
-                    //             label: 'Ticked List',
-                    //             icon: 'list',
-                    //             keyboardShortcut: 'mod+shift+l',
-                    //             appliedStyle: {
-                    //                 display: 'list-item',
-                    //                 marginLeft: '-18px',
-                    //                 paddingLeft: '18px',
-                    //                 background: 'white',
-                    //                 position: 'relative',
-                    //                 listStyleType: `'✓'`,
-                    //             }
-                    //         }
-                    //     ];
-                    // },
+                    manualFieldExtensions(_ctx: IntentCtx) {
+                        return [
+                            {
+                                id: 'rsvp',
+                                name: 'RSVP',
+                                type: 'editor',
+                                fieldTypes: ['links'],
+                            },
+                        ];
+                    },
+                    renderFieldExtension(fieldExtensionId: string, ctx: RenderFieldExtensionCtx) {
+                        console.log(fieldExtensionId);
+                        switch (fieldExtensionId) {
+                            case 'rsvp': return render(<Box>Carl</Box>);
+                        }
+                    }
                 });
             }
 
@@ -54,5 +58,5 @@ export default withSecureHeaders({
         directives: {
             frameAncestors: 'https://soulpatts.admin.datocms.com/'
         }
-    },
+    }
 })(EventsRSVP);
