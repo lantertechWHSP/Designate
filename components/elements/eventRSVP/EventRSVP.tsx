@@ -47,6 +47,11 @@ const EventRSVP:any = ({ events }:IEventRSVP) : ReactNode => {
         setStatus('');
         // console.log(values);
 
+        // values['name'] = '';
+        // values['email']  = '';
+
+        console.log(values);
+
         fetch('/api/events/rsvp/create', {
             method: 'POST',
             headers: {
