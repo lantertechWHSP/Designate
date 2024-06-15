@@ -1,0 +1,58 @@
+import React, { useEffect, useState } from 'react';
+import { withSecureHeaders } from 'next-secure-headers';
+import { connect, RenderFieldExtensionCtx } from 'datocms-plugin-sdk';
+
+const EventsRSVP:any = () => {
+    const [isLoaded, setIsLoaded] = useState<boolean>(false);
+
+    const isInIframe:any = () : boolean => {
+        try {
+            return window.self !== window.top;
+        } catch (e) {
+            return true;
+        }
+    };
+
+    useEffect(() => {
+        if(!isLoaded) {
+            if(isInIframe()) {
+                connect({
+                    // renderFieldExtension
+                    // customMarksForStructuredTextField(_field, _ctx) {
+                    //     return [
+                    //         {
+                    //             id: 'ticked-list-item',
+                    //             label: 'Ticked List',
+                    //             icon: 'list',
+                    //             keyboardShortcut: 'mod+shift+l',
+                    //             appliedStyle: {
+                    //                 display: 'list-item',
+                    //                 marginLeft: '-18px',
+                    //                 paddingLeft: '18px',
+                    //                 background: 'white',
+                    //                 position: 'relative',
+                    //                 listStyleType: `'✓'`,
+                    //             }
+                    //         }
+                    //     ];
+                    // },
+                });
+            }
+
+            setIsLoaded(true);
+        }
+    }, [isLoaded]);
+
+    return (
+        <></>
+    );
+};
+
+export default withSecureHeaders({
+    frameGuard: false,
+    contentSecurityPolicy: {
+        directives: {
+            frameAncestors: 'https://soulpatts.admin.datocms.com/'
+        }
+    },
+})(EventsRSVP);
