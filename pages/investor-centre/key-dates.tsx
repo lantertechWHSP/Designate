@@ -57,7 +57,7 @@ const KeyDatesPage : NextPage = ({ layout, blocks, events }:INextPageProps)  : J
                 <Container>
                     <Row>
                         <Column width={[ColumnWidth.Full, ColumnWidth.Half]}>
-                            <EventRSVP />
+                            <EventRSVP events={events}  />
                         </Column>
                     </Row>
                 </Container>

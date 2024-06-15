@@ -1,16 +1,31 @@
-import React, { ReactNode, useState } from 'react';
-import {Box, Input, Heading, Flex, Checkbox, Button, Text} from '@chakra-ui/react';
+import React, { ReactNode, useState, Fragment } from 'react';
+import { Box, Input, Heading, Flex, Checkbox, Button, Text } from '@chakra-ui/react';
 import { Formik, Form, Field } from 'formik';
 import * as yup from 'yup';
+import { IEvent } from '~/interfaces/models/event';
+import { DateTime } from 'luxon';
 
-const EventRSVP:any = () : ReactNode => {
+interface IEventRSVP {
+    events:IEvent[];
+}
+
+const EventRSVP:any = ({ events }:IEventRSVP) : ReactNode => {
     const [isAttemptedSubmit, setIsAttemptedSubmit] = useState<boolean>(false);
     const [status, setStatus] = useState<string>();
     const [message, setMessage] = useState<string>();
+    const [upcomingEvents] = useState(events.filter((event) => {
+        return DateTime.fromISO(event.startDate).startOf('day') > DateTime.now().startOf('day');
+    }));
 
     const INITIAL_VALUES:any = {
         name: '',
         isShareholder: true,
+        events: upcomingEvents.map((event) => {
+            return {
+                id: event.id,
+                attending: false
+            };
+        }),
         email: ''
     };
 
@@ -21,6 +36,10 @@ const EventRSVP:any = () : ReactNode => {
     const SCHEMA:any = yup.object({
         name: yup.string().required('Please enter your Name').matches(REGEXP.NAME, 'Please enter a valid First Name'),
         isShareHolder: yup.boolean(),
+        events: yup.array().of(yup.object({
+            id: yup.string().required(),
+            attending: yup.boolean()
+        })),
         email: yup.string().required('Please enter an Email Address').email('Please enter a valid Email Address')
     });
 
@@ -55,12 +74,23 @@ const EventRSVP:any = () : ReactNode => {
                         </Flex>
                         <Flex direction="column">
                             <label htmlFor="isShareholder">Is Shareholder
-                                <Field as={Checkbox} name="isShareHolder" onChange={(event) => {
+                                <Field as={Checkbox} name="isShareHolder" onChange={(event:any) => {
                                     setFieldValue('isShareHolder', event.target.checked);
-                                }}>
-
-                                </Field>
+                                }} />
                             </label>
+                        </Flex>
+                        <Flex direction="column">
+                            <label>Events</label>
+                            {
+                                upcomingEvents.map((upcomingEvent:IEvent, index:number) => {
+                                    return <Flex key={index}>
+                                        <label htmlFor="events">{upcomingEvent.title}</label>
+                                        <Field as={Checkbox} name={`events.${index}.attending`} onChange={(event:any) => {
+                                            setFieldValue(`events.${index}.attending`, event.target.checked);
+                                        }} />
+                                    </Flex>;
+                                })
+                            }
                         </Flex>
                         <Flex direction="column">
                             <label htmlFor="email">Email</label>
