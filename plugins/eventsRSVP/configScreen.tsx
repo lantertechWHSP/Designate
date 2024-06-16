@@ -29,9 +29,25 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
         }
     }, [ctx.formValues]);
 
-
     const download:any = () : void => {
+        if(eventRSVPItems.length > 0) {
+            let CSVString:string = '';
+            const title:string = ctx.formValues.title ? `${ctx.formValues.title} — RSVP` : 'RSVP';
 
+            CSVString += 'Name,Email,Is Shareholder, Attending\r\n';
+
+            eventRSVPItems.map((event) => {
+                CSVString += `${event.name},${event.email},${event.isShareholder ? 'Yes' : 'No'},${event.attending ? 'Yes' : 'No'}`;
+                CSVString += "\r\n";
+            });
+
+            CSVString = "data:application/csv," + encodeURIComponent(CSVString);
+            const anchor = document.createElement("A");
+            anchor.setAttribute("href", CSVString );
+            anchor.setAttribute("download", `${title}.csv`);
+            document.body.appendChild(anchor);
+            anchor.click();
+        }
     };
 
     return (
@@ -73,15 +89,12 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                         </div>
                         <div style={{ marginTop: 'var(--spacing-l)' }}>
                             <Button buttonType="primary" onClick={download}>
-                                Download Spreadsheet
+                                Download CSV
                             </Button>
                         </div>
                     </>
                 }
             </FieldGroup>
-            {/*<Form>*/}
-            {/*    <input type="text" id="rsvp" name="rsvp" value={ctx.formValues.rsvp}/>*/}
-            {/*</Form>*/}
         </Canvas>
     );
 };
