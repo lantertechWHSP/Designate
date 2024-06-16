@@ -1,8 +1,10 @@
-import { Canvas, Form, FieldGroup, TextField, SelectField } from 'datocms-react-ui';
+import { Canvas, Form, FieldGroup, TextField, SelectField, Section } from 'datocms-react-ui';
 import { useEffect, useCallback, useState } from 'react';
 import 'datocms-react-ui/styles.css';
-import {doQuery, queries} from "~/dato/api";
+import { doQuery, queries } from "~/dato/api";
+import { BooleanCell } from "~/plugins/eventsRSVP/booleanCell";
 // import { buildClient } from "@datocms/cma-client-node";
+import './configScreen.css';
 
 type PropTypes = {
     ctx: any;
@@ -24,21 +26,60 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
     //     ctx.setParameters(newParameters);
     // }, [formValues, setFormValues, ctx.setParameters]);
 
+    const [eventRSVPItems, setEventRSVPItems] = useState([]);
+
     useEffect(() => {
         if(ctx.formValues.rsvp) {
             doQuery(queries.eventRSVP, {
                 in: ctx.formValues.rsvp
             }).then((response) => {
-                console.log(response);
+                setEventRSVPItems(response.eventRSVPS);
             });
         }
     }, [ctx.formValues]);
 
+
     return (
         <Canvas ctx={ctx}>
+            <FieldGroup>
+                {
+                    eventRSVPItems.length > 0 && <div className="ItemsTable">
+                        <div className="ItemsTable__header-row">
+                            <div className="ItemsTable__header-cell">Name</div>
+                            <div className="ItemsTable__header-cell">Email</div>
+                            <div className="ItemsTable__header-cell">Is Shareholder</div>
+                            <div className="ItemsTable__header-cell">Attending</div>
+                        </div>
+                        <div className="ItemsTable__content">
+                            {
+                                eventRSVPItems.map((item, index: number) => {
+                                    return <div className="ItemsTable__row" key={index}>
+                                        <div className="ItemsTable__cell">
+                                            {item.name}
+                                        </div>
+                                        <div className="ItemsTable__cell">
+                                            {item.email}
+                                        </div>
+                                        <div className="ItemsTable__cell">
+                                            {
+                                                item.isShareholder && <BooleanCell />
+                                            }
+                                        </div>
+                                        <div className="ItemsTable__cell">
+                                            {
+                                                item.attending && <BooleanCell />
+                                            }
+                                        </div>
+                                    </div>;
+                                })
+                            }
+                        </div>
+                    </div>
+                }
+            </FieldGroup>
             <Form>
                 <FieldGroup>
-                    <input type="hidden" id="rsvp" name="rsvp" value={formValues.rsvp} />
+                    <input type="hidden" id="rsvp" name="rsvp" value={formValues.rsvp}/>
                     {/*<TextField*/}
                     {/*    id="rsvp"*/}
                     {/*    name="rsvp"*/}
@@ -62,8 +103,8 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                     {/*    // }}*/}
                     {/*    onChange={update.bind(null, 'rsvp')}*/}
                     {/*/>*/}
-                </FieldGroup>
 
+                </FieldGroup>
             </Form>
         </Canvas>
     );
