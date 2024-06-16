@@ -1,10 +1,11 @@
 import React, { ReactNode, useEffect, useState } from 'react';
-import { createRoot} from 'react-dom/client';
+import { createRoot } from 'react-dom/client';
 import { connect, IntentCtx, RenderFieldExtensionCtx } from 'datocms-plugin-sdk';
 import EventsRSVPConfigScreen from "~/plugins/eventsRSVP/configScreen";
 
 const EventsRSVPPlugin:any = () : ReactNode => {
     const [isLoaded, setIsLoaded] = useState<boolean>(false);
+    let isRendered = false;
 
     const isInIframe:any = () : boolean => {
         try {
@@ -15,7 +16,10 @@ const EventsRSVPPlugin:any = () : ReactNode => {
     };
 
     const render:any = (component: React.ReactNode) => {
-        createRoot(document.getElementById('__next')).render(<React.StrictMode>{component}</React.StrictMode>);
+        if(!isRendered) {
+            createRoot(document.getElementById('__next')).render(<React.StrictMode>{component}</React.StrictMode>);
+            isRendered = true;
+        }
     };
 
     useEffect(() => {
@@ -34,7 +38,7 @@ const EventsRSVPPlugin:any = () : ReactNode => {
                     },
                     renderFieldExtension(fieldExtensionId: string, ctx: RenderFieldExtensionCtx) {
                         switch (fieldExtensionId) {
-                            case 'rsvp': return render(<EventsRSVPConfigScreen ctx={ctx}/>);
+                            case 'rsvp': return render(<EventsRSVPConfigScreen ctx={ctx} />);
                         }
                     }
                 });
