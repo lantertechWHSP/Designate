@@ -1,6 +1,6 @@
 {
-  "name": "whsp",
-  "version": "1.0.0",
+  "name": "soulpatts",
+  "version": "1.0.1",
   "author": "solutions@designate.com.au",
   "contributors": [
     {
@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@chakra-ui/react": "^2.8.0",
+    "@datocms/cma-client-node": "^3.3.2",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@fontsource/heebo": "^5.0.8",
@@ -35,6 +36,7 @@
     "d3": "^7.8.5",
     "date-fns": "^2.30.0",
     "datocms-plugin-sdk": "^1.0.0",
+    "datocms-react-ui": "^1.0.2",
     "datocms-structured-text-to-html-string": "^2.1.11",
     "eslint-config-next": "13.4.12",
     "formik": "^2.4.3",
@@ -43,7 +45,7 @@
     "lodash": "^4.17.21",
     "luxon": "^3.4.2",
     "nanoid": "^4.0.2",
-    "next": "^13.5.4",
+    "next": "^14.2.4",
     "next-connect": "^0.13.0",
     "next-secure-headers": "^2.2.0",
     "react": "18.2.0",
@@ -60,7 +62,6 @@
     "@typescript-eslint/eslint-plugin": "^6.2.1",
     "@typescript-eslint/parser": "^6.2.1",
     "eslint": "^8.46.0",
-    "react-google-recaptcha-v3": "^1.10.1",
     "typescript": "^5.1.6"
   }
 }

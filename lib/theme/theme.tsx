@@ -1,7 +1,13 @@
 import { extendBaseTheme } from '@chakra-ui/react';
 import chakraTheme from '@chakra-ui/theme';
 import { fontGramatika, fontRoboto } from '~/app/_fonts';
-const { Modal, Menu, Badge, Alert, Skeleton } = chakraTheme.components;
+const { Modal, Menu, Badge, Alert, Skeleton, Checkbox, Button } = chakraTheme.components;
+import { inputAnatomy } from '@chakra-ui/anatomy';
+import { createMultiStyleConfigHelpers } from '@chakra-ui/react';
+
+const { definePartsStyle } = createMultiStyleConfigHelpers(inputAnatomy.keys);
+
+// const { definePartsStyle } = createMultiStyleConfigHelpers(checkboxAnatomy.keys);
 
 export const breakpoints:any = {
     base: '0px',
@@ -54,8 +60,11 @@ const colors:any = {
     positiveDot: '#00CE7D',
     negativeDot: '#ea4743',
 
-    error: '#ac3148',
-    errorText: '#fff4f4',
+    // error: '#ac3148',
+    // errorText: '#fff4f4',
+
+    successAlertBackground: '#00CE7D',
+    successAlertText: '#f0fff9'
 };
 
 colors['borderColor'] = colors.lightGrey2;
@@ -480,7 +489,34 @@ export const theme:any = extendBaseTheme({
         },
         Alert: {
             ...Alert,
-        }
+            variants: {
+                error: {
+                    container: {
+                        color: 'errorText',
+                        background: 'error'
+                    }
+                },
+                success: {
+                    container: {
+                        color: 'successAlertText',
+                        background: 'successAlertBackground'
+                    }
+                }
+            }
+        },
+        Input: {
+            baseStyle: definePartsStyle({
+                field: {
+                    height: '44px',
+                    lineHeight: '44px',
+                    color: 'charcoal',
+                    px: 2,
+                }
+            })
+        },
+        Checkbox: {
+            ...Checkbox,
+        },
     },
     styles: {
         global: {
@@ -521,6 +557,9 @@ export const theme:any = extendBaseTheme({
                 li: {
                     pl: '8px'
                 }
+            },
+            label: {
+                color: colors.charcoal
             },
             // YourIR
             '#yourir-default-announcement': {

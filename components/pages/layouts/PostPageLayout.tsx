@@ -11,7 +11,7 @@ import VectorEffect from '~/components/elements/shapes/VectorEffect';
 import { zIndex } from '~/lib/theme/theme';
 import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
 
-const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
+const PostPageLayout:any = ({ layout, post, children }:any) : ReactNode => {
     const [annotation] = useState((() => {
         const date:string = layout?.page?.publishDate ? DateTime.fromISO(layout?.page?.publishDate).toFormat('MMM d, yyyy') : '';
 
@@ -97,4 +97,4 @@ const PostLayout:any = ({ layout, post, children }:any) : ReactNode => {
     );
 };
 
-export default PostLayout;
+export default PostPageLayout;

@@ -12,7 +12,7 @@ import { isEmptyDocument } from 'datocms-structured-text-utils';
 interface IFooter extends IDatoFooter {
 }
 
-const Footer:any = ({ menu, address, email, phone, fax, linkedin, youtube, copyright }:IFooter) : ReactNode => {
+const Footer:any = ({ menu, address, email, phone, fax, linkedin, youtube, copyright, privacyPolicyDocument }:IFooter) : ReactNode => {
     return <Box as="footer" background="charcoal2" color="white" py={['40px', ,'50px', '60px']}>
         <Container>
             <Row>
@@ -105,21 +105,27 @@ const Footer:any = ({ menu, address, email, phone, fax, linkedin, youtube, copyr
                 </Column>
                 <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]} mb={[8, ,0]} order={[1, ,2]} fontSize={['16px']} lineHeight={['24px']}>
                     <Row>
-                        <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
+                        <Column width={[ColumnWidth.Full, ,ColumnWidth.OneThird]}>
                             {
                                 copyright && <Text mb={0} color="whiteBlur">
                                     {copyright}
                                 </Text>
                             }
                         </Column>
-                        <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
+                        {
+                            privacyPolicyDocument?.document?.url && <Column width={[ColumnWidth.Full, ,ColumnWidth.OneThird]}>
+                                <Box color="whiteBlur">
+                                    <Link target="_blank" href={privacyPolicyDocument?.document?.url} borderBottom="1px solid">Privacy Policy</Link>
+                                </Box>
+                            </Column>
+                        }
+                        <Column width={[ColumnWidth.Full, ,ColumnWidth.OneThird]}>
                             <Box color="whiteBlur">
                                 Created by <Link href="https://designate.com.au" target="_blank" borderBottom="1px solid">Designate</Link>
                             </Box>
                         </Column>
                     </Row>
                 </Column>
-
             </Row>
         </Container>
     </Box>;

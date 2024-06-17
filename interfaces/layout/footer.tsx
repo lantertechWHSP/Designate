@@ -1,4 +1,5 @@
 import { IMenuLink } from '~/interfaces/models/menuLink';
+import { IDocument } from '~/interfaces/models/document';
 
 export interface IFooter {
     menu?: IMenuLink[];
@@ -10,4 +11,5 @@ export interface IFooter {
     youtube?:string;
     abn?:string;
     copyright?:string
+    privacyPolicyDocument?:IDocument;
 }

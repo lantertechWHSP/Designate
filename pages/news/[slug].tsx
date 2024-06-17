@@ -9,7 +9,7 @@ import { ISite } from '~/interfaces/layout/site';
 import { IBlock } from '~/interfaces/util/block';
 import { IPost } from '~/interfaces/models/post';
 import { ContainerWidth } from '~/components/blocks/Content';
-import PostLayout from '~/components/layouts/PostLayout';
+import PostPageLayout from '~/components/pages/layouts/PostPageLayout';
 
 interface INextPageProps {
     post?:IPost;
@@ -23,7 +23,7 @@ export async function getStaticPaths() : Promise<GetStaticPathsResult<any>> {
         params: { slug: post.slug }
     })) : [];
 
-    return { paths, fallback: false };
+    return { paths, fallback: 'blocking' };
 }
 
 export async function getStaticProps({ params, preview }:GetStaticPropsContext) : Promise<GetStaticPropsResult<INextPageProps>> {
@@ -36,7 +36,14 @@ export async function getStaticProps({ params, preview }:GetStaticPropsContext) 
     const layout:ILayout = getLayoutData(site, post, preview);
     const blocks:IBlock[] = await getBlocks(post?.blocks);
 
-    return { props: { post, layout, blocks } };
+    return {
+        props: {
+            post,
+            layout,
+            blocks
+        },
+        revalidate: 10
+    };
 }
 
 const PostPage : NextPage = ({ post, layout, blocks }:any)  : JSX.Element => {
@@ -55,9 +62,9 @@ const PostPage : NextPage = ({ post, layout, blocks }:any)  : JSX.Element => {
     }
 
     return (
-        <PostLayout layout={layout} post={post}>
+        <PostPageLayout layout={layout} post={post}>
             <ModularContent content={blocks} />
-        </PostLayout>
+        </PostPageLayout>
     );
 };
 

@@ -5,12 +5,11 @@ import Footer from '~/components/site/Footer';
 import PageLinks from '~/components/site/PageLinks';
 import Preview from "~/components/site/Preview";
 import { Heading, Container, Flex, Box } from '@chakra-ui/react';
-import { SubscriptionForm } from '~/components/elements/mailchimp/subscriptionForm';
 import VectorEffect from '~/components/elements/shapes/VectorEffect';
-import {zIndex} from "~/lib/theme/theme";
+import { zIndex } from '~/lib/theme/theme';
 import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
 
-const DefaultLayout:any = ({ layout, children }:any) : ReactNode => {
+const DefaultPageLayout:any = ({ layout, children }:any) : ReactNode => {
     return (
         <Flex minHeight="100vh" direction="column" overflowX="hidden">
             {
@@ -48,12 +47,9 @@ const DefaultLayout:any = ({ layout, children }:any) : ReactNode => {
             {
                 layout?.isHomePage && <PageLinks current={layout?.breadcrumbs[0]?.node} />
             }
-            {
-                layout?.isHomePage && <SubscriptionForm />
-            }
             <Footer {...layout?.footer} />
         </Flex>
     );
 };
 
-export default DefaultLayout;
+export default DefaultPageLayout;

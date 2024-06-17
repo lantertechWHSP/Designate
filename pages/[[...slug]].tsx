@@ -1,7 +1,7 @@
 import React from 'react';
 import type {NextPage} from 'next';
 import {GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult} from 'next';
-import DefaultLayout from '~/components/layouts/DefaultLayout';
+import DefaultPageLayout from '~/components/pages/layouts/DefaultPageLayout';
 import { ModularContent } from '~/components/ModularContent';
 import { doQuery, queries } from '~/dato/api';
 import { getBlocks, getLayoutData } from '~/lib/utils';
@@ -10,6 +10,7 @@ import { ILayout } from '~/interfaces/layout/layout';
 import { IBlock } from '~/interfaces/util/block';
 import { IPage } from '~/interfaces/models/page';
 import { PaddingBottom } from '~/components/blocks/Content';
+import SiteLayout from "~/components/layouts/SiteLayout";
 
 interface INextPageProps {
     layout?:ILayout;
@@ -20,7 +21,8 @@ export async function getStaticPaths() : Promise<GetStaticPathsResult<any>> {
     const systemPages:string[] = [
         'news',
         'investor-centre/key-dates',
-        'investor-centre/financial-reports'
+        'investor-centre/financial-reports',
+        'privacy-policy'
     ];
 
     const pages:IPage = await doQuery(queries.pages).then(({ pages }) => pages);
@@ -46,7 +48,13 @@ export async function getStaticProps({ params, preview }:GetStaticPropsContext) 
     const layout:ILayout = getLayoutData(site, page, preview);
     const blocks:IBlock[] = await getBlocks(page?.blocks);
 
-    return { props: { layout, blocks } };
+    return {
+        props: {
+            layout,
+            blocks
+        },
+        revalidate: 10
+    };
 }
 
 const Page : NextPage = ({ layout, blocks }:INextPageProps) : JSX.Element => {
@@ -56,9 +64,9 @@ const Page : NextPage = ({ layout, blocks }:INextPageProps) : JSX.Element => {
     }
 
     return (
-        <DefaultLayout layout={layout}>
+        <DefaultPageLayout layout={layout}>
             <ModularContent content={blocks} />
-        </DefaultLayout>
+        </DefaultPageLayout>
     );
 };
 

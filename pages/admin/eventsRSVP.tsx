@@ -1,9 +1,9 @@
 import React from 'react';
 import { withSecureHeaders } from 'next-secure-headers';
-import StructuredTextEditorPlugin from "~/plugins/structuredText/index";
+import EventsRSVPPlugin from '~/plugins/eventsRSVP';
 
-const StructuredTextEditor:any = () => {
-    return <StructuredTextEditorPlugin />;
+const EventsRSVP:any = () : any => {
+    return <EventsRSVPPlugin />;
 };
 
 export default withSecureHeaders({
@@ -12,5 +12,5 @@ export default withSecureHeaders({
         directives: {
             frameAncestors: 'https://soulpatts.admin.datocms.com/'
         }
-    },
-})(StructuredTextEditor);
+    }
+})(EventsRSVP);

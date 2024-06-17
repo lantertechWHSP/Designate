@@ -9,7 +9,7 @@ import { IBlock } from '~/interfaces/util/block';
 import { IPost } from '~/interfaces/models/post';
 import { IPostsMeta } from '~/interfaces/models/postsMeta';
 import { DATO_QUERY_VALUES } from '~/components/elements/posts/PostList';
-import PostListLayout from '~/components/layouts/PostListLayout';
+import PostListPageLayout from '~/components/pages/layouts/PostListPageLayout';
 
 interface INextPageProps {
     layout?:ILayout;
@@ -38,12 +38,20 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
 
     const layout:ILayout = getLayoutData(site, page, preview);
 
-    return { props: { layout, featuredPosts, posts, postsMeta } };
+    return {
+        props: {
+            layout,
+            featuredPosts,
+            posts,
+            postsMeta
+        },
+        revalidate: 10
+    };
 }
 
 const NewsPage : NextPage = ({layout, featuredPosts, posts, postsMeta}:INextPageProps) : JSX.Element => {
     return (
-        <PostListLayout layout={layout} featuredPosts={featuredPosts} posts={posts} postsMeta={postsMeta} />
+        <PostListPageLayout layout={layout} featuredPosts={featuredPosts} posts={posts} postsMeta={postsMeta} />
     );
 };
 

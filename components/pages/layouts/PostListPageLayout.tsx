@@ -9,7 +9,7 @@ import PostList from "~/components/elements/posts/PostList";
 import VectorEffect from "~/components/elements/shapes/VectorEffect";
 import {zIndex} from "~/lib/theme/theme";
 
-const PostListLayout:any = ({ layout, featuredPosts, posts, postsMeta }:any) : ReactNode => {
+const PostListPageLayout:any = ({ layout, featuredPosts, posts, postsMeta }:any) : ReactNode => {
     const hasFeaturedPosts:boolean = Array.isArray(featuredPosts) && featuredPosts.length > 0;
 
     return (
@@ -44,4 +44,4 @@ const PostListLayout:any = ({ layout, featuredPosts, posts, postsMeta }:any) : R
     );
 };
 
-export default PostListLayout;
+export default PostListPageLayout;

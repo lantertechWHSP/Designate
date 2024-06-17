@@ -52,8 +52,8 @@ export const ProfilesPanelBlock:any = ({ items, columnCount = 3, background, pad
             <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)}>
                 <ModalOverlay />
                 <ModalContent maxWidth={['100vw', ,'1400px']}
-                              minHeight={['100vh', , ,'calc(100vh - 80px)']}
-                              my={[0, , ,'40px']}  background="oliveGrey">
+                    minHeight={['100vh', , ,'calc(100vh - 80px)']}
+                    my={[0, , ,'40px']}  background="oliveGrey">
                     <Box my={8}>
                         <Container>
                             <Row>

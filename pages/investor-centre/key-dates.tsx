@@ -1,6 +1,6 @@
 import React from 'react';
 import type { NextPage } from 'next';
-import DefaultLayout from '~/components/layouts/DefaultLayout';
+import DefaultPageLayout from '~/components/pages/layouts/DefaultPageLayout';
 import { ModularContent } from '~/components/ModularContent';
 import { doQuery, queries } from '~/dato/api';
 import { getLayoutData, getBlocks } from '~/lib/utils';
@@ -10,8 +10,10 @@ import { IPage } from '~/interfaces/models/page';
 import { ILayout } from '~/interfaces/layout/layout';
 import { IBlock } from '~/interfaces/util/block';
 import EventList from '~/components/elements/events/EventList';
+import EventRSVP from '~/components/elements/eventRSVP/EventRSVP';
 import { IEvent } from '~/interfaces/models/event';
 import { Container, Box } from '@chakra-ui/react';
+import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
 
 interface INextPageProps {
     layout?:ILayout;
@@ -32,19 +34,35 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
         ({ events }) => events || []
     );
 
-    return { props: { layout, blocks, events } };
+    return {
+        props: {
+            layout,
+            blocks,
+            events
+        },
+        revalidate: 10
+    };
 }
 
 const KeyDatesPage : NextPage = ({ layout, blocks, events }:INextPageProps)  : JSX.Element => {
     return (
-        <DefaultLayout layout={layout}>
+        <DefaultPageLayout layout={layout}>
             <ModularContent content={blocks} />
             <Box background="ghostWhite" pt={['40px', ,'50px', '60px']} pb={['120px']}>
                 <Container>
                     <EventList events={events} />
                 </Container>
             </Box>
-        </DefaultLayout>
+            <Box>
+                <Container>
+                    <Row>
+                        <Column width={[ColumnWidth.Full, ColumnWidth.Half]}>
+                            <EventRSVP events={events}  />
+                        </Column>
+                    </Row>
+                </Container>
+            </Box>
+        </DefaultPageLayout>
     );
 };
 
