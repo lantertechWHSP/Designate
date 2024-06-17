@@ -8,15 +8,12 @@ import ReCAPTCHA from 'react-google-recaptcha';
 
 const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_KEY;
 
-console.log(RECAPTCHA_SITE_KEY);
-
 interface IEventRSVP {
     events:IEvent[];
 }
 
 const EventRSVP:any = ({ events }:IEventRSVP) : ReactNode => {
     const [isAttemptedSubmit, setIsAttemptedSubmit] = useState<boolean>(false);
-    // const [message, setMessage] = useState<string>();
 
     const [isSuccessfulSubmit, setIsSuccessfulSubmit] = useState<boolean>(false);
     const [successMessage, setSucessMessage] = useState<string>('');
