@@ -47,6 +47,9 @@ import { sharePricePanelRecord } from '~/dato/blocks/sharePricePanel';
 import { shareQuoteTableRecord } from '~/dato/blocks/shareQuoteTable';
 import { shareHistoricalPricesTableRecord } from '~/dato/blocks/shareHistoricalPricesTable';
 
+// Investor Center/Key Dates
+import { eventRSVPFormPanelRecord} from '~/dato/blocks/eventRSVPFormPanel';
+
 // Investor Center/Dividends
 import { dividendHistoryTableRecord } from '~/dato/blocks/dividendHistoryTable';
 import { dividendLatestTableRecord } from '~/dato/blocks/dividendLatestTable';
@@ -177,6 +180,10 @@ export const blocks:string = `
             ${shareHistoricalPricesTableRecord}
         }
         
+        ... on EventRsvpFormPanelRecord {
+            ${eventRSVPFormPanelRecord}
+        }
+
         ... on DividendHistoryTableRecord {
             ${dividendHistoryTableRecord}
         }

@@ -38,15 +38,6 @@ const KeyDatesPage : NextPage = ({ layout, blocks }:INextPageProps)  : JSX.Eleme
     return (
         <DefaultPageLayout layout={layout}>
             <ModularContent content={blocks} />
-            {/*<Box>*/}
-            {/*    <Container>*/}
-            {/*        <Row>*/}
-            {/*            <Column width={[ColumnWidth.Full, ColumnWidth.Half]}>*/}
-            {/*                <EventRSVP events={events}  />*/}
-            {/*            </Column>*/}
-            {/*        </Row>*/}
-            {/*    </Container>*/}
-            {/*</Box>*/}
         </DefaultPageLayout>
     );
 };

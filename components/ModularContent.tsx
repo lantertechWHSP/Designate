@@ -48,6 +48,9 @@ import SharePricePanelBlock from '~/components/blocks/SharePricePanel/SharePrice
 import ShareQuoteTableBlock from '~/components/blocks/ShareQuoteTable';
 import ShareHistoricalPricesTableBlock from '~/components/blocks/ShareHistoricalPricesTable';
 
+// Investor Center/Key Dates
+import EventRsvpFormPanelBlock from '~/components/blocks/EventRsvpFormPanel';
+
 // Investor Center/Dividends
 import DividendHistoryTableBlock from '~/components/blocks/DividendHistoryTable';
 import DividendLatestTableBlock from '~/components/blocks/DividendLatestTable';
@@ -114,6 +117,9 @@ const blocks:any = {
     SharePricePanelBlock,
     ShareQuoteTableBlock,
     ShareHistoricalPricesTableBlock,
+
+    // Investor Center/Key Dates
+    EventRsvpFormPanelBlock,
 
     // Investor Center/Dividends
     DividendHistoryTableBlock,

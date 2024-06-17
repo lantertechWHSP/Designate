@@ -3,8 +3,8 @@ import { Box, Input, Heading, Flex, Checkbox, Button, Text, Alert } from '@chakr
 import { Formik, Form, Field } from 'formik';
 import * as yup from 'yup';
 import { IEvent } from '~/interfaces/models/event';
-import { DateTime } from 'luxon';
 import ReCAPTCHA from 'react-google-recaptcha';
+import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
 
 const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_KEY;
 
@@ -18,16 +18,15 @@ const EventRSVP:any = ({ events }:IEventRSVP) : ReactNode => {
     const [isSuccessfulSubmit, setIsSuccessfulSubmit] = useState<boolean>(false);
     const [successMessage, setSucessMessage] = useState<string>('');
     const [errorMessage, setErrorMessage] = useState<string>('');
-    const [upcomingEvents] = useState(events.filter((event) => {
-        return DateTime.fromISO(event.startDate).startOf('day') > DateTime.now().startOf('day');
-    }));
 
     const recaptchaRef:any = React.createRef();
+
+    console.log(events);
 
     const INITIAL_VALUES:any = {
         name: '',
         isShareholder: true,
-        events: upcomingEvents.map((event) => {
+        events: events.map((event) => {
             return {
                 id: event.id,
                 attending: false
@@ -79,87 +78,90 @@ const EventRSVP:any = ({ events }:IEventRSVP) : ReactNode => {
         });
     };
 
-    return <Box py={['40px', ,'50px', '60px']}>
-        <Heading>
+    return <Box>
+        <Heading as="h2" variant="sectionHeading">
             RSVP
         </Heading>
-        {
-            !isSuccessfulSubmit ? <Formik
-                validationSchema={SCHEMA}
-                initialValues={INITIAL_VALUES}
-                onSubmit={(values, { resetForm }) => {
-                    submit(values, resetForm);
-                }}>
+        <Row>
+            <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
                 {
-                    (({ handleSubmit, errors, touched, setFieldValue }) => {
-                        return <Form onSubmit={(event) => {
-                            setIsAttemptedSubmit(true);
-                            event.preventDefault();
-                            handleSubmit();
-                        }} noValidate>
-                            <Flex direction="column">
-                                <label htmlFor="name">Name</label>
-                                <Field as={Input} type="name" id="name" name="name" />
-                                {
-                                    (errors.name && (touched.name && isAttemptedSubmit)) && <Text variant="error" mt={2} mb={0}>{errors.name.toString()}</Text>
-                                }
-                            </Flex>
-                            <Flex direction="column">
-                                <label htmlFor="isShareholder">Is Shareholder</label>
-                                <Field as={Checkbox} name="isShareholder" onChange={(event:any) => {
-                                    setFieldValue('isShareholder', event.target.checked);
-                                }} />
-                            </Flex>
-                            <Flex direction="column">
-                                <label>Events</label>
-                                {
-                                    upcomingEvents.map((upcomingEvent:IEvent, index:number) => {
-                                        return <Flex key={index}>
-                                            <label htmlFor="events">{upcomingEvent.title}</label>
-                                            <Field as={Checkbox} name={`events.${index}.attending`} onChange={(event:any) => {
-                                                setFieldValue(`events.${index}.attending`, event.target.checked);
-                                            }} />
-                                        </Flex>;
-                                    })
-                                }
-                            </Flex>
-                            <Flex direction="column">
-                                <label htmlFor="email">Email</label>
-                                <Field as={Input} type="email" id="email" name="email" />
-                                {
-                                    (errors.email && (touched.email && isAttemptedSubmit)) && <Text variant="error" mt={2} mb={0}>{errors.email.toString()}</Text>
-                                }
-                            </Flex>
-                            <Flex direction="column" mt={4}>
-                                <ReCAPTCHA
-                                    ref={recaptchaRef}
-                                    sitekey={RECAPTCHA_SITE_KEY}
-                                    onChange={(token:any) => {
-                                        if (typeof token === 'string') {
-                                            setFieldValue('recaptcha', token);
+                    !isSuccessfulSubmit ? <Formik
+                        validationSchema={SCHEMA}
+                        initialValues={INITIAL_VALUES}
+                        onSubmit={(values, { resetForm }) => {
+                            submit(values, resetForm);
+                        }}>
+                        {
+                            (({ handleSubmit, errors, touched, setFieldValue }) => {
+                                return <Form onSubmit={(event) => {
+                                    setIsAttemptedSubmit(true);
+                                    event.preventDefault();
+                                    handleSubmit();
+                                }} noValidate>
+                                    <Flex direction="column">
+                                        <label htmlFor="name">Name</label>
+                                        <Field as={Input} type="name" id="name" name="name" />
+                                        {
+                                            (errors.name && (touched.name && isAttemptedSubmit)) && <Text variant="error" mt={2} mb={0}>{errors.name.toString()}</Text>
                                         }
-                                    }}>
-                                </ReCAPTCHA>
-                                {
-                                    (errors.recaptcha && (touched.recaptcha && isAttemptedSubmit)) && <Text variant="error" mt={2} mb={0}>{errors.recaptcha.toString()}</Text>
-                                }
-                            </Flex>
-                            {
-                                errorMessage && <Alert status="error" variant="error" mt={4}>
-                                    {errorMessage}
-                                </Alert>
-                            }
-                            <Button type="submit" variant="button" mt={8}>Submit</Button>
-                        </Form>;
-                    })
+                                    </Flex>
+                                    <Flex direction="column">
+                                        <label htmlFor="isShareholder">Is Shareholder</label>
+                                        <Field as={Checkbox} name="isShareholder" onChange={(event:any) => {
+                                            setFieldValue('isShareholder', event.target.checked);
+                                        }} />
+                                    </Flex>
+                                    <Flex direction="column">
+                                        <label>Events</label>
+                                        {
+                                            events.map((event:IEvent, index:number) => {
+                                                return <Flex key={index}>
+                                                    <label htmlFor="events">{event.title}</label>
+                                                    <Field as={Checkbox} name={`events.${index}.attending`} onChange={(event:any) => {
+                                                        setFieldValue(`events.${index}.attending`, event.target.checked);
+                                                    }} />
+                                                </Flex>;
+                                            })
+                                        }
+                                    </Flex>
+                                    <Flex direction="column">
+                                        <label htmlFor="email">Email</label>
+                                        <Field as={Input} type="email" id="email" name="email" />
+                                        {
+                                            (errors.email && (touched.email && isAttemptedSubmit)) && <Text variant="error" mt={2} mb={0}>{errors.email.toString()}</Text>
+                                        }
+                                    </Flex>
+                                    <Flex direction="column" mt={4}>
+                                        <ReCAPTCHA
+                                            ref={recaptchaRef}
+                                            sitekey={RECAPTCHA_SITE_KEY}
+                                            onChange={(token:any) => {
+                                                if (typeof token === 'string') {
+                                                    setFieldValue('recaptcha', token);
+                                                }
+                                            }}>
+                                        </ReCAPTCHA>
+                                        {
+                                            (errors.recaptcha && (touched.recaptcha && isAttemptedSubmit)) && <Text variant="error" mt={2} mb={0}>{errors.recaptcha.toString()}</Text>
+                                        }
+                                    </Flex>
+                                    {
+                                        errorMessage && <Alert status="error" variant="error" mt={4}>
+                                            {errorMessage}
+                                        </Alert>
+                                    }
+                                    <Button type="submit" variant="button" mt={8}>Submit</Button>
+                                </Form>;
+                            })
+                        }
+                    </Formik> : <Box>
+                        <Alert status="success" variant="success">
+                            {successMessage}
+                        </Alert>
+                    </Box>
                 }
-            </Formik> : <Box>
-                <Alert status="success" variant="success">
-                    {successMessage}
-                </Alert>
-            </Box>
-        }
-
+            </Column>
+        </Row>
     </Box>;
 };
 
