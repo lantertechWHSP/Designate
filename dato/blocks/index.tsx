@@ -15,7 +15,7 @@ import { companyValuesPanelRecord } from '~/dato/blocks/companyValuesPanel';
 import { latestPostsPanelRecord } from '~/dato/blocks/latestPostsPanel';
 import { contactsPanelRecord } from '~/dato/blocks/contactsPanel';
 import { investorPanelRecord } from '~/dato/blocks/investorPanel';
-import { keyDatesPanelRecord } from '~/dato/blocks/keyDatesPanel';
+import { eventListPanelRecord } from '~/dato/blocks/eventListPanel';
 
 // Home
 import { heroRecord } from '~/dato/blocks/hero';
@@ -110,8 +110,8 @@ export const blocks:string = `
         ... on InvestorPanelRecord {
             ${investorPanelRecord}
         }
-        ... on KeyDatesPanelRecord {
-            ${keyDatesPanelRecord}
+        ... on EventListPanelRecord {
+            ${eventListPanelRecord}
         }
 
         ... on HeroRecord {

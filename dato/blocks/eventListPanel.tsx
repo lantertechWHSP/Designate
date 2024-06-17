@@ -1,4 +1,4 @@
-export const keyDatesPanelRecord:string = `
+export const eventListPanelRecord:string = `
     __typename
     id
     paddingTop
