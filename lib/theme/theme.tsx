@@ -60,8 +60,11 @@ const colors:any = {
     positiveDot: '#00CE7D',
     negativeDot: '#ea4743',
 
-    error: '#ac3148',
-    errorText: '#fff4f4',
+    // error: '#ac3148',
+    // errorText: '#fff4f4',
+
+    successAlertBackground: '#00CE7D',
+    successAlertText: '#f0fff9'
 };
 
 colors['borderColor'] = colors.lightGrey2;
@@ -486,6 +489,20 @@ export const theme:any = extendBaseTheme({
         },
         Alert: {
             ...Alert,
+            variants: {
+                error: {
+                    container: {
+                        color: 'errorText',
+                        background: 'error'
+                    }
+                },
+                success: {
+                    container: {
+                        color: 'successAlertText',
+                        background: 'successAlertBackground'
+                    }
+                }
+            }
         },
         Input: {
             baseStyle: definePartsStyle({
