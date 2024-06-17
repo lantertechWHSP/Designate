@@ -9,8 +9,6 @@ interface IEventRSVPFormPanelBlock extends IBlock {
 }
 
 const EventRsvpFormPanel:any = ({ background, paddingTop, paddingBottom, events }:IEventRSVPFormPanelBlock) : ReactNode => {
-    console.log(events);
-
     return <ContentBlock background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         <EventRSVP events={events} />
     </ContentBlock>;

@@ -21,8 +21,6 @@ const EventRSVP:any = ({ events }:IEventRSVP) : ReactNode => {
 
     const recaptchaRef:any = React.createRef();
 
-    console.log(events);
-
     const INITIAL_VALUES:any = {
         name: '',
         isShareholder: true,
