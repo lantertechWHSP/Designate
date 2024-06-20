@@ -1,5 +1,5 @@
 import React, { ReactNode, useState } from 'react';
-import { Box, Input, Heading, Flex, Checkbox, Button, Text, Alert } from '@chakra-ui/react';
+import { Box, Input, Heading, Flex, Checkbox, RadioGroup, Radio, Button, Text, Alert, Stack } from '@chakra-ui/react';
 import { Formik, Form, Field } from 'formik';
 import * as yup from 'yup';
 import { IEvent } from '~/interfaces/models/event';
@@ -53,27 +53,29 @@ const EventRSVP:any = ({ events }:IEventRSVP) : ReactNode => {
         setErrorMessage('');
         setSucessMessage('');
 
-        fetch('/api/events/rsvp/create', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify(values)
-        }).then(response => response.json()).then((data) => {
-            if(data.success) {
-                resetForm();
-                setIsSuccessfulSubmit(true);
-                setSucessMessage(data.message);
-            }
-            else {
-                setErrorMessage(data.message);
-            }
-        }).catch((error) => {
-            setErrorMessage(error.message);
-        }).finally(() => {
-            recaptchaRef.current.props.grecaptcha.reset();
-        });
+        console.log(values);
+
+        // fetch('/api/events/rsvp/create', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //         'Accept': 'application/json'
+        //     },
+        //     body: JSON.stringify(values)
+        // }).then(response => response.json()).then((data) => {
+        //     if(data.success) {
+        //         resetForm();
+        //         setIsSuccessfulSubmit(true);
+        //         setSucessMessage(data.message);
+        //     }
+        //     else {
+        //         setErrorMessage(data.message);
+        //     }
+        // }).catch((error) => {
+        //     setErrorMessage(error.message);
+        // }).finally(() => {
+        //     recaptchaRef.current.props.grecaptcha.reset();
+        // });
     };
 
     const isInvalid:any = (flag:boolean) : string => {
@@ -102,31 +104,47 @@ const EventRSVP:any = ({ events }:IEventRSVP) : ReactNode => {
                                 }} noValidate>
                                     <Row>
                                         <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
-                                            <label htmlFor="name" className={isInvalid(errors.name && (touched.name && isAttemptedSubmit))}>Name</label>
-                                            <Field as={Input} type="name" id="name" name="name" data-invalid={(errors.name && (touched.name && isAttemptedSubmit))} />
-                                            {
-                                                (errors.name && (touched.name && isAttemptedSubmit)) && <Text variant="error" mt={2} mb={0}>{errors.name.toString()}</Text>
-                                            }
+                                            <Flex direction="column" mb={4}>
+                                                <label htmlFor="name" className={isInvalid(errors.name && (touched.name && isAttemptedSubmit))}>Name</label>
+                                                <Field as={Input} type="name" id="name" name="name" data-invalid={(errors.name && (touched.name && isAttemptedSubmit))} />
+                                                {
+                                                    (errors.name && (touched.name && isAttemptedSubmit)) && <Text variant="error" mt={2} mb={0}>{errors.name.toString()}</Text>
+                                                }
+                                            </Flex>
                                         </Column>
                                         <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
-                                            <label htmlFor="email">Email</label>
-                                            <Field as={Input} type="email" id="email" name="email" data-invalid={(errors.email && (touched.email && isAttemptedSubmit))} />
-                                            {
-                                                (errors.email && (touched.email && isAttemptedSubmit)) && <Text variant="error" mt={2} mb={0}>{errors.email.toString()}</Text>
-                                            }
+                                            <Flex direction="column" mb={4}>
+                                                <label htmlFor="email">Email</label>
+                                                <Field as={Input} type="email" id="email" name="email" data-invalid={(errors.email && (touched.email && isAttemptedSubmit))} />
+                                                {
+                                                    (errors.email && (touched.email && isAttemptedSubmit)) && <Text variant="error" mt={2} mb={0}>{errors.email.toString()}</Text>
+                                                }
+                                            </Flex>
                                         </Column>
                                     </Row>
-
-
-                                    <Flex direction="column">
-
+                                    <Flex direction="column" mb={4}>
+                                        <label>
+                                            Are you a Soul Patts (ASX: SOL) shareholder?
+                                        </label>
+                                        <RadioGroup onChange={(value:any) => {
+                                            const booleanValue:boolean = value === 'true';
+                                            setFieldValue('isShareholder', booleanValue);
+                                        }}>
+                                            <Stack direction="row">
+                                                <Radio value="true" variant="radio">Yes</Radio>
+                                                <Radio value="false" variant="radio">No</Radio>
+                                            </Stack>
+                                        </RadioGroup>
                                     </Flex>
-                                    <Flex direction="column">
-                                        <label htmlFor="isShareholder">Is Shareholder</label>
-                                        <Field as={Checkbox} name="isShareholder" onChange={(event:any) => {
-                                            setFieldValue('isShareholder', event.target.checked);
-                                        }} />
-                                    </Flex>
+                                    {/*<Flex direction="column">*/}
+
+                                    {/*</Flex>*/}
+                                    {/*<Flex direction="column">*/}
+                                    {/*    <label htmlFor="isShareholder">Is Shareholder</label>*/}
+                                    {/*    <Field as={Checkbox} name="isShareholder" onChange={(event:any) => {*/}
+                                    {/*        setFieldValue('isShareholder', event.target.checked);*/}
+                                    {/*    }} />*/}
+                                    {/*</Flex>*/}
                                     <Flex direction="column">
                                         <label>Events</label>
                                         {

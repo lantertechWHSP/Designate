@@ -1,13 +1,8 @@
 import { extendBaseTheme } from '@chakra-ui/react';
 import chakraTheme from '@chakra-ui/theme';
 import { fontGramatika, fontRoboto } from '~/app/_fonts';
-const { Modal, Menu, Badge, Alert, Skeleton, Checkbox, Button } = chakraTheme.components;
-import { inputAnatomy } from '@chakra-ui/anatomy';
-import { createMultiStyleConfigHelpers } from '@chakra-ui/react';
-
-const { definePartsStyle } = createMultiStyleConfigHelpers(inputAnatomy.keys);
-
-// const { definePartsStyle } = createMultiStyleConfigHelpers(checkboxAnatomy.keys);
+import { radioTheme } from "~/lib/theme/formControls/radio";
+const { Modal, Menu, Badge, Alert, Skeleton, Checkbox, Radio } = chakraTheme.components;
 
 export const breakpoints:any = {
     base: '0px',
@@ -505,7 +500,7 @@ export const theme:any = extendBaseTheme({
             }
         },
         Input: {
-            baseStyle: definePartsStyle({
+            baseStyle: {
                 field: {
                     height: '44px',
                     lineHeight: '44px',
@@ -520,11 +515,52 @@ export const theme:any = extendBaseTheme({
                         borderColor: 'error',
                     }
                 }
-            }),
+            },
         },
         Checkbox: {
             ...Checkbox,
         },
+        Radio: {
+            ...Radio,
+            variants: {
+                radio: {
+                    control: {
+                        width: '22px',
+                        height: '22px',
+                        border: '1px solid',
+                        background: 'white',
+                        _checked: {
+                            background: 'white',
+                            borderColor: 'forest',
+                            _before: {
+                                background: 'forest'
+                            },
+                            _hover: {
+                                background: 'white',
+                                borderColor: 'forest',
+                            },
+                            _disabled: {
+                                opacity: 0.7,
+                                borderColor: 'forest',
+                            }
+                        },
+                        _disabled: {
+                            opacity: 0.7,
+                        }
+                    },
+                    _indeterminate: {
+                        background: 'white',
+                        borderColor: 'forest',
+                    },
+                    _focusVisible: {
+                        boxShadow: 'none'
+                    },
+                    label: {
+                        fontSize: '19px'
+                    }
+                }
+            }
+        }
     },
     styles: {
         global: {
@@ -567,7 +603,8 @@ export const theme:any = extendBaseTheme({
                 }
             },
             label: {
-                color: colors.charcoal,
+                color: '#344054',
+                fontWeight: 500,
             },
             'label.is-invalid': {
                 color: colors.error
