@@ -76,12 +76,16 @@ const EventRSVP:any = ({ events }:IEventRSVP) : ReactNode => {
         });
     };
 
+    const isInvalid:any = (flag:boolean) : string => {
+        return flag ? 'is-invalid' : '';
+    };
+
     return <Box>
-        <Heading as="h2" variant="sectionHeading">
+        <Heading as="h2" variant="sectionSubheading" fontWeight={700}>
             RSVP
         </Heading>
         <Row>
-            <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
+            <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths]}>
                 {
                     !isSuccessfulSubmit ? <Formik
                         validationSchema={SCHEMA}
@@ -96,12 +100,26 @@ const EventRSVP:any = ({ events }:IEventRSVP) : ReactNode => {
                                     event.preventDefault();
                                     handleSubmit();
                                 }} noValidate>
+                                    <Row>
+                                        <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
+                                            <label htmlFor="name" className={isInvalid(errors.name && (touched.name && isAttemptedSubmit))}>Name</label>
+                                            <Field as={Input} type="name" id="name" name="name" data-invalid={(errors.name && (touched.name && isAttemptedSubmit))} />
+                                            {
+                                                (errors.name && (touched.name && isAttemptedSubmit)) && <Text variant="error" mt={2} mb={0}>{errors.name.toString()}</Text>
+                                            }
+                                        </Column>
+                                        <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
+                                            <label htmlFor="email">Email</label>
+                                            <Field as={Input} type="email" id="email" name="email" data-invalid={(errors.email && (touched.email && isAttemptedSubmit))} />
+                                            {
+                                                (errors.email && (touched.email && isAttemptedSubmit)) && <Text variant="error" mt={2} mb={0}>{errors.email.toString()}</Text>
+                                            }
+                                        </Column>
+                                    </Row>
+
+
                                     <Flex direction="column">
-                                        <label htmlFor="name">Name</label>
-                                        <Field as={Input} type="name" id="name" name="name" />
-                                        {
-                                            (errors.name && (touched.name && isAttemptedSubmit)) && <Text variant="error" mt={2} mb={0}>{errors.name.toString()}</Text>
-                                        }
+
                                     </Flex>
                                     <Flex direction="column">
                                         <label htmlFor="isShareholder">Is Shareholder</label>
@@ -123,11 +141,7 @@ const EventRSVP:any = ({ events }:IEventRSVP) : ReactNode => {
                                         }
                                     </Flex>
                                     <Flex direction="column">
-                                        <label htmlFor="email">Email</label>
-                                        <Field as={Input} type="email" id="email" name="email" />
-                                        {
-                                            (errors.email && (touched.email && isAttemptedSubmit)) && <Text variant="error" mt={2} mb={0}>{errors.email.toString()}</Text>
-                                        }
+
                                     </Flex>
                                     <Flex direction="column" mt={4}>
                                         <ReCAPTCHA

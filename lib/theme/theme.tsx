@@ -511,8 +511,16 @@ export const theme:any = extendBaseTheme({
                     lineHeight: '44px',
                     color: 'charcoal',
                     px: 2,
+                    border: '1px solid',
+                    borderColor: 'charcoal',
+                    borderRadius: '3px',
+                    _invalid: {
+                        color: 'error',
+                        background: '#f1767422',
+                        borderColor: 'error',
+                    }
                 }
-            })
+            }),
         },
         Checkbox: {
             ...Checkbox,
@@ -559,7 +567,10 @@ export const theme:any = extendBaseTheme({
                 }
             },
             label: {
-                color: colors.charcoal
+                color: colors.charcoal,
+            },
+            'label.is-invalid': {
+                color: colors.error
             },
             // YourIR
             '#yourir-default-announcement': {
