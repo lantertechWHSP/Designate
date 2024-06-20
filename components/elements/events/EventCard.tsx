@@ -8,8 +8,10 @@ import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow
 interface IEventCard extends IEvent {
 }
 
-const EventCard:any = ({ title, allDay, startDate, endDate, details, location }:IEventCard) : ReactNode => {
+const EventCard:any = ({ title, description, eventDates }:IEventCard) : ReactNode => {
     const [isOpen, setIsOpen] = useState(false);
+
+    const event = eventDates[0];
 
     return <Flex py={[4, ,'22px']}
         direction={['row']}
@@ -34,11 +36,11 @@ const EventCard:any = ({ title, allDay, startDate, endDate, details, location }:
                 </Heading>
             }
             {
-                startDate && <Box>
+                event && <Box>
                     <AnimateOverflow><Text
                         variant="listLabel"
                         mb={0}>
-                        {DateTime.fromISO(startDate).toFormat('MMM d, yyyy')}
+                        {DateTime.fromISO(event.startDate).toFormat('MMM d, yyyy')}
                     </Text>
                     </AnimateOverflow>
                 </Box>
@@ -56,11 +58,11 @@ const EventCard:any = ({ title, allDay, startDate, endDate, details, location }:
                         }}
                         event={{
                             title: title,
-                            description: details,
-                            location: location,
-                            start: startDate,
-                            end: endDate !== startDate ? endDate : null,
-                            allDay: allDay || false
+                            description: description,
+                            location: event.location,
+                            start: event.startDate,
+                            end: event.endDate !== event.startDate ? event.endDate : null,
+                            allDay: event.allDay || false
                         }}>
                     </AddToCalendar>
                 </AnimateOverflow>

@@ -3,17 +3,19 @@ const eventFrag:string = `
         __typename
         id
         title
-        allDay
-        startDate
-        endDate
-        details
-        location
+        description
+        eventDates {
+            startDate
+            endDate
+            location
+            allDay
+        }
     }
 `;
 
 export const events:string = `
     query events ($limit: IntType) {
-        events: allEvents(first: $limit, orderBy: startDate_ASC) {
+        events: allEvents(first: $limit) {
             ...eventFrag
         }
     }
