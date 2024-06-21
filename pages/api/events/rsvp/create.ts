@@ -68,48 +68,69 @@ export default async function handler(request: NextApiRequest, response: NextApi
         }
 
         try {
-            console.log('1');
             const client = buildClient({
                 apiToken: process.env.NEXT_PUBLIC_DATO_KEY,
                 environment: process.env.NEXT_PUBLIC_DATO_ENVIRONMENT
             });
 
             const DATO_ITEM_TYPE_EVENT_RSVP_ID = process.env.NEXT_PUBLIC_DATO_ITEM_TYPE_EVENT_RSVP_ID;
-            const DATO_ITEM_TYPE_EVENT_DATE_RSVP_ID = process.env.NEXT_PUBLIC_DATO_ITEM_TYPE_EVENT_RSVP_DATE_ID;
+            // const DATO_ITEM_TYPE_EVENT_DATE_RSVP_ID = process.env.NEXT_PUBLIC_DATO_ITEM_TYPE_EVENT_RSVP_DATE_ID;
 
-            const eventDateRSVPItems = [];
+            // const eventDateRSVPItems = [];
 
-            await Promise.all(
-                body.eventDates.map(async (eventDate: any) => {
-                    const eventDateRSVP = await client.items.create({
-                        item_type: { type: "item_type", id: DATO_ITEM_TYPE_EVENT_DATE_RSVP_ID },
-                        attending: eventDate.attending,
-                        event_date: eventDate.id
-                    });
+            console.log(body.eventDates);
 
-                    eventDateRSVPItems.push(eventDateRSVP);
-                })
-            ).then(() => {
-                const newRSVP = client.items.create({
-                    item_type: {type: "item_type", id: DATO_ITEM_TYPE_EVENT_RSVP_ID},
-                    name: body.name,
-                    is_shareholder: body.isShareholder,
-                    email: body.email,
-                    event_date_rsvps: eventDateRSVPItems.map((eventDateRSVP: any) => {
-                        return eventDateRSVP.id;
-                    })
-                });
-
-                // Place the EventRSVP to the Event item type
-                client.items.update(body.eventId, {
-                    rsvp: newRSVP
-                });
-            }).catch(() => {
-                return response.status(500).json({
-                    success: false,
-                    message: ERROR_MESSAGE,
-                });
+            // // Create the Event RSVP
+            const newRSVP = await client.items.create({
+                item_type: { type: "item_type", id: DATO_ITEM_TYPE_EVENT_RSVP_ID },
+                name: body.name,
+                is_shareholder: body.isShareholder,
+                email: body.email,
+                details: JSON.stringify(body.eventDates)
             });
+
+            console.log(newRSVP);
+
+            const event:any = await client.items.find(body.eventId);
+
+            await client.items.update(body.eventId, {
+                rsvp: [...event['rsvp'], newRSVP.id]
+            });
+            //
+            // // Add the attending value each Event Date RSVP
+            // await Promise.all(
+            //     body.eventDates.map(async (eventDate: any) => {
+            //         const eventDateRSVP = await client.items.create({
+            //             item_type: { type: "item_type", id: DATO_ITEM_TYPE_EVENT_DATE_RSVP_ID },
+            //             attending: eventDate.attending,
+            //             event_date: eventDate.id
+            //         });
+            //
+            //         eventDateRSVPItems.push(eventDateRSVP);
+            //     })
+            // ).catch(() => {
+            //     return response.status(500).json({
+            //         success: false,
+            //         message: ERROR_MESSAGE,
+            //     });
+            // });
+            //
+            // // Update the Event RSVP with the Event Date RSVP items
+            // await client.items.update(newRSVP.id, {
+            //     event_date_rsvps: eventDateRSVPItems.map((eventDateRSVPItem) => {
+            //         return eventDateRSVPItem.id;
+            //     })
+            // });
+            //
+            // const event:any = await client.items.find(body.eventId);
+            //
+            // console.log(event);
+            // console.log([...event['rsvp'], newRSVP.id]);
+            //
+            // // Add new RSVP to event
+            // await client.items.update(body.eventId, {
+            //     rsvp: [...event['rsvp'], newRSVP.id]
+            // });
 
             return response.status(200).json({
                 success: true,
@@ -117,8 +138,6 @@ export default async function handler(request: NextApiRequest, response: NextApi
             });
         }
         catch {
-            console.log('5');
-
             return response.status(500).json({
                 success: false,
                 message: ERROR_MESSAGE,
@@ -126,8 +145,6 @@ export default async function handler(request: NextApiRequest, response: NextApi
         }
     }
     else {
-        console.log('6');
-
         return response.status(500).json({
             success: false,
             message: ERROR_MESSAGE,

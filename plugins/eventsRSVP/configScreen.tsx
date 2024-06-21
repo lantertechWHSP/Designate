@@ -12,14 +12,39 @@ type PropTypes = {
 const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
 
     const [eventRSVPItems, setEventRSVPItems] = useState([]);
+    const [eventDates, setEventDates] = useState([]);
 
     useEffect(() => {
-        if(ctx.formValues.rsvp) {
-            doQuery(queries.eventRSVP, {
-                in: ctx.formValues.rsvp
+        if(ctx.formValues.event_dates) {
+            doQuery(queries.eventDates, {
+                in: ctx.formValues.event_dates
             }).then((response) => {
-                setEventRSVPItems(response.eventRSVPS);
+                setEventDates(response.eventDates);
             });
+        }
+
+        if(ctx.formValues.rsvp) {
+            (async () => {
+                const values = [];
+                let hasAllValues = false;
+                let batchIndex = 0;
+
+                while(!hasAllValues) {
+                    const batchValues = await doQuery(queries.eventRSVP, { first: 100, skip: 100 * batchIndex }).then(({ eventRSVPS }) => eventRSVPS);
+
+                    debugger;
+                    values.push(...batchValues);
+
+                    if(batchValues.length < 1) {
+                        hasAllValues = true;
+                    }
+                    else {
+                        batchIndex++;
+                    }
+                }
+
+                setEventRSVPItems(values);
+            })();
         }
     }, []);
 
@@ -28,10 +53,23 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
             let CSVString:string = '';
             const title:string = ctx.formValues.title ? `${ctx.formValues.title} — RSVP` : 'RSVP';
 
-            CSVString += 'Name,Email,Is Shareholder, Attending\r\n';
+            const eventDateLabels = eventDates.map((eventDate:any) => {
+                return `Attending ${eventDate.shortLabel}`;
+            });
+            // CSVString += 'Name,Email,Is Shareholder, Attending\r\n';
+            CSVString += ['Name', 'Email', 'Is Shareholder', ...eventDateLabels].join(',');
+            CSVString += "\r\n";
 
             eventRSVPItems.map((event) => {
-                CSVString += `${event.name},${event.email},${event.isShareholder ? 'Yes' : 'No'},${event.attending ? 'Yes' : 'No'}`;
+                const eventAttending = eventDates.map((eventDate:any) => {
+                    const detail = event.details.find((detail) => {
+                        return detail.id === eventDate.id;
+                    });
+
+                    return detail.attending ?  'Yes' : 'No';
+                });
+
+                CSVString += [event.name, event.email, event.isShareholder ? 'Yes' : 'No', ...eventAttending].join(',');
                 CSVString += "\r\n";
             });
 
@@ -54,7 +92,11 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                                 <div className="ItemsTable__header-cell">Name</div>
                                 <div className="ItemsTable__header-cell">Email</div>
                                 <div className="ItemsTable__header-cell">Is Shareholder</div>
-                                <div className="ItemsTable__header-cell">Attending</div>
+                                {
+                                    eventDates.map((eventDate:any, index:number) => {
+                                        return <div key={index} className="ItemsTable__header-cell">Attending {eventDate.shortLabel}</div>;
+                                    })
+                                }
                             </div>
                             <div className="ItemsTable__content">
                                 {
@@ -71,11 +113,21 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                                                     item.isShareholder && <BooleanCell />
                                                 }
                                             </div>
-                                            <div className="ItemsTable__cell">
-                                                {
-                                                    item.attending && <BooleanCell />
-                                                }
-                                            </div>
+                                            {
+                                                eventDates.map((eventDate:any, index:number) => {
+                                                    return <div className="ItemsTable__cell" key={index}>
+                                                        {
+                                                            (() => {
+                                                                const detail = item.details.find((detail) => {
+                                                                    return detail.id === eventDate.id;
+                                                                });
+
+                                                                return detail.attending && <BooleanCell />;
+                                                            })()
+                                                        }
+                                                    </div>;
+                                                })
+                                            }
                                         </div>;
                                     })
                                 }
