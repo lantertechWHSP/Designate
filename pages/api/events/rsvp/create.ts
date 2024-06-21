@@ -39,6 +39,7 @@ export default async function handler(request: NextApiRequest, response: NextApi
         const schema:ObjectSchema<any> = yup.object({
             name: yup.string().required('Please enter your Name').matches(REGEXP.NAME, 'Please enter a valid First Name'),
             isShareholder: yup.boolean(),
+            eventId: yup.string().required(),
             eventDates: yup.array().of(yup.object({
                 id: yup.string().required(),
                 attending: yup.boolean()
@@ -67,6 +68,7 @@ export default async function handler(request: NextApiRequest, response: NextApi
         }
 
         try {
+            console.log('1');
             const client = buildClient({
                 apiToken: process.env.NEXT_PUBLIC_DATO_KEY,
                 environment: process.env.NEXT_PUBLIC_DATO_ENVIRONMENT
@@ -82,20 +84,25 @@ export default async function handler(request: NextApiRequest, response: NextApi
                         name: body.name,
                         is_shareholder: body.isShareholder,
                         email: body.email,
-                        eventDate: eventDate.id,
-                        attending: eventDate.attending
+                        attending: eventDate.attending,
+                        event_date: eventDate.id,
                     });
 
-                    const retreiveEvent:any = await client.items.find(eventDate.id);
+                    console.log('2.1');
+
+                    const retreiveEvent:any = await client.items.find(body.eventId);
                     const newRSVP:string[] = retreiveEvent.rsvp;
                     newRSVP.push(datoEventRSVP.id);
+                    console.log('3');
 
                     // Place the EventRSVP to the Event item type
-                    await client.items.update(eventDate.id, {
+                    await client.items.update(body.eventId, {
                         rsvp: newRSVP
                     });
                 })
             ).catch(() => {
+                console.log('4');
+
                 return response.status(500).json({
                     success: false,
                     message: ERROR_MESSAGE,
@@ -108,6 +115,8 @@ export default async function handler(request: NextApiRequest, response: NextApi
             });
         }
         catch {
+            console.log('5');
+
             return response.status(500).json({
                 success: false,
                 message: ERROR_MESSAGE,
@@ -115,6 +124,8 @@ export default async function handler(request: NextApiRequest, response: NextApi
         }
     }
     else {
+        console.log('6');
+
         return response.status(500).json({
             success: false,
             message: ERROR_MESSAGE,

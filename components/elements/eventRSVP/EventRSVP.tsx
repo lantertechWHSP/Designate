@@ -24,6 +24,7 @@ const EventRSVP:any = ({ event }:IEventRSVP) : ReactNode => {
     const INITIAL_VALUES:any = {
         name: '',
         isShareholder: false,
+        eventId: event.id,
         eventDates: event.eventDates.map((eventDate:IEventDate) => {
             return {
                 id: eventDate.id,
@@ -41,6 +42,7 @@ const EventRSVP:any = ({ event }:IEventRSVP) : ReactNode => {
     const SCHEMA:any = yup.object({
         name: yup.string().required('Please enter your Name').matches(REGEXP.NAME, 'Please enter a valid First Name'),
         isShareholder: yup.boolean(),
+        eventId: yup.string().required(),
         eventDates: yup.array().of(yup.object({
             id: yup.string().required(),
             attending: yup.boolean()
@@ -53,32 +55,27 @@ const EventRSVP:any = ({ event }:IEventRSVP) : ReactNode => {
         setErrorMessage('');
         setSucessMessage('');
 
-        console.log(values);
-
-        // fetch('/api/events/rsvp/create', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         'Accept': 'application/json'
-        //     },
-        //     body: JSON.stringify(values)
-        // }).then(response => response.json()).then((data) => {
-        //     if(data.success) {
-        //         resetForm();
-        //         setIsSuccessfulSubmit(true);
-        //         setSucessMessage(data.message);
-        //     }
-        //     else {
-        //         setErrorMessage(data.message);
-        //     }
-        // }).catch((error) => {
-        //     setErrorMessage(error.message);
-        // }).finally(() => {
-        //     recaptchaRef.current.props.grecaptcha.reset();
-        // });
-
-        setIsSuccessfulSubmit(true);
-        setSucessMessage(`Thank you ${values.name} for your RSVP to attend the ${event.title} event.`);
+        fetch('/api/events/rsvp/create', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(values)
+        }).then(response => response.json()).then((data) => {
+            if(data.success) {
+                resetForm();
+                setIsSuccessfulSubmit(true);
+                setSucessMessage(`Thank you ${values.name} for your RSVP to attend the ${event.title} event.`);
+            }
+            else {
+                setErrorMessage(data.message);
+            }
+        }).catch((error) => {
+            setErrorMessage(error.message);
+        }).finally(() => {
+            recaptchaRef.current.props?.grecaptcha.reset();
+        });
     };
 
     const isInvalid:any = (flag:boolean) : string => {
