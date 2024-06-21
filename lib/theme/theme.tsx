@@ -239,6 +239,11 @@ export const theme:any = extendBaseTheme({
                     lineHeight: ['23px', ,'23px'],
                     fontWeight: 500,
                 },
+                label: {
+                    fontSize: '16px',
+                    color: '#344054',
+                    fontWeight: 500,
+                }
             }
         },
         Code: {
@@ -510,12 +515,13 @@ export const theme:any = extendBaseTheme({
             baseStyle: {
                 field: {
                     height: '44px',
-                    lineHeight: '44px',
+                    lineHeight: '46px',
                     color: 'charcoal',
                     px: 2,
                     border: '1px solid',
                     borderColor: 'charcoal',
                     borderRadius: '3px',
+                    fontSize: '16px',
                     _invalid: {
                         color: 'error',
                         background: '#f1767422',
@@ -529,8 +535,8 @@ export const theme:any = extendBaseTheme({
             variants: {
                 checkbox: {
                     control: {
-                        width: '24px',
-                        height: '24px',
+                        width: '20px',
+                        height: '20px',
                         border: '1px solid',
                         borderRadius: '4px',
                         background: 'white',
@@ -553,11 +559,11 @@ export const theme:any = extendBaseTheme({
                         svg: {
                             width: '1.5em',
                             position: 'relative',
-                            top: '-0.5px'
+                            top: '-0.5px',
+                            animation: 'none'
                         }
                     },
                     label: {
-                        fontSize: '19px',
                         fontWeight: 400
                     }
                 }
@@ -568,8 +574,8 @@ export const theme:any = extendBaseTheme({
             variants: {
                 radio: {
                     control: {
-                        width: '24px',
-                        height: '24px',
+                        width: '20px',
+                        height: '20px',
                         border: '1px solid',
                         background: 'white',
                         _checked: {
@@ -599,7 +605,6 @@ export const theme:any = extendBaseTheme({
                         boxShadow: 'none'
                     },
                     label: {
-                        fontSize: '19px',
                         fontWeight: 400
                     }
                 }
@@ -645,10 +650,6 @@ export const theme:any = extendBaseTheme({
                 li: {
                     pl: '8px'
                 }
-            },
-            label: {
-                color: '#344054',
-                fontWeight: 500,
             },
             'label.is-invalid': {
                 color: colors.error

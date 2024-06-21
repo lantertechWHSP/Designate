@@ -109,7 +109,7 @@ const EventRSVP:any = ({ event }:IEventRSVP) : ReactNode => {
                                 <Row>
                                     <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
                                         <Flex direction="column" mb={6}>
-                                            <Text as="label" htmlFor="name" className={isInvalid(errors.name && (touched.name && isAttemptedSubmit))} mb={1}>Name</Text>
+                                            <Text as="label" htmlFor="name" variant="label" className={isInvalid(errors.name && (touched.name && isAttemptedSubmit))} mb={1}>Name</Text>
                                             <Field as={Input} type="name" id="name" name="name" data-invalid={(errors.name && (touched.name && isAttemptedSubmit))} />
                                             {
                                                 (errors.name && (touched.name && isAttemptedSubmit)) && <Text variant="error" mt={2} mb={0}>{errors.name.toString()}</Text>
@@ -118,7 +118,7 @@ const EventRSVP:any = ({ event }:IEventRSVP) : ReactNode => {
                                     </Column>
                                     <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
                                         <Flex direction="column" mb={6}>
-                                            <Text as="label" htmlFor="email" mb={1}>Email</Text>
+                                            <Text as="label" htmlFor="email" variant="label" className={isInvalid(errors.email && (touched.name && isAttemptedSubmit))} mb={1}>Email</Text>
                                             <Field as={Input} type="email" id="email" name="email" data-invalid={(errors.email && (touched.email && isAttemptedSubmit))} />
                                             {
                                                 (errors.email && (touched.email && isAttemptedSubmit)) && <Text variant="error" mt={2} mb={0}>{errors.email.toString()}</Text>
@@ -127,7 +127,7 @@ const EventRSVP:any = ({ event }:IEventRSVP) : ReactNode => {
                                     </Column>
                                 </Row>
                                 <Flex direction="column" mb={6}>
-                                    <Text as="label" mb={1}>
+                                    <Text as="label" variant="label"  mb={1}>
                                         Are you a Soul Patts (ASX: SOL) shareholder?
                                     </Text>
                                     <RadioGroup defaultValue="false" onChange={(value:any) => {
@@ -141,7 +141,7 @@ const EventRSVP:any = ({ event }:IEventRSVP) : ReactNode => {
                                     </RadioGroup>
                                 </Flex>
                                 <Flex direction="column" mb={6}>
-                                    <Text as="label" mb={1}>
+                                    <Text as="label" variant="label" mb={1}>
                                         Which events will you be attending?
                                     </Text>
                                     <Stack direction="row">

@@ -41,7 +41,6 @@ const Header:any = ({ menu, darkTheme, announcement }:IHeader): ReactNode => {
     const headerRef = useRef<HTMLElement>();
 
     const [height, setHeight] = useState<number>(0);
-    // const height:string = '120px';
 
     const [isScrolledDown, setIsScrolledDown] = useState(false);
     const [isMinimumScrolled, setIsMinimumScrolled] = useState(false);
@@ -49,7 +48,7 @@ const Header:any = ({ menu, darkTheme, announcement }:IHeader): ReactNode => {
 
     useDocumentScroll(({previousScrollTop, currentScrollTop}) => {
         setIsScrolledDown(previousScrollTop < currentScrollTop);
-        setIsMinimumScrolled(currentScrollTop > 80);
+        setIsMinimumScrolled(currentScrollTop > height);
     });
 
     const background:any = useMemo(() => {
@@ -97,7 +96,7 @@ const Header:any = ({ menu, darkTheme, announcement }:IHeader): ReactNode => {
     }, []);
 
     return <Box as="header">
-        <Box pos="fixed" w="100%" zIndex={zIndex.header}
+        <Box pos="fixed" w="100%" zIndex={zIndex.header} height={height}
             pointerEvents={isScrolledDown && isMinimumScrolled ? 'none' : 'all'} >
             <MotionBox ref={headerRef}
                 animate={{
