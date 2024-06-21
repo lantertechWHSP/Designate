@@ -184,5 +184,4 @@ const EventRSVP:any = ({ event }:IEventRSVP) : ReactNode => {
     </Box>;
 };
 
-
 export default EventRSVP;
