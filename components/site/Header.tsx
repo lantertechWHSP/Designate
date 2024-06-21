@@ -38,7 +38,10 @@ interface IHeader extends IDatoHeader {
 const Header:any = ({ menu, darkTheme, announcement }:IHeader): ReactNode => {
     console.log(announcement);
     const { isOpen, onToggle, onClose } = useDisclosure();
-    const height:string = '120px';
+    const headerRef = useRef<HTMLElement>();
+
+    const [height, setHeight] = useState<number>(0);
+    // const height:string = '120px';
 
     const [isScrolledDown, setIsScrolledDown] = useState(false);
     const [isMinimumScrolled, setIsMinimumScrolled] = useState(false);
@@ -79,10 +82,24 @@ const Header:any = ({ menu, darkTheme, announcement }:IHeader): ReactNode => {
         };
     }, [onClose]);
 
+    useEffect(() => {
+        setHeight(headerRef.current.getBoundingClientRect().height);
+
+        const resize:any = () : void => {
+            setHeight(headerRef.current.getBoundingClientRect().height);
+        };
+
+        window.addEventListener('resize', resize);
+
+        return () => {
+            window.removeEventListener('resize', resize);
+        };
+    }, []);
+
     return <Box as="header">
-        <Box pos="fixed" height={[height]} w="100%" zIndex={zIndex.header}
+        <Box pos="fixed" w="100%" zIndex={zIndex.header}
             pointerEvents={isScrolledDown && isMinimumScrolled ? 'none' : 'all'} >
-            <MotionBox
+            <MotionBox ref={headerRef}
                 animate={{
                     opacity: !isOpen && isScrolledDown && isMinimumScrolled ? 0 : 1,
                     background: background
@@ -91,9 +108,11 @@ const Header:any = ({ menu, darkTheme, announcement }:IHeader): ReactNode => {
                     ease: baseAnimationBezier,
                     duration: 0.5
                 }}>
-                <Announcement description={announcement.description} _publishedAt={announcement._publishedAt} />
+                <Announcement description={announcement.description} _publishedAt={announcement._publishedAt} isClosedCallback={() => {
+                    setHeight(headerRef.current.getBoundingClientRect().height);
+                }} />
                 <Container>
-                    <Row height={[height]} align="center">
+                    <Row height={"120px"} align="center">
                         <Column width={[ColumnWidth.Half, , , ,ColumnWidth.TwoTwelfths]}>
                             <Flex height="48px" align="center">
                                 <Link
@@ -145,7 +164,7 @@ const Header:any = ({ menu, darkTheme, announcement }:IHeader): ReactNode => {
                     </Row>
                 </Container>
             </MotionBox>
-            <MobileNav background={background} menu={menu} isOpen={isOpen}/>
+            <MobileNav background={background} menu={menu} isOpen={isOpen} height={height}/>
         </Box>
     </Box>;
 };
@@ -213,7 +232,7 @@ const DesktopNav:any = ({menu, color}): ReactNode => {
     </Flex>;
 };
 
-const MobileNav:any = ({ background, menu, isOpen = false }): ReactNode => {
+const MobileNav:any = ({ background, menu, isOpen = false, height }): ReactNode => {
     const scrollRef:any = useRef<ReactNode>();
 
     useEffect(() => {
@@ -240,7 +259,7 @@ const MobileNav:any = ({ background, menu, isOpen = false }): ReactNode => {
         position="sticky"
         left={0}
         right={0}
-        h={'calc(100dvh - 120px)'}
+        h={`calc(100dvh - ${height}px)`}
         zIndex={isOpen ? zIndex.header : 0}
         pointerEvents={!isOpen ? 'none' : 'all'}
         animate={{

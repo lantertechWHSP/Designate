@@ -6,9 +6,10 @@ import { Icon, Icons } from '~/components/elements/icon';
 import { DateTime } from 'luxon';
 
 interface IAnnouncement extends IDatoAnnouncement {
-}
+    isClosedCallback:Function;
+};
 
-const Announcement:any = ({ description, _publishedAt }:IAnnouncement): ReactNode => {
+const Announcement:any = ({ description, _publishedAt, isClosedCallback }:IAnnouncement): ReactNode => {
 
     const [isClosed, setIsClosed] = useState(true);
 
@@ -49,6 +50,11 @@ const Announcement:any = ({ description, _publishedAt }:IAnnouncement): ReactNod
             }
         }
     }, []);
+
+    useEffect(() => {
+        debugger;
+        isClosedCallback();
+    }, [isClosed]);
 
     return <>
         {
