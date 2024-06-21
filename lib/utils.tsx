@@ -83,6 +83,7 @@ export const getLayoutData:any = (site:ISite, page:IPage, preview:boolean) : any
         breadcrumbs: breadcrumbs,
         page: page ? page : null,
         menu: site?.menu || [],
+        announcement: site?.announcement || null,
         footer: footer,
         slug: page?.slug || null,
         isHomePage: page?.slug ? page?.slug === 'home' : false,

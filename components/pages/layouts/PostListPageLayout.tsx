@@ -20,7 +20,7 @@ const PostListPageLayout:any = ({ layout, featuredPosts, posts, postsMeta }:any)
             {
                 layout?.preview && <Preview />
             }
-            <Header darkTheme={hasFeaturedPosts ? layout?.darkTheme : false} menu={layout?.menu} />
+            <Header darkTheme={hasFeaturedPosts ? layout?.darkTheme : false} announcement={layout?.announcement} menu={layout?.menu} />
             <Box flex="1">
                 {
                     hasFeaturedPosts ?  <FeaturedPostsCarousel posts={featuredPosts} />

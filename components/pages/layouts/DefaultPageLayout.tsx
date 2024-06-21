@@ -18,7 +18,7 @@ const DefaultPageLayout:any = ({ layout, children }:any) : ReactNode => {
             {
                 layout?.preview && <Preview />
             }
-            <Header darkTheme={layout?.darkTheme} menu={layout?.menu} />
+            <Header darkTheme={layout?.darkTheme} announcement={layout?.announcement} menu={layout?.menu} />
             <Box flex="1">
                 {
                     !layout?.isHomePage && <Box h={['376px']}

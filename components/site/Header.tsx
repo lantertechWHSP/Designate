@@ -1,4 +1,4 @@
-import { ReactNode, useState, useEffect, useRef, useMemo } from 'react';
+import React, { ReactNode, useState, useEffect, useRef, useMemo } from 'react';
 import { useRouter } from 'next/router';
 import {
     Container,
@@ -28,13 +28,15 @@ import { Link } from '~/components/elements/link';
 import { IHeader as IDatoHeader } from "~/interfaces/layout/header";
 import { Row, Column, ColumnWidth } from "~/components/elements/grid/grid";
 import {baseAnimationBezier, zIndex} from "~/lib/theme/theme";
+import Announcement from "~/components/site/Announcement";
 
 const MotionBox:any = motion(Box);
 
 interface IHeader extends IDatoHeader {
 }
 
-const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
+const Header:any = ({ menu, darkTheme, announcement }:IHeader): ReactNode => {
+    console.log(announcement);
     const { isOpen, onToggle, onClose } = useDisclosure();
     const height:string = '120px';
 
@@ -46,7 +48,6 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
         setIsScrolledDown(previousScrollTop < currentScrollTop);
         setIsMinimumScrolled(currentScrollTop > 80);
     });
-
 
     const background:any = useMemo(() => {
         if(isOpen || (!isScrolledDown && isMinimumScrolled)) {
@@ -79,7 +80,7 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
     }, [onClose]);
 
     return <Box as="header">
-        <Box pos="fixed" top={0} height={[height]} w="100%" zIndex={zIndex.header}
+        <Box pos="fixed" height={[height]} w="100%" zIndex={zIndex.header}
             pointerEvents={isScrolledDown && isMinimumScrolled ? 'none' : 'all'} >
             <MotionBox
                 animate={{
@@ -90,6 +91,7 @@ const Header:any = ({ menu, darkTheme }:IHeader): ReactNode => {
                     ease: baseAnimationBezier,
                     duration: 0.5
                 }}>
+                <Announcement description={announcement.description} _publishedAt={announcement._publishedAt} />
                 <Container>
                     <Row height={[height]} align="center">
                         <Column width={[ColumnWidth.Half, , , ,ColumnWidth.TwoTwelfths]}>

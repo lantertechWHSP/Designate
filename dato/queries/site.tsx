@@ -25,6 +25,26 @@ export const site:string = `
                 tag
             }
         }
+        announcement {
+            description {
+                value
+                links {
+                    ... on PageRecord {
+                        __typename
+                        id
+                        title
+                        slug
+                    }
+                    ... on PostRecord {
+                        __typename
+                        id
+                        title
+                        slug
+                    }
+                }
+            },
+            _publishedAt
+        }
         menu: allMenuItems(
             filter: { parent: { exists: "*" } }
             orderBy: position_ASC

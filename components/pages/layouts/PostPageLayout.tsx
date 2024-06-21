@@ -35,7 +35,7 @@ const PostPageLayout:any = ({ layout, post, children }:any) : ReactNode => {
             {
                 layout?.preview && <Preview />
             }
-            <Header menu={layout?.menu} />
+            <Header announcement={layout?.announcement} menu={layout?.menu} />
             <Box h={['376px']}
                 width="100%"
                 position="relative"
