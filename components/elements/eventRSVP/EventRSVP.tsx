@@ -13,7 +13,6 @@ interface IEventRSVP {
 }
 
 const EventRSVP:any = ({ event }:IEventRSVP) : ReactNode => {
-    debugger;
     const [isAttemptedSubmit, setIsAttemptedSubmit] = useState<boolean>(false);
 
     const [isSuccessfulSubmit, setIsSuccessfulSubmit] = useState<boolean>(false);
@@ -84,7 +83,7 @@ const EventRSVP:any = ({ event }:IEventRSVP) : ReactNode => {
     };
 
     return <Box>
-        <Heading as="h2" variant="sectionSubheading" fontWeight={700}>
+        <Heading as="h2" variant="sectionSubheading" color="olive" fontWeight={700} mb={8}>
             RSVP
         </Heading>
         <Row>
@@ -105,8 +104,8 @@ const EventRSVP:any = ({ event }:IEventRSVP) : ReactNode => {
                                 }} noValidate>
                                     <Row>
                                         <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
-                                            <Flex direction="column" mb={4}>
-                                                <label htmlFor="name" className={isInvalid(errors.name && (touched.name && isAttemptedSubmit))}>Name</label>
+                                            <Flex direction="column" mb={6}>
+                                                <Text as="label" htmlFor="name" className={isInvalid(errors.name && (touched.name && isAttemptedSubmit))} mb={1}>Name</Text>
                                                 <Field as={Input} type="name" id="name" name="name" data-invalid={(errors.name && (touched.name && isAttemptedSubmit))} />
                                                 {
                                                     (errors.name && (touched.name && isAttemptedSubmit)) && <Text variant="error" mt={2} mb={0}>{errors.name.toString()}</Text>
@@ -114,8 +113,8 @@ const EventRSVP:any = ({ event }:IEventRSVP) : ReactNode => {
                                             </Flex>
                                         </Column>
                                         <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
-                                            <Flex direction="column" mb={4}>
-                                                <label htmlFor="email">Email</label>
+                                            <Flex direction="column" mb={6}>
+                                                <Text as="label" htmlFor="email" mb={1}>Email</Text>
                                                 <Field as={Input} type="email" id="email" name="email" data-invalid={(errors.email && (touched.email && isAttemptedSubmit))} />
                                                 {
                                                     (errors.email && (touched.email && isAttemptedSubmit)) && <Text variant="error" mt={2} mb={0}>{errors.email.toString()}</Text>
@@ -123,10 +122,10 @@ const EventRSVP:any = ({ event }:IEventRSVP) : ReactNode => {
                                             </Flex>
                                         </Column>
                                     </Row>
-                                    <Flex direction="column" mb={4}>
-                                        <label>
+                                    <Flex direction="column" mb={6}>
+                                        <Text as="label" mb={1}>
                                             Are you a Soul Patts (ASX: SOL) shareholder?
-                                        </label>
+                                        </Text>
                                         <RadioGroup onChange={(value:any) => {
                                             const booleanValue:boolean = value === 'true';
                                             setFieldValue('isShareholder', booleanValue);
@@ -137,14 +136,14 @@ const EventRSVP:any = ({ event }:IEventRSVP) : ReactNode => {
                                             </Stack>
                                         </RadioGroup>
                                     </Flex>
-                                    <Flex direction="column" mb={4}>
-                                        <label>
+                                    <Flex direction="column" mb={6}>
+                                        <Text as="label" mb={1}>
                                             Which events will you be attending?
-                                        </label>
+                                        </Text>
                                         <Stack direction="row">
                                             {
                                                 event.eventDates.map((eventDate:IEventDate, index:number) => {
-                                                    return <Checkbox key={index} onChange={(e:any) => {
+                                                    return <Checkbox variant="checkbox" key={index} onChange={(e:any) => {
                                                         setFieldValue(`eventDates.${index}.attending`, e.target.checked);
                                                     }}>
                                                         {eventDate.label}

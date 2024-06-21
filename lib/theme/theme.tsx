@@ -519,14 +519,50 @@ export const theme:any = extendBaseTheme({
         },
         Checkbox: {
             ...Checkbox,
+            variants: {
+                checkbox: {
+                    control: {
+                        width: '24px',
+                        height: '24px',
+                        border: '1px solid',
+                        borderRadius: '4px',
+                        background: 'white',
+                        _checked: {
+                            background: 'white',
+                            borderColor: 'forest',
+                            color: 'forest',
+                            _before: {
+                                background: 'forest'
+                            },
+                            _hover: {
+                                background: 'white',
+                                borderColor: 'forest',
+                            },
+                            _disabled: {
+                                opacity: 0.7,
+                                borderColor: 'forest',
+                            }
+                        },
+                        svg: {
+                            width: '1.5em',
+                            position: 'relative',
+                            top: '-0.5px'
+                        }
+                    },
+                    label: {
+                        fontSize: '19px',
+                        fontWeight: 400
+                    }
+                }
+            }
         },
         Radio: {
             ...Radio,
             variants: {
                 radio: {
                     control: {
-                        width: '22px',
-                        height: '22px',
+                        width: '24px',
+                        height: '24px',
                         border: '1px solid',
                         background: 'white',
                         _checked: {
@@ -556,7 +592,8 @@ export const theme:any = extendBaseTheme({
                         boxShadow: 'none'
                     },
                     label: {
-                        fontSize: '19px'
+                        fontSize: '19px',
+                        fontWeight: 400
                     }
                 }
             }
