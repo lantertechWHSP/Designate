@@ -21,7 +21,6 @@ import EventListPanelBlock from '~/components/blocks/EventListPanel';
 // Home
 import HeroBlock from '~/components/blocks/Hero';
 import HomePageImageGalleryBlock from '~/components/blocks/HomePageImageGallery';
-import HomePageAnnouncementPanelBlock from '~/components/blocks/HomePageAnnouncementPanel';
 import AsxAnnouncementsPanelBlock from '~/components/blocks/AsxAnnouncementsPanel';
 import SeeAlsoPanelBlock from '~/components/blocks/SeeAlsoPanel';
 
@@ -91,7 +90,6 @@ const blocks:any = {
     // Home
     HeroBlock,
     HomePageImageGalleryBlock,
-    HomePageAnnouncementPanelBlock,
     AsxAnnouncementsPanelBlock,
     SeeAlsoPanelBlock,
 

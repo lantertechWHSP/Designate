@@ -90,7 +90,7 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                         <div className="ItemsTable">
                             <div className="ItemsTable__header-row">
                                 <div className="ItemsTable__header-cell">Name</div>
-                                <div className="ItemsTable__header-cell">Email</div>
+                                <div className="ItemsTable__header-cell ItemsTable__header-cell--wide">Email</div>
                                 <div className="ItemsTable__header-cell">Is Shareholder</div>
                                 {
                                     eventDates.map((eventDate:any, index:number) => {
@@ -105,7 +105,7 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                                             <div className="ItemsTable__cell">
                                                 {item.name}
                                             </div>
-                                            <div className="ItemsTable__cell">
+                                            <div className="ItemsTable__cell ItemsTable__cell--wide">
                                                 {item.email}
                                             </div>
                                             <div className="ItemsTable__cell">

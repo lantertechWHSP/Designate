@@ -28,6 +28,10 @@
     flex: 1;
 }
 
+.ItemsTable__header-cell--wide {
+    min-width: 30%;
+}
+
 .ItemsTable__header-row .ItemsTable__header-cell:last-of-type  {
     border-right: 0;
 }
@@ -48,4 +52,8 @@
 .ItemsTable__cell {
     padding: 10px;
     flex: 1;
+}
+
+.ItemsTable__cell--wide {
+    min-width: 30%;
 }

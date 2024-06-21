@@ -86,6 +86,11 @@ const EventRSVP:any = ({ event }:IEventRSVP) : ReactNode => {
         <Heading as="h2" variant="sectionSubheading" color="olive" fontWeight={700} mb={8}>
             RSVP
         </Heading>
+        {
+            event.description && <Text>
+                {event.description}
+            </Text>
+        }
         <Row>
             {
                 !isSuccessfulSubmit ? <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths]}><Formik
