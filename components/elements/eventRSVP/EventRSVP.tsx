@@ -23,7 +23,7 @@ const EventRSVP:any = ({ event }:IEventRSVP) : ReactNode => {
 
     const INITIAL_VALUES:any = {
         name: '',
-        isShareholder: true,
+        isShareholder: false,
         eventDates: event.eventDates.map((eventDate:IEventDate) => {
             return {
                 id: eventDate.id,
@@ -76,6 +76,9 @@ const EventRSVP:any = ({ event }:IEventRSVP) : ReactNode => {
         // }).finally(() => {
         //     recaptchaRef.current.props.grecaptcha.reset();
         // });
+
+        setIsSuccessfulSubmit(true);
+        setSucessMessage(`Thank you ${values.name} for your RSVP to attend the ${event.title} event.`);
     };
 
     const isInvalid:any = (flag:boolean) : string => {
@@ -87,101 +90,99 @@ const EventRSVP:any = ({ event }:IEventRSVP) : ReactNode => {
             RSVP
         </Heading>
         <Row>
-            <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths]}>
-                {
-                    !isSuccessfulSubmit ? <Formik
-                        validationSchema={SCHEMA}
-                        initialValues={INITIAL_VALUES}
-                        onSubmit={(values, { resetForm }) => {
-                            submit(values, resetForm);
-                        }}>
-                        {
-                            (({ handleSubmit, errors, touched, setFieldValue }) => {
-                                return <Form onSubmit={(event) => {
-                                    setIsAttemptedSubmit(true);
-                                    event.preventDefault();
-                                    handleSubmit();
-                                }} noValidate>
-                                    <Row>
-                                        <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
-                                            <Flex direction="column" mb={6}>
-                                                <Text as="label" htmlFor="name" className={isInvalid(errors.name && (touched.name && isAttemptedSubmit))} mb={1}>Name</Text>
-                                                <Field as={Input} type="name" id="name" name="name" data-invalid={(errors.name && (touched.name && isAttemptedSubmit))} />
-                                                {
-                                                    (errors.name && (touched.name && isAttemptedSubmit)) && <Text variant="error" mt={2} mb={0}>{errors.name.toString()}</Text>
-                                                }
-                                            </Flex>
-                                        </Column>
-                                        <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
-                                            <Flex direction="column" mb={6}>
-                                                <Text as="label" htmlFor="email" mb={1}>Email</Text>
-                                                <Field as={Input} type="email" id="email" name="email" data-invalid={(errors.email && (touched.email && isAttemptedSubmit))} />
-                                                {
-                                                    (errors.email && (touched.email && isAttemptedSubmit)) && <Text variant="error" mt={2} mb={0}>{errors.email.toString()}</Text>
-                                                }
-                                            </Flex>
-                                        </Column>
-                                    </Row>
-                                    <Flex direction="column" mb={6}>
-                                        <Text as="label" mb={1}>
-                                            Are you a Soul Patts (ASX: SOL) shareholder?
-                                        </Text>
-                                        <RadioGroup onChange={(value:any) => {
-                                            const booleanValue:boolean = value === 'true';
-                                            setFieldValue('isShareholder', booleanValue);
-                                        }}>
-                                            <Stack direction="row">
-                                                <Radio value="true" variant="radio">Yes</Radio>
-                                                <Radio value="false" variant="radio">No</Radio>
-                                            </Stack>
-                                        </RadioGroup>
-                                    </Flex>
-                                    <Flex direction="column" mb={6}>
-                                        <Text as="label" mb={1}>
-                                            Which events will you be attending?
-                                        </Text>
-                                        <Stack direction="row">
+            {
+                !isSuccessfulSubmit ? <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths]}><Formik
+                    validationSchema={SCHEMA}
+                    initialValues={INITIAL_VALUES}
+                    onSubmit={(values, { resetForm }) => {
+                        submit(values, resetForm);
+                    }}>
+                    {
+                        (({ handleSubmit, errors, touched, setFieldValue }) => {
+                            return <Form onSubmit={(event) => {
+                                setIsAttemptedSubmit(true);
+                                event.preventDefault();
+                                handleSubmit();
+                            }} noValidate>
+                                <Row>
+                                    <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
+                                        <Flex direction="column" mb={6}>
+                                            <Text as="label" htmlFor="name" className={isInvalid(errors.name && (touched.name && isAttemptedSubmit))} mb={1}>Name</Text>
+                                            <Field as={Input} type="name" id="name" name="name" data-invalid={(errors.name && (touched.name && isAttemptedSubmit))} />
                                             {
-                                                event.eventDates.map((eventDate:IEventDate, index:number) => {
-                                                    return <Checkbox variant="checkbox" key={index} onChange={(e:any) => {
-                                                        setFieldValue(`eventDates.${index}.attending`, e.target.checked);
-                                                    }}>
-                                                        {eventDate.label}
-                                                    </Checkbox>;
-                                                })
+                                                (errors.name && (touched.name && isAttemptedSubmit)) && <Text variant="error" mt={2} mb={0}>{errors.name.toString()}</Text>
                                             }
+                                        </Flex>
+                                    </Column>
+                                    <Column width={[ColumnWidth.Full, ,ColumnWidth.Half]}>
+                                        <Flex direction="column" mb={6}>
+                                            <Text as="label" htmlFor="email" mb={1}>Email</Text>
+                                            <Field as={Input} type="email" id="email" name="email" data-invalid={(errors.email && (touched.email && isAttemptedSubmit))} />
+                                            {
+                                                (errors.email && (touched.email && isAttemptedSubmit)) && <Text variant="error" mt={2} mb={0}>{errors.email.toString()}</Text>
+                                            }
+                                        </Flex>
+                                    </Column>
+                                </Row>
+                                <Flex direction="column" mb={6}>
+                                    <Text as="label" mb={1}>
+                                        Are you a Soul Patts (ASX: SOL) shareholder?
+                                    </Text>
+                                    <RadioGroup defaultValue="false" onChange={(value:any) => {
+                                        const booleanValue:boolean = value === 'true';
+                                        setFieldValue('isShareholder', booleanValue);
+                                    }}>
+                                        <Stack direction="row">
+                                            <Radio value="true" variant="radio">Yes</Radio>
+                                            <Radio value="false" variant="radio">No</Radio>
                                         </Stack>
-                                    </Flex>
-                                    <Flex direction="column" mt={4}>
-                                        <ReCAPTCHA
-                                            ref={recaptchaRef}
-                                            sitekey={RECAPTCHA_SITE_KEY}
-                                            onChange={(token:any) => {
-                                                if (typeof token === 'string') {
-                                                    setFieldValue('recaptcha', token);
-                                                }
-                                            }}>
-                                        </ReCAPTCHA>
+                                    </RadioGroup>
+                                </Flex>
+                                <Flex direction="column" mb={6}>
+                                    <Text as="label" mb={1}>
+                                        Which events will you be attending?
+                                    </Text>
+                                    <Stack direction="row">
                                         {
-                                            (errors.recaptcha && (touched.recaptcha && isAttemptedSubmit)) && <Text variant="error" mt={2} mb={0}>{errors.recaptcha.toString()}</Text>
+                                            event.eventDates.map((eventDate:IEventDate, index:number) => {
+                                                return <Checkbox variant="checkbox" key={index} onChange={(e:any) => {
+                                                    setFieldValue(`eventDates.${index}.attending`, e.target.checked);
+                                                }}>
+                                                    {eventDate.label}
+                                                </Checkbox>;
+                                            })
                                         }
-                                    </Flex>
+                                    </Stack>
+                                </Flex>
+                                <Flex direction="column" mt={4}>
+                                    <ReCAPTCHA
+                                        ref={recaptchaRef}
+                                        sitekey={RECAPTCHA_SITE_KEY}
+                                        onChange={(token:any) => {
+                                            if (typeof token === 'string') {
+                                                setFieldValue('recaptcha', token);
+                                            }
+                                        }}>
+                                    </ReCAPTCHA>
                                     {
-                                        errorMessage && <Alert status="error" variant="error" mt={4}>
-                                            {errorMessage}
-                                        </Alert>
+                                        (errors.recaptcha && (touched.recaptcha && isAttemptedSubmit)) && <Text variant="error" mt={2} mb={0}>{errors.recaptcha.toString()}</Text>
                                     }
-                                    <Button type="submit" variant="button" mt={8}>Submit</Button>
-                                </Form>;
-                            })
-                        }
-                    </Formik> : <Box>
-                        <Alert status="success" variant="success">
-                            {successMessage}
-                        </Alert>
-                    </Box>
-                }
-            </Column>
+                                </Flex>
+                                {
+                                    errorMessage && <Alert status="error" variant="error" mt={4}>
+                                        {errorMessage}
+                                    </Alert>
+                                }
+                                <Button type="submit" variant="button" mt={8}>Submit</Button>
+                            </Form>;
+                        })
+                    }
+                </Formik></Column> : <Column>
+                    <Alert status="success" variant="successOlive">
+                        {successMessage}
+                    </Alert>
+                </Column>
+            }
         </Row>
     </Box>;
 };

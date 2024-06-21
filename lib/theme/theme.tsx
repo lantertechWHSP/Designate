@@ -496,6 +496,13 @@ export const theme:any = extendBaseTheme({
                         color: 'successAlertText',
                         background: 'successAlertBackground'
                     }
+                },
+                successOlive: {
+                    container: {
+                        color: 'white',
+                        background: 'olive',
+                        justifyContent: 'center'
+                    }
                 }
             }
         },
