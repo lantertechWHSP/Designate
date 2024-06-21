@@ -75,34 +75,36 @@ export default async function handler(request: NextApiRequest, response: NextApi
             });
 
             const DATO_ITEM_TYPE_EVENT_RSVP_ID = process.env.NEXT_PUBLIC_DATO_ITEM_TYPE_EVENT_RSVP_ID;
+            const DATO_ITEM_TYPE_EVENT_DATE_RSVP_ID = process.env.NEXT_PUBLIC_DATO_ITEM_TYPE_EVENT_RSVP_DATE_ID;
+
+            const eventDateRSVPItems = [];
 
             await Promise.all(
                 body.eventDates.map(async (eventDate: any) => {
-                    // Create the Event RSVP item type
-                    const datoEventRSVP:any = await client.items.create({
-                        item_type: { type: "item_type", id: DATO_ITEM_TYPE_EVENT_RSVP_ID },
-                        name: body.name,
-                        is_shareholder: body.isShareholder,
-                        email: body.email,
+                    const eventDateRSVP = await client.items.create({
+                        item_type: { type: "item_type", id: DATO_ITEM_TYPE_EVENT_DATE_RSVP_ID },
                         attending: eventDate.attending,
-                        event_date: eventDate.id,
+                        event_date: eventDate.id
                     });
 
-                    console.log('2.1');
-
-                    const retreiveEvent:any = await client.items.find(body.eventId);
-                    const newRSVP:string[] = retreiveEvent.rsvp;
-                    newRSVP.push(datoEventRSVP.id);
-                    console.log('3');
-
-                    // Place the EventRSVP to the Event item type
-                    await client.items.update(body.eventId, {
-                        rsvp: newRSVP
-                    });
+                    eventDateRSVPItems.push(eventDateRSVP);
                 })
-            ).catch(() => {
-                console.log('4');
+            ).then(() => {
+                const newRSVP = client.items.create({
+                    item_type: {type: "item_type", id: DATO_ITEM_TYPE_EVENT_RSVP_ID},
+                    name: body.name,
+                    is_shareholder: body.isShareholder,
+                    email: body.email,
+                    event_date_rsvps: eventDateRSVPItems.map((eventDateRSVP: any) => {
+                        return eventDateRSVP.id;
+                    })
+                });
 
+                // Place the EventRSVP to the Event item type
+                client.items.update(body.eventId, {
+                    rsvp: newRSVP
+                });
+            }).catch(() => {
                 return response.status(500).json({
                     success: false,
                     message: ERROR_MESSAGE,
