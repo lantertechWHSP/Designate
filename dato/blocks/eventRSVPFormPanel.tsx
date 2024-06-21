@@ -4,8 +4,12 @@ export const eventRSVPFormPanelRecord:string = `
     paddingTop
     paddingBottom
     background
-    events {
+    event {
         id
         title
+        eventDates {
+            id
+            label
+        }
     }
 `;

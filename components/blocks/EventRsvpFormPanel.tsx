@@ -5,12 +5,12 @@ import { IEvent } from '~/interfaces/models/event';
 import EventRSVP from "~/components/elements/eventRSVP/EventRSVP";
 
 interface IEventRSVPFormPanelBlock extends IBlock {
-    events:IEvent[];
+    event:IEvent;
 }
 
-const EventRsvpFormPanel:any = ({ background, paddingTop, paddingBottom, events }:IEventRSVPFormPanelBlock) : ReactNode => {
+const EventRsvpFormPanel:any = ({ background, paddingTop, paddingBottom, event }:IEventRSVPFormPanelBlock) : ReactNode => {
     return <ContentBlock background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
-        <EventRSVP events={events} />
+        <EventRSVP event={event} />
     </ContentBlock>;
 };
 

@@ -2,17 +2,18 @@ import React, { ReactNode, useState } from 'react';
 import { Box, Input, Heading, Flex, Checkbox, RadioGroup, Radio, Button, Text, Alert, Stack } from '@chakra-ui/react';
 import { Formik, Form, Field } from 'formik';
 import * as yup from 'yup';
-import { IEvent } from '~/interfaces/models/event';
+import { IEvent, IEventDate } from '~/interfaces/models/event';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
 
 const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_KEY;
 
 interface IEventRSVP {
-    events:IEvent[];
+    event:IEvent;
 }
 
-const EventRSVP:any = ({ events }:IEventRSVP) : ReactNode => {
+const EventRSVP:any = ({ event }:IEventRSVP) : ReactNode => {
+    debugger;
     const [isAttemptedSubmit, setIsAttemptedSubmit] = useState<boolean>(false);
 
     const [isSuccessfulSubmit, setIsSuccessfulSubmit] = useState<boolean>(false);
@@ -24,9 +25,9 @@ const EventRSVP:any = ({ events }:IEventRSVP) : ReactNode => {
     const INITIAL_VALUES:any = {
         name: '',
         isShareholder: true,
-        events: events.map((event) => {
+        eventDates: event.eventDates.map((eventDate:IEventDate) => {
             return {
-                id: event.id,
+                id: eventDate.id,
                 attending: false
             };
         }),
@@ -41,7 +42,7 @@ const EventRSVP:any = ({ events }:IEventRSVP) : ReactNode => {
     const SCHEMA:any = yup.object({
         name: yup.string().required('Please enter your Name').matches(REGEXP.NAME, 'Please enter a valid First Name'),
         isShareholder: yup.boolean(),
-        events: yup.array().of(yup.object({
+        eventDates: yup.array().of(yup.object({
             id: yup.string().required(),
             attending: yup.boolean()
         })),
@@ -136,30 +137,21 @@ const EventRSVP:any = ({ events }:IEventRSVP) : ReactNode => {
                                             </Stack>
                                         </RadioGroup>
                                     </Flex>
-                                    {/*<Flex direction="column">*/}
-
-                                    {/*</Flex>*/}
-                                    {/*<Flex direction="column">*/}
-                                    {/*    <label htmlFor="isShareholder">Is Shareholder</label>*/}
-                                    {/*    <Field as={Checkbox} name="isShareholder" onChange={(event:any) => {*/}
-                                    {/*        setFieldValue('isShareholder', event.target.checked);*/}
-                                    {/*    }} />*/}
-                                    {/*</Flex>*/}
-                                    <Flex direction="column">
-                                        <label>Events</label>
-                                        {
-                                            events.map((event:IEvent, index:number) => {
-                                                return <Flex key={index}>
-                                                    <label htmlFor="events">{event.title}</label>
-                                                    <Field as={Checkbox} name={`events.${index}.attending`} onChange={(event:any) => {
-                                                        setFieldValue(`events.${index}.attending`, event.target.checked);
-                                                    }} />
-                                                </Flex>;
-                                            })
-                                        }
-                                    </Flex>
-                                    <Flex direction="column">
-
+                                    <Flex direction="column" mb={4}>
+                                        <label>
+                                            Which events will you be attending?
+                                        </label>
+                                        <Stack direction="row">
+                                            {
+                                                event.eventDates.map((eventDate:IEventDate, index:number) => {
+                                                    return <Checkbox key={index} onChange={(e:any) => {
+                                                        setFieldValue(`eventDates.${index}.attending`, e.target.checked);
+                                                    }}>
+                                                        {eventDate.label}
+                                                    </Checkbox>;
+                                                })
+                                            }
+                                        </Stack>
                                     </Flex>
                                     <Flex direction="column" mt={4}>
                                         <ReCAPTCHA
