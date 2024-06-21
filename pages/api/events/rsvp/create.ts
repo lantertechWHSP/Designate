@@ -39,7 +39,7 @@ export default async function handler(request: NextApiRequest, response: NextApi
         const schema:ObjectSchema<any> = yup.object({
             name: yup.string().required('Please enter your Name').matches(REGEXP.NAME, 'Please enter a valid First Name'),
             isShareholder: yup.boolean(),
-            events: yup.array().of(yup.object({
+            eventDates: yup.array().of(yup.object({
                 id: yup.string().required(),
                 attending: yup.boolean()
             })),
@@ -75,23 +75,23 @@ export default async function handler(request: NextApiRequest, response: NextApi
             const DATO_ITEM_TYPE_EVENT_RSVP_ID = process.env.NEXT_PUBLIC_DATO_ITEM_TYPE_EVENT_RSVP_ID;
 
             await Promise.all(
-                body.events.map(async (event: any) => {
+                body.eventDates.map(async (eventDate: any) => {
                     // Create the Event RSVP item type
                     const datoEventRSVP:any = await client.items.create({
                         item_type: { type: "item_type", id: DATO_ITEM_TYPE_EVENT_RSVP_ID },
                         name: body.name,
                         is_shareholder: body.isShareholder,
                         email: body.email,
-                        event: event.id,
-                        attending: event.attending
+                        eventDate: eventDate.id,
+                        attending: eventDate.attending
                     });
 
-                    const retreiveEvent:any = await client.items.find(event.id);
+                    const retreiveEvent:any = await client.items.find(eventDate.id);
                     const newRSVP:string[] = retreiveEvent.rsvp;
                     newRSVP.push(datoEventRSVP.id);
 
                     // Place the EventRSVP to the Event item type
-                    await client.items.update(event.id, {
+                    await client.items.update(eventDate.id, {
                         rsvp: newRSVP
                     });
                 })
