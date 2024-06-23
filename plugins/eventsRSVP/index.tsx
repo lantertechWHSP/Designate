@@ -8,6 +8,8 @@ const EventsRSVPPlugin:any = () : ReactNode => {
     // const [ctx.formValues]
     let isRendered = false;
 
+    const [rsvp, setRSVP] = useState([]);
+
     const isInIframe:any = () : boolean => {
         try {
             return window.self !== window.top;
@@ -17,10 +19,10 @@ const EventsRSVPPlugin:any = () : ReactNode => {
     };
 
     const render:any = (component: React.ReactNode) => {
-        // if(!isRendered) {
-        createRoot(document.getElementById('__next')).render(<React.StrictMode>{component}</React.StrictMode>);
-        // isRendered = true;
-        // }
+        if(!isRendered) {
+            createRoot(document.getElementById('__next')).render(<React.StrictMode>{component}</React.StrictMode>);
+            isRendered = true;
+        }
     };
 
     useEffect(() => {
@@ -50,7 +52,7 @@ const EventsRSVPPlugin:any = () : ReactNode => {
     }, [isLoaded]);
 
     return (
-        <></>
+        <>Carl</>
     );
 };
 

@@ -12,12 +12,13 @@ type PropTypes = {
 };
 
 const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
-    const [eventRSVPItems, setEventRSVPItems] = useState([]);
     const [eventDates, setEventDates] = useState([]);
+    // Presentation object for the RSVP’s
+    const [eventRSVPItems, setEventRSVPItems] = useState([]);
+    // RSVP id’s
+    const [rsvps, setRSVPs] = useState(ctx.formValues.rsvp);
 
     useEffect(() => {
-        console.log(ctx);
-
         if(ctx.formValues.event_dates) {
             doQuery(queries.eventDates, {
                 in: ctx.formValues.event_dates
@@ -49,6 +50,10 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
             })();
         }
     }, []);
+
+    // useEffect(() => {
+    //     alert('!');
+    // }, [ctx.formValues.event_dates])
 
     const download:any = () : void => {
         if(eventRSVPItems.length > 0) {
@@ -85,15 +90,37 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
     };
 
     const edit:any = async (id:string): Promise<void> => {
-        await ctx.editItem(id);
+        const item = await ctx.editItem(id);
+        if(item) {
+            const rsvpItem:any = {
+                id: item.id,
+                name: item.attributes.name,
+                email: item.attributes.email,
+                isShareholder: item.attributes.is_shareholder,
+                eventDatesAttending: item.attributes.event_dates_attending.map((id) => {
+                    return {
+                        id: id
+                    };
+                })
+            };
+
+            const newEventRSVPItems = [...eventRSVPItems];
+            for(let i = 0; i < newEventRSVPItems.length; i++) {
+                if(newEventRSVPItems[i].id === rsvpItem.id) {
+                    newEventRSVPItems[i] = {
+                        ...rsvpItem
+                    };
+                }
+            }
+
+            setEventRSVPItems(newEventRSVPItems);
+        }
     };
 
     const create:any = async () : Promise<void> => {
         const item = await ctx.createNewItem(process.env.NEXT_PUBLIC_DATO_ITEM_TYPE_EVENT_RSVP_ID);
 
         if (item) {
-            debugger;
-
             const rsvpItem:any = {
                 id: item.id,
                 name: item.attributes.name,
@@ -110,23 +137,15 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
             const newEventRSVPItems = [...eventRSVPItems, rsvpItem];
             setEventRSVPItems(newEventRSVPItems);
 
-            const newRSVPIds = [...ctx.formValues.rsvp, item.id];
+            // Create the new RSVP ids
+            const newRSVPs = [...rsvps, item.id];
+            setRSVPs(newRSVPs);
 
             // Add the RSVP id to the form value
-            await ctx.setFieldValue('rsvp', newRSVPIds);
+            await ctx.setFieldValue('rsvp', newRSVPs);
 
-            // Edit the RSVP
-            // await fetch('/api/events/editRSVP', {
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //         'Accept': 'application/json'
-            //     },
-            //     body: JSON.stringify({
-            //         id: ctx.itemId,
-            //         rsvp: newRSVPIds
-            //     })
-            // });
+            // Save the record
+            await ctx.saveCurrentItem();
         }
     };
 
