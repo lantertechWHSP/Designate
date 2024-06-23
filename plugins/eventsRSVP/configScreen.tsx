@@ -46,7 +46,7 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                 setEventRSVPItems(values);
             })();
         }
-    }, []);
+    }, [ctx.formValues.event_dates]);
 
     const download:any = () : void => {
         if(eventRSVPItems.length > 0) {
@@ -57,21 +57,21 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                 return `Attending ${eventDate.shortLabel}`;
             });
             // CSVString += 'Name,Email,Is Shareholder, Attending\r\n';
-            CSVString += ['Name', 'Email', 'Is Shareholder', ...eventDateLabels].join(',');
+            CSVString += ['Name', 'Email', 'Shareholder', ...eventDateLabels].join(',');
             CSVString += "\r\n";
 
-            eventRSVPItems.map((event) => {
-                const eventAttending = eventDates.map((eventDate:any) => {
-                    const detail = event.details.find((detail) => {
-                        return detail.id === eventDate.id;
-                    });
-
-                    return detail.attending ?  'Yes' : 'No';
-                });
-
-                CSVString += [event.name, event.email, event.isShareholder ? 'Yes' : 'No', ...eventAttending].join(',');
-                CSVString += "\r\n";
-            });
+            // eventRSVPItems.map((event) => {
+            //     const eventAttending = eventDates.map((eventDate:any) => {
+            //         const detail = event.details.find((detail) => {
+            //             return detail.id === eventDate.id;
+            //         });
+            //
+            //         return detail.attending ?  'Yes' : 'No';
+            //     });
+            //
+            //     CSVString += [event.name, event.email, event.isShareholder ? 'Yes' : 'No', ...eventAttending].join(',');
+            //     CSVString += "\r\n";
+            // });
 
             CSVString = "data:application/csv," + encodeURIComponent(CSVString);
             const anchor = document.createElement("A");
@@ -91,7 +91,7 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                             <div className="ItemsTable__header-row">
                                 <div className="ItemsTable__header-cell">Name</div>
                                 <div className="ItemsTable__header-cell ItemsTable__header-cell--wide">Email</div>
-                                <div className="ItemsTable__header-cell">Is Shareholder</div>
+                                <div className="ItemsTable__header-cell">Shareholder</div>
                                 {
                                     eventDates.map((eventDate:any, index:number) => {
                                         return <div key={index} className="ItemsTable__header-cell">Attending {eventDate.shortLabel}</div>;
@@ -118,11 +118,11 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                                                     return <div className="ItemsTable__cell" key={index}>
                                                         {
                                                             (() => {
-                                                                const detail = item.details.find((detail) => {
-                                                                    return detail.id === eventDate.id;
+                                                                const attending = item.eventDatesAttending.find((eventDatesAttending) => {
+                                                                    return eventDatesAttending.id === eventDate.id;
                                                                 });
 
-                                                                return detail.attending && <BooleanCell />;
+                                                                return attending && <BooleanCell />;
                                                             })()
                                                         }
                                                     </div>;

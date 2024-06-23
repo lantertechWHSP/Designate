@@ -4,7 +4,9 @@ export const eventRSVP:string = `
             name
             isShareholder
             email
-            details
+            eventDatesAttending {
+                id
+            }
         }
     }
 `;
