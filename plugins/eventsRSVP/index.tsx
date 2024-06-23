@@ -2,6 +2,7 @@ import React, { ReactNode, useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { connect, IntentCtx, RenderFieldExtensionCtx } from 'datocms-plugin-sdk';
 import EventsRSVPConfigScreen from "~/plugins/eventsRSVP/rsvp/configScreen";
+import EventsRSVPAttendingConfigScreen from "~/plugins/eventsRSVP/attending/configScreen";
 
 const EventsRSVPPlugin:any = () : ReactNode => {
     const [isLoaded, setIsLoaded] = useState<boolean>(false);
@@ -45,7 +46,7 @@ const EventsRSVPPlugin:any = () : ReactNode => {
                     renderFieldExtension(fieldExtensionId: string, ctx: RenderFieldExtensionCtx) {
                         switch (fieldExtensionId) {
                             case 'event_rsvp_list': return render(<EventsRSVPConfigScreen ctx={ctx} />);
-                            case 'event_rsvp_attending': return <></>;
+                            case 'event_rsvp_attending': return render(<EventsRSVPAttendingConfigScreen ctx={ctx} />);
                         }
                     }
                 });
