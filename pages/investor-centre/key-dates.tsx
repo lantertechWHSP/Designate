@@ -9,6 +9,7 @@ import { ISite } from '~/interfaces/layout/site';
 import { IPage } from '~/interfaces/models/page';
 import { ILayout } from '~/interfaces/layout/layout';
 import { IBlock } from '~/interfaces/util/block';
+import { setup } from "~/lib/csrf";
 
 interface INextPageProps {
     layout?:ILayout;
@@ -33,6 +34,8 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
         revalidate: 10
     };
 }
+
+// const x = setup();
 
 const KeyDatesPage : NextPage = ({ layout, blocks }:INextPageProps)  : JSX.Element => {
     return (

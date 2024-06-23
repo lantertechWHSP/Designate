@@ -5,6 +5,7 @@ import * as yup from 'yup';
 import { IEvent, IEventDate } from '~/interfaces/models/event';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
+import { setup } from '~/lib/csrf';
 
 const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_KEY;
 

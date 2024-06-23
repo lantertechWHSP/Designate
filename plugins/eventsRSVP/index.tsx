@@ -1,14 +1,11 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { connect, IntentCtx, RenderFieldExtensionCtx } from 'datocms-plugin-sdk';
-import EventsRSVPConfigScreen from "~/plugins/eventsRSVP/configScreen";
+import EventsRSVPConfigScreen from "~/plugins/eventsRSVP/rsvp/configScreen";
 
 const EventsRSVPPlugin:any = () : ReactNode => {
     const [isLoaded, setIsLoaded] = useState<boolean>(false);
-    // const [ctx.formValues]
     let isRendered = false;
-
-    const [rsvp, setRSVP] = useState([]);
 
     const isInIframe:any = () : boolean => {
         try {

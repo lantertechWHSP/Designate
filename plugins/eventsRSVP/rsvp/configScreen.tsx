@@ -89,6 +89,36 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
         }
     };
 
+    const create:any = async () : Promise<void> => {
+        const item = await ctx.createNewItem(process.env.NEXT_PUBLIC_DATO_ITEM_TYPE_EVENT_RSVP_ID);
+
+        if (item) {
+            const rsvpItem:any = {
+                id: item.id,
+                name: item.attributes.name,
+                email: item.attributes.email,
+                isShareholder: item.attributes.is_shareholder,
+                eventDatesAttending: item.attributes.event_dates_attending.map((id) => {
+                    return {
+                        id: id
+                    };
+                })
+            };
+
+            // Add the RSVP item
+            const newEventRSVPItems = [...eventRSVPItems, rsvpItem];
+            setEventRSVPItems(newEventRSVPItems);
+            const newRSVPs = [...rsvps, item.id];
+            setRSVPs(newRSVPs);
+
+            // Add the RSVP id to the form value
+            await ctx.setFieldValue('rsvp', newRSVPs);
+
+            // Save the record
+            await ctx.saveCurrentItem();
+        }
+    };
+
     const edit:any = async (id:string): Promise<void> => {
         const item = await ctx.editItem(id);
         if(item) {
@@ -117,36 +147,33 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
         }
     };
 
-    const create:any = async () : Promise<void> => {
-        const item = await ctx.createNewItem(process.env.NEXT_PUBLIC_DATO_ITEM_TYPE_EVENT_RSVP_ID);
+    const remove:any = async (id:string): Promise<void> => {
+        // Remove the RSVP item
+        const newEventRSVPItems = eventRSVPItems.filter((eventRSVPItem) => {
+            return eventRSVPItem.id !== id;
+        });
+        setEventRSVPItems(newEventRSVPItems);
+        const newRSVPs = newEventRSVPItems.map((eventRSVPItem) => {
+            return eventRSVPItem.id;
+        });
+        setRSVPs(newRSVPs);
 
-        if (item) {
-            const rsvpItem:any = {
-                id: item.id,
-                name: item.attributes.name,
-                email: item.attributes.email,
-                isShareholder: item.attributes.is_shareholder,
-                eventDatesAttending: item.attributes.event_dates_attending.map((id) => {
-                    return {
-                        id: id
-                    };
-                })
-            };
+        // Add the RSVP id to the form value
+        await ctx.setFieldValue('rsvp', newRSVPs);
 
-            // Add it to the list object on the table
-            const newEventRSVPItems = [...eventRSVPItems, rsvpItem];
-            setEventRSVPItems(newEventRSVPItems);
+        // Save the record
+        await ctx.saveCurrentItem();
 
-            // Create the new RSVP ids
-            const newRSVPs = [...rsvps, item.id];
-            setRSVPs(newRSVPs);
-
-            // Add the RSVP id to the form value
-            await ctx.setFieldValue('rsvp', newRSVPs);
-
-            // Save the record
-            await ctx.saveCurrentItem();
-        }
+        await fetch('/api/events/rsvp/remove', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                id: id
+            })
+        });
     };
 
     return (
@@ -221,7 +248,7 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                                                         }}>Edit</DropdownOption>
                                                         <DropdownSeparator />
                                                         <DropdownOption red onClick={() => {
-                                                            // remove(item.id);
+                                                            remove(item.id);
                                                         }}>
                                                             Delete
                                                         </DropdownOption>
