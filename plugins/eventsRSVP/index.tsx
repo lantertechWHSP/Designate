@@ -29,16 +29,23 @@ const EventsRSVPPlugin:any = () : ReactNode => {
                     manualFieldExtensions(_ctx: IntentCtx) {
                         return [
                             {
-                                id: 'rsvp',
-                                name: 'RSVP',
+                                id: 'event_rsvp_list',
+                                name: 'Event RSVP List',
                                 type: 'editor',
                                 fieldTypes: ['links'],
                             },
+                            {
+                                id: 'event_rsvp_attending',
+                                name: 'Event RSVP Attending',
+                                type: 'editor',
+                                fieldTypes: ['links']
+                            }
                         ];
                     },
                     renderFieldExtension(fieldExtensionId: string, ctx: RenderFieldExtensionCtx) {
                         switch (fieldExtensionId) {
-                            case 'rsvp': return render(<EventsRSVPConfigScreen ctx={ctx} />);
+                            case 'event_rsvp_list': return render(<EventsRSVPConfigScreen ctx={ctx} />);
+                            case 'event_rsvp_attending': return <></>;
                         }
                     }
                 });
@@ -49,7 +56,7 @@ const EventsRSVPPlugin:any = () : ReactNode => {
     }, [isLoaded]);
 
     return (
-        <>Carl</>
+        <></>
     );
 };
 

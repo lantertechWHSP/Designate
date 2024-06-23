@@ -2,10 +2,9 @@ import { Canvas, FieldGroup, Button, Dropdown, DropdownMenu, DropdownOption, Dro
 import { useEffect, useState } from 'react';
 import 'datocms-react-ui/styles.css';
 import { doQuery, queries } from "~/dato/api";
-import { BooleanCell } from "~/plugins/eventsRSVP/booleanCell";
 import './configScreen.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faCheck, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 
 type PropTypes = {
     ctx: any;
@@ -51,10 +50,6 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
         }
     }, []);
 
-    // useEffect(() => {
-    //     alert('!');
-    // }, [ctx.formValues.event_dates])
-
     const download:any = () : void => {
         if(eventRSVPItems.length > 0) {
             let CSVString:string = '';
@@ -67,18 +62,18 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
             CSVString += ['Name', 'Email', 'Shareholder', ...eventDateLabels].join(',');
             CSVString += "\r\n";
 
-            // eventRSVPItems.map((event) => {
-            //     const eventAttending = eventDates.map((eventDate:any) => {
-            //         const detail = event.details.find((detail) => {
-            //             return detail.id === eventDate.id;
-            //         });
-            //
-            //         return detail.attending ?  'Yes' : 'No';
-            //     });
-            //
-            //     CSVString += [event.name, event.email, event.isShareholder ? 'Yes' : 'No', ...eventAttending].join(',');
-            //     CSVString += "\r\n";
-            // });
+            eventRSVPItems.map((item) => {
+                const eventAttending = eventDates.map((eventDate:any) => {
+                    const attending = item.eventDatesAttending.find((eventDatesAttending) => {
+                        return eventDatesAttending.id === eventDate.id;
+                    });
+
+                    return attending ? 'Yes' : 'No';
+                });
+
+                CSVString += [item.name, item.email, item.isShareholder ? 'Yes' : 'No', ...eventAttending].join(',');
+                CSVString += "\r\n";
+            });
 
             CSVString = "data:application/csv," + encodeURIComponent(CSVString);
             const anchor = document.createElement("A");
@@ -207,7 +202,7 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                                             </div>
                                             <div className="ItemsTable__cell">
                                                 {
-                                                    item.isShareholder && <BooleanCell />
+                                                    item.isShareholder && <FontAwesomeIcon icon={faCheck} />
                                                 }
                                             </div>
                                             {
@@ -219,7 +214,7 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                                                                     return eventDatesAttending.id === eventDate.id;
                                                                 });
 
-                                                                return attending && <BooleanCell />;
+                                                                return attending && <FontAwesomeIcon icon={faCheck} />;
                                                             })()
                                                         }
                                                     </div>;
@@ -235,10 +230,7 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                                                             }}
                                                             onClick={onClick}
                                                         >
-                                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 512" width="16px" height="16px">
-                                                                <path
-                                                                    d="M64 368a48 48 0 1 0 0 96 48 48 0 1 0 0-96zm0-160a48 48 0 1 0 0 96 48 48 0 1 0 0-96zM112 96A48 48 0 1 0 16 96a48 48 0 1 0 96 0z"></path>
-                                                            </svg>
+                                                            <FontAwesomeIcon icon={faEllipsisVertical} />
                                                         </Button>
                                                     )}
                                                 >
@@ -278,7 +270,7 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                             <Button buttonType="muted" buttonSize="s" onClick={() => {
                                 create();
                             }}>
-                                <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon> New RSVP
+                                <FontAwesomeIcon icon={faPlus} /> New RSVP
                             </Button>
                         </div>
                     </div>
