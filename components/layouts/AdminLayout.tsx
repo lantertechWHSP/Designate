@@ -7,7 +7,6 @@ const AdminLayout = ({ children }:any) : ReactNode => {
             <title>Soul Patts</title>
             <meta name="viewport" content="width=device-width, initial-scale=1"/>
         </Head>
-        <h1>Carl!</h1>
         {children}
     </>;
 };

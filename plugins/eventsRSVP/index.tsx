@@ -5,6 +5,7 @@ import EventsRSVPConfigScreen from "~/plugins/eventsRSVP/configScreen";
 
 const EventsRSVPPlugin:any = () : ReactNode => {
     const [isLoaded, setIsLoaded] = useState<boolean>(false);
+    // const [ctx.formValues]
     let isRendered = false;
 
     const isInIframe:any = () : boolean => {
@@ -16,10 +17,10 @@ const EventsRSVPPlugin:any = () : ReactNode => {
     };
 
     const render:any = (component: React.ReactNode) => {
-        if(!isRendered) {
-            createRoot(document.getElementById('__next')).render(<React.StrictMode>{component}</React.StrictMode>);
-            isRendered = true;
-        }
+        // if(!isRendered) {
+        createRoot(document.getElementById('__next')).render(<React.StrictMode>{component}</React.StrictMode>);
+        // isRendered = true;
+        // }
     };
 
     useEffect(() => {

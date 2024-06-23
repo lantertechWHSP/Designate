@@ -52,7 +52,6 @@ const Announcement:any = ({ description, _publishedAt, isClosedCallback }:IAnnou
     }, []);
 
     useEffect(() => {
-        debugger;
         isClosedCallback();
     }, [isClosed]);
 
