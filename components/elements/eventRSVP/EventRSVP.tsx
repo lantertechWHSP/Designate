@@ -5,7 +5,7 @@ import * as yup from 'yup';
 import { IEvent, IEventDate } from '~/interfaces/models/event';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
-import { setup } from '~/lib/csrf';
+import StructuredContent from "~/components/StructuredContent";
 
 const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_KEY;
 
@@ -87,11 +87,11 @@ const EventRSVP:any = ({ event }:IEventRSVP) : ReactNode => {
         <Heading as="h2" variant="sectionSubheading" color="olive" fontWeight={700} mb={8}>
             RSVP
         </Heading>
-        {
-            event.description && <Text>
-                {event.description}
-            </Text>
-        }
+        <Row>
+            <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths]}>
+                <StructuredContent content={event.description} />
+            </Column>
+        </Row>
         <Row>
             {
                 !isSuccessfulSubmit ? <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths]}><Formik
@@ -171,6 +171,13 @@ const EventRSVP:any = ({ event }:IEventRSVP) : ReactNode => {
                                         (errors.recaptcha && (touched.recaptcha && isAttemptedSubmit)) && <Text variant="error" mt={2} mb={0}>{errors.recaptcha.toString()}</Text>
                                     }
                                 </Flex>
+                                <Row>
+                                    <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths]}>
+                                        <Text variant="caption" mt={8}>
+                                            <StructuredContent content={event.disclaimer} />
+                                        </Text>
+                                    </Column>
+                                </Row>
                                 {
                                     errorMessage && <Alert status="error" variant="error" mt={4}>
                                         {errorMessage}

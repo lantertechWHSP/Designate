@@ -1,3 +1,5 @@
+import { structuredTextAttrs } from '~/dato/attrs/structuredTextAttrs';
+
 export const eventRSVPFormPanelRecord:string = `
     __typename
     id
@@ -7,6 +9,12 @@ export const eventRSVPFormPanelRecord:string = `
     event {
         id
         title
+        description {
+            ${structuredTextAttrs}
+        }
+        disclaimer {
+            ${structuredTextAttrs}
+        }
         eventDates {
             id
             label

@@ -36,7 +36,6 @@ interface IHeader extends IDatoHeader {
 }
 
 const Header:any = ({ menu, darkTheme, announcement }:IHeader): ReactNode => {
-    console.log(announcement);
     const { isOpen, onToggle, onClose } = useDisclosure();
     const headerRef = useRef<HTMLElement>();
 

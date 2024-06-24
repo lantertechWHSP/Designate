@@ -3,7 +3,6 @@ const eventFrag:string = `
         __typename
         id
         title
-        description
         eventDates {
             startDate
             endDate

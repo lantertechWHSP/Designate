@@ -21,7 +21,7 @@ export const eventRSVPEventDates:string = `
                     id
                     title
                     label
-                    shortLabel
+                    tableLabel
                 }
                 rsvp {
                     id

@@ -8,7 +8,7 @@ import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow
 interface IEventCard extends IEvent {
 }
 
-const EventCard:any = ({ title, description, eventDates }:IEventCard) : ReactNode => {
+const EventCard:any = ({ title, eventDates }:IEventCard) : ReactNode => {
     const [isOpen, setIsOpen] = useState(false);
 
     const event = eventDates[0];
@@ -58,7 +58,7 @@ const EventCard:any = ({ title, description, eventDates }:IEventCard) : ReactNod
                         }}
                         event={{
                             title: title,
-                            description: description,
+                            description: event.description,
                             location: event.location,
                             start: event.startDate,
                             end: event.endDate !== event.startDate ? event.endDate : null,
