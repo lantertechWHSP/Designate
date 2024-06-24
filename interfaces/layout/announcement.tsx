@@ -1,6 +1,7 @@
 import { IStructuredText } from '~/interfaces/util/structuredText';
 
 export interface IDatoAnnouncement {
-    description:IStructuredText;
+    description?:IStructuredText;
+    display?:boolean;
     _publishedAt:string;
 }
