@@ -209,7 +209,7 @@ const EventRSVPForm:any = ({ event }:IEventRSVP) : ReactNode => {
                                                     return <Checkbox variant="checkbox" key={index} mr={8} onChange={(e:any) => {
                                                         setFieldValue(`eventDates.${index}.attending`, e.target.checked);
                                                     }}>
-                                                        I will be attending this event.
+                                                        Yes.
                                                     </Checkbox>;
                                                 })
                                             }
