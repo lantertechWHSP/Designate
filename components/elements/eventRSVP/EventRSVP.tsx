@@ -84,8 +84,8 @@ const EventRSVP:any = ({ event }:IEventRSVP) : ReactNode => {
     };
 
     return <Box>
-        <Heading as="h2" variant="sectionSubheading" color="olive" fontWeight={700} mb={8}>
-            RSVP
+        <Heading as="h2" variant="sectionHeading" color="olive" fontWeight={700} mb={8}>
+            {event.title}
         </Heading>
         <Row>
             <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths]}>
@@ -94,6 +94,9 @@ const EventRSVP:any = ({ event }:IEventRSVP) : ReactNode => {
                 </Box>
             </Column>
         </Row>
+        <Heading as="h3" variant="h3">
+            RSVP
+        </Heading>
         <Row>
             {
                 !isSuccessfulSubmit ? <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths]}><Formik
