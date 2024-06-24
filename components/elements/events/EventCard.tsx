@@ -1,21 +1,25 @@
-import { ReactNode, Fragment } from 'react';
-import { IEvent } from "~/interfaces/models/event";
-import { Flex, Heading, Text } from '@chakra-ui/react';
+import { ReactNode, useState } from 'react';
+import { IEventDate } from "~/interfaces/models/event";
+import { Flex, Heading, Text, Box } from '@chakra-ui/react';
 import { DateTime } from 'luxon';
 import AddToCalendar from '~/components/elements/events/AddToCalendar';
 import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
-import {SectionLink} from "~/components/elements/sectionLink";
 
-interface IEventCard extends IEvent {
+interface IEventCard extends IEventDate {
 }
 
-const EventCard:any = ({ title, eventDates }:IEventCard) : ReactNode => {
+const EventCard:any = ({ title, allDay, startDate, endDate, details, location }:IEventCard) : ReactNode => {
+    const [isOpen, setIsOpen] = useState(false);
+
     return <Flex py={[4, ,'22px']}
         direction={['row']}
         mx={-4}
         align="center"
         cursor="pointer"
-        role="group">
+        role="group"
+        onClick={() => {
+            setIsOpen(true);
+        }}>
         <Flex
             direction={['column', , 'row']}
             width={['83.33333333%']}
@@ -29,36 +33,37 @@ const EventCard:any = ({ title, eventDates }:IEventCard) : ReactNode => {
                     </AnimateOverflow>
                 </Heading>
             }
-            <Flex>
-                {
-                    eventDates.map((eventDate, index:number) => {
-                        return <Fragment key={index}>
-                            <AnimateOverflow>
-                                <Text variant="listLabel" mb={0} mr={4} >
-                                    <AddToCalendar
-                                        event={{
-                                            title: title,
-                                            location: eventDate.location,
-                                            start: eventDate.startDate,
-                                            end: eventDate.endDate,
-                                            allDay: eventDate.allDay || false
-                                        }}>
-                                        {DateTime.fromISO(eventDate.startDate).toFormat('MMM d, yyyy')}
-                                    </AddToCalendar>
-                                </Text>
-                            </AnimateOverflow>
-                        </Fragment>;
-                    })
-                }
-            </Flex>
-        </Flex>
-        <Flex width={['16.6666666667%']} justify="flex-end" px={4}>
             {
-                (eventDates.filter((eventDate) => {
-                    return DateTime.now().startOf('day') < DateTime.fromISO(eventDate.startDate).startOf('day');
-                }).length > 0) && <SectionLink href="/investor-centre/key-dates#rsvp">
-                    RSVP
-                </SectionLink>
+                startDate && <Box>
+                    <AnimateOverflow><Text
+                        variant="listLabel"
+                        mb={0}>
+                        {DateTime.fromISO(startDate).toFormat('MMM d, yyyy')}
+                    </Text>
+                    </AnimateOverflow>
+                </Box>
+            }
+        </Flex>
+        <Flex width={['16.6666666667%']}
+            justify="flex-end"
+            px={4}>
+            {
+                <AnimateOverflow>
+                    <AddToCalendar
+                        isOpen={isOpen}
+                        onClose={() => {
+                            setIsOpen(false);
+                        }}
+                        event={{
+                            title: title,
+                            description: details,
+                            location: location,
+                            start: startDate,
+                            end: endDate !== startDate ? endDate : null,
+                            allDay: allDay || false
+                        }}>
+                    </AddToCalendar>
+                </AnimateOverflow>
             }
         </Flex>
     </Flex>;
