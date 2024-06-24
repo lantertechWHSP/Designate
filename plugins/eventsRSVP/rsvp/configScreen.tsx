@@ -176,15 +176,17 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                     eventRSVPItems.length > 0 ? <>
                         <div className="ItemsTable">
                             <div className="ItemsTable__header-row">
-                                <div className="ItemsTable__header-cell">Name</div>
-                                <div className="ItemsTable__header-cell ItemsTable__header-cell--wide">Email</div>
-                                <div className="ItemsTable__header-cell">Shareholder</div>
+                                <div className="ItemsTable__header-cell ItemsTable__header-cell--name">Name</div>
+                                <div className="ItemsTable__header-cell ItemsTable__header-cell--email">Email</div>
+                                <div className="ItemsTable__header-cell ItemsTable__header-cell--shareholder">Shareholder</div>
                                 {
                                     eventDates.map((eventDate:any, index:number) => {
-                                        return <div key={index} className="ItemsTable__header-cell">{eventDate.label}</div>;
+                                        return <div key={index} className="ItemsTable__header-cell" style={{
+                                            width: `${35 / eventDates.length}%`
+                                        }}>{eventDate.label}</div>;
                                     })
                                 }
-                                <div className="ItemsTable__header-cell">
+                                <div className="ItemsTable__header-cell ItemsTable__header-cell--edit">
                                     Edit
                                 </div>
                             </div>
@@ -192,20 +194,22 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                                 {
                                     eventRSVPItems.map((item, index: number) => {
                                         return <div className="ItemsTable__row" key={index}>
-                                            <div className="ItemsTable__cell">
+                                            <div className="ItemsTable__cell ItemsTable__cell--name">
                                                 {item.name}
                                             </div>
-                                            <div className="ItemsTable__cell ItemsTable__cell--wide">
+                                            <div className="ItemsTable__cell ItemsTable__cell--email">
                                                 {item.email}
                                             </div>
-                                            <div className="ItemsTable__cell">
+                                            <div className="ItemsTable__cell ItemsTable__cell--shareholder ItemsTable__cell--center">
                                                 {
                                                     item.isShareholder && <FontAwesomeIcon icon={faCheck} />
                                                 }
                                             </div>
                                             {
                                                 eventDates.map((eventDate:any, index:number) => {
-                                                    return <div className="ItemsTable__cell" key={index}>
+                                                    return <div className="ItemsTable__cell ItemsTable__cell--center" style={{
+                                                        width: `${35 / eventDates.length}%`
+                                                    }} key={index}>
                                                         {
                                                             (() => {
                                                                 const attending = item.eventDatesAttending.find((eventDatesAttending) => {
@@ -218,7 +222,7 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                                                     </div>;
                                                 })
                                             }
-                                            <div>
+                                            <div className="ItemsTable__cell ItemsTable__cell--edit">
                                                 <Dropdown
                                                     renderTrigger={({ onClick }) => (
                                                         <Button
