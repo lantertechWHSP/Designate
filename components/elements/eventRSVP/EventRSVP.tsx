@@ -100,7 +100,7 @@ const EventRSVP:any = ({ event }:IEventRSVP) : ReactNode => {
         return flag ? 'is-invalid' : '';
     };
 
-    return <Box>
+    return <Box id="rsvp">
         <Heading as="h2" variant="sectionHeading" color="charcoal" fontWeight={700} mb={4}>
             {event.title}
         </Heading>

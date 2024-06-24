@@ -20,10 +20,13 @@ const EventList:any = ({ events }:IEventList) : ReactNode => {
                                 Event
                             </AnimateOverflow>
                         </Box>
-                        <Box mb={0} px={4} width="50%" display={['none', ,'block']}>
+                        <Box mb={0} px={4} width="25%" display={['none', ,'block']}>
                             <AnimateOverflow>
                                 Date(s)
                             </AnimateOverflow>
+                        </Box>
+                        <Box mb={0} px={4} width="25%" display={['none', ,'block']}>
+                            
                         </Box>
                     </Flex>
                 </Box>
