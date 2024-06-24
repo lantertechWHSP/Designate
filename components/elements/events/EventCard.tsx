@@ -4,7 +4,6 @@ import { Flex, Heading, Text } from '@chakra-ui/react';
 import { DateTime } from 'luxon';
 import AddToCalendar from '~/components/elements/events/AddToCalendar';
 import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
-import { Link } from "~/components/elements/link";
 import {SectionLink} from "~/components/elements/sectionLink";
 
 interface IEventCard extends IEvent {

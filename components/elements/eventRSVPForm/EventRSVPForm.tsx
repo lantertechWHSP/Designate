@@ -27,7 +27,7 @@ interface IEventRSVP {
     event:IEvent;
 }
 
-const EventRSVP:any = ({ event }:IEventRSVP) : ReactNode => {
+const EventRSVPForm:any = ({ event }:IEventRSVP) : ReactNode => {
     const [isAttemptedSubmit, setIsAttemptedSubmit] = useState<boolean>(false);
 
     const [isSuccessfulSubmit, setIsSuccessfulSubmit] = useState<boolean>(false);
@@ -110,11 +110,6 @@ const EventRSVP:any = ({ event }:IEventRSVP) : ReactNode => {
                     <Box mb={4}>
                         <StructuredContent content={event.description} />
                     </Box>
-                    {
-                        event.eventDates.map((eventDate:IEventDate, index:number) => {
-                            return <Box key={index} mb={4}><StructuredContent content={eventDate.description} /></Box>;
-                        })
-                    }
                 </Column>
             </Row>
         </Box>
@@ -226,4 +221,4 @@ const EventRSVP:any = ({ event }:IEventRSVP) : ReactNode => {
     </Box>;
 };
 
-export default EventRSVP;
+export default EventRSVPForm;
