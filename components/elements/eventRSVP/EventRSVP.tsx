@@ -173,7 +173,7 @@ const EventRSVP:any = ({ event }:IEventRSVP) : ReactNode => {
                                 </Flex>
                                 <Row>
                                     <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths]}>
-                                        <Text variant="caption" mt={8}>
+                                        <Text as="div" variant="caption" mt={8}>
                                             <StructuredContent content={event.disclaimer} />
                                         </Text>
                                     </Column>
