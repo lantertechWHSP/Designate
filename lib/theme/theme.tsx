@@ -241,7 +241,7 @@ export const theme:any = extendBaseTheme({
                 },
                 label: {
                     fontSize: '16px',
-                    color: '#344054',
+                    color: 'darkSteel',
                     fontWeight: 500,
                 }
             }

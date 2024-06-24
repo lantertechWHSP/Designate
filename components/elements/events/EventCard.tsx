@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, Fragment } from 'react';
 import { IEvent } from "~/interfaces/models/event";
 import { Flex, Heading, Text } from '@chakra-ui/react';
 import { DateTime } from 'luxon';
@@ -30,21 +30,23 @@ const EventCard:any = ({ title, eventDates }:IEventCard) : ReactNode => {
             }
             <Flex>
                 {
-                    eventDates.map((eventDate) => {
-                        return <AnimateOverflow>
-                            <Text variant="listLabel" mb={0} mr={4} >
-                                <AddToCalendar
-                                    event={{
-                                        title: title,
-                                        description: eventDate.description,
-                                        location: eventDate.location,
-                                        start: eventDate.startDate,
-                                        allDay: eventDate.allDay || false
-                                    }}>
-                                    {DateTime.fromISO(eventDate.startDate).toFormat('MMM d, yyyy')}
-                                </AddToCalendar>
-                            </Text>
-                        </AnimateOverflow>;
+                    eventDates.map((eventDate, index:number) => {
+                        return <Fragment key={index}>
+                            <AnimateOverflow>
+                                <Text variant="listLabel" mb={0} mr={4} >
+                                    <AddToCalendar
+                                        event={{
+                                            title: title,
+                                            // description: eventDate.description,
+                                            location: eventDate.location,
+                                            start: eventDate.startDate,
+                                            allDay: eventDate.allDay || false
+                                        }}>
+                                        {DateTime.fromISO(eventDate.startDate).toFormat('MMM d, yyyy')}
+                                    </AddToCalendar>
+                                </Text>
+                            </AnimateOverflow>
+                        </Fragment>;
                     })
                 }
             </Flex>

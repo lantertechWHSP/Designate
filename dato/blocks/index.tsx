@@ -198,4 +198,4 @@ export const blocks:string = `
             ${faqsPanelRecord}
         }
     }
-`;
+`.trim().replace(/\s+/g, ' ');

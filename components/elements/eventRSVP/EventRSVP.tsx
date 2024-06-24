@@ -1,12 +1,25 @@
 import React, { ReactNode, useState } from 'react';
-import { Box, Input, Heading, Flex, Checkbox, RadioGroup, Radio, Button, Text, Alert, Stack } from '@chakra-ui/react';
+import {
+    Box,
+    Input,
+    Heading,
+    Flex,
+    Checkbox,
+    RadioGroup,
+    Radio,
+    Button,
+    Text,
+    Alert,
+    Stack,
+    Spinner
+} from '@chakra-ui/react';
 import { Formik, Form, Field } from 'formik';
 import * as yup from 'yup';
 import { IEvent, IEventDate } from '~/interfaces/models/event';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
 import StructuredContent from "~/components/StructuredContent";
-import {DateTime} from "luxon";
+import { DateTime } from 'luxon';
 
 const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_KEY;
 
@@ -20,6 +33,7 @@ const EventRSVP:any = ({ event }:IEventRSVP) : ReactNode => {
     const [isSuccessfulSubmit, setIsSuccessfulSubmit] = useState<boolean>(false);
     const [successMessage, setSucessMessage] = useState<string>('');
     const [errorMessage, setErrorMessage] = useState<string>('');
+    const [isApiSubmitting, setIsApiSubmitting] = useState(false);
 
     const recaptchaRef:any = React.createRef();
 
@@ -56,6 +70,7 @@ const EventRSVP:any = ({ event }:IEventRSVP) : ReactNode => {
     const submit = (values, resetForm) : void => {
         setErrorMessage('');
         setSucessMessage('');
+        setIsApiSubmitting(true);
 
         fetch('/api/events/rsvp/create', {
             method: 'POST',
@@ -76,7 +91,8 @@ const EventRSVP:any = ({ event }:IEventRSVP) : ReactNode => {
         }).catch((error) => {
             setErrorMessage(error.message);
         }).finally(() => {
-            recaptchaRef.current.props?.grecaptcha.reset();
+            recaptchaRef.current?.props?.grecaptcha.reset();
+            setIsApiSubmitting(false);
         });
     };
 
@@ -85,30 +101,29 @@ const EventRSVP:any = ({ event }:IEventRSVP) : ReactNode => {
     };
 
     return <Box>
-        <Heading as="h2" variant="sectionHeading" color="olive" fontWeight={700} mb={4}>
+        <Heading as="h2" variant="sectionHeading" color="charcoal" fontWeight={700} mb={4}>
             {event.title}
         </Heading>
-        <Row>
-            <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths]}>
-                <Box mb={4}>
-                    <StructuredContent content={event.description} />
-                </Box>
-                {
-                    event.eventDates.map((eventDate:IEventDate, index:number) => {
-                        return <Text key={index} mb={4}>
-                            {eventDate.description}
-                        </Text>;
-                    })
-                }
-            </Column>
-        </Row>
-
-        <Heading as="h3" variant="h3">
+        <Box mb={8}>
+            <Row>
+                <Column width={[ColumnWidth.Full, ,ColumnWidth.EightTwelfths]}>
+                    <Box mb={4}>
+                        <StructuredContent content={event.description} />
+                    </Box>
+                    {
+                        event.eventDates.map((eventDate:IEventDate, index:number) => {
+                            return <Box key={index} mb={4}><StructuredContent content={eventDate.description} /></Box>;
+                        })
+                    }
+                </Column>
+            </Row>
+        </Box>
+        <Heading as="h3" variant="h3" mb={4}>
             RSVP
         </Heading>
         <Row>
             {
-                !isSuccessfulSubmit ? <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths]}><Formik
+                !isSuccessfulSubmit ? <Column width={[ColumnWidth.Full, ,ColumnWidth.EightTwelfths]}><Formik
                     validationSchema={SCHEMA}
                     initialValues={INITIAL_VALUES}
                     onSubmit={(values, { resetForm }) => {
@@ -149,9 +164,9 @@ const EventRSVP:any = ({ event }:IEventRSVP) : ReactNode => {
                                         const booleanValue:boolean = value === 'true';
                                         setFieldValue('isShareholder', booleanValue);
                                     }}>
-                                        <Stack direction="row">
-                                            <Radio value="true" variant="radio">Yes</Radio>
-                                            <Radio value="false" variant="radio">No</Radio>
+                                        <Stack direction={['column', , 'row']}>
+                                            <Radio value="true" variant="radio" mr={6}>Yes</Radio>
+                                            <Radio value="false" variant="radio" mr={6}>No</Radio>
                                         </Stack>
                                     </RadioGroup>
                                 </Flex>
@@ -159,11 +174,10 @@ const EventRSVP:any = ({ event }:IEventRSVP) : ReactNode => {
                                     <Text as="label" variant="label" mb={1}>
                                         Which events will you be attending?
                                     </Text>
-                                    <Stack direction="row">
+                                    <Stack direction={['column', , 'row']}>
                                         {
                                             event.eventDates.map((eventDate:IEventDate, index:number) => {
-                                                debugger;
-                                                return <Checkbox variant="checkbox" key={index} onChange={(e:any) => {
+                                                return <Checkbox variant="checkbox" key={index} mr={8} onChange={(e:any) => {
                                                     setFieldValue(`eventDates.${index}.attending`, e.target.checked);
                                                 }}>
                                                     {eventDate.label}, {DateTime.fromISO(eventDate.startDate).toFormat('d MMM')}
@@ -188,7 +202,7 @@ const EventRSVP:any = ({ event }:IEventRSVP) : ReactNode => {
                                 </Flex>
                                 <Row>
                                     <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths]}>
-                                        <Text as="div" variant="caption" mt={8}>
+                                        <Text as="div" variant="caption" mt={8} fontSize="13px" color="darkSteel">
                                             <StructuredContent content={event.disclaimer} />
                                         </Text>
                                     </Column>
@@ -198,7 +212,7 @@ const EventRSVP:any = ({ event }:IEventRSVP) : ReactNode => {
                                         {errorMessage}
                                     </Alert>
                                 }
-                                <Button type="submit" variant="button" mt={8}>Submit</Button>
+                                <Button type="submit" w="200px" rightIcon={isApiSubmitting && <Spinner size='sm' />} disabled={isApiSubmitting} variant="button" mt={8}>Submit</Button>
                             </Form>;
                         })
                     }

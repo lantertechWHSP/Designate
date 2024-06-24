@@ -11,7 +11,7 @@ export interface IEvent {
 export interface IEventDate {
     id?:string;
     title?:string;
-    description?:string;
+    description?:IStructuredText;
     location?:string;
     label?:string;
     startDate?:string;

@@ -18,7 +18,9 @@ export const eventRSVPFormPanelRecord:string = `
         eventDates {
             id
             label
-            description
+            description {
+                ${structuredTextAttrs}
+            }
             startDate
         }
     }
