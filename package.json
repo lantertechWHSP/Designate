@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@chakra-ui/react": "^2.8.0",
+    "@datocms/cma-client-browser": "^3.3.3",
     "@datocms/cma-client-node": "^3.3.2",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",

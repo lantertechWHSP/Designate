@@ -5,6 +5,12 @@ import { doQuery, queries } from "~/dato/api";
 import './configScreen.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faCheck, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
+import { buildClient } from '@datocms/cma-client-browser';
+
+const client = buildClient({
+    apiToken: process.env.NEXT_PUBLIC_DATO_KEY,
+    environment: process.env.NEXT_PUBLIC_DATO_ENVIRONMENT
+});
 
 type PropTypes = {
     ctx: any;
@@ -159,16 +165,7 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
         // Save the record
         await ctx.saveCurrentItem();
 
-        await fetch('/api/events/rsvp/remove', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify({
-                id: id
-            })
-        });
+        await client.items.destroy(id);
     };
 
     return (
