@@ -89,7 +89,9 @@ const EventRSVP:any = ({ event }:IEventRSVP) : ReactNode => {
         </Heading>
         <Row>
             <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths]}>
-                <StructuredContent content={event.description} />
+                <Box mb={8}>
+                    <StructuredContent content={event.description} />
+                </Box>
             </Column>
         </Row>
         <Row>
