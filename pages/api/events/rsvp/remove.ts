@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import {buildClient} from "@datocms/cma-client-node";
+import { buildClient } from "@datocms/cma-client-node";
 
-const handler:any = async (request: NextApiRequest, response: NextApiResponse) : Promise<any> => {
+export default async function handler(request: NextApiRequest, response: NextApiResponse) : Promise<any> {
     const body = request.body;
     const ERROR_MESSAGE = 'Could not remove RSVP.';
 
@@ -32,5 +32,3 @@ const handler:any = async (request: NextApiRequest, response: NextApiResponse) :
         });
     }
 };
-
-export default csrf(handler);
