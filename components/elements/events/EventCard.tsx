@@ -1,6 +1,6 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode } from 'react';
 import { IEvent } from "~/interfaces/models/event";
-import { Flex, Heading, Text, Box } from '@chakra-ui/react';
+import { Flex, Heading, Text } from '@chakra-ui/react';
 import { DateTime } from 'luxon';
 import AddToCalendar from '~/components/elements/events/AddToCalendar';
 import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
@@ -9,8 +9,6 @@ interface IEventCard extends IEvent {
 }
 
 const EventCard:any = ({ title, eventDates }:IEventCard) : ReactNode => {
-    const [isOpen, setIsOpen] = useState(false);
-
     const event = eventDates[0];
 
     return <Flex py={[4, ,'22px']}
@@ -18,17 +16,14 @@ const EventCard:any = ({ title, eventDates }:IEventCard) : ReactNode => {
         mx={-4}
         align="center"
         cursor="pointer"
-        role="group"
-        onClick={() => {
-            setIsOpen(true);
-        }}>
+        role="group">
         <Flex
             direction={['column', , 'row']}
-            width={['83.33333333%']}
+            width={['100%']}
             px={4}>
             {
                 title && <Heading as="h3"
-                    width={['unset', ,'60.3%']}
+                    width={['unset', ,'50%']}
                     variant="listItem">
                     <AnimateOverflow>
                         {title}
@@ -36,36 +31,27 @@ const EventCard:any = ({ title, eventDates }:IEventCard) : ReactNode => {
                 </Heading>
             }
             {
-                event && <Box>
-                    <AnimateOverflow><Text
-                        variant="listLabel"
-                        mb={0}>
-                        {DateTime.fromISO(event.startDate).toFormat('MMM d, yyyy')}
-                    </Text>
-                    </AnimateOverflow>
-                </Box>
-            }
-        </Flex>
-        <Flex width={['16.6666666667%']}
-            justify="flex-end"
-            px={4}>
-            {
-                <AnimateOverflow>
-                    <AddToCalendar
-                        isOpen={isOpen}
-                        onClose={() => {
-                            setIsOpen(false);
-                        }}
-                        event={{
-                            title: title,
-                            description: event.description,
-                            location: event.location,
-                            start: event.startDate,
-                            end: event.endDate !== event.startDate ? event.endDate : null,
-                            allDay: event.allDay || false
-                        }}>
-                    </AddToCalendar>
-                </AnimateOverflow>
+                event && <Flex>
+                    {
+                        eventDates.map((eventDate) => {
+                            return <AnimateOverflow>
+                                <Text variant="listLabel" mb={0} mr={4} >
+                                    <AddToCalendar
+                                        event={{
+                                            title: title,
+                                            description: eventDate.description,
+                                            location: eventDate.location,
+                                            start: eventDate.startDate,
+                                            end: eventDate.endDate !== eventDate.startDate ? eventDate.endDate : null,
+                                            allDay: eventDate.allDay || false
+                                        }}>
+                                        {DateTime.fromISO(eventDate.startDate).toFormat('MMM d, yyyy')}
+                                    </AddToCalendar>
+                                </Text>
+                            </AnimateOverflow>;
+                        })
+                    }
+                </Flex>
             }
         </Flex>
     </Flex>;

@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import {ReactNode, useState} from 'react';
 import { google, outlook, office365, yahoo, ics, CalendarEvent } from 'calendar-link';
 import { Portal, Button, Menu, MenuButton, MenuList, MenuItem, Text } from '@chakra-ui/react';
 import { SectionLinkInner } from '~/components/elements/sectionLink';
@@ -7,32 +7,28 @@ interface IAddToCalendar {
     isOpen?:boolean;
     onClose?:() => any;
     event?:CalendarEvent;
+    children:any;
 }
 
-const AddToCalendar:any = ({ event, isOpen, onClose }:IAddToCalendar) : ReactNode => {
+const AddToCalendar:any = ({ event, children }:IAddToCalendar) : ReactNode => {
+    const [isOpen, setIsOpen] = useState(false);
+
     if (!event) {
         return null;
     }
 
     return (
-        <Menu isLazy isOpen={isOpen} onClose={onClose}  placement="bottom-end">
+        <Menu isLazy isOpen={isOpen} onClose={() => {
+            setIsOpen(false);
+        }} placement="bottom-end">
             {() => (
                 <>
-                    <MenuButton as={Button} color="olive" sx={{
-                        _hover: {
-                            '.sectionLink-inner': {
-                                borderColor: 'olive'
-                            }
-                        }
+                    <MenuButton as={Button} onClick={() => {
+                        setIsOpen(true);
+                    }} sx={{
+                        fontWeight: 500
                     }}>
-                        <SectionLinkInner>
-                            <Text display={['inline', ,'none']}>
-                                Add
-                            </Text>
-                            <Text display={['none', ,'inline']}>
-                                Add To Calendar
-                            </Text>
-                        </SectionLinkInner>
+                        {children}
                     </MenuButton>
                     <Portal>
                         <MenuList>

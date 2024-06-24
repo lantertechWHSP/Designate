@@ -22,7 +22,7 @@ const EventList:any = ({ events }:IEventList) : ReactNode => {
                         </Box>
                         <Box mb={0} px={4} width="50%" display={['none', ,'block']}>
                             <AnimateOverflow>
-                                Date
+                                Date(s)
                             </AnimateOverflow>
                         </Box>
                     </Flex>
