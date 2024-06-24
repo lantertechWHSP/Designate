@@ -9,7 +9,9 @@ interface IAnnouncement extends IDatoAnnouncement {
     isClosedCallback:Function;
 };
 
-const Announcement:any = ({ description, _publishedAt, isClosedCallback }:IAnnouncement): ReactNode => {
+const Announcement:any = ({ description, display, _publishedAt, isClosedCallback }:IAnnouncement): ReactNode => {
+
+    console.log(description);
 
     const [isClosed, setIsClosed] = useState(true);
 
@@ -20,32 +22,34 @@ const Announcement:any = ({ description, _publishedAt, isClosedCallback }:IAnnou
 
     useEffect(() => {
         // If it isn’t published yet
-        if(!localStorage.getItem('soulpatts.announcements.publishedAt')) {
-
-            // Open the announcement
-            localStorage.setItem('soulpatts.announcements.publishedAt', _publishedAt);
-            localStorage.setItem('soulpatts.announcements.closed', 'false');
-            setIsClosed(false);
-        }
-        // If there is a publised at set
-        else if(localStorage.getItem('soulpatts.announcements.publishedAt')) {
-            const date = localStorage.getItem('soulpatts.announcements.publishedAt');
-
-            // If the current published at is greater than the one set on the localStorage
-            if(DateTime.fromISO(_publishedAt) > DateTime.fromISO(date)) {
+        if(display) {
+            if(!localStorage.getItem('soulpatts.announcements.publishedAt')) {
 
                 // Open the announcement
                 localStorage.setItem('soulpatts.announcements.publishedAt', _publishedAt);
                 localStorage.setItem('soulpatts.announcements.closed', 'false');
                 setIsClosed(false);
             }
-            else {
-                // If the announcement isn’t closed
-                if(localStorage.getItem('soulpatts.announcements.closed') !== 'true') {
+            // If there is a publised at set
+            else if(localStorage.getItem('soulpatts.announcements.publishedAt')) {
+                const date = localStorage.getItem('soulpatts.announcements.publishedAt');
+
+                // If the current published at is greater than the one set on the localStorage
+                if(DateTime.fromISO(_publishedAt) > DateTime.fromISO(date)) {
 
                     // Open the announcement
+                    localStorage.setItem('soulpatts.announcements.publishedAt', _publishedAt);
                     localStorage.setItem('soulpatts.announcements.closed', 'false');
                     setIsClosed(false);
+                }
+                else {
+                    // If the announcement isn’t closed
+                    if(localStorage.getItem('soulpatts.announcements.closed') !== 'true') {
+
+                        // Open the announcement
+                        localStorage.setItem('soulpatts.announcements.closed', 'false');
+                        setIsClosed(false);
+                    }
                 }
             }
         }
@@ -57,7 +61,7 @@ const Announcement:any = ({ description, _publishedAt, isClosedCallback }:IAnnou
 
     return <>
         {
-            !isClosed && <Box py={4} background="charcoal" color="white" fontSize="16px" position="relative">
+            (!isClosed && display) && <Box py={4} background="charcoal" color="white" fontSize="16px" position="relative">
                 <Flex align="center" justify="center" pl={['16px', '24px', '32px']} pr={"32px"}>
                     <StructuredContent content={description}></StructuredContent>
                 </Flex>

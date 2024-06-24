@@ -43,6 +43,7 @@ export const site:string = `
                     }
                 }
             },
+            display
             _publishedAt
         }
         menu: allMenuItems(
