@@ -6,6 +6,7 @@ import { IEvent, IEventDate } from '~/interfaces/models/event';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
 import StructuredContent from "~/components/StructuredContent";
+import {DateTime} from "luxon";
 
 const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_KEY;
 
@@ -84,16 +85,24 @@ const EventRSVP:any = ({ event }:IEventRSVP) : ReactNode => {
     };
 
     return <Box>
-        <Heading as="h2" variant="sectionHeading" color="olive" fontWeight={700} mb={8}>
+        <Heading as="h2" variant="sectionHeading" color="olive" fontWeight={700} mb={4}>
             {event.title}
         </Heading>
         <Row>
             <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths]}>
-                <Box mb={8}>
+                <Box mb={4}>
                     <StructuredContent content={event.description} />
                 </Box>
+                {
+                    event.eventDates.map((eventDate:IEventDate, index:number) => {
+                        return <Text key={index} mb={4}>
+                            {eventDate.description}
+                        </Text>;
+                    })
+                }
             </Column>
         </Row>
+
         <Heading as="h3" variant="h3">
             RSVP
         </Heading>
@@ -153,10 +162,11 @@ const EventRSVP:any = ({ event }:IEventRSVP) : ReactNode => {
                                     <Stack direction="row">
                                         {
                                             event.eventDates.map((eventDate:IEventDate, index:number) => {
+                                                debugger;
                                                 return <Checkbox variant="checkbox" key={index} onChange={(e:any) => {
                                                     setFieldValue(`eventDates.${index}.attending`, e.target.checked);
                                                 }}>
-                                                    {eventDate.label}
+                                                    {eventDate.label}, {DateTime.fromISO(eventDate.startDate).toFormat('d MMM')}
                                                 </Checkbox>;
                                             })
                                         }

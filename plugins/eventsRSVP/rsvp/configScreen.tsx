@@ -56,9 +56,9 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
             const title:string = ctx.formValues.title ? `${ctx.formValues.title} — RSVP` : 'RSVP';
 
             const eventDateLabels = eventDates.map((eventDate:any) => {
-                return `Attending ${eventDate.tableLabel}`;
+                return `Attending ${eventDate.label}`;
             });
-            // CSVString += 'Name,Email,Is Shareholder, Attending\r\n';
+
             CSVString += ['Name', 'Email', 'Shareholder', ...eventDateLabels].join(',');
             CSVString += "\r\n";
 
@@ -183,7 +183,7 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                                 <div className="ItemsTable__header-cell">Shareholder</div>
                                 {
                                     eventDates.map((eventDate:any, index:number) => {
-                                        return <div key={index} className="ItemsTable__header-cell">{eventDate.tableLabel}</div>;
+                                        return <div key={index} className="ItemsTable__header-cell">{eventDate.label}</div>;
                                     })
                                 }
                                 <div className="ItemsTable__header-cell">

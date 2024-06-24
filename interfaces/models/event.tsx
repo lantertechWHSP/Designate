@@ -10,10 +10,11 @@ export interface IEvent {
 
 export interface IEventDate {
     id?:string;
+    title?:string;
     description?:string;
+    location?:string;
     label?:string;
-    allDay?:string;
     startDate?:string;
     endDate?:string;
-    location?:string;
+    allDay?:boolean;
 }

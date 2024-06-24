@@ -1,7 +1,6 @@
 import {ReactNode, useState} from 'react';
 import { google, outlook, office365, yahoo, ics, CalendarEvent } from 'calendar-link';
-import { Portal, Button, Menu, MenuButton, MenuList, MenuItem, Text } from '@chakra-ui/react';
-import { SectionLinkInner } from '~/components/elements/sectionLink';
+import { Portal, Button, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react';
 
 interface IAddToCalendar {
     isOpen?:boolean;

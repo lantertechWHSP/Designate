@@ -9,8 +9,6 @@ interface IEventCard extends IEvent {
 }
 
 const EventCard:any = ({ title, eventDates }:IEventCard) : ReactNode => {
-    const event = eventDates[0];
-
     return <Flex py={[4, ,'22px']}
         direction={['row']}
         mx={-4}
@@ -30,29 +28,26 @@ const EventCard:any = ({ title, eventDates }:IEventCard) : ReactNode => {
                     </AnimateOverflow>
                 </Heading>
             }
-            {
-                event && <Flex>
-                    {
-                        eventDates.map((eventDate) => {
-                            return <AnimateOverflow>
-                                <Text variant="listLabel" mb={0} mr={4} >
-                                    <AddToCalendar
-                                        event={{
-                                            title: title,
-                                            description: eventDate.description,
-                                            location: eventDate.location,
-                                            start: eventDate.startDate,
-                                            end: eventDate.endDate !== eventDate.startDate ? eventDate.endDate : null,
-                                            allDay: eventDate.allDay || false
-                                        }}>
-                                        {DateTime.fromISO(eventDate.startDate).toFormat('MMM d, yyyy')}
-                                    </AddToCalendar>
-                                </Text>
-                            </AnimateOverflow>;
-                        })
-                    }
-                </Flex>
-            }
+            <Flex>
+                {
+                    eventDates.map((eventDate) => {
+                        return <AnimateOverflow>
+                            <Text variant="listLabel" mb={0} mr={4} >
+                                <AddToCalendar
+                                    event={{
+                                        title: title,
+                                        description: eventDate.description,
+                                        location: eventDate.location,
+                                        start: eventDate.startDate,
+                                        allDay: eventDate.allDay || false
+                                    }}>
+                                    {DateTime.fromISO(eventDate.startDate).toFormat('MMM d, yyyy')}
+                                </AddToCalendar>
+                            </Text>
+                        </AnimateOverflow>;
+                    })
+                }
+            </Flex>
         </Flex>
     </Flex>;
 };
