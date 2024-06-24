@@ -39,7 +39,7 @@ const EventRSVPForm:any = ({ event }:IEventRSVP) : ReactNode => {
 
     const INITIAL_VALUES:any = {
         name: '',
-        isShareholder: false,
+        isShareholder: null,
         eventId: event.id,
         eventDates: event.eventDates.map((eventDate:IEventDate) => {
             return {
@@ -56,15 +56,17 @@ const EventRSVPForm:any = ({ event }:IEventRSVP) : ReactNode => {
     };
 
     const SCHEMA:any = yup.object({
-        name: yup.string().required('Please enter your Name').matches(REGEXP.NAME, 'Please enter a valid First Name'),
-        isShareholder: yup.boolean(),
+        name: yup.string().required('Please enter your Name.').matches(REGEXP.NAME, 'Please enter a valid Name.'),
+        isShareholder: yup.boolean()
+            .required("Please identify if you are a shareholder.")
+            .oneOf([true, false]),
         eventId: yup.string().required(),
         eventDates: yup.array().of(yup.object({
             id: yup.string().required(),
             attending: yup.boolean()
         })),
-        email: yup.string().required('Please enter an Email Address').email('Please enter a valid Email Address'),
-        recaptcha: yup.string().required('Please tick the recaptcha')
+        email: yup.string().required('Please enter an Email Address.').email('Please enter a valid Email Address.'),
+        recaptcha: yup.string().required('Please tick the reCAPTCHA.')
     });
 
     const submit = (values, resetForm) : void => {
@@ -155,8 +157,18 @@ const EventRSVPForm:any = ({ event }:IEventRSVP) : ReactNode => {
                                     <Text as="label" variant="label"  mb={1}>
                                         Are you a Soul Patts (ASX: SOL) shareholder?
                                     </Text>
-                                    <RadioGroup defaultValue="false" onChange={(value:any) => {
-                                        const booleanValue:boolean = value === 'true';
+                                    <RadioGroup onChange={(value:any) => {
+                                        let booleanValue:boolean|null;
+                                        if(value === 'true') {
+                                            booleanValue = true;
+                                        }
+                                        else if(value === 'false') {
+                                            booleanValue = false;
+                                        }
+                                        else {
+                                            booleanValue = null;
+                                        }
+
                                         setFieldValue('isShareholder', booleanValue);
                                     }}>
                                         <Stack direction={['column', , 'row']}>
@@ -164,23 +176,46 @@ const EventRSVPForm:any = ({ event }:IEventRSVP) : ReactNode => {
                                             <Radio value="false" variant="radio" mr={6}>No</Radio>
                                         </Stack>
                                     </RadioGroup>
+                                    {
+                                        (errors.isShareholder && (touched.isShareholder && isAttemptedSubmit)) && <Text variant="error" mt={2} mb={0}>{errors.isShareholder.toString()}</Text>
+                                    }
                                 </Flex>
-                                <Flex direction="column" mb={6}>
-                                    <Text as="label" variant="label" mb={1}>
-                                        Which events will you be attending?
-                                    </Text>
-                                    <Stack direction={['column', , 'row']}>
-                                        {
-                                            event.eventDates.map((eventDate:IEventDate, index:number) => {
-                                                return <Checkbox variant="checkbox" key={index} mr={8} onChange={(e:any) => {
-                                                    setFieldValue(`eventDates.${index}.attending`, e.target.checked);
-                                                }}>
-                                                    {eventDate.label}, {DateTime.fromISO(eventDate.startDate).toFormat('d MMM')}
-                                                </Checkbox>;
-                                            })
-                                        }
-                                    </Stack>
-                                </Flex>
+                                {
+                                    event.eventDates.length > 1 && <Flex direction="column" mb={6}>
+                                        <Text as="label" variant="label" mb={1}>
+                                            Which events will you be attending?
+                                        </Text>
+                                        <Stack direction={['column', , 'row']}>
+                                            {
+                                                event.eventDates.map((eventDate:IEventDate, index:number) => {
+                                                    return <Checkbox variant="checkbox" key={index} mr={8} onChange={(e:any) => {
+                                                        setFieldValue(`eventDates.${index}.attending`, e.target.checked);
+                                                    }}>
+                                                        {eventDate.label}, {DateTime.fromISO(eventDate.startDate).toFormat('d MMM')}
+                                                    </Checkbox>;
+                                                })
+                                            }
+                                        </Stack>
+                                    </Flex>
+                                }
+                                {
+                                    event.eventDates.length === 1 && <Flex direction="column" mb={6}>
+                                        <Text as="label" variant="label" mb={1}>
+                                            Will you be attending this event?
+                                        </Text>
+                                        <Stack direction={['column', , 'row']}>
+                                            {
+                                                event.eventDates.map((_eventDate:IEventDate, index:number) => {
+                                                    return <Checkbox variant="checkbox" key={index} mr={8} onChange={(e:any) => {
+                                                        setFieldValue(`eventDates.${index}.attending`, e.target.checked);
+                                                    }}>
+                                                        I will be attending this event.
+                                                    </Checkbox>;
+                                                })
+                                            }
+                                        </Stack>
+                                    </Flex>
+                                }
                                 <Flex direction="column" mt={4}>
                                     <ReCAPTCHA
                                         ref={recaptchaRef}

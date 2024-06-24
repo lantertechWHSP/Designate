@@ -165,6 +165,7 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
         // Save the record
         await ctx.saveCurrentItem();
 
+        // Remove the EventRSVP from the CMS
         await client.items.destroy(id);
     };
 

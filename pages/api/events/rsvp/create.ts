@@ -38,7 +38,9 @@ export default async function handler(request: NextApiRequest, response: NextApi
 
         const schema:ObjectSchema<any> = yup.object({
             name: yup.string().required('Please enter your Name').matches(REGEXP.NAME, 'Please enter a valid First Name'),
-            isShareholder: yup.boolean(),
+            isShareholder: yup.boolean()
+                .required("Please identify if you are a shareholder.")
+                .oneOf([true, false]),
             eventId: yup.string().required(),
             eventDates: yup.array().of(yup.object({
                 id: yup.string().required(),
