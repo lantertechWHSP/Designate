@@ -5,10 +5,10 @@ import { DateTime } from 'luxon';
 import AddToCalendar from '~/components/elements/events/AddToCalendar';
 import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
 
-interface IEventCard extends IEventDate {
+interface IEventDateCard extends IEventDate {
 }
 
-const EventCard:any = ({ title, allDay, startDate, endDate, details, location }:IEventCard) : ReactNode => {
+const EventDateCard:any = ({ title, allDay, startDate, endDate, location }:IEventDateCard) : ReactNode => {
     const [isOpen, setIsOpen] = useState(false);
 
     return <Flex py={[4, ,'22px']}
@@ -56,7 +56,7 @@ const EventCard:any = ({ title, allDay, startDate, endDate, details, location }:
                         }}
                         event={{
                             title: title,
-                            description: details,
+                            // description: details,
                             location: location,
                             start: startDate,
                             end: endDate !== startDate ? endDate : null,
@@ -69,4 +69,4 @@ const EventCard:any = ({ title, allDay, startDate, endDate, details, location }:
     </Flex>;
 };
 
-export default EventCard;
+export default EventDateCard;
