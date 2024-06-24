@@ -11,8 +11,6 @@ interface IAnnouncement extends IDatoAnnouncement {
 
 const Announcement:any = ({ description, display, _publishedAt, isClosedCallback }:IAnnouncement): ReactNode => {
 
-    console.log(description);
-
     const [isClosed, setIsClosed] = useState(true);
 
     const handleClose:any = () : void => {
