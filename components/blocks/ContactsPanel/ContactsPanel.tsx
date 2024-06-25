@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
-import { IEvent } from '~/interfaces/models/event';
+import { IEventBundle } from '~/interfaces/models/event';
 import { doQuery, queries } from '~/dato/api';
 import ContentBlock from '~/components/blocks/Content';
 import { Box, Heading, SimpleGrid } from '@chakra-ui/react';
@@ -38,7 +38,7 @@ const ContactsPanelBlock:any = ({title, background, paddingTop, paddingBottom, d
 };
 
 ContactsPanelBlock.getData = async () => {
-    const result:IEvent[] = await doQuery(queries.contacts);
+    const result:IEventBundle[] = await doQuery(queries.contacts);
     return result;
 };
 

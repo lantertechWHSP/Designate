@@ -41,8 +41,8 @@ export default async function handler(request: NextApiRequest, response: NextApi
             isShareholder: yup.boolean()
                 .required("Please identify if you are a shareholder.")
                 .oneOf([true, false]),
-            eventId: yup.string().required(),
-            eventDates: yup.array().of(yup.object({
+            eventBundleId: yup.string().required(),
+            events: yup.array().of(yup.object({
                 id: yup.string().required(),
                 attending: yup.boolean()
             })),
@@ -83,16 +83,17 @@ export default async function handler(request: NextApiRequest, response: NextApi
                 name: body.name,
                 is_shareholder: body.isShareholder,
                 email: body.email,
-                event_dates_attending: body.eventDates.filter((eventDate) => {
-                    return eventDate.attending;
-                }).map((eventDate) => {
-                    return eventDate.id;
+                event_bundle: body.eventBundleId,
+                events_attending: body.events.filter((event) => {
+                    return event.attending;
+                }).map((event) => {
+                    return event.id;
                 })
             });
 
-            const event:any = await client.items.find(body.eventId);
+            const event:any = await client.items.find(body.eventBundleId);
 
-            await client.items.update(body.eventId, {
+            await client.items.update(body.eventBundleId, {
                 rsvp: [...event['rsvp'], newRSVP.id]
             });
 

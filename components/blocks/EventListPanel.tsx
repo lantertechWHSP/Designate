@@ -1,15 +1,15 @@
 import { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
 import ContentBlock from '~/components/blocks/Content';
-import EventDateList from "~/components/elements/events/EventDateList";
-import { IEventDate } from '~/interfaces/models/event';
+import EventList from "~/components/elements/events/EventList";
+import { IEvent } from '~/interfaces/models/event';
 import { doQuery, queries } from '~/dato/api';
 import { Heading } from '@chakra-ui/react';
 
 interface IEventsPanelBlock extends IBlock {
     title?:string;
     data: {
-        eventDates:IEventDate[];
+        eventDates:IEvent[];
     };
 }
 
@@ -20,14 +20,14 @@ const EventsPanelBlock:any = ({ title, background, paddingTop, paddingBottom, da
                 {title}
             </Heading>
         }
-        <EventDateList eventDates={eventDates} />
+        <EventList eventDates={eventDates} />
     </ContentBlock>;
 };
 
 export default EventsPanelBlock;
 
 EventsPanelBlock.getData = async () => {
-    const result:any = await doQuery(queries.eventDates);
+    const result:any = await doQuery(queries.events);
 
     return result;
 };

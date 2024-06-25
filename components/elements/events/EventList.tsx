@@ -1,14 +1,14 @@
 import { ReactNode } from 'react';
 import { Box, Alert, Flex } from '@chakra-ui/react';
-import EventDateCard from '~/components/elements/events/EventDateCard';
-import { IEventDate} from '~/interfaces/models/event';
+import EventCard from '~/components/elements/events/EventCard';
+import { IEvent} from '~/interfaces/models/event';
 import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
 
 interface IEventDateList {
-    eventDates:IEventDate[];
+    eventDates:IEvent[];
 }
 
-const EventDateList:any = ({ eventDates }:IEventDateList) : ReactNode => {
+const EventList:any = ({ eventDates }:IEventDateList) : ReactNode => {
     return <Box>
         {
             (Array.isArray(eventDates) && eventDates.length > 0) ? <>
@@ -28,9 +28,9 @@ const EventDateList:any = ({ eventDates }:IEventDateList) : ReactNode => {
                     </Flex>
                 </Box>
                 {
-                    eventDates.map((event:IEventDate, index:number) => {
+                    eventDates.map((event:IEvent, index:number) => {
                         return <Box borderBottom="1px solid" borderColor="borderColor" key={index}>
-                            <EventDateCard {...event} />
+                            <EventCard {...event} />
                         </Box>;
                     })
                 }
@@ -41,4 +41,4 @@ const EventDateList:any = ({ eventDates }:IEventDateList) : ReactNode => {
     </Box>;
 };
 
-export default EventDateList;
+export default EventList;

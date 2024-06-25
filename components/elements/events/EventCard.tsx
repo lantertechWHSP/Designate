@@ -1,14 +1,14 @@
 import { ReactNode, useState } from 'react';
-import { IEventDate } from "~/interfaces/models/event";
+import { IEvent } from "~/interfaces/models/event";
 import { Flex, Heading, Text, Box } from '@chakra-ui/react';
 import { DateTime } from 'luxon';
 import AddToCalendar from '~/components/elements/events/AddToCalendar';
 import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
 
-interface IEventDateCard extends IEventDate {
+interface IEventDateCard extends IEvent {
 }
 
-const EventDateCard:any = ({ title, allDay, startDate, endDate, location }:IEventDateCard) : ReactNode => {
+const EventCard:any = ({ title, allDay, startDate, endDate, location }:IEventDateCard) : ReactNode => {
     const [isOpen, setIsOpen] = useState(false);
 
     return <Flex py={[4, ,'22px']}
@@ -69,4 +69,4 @@ const EventDateCard:any = ({ title, allDay, startDate, endDate, location }:IEven
     </Flex>;
 };
 
-export default EventDateCard;
+export default EventCard;

@@ -5,7 +5,7 @@ export const eventRSVP:string = `
             name
             isShareholder
             email
-            eventDatesAttending {
+            eventsAttending {
                 id
             }
         }
@@ -15,9 +15,9 @@ export const eventRSVP:string = `
 export const eventRSVPEventDates:string = `
     query eventRsvps ($id : ItemId) {
         eventRSVPS: allEventRsvps(filter: {id: { eq: $id }}) {
-            _allReferencingEvents {
+            _allReferencingEventBundles {
                 id
-                eventDates {
+                events {
                     id
                     title
                     label

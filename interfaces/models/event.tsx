@@ -1,14 +1,14 @@
 import { IStructuredText } from '~/interfaces/util/structuredText';
 
-export interface IEvent {
+export interface IEventBundle {
     id?:string
     title?:string;
     description?:IStructuredText;
     disclaimer?:IStructuredText;
-    eventDates:IEventDate[];
+    events:IEvent[];
 }
 
-export interface IEventDate {
+export interface IEvent {
     id?:string;
     title?:string;
     description?:IStructuredText;

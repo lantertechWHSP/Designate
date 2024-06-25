@@ -6,6 +6,7 @@ import './configScreen.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faCheck, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 import { buildClient } from '@datocms/cma-client-browser';
+import {IEvent} from "~/interfaces/models/event";
 
 const client = buildClient({
     apiToken: process.env.NEXT_PUBLIC_DATO_KEY,
@@ -17,22 +18,23 @@ type PropTypes = {
 };
 
 const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
-    const [eventDates, setEventDates] = useState([]);
+    const [events, setEvents] = useState([]);
     // Presentation object for the RSVP’s
     const [eventRSVPItems, setEventRSVPItems] = useState([]);
     // RSVP id’s
     const [rsvps, setRSVPs] = useState(ctx.formValues.rsvp);
 
     useEffect(() => {
-        if(ctx.formValues.event_dates) {
-            doQuery(queries.eventDates, {
-                in: ctx.formValues.event_dates
+        if(ctx.formValues.events) {
+            doQuery(queries.events, {
+                in: ctx.formValues.events
             }).then((response) => {
-                setEventDates(response.eventDates);
+                setEvents(response.events);
             });
         }
 
         if(ctx.formValues.rsvp) {
+            console.log(ctx.formValues.rsvp);
             (async () => {
                 const values = [];
                 let hasAllValues = false;
@@ -50,7 +52,6 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                         batchIndex++;
                     }
                 }
-
                 setEventRSVPItems(values);
             })();
         }
@@ -61,7 +62,7 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
             let CSVString:string = '';
             const title:string = ctx.formValues.title ? `${ctx.formValues.title} — RSVP` : 'RSVP';
 
-            const eventDateLabels = eventDates.map((eventDate:any) => {
+            const eventDateLabels = events.map((eventDate:any) => {
                 return `Attending ${eventDate.label}`;
             });
 
@@ -69,9 +70,9 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
             CSVString += "\r\n";
 
             eventRSVPItems.map((item) => {
-                const eventAttending = eventDates.map((eventDate:any) => {
-                    const attending = item.eventDatesAttending.find((eventDatesAttending) => {
-                        return eventDatesAttending.id === eventDate.id;
+                const eventAttending = events.map((eventDate:any) => {
+                    const attending = item.eventsAttending.find((eventsAttending) => {
+                        return eventsAttending.id === eventDate.id;
                     });
 
                     return attending ? 'Yes' : 'No';
@@ -94,12 +95,13 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
         const item = await ctx.createNewItem(process.env.NEXT_PUBLIC_DATO_ITEM_TYPE_EVENT_RSVP_ID);
 
         if (item) {
+            debugger;
             const rsvpItem:any = {
                 id: item.id,
                 name: item.attributes.name,
                 email: item.attributes.email,
                 isShareholder: item.attributes.is_shareholder,
-                eventDatesAttending: item.attributes.event_dates_attending.map((id) => {
+                eventsAttending: item.attributes.events_attending.map((id) => {
                     return {
                         id: id
                     };
@@ -128,7 +130,7 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                 name: item.attributes.name,
                 email: item.attributes.email,
                 isShareholder: item.attributes.is_shareholder,
-                eventDatesAttending: item.attributes.event_dates_attending.map((id) => {
+                eventsAttending: item.attributes.events_attending.map((id) => {
                     return {
                         id: id
                     };
@@ -180,10 +182,10 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                                 <div className="ItemsTable__header-cell ItemsTable__header-cell--email">Email</div>
                                 <div className="ItemsTable__header-cell ItemsTable__header-cell--shareholder">Shareholder</div>
                                 {
-                                    eventDates.map((eventDate:any, index:number) => {
+                                    events.map((event:IEvent, index:number) => {
                                         return <div key={index} className="ItemsTable__header-cell" style={{
-                                            width: `${35 / eventDates.length}%`
-                                        }}>{eventDate.label}</div>;
+                                            width: `${35 / events.length}%`
+                                        }}>{event.label}</div>;
                                     })
                                 }
                                 <div className="ItemsTable__header-cell ItemsTable__header-cell--edit">
@@ -206,14 +208,14 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                                                 }
                                             </div>
                                             {
-                                                eventDates.map((eventDate:any, index:number) => {
+                                                events.map((event:IEvent, index:number) => {
                                                     return <div className="ItemsTable__cell ItemsTable__cell--center" style={{
-                                                        width: `${35 / eventDates.length}%`
+                                                        width: `${35 / events.length}%`
                                                     }} key={index}>
                                                         {
                                                             (() => {
-                                                                const attending = item.eventDatesAttending.find((eventDatesAttending) => {
-                                                                    return eventDatesAttending.id === eventDate.id;
+                                                                const attending = item.eventsAttending.find((eventsAttending) => {
+                                                                    return eventsAttending.id === event.id;
                                                                 });
 
                                                                 return attending && <FontAwesomeIcon icon={faCheck} />;

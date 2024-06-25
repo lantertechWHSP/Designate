@@ -15,7 +15,7 @@ import {
 } from '@chakra-ui/react';
 import { Formik, Form, Field } from 'formik';
 import * as yup from 'yup';
-import { IEvent, IEventDate } from '~/interfaces/models/event';
+import { IEventBundle, IEvent } from '~/interfaces/models/event';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
 import StructuredContent from "~/components/StructuredContent";
@@ -24,10 +24,10 @@ import { DateTime } from 'luxon';
 const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_KEY;
 
 interface IEventRSVP {
-    event:IEvent;
+    eventBundle:IEventBundle;
 }
 
-const EventRSVPForm:any = ({ event }:IEventRSVP) : ReactNode => {
+const EventRSVPForm:any = ({ eventBundle }:IEventRSVP) : ReactNode => {
     const [isAttemptedSubmit, setIsAttemptedSubmit] = useState<boolean>(false);
 
     const [isSuccessfulSubmit, setIsSuccessfulSubmit] = useState<boolean>(false);
@@ -40,10 +40,10 @@ const EventRSVPForm:any = ({ event }:IEventRSVP) : ReactNode => {
     const INITIAL_VALUES:any = {
         name: '',
         isShareholder: null,
-        eventId: event.id,
-        eventDates: event.eventDates.map((eventDate:IEventDate) => {
+        eventBundleId: eventBundle.id,
+        events: eventBundle.events.map((event:IEvent) => {
             return {
-                id: eventDate.id,
+                id: event.id,
                 attending: false
             };
         }),
@@ -60,8 +60,8 @@ const EventRSVPForm:any = ({ event }:IEventRSVP) : ReactNode => {
         isShareholder: yup.boolean()
             .required("Please identify if you are a shareholder.")
             .oneOf([true, false]),
-        eventId: yup.string().required(),
-        eventDates: yup.array().of(yup.object({
+        eventBundleId: yup.string().required(),
+        events: yup.array().of(yup.object({
             id: yup.string().required(),
             attending: yup.boolean()
         })),
@@ -85,7 +85,7 @@ const EventRSVPForm:any = ({ event }:IEventRSVP) : ReactNode => {
             if(data.success) {
                 resetForm();
                 setIsSuccessfulSubmit(true);
-                setSucessMessage(`Thank you ${values.name} for your RSVP to attend the ${event.title} event.`);
+                setSucessMessage(`Thank you ${values.name} for your RSVP to attend the ${eventBundle.title} event.`);
             }
             else {
                 setErrorMessage(data.message);
@@ -104,13 +104,13 @@ const EventRSVPForm:any = ({ event }:IEventRSVP) : ReactNode => {
 
     return <Box id="rsvp">
         <Heading as="h2" variant="sectionHeading" color="charcoal" fontWeight={700} mb={4}>
-            {event.title}
+            {eventBundle.title}
         </Heading>
         <Box mb={8}>
             <Row>
                 <Column width={[ColumnWidth.Full, ,ColumnWidth.EightTwelfths]}>
                     <Box mb={4}>
-                        <StructuredContent content={event.description} />
+                        <StructuredContent content={eventBundle.description} />
                     </Box>
                 </Column>
             </Row>
@@ -181,15 +181,15 @@ const EventRSVPForm:any = ({ event }:IEventRSVP) : ReactNode => {
                                     }
                                 </Flex>
                                 {
-                                    event.eventDates.length > 1 && <Flex direction="column" mb={6}>
+                                    eventBundle.events.length > 1 && <Flex direction="column" mb={6}>
                                         <Text as="label" variant="label" mb={1}>
                                             Which events will you be attending?
                                         </Text>
                                         <Stack direction={['column', , 'row']}>
                                             {
-                                                event.eventDates.map((eventDate:IEventDate, index:number) => {
+                                                eventBundle.events.map((eventDate:IEvent, index:number) => {
                                                     return <Checkbox variant="checkbox" key={index} mr={8} onChange={(e:any) => {
-                                                        setFieldValue(`eventDates.${index}.attending`, e.target.checked);
+                                                        setFieldValue(`events.${index}.attending`, e.target.checked);
                                                     }}>
                                                         {eventDate.label}, {DateTime.fromISO(eventDate.startDate).toFormat('d MMM')}
                                                     </Checkbox>;
@@ -199,15 +199,15 @@ const EventRSVPForm:any = ({ event }:IEventRSVP) : ReactNode => {
                                     </Flex>
                                 }
                                 {
-                                    event.eventDates.length === 1 && <Flex direction="column" mb={6}>
+                                    eventBundle.events.length === 1 && <Flex direction="column" mb={6}>
                                         <Text as="label" variant="label" mb={1}>
                                             Will you be attending this event?
                                         </Text>
                                         <Stack direction={['column', , 'row']}>
                                             {
-                                                event.eventDates.map((_eventDate:IEventDate, index:number) => {
+                                                eventBundle.events.map((_eventDate:IEvent, index:number) => {
                                                     return <Checkbox variant="checkbox" key={index} mr={8} onChange={(e:any) => {
-                                                        setFieldValue(`eventDates.${index}.attending`, e.target.checked);
+                                                        setFieldValue(`events.${index}.attending`, e.target.checked);
                                                     }}>
                                                         Yes.
                                                     </Checkbox>;
@@ -233,7 +233,7 @@ const EventRSVPForm:any = ({ event }:IEventRSVP) : ReactNode => {
                                 <Row>
                                     <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths]}>
                                         <Text as="div" variant="caption" mt={8} fontSize="13px" color="darkSteel">
-                                            <StructuredContent content={event.disclaimer} />
+                                            <StructuredContent content={eventBundle.disclaimer} />
                                         </Text>
                                     </Column>
                                 </Row>

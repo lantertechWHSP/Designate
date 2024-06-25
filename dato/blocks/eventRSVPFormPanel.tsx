@@ -6,7 +6,7 @@ export const eventRSVPFormPanelRecord:string = `
     paddingTop
     paddingBottom
     background
-    event {
+    eventBundle {
         id
         title
         description {
@@ -15,7 +15,7 @@ export const eventRSVPFormPanelRecord:string = `
         disclaimer {
             ${structuredTextAttrs}
         }
-        eventDates {
+        events {
             id
             label
             startDate
