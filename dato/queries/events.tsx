@@ -8,6 +8,7 @@ export const events:string = `
             startDate
             endDate
             location
+            showRsvpLink
         }
     }
 `;
