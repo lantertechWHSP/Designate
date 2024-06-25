@@ -62,6 +62,7 @@ const EventsRSVPAttendingConfigScreen = ({ ctx }: Props) : any => {
         <SelectField
             name="events_attending"
             id="events_attending"
+            label=""
             value={attending}
             selectInputProps={{
                 isMulti: true,
