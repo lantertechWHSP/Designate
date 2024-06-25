@@ -9,18 +9,18 @@ import { Heading } from '@chakra-ui/react';
 interface IEventsPanelBlock extends IBlock {
     title?:string;
     data: {
-        eventDates:IEvent[];
+        events:IEvent[];
     };
 }
 
-const EventsPanelBlock:any = ({ title, background, paddingTop, paddingBottom, data: { eventDates } }:IEventsPanelBlock) : ReactNode => {
+const EventsPanelBlock:any = ({ title, background, paddingTop, paddingBottom, data: { events } }:IEventsPanelBlock) : ReactNode => {
     return <ContentBlock background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         {
             title && <Heading as="h2" variant="sectionHeading" mb={[4, ,6, 8]}>
                 {title}
             </Heading>
         }
-        <EventList eventDates={eventDates} />
+        <EventList events={events} />
     </ContentBlock>;
 };
 

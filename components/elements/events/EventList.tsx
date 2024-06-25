@@ -5,13 +5,13 @@ import { IEvent} from '~/interfaces/models/event';
 import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
 
 interface IEventDateList {
-    eventDates:IEvent[];
+    events:IEvent[];
 }
 
-const EventList:any = ({ eventDates }:IEventDateList) : ReactNode => {
+const EventList:any = ({ events }:IEventDateList) : ReactNode => {
     return <Box>
         {
-            (Array.isArray(eventDates) && eventDates.length > 0) ? <>
+            (Array.isArray(events) && events.length > 0) ? <>
                 <Box borderBottom="3px solid" borderColor="borderColor">
                     <Flex direction={['row']} mx={-4} pb={2} width="100%" fontSize="16px"
                         lineHeight="22px">
@@ -28,7 +28,7 @@ const EventList:any = ({ eventDates }:IEventDateList) : ReactNode => {
                     </Flex>
                 </Box>
                 {
-                    eventDates.map((event:IEvent, index:number) => {
+                    events.map((event:IEvent, index:number) => {
                         return <Box borderBottom="1px solid" borderColor="borderColor" key={index}>
                             <EventCard {...event} />
                         </Box>;
