@@ -19,7 +19,7 @@ const EventCard:any = ({ title, allDay, startDate, endDate, location, showRsvpLi
         cursor="pointer">
         <Flex
             direction={['column', , 'row']}
-            width={['83.33333333%']}
+            width={['70%', ,'83.33333333%']}
             px={4}>
             {
                 title && <Heading as="h3"
@@ -41,34 +41,39 @@ const EventCard:any = ({ title, allDay, startDate, endDate, location, showRsvpLi
                 </Box>
             }
         </Flex>
-        <Flex width={['16.6666666667%']}
+        <Flex width={['30%', ,'16.6666666667%']}
             justify="flex-end"
             px={4}>
             {
                 DateTime.now() < DateTime.fromISO(startDate) &&
-                <AnimateOverflow>
-                    <AddToCalendar
-                        isOpen={isOpen}
-                        onClose={() => {
-                            setIsOpen(false);
-                        }}
-                        event={{
-                            title: title,
-                            // description: details,
-                            location: location,
-                            start: startDate,
-                            end: endDate !== startDate ? endDate : null,
-                            allDay: allDay || false
-                        }}>
-                    </AddToCalendar>
-                </AnimateOverflow>
-            }
-            {
-                showRsvpLink && <AnimateOverflow>
-                    <SectionLink href="/investor-centre/key-dates#rsvp" pl={4}>
-                        RSVP
-                    </SectionLink>
-                </AnimateOverflow>
+                <>
+                    {
+                        showRsvpLink && <AnimateOverflow>
+                            <SectionLink href="/investor-centre/key-dates#rsvp" pr={[2, ,4]}>
+                                RSVP
+                            </SectionLink>
+                        </AnimateOverflow>
+                    }
+                    <AnimateOverflow>
+                        <AddToCalendar
+                            isOpen={isOpen}
+                            open={() => {
+                                setIsOpen(true);
+                            }}
+                            onClose={() => {
+                                setIsOpen(false);
+                            }}
+                            event={{
+                                title: title,
+                                // description: details,
+                                location: location,
+                                start: startDate,
+                                end: endDate !== startDate ? endDate : null,
+                                allDay: allDay || false
+                            }}>
+                        </AddToCalendar>
+                    </AnimateOverflow>
+                </>
             }
         </Flex>
     </Flex>;

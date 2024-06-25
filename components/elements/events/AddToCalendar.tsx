@@ -5,11 +5,12 @@ import { SectionLinkInner } from '~/components/elements/sectionLink';
 
 interface IAddToCalendar {
     isOpen?:boolean;
+    open?:() => any;
     onClose?:() => any;
     event?:CalendarEvent;
 }
 
-const AddToCalendar:any = ({ event, isOpen, onClose }:IAddToCalendar) : ReactNode => {
+const AddToCalendar:any = ({ event, isOpen, open, onClose }:IAddToCalendar) : ReactNode => {
     if (!event) {
         return null;
     }
@@ -18,7 +19,9 @@ const AddToCalendar:any = ({ event, isOpen, onClose }:IAddToCalendar) : ReactNod
         <Menu isLazy isOpen={isOpen} onClose={onClose}  placement="bottom-end">
             {() => (
                 <>
-                    <MenuButton as={Button} color="olive" sx={{
+                    <MenuButton as={Button} onClick={() => {
+                        open();
+                    }} color="olive" sx={{
                         _hover: {
                             '.sectionLink-inner': {
                                 borderColor: 'olive'
