@@ -11,21 +11,3 @@ export const eventRSVP:string = `
         }
     }
 `;
-
-export const eventRSVPEventDates:string = `
-    query eventRsvps ($id : ItemId) {
-        eventRSVPS: allEventRsvps(filter: {id: { eq: $id }}) {
-            _allReferencingEventBundles {
-                id
-                events {
-                    id
-                    title
-                    label
-                }
-                rsvp {
-                    id
-                }
-            }
-        }
-    }
-`;

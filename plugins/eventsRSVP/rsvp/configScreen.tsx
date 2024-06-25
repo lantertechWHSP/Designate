@@ -256,13 +256,13 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                                 }
                             </div>
                         </div>
-                        <div style={{ marginTop: 'var(--spacing-l)' }}>
-                            <Button buttonType="muted" buttonSize="s" onClick={() => {
-                                create();
-                            }}>
-                                <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon> New RSVP
-                            </Button>
-                        </div>
+                        {/*<div style={{ marginTop: 'var(--spacing-l)' }}>*/}
+                        {/*    <Button buttonType="muted" buttonSize="s" onClick={() => {*/}
+                        {/*        create();*/}
+                        {/*    }}>*/}
+                        {/*        <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon> New RSVP*/}
+                        {/*    </Button>*/}
+                        {/*</div>*/}
                         <div style={{ marginTop: 'var(--spacing-l)' }}>
                             <Button buttonType="primary" buttonSize="s" onClick={download}>
                                 Download CSV
@@ -270,13 +270,13 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                         </div>
                     </> : <div>
                         No items…
-                        <div style={{marginTop: 'var(--spacing-l)'}}>
-                            <Button buttonType="muted" buttonSize="s" onClick={() => {
-                                create();
-                            }}>
-                                <FontAwesomeIcon icon={faPlus} /> New RSVP
-                            </Button>
-                        </div>
+                        {/*<div style={{marginTop: 'var(--spacing-l)'}}>*/}
+                        {/*    <Button buttonType="muted" buttonSize="s" onClick={() => {*/}
+                        {/*        create();*/}
+                        {/*    }}>*/}
+                        {/*        <FontAwesomeIcon icon={faPlus} /> New RSVP*/}
+                        {/*    </Button>*/}
+                        {/*</div>*/}
                     </div>
                 }
             </FieldGroup>

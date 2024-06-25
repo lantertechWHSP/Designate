@@ -12,11 +12,10 @@ const EventsRSVPAttendingConfigScreen = ({ ctx }: Props) : any => {
 
     useEffect(() => {
         (async () => {
-            debugger;
-            if(ctx.itemId) {
-                const values = await doQuery(queries.eventRSVPEventDates, ({ id: ctx.itemId })).then(({ eventRSVPS }) => eventRSVPS);
+            if(ctx.formValues.event_bundle) {
+                const values = await doQuery(queries.eventBundle, ({ id: ctx.formValues.event_bundle })).then(({ eventBundles }) => eventBundles);
+                const events = values[0].events;
 
-                const events = values[0]['_allReferencingEventBundles'][0]['events'];
                 setEvents(events);
                 setAttending(events.filter((event) => {
                     return !!ctx.formValues.events_attending.find((attending:string) => {
@@ -31,6 +30,10 @@ const EventsRSVPAttendingConfigScreen = ({ ctx }: Props) : any => {
             }
         })();
     }, []);
+
+    useEffect(() => {
+        console.log('!');
+    }, [ctx.formValues.event_bundle]);
 
     useEffect(() => {
         (async () => {
@@ -48,10 +51,10 @@ const EventsRSVPAttendingConfigScreen = ({ ctx }: Props) : any => {
             value={attending}
             selectInputProps={{
                 isMulti: true,
-                options: events.map((eventDate) => {
+                options: events.map((event) => {
                     return {
-                        label: eventDate.label,
-                        value: eventDate.id
+                        label: event.label,
+                        value: event.id
                     };
                 }),
             }}

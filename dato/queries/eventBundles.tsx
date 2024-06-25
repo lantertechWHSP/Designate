@@ -1,22 +1,13 @@
-const eventBundleFrag:string = `
-    fragment eventBundleFrag on EventRecord {
-        __typename
-        id
-        title
-        events {
-            startDate
-            endDate
-            location
-            allDay
+export const eventBundle:string = `
+    query eventBundles($id : ItemId) {
+        eventBundles: allEventBundles(filter: {id: { eq: $id }}) {
+            id
+            events {
+                id
+                title
+                label
+            }
         }
     }
 `;
 
-export const eventBundles:string = `
-    query eventBundles ($limit: IntType) {
-        eventBundles: allEvents(first: $limit) {
-            ...eventBundleFrag
-        }
-    }
-    ${eventBundleFrag}
-`;
