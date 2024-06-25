@@ -9,31 +9,46 @@ interface Props {
 const EventsRSVPAttendingConfigScreen = ({ ctx }: Props) : any => {
     const [events, setEvents] = useState([]);
     const [attending, setAttending] = useState([]);
+    const [eventBundleId, setEventBundleId] = useState(null);
 
     useEffect(() => {
-        (async () => {
-            if(ctx.formValues.event_bundle) {
-                const values = await doQuery(queries.eventBundle, ({ id: ctx.formValues.event_bundle })).then(({ eventBundles }) => eventBundles);
-                const events = values[0].events;
-
-                setEvents(events);
-                setAttending(events.filter((event) => {
-                    return !!ctx.formValues.events_attending.find((attending:string) => {
-                        return event.id === attending;
-                    });
-                }).map((event) => {
-                    return {
-                        label: event.label,
-                        value: event.id
-                    };
-                }));
+        if(ctx.formValues.event_bundle) {
+            setEventBundleId(ctx.formValues.event_bundle);
+        }
+        else {
+            const createBundleId:string = sessionStorage.getItem('soulpatts.dato.eventBundle.id');
+            if(createBundleId) {
+                (async () => {
+                    await ctx.setFieldValue('event_bundle', createBundleId);
+                    setEventBundleId(createBundleId);
+                })();
             }
-        })();
+        }
     }, []);
 
     useEffect(() => {
-        console.log('!');
-    }, [ctx.formValues.event_bundle]);
+        if(eventBundleId) {
+            (async () => {
+                const values = await doQuery(queries.eventBundle, ({ id: eventBundleId })).then(({ eventBundles }) => eventBundles);
+                const events = values[0].events;
+
+                setEvents(events);
+
+                if(ctx.formValues.events_attending) {
+                    setAttending(events.filter((event) => {
+                        !!ctx.formValues.events_attending.find((attending:string) => {
+                            return event.id === attending;
+                        });
+                    }).map((event) => {
+                        return {
+                            label: event.label,
+                            value: event.id
+                        };
+                    }));
+                }
+            })();
+        }
+    }, [eventBundleId]);
 
     useEffect(() => {
         (async () => {
@@ -47,7 +62,6 @@ const EventsRSVPAttendingConfigScreen = ({ ctx }: Props) : any => {
         <SelectField
             name="events_attending"
             id="events_attending"
-            label="Events"
             value={attending}
             selectInputProps={{
                 isMulti: true,

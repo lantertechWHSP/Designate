@@ -11,3 +11,13 @@ export const eventBundle:string = `
     }
 `;
 
+
+export const eventBundles:string = `
+    query eventBundles() {
+        eventBundles: allEventBundles(filter: {id: { eq: $id }}) {
+            id
+            title
+        }
+    }
+`;
+

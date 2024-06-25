@@ -34,7 +34,6 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
         }
 
         if(ctx.formValues.rsvp) {
-            console.log(ctx.formValues.rsvp);
             (async () => {
                 const values = [];
                 let hasAllValues = false;
@@ -92,10 +91,12 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
     };
 
     const create:any = async () : Promise<void> => {
+        // Pass the eventBundleId to sessionStorage for temporary use
+        sessionStorage.setItem('soulpatts.dato.eventBundle.id', ctx.itemId);
+
         const item = await ctx.createNewItem(process.env.NEXT_PUBLIC_DATO_ITEM_TYPE_EVENT_RSVP_ID);
 
         if (item) {
-            debugger;
             const rsvpItem:any = {
                 id: item.id,
                 name: item.attributes.name,
@@ -120,6 +121,9 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
             // Save the record
             await ctx.saveCurrentItem();
         }
+
+        // Remove the temporary ID from the sessionStorage
+        sessionStorage.removeItem('soulpatts.dato.eventBundle.id');
     };
 
     const edit:any = async (id:string): Promise<void> => {
@@ -256,13 +260,13 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                                 }
                             </div>
                         </div>
-                        {/*<div style={{ marginTop: 'var(--spacing-l)' }}>*/}
-                        {/*    <Button buttonType="muted" buttonSize="s" onClick={() => {*/}
-                        {/*        create();*/}
-                        {/*    }}>*/}
-                        {/*        <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon> New RSVP*/}
-                        {/*    </Button>*/}
-                        {/*</div>*/}
+                        <div style={{ marginTop: 'var(--spacing-l)' }}>
+                            <Button buttonType="muted" buttonSize="s" onClick={() => {
+                                create();
+                            }}>
+                                <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon> New RSVP
+                            </Button>
+                        </div>
                         <div style={{ marginTop: 'var(--spacing-l)' }}>
                             <Button buttonType="primary" buttonSize="s" onClick={download}>
                                 Download CSV
@@ -270,13 +274,13 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                         </div>
                     </> : <div>
                         No items…
-                        {/*<div style={{marginTop: 'var(--spacing-l)'}}>*/}
-                        {/*    <Button buttonType="muted" buttonSize="s" onClick={() => {*/}
-                        {/*        create();*/}
-                        {/*    }}>*/}
-                        {/*        <FontAwesomeIcon icon={faPlus} /> New RSVP*/}
-                        {/*    </Button>*/}
-                        {/*</div>*/}
+                        <div style={{marginTop: 'var(--spacing-l)'}}>
+                            <Button buttonType="muted" buttonSize="s" onClick={() => {
+                                create();
+                            }}>
+                                <FontAwesomeIcon icon={faPlus} /> New RSVP
+                            </Button>
+                        </div>
                     </div>
                 }
             </FieldGroup>
