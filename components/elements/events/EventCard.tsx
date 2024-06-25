@@ -48,6 +48,7 @@ const EventCard:any = ({ title, allDay, startDate, endDate, location }:IEventDat
             justify="flex-end"
             px={4}>
             {
+                DateTime.now() < DateTime.fromISO(startDate) &&
                 <AnimateOverflow>
                     <AddToCalendar
                         isOpen={isOpen}
