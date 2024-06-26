@@ -62,12 +62,12 @@ export default async function handler(request: NextApiRequest, response: NextApi
         }
 
         // Validate recaptcha
-        if(!await validateCaptcha(body.recaptcha)) {
-            return response.status(500).json({
-                success: false,
-                message: 'Invalid Recaptcha',
-            });
-        }
+        // if(!await validateCaptcha(body.recaptcha)) {
+        //     return response.status(500).json({
+        //         success: false,
+        //         message: 'Invalid Recaptcha',
+        //     });
+        // }
 
         try {
             const client = buildClient({

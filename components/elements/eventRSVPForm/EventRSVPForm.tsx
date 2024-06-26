@@ -16,12 +16,12 @@ import {
 import { Formik, Form, Field } from 'formik';
 import * as yup from 'yup';
 import { IEventBundle, IEvent } from '~/interfaces/models/event';
-import ReCAPTCHA from 'react-google-recaptcha';
+// import ReCAPTCHA from 'react-google-recaptcha';
 import { Row, Column, ColumnWidth } from '~/components/elements/grid/grid';
 import StructuredContent from "~/components/StructuredContent";
 import { DateTime } from 'luxon';
 
-const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_KEY;
+// const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_KEY;
 
 interface IEventRSVP {
     eventBundle:IEventBundle;
@@ -66,7 +66,7 @@ const EventRSVPForm:any = ({ eventBundle }:IEventRSVP) : ReactNode => {
             attending: yup.boolean()
         })),
         email: yup.string().required('Please enter an Email Address.').email('Please enter a valid Email Address.'),
-        recaptcha: yup.string().required('Please tick the reCAPTCHA.')
+        // recaptcha: yup.string().required('Please tick the reCAPTCHA.')
     });
 
     const submit = (values, resetForm) : void => {
@@ -93,7 +93,7 @@ const EventRSVPForm:any = ({ eventBundle }:IEventRSVP) : ReactNode => {
         }).catch((error) => {
             setErrorMessage(error.message);
         }).finally(() => {
-            recaptchaRef.current?.props?.grecaptcha.reset();
+            // recaptchaRef.current?.props?.grecaptcha.reset();
             setIsApiSubmitting(false);
         });
     };
@@ -216,20 +216,20 @@ const EventRSVPForm:any = ({ eventBundle }:IEventRSVP) : ReactNode => {
                                         </Stack>
                                     </Flex>
                                 }
-                                <Flex direction="column" mt={4}>
-                                    <ReCAPTCHA
-                                        ref={recaptchaRef}
-                                        sitekey={RECAPTCHA_SITE_KEY}
-                                        onChange={(token:any) => {
-                                            if (typeof token === 'string') {
-                                                setFieldValue('recaptcha', token);
-                                            }
-                                        }}>
-                                    </ReCAPTCHA>
-                                    {
-                                        (errors.recaptcha && (touched.recaptcha && isAttemptedSubmit)) && <Text variant="error" mt={2} mb={0}>{errors.recaptcha.toString()}</Text>
-                                    }
-                                </Flex>
+                                {/*<Flex direction="column" mt={4}>*/}
+                                {/*    <ReCAPTCHA*/}
+                                {/*        ref={recaptchaRef}*/}
+                                {/*        sitekey={RECAPTCHA_SITE_KEY}*/}
+                                {/*        onChange={(token:any) => {*/}
+                                {/*            if (typeof token === 'string') {*/}
+                                {/*                setFieldValue('recaptcha', token);*/}
+                                {/*            }*/}
+                                {/*        }}>*/}
+                                {/*    </ReCAPTCHA>*/}
+                                {/*    {*/}
+                                {/*        (errors.recaptcha && (touched.recaptcha && isAttemptedSubmit)) && <Text variant="error" mt={2} mb={0}>{errors.recaptcha.toString()}</Text>*/}
+                                {/*    }*/}
+                                {/*</Flex>*/}
                                 <Row>
                                     <Column width={[ColumnWidth.Full, ,ColumnWidth.TenTwelfths]}>
                                         <Text as="div" variant="caption" mt={8} fontSize="13px" color="darkSteel">
