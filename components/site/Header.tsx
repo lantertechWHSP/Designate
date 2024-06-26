@@ -106,9 +106,11 @@ const Header:any = ({ menu, darkTheme, announcement }:IHeader): ReactNode => {
                     ease: baseAnimationBezier,
                     duration: 0.5
                 }}>
-                <Announcement description={announcement.description} _publishedAt={announcement._publishedAt} isClosedCallback={() => {
-                    setHeight(headerRef.current.getBoundingClientRect().height);
-                }} />
+                {
+                    announcement && <Announcement description={announcement?.description} _publishedAt={announcement._publishedAt} isClosedCallback={() => {
+                        setHeight(headerRef.current.getBoundingClientRect().height);
+                    }} />
+                }
                 <Container>
                     <Row height={"120px"} align="center">
                         <Column width={[ColumnWidth.Half, , , ,ColumnWidth.TwoTwelfths]}>
