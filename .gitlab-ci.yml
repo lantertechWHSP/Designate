@@ -31,7 +31,7 @@ before_script:
   - apt-get -y install rsync
 
 ## Use node as the image
-image: node:18.12.1
+image: node:20.10.0
 
 ## Cache node modules
 cache:
