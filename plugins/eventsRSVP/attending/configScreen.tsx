@@ -36,7 +36,7 @@ const EventsRSVPAttendingConfigScreen = ({ ctx }: Props) : any => {
 
                 if(ctx.formValues.events_attending) {
                     setAttending(events.filter((event) => {
-                        !!ctx.formValues.events_attending.find((attending:string) => {
+                        return !!ctx.formValues.events_attending.find((attending:string) => {
                             return event.id === attending;
                         });
                     }).map((event) => {
