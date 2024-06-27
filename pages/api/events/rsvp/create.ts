@@ -1,31 +1,31 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { buildClient } from "@datocms/cma-client-node";
 import * as yup from "yup";
-import { ObjectSchema } from 'yup';
+import { isNil as _isNil } from 'lodash';
 
-const validateCaptcha = (response_key) => {
-    return new Promise((resolve, _reject) => {
-        const secret_key = process.env.RECAPTCHA_SECRET;
-
-        const url = `https://www.google.com/recaptcha/api/siteverify?secret=${secret_key}&response=${response_key}`;
-
-        fetch(url, {
-            method: 'post'
-        })
-            .then((response) => response.json())
-            .then((google_response) => {
-                if (google_response.success == true) {
-                    resolve(true);
-                } else {
-                    resolve(false);
-                }
-            })
-            .catch((err) => {
-                console.log(err);
-                resolve(false);
-            });
-    });
-};
+// const validateCaptcha:any = (response_key:string)  =>  {
+//     return new Promise((resolve, _reject) => {
+//         const secret_key = process.env.RECAPTCHA_SECRET;
+//
+//         const url = `https://www.google.com/recaptcha/api/siteverify?secret=${secret_key}&response=${response_key}`;
+//
+//         fetch(url, {
+//             method: 'post'
+//         })
+//             .then((response) => response.json())
+//             .then((google_response) => {
+//                 if (google_response.success == true) {
+//                     resolve(true);
+//                 } else {
+//                     resolve(false);
+//                 }
+//             })
+//             .catch((err) => {
+//                 console.log(err);
+//                 resolve(false);
+//             });
+//     });
+// };
 
 export default async function handler(request: NextApiRequest, response: NextApiResponse) : Promise<any> {
     const body = request.body;
@@ -36,8 +36,9 @@ export default async function handler(request: NextApiRequest, response: NextApi
             NAME: /^[a-zÀ-ÿ\d'’\s-]+$/i,
         };
 
-        const schema:ObjectSchema<any> = yup.object({
-            name: yup.string().required('Please enter your Name').matches(REGEXP.NAME, 'Please enter a valid First Name'),
+        const buildSchema = {
+            name: yup.string().required('Please enter your Name.').matches(REGEXP.NAME, 'Please enter a valid Name.'),
+            email: yup.string().required('Please enter an Email Address.').email('Please enter a valid Email Address.'),
             isShareholder: yup.boolean()
                 .required("Please identify if you are a shareholder.")
                 .oneOf([true, false]),
@@ -46,8 +47,9 @@ export default async function handler(request: NextApiRequest, response: NextApi
                 id: yup.string().required(),
                 attending: yup.boolean()
             })),
-            email: yup.string().required('Please enter an Email Address').email('Please enter a valid Email Address')
-        });
+        };
+
+        const schema:any = yup.object(buildSchema);
 
         return schema.isValid(rsvp);
     };
@@ -55,6 +57,14 @@ export default async function handler(request: NextApiRequest, response: NextApi
     if(request.method === 'POST') {
         // Validate request body
         if(!await isValid(body)) {
+            return response.status(500).json({
+                success: false,
+                message: ERROR_MESSAGE,
+            });
+        }
+
+        // Honeypot
+        if(!_isNil(body.phone)) {
             return response.status(500).json({
                 success: false,
                 message: ERROR_MESSAGE,
