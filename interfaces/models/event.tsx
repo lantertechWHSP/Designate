@@ -17,6 +17,5 @@ export interface IEvent {
     startDate?:string;
     endDate?:string;
     allDay?:boolean;
-    showRsvpLink?:boolean;
     rsvpCutOffDate?:string;
 }
