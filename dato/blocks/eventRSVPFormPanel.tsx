@@ -21,4 +21,5 @@ export const eventRSVPFormPanelRecord:string = `
             startDate
         }
     }
+    hideForm
 `;

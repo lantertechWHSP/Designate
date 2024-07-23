@@ -4,12 +4,13 @@ import { Flex, Heading, Text, Box } from '@chakra-ui/react';
 import { DateTime } from 'luxon';
 import AddToCalendar from '~/components/elements/events/AddToCalendar';
 import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
-import {SectionLink} from "~/components/elements/sectionLink";
+import { SectionLink } from "~/components/elements/sectionLink";
+import { isNil as _isNil } from 'lodash';
 
 interface IEventDateCard extends IEvent {
 }
 
-const EventCard:any = ({ title, allDay, startDate, endDate, location, showRsvpLink }:IEventDateCard) : ReactNode => {
+const EventCard:any = ({ title, allDay, startDate, endDate, location, rsvpCutOffDate }:IEventDateCard) : ReactNode => {
     const [isOpen, setIsOpen] = useState(false);
 
     return <Flex py={[4, ,'22px']}
@@ -48,7 +49,7 @@ const EventCard:any = ({ title, allDay, startDate, endDate, location, showRsvpLi
                 DateTime.now() < DateTime.fromISO(startDate) &&
                 <>
                     {
-                        showRsvpLink && <AnimateOverflow>
+                        (_isNil(rsvpCutOffDate) || (!_isNil(rsvpCutOffDate) &&  DateTime.now() < DateTime.fromISO(rsvpCutOffDate))) && <AnimateOverflow>
                             <SectionLink href="/investor-centre/key-dates#rsvp" pr={[2, ,4]}>
                                 RSVP
                             </SectionLink>

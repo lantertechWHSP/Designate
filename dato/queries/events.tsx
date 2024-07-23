@@ -9,6 +9,7 @@ export const events:string = `
             endDate
             location
             showRsvpLink
+            rsvpCutOffDate
         }
     }
 `;
