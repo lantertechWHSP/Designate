@@ -75,6 +75,7 @@ export const site:string = `
                     id
                     title
                     url
+                    filename
                 }
             }
         }

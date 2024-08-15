@@ -8,6 +8,7 @@ export const documentPoliciesListRecord:string = `
             title
             document {
                 url
+                filename
             }
         }
     }

@@ -1,6 +1,6 @@
 import { IFile } from '~/interfaces/util/file';
 import { IFilter } from '~/interfaces/util/filter';
-import {IImage} from "~/interfaces/util/image";
+import { IImage } from '~/interfaces/util/image';
 
 export interface IDocumentCategory {
     id?:string;

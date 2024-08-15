@@ -11,6 +11,7 @@ export const documentHeroPanelRecord:string = `
         title
         document {
             url
+            filename
         }
     }
 `;

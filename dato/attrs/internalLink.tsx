@@ -16,6 +16,7 @@ export const internalLinkAttrs:string = `
         id
         document {
             url
+            filename
         }
         coverImage {
             url
