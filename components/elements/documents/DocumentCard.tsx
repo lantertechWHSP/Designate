@@ -21,7 +21,7 @@ const DocumentCard:any = ({ title, date, document, hideDate = false }:IDocumentC
                     variant="listItem">
                     <AnimateOverflow>
                         {
-                            (document && document.url) ? <Link href={document?.url} target="_blank">
+                            (document && document.url && document.filename) ? <Link href={`${document.url}?dl=${document.filename}`} target="_blank">
                                 {title}
                             </Link> : <>{title}</>
                         }
