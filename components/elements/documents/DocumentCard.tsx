@@ -42,8 +42,8 @@ const DocumentCard:any = ({ title, date, document, hideDate = false }:IDocumentC
             justify="flex-end"
             px={4}>
             {
-                (document && document.url) && <AnimateOverflow>
-                    <SectionLink href={document?.url}
+                (document && document.url && document.filename) && <AnimateOverflow>
+                    <SectionLink href={`${document?.url}?dl=${document.filename}`}
                         as="a"
                         target="_blank">
                         View

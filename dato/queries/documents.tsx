@@ -17,6 +17,7 @@ export const documents:string = `
                 id
                 title
                 url
+                filename
             }
         }
     }
