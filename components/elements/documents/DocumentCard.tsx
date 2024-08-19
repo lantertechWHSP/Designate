@@ -21,7 +21,7 @@ const DocumentCard:any = ({ title, date, document, hideDate = false }:IDocumentC
                     variant="listItem">
                     <AnimateOverflow>
                         {
-                            (document && document.url && document.filename) ? <Link href={`${document.url}?dl=${document.filename}`} target="_blank">
+                            (document && document.url && document.filename) ? <Link href={`${document.url}`} target="_blank">
                                 {title}
                             </Link> : <>{title}</>
                         }
@@ -43,7 +43,7 @@ const DocumentCard:any = ({ title, date, document, hideDate = false }:IDocumentC
             px={4}>
             {
                 (document && document.url && document.filename) && <AnimateOverflow>
-                    <SectionLink href={`${document?.url}?dl=${document.filename}`}
+                    <SectionLink href={`${document?.url}`}
                         as="a"
                         target="_blank">
                         View

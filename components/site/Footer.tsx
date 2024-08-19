@@ -115,7 +115,7 @@ const Footer:any = ({ menu, address, email, phone, fax, linkedin, youtube, copyr
                         {
                             privacyPolicyDocument?.document?.url && <Column width={[ColumnWidth.Full, ,ColumnWidth.OneThird]}>
                                 <Box color="whiteBlur">
-                                    <Link target="_blank" href={`${privacyPolicyDocument?.document?.url}?dl=${privacyPolicyDocument?.document.filename}`} borderBottom="1px solid">Privacy Policy</Link>
+                                    <Link target="_blank" href={`${privacyPolicyDocument?.document?.url}`} borderBottom="1px solid">Privacy Policy</Link>
                                 </Box>
                             </Column>
                         }

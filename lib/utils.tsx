@@ -14,7 +14,7 @@ export const resolveInternalLink:any = (link:ILink) : string => {
     const { document, slug, __typename } = link;
     switch (__typename) {
         case 'PostRecord':return `/news/${slug}`;
-        case 'DocumentRecord': return `${document.url}?dl=${document.filename}`;
+        case 'DocumentRecord': return `${document.url}`;
     }
 
     return `/${slug}`;
