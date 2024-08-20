@@ -1,5 +1,5 @@
-const KEY:string = process.env.NEXT_PUBLIC_DATO_KEY;
-const ENVIRONMENT:string = process.env.NEXT_PUBLIC_DATO_ENVIRONMENT;
+const KEY:string = process.env.DATO_KEY;
+const ENVIRONMENT:string = process.env.DATO_ENVIRONMENT;
 
 import * as queries from '~/dato/queries';
 export { queries };
@@ -29,3 +29,4 @@ export const doQuery:any = async (query:any, variables?:any, preview?:any) : Pro
         throw error;
     }
 };
+

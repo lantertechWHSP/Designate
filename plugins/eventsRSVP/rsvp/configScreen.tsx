@@ -9,8 +9,8 @@ import { buildClient } from '@datocms/cma-client-browser';
 import {IEvent} from "~/interfaces/models/event";
 
 const client = buildClient({
-    apiToken: process.env.NEXT_PUBLIC_DATO_KEY,
-    environment: process.env.NEXT_PUBLIC_DATO_ENVIRONMENT
+    apiToken: process.env.DATO_KEY,
+    environment: process.env.DATO_ENVIRONMENT
 });
 
 type PropTypes = {
@@ -92,7 +92,7 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
 
     const create:any = async () : Promise<void> => {
         // Pass the eventBundleId to sessionStorage for temporary use
-        sessionStorage.setItem('soulpatts.dato.eventBundle.id', ctx.itemId);
+        sessionStorage.setItem('soulpatts.documents.eventBundle.id', ctx.itemId);
 
         const item = await ctx.createNewItem(process.env.NEXT_PUBLIC_DATO_ITEM_TYPE_EVENT_RSVP_ID);
 
@@ -123,7 +123,7 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
         }
 
         // Remove the temporary ID from the sessionStorage
-        sessionStorage.removeItem('soulpatts.dato.eventBundle.id');
+        sessionStorage.removeItem('soulpatts.documents.eventBundle.id');
     };
 
     const edit:any = async (id:string): Promise<void> => {

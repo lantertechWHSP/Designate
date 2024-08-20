@@ -81,8 +81,8 @@ export default async function handler(request: NextApiRequest, response: NextApi
 
         try {
             const client = buildClient({
-                apiToken: process.env.NEXT_PUBLIC_DATO_KEY,
-                environment: process.env.NEXT_PUBLIC_DATO_ENVIRONMENT
+                apiToken: process.env.DATO_KEY,
+                environment: process.env.DATO_ENVIRONMENT
             });
 
             const DATO_ITEM_TYPE_EVENT_RSVP_ID = process.env.NEXT_PUBLIC_DATO_ITEM_TYPE_EVENT_RSVP_ID;

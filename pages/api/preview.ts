@@ -31,7 +31,7 @@ const handler:any = (req, res) : any => {
         },
         {
             label: 'Draft version',
-            url: `${baseUrl}/api/start-preview?redirect=${url}&secret=${process.env.NEXT_PUBLIC_DATO_PREVIEW_SECRET}`,
+            url: `${baseUrl}/api/start-preview?redirect=${url}&secret=${process.env.DATO_PREVIEW_SECRET}`,
         },
     ];
     return res.status(200).json({ previewLinks });

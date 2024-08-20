@@ -16,7 +16,7 @@ const EventsRSVPAttendingConfigScreen = ({ ctx }: Props) : any => {
             setEventBundleId(ctx.formValues.event_bundle);
         }
         else {
-            const createBundleId:string = sessionStorage.getItem('soulpatts.dato.eventBundle.id');
+            const createBundleId:string = sessionStorage.getItem('soulpatts.documents.eventBundle.id');
             if(createBundleId) {
                 (async () => {
                     await ctx.setFieldValue('event_bundle', createBundleId);
