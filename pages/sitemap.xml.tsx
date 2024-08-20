@@ -59,7 +59,7 @@ export async function getServerSideProps({ res }) : Promise<any> {
     }
 
     const pagePaths:any = pages.map((page) => {
-        const slug:string = page.slug === 'home' ? [''] : page.slug;
+        const slug:string|string[] = page.slug === 'home' ? [''] : page.slug;
         return `${siteUrl}/${slug}`;
     });
 
