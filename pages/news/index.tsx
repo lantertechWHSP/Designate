@@ -27,13 +27,14 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
     );
 
     const featuredPosts:IPost[] = await doQuery(queries.featuredPosts, {
-        orderBy: 'publishDate_DESC'
+        orderBy: DATO_QUERY_VALUES.ORDER_BY
     }).then(({ featuredPostsList }) => featuredPostsList.posts || []);
 
     const posts:IPost[] = await doQuery(queries.posts, {
         first: DATO_QUERY_VALUES.ITEMS_PER_PAGE,
-        orderBy: 'publishDate_DESC',
+        orderBy: DATO_QUERY_VALUES.ORDER_BY,
     }).then(({ posts }) => posts || []);
+
     const postsMeta:IPostsMeta = await doQuery(queries.postsMeta).then(({ postsMeta }) => postsMeta || {});
 
     const layout:ILayout = getLayoutData(site, page, preview);

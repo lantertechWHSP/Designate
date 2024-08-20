@@ -12,8 +12,8 @@ interface IPostsList {
 }
 
 export const DATO_QUERY_VALUES:any = {
-    ITEMS_PER_PAGE : 60,
-    ORDER_BY : 'date_DESC',
+    ITEMS_PER_PAGE : 12,
+    ORDER_BY: 'publishDate_DESC',
 };
 
 const PostList:any = ({ latestPosts }:IPostsList) : ReactNode => {
@@ -30,30 +30,32 @@ const PostList:any = ({ latestPosts }:IPostsList) : ReactNode => {
         if(!isLoading) {
             setIsLoading(true);
 
-            setTimeout(() => {
-                doQuery(queries.posts, {
+            fetch('/api/posts', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
                     first: DATO_QUERY_VALUES.ITEMS_PER_PAGE,
                     skip: page * DATO_QUERY_VALUES.ITEMS_PER_PAGE,
-                    orderBy: 'publishDate_DESC'
-                }).then(({ posts }) => posts || []).then((newPosts) => {
-                    if(newPosts.length > 0) {
-                        setPosts([...posts, ...newPosts]);
+                    orderBy: DATO_QUERY_VALUES.ORDER_BY,
+                })
+            }).then(response => response.json()).then((response:any) => {
+                if(response.success) {
+                    if(response.data.posts.length > 0) {
+                        setPosts([...posts, ...response.data.posts]);
                         setPage(page + 1);
                     }
                     else {
                         setNoMorePosts(true);
                     }
-                }).catch(() => {
-                    setCouldNotLoadPosts(true);
-                    setTimeout(() => {
-                        setCouldNotLoadPosts(false);
-                    }, 5000);
-                }).finally(() => {
-                    setTimeout(() => {
-                        setIsLoading(false);
-                    }, 250);
-                });
-            }, 1000);
+                }
+            }).catch(() => {
+                setCouldNotLoadPosts(true);
+            }).finally(() => {
+                setIsLoading(false);
+            });
         }
     };
 
