@@ -14,11 +14,11 @@ export async function getStaticPaths() : Promise<GetStaticPathsResult<any>> {
     let documentBatchIndex = 0;
 
     while(!hasAllDocuments) {
-        const batchPosts = await doQuery(queries.documents, { first: 100, skip: 100 * documentBatchIndex }).then(({ documents }) => documents);
+        const batchDocuments = await doQuery(queries.documents, { first: 100, skip: 100 * documentBatchIndex }).then(({ documents }) => documents);
 
-        documents.push(...batchPosts);
+        documents.push(...batchDocuments);
 
-        if(batchPosts.length < 100) {
+        if(batchDocuments.length < 100) {
             hasAllDocuments = true;
         }
         else {
@@ -26,9 +26,10 @@ export async function getStaticPaths() : Promise<GetStaticPathsResult<any>> {
         }
     }
 
-    const paths:any = (Array.isArray(documents) && documents.length > 0) ? documents.map((post) => ({
-        params: { slug: post.slug }
-    })) : [];
+    const paths:any = (Array.isArray(documents) && documents.length > 0) ? documents
+        .map((document) => ({
+            params: { slug: document.slug || 'error' }
+        })) : [];
 
     return { paths, fallback: 'blocking' };
 }

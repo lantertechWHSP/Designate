@@ -68,8 +68,7 @@ export async function getStaticProps({ params, preview }:GetStaticPropsContext) 
         props: {
             layout,
             blocks
-        },
-        //revalidate: 10
+        }
     };
 }
 

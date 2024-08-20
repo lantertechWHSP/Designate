@@ -29,12 +29,9 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
         props: {
             layout,
             blocks,
-        },
-        //revalidate: 10
+        }
     };
 }
-
-// const x = setup();
 
 const KeyDatesPage : NextPage = ({ layout, blocks }:INextPageProps)  : JSX.Element => {
     return (

@@ -57,8 +57,7 @@ export async function getStaticProps({ params, preview }:GetStaticPropsContext) 
             post,
             layout,
             blocks
-        },
-        //revalidate: 10
+        }
     };
 }
 

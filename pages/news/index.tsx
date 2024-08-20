@@ -45,8 +45,7 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
             featuredPosts,
             posts,
             postsMeta
-        },
-        //revalidate: 10
+        }
     };
 }
 

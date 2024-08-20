@@ -117,8 +117,7 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
             documents,
             doucmentsMeta,
             documentsFilters
-        },
-        //revalidate: 10
+        }
     };
 }
 
