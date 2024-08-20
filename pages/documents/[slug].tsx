@@ -33,7 +33,7 @@ export async function getStaticPaths() : Promise<GetStaticPathsResult<any>> {
         params: { slug: post.slug }
     })) : [];
 
-    return { paths, fallback: 'blocking' };
+    return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params, preview }:GetStaticPropsContext) : Promise<GetStaticPropsResult<INextPageProps>> {
@@ -55,7 +55,7 @@ export async function getStaticProps({ params, preview }:GetStaticPropsContext) 
     return {
         redirect: {
             permanent: false,
-            destination: '/error',
+            destination: '/',
         },
         props:{},
     };
