@@ -25,8 +25,6 @@ export async function getStaticProps({ params, preview }:GetStaticPropsContext) 
         ({ document }) => document
     );
 
-    console.log(document.document.url);
-
     return {
         redirect: {
             permanent: false,
