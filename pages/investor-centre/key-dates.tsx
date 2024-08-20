@@ -30,7 +30,7 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
             layout,
             blocks,
         },
-        revalidate: 10
+        //revalidate: 10
     };
 }
 

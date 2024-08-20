@@ -46,7 +46,7 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
             posts,
             postsMeta
         },
-        revalidate: 10
+        //revalidate: 10
     };
 }
 
