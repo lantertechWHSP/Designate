@@ -39,7 +39,7 @@ export async function getStaticPaths() : Promise<GetStaticPathsResult<any>> {
         params: { slug: post.slug }
     })) : [];
 
-    return { paths, fallback: false };
+    return { paths, fallback: 'blocking' };
 }
 
 export async function getStaticProps({ params, preview }:GetStaticPropsContext) : Promise<GetStaticPropsResult<INextPageProps>> {
