@@ -1,5 +1,4 @@
 import { ReactNode, useState, useEffect, useRef, useCallback } from 'react';
-import { doQuery, queries } from '~/dato/api';
 import PostCard from '~/components/elements/posts/PostCard';
 import { SimpleGrid, Box, Alert, Container, Spinner } from '@chakra-ui/react';
 import { IPost } from '~/interfaces/models/post';
@@ -12,7 +11,7 @@ interface IPostsList {
 }
 
 export const DATO_QUERY_VALUES:any = {
-    ITEMS_PER_PAGE : 12,
+    ITEMS_PER_PAGE : 60,
     ORDER_BY: 'publishDate_DESC',
 };
 
