@@ -47,3 +47,15 @@ export const documentsFilters:string = `
         }
     }
 `;
+
+export const document:string = `
+    query document ($slug: String!) {
+        document(filter: {slug: {eq: $slug}}) {
+            id
+            document {
+                id
+                url
+            }
+        }
+    }
+`;

@@ -1,6 +1,6 @@
 import React from 'react';
-import type {NextPage} from 'next';
-import {GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult} from 'next';
+import type { NextPage } from 'next';
+import { GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult } from 'next';
 import DefaultPageLayout from '~/components/pages/layouts/DefaultPageLayout';
 import { ModularContent } from '~/components/ModularContent';
 import { doQuery, queries } from '~/dato/api';
@@ -10,7 +10,6 @@ import { ILayout } from '~/interfaces/layout/layout';
 import { IBlock } from '~/interfaces/util/block';
 import { IPage } from '~/interfaces/models/page';
 import { PaddingBottom } from '~/components/blocks/Content';
-import SiteLayout from "~/components/layouts/SiteLayout";
 
 interface INextPageProps {
     layout?:ILayout;
