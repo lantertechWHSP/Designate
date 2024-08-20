@@ -59,9 +59,7 @@ const DocumentReportsList:any = ({ latestDocuments, documentsMeta, documentsFilt
     };
 
     const updateDocuments:any = (tag:IFilter, year:IFilter) : void => {
-        debugger;
         const filter:any = getDatoFilterObject(tag, year);
-        debugger;
 
         fetch('/api/documents', {
             method: 'POST',

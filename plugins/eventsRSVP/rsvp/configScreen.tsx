@@ -106,7 +106,7 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
 
     const create:any = async () : Promise<void> => {
         // Pass the eventBundleId to sessionStorage for temporary use
-        sessionStorage.setItem('soulpatts.documents.event-bundles.id', ctx.itemId);
+        sessionStorage.setItem('soulpatts.dato.eventBundle.id', ctx.itemId);
 
         const item = await ctx.createNewItem(process.env.NEXT_PUBLIC_DATO_ITEM_TYPE_EVENT_RSVP_ID);
 
@@ -137,7 +137,7 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
         }
 
         // Remove the temporary ID from the sessionStorage
-        sessionStorage.removeItem('soulpatts.documents.event-bundles.id');
+        sessionStorage.removeItem('soulpatts.dato.eventBundle.id');
     };
 
     const edit:any = async (id:string): Promise<void> => {
