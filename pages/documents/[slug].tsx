@@ -25,10 +25,20 @@ export async function getStaticProps({ params, preview }:GetStaticPropsContext) 
         ({ document }) => document
     );
 
+    if(document.document.url) {
+        return {
+            redirect: {
+                permanent: false,
+                destination: document.document.url,
+            },
+            props:{},
+        };
+    }
+
     return {
         redirect: {
             permanent: false,
-            destination: document.document.url,
+            destination: '/error',
         },
         props:{},
     };
