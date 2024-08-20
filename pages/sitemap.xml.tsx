@@ -1,4 +1,5 @@
 import { doQuery, queries } from '~/dato/api';
+import {IPage} from "~/interfaces/models/page";
 
 function generateSiteMap(paths) : string {
     return `<?xml version="1.0" encoding="UTF-8"?>
@@ -22,14 +23,45 @@ export async function getServerSideProps({ res }) : Promise<any> {
     const siteUrl:string = 'https://soulpatts.com.au';
     const paths:any[] = [];
 
-    const pages:any = await doQuery(queries.pages).then(({ pages }) => pages);
-    const posts:any = await doQuery(queries.posts, { first: 100 }).then(({ posts }) => posts);
+    const pages:IPage[] = [];
 
-    const pagePaths:any = pages
-        .map((page) => {
-            const slug:string = page.slug === 'home' ? [''] : page.slug;
-            return `${siteUrl}/${slug}`;
-        });
+    let hasAllPages = false;
+    let pageBatchIndex = 0;
+
+    while(!hasAllPages) {
+        const batchPages = await doQuery(queries.pages, { first: 100, skip: 100 * pageBatchIndex }).then(({ pages }) => pages);
+
+        pages.push(...batchPages);
+
+        if(batchPages.length < 100) {
+            hasAllPages = true;
+        }
+        else {
+            pageBatchIndex++;
+        }
+    }
+
+    const posts = [];
+    let hasAllPosts = false;
+    let postBatchIndex = 0;
+
+    while(!hasAllPosts) {
+        const batchPosts = await doQuery(queries.posts, { first: 100, skip: 100 * postBatchIndex }).then(({ posts }) => posts);
+
+        posts.push(...batchPosts);
+
+        if(batchPosts.length < 100) {
+            hasAllPosts = true;
+        }
+        else {
+            postBatchIndex++;
+        }
+    }
+
+    const pagePaths:any = pages.map((page) => {
+        const slug:string|string[] = page.slug === 'home' ? [''] : page.slug;
+        return `${siteUrl}/${slug}`;
+    });
 
     const postPaths:any = posts.map((post) => {
         return `${siteUrl}/news/${post.slug}`;

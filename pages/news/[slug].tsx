@@ -18,12 +18,28 @@ interface INextPageProps {
 }
 
 export async function getStaticPaths() : Promise<GetStaticPathsResult<any>> {
-    const posts:any = await doQuery(queries.posts, { first: 100 }).then(({ posts }) => posts);
+    const posts = [];
+    let hasAllPosts = false;
+    let postBatchIndex = 0;
+
+    while(!hasAllPosts) {
+        const batchPosts = await doQuery(queries.posts, { first: 100, skip: 100 * postBatchIndex }).then(({ posts }) => posts);
+
+        posts.push(...batchPosts);
+
+        if(batchPosts.length < 100) {
+            hasAllPosts = true;
+        }
+        else {
+            postBatchIndex++;
+        }
+    }
+
     const paths:any = (Array.isArray(posts) && posts.length > 0) ? posts.map((post) => ({
         params: { slug: post.slug }
     })) : [];
 
-    return { paths, fallback: 'blocking' };
+    return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params, preview }:GetStaticPropsContext) : Promise<GetStaticPropsResult<INextPageProps>> {

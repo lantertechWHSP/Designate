@@ -32,7 +32,7 @@ const SiteLayout = ({ children }:any) : ReactNode => {
         <Head>
             <title>Soul Patts</title>
             <meta name="viewport" content="width=device-width, initial-scale=1" />
-            <meta name="version" content="1.0.2" />
+            <meta name="version" content="1.0.3" />
             <meta name="google-site-verification" content="I3VZKcFh4ZN-aMYLATi9Uc-atpsN8_PgdcrB_1-VSTA" />
         </Head>
         {
