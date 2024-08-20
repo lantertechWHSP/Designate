@@ -55,7 +55,7 @@ const CardPanelBlock:any = ({ annotation, title, description, image, link, align
                             title && <Heading as="h2" variant="sectionHeading" mb={4}>
                                 <AnimateOverflow>
                                     {
-                                        link ? <Link {...link}>
+                                        link ? <Link {...link} target={link.document ? '_blank' : '_self'}>
                                             {title}
                                         </Link> : <>{title}</>
                                     }
@@ -70,7 +70,7 @@ const CardPanelBlock:any = ({ annotation, title, description, image, link, align
                         <Box flex={1} />
                         {
                             link && <Box  mt={4} mb={2}><AnimateOverflow>
-                                <SectionLink {...link}>
+                                <SectionLink {...link} target={link.document ? '_blank' : '_self'}>
                                     {link.document ? 'Download' : 'Read More'}
                                 </SectionLink>
                             </AnimateOverflow></Box>
@@ -81,7 +81,9 @@ const CardPanelBlock:any = ({ annotation, title, description, image, link, align
                     <AnimateOpacity>
                         <Box position="relative" height={['320px', ,'400px']} minHeight="100%">
                             {
-                                link ? <Link {...link}
+                                link ? <Link
+                                    {...link}
+                                    target={link.document ? '_blank' : '_self'}
                                     display="block"
                                     width="100%"
                                     height="100%"
