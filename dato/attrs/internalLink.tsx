@@ -21,5 +21,6 @@ export const internalLinkAttrs:string = `
         coverImage {
             url
         }
+        slug
     }
 `;

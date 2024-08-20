@@ -9,7 +9,7 @@ interface IDocumentCard extends IDocument {
     hideDate?:boolean;
 }
 
-const DocumentCard:any = ({ title, date, document, hideDate = false }:IDocumentCard) : ReactNode => {
+const DocumentCard:any = ({ title, date, slug, hideDate = false }:IDocumentCard) : ReactNode => {
     return <Flex py={[4, ,'22px']} direction={['row']} align="center" mx={-4}>
 
         <Flex direction={['column', , 'row']}
@@ -21,7 +21,7 @@ const DocumentCard:any = ({ title, date, document, hideDate = false }:IDocumentC
                     variant="listItem">
                     <AnimateOverflow>
                         {
-                            (document && document.url && document.filename) ? <Link href={`${document.url}`} target="_blank">
+                            (slug) ? <Link href={`/documents/${slug}`} target="_blank">
                                 {title}
                             </Link> : <>{title}</>
                         }
@@ -42,8 +42,8 @@ const DocumentCard:any = ({ title, date, document, hideDate = false }:IDocumentC
             justify="flex-end"
             px={4}>
             {
-                (document && document.url && document.filename) && <AnimateOverflow>
-                    <SectionLink href={`${document?.url}`}
+                (slug) && <AnimateOverflow>
+                    <SectionLink href={`/documents/${slug}`}
                         as="a"
                         target="_blank">
                         View

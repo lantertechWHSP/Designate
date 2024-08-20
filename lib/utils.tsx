@@ -11,10 +11,10 @@ export const resolveInternalLink:any = (link:ILink) : string => {
         return null;
     }
 
-    const { document, slug, __typename } = link;
+    const { slug, __typename } = link;
     switch (__typename) {
         case 'PostRecord':return `/news/${slug}`;
-        case 'DocumentRecord': return `${document.url}`;
+        case 'DocumentRecord': return `/documents/${slug}`;
     }
 
     return `/${slug}`;

@@ -19,6 +19,7 @@ export const documents:string = `
                 url
                 filename
             }
+            slug
         }
     }
 `;
@@ -44,6 +45,19 @@ export const documentsFilters:string = `
                 id
                 label
             }
+        }
+    }
+`;
+
+export const document:string = `
+    query document ($slug: String!) {
+        document(filter: {slug: {eq: $slug}}) {
+            id
+            document {
+                id
+                url
+            }
+            slug
         }
     }
 `;

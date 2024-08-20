@@ -5,7 +5,6 @@ import { getLayoutData } from '~/lib/utils';
 import { ISite } from '~/interfaces/layout/site';
 import { IPage } from '~/interfaces/models/page';
 import { ILayout } from '~/interfaces/layout/layout';
-import { redirect } from 'next/navigation';
 
 interface INextPageProps {
 }
@@ -22,7 +21,7 @@ export async function getServerSideProps({ }:GetServerSidePropsContext) : Promis
     return {
         redirect: {
             permanent: false,
-            destination: layout.footer.privacyPolicyDocument.document.url,
+            destination: `/documents/${layout.footer.privacyPolicyDocument.slug}`,
         },
         props:{},
     };
@@ -33,5 +32,5 @@ const PrivacyPolicyPage : NextPage = ({ }:INextPageProps)  : JSX.Element => {
         <></>
     );
 };
-//
+
 export default PrivacyPolicyPage;

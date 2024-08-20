@@ -30,7 +30,7 @@ const DocumentHeroPanelBlock:any = ({ coverImage, document, description }:IDocum
                     }
                     <Box flex="1" />
                     {
-                        document?.document?.url && <SectionLink href={document?.document?.url} download={document?.document?.title} target="_blank">
+                        document?.slug && <SectionLink href={document?.slug} download={document?.document?.title} target="_blank">
                             Download
                         </SectionLink>
                     }

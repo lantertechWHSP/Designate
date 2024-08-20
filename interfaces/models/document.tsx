@@ -19,6 +19,7 @@ export interface IDocument {
     tags?:IDocumentTags[];
     document?:IFile;
     coverImage?:IImage;
+    slug?:string;
 }
 
 export interface IDocumentBundle {

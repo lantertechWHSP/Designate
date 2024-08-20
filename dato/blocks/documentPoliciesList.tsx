@@ -10,6 +10,7 @@ export const documentPoliciesListRecord:string = `
                 url
                 filename
             }
+            slug
         }
     }
     background
