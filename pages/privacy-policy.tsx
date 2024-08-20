@@ -22,7 +22,7 @@ export async function getServerSideProps({ }:GetServerSidePropsContext) : Promis
     return {
         redirect: {
             permanent: false,
-            destination: layout.footer.privacyPolicyDocument.document.url,
+            destination: layout.footer.privacyPolicyDocument.slug,
         },
         props:{},
     };
@@ -33,5 +33,5 @@ const PrivacyPolicyPage : NextPage = ({ }:INextPageProps)  : JSX.Element => {
         <></>
     );
 };
-//
+
 export default PrivacyPolicyPage;

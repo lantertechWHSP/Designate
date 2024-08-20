@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import type { NextPage } from 'next';
 import { GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult } from 'next';
 import { doQuery, queries } from '~/dato/api';
@@ -25,24 +25,18 @@ export async function getStaticProps({ params, preview }:GetStaticPropsContext) 
         ({ document }) => document
     );
 
+    console.log(document.document.url);
+
     return {
-        props: {
-            document
+        redirect: {
+            permanent: false,
+            destination: document.document.url,
         },
-        revalidate: 10
+        props:{},
     };
 }
 
-const DocumentPage : NextPage = ({ document }:any)  : JSX.Element => {
-    useEffect(() => {
-        if(document?.document?.url) {
-            window.location.href = document.document.url;
-        }
-        else {
-            window.location.href = '/error';
-        }
-    }, []);
-
+const DocumentPage : NextPage = ({ }:any)  : JSX.Element => {
     return <></>;
 };
 

@@ -19,6 +19,7 @@ export const documents:string = `
                 url
                 filename
             }
+            slug
         }
     }
 `;
@@ -56,6 +57,7 @@ export const document:string = `
                 id
                 url
             }
+            slug
         }
     }
 `;
