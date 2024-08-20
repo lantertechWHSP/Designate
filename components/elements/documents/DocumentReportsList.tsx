@@ -35,7 +35,7 @@ const DocumentReportsList:any = ({ latestDocuments, documentsMeta, documentsFilt
     const [selectedTag, setSelectedTag] = useState<IFilter>(tagFilters[0]);
     const [totalDocumentCount, setTotalDocumentCount] = useState<number>(documentsMeta?.count);
 
-    const getDatoFilterObject:any = () : void => {
+    const getDatoFilterObject:any = (tag:IFilter, year:IFilter) : void => {
         const filter:any = {
             category: {
                 eq: DATO_QUERY_VALUES.REPORTS_CATEGORY_ID
@@ -43,25 +43,74 @@ const DocumentReportsList:any = ({ latestDocuments, documentsMeta, documentsFilt
         };
 
         // Filter by Date
-        if(selectedYear.value !== 'none') {
+        if(year.value !== 'none') {
             filter['date'] = {
-                gte: `${selectedYear.value}-01-01`,
-                lte: `${selectedYear.value}-12-31`
+                gte: `${year.value}-01-01`,
+                lte: `${year.value}-12-31`
             };
         }
-        if(selectedTag.value !== 'none') {
+        if(tag.value !== 'none') {
             filter['tags'] = {
-                eq: selectedTag.value
+                eq: tag.value
             };
         }
 
         return filter;
     };
 
+    const updateDocuments:any = (tag:IFilter, year:IFilter) : void => {
+        debugger;
+        const filter:any = getDatoFilterObject(tag, year);
+        debugger;
+
+        fetch('/api/documents', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                first: DATO_QUERY_VALUES.ITEMS_PER_PAGE,
+                orderBy: DATO_QUERY_VALUES.ORDER_BY,
+                filter: filter
+            })
+        }).then(response => response.json()).then((response:any) => {
+            if(response.success) {
+                if(response.data.documents.length > 0) {
+                    setDocuments(response.data.documents);
+                    setPage(1);
+                    setSelectedTag(tag);
+                    setSelectedYear(year);
+                }
+            }
+        }).catch(() => {
+            setCouldNotLoadDocuments(true);
+        }).finally(() => {
+            setIsLoading(false);
+        });
+
+        fetch('/api/documents/meta', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                filter,
+            })
+        }).then(response => response.json()).then((response:any) => {
+            if(response.success) {
+                if (response.data.documentsMeta.count) {
+                    setTotalDocumentCount(response.data.documentsMeta.count);
+                }
+            }
+        });
+    };
+
     const loadMore:any = () : void => {
         setIsLoading(true);
 
-        const filter:any = getDatoFilterObject();
+        const filter:any = getDatoFilterObject(selectedTag, selectedYear);
 
         fetch('/api/documents', {
             method: 'POST',
@@ -73,10 +122,9 @@ const DocumentReportsList:any = ({ latestDocuments, documentsMeta, documentsFilt
                 first: DATO_QUERY_VALUES.ITEMS_PER_PAGE,
                 skip: page * DATO_QUERY_VALUES.ITEMS_PER_PAGE,
                 orderBy: DATO_QUERY_VALUES.ORDER_BY,
-                filter: filter
+                filter,
             })
         }).then(response => response.json()).then((response:any) => {
-            debugger;
             if(response.success) {
                 if(response.data.documents.length > 0) {
                     setDocuments([...documents, ...response.data.documents]);
@@ -105,29 +153,6 @@ const DocumentReportsList:any = ({ latestDocuments, documentsMeta, documentsFilt
         setDocumentBundles(newSortedDocumentBundles.reverse());
     }, [documents]);
 
-    // useEffect(() => {
-    //     // Reset to the first page when filtering…
-    //     setPage(1);
-    //
-    //     const filter:any = getDatoFilterObject();
-    //
-    //     // Reset documents
-    //     doQuery(queries.documents, {
-    //         first: DATO_QUERY_VALUES.ITEMS_PER_PAGE,
-    //         orderBy: DATO_QUERY_VALUES.ORDER_BY,
-    //         filter,
-    //     }).then(({ documents }) => documents || []).then((newDocuments) => {
-    //         setDocuments(newDocuments);
-    //     });
-    //
-    //     // Reset document count
-    //     doQuery(queries.documentsMeta, {
-    //         filter,
-    //     }).then(({ documentsMeta }) => documentsMeta || {}).then((documentsMeta) => {
-    //         setTotalDocumentCount(documentsMeta.count);
-    //     });
-    // }, [selectedYear, selectedTag]);
-
     return <Box bg="ghostWhite" pt={['40px', ,'50px', '60px']} pb={['120px']}>
         <Container>
             {
@@ -152,7 +177,7 @@ const DocumentReportsList:any = ({ latestDocuments, documentsMeta, documentsFilt
                                                                 as={Button}
                                                                 variant="menuItemFilter"
                                                                 onClick={() => {
-                                                                    setSelectedTag(item);
+                                                                    updateDocuments(item, selectedYear);
                                                                 }}>
                                                                 <Flex direction="row" align="center" width="100%">
                                                                     <Flex flex="1">{item.label}</Flex>
@@ -189,9 +214,7 @@ const DocumentReportsList:any = ({ latestDocuments, documentsMeta, documentsFilt
                                                                 as={Button}
                                                                 variant="menuItemFilter"
                                                                 onClick={() => {
-                                                                    // updateDocuments(item, year);
-                                                                    
-                                                                    setSelectedYear(item);
+                                                                    updateDocuments(selectedTag, item);
                                                                 }}>
                                                                 <Flex direction="row" align="center" width="100%">
                                                                     <Flex flex="1">{item.label}</Flex>

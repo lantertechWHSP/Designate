@@ -2,33 +2,19 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { doQuery, queries } from '~/dato/api';
 
 export default async function handler(request: NextApiRequest, response: NextApiResponse) : Promise<any> {
-    const ERROR_MESSAGE:string = 'Could not load Documents';
-
+    const ERROR_MESSAGE: string = 'Could not load Documents';
     const body:any = request.body;
-
-    const params = {};
-
-    if(body.first) {
-        params['first'] = body.first;
-    }
-    if(body.skip) {
-        params['skip'] = body.skip;
-    }
-    if(body.orderBy) {
-        params['orderBy'] = body.orderBy;
-    }
-    if(body.filter) {
-        params['filter'] = body.filter;
-    }
 
     if(request.method === 'POST') {
         try {
-            const documents = await doQuery(queries.documents, params).then(({ documents }) => documents || []);
+            const documentsMeta = await doQuery(queries.documentsMeta, {
+                filter: body.filter,
+            }).then(({ documentsMeta }) => documentsMeta || {});
 
             return response.status(200).json({
                 success: true,
                 data: {
-                    documents: documents
+                    documentsMeta: documentsMeta
                 }
             });
         }
