@@ -11,7 +11,24 @@ interface INextPageProps {
 }
 
 export async function getStaticPaths() : Promise<GetStaticPathsResult<any>> {
-    const documents:any = await doQuery(queries.documents, { first: 100 }).then(({ posts }) => posts);
+    const documents = [];
+
+    let hasAllDocuments = false;
+    let documentBatchIndex = 0;
+
+    while(!hasAllDocuments) {
+        const batchDocuments = await doQuery(queries.documents, { first: 100, skip: 100 * documentBatchIndex }).then(({ documents }) => documents);
+
+        documents.push(...batchDocuments);
+
+        if(batchDocuments.length < 100) {
+            hasAllDocuments = true;
+        }
+        else {
+            documentBatchIndex++;
+        }
+    }
+
     const paths:any = (Array.isArray(documents) && documents.length > 0) ? documents.map((post) => ({
         params: { slug: post.slug }
     })) : [];

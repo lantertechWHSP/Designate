@@ -1,6 +1,6 @@
 export const pages:string = `
-    query pages {
-        pages: allPages(first: 100) {
+    query pages($first: IntType, $skip: IntType) {
+        pages: allPages(first: $first, skip: $skip) {
             id
             title
             slug

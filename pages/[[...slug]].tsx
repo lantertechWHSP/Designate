@@ -24,7 +24,24 @@ export async function getStaticPaths() : Promise<GetStaticPathsResult<any>> {
         'privacy-policy'
     ];
 
-    const pages:IPage = await doQuery(queries.pages).then(({ pages }) => pages);
+    const pages:IPage[] = [];
+
+    let hasAllPages = false;
+    let pageBatchIndex = 0;
+
+    while(!hasAllPages) {
+        const batchPages = await doQuery(queries.pages, { first: 100, skip: 100 * pageBatchIndex }).then(({ pages }) => pages);
+
+        pages.push(...batchPages);
+
+        if(batchPages.length < 100) {
+            hasAllPages = true;
+        }
+        else {
+            pageBatchIndex++;
+        }
+    }
+
     const paths:any = Array.isArray(pages) && pages.length > 0 ? pages
         .filter((page) => !systemPages.includes(page.slug))
         .map((page) => {
