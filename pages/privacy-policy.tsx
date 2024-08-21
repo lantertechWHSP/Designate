@@ -21,7 +21,7 @@ export async function getServerSideProps({ }:GetServerSidePropsContext) : Promis
     return {
         redirect: {
             permanent: false,
-            destination: `/documents/${layout.footer.privacyPolicyDocument.slug}`,
+            destination: layout.footer.privacyPolicyDocument.document.url,
         },
         props:{},
     };
