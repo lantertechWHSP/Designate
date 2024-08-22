@@ -20,7 +20,7 @@ export async function getStaticPaths() : Promise<GetStaticPathsResult<any>> {
     const systemPages:string[] = [
         'news',
         'investor-centre/key-dates',
-        'investor-centre/financial-reports',
+        'investor-centre/reports',
         'privacy-policy'
     ];
 
