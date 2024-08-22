@@ -21,6 +21,11 @@ const nextConfig = {
                 source: '/home',
                 destination: '/',
                 permanent: true
+            },
+            {
+                source: '/investor-center/financial-reports',
+                destination: '/investor-center/reports',
+                permanent: false
             }
         ];
     }
