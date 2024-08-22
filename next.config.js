@@ -23,8 +23,8 @@ const nextConfig = {
                 permanent: true
             },
             {
-                source: '/investor-center/financial-reports',
-                destination: '/investor-center/reports',
+                source: '/investor-centre/financial-reports',
+                destination: '/investor-centre/reports',
                 permanent: false
             }
         ];
