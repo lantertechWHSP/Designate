@@ -30,5 +30,3 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) : any 
 
     return getLayout(<Component {...pageProps} />);
 }
-
-// Test!
