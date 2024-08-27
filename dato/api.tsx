@@ -1,5 +1,5 @@
 const KEY:string = process.env.NEXT_PUBLIC_DATO_KEY;
-const ENVIRONMENT:string = process.env.DATO_ENVIRONMENT;
+const ENVIRONMENT:string = process.env.NEXT_PUBLIC_DATO_ENVIRONMENT;
 
 import * as queries from '~/dato/queries';
 export { queries };
