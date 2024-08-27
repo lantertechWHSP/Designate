@@ -27,8 +27,6 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
 
     useEffect(() => {
         if(ctx.formValues.events) {
-            console.log(ctx.formValues.events);
-
             fetch('/api/events', {
                 method: 'POST',
                 headers: {
@@ -39,7 +37,6 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                     in: ctx.formValues.events,
                 })
             }).then(response => response.json()).then((response:any) => {
-                debugger;
                 if(response.success) {
                     if(response.data.events.length > 0) {
                         setEvents(response.data.events);
