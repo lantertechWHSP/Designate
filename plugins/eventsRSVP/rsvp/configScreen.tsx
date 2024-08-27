@@ -1,15 +1,16 @@
 import { Canvas, FieldGroup, Button, Dropdown, DropdownMenu, DropdownOption, DropdownSeparator } from 'datocms-react-ui';
 import { useEffect, useState } from 'react';
 import 'datocms-react-ui/styles.css';
+import { doQuery, queries } from "~/dato/api";
 import './configScreen.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faCheck, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 import { buildClient } from '@datocms/cma-client-browser';
-import { IEvent } from '~/interfaces/models/event';
+import {IEvent} from "~/interfaces/models/event";
 
 const client = buildClient({
-    apiToken: process.env.DATO_KEY,
-    environment: process.env.DATO_ENVIRONMENT
+    apiToken: process.env.NEXT_PUBLIC_DATO_KEY,
+    environment: process.env.NEXT_PUBLIC_DATO_ENVIRONMENT
 });
 
 type PropTypes = {
@@ -23,47 +24,35 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
     // RSVP id’s
     const [rsvps, setRSVPs] = useState(ctx.formValues.rsvp);
 
-    const [isLoaded, setIsLoaded] = useState(false);
-
     useEffect(() => {
         if(ctx.formValues.events) {
-            fetch('/api/events', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    in: ctx.formValues.events,
-                })
-            }).then(response => response.json()).then((response:any) => {
-                if(response.success) {
-                    if(response.data.events.length > 0) {
-                        setEvents(response.data.events);
-                    }
-                }
+            doQuery(queries.events, {
+                in: ctx.formValues.events
+            }).then((response) => {
+                setEvents(response.events);
             });
         }
 
         if(ctx.formValues.rsvp) {
-            fetch('/api/events/rsvp', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    in: ctx.formValues.rsvp,
-                })
-            }).then(response => response.json()).then((response:any) => {
-                if(response.success) {
-                    if(response.data.values.length > 0) {
-                        setEventRSVPItems(response.data.values);
+            (async () => {
+                const values = [];
+                let hasAllValues = false;
+                let batchIndex = 0;
+
+                while(!hasAllValues) {
+                    const batchValues = await doQuery(queries.eventRSVP, { first: 100, skip: 100 * batchIndex, in: ctx.formValues.rsvp }).then(({ eventRSVPS }) => eventRSVPS);
+
+                    values.push(...batchValues);
+
+                    if(batchValues.length < 1) {
+                        hasAllValues = true;
+                    }
+                    else {
+                        batchIndex++;
                     }
                 }
-            }).finally(() => {
-                setIsLoaded(true);
-            });
+                setEventRSVPItems(values);
+            })();
         }
     }, []);
 
