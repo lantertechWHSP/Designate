@@ -179,116 +179,108 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
         <Canvas ctx={ctx}>
             <FieldGroup>
                 {
-                    isLoaded ? <>
-                        {
-                            eventRSVPItems.length > 0 ? <>
-                                <div className="ItemsTable">
-                                    <div className="ItemsTable__header-row">
-                                        <div className="ItemsTable__header-cell ItemsTable__header-cell--name">Name</div>
-                                        <div className="ItemsTable__header-cell ItemsTable__header-cell--email">Email</div>
-                                        <div className="ItemsTable__header-cell ItemsTable__header-cell--shareholder">Shareholder</div>
-                                        {
-                                            events.map((event:IEvent, index:number) => {
-                                                return <div key={index} className="ItemsTable__header-cell" style={{
-                                                    width: `${35 / events.length}%`
-                                                }}>{event.label}</div>;
-                                            })
-                                        }
-                                        <div className="ItemsTable__header-cell ItemsTable__header-cell--edit">
-                                            Edit
-                                        </div>
-                                    </div>
-                                    <div className="ItemsTable__content">
-                                        {
-                                            eventRSVPItems.map((item, index: number) => {
-                                                return <div className="ItemsTable__row" key={index}>
-                                                    <div className="ItemsTable__cell ItemsTable__cell--name">
-                                                        {item.name}
-                                                    </div>
-                                                    <div className="ItemsTable__cell ItemsTable__cell--email">
-                                                        {item.email}
-                                                    </div>
-                                                    <div className="ItemsTable__cell ItemsTable__cell--shareholder ItemsTable__cell--center">
-                                                        {
-                                                            item.isShareholder && <FontAwesomeIcon icon={faCheck} />
-                                                        }
-                                                    </div>
-                                                    {
-                                                        events.map((event:IEvent, index:number) => {
-                                                            return <div className="ItemsTable__cell ItemsTable__cell--center" style={{
-                                                                width: `${35 / events.length}%`
-                                                            }} key={index}>
-                                                                {
-                                                                    (() => {
-                                                                        const attending = item.eventsAttending.find((eventsAttending) => {
-                                                                            return eventsAttending.id === event.id;
-                                                                        });
-
-                                                                        return attending && <FontAwesomeIcon icon={faCheck} />;
-                                                                    })()
-                                                                }
-                                                            </div>;
-                                                        })
-                                                    }
-                                                    <div className="ItemsTable__cell ItemsTable__cell--edit">
-                                                        <Dropdown
-                                                            renderTrigger={({ onClick }) => (
-                                                                <Button
-                                                                    buttonType="muted"
-                                                                    style={{
-                                                                        lineHeight: '16px'
-                                                                    }}
-                                                                    onClick={onClick}
-                                                                >
-                                                                    <FontAwesomeIcon icon={faEllipsisVertical} />
-                                                                </Button>
-                                                            )}
-                                                        >
-                                                            <DropdownMenu alignment="right">
-                                                                <DropdownOption onClick={() => {
-                                                                    edit(item.id);
-                                                                }}>Edit</DropdownOption>
-                                                                <DropdownSeparator />
-                                                                <DropdownOption red onClick={() => {
-                                                                    remove(item.id);
-                                                                }}>
-                                                                    Delete
-                                                                </DropdownOption>
-                                                            </DropdownMenu>
-                                                        </Dropdown>
-                                                    </div>
-                                                </div>;
-                                            })
-                                        }
-                                    </div>
-                                </div>
-                                <div style={{ marginTop: 'var(--spacing-l)' }}>
-                                    <Button buttonType="muted" buttonSize="s" onClick={() => {
-                                        create();
-                                    }}>
-                                        <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon> New RSVP
-                                    </Button>
-                                </div>
-                                <div style={{ marginTop: 'var(--spacing-l)' }}>
-                                    <Button buttonType="primary" buttonSize="s" onClick={download}>
-                                        Download CSV
-                                    </Button>
-                                </div>
-                            </> : <div>
-                                <div>
-                                    No items…
-                                </div>
-                                <div style={{marginTop: 'var(--spacing-l)'}}>
-                                    <Button buttonType="muted" buttonSize="s" onClick={() => {
-                                        create();
-                                    }}>
-                                        <FontAwesomeIcon icon={faPlus}/> New RSVP
-                                    </Button>
+                    eventRSVPItems.length > 0 ? <>
+                        <div className="ItemsTable">
+                            <div className="ItemsTable__header-row">
+                                <div className="ItemsTable__header-cell ItemsTable__header-cell--name">Name</div>
+                                <div className="ItemsTable__header-cell ItemsTable__header-cell--email">Email</div>
+                                <div className="ItemsTable__header-cell ItemsTable__header-cell--shareholder">Shareholder</div>
+                                {
+                                    events.map((event:IEvent, index:number) => {
+                                        return <div key={index} className="ItemsTable__header-cell" style={{
+                                            width: `${35 / events.length}%`
+                                        }}>{event.label}</div>;
+                                    })
+                                }
+                                <div className="ItemsTable__header-cell ItemsTable__header-cell--edit">
+                                    Edit
                                 </div>
                             </div>
-                        }
+                            <div className="ItemsTable__content">
+                                {
+                                    eventRSVPItems.map((item, index: number) => {
+                                        return <div className="ItemsTable__row" key={index}>
+                                            <div className="ItemsTable__cell ItemsTable__cell--name">
+                                                {item.name}
+                                            </div>
+                                            <div className="ItemsTable__cell ItemsTable__cell--email">
+                                                {item.email}
+                                            </div>
+                                            <div className="ItemsTable__cell ItemsTable__cell--shareholder ItemsTable__cell--center">
+                                                {
+                                                    item.isShareholder && <FontAwesomeIcon icon={faCheck} />
+                                                }
+                                            </div>
+                                            {
+                                                events.map((event:IEvent, index:number) => {
+                                                    return <div className="ItemsTable__cell ItemsTable__cell--center" style={{
+                                                        width: `${35 / events.length}%`
+                                                    }} key={index}>
+                                                        {
+                                                            (() => {
+                                                                const attending = item.eventsAttending.find((eventsAttending) => {
+                                                                    return eventsAttending.id === event.id;
+                                                                });
+
+                                                                return attending && <FontAwesomeIcon icon={faCheck} />;
+                                                            })()
+                                                        }
+                                                    </div>;
+                                                })
+                                            }
+                                            <div className="ItemsTable__cell ItemsTable__cell--edit">
+                                                <Dropdown
+                                                    renderTrigger={({ onClick }) => (
+                                                        <Button
+                                                            buttonType="muted"
+                                                            style={{
+                                                                lineHeight: '16px'
+                                                            }}
+                                                            onClick={onClick}
+                                                        >
+                                                            <FontAwesomeIcon icon={faEllipsisVertical} />
+                                                        </Button>
+                                                    )}
+                                                >
+                                                    <DropdownMenu alignment="right">
+                                                        <DropdownOption onClick={() => {
+                                                            edit(item.id);
+                                                        }}>Edit</DropdownOption>
+                                                        <DropdownSeparator />
+                                                        <DropdownOption red onClick={() => {
+                                                            remove(item.id);
+                                                        }}>
+                                                            Delete
+                                                        </DropdownOption>
+                                                    </DropdownMenu>
+                                                </Dropdown>
+                                            </div>
+                                        </div>;
+                                    })
+                                }
+                            </div>
+                        </div>
+                        <div style={{ marginTop: 'var(--spacing-l)' }}>
+                            <Button buttonType="muted" buttonSize="s" onClick={() => {
+                                create();
+                            }}>
+                                <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon> New RSVP
+                            </Button>
+                        </div>
+                        <div style={{ marginTop: 'var(--spacing-l)' }}>
+                            <Button buttonType="primary" buttonSize="s" onClick={download}>
+                                Download CSV
+                            </Button>
+                        </div>
                     </> : <div>
-                        Loading RSVP…
+                        No items…
+                        <div style={{marginTop: 'var(--spacing-l)'}}>
+                            <Button buttonType="muted" buttonSize="s" onClick={() => {
+                                create();
+                            }}>
+                                <FontAwesomeIcon icon={faPlus} /> New RSVP
+                            </Button>
+                        </div>
                     </div>
                 }
             </FieldGroup>
