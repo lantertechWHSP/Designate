@@ -1,10 +1,10 @@
 import * as queries from '~/dato/queries';
 export { queries };
 
-const KEY:string = process.env.NEXT_PUBLIC_DATO_KEY;
-const ENVIRONMENT:string = process.env.NEXT_PUBLIC_DATO_ENVIRONMENT;
-
 export const doQuery:any = async (query:any, variables?:any, preview?:any) : Promise<any> => {
+    const KEY:string = process.env.DATO_KEY;
+    const ENVIRONMENT:string = process.env.DATO_ENVIRONMENT;
+
     const endpoint:string = preview
         ? `https://graphql.datocms.com/environments/${ENVIRONMENT}/preview`
         : `https://graphql.datocms.com/environments/${ENVIRONMENT}`;
