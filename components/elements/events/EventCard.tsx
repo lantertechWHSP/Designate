@@ -4,13 +4,13 @@ import { Flex, Heading, Text, Box } from '@chakra-ui/react';
 import { DateTime } from 'luxon';
 import AddToCalendar from '~/components/elements/events/AddToCalendar';
 import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
-import { SectionLink } from "~/components/elements/sectionLink";
-import { isNil as _isNil } from 'lodash';
+// import { SectionLink } from "~/components/elements/sectionLink";
+// import { isNil as _isNil } from 'lodash';
 
 interface IEventDateCard extends IEvent {
 }
 
-const EventCard:any = ({ title, allDay, startDate, endDate, location, isRsvp, rsvpCutOffDate }:IEventDateCard) : ReactNode => {
+const EventCard:any = ({ title, allDay, startDate, endDate, location }:IEventDateCard) : ReactNode => {
     const [isOpen, setIsOpen] = useState(false);
 
     return <Flex py={[4, ,'22px']}
