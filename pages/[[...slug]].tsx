@@ -26,11 +26,11 @@ export async function getStaticPaths() : Promise<GetStaticPathsResult<any>> {
 
     const pages:IPage[] = [];
 
-    let hasAllPages = false;
-    let pageBatchIndex = 0;
+    let hasAllPages:boolean = false;
+    let pageBatchIndex:number = 0;
 
     while(!hasAllPages) {
-        const batchPages = await doQuery(queries.pages, { first: 100, skip: 100 * pageBatchIndex }).then(({ pages }) => pages);
+        const batchPages:IPage[] = await doQuery(queries.pages, { first: 100, skip: 100 * pageBatchIndex }).then(({ pages }) => pages);
 
         pages.push(...batchPages);
 
