@@ -69,7 +69,7 @@ export async function getStaticProps({ params, preview }:GetStaticPropsContext) 
             layout,
             blocks
         },
-        revalidate: 30
+        // revalidate: 30
     };
 }
 
