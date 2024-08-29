@@ -55,26 +55,27 @@ const EventCard:any = ({ title, allDay, startDate, endDate, location, isRsvp, rs
                             </SectionLink>
                         </AnimateOverflow>
                     }
-                    <AnimateOverflow>
-                        <AddToCalendar
-                            isOpen={isOpen}
-                            open={() => {
-                                setIsOpen(true);
-                            }}
-                            onClose={() => {
-                                setIsOpen(false);
-                            }}
-                            event={{
-                                title: title,
-                                // description: details,
-                                location: location,
-                                start: startDate,
-                                end: endDate !== startDate ? endDate : null,
-                                allDay: allDay || false
-                            }}>
-                        </AddToCalendar>
-                    </AnimateOverflow>
-
+                    {
+                        !isRsvp && <AnimateOverflow>
+                            <AddToCalendar
+                                isOpen={isOpen}
+                                open={() => {
+                                    setIsOpen(true);
+                                }}
+                                onClose={() => {
+                                    setIsOpen(false);
+                                }}
+                                event={{
+                                    title: title,
+                                    // description: details,
+                                    location: location,
+                                    start: startDate,
+                                    end: endDate !== startDate ? endDate : null,
+                                    allDay: allDay || false
+                                }}>
+                            </AddToCalendar>
+                        </AnimateOverflow>
+                    }
                 </>
             }
         </Flex>
