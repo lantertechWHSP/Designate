@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Canvas, SelectField } from 'datocms-react-ui';
+import { doPublicQuery, queries } from '~/dato/api';
 
 interface Props {
     ctx: any;
@@ -28,18 +29,8 @@ const EventsRSVPAttendingConfigScreen = ({ ctx }: Props) : any => {
     useEffect(() => {
         if(eventBundleId) {
             (async () => {
-                const response:any = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/events/event-bundles`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        id: eventBundleId,
-                    })
-                }).then(response => response.json());
-
-                const events = response.data.eventBundles[0].events;
+                const values = await doPublicQuery(queries.eventBundle, ({ id: eventBundleId })).then(({ eventBundles }) => eventBundles);
+                const events = values[0].events;
 
                 setEvents(events);
 

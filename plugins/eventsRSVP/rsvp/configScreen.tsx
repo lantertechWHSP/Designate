@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faCheck, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 // import { buildClient } from '@datocms/cma-client-browser';
 import { IEvent } from '~/interfaces/models/event';
+import {doPublicQuery, queries} from "~/dato/api";
 
 // const client = buildClient({
 //     apiToken: process.env.DATO_KEY,
@@ -28,45 +29,34 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
 
     useEffect(() => {
         if(ctx.formValues.events) {
-            console.log(ctx.formValues.events);
-
-            fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/events`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    in: ctx.formValues.events,
-                })
-            }).then(response => response.json()).then((response:any) => {
-                if(response.success) {
-                    if(response.data.events.length > 0) {
-                        setEvents(response.data.events);
-                    }
-                }
+            doPublicQuery(queries.events, {
+                in: ctx.formValues.events
+            }).then((response) => {
+                setEvents(response.events);
             });
         }
 
         if(ctx.formValues.rsvp) {
-            fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/events/rsvp`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    in: ctx.formValues.rsvp,
-                })
-            }).then(response => response.json()).then((response:any) => {
-                if(response.success) {
-                    if(response.data.values.length > 0) {
-                        setEventRSVPItems(response.data.values);
+            (async () => {
+                const values = [];
+                let hasAllValues = false;
+                let batchIndex = 0;
+
+                while(!hasAllValues) {
+                    const batchValues = await doPublicQuery(queries.eventRSVP, { first: 100, skip: 100 * batchIndex, in: ctx.formValues.rsvp }).then(({ eventRSVPS }) => eventRSVPS);
+
+                    values.push(...batchValues);
+
+                    if(batchValues.length < 1) {
+                        hasAllValues = true;
+                    }
+                    else {
+                        batchIndex++;
                     }
                 }
-            }).finally(() => {
+                setEventRSVPItems(values);
                 setIsLoaded(true);
-            });
+            })();
         }
     }, []);
 
