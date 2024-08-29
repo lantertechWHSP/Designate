@@ -3,7 +3,7 @@ import type { NextPage } from 'next';
 import { GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult } from 'next';
 import DefaultPageLayout from '~/components/pages/layouts/DefaultPageLayout';
 import { ModularContent } from '~/components/ModularContent';
-import {doQuery, doQueryTest, queries} from '~/dato/api';
+import { doQuery, queries } from '~/dato/api';
 import { getBlocks, getLayoutData } from '~/lib/utils';
 import { ISite } from '~/interfaces/layout/site';
 import { ILayout } from '~/interfaces/layout/layout';
@@ -56,8 +56,8 @@ export async function getStaticProps({ params, preview }:GetStaticPropsContext) 
     const { slug: slugRaw } = params;
 
     const slug:string = slugRaw && Array.isArray(slugRaw) ? slugRaw.join('/') : 'home';
-    const site:ISite = await doQueryTest(queries.site, {}, false, process.env.DATO_KEY, process.env.DATO_ENVIRONMENT);
-    const page:IPage = await doQueryTest(queries.page, { slug }, preview, process.env.DATO_KEY, process.env.DATO_ENVIRONMENT).then(
+    const site:ISite = await doQuery(queries.site);
+    const page:IPage = await doQuery(queries.page, { slug }, preview).then(
         ({ page }) => page
     );
 
@@ -68,8 +68,7 @@ export async function getStaticProps({ params, preview }:GetStaticPropsContext) 
         props: {
             layout,
             blocks
-        },
-        revalidate: 30
+        }
     };
 }
 
