@@ -46,6 +46,7 @@ default:
     expire_in: 5 min
     paths:
       - .next/
+      - .env
 
 ## Define the stages
 stages:
