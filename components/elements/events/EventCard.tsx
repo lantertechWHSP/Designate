@@ -74,6 +74,7 @@ const EventCard:any = ({ title, allDay, startDate, endDate, location, isRsvp, rs
                             }}>
                         </AddToCalendar>
                     </AnimateOverflow>
+
                 </>
             }
         </Flex>
@@ -81,3 +82,4 @@ const EventCard:any = ({ title, allDay, startDate, endDate, location, isRsvp, rs
 };
 
 export default EventCard;
+
