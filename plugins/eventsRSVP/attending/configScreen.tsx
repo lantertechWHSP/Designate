@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Canvas, SelectField } from 'datocms-react-ui';
-import { doPublicQuery, queries } from '~/dato/api';
+import { doQuery, queries } from '~/dato/api';
 
 interface Props {
     ctx: any;
@@ -29,7 +29,7 @@ const EventsRSVPAttendingConfigScreen = ({ ctx }: Props) : any => {
     useEffect(() => {
         if(eventBundleId) {
             (async () => {
-                const values = await doPublicQuery(queries.eventBundle, ({ id: eventBundleId })).then(({ eventBundles }) => eventBundles);
+                const values = await doQuery(queries.eventBundle, ({ id: eventBundleId })).then(({ eventBundles }) => eventBundles);
                 const events = values[0].events;
 
                 setEvents(events);

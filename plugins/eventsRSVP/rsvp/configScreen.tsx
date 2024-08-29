@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faCheck, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 // import { buildClient } from '@datocms/cma-client-browser';
 import { IEvent } from '~/interfaces/models/event';
-import {doPublicQuery, queries} from "~/dato/api";
+import { doQuery, queries} from "~/dato/api";
 
 // const client = buildClient({
 //     apiToken: process.env.DATO_KEY,
@@ -29,7 +29,7 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
 
     useEffect(() => {
         if(ctx.formValues.events) {
-            doPublicQuery(queries.events, {
+            doQuery(queries.events, {
                 in: ctx.formValues.events
             }).then((response) => {
                 setEvents(response.events);
@@ -43,7 +43,7 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                 let batchIndex = 0;
 
                 while(!hasAllValues) {
-                    const batchValues = await doPublicQuery(queries.eventRSVP, { first: 100, skip: 100 * batchIndex, in: ctx.formValues.rsvp }).then(({ eventRSVPS }) => eventRSVPS);
+                    const batchValues = await doQuery(queries.eventRSVP, { first: 100, skip: 100 * batchIndex, in: ctx.formValues.rsvp }).then(({ eventRSVPS }) => eventRSVPS);
 
                     values.push(...batchValues);
 
