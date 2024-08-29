@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import {doQuery, queries} from "~/dato/api";
+import { doPublicQuery, queries} from "~/dato/api";
 
 export default async function handler(request: NextApiRequest, response: NextApiResponse) : Promise<any> {
     const body:any = request.body;
@@ -12,7 +12,7 @@ export default async function handler(request: NextApiRequest, response: NextApi
             let batchIndex = 0;
 
             while(!hasAllValues) {
-                const batchValues = await doQuery(queries.eventRSVP, { first: 100, skip: 100 * batchIndex, in: body.rsvp }).then(({ eventRSVPS }) => eventRSVPS);
+                const batchValues = await doPublicQuery(queries.eventRSVP, { first: 100, skip: 100 * batchIndex, in: body.rsvp }).then(({ eventRSVPS }) => eventRSVPS);
 
                 values.push(...batchValues);
 

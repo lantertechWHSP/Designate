@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { doQuery, queries } from '~/dato/api';
+import { doPublicQuery, queries } from '~/dato/api';
 
 export default async function handler(request: NextApiRequest, response: NextApiResponse) : Promise<any> {
     const body: any = request.body;
@@ -7,7 +7,7 @@ export default async function handler(request: NextApiRequest, response: NextApi
 
     if (request.method === 'POST') {
         try {
-            const events = await doQuery(queries.events, {
+            const events = await doPublicQuery(queries.events, {
                 in: body.in
             });
 

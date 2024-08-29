@@ -1,5 +1,5 @@
-import {NextApiRequest, NextApiResponse} from "next";
-import {doQuery, queries} from "~/dato/api";
+import { NextApiRequest, NextApiResponse } from 'next';
+import { doPublicQuery, queries} from '~/dato/api';
 
 export default async function handler(request: NextApiRequest, response: NextApiResponse) : Promise<any> {
     const body: any = request.body;
@@ -7,7 +7,7 @@ export default async function handler(request: NextApiRequest, response: NextApi
 
     if (request.method === 'POST') {
         try {
-            const eventBundles = await doQuery(queries.eventBundle, ({ id: body.id })).then(({ eventBundles }) => eventBundles)
+            const eventBundles = await doPublicQuery(queries.eventBundle, ({ id: body.id })).then(({ eventBundles }) => eventBundles)
 
             return response.status(200).json({
                 success: true,
