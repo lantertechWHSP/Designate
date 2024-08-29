@@ -68,6 +68,7 @@ deploy:
   stage: deploy
   script:
     ## Transfer relevant NextJS files to the server
+    - rsync -az .env gitlab@20.157.214.14:/opt/whsp/
     - rsync -az next.config.js gitlab@20.157.214.14:/opt/whsp/
     - rsync -az package.json gitlab@20.157.214.14:/opt/whsp/
     - rsync -az node_modules gitlab@20.157.214.14:/opt/whsp/
