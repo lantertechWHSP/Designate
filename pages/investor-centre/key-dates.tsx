@@ -29,7 +29,8 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
         props: {
             layout,
             blocks,
-        }
+        },
+        revalidate: 10
     };
 }
 
