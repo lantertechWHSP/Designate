@@ -56,7 +56,7 @@ const EventCard:any = ({ title, allDay, startDate, endDate, location, isRsvp, rs
                         </AnimateOverflow>
                     }
                     {
-                        !isRsvp && <AnimateOverflow>
+                        isRsvp && <AnimateOverflow>
                             <AddToCalendar
                                 isOpen={isOpen}
                                 open={() => {
