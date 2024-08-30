@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Canvas, SelectField } from 'datocms-react-ui';
-import { doQuery, queries } from '~/dato/api';
+import { buildClient } from "@datocms/cma-client-browser";
+import { Alert } from '~/plugins/eventsRSVP/alert/alert';
 
 interface Props {
     ctx: any;
@@ -10,6 +11,14 @@ const EventsRSVPAttendingConfigScreen = ({ ctx }: Props) : any => {
     const [events, setEvents] = useState([]);
     const [attending, setAttending] = useState([]);
     const [eventBundleId, setEventBundleId] = useState(null);
+
+    const [errorMessage, setErrorMessage] = useState('');
+
+    // DatoCMS build Client
+    const client = buildClient({
+        apiToken: ctx.currentUserAccessToken,
+        environment: ctx.environment
+    });
 
     useEffect(() => {
         if(ctx.formValues.event_bundle) {
@@ -28,25 +37,42 @@ const EventsRSVPAttendingConfigScreen = ({ ctx }: Props) : any => {
 
     useEffect(() => {
         if(eventBundleId) {
-            // (async () => {
-            //     const values = await doQuery(queries.eventBundle, ({ id: eventBundleId })).then(({ eventBundles }) => eventBundles);
-            //     const events = values[0].events;
-            //
-            //     setEvents(events);
-            //
-            //     if(ctx.formValues.events_attending) {
-            //         setAttending(events.filter((event) => {
-            //             return !!ctx.formValues.events_attending.find((attending:string) => {
-            //                 return event.id === attending;
-            //             });
-            //         }).map((event) => {
-            //             return {
-            //                 label: event.label,
-            //                 value: event.id
-            //             };
-            //         }));
-            //     }
-            // })();
+            setErrorMessage('');
+
+            client.items.list({
+                filter: {
+                    type: 'event_bundle',
+                    ids: eventBundleId
+                },
+            }).then((eventBundles:any) => {
+                const eventIds = eventBundles[0].events;
+
+                client.items.list({
+                    filter: {
+                        type: 'event',
+                        ids: eventIds,
+                    }
+                }).then((apiEvents) => {
+                    setEvents(apiEvents);
+
+                    if(ctx.formValues.events_attending) {
+                        setAttending(apiEvents.filter((event) => {
+                            return !!ctx.formValues.events_attending.find((attending:string) => {
+                                return event.id === attending;
+                            });
+                        }).map((event) => {
+                            return {
+                                label: event.label,
+                                value: event.id
+                            };
+                        }));
+                    }
+                }).catch(() => {
+                    setErrorMessage('Could not load Events');
+                });
+            }).catch(() => {
+                setErrorMessage('Could not load Events');
+            });
         }
     }, [eventBundleId]);
 
@@ -59,24 +85,29 @@ const EventsRSVPAttendingConfigScreen = ({ ctx }: Props) : any => {
     }, [attending]);
 
     return <Canvas ctx={ctx}>
-        <SelectField
-            name="events_attending"
-            id="events_attending"
-            label=""
-            value={attending}
-            selectInputProps={{
-                isMulti: true,
-                options: events.map((event) => {
-                    return {
-                        label: event.label,
-                        value: event.id
-                    };
-                }),
-            }}
-            onChange={(newValue:any) => {
-                setAttending(newValue);
-            }}
-        />
+        {
+            !errorMessage ? <SelectField
+                name="events_attending"
+                id="events_attending"
+                label=""
+                value={attending}
+                selectInputProps={{
+                    isMulti: true,
+                    options: events.map((event) => {
+                        return {
+                            label: event.label,
+                            value: event.id
+                        };
+                    }),
+                }}
+                onChange={(newValue:any) => {
+                    setAttending(newValue);
+                }}
+            /> : <Alert variant="error">
+                {errorMessage}
+            </Alert>
+        }
+
     </Canvas>;
 };
 

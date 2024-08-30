@@ -15,7 +15,7 @@ type PropTypes = {
 const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
     const [events, setEvents] = useState([]);
 
-    const [eventRSVPItems, setEventRSVPItems] = useState([]); // All the Event RSVP’s
+    const [allEventRSVPItems, setAllEventRSVPItems] = useState([]); // All the Event RSVP’s
     const [displayedEventRSVPItems, setDisplayedEventRSVPItems] = useState([]); // Paginated display of the Event RSVP’s
 
     // RSVP id’s
@@ -27,7 +27,7 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
 
     // Paggination
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage:number = 50;
+    const itemsPerPage:number = 5;
     const [totalItems, setTotalItems] = useState(0);
 
     // Table
@@ -52,6 +52,8 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                 setEvents(events);
 
                 if(ctx.formValues.rsvp) {
+                    // alert('Invoking!');
+
                     loadRsvpEvents(currentPage, () => {
                         setIsLoaded(true);
                     });
@@ -82,7 +84,7 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
 
 
                             console.log(allItems);
-                            setEventRSVPItems(allItems);
+                            setAllEventRSVPItems(allItems);
                             setTotalItems(allItems.length);
                         }
                         catch {
@@ -122,7 +124,8 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
     };
 
     const download:any = () : void => {
-        if(eventRSVPItems.length > 0) {
+        if(allEventRSVPItems.length > 0) {
+            debugger;
             let CSVString:string = '';
             const title:string = ctx.formValues.title ? `${ctx.formValues.title} — RSVP` : 'RSVP';
 
@@ -133,16 +136,16 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
             CSVString += ['Name', 'Email', 'Shareholder', ...eventDateLabels].join(',');
             CSVString += "\r\n";
 
-            eventRSVPItems.map((item) => {
+            allEventRSVPItems.map((item) => {
                 const eventAttending = events.map((eventDate:any) => {
-                    const attending = item.eventsAttending.find((eventsAttending) => {
-                        return eventsAttending.id === eventDate.id;
+                    const attending = item.events_attending.find((eventId:string) => {
+                        return eventId === eventDate.id;
                     });
 
                     return attending ? 'Yes' : 'No';
                 });
 
-                CSVString += [item.name, item.email, item.isShareholder ? 'Yes' : 'No', ...eventAttending].join(',');
+                CSVString += [item.name, item.email, item.is_shareholder ? 'Yes' : 'No', ...eventAttending].join(',');
                 CSVString += "\r\n";
             });
 
@@ -162,21 +165,20 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
         const item = await ctx.createNewItem(process.env.NEXT_PUBLIC_DATO_ITEM_TYPE_EVENT_RSVP_ID);
 
         if (item) {
+            debugger;
             const rsvpItem:any = {
                 id: item.id,
                 name: item.attributes.name,
                 email: item.attributes.email,
-                isShareholder: item.attributes.is_shareholder,
-                eventsAttending: item.attributes.events_attending.map((id) => {
-                    return {
-                        id: id
-                    };
+                is_shareholder: item.attributes.is_shareholder,
+                events_attending: item.attributes.events_attending.map((id) => {
+                    return id;
                 })
             };
 
             // Add the RSVP item
-            const newEventRSVPItems = [...eventRSVPItems, rsvpItem];
-            setEventRSVPItems(newEventRSVPItems);
+            const newEventRSVPItems = [...allEventRSVPItems, rsvpItem];
+            setAllEventRSVPItems(newEventRSVPItems);
             const newRSVPs = [...rsvps, item.id];
             setRSVPs(newRSVPs);
 
@@ -194,19 +196,21 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
     const edit:any = async (id:string): Promise<void> => {
         const item = await ctx.editItem(id);
         if(item) {
+            debugger;
             const rsvpItem:any = {
                 id: item.id,
                 name: item.attributes.name,
                 email: item.attributes.email,
-                isShareholder: item.attributes.is_shareholder,
-                eventsAttending: item.attributes.events_attending.map((id) => {
-                    return {
-                        id: id
-                    };
+                is_shareholder: item.attributes.is_shareholder,
+                events_attending: item.attributes.events_attending.map((id) => {
+                    return id;
                 })
             };
 
-            const newEventRSVPItems = [...eventRSVPItems];
+            debugger;
+
+            // Update the RSVP item
+            const newEventRSVPItems = [...allEventRSVPItems];
             for(let i = 0; i < newEventRSVPItems.length; i++) {
                 if(newEventRSVPItems[i].id === rsvpItem.id) {
                     newEventRSVPItems[i] = {
@@ -215,16 +219,20 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                 }
             }
 
-            setEventRSVPItems(newEventRSVPItems);
+            console.log(newEventRSVPItems);
+
+            setAllEventRSVPItems(newEventRSVPItems);
+
+            loadRsvpEvents(currentPage);
         }
     };
 
     const remove:any = async (id:string): Promise<void> => {
         // Remove the RSVP item
-        const newEventRSVPItems = eventRSVPItems.filter((eventRSVPItem) => {
+        const newEventRSVPItems = allEventRSVPItems.filter((eventRSVPItem) => {
             return eventRSVPItem.id !== id;
         });
-        setEventRSVPItems(newEventRSVPItems);
+        setAllEventRSVPItems(newEventRSVPItems);
         const newRSVPs = newEventRSVPItems.map((eventRSVPItem) => {
             return eventRSVPItem.id;
         });
@@ -360,7 +368,7 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                                 }}>
                                     Previous
                                 </Button>
-                                <Button buttonType="muted" buttonSize="s" disabled={(currentPage + 1) * itemsPerPage >= totalItems} onClick={() => {
+                                <Button buttonType="muted" buttonSize="s" disabled={((currentPage + 1) * itemsPerPage) > totalItems} onClick={() => {
                                     const nextPage:number = currentPage + 1;
                                     loadRsvpEvents(nextPage, () => {
                                         setCurrentPage(nextPage);
@@ -385,7 +393,7 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                                     <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon> New RSVP
                                 </Button>
                                 {
-                                    eventRSVPItems.length > 0 && <Button buttonType="primary" buttonSize="s" onClick={download}>
+                                    allEventRSVPItems.length > 0 && <Button buttonType="primary" buttonSize="s" onClick={download}>
                                         Download CSV
                                     </Button>
                                 }
