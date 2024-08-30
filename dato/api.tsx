@@ -29,30 +29,3 @@ export const doQuery:any = async (query:any, variables?:any, preview?:any) : Pro
         throw error;
     }
 };
-
-export const doPluginQuery:any = async (query:any, variables?:any, api?: { environment?:string, key?:string }) : Promise<any> => {
-    const KEY:string = api.key;
-    const ENVIRONMENT:string = api.environment;
-
-    const endpoint:string =`https://graphql.datocms.com/environments/${ENVIRONMENT}`;
-
-    try {
-        return await fetch(endpoint, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                Accept: 'application/json',
-                Authorization: `Bearer ${KEY}`
-            },
-            body: JSON.stringify({ query, variables })
-        })
-            .then((res) => res.json())
-            .then(({ data, errors }) => {
-                if (errors) throw errors;
-                return data;
-            });
-    } catch (error) {
-        console.log('QUERY ERROR', error, 'on query', query);
-        throw error;
-    }
-};

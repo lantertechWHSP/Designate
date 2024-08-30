@@ -1,5 +1,4 @@
 import { useState, ReactNode, useEffect } from 'react';
-import { doQuery, queries } from '~/dato/api';
 import DocumentCard from '~/components/elements/documents/DocumentCard';
 import { Box, Flex, Button, Spinner, Container, Heading, Menu, MenuButton, Portal, MenuList, MenuItem, Alert } from '@chakra-ui/react';
 import { IDocument, IDocumentsFilters, IDocumentBundle } from '~/interfaces/models/document';

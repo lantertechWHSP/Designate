@@ -3,7 +3,7 @@ import { createMultiStyleConfigHelpers } from '@chakra-ui/react';
 
 const { definePartsStyle, defineMultiStyleConfig } = createMultiStyleConfigHelpers(radioAnatomy.keys);
 
-const baseStyle = definePartsStyle({
+const baseStyle:any = definePartsStyle({
     // define the part you're going to style
     control: {
         borderRadius: '12px', // change the border radius
@@ -11,4 +11,4 @@ const baseStyle = definePartsStyle({
     },
 });
 
-export const radioTheme = defineMultiStyleConfig({ baseStyle });
+export const radioTheme:any = defineMultiStyleConfig({ baseStyle });

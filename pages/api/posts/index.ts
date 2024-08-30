@@ -7,7 +7,7 @@ export default async function handler(request: NextApiRequest, response: NextApi
 
     if(request.method === 'POST') {
         try {
-            const posts = await doQuery(queries.posts, {
+            const posts:any = await doQuery(queries.posts, {
                 first: body.first,
                 skip: body.skip,
                 orderBy: body.orderBy

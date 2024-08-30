@@ -6,7 +6,7 @@ export default async function handler(request: NextApiRequest, response: NextApi
 
     const body:any = request.body;
 
-    const params = {};
+    const params:any = {};
 
     if(body.first) {
         params['first'] = body.first;
@@ -23,7 +23,7 @@ export default async function handler(request: NextApiRequest, response: NextApi
 
     if(request.method === 'POST') {
         try {
-            const documents = await doQuery(queries.documents, params).then(({ documents }) => documents || []);
+            const documents:any = await doQuery(queries.documents, params).then(({ documents }) => documents || []);
 
             return response.status(200).json({
                 success: true,

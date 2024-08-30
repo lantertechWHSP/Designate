@@ -14,7 +14,7 @@ type AppPropsWithLayout = AppProps & {
 }
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) : any {
-    const router = useRouter();
+    const router:any = useRouter();
 
     let getLayout:any;
 

@@ -7,7 +7,7 @@ interface Props {
     ctx: any;
 }
 
-const EventsRSVPAttendingConfigScreen = ({ ctx }: Props) : any => {
+const EventsRSVPAttendingConfigScreen:any = ({ ctx }: Props) : any => {
     const [events, setEvents] = useState([]);
     const [attending, setAttending] = useState([]);
     const [eventBundleId, setEventBundleId] = useState(null);
@@ -15,7 +15,7 @@ const EventsRSVPAttendingConfigScreen = ({ ctx }: Props) : any => {
     const [errorMessage, setErrorMessage] = useState('');
 
     // DatoCMS build Client
-    const client = buildClient({
+    const client:any = buildClient({
         apiToken: ctx.currentUserAccessToken,
         environment: ctx.environment
     });
@@ -45,7 +45,7 @@ const EventsRSVPAttendingConfigScreen = ({ ctx }: Props) : any => {
                     ids: eventBundleId
                 },
             }).then((eventBundles:any) => {
-                const eventIds = eventBundles[0].events;
+                const eventIds:any = eventBundles[0].events;
 
                 client.items.list({
                     filter: {

@@ -1,7 +1,6 @@
 import { extendBaseTheme } from '@chakra-ui/react';
 import chakraTheme from '@chakra-ui/theme';
 import { fontGramatika, fontRoboto } from '~/app/_fonts';
-import { radioTheme } from "~/lib/theme/formControls/radio";
 const { Modal, Menu, Badge, Alert, Skeleton, Checkbox, Radio } = chakraTheme.components;
 
 export const breakpoints:any = {

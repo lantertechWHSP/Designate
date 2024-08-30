@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 import { IDatoAnnouncement } from '~/interfaces/layout/announcement';
-import { Box, Flex, Container, Button } from '@chakra-ui/react';
+import { Box, Flex, Button } from '@chakra-ui/react';
 import StructuredContent from "~/components/StructuredContent";
 import { Icon, Icons } from '~/components/elements/icon';
 import { DateTime } from 'luxon';
@@ -30,7 +30,7 @@ const Announcement:any = ({ description, display, _publishedAt, isClosedCallback
             }
             // If there is a publised at set
             else if(localStorage.getItem('soulpatts.announcements.publishedAt')) {
-                const date = localStorage.getItem('soulpatts.announcements.publishedAt');
+                const date:any = localStorage.getItem('soulpatts.announcements.publishedAt');
 
                 // If the current published at is greater than the one set on the localStorage
                 if(DateTime.fromISO(_publishedAt) > DateTime.fromISO(date)) {

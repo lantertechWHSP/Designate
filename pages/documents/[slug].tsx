@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import {GetStaticPathsResult, NextPage} from 'next';
+import { GetStaticPathsResult, NextPage } from 'next';
 import { GetStaticPropsContext, GetStaticPropsResult } from 'next';
 import { doQuery, queries } from '~/dato/api';
 import { IDocument } from '~/interfaces/models/document';
@@ -9,12 +9,12 @@ interface INextPageProps {
 }
 
 export async function getStaticPaths() : Promise<GetStaticPathsResult<any>> {
-    const documents = [];
-    let hasAllDocuments = false;
-    let documentBatchIndex = 0;
+    const documents:IDocument[] = [];
+    let hasAllDocuments:boolean = false;
+    let documentBatchIndex:number = 0;
 
     while(!hasAllDocuments) {
-        const batchDocuments = await doQuery(queries.documents, { first: 100, skip: 100 * documentBatchIndex }).then(({ documents }) => documents);
+        const batchDocuments:IDocument[] = await doQuery(queries.documents, { first: 100, skip: 100 * documentBatchIndex }).then(({ documents }) => documents);
 
         documents.push(...batchDocuments);
 

@@ -7,7 +7,7 @@ export default async function handler(request: NextApiRequest, response: NextApi
 
     if(request.method === 'POST') {
         try {
-            const documentsMeta = await doQuery(queries.documentsMeta, {
+            const documentsMeta:any = await doQuery(queries.documentsMeta, {
                 filter: body.filter,
             }).then(({ documentsMeta }) => documentsMeta || {});
 

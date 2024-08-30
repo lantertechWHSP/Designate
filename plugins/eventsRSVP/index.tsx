@@ -6,7 +6,7 @@ import EventsRSVPAttendingConfigScreen from "~/plugins/eventsRSVP/attending/conf
 
 const EventsRSVPPlugin:any = () : ReactNode => {
     const [isLoaded, setIsLoaded] = useState<boolean>(false);
-    let isRendered = false;
+    let isRendered:boolean = false;
 
     const isInIframe:any = () : boolean => {
         try {

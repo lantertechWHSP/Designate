@@ -12,7 +12,7 @@ import { isEmptyDocument } from 'datocms-structured-text-utils';
 interface IFooter extends IDatoFooter {
 }
 
-const Footer:any = ({ menu, address, email, phone, fax, linkedin, youtube, copyright, privacyPolicyDocument }:IFooter) : ReactNode => {
+const Footer:any = ({ menu, address, email, phone, fax, linkedin, youtube, copyright }:IFooter) : ReactNode => {
     return <Box as="footer" background="charcoal2" color="white" py={['40px', ,'50px', '60px']}>
         <Container>
             <Row>

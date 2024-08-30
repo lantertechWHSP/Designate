@@ -1,5 +1,6 @@
 import { doQuery, queries } from '~/dato/api';
-import {IPage} from "~/interfaces/models/page";
+import { IPage } from '~/interfaces/models/page';
+import { IPost } from '~/interfaces/models/post';
 
 function generateSiteMap(paths) : string {
     return `<?xml version="1.0" encoding="UTF-8"?>
@@ -25,11 +26,11 @@ export async function getServerSideProps({ res }) : Promise<any> {
 
     const pages:IPage[] = [];
 
-    let hasAllPages = false;
-    let pageBatchIndex = 0;
+    let hasAllPages:boolean = false;
+    let pageBatchIndex:number = 0;
 
     while(!hasAllPages) {
-        const batchPages = await doQuery(queries.pages, { first: 100, skip: 100 * pageBatchIndex }).then(({ pages }) => pages);
+        const batchPages:IPage[] = await doQuery(queries.pages, { first: 100, skip: 100 * pageBatchIndex }).then(({ pages }) => pages);
 
         pages.push(...batchPages);
 
@@ -41,12 +42,12 @@ export async function getServerSideProps({ res }) : Promise<any> {
         }
     }
 
-    const posts = [];
-    let hasAllPosts = false;
-    let postBatchIndex = 0;
+    const posts:IPost[] = [];
+    let hasAllPosts:boolean = false;
+    let postBatchIndex:number = 0;
 
     while(!hasAllPosts) {
-        const batchPosts = await doQuery(queries.posts, { first: 100, skip: 100 * postBatchIndex }).then(({ posts }) => posts);
+        const batchPosts:IPost[] = await doQuery(queries.posts, { first: 100, skip: 100 * postBatchIndex }).then(({ posts }) => posts);
 
         posts.push(...batchPosts);
 

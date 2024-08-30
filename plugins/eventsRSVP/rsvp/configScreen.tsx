@@ -12,7 +12,7 @@ type PropTypes = {
     ctx: any;
 };
 
-const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
+const EventsRSVPConfigScreen:any = ({ ctx }: PropTypes) : any => {
     const [events, setEvents] = useState([]);
 
     const [allEventRSVPItems, setAllEventRSVPItems] = useState([]); // All the Event RSVP’s
@@ -31,10 +31,10 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
     const [totalItems, setTotalItems] = useState(0);
 
     // Table
-    const itemsTableRef = useRef();
+    const itemsTableRef:any = useRef();
 
     // DatoCMS build Client
-    const client = buildClient({
+    const client:any = buildClient({
         apiToken: ctx.currentUserAccessToken,
         environment: ctx.environment
     });
@@ -126,7 +126,7 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
             let CSVString:string = '';
             const title:string = ctx.formValues.title ? `${ctx.formValues.title} — RSVP` : 'RSVP';
 
-            const eventDateLabels = events.map((eventDate:any) => {
+            const eventDateLabels:string[] = events.map((eventDate:any) => {
                 return `Attending ${eventDate.label}`;
             });
 
@@ -134,8 +134,8 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
             CSVString += "\r\n";
 
             allEventRSVPItems.map((item) => {
-                const eventAttending = events.map((eventDate:any) => {
-                    const attending = item.events_attending.find((eventId:string) => {
+                const eventAttending:string[] = events.map((eventDate:any) => {
+                    const attending:boolean = !!item.events_attending.find((eventId:string) => {
                         return eventId === eventDate.id;
                     });
 
@@ -147,7 +147,7 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
             });
 
             CSVString = "data:application/csv," + encodeURIComponent(CSVString);
-            const anchor = document.createElement("A");
+            const anchor:HTMLElement = document.createElement("A");
             anchor.setAttribute("href", CSVString );
             anchor.setAttribute("download", `${title}.csv`);
             document.body.appendChild(anchor);
@@ -159,7 +159,7 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
         // Pass the eventBundleId to sessionStorage for temporary use
         sessionStorage.setItem('soulpatts.dato.eventBundle.id', ctx.itemId);
 
-        const item = await ctx.createNewItem(process.env.NEXT_PUBLIC_DATO_ITEM_TYPE_EVENT_RSVP_ID);
+        const item:any = await ctx.createNewItem(process.env.NEXT_PUBLIC_DATO_ITEM_TYPE_EVENT_RSVP_ID);
 
         if (item) {
             const rsvpItem:any = {
@@ -173,9 +173,9 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
             };
 
             // Add the RSVP item
-            const newEventRSVPItems = [...allEventRSVPItems, rsvpItem];
+            const newEventRSVPItems:any = [...allEventRSVPItems, rsvpItem];
             setAllEventRSVPItems(newEventRSVPItems);
-            const newRSVPs = [...rsvps, item.id];
+            const newRSVPs:string[] = [...rsvps, item.id];
             setRSVPs(newRSVPs);
 
             // Add the RSVP id to the form value
@@ -193,7 +193,7 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
     };
 
     const edit:any = async (id:string): Promise<void> => {
-        const item = await ctx.editItem(id);
+        const item:any = await ctx.editItem(id);
         if(item) {
             const rsvpItem:any = {
                 id: item.id,
@@ -206,8 +206,8 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
             };
 
             // Update the RSVP item
-            const newEventRSVPItems = [...allEventRSVPItems];
-            for(let i = 0; i < newEventRSVPItems.length; i++) {
+            const newEventRSVPItems:any = [...allEventRSVPItems];
+            for(let i:number = 0; i < newEventRSVPItems.length; i++) {
                 if(newEventRSVPItems[i].id === rsvpItem.id) {
                     newEventRSVPItems[i] = {
                         ...rsvpItem
@@ -224,12 +224,12 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
 
     const remove:any = async (id:string): Promise<void> => {
         // Remove the RSVP item
-        const newEventRSVPItems = allEventRSVPItems.filter((eventRSVPItem) => {
+        const newEventRSVPItems:any = allEventRSVPItems.filter((eventRSVPItem) => {
             return eventRSVPItem.id !== id;
         });
 
         setAllEventRSVPItems(newEventRSVPItems);
-        const newRSVPs = newEventRSVPItems.map((eventRSVPItem) => {
+        const newRSVPs:any = newEventRSVPItems.map((eventRSVPItem) => {
             return eventRSVPItem.id;
         });
         setRSVPs(newRSVPs);
@@ -299,7 +299,7 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                                                                 }} key={index}>
                                                                 {
                                                                     (() => {
-                                                                        const attending = item.events_attending.find((eventId:string) => {
+                                                                        const attending:boolean = !!item.events_attending.find((eventId:string) => {
                                                                             return eventId === event.id;
                                                                         });
 

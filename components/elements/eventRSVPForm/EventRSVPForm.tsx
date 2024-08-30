@@ -48,7 +48,7 @@ const EventRSVPForm:any = ({ eventBundle, hideForm }:IEventRSVP) : ReactNode => 
         zIndex: -1
     } as React.CSSProperties;
 
-    const hash = '4AHcmLe36hUG5igKjBGfi';
+    const hash:string = '4AHcmLe36hUG5igKjBGfi';
 
     const INITIAL_VALUES:any = {
         isShareholder: null,
@@ -66,11 +66,11 @@ const EventRSVPForm:any = ({ eventBundle, hideForm }:IEventRSVP) : ReactNode => 
     INITIAL_VALUES[`na${hash}mfge`] = '';
     INITIAL_VALUES[`em${hash}acjl`] = '';
 
-    const REGEXP = {
+    const REGEXP:any = {
         NAME: /^[a-zÀ-ÿ\d'’\s-]+$/i,
     };
 
-    const buildSchema = {
+    const buildSchema:any = {
         isShareholder: yup.boolean()
             .required("Please identify if you are a shareholder.")
             .oneOf([true, false]),
@@ -88,7 +88,7 @@ const EventRSVPForm:any = ({ eventBundle, hideForm }:IEventRSVP) : ReactNode => 
 
     const SCHEMA:any = yup.object(buildSchema);
 
-    const submit = (values, resetForm) : void => {
+    const submit:any = (values, resetForm) : void => {
         values.name = values[`na${hash}mfge`];
         delete values[`na${hash}mfge`];
 

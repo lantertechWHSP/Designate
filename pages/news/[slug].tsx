@@ -18,12 +18,12 @@ interface INextPageProps {
 }
 
 export async function getStaticPaths() : Promise<GetStaticPathsResult<any>> {
-    const posts = [];
-    let hasAllPosts = false;
-    let postBatchIndex = 0;
+    const posts:IPost[] = [];
+    let hasAllPosts:boolean = false;
+    let postBatchIndex:number = 0;
 
     while(!hasAllPosts) {
-        const batchPosts = await doQuery(queries.posts, { first: 100, skip: 100 * postBatchIndex }).then(({ posts }) => posts);
+        const batchPosts:IPost[] = await doQuery(queries.posts, { first: 100, skip: 100 * postBatchIndex }).then(({ posts }) => posts);
 
         posts.push(...batchPosts);
 

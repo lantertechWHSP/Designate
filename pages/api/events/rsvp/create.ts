@@ -28,15 +28,15 @@ import { isNil as _isNil } from 'lodash';
 // };
 
 export default async function handler(request: NextApiRequest, response: NextApiResponse) : Promise<any> {
-    const body = request.body;
-    const ERROR_MESSAGE = 'Could not submit RSVP!';
+    const body:any = request.body;
+    const ERROR_MESSAGE:string = 'Could not submit RSVP!';
 
     const isValid:any = async (rsvp) : Promise<any> => {
-        const REGEXP = {
+        const REGEXP:any = {
             NAME: /^[a-zÀ-ÿ\d'’\s-]+$/i,
         };
 
-        const buildSchema = {
+        const buildSchema:any = {
             name: yup.string().required('Please enter your Name.').matches(REGEXP.NAME, 'Please enter a valid Name.'),
             email: yup.string().required('Please enter an Email Address.').email('Please enter a valid Email Address.'),
             isShareholder: yup.boolean()
@@ -80,16 +80,16 @@ export default async function handler(request: NextApiRequest, response: NextApi
         // }
 
         try {
-            const client = buildClient({
+            const client:any = buildClient({
                 apiToken: process.env.DATO_KEY,
                 environment: process.env.DATO_ENVIRONMENT
             });
 
-            const DATO_ITEM_TYPE_EVENT_RSVP_ID = process.env.NEXT_PUBLIC_DATO_ITEM_TYPE_EVENT_RSVP_ID;
+            const DATO_ITEM_TYPE_EVENT_RSVP_ID:string = process.env.NEXT_PUBLIC_DATO_ITEM_TYPE_EVENT_RSVP_ID;
 
-            // // Create the Event RSVP
-            const newRSVP = await client.items.create({
-                item_type: { type: "item_type", id: DATO_ITEM_TYPE_EVENT_RSVP_ID },
+            // Create the Event RSVP
+            const newRSVP:any = await client.items.create({
+                item_type: { type: 'item_type', id: DATO_ITEM_TYPE_EVENT_RSVP_ID },
                 name: body.name,
                 is_shareholder: body.isShareholder,
                 email: body.email,

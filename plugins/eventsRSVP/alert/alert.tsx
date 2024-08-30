@@ -1,4 +1,6 @@
-export const Alert:any = ({ children, variant = 'info' }) => {
+import React from 'react';
+
+export const Alert:any = ({ children, variant = 'info' }) : JSX.Element => {
     const getStyle:any = () => {
         if(variant === 'error') {
             return {
