@@ -82,8 +82,6 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                                 allItems.push(record);
                             }
 
-
-                            console.log(allItems);
                             setAllEventRSVPItems(allItems);
                             setTotalItems(allItems.length);
                         }
@@ -125,7 +123,6 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
 
     const download:any = () : void => {
         if(allEventRSVPItems.length > 0) {
-            debugger;
             let CSVString:string = '';
             const title:string = ctx.formValues.title ? `${ctx.formValues.title} — RSVP` : 'RSVP';
 
@@ -165,7 +162,6 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
         const item = await ctx.createNewItem(process.env.NEXT_PUBLIC_DATO_ITEM_TYPE_EVENT_RSVP_ID);
 
         if (item) {
-            debugger;
             const rsvpItem:any = {
                 id: item.id,
                 name: item.attributes.name,
@@ -187,6 +183,9 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
 
             // Save the record
             await ctx.saveCurrentItem();
+
+            // Reload the display table
+            loadRsvpEvents(currentPage);
         }
 
         // Remove the temporary ID from the sessionStorage
@@ -196,7 +195,6 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
     const edit:any = async (id:string): Promise<void> => {
         const item = await ctx.editItem(id);
         if(item) {
-            debugger;
             const rsvpItem:any = {
                 id: item.id,
                 name: item.attributes.name,
@@ -206,8 +204,6 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                     return id;
                 })
             };
-
-            debugger;
 
             // Update the RSVP item
             const newEventRSVPItems = [...allEventRSVPItems];
@@ -219,10 +215,9 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                 }
             }
 
-            console.log(newEventRSVPItems);
-
             setAllEventRSVPItems(newEventRSVPItems);
 
+            // Reload the display table
             loadRsvpEvents(currentPage);
         }
     };

@@ -44,10 +44,6 @@ const EventsRSVPPlugin:any = () : ReactNode => {
                         ];
                     },
                     renderFieldExtension(fieldExtensionId: string, ctx: RenderFieldExtensionCtx) {
-                        // console.log(ctx.currentUserAccessToken);
-                        // console.log(ctx.currentRole);
-                        // console.log(ctx.currentUser);
-
                         switch (fieldExtensionId) {
                             case 'event_rsvp_list': return render(<EventsRSVPConfigScreen ctx={ctx} />);
                             case 'event_rsvp_attending': return render(<EventsRSVPAttendingConfigScreen ctx={ctx} />);
