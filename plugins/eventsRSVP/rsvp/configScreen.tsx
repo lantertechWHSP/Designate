@@ -1,15 +1,12 @@
-import { Canvas, FieldGroup, Button, Dropdown, DropdownMenu, DropdownOption, DropdownSeparator } from 'datocms-react-ui';
-import { useEffect, useState } from 'react';
+import { Canvas, FieldGroup, ButtonGroup, Button, Dropdown, DropdownMenu, DropdownOption, DropdownSeparator } from 'datocms-react-ui';
+import { useEffect, useState, useRef } from 'react';
 import 'datocms-react-ui/styles.css';
 import './configScreen.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faCheck, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 import { buildClient } from '@datocms/cma-client-browser';
 import { IEvent } from '~/interfaces/models/event';
-import { doPluginQuery, queries} from "~/dato/api";
-
-
-
+import { Alert } from '~/plugins/eventsRSVP/alert/alert';
 
 type PropTypes = {
     ctx: any;
@@ -17,66 +14,112 @@ type PropTypes = {
 
 const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
     const [events, setEvents] = useState([]);
-    // Presentation object for the RSVP’s
-    const [eventRSVPItems, setEventRSVPItems] = useState([]);
+
+    const [eventRSVPItems, setEventRSVPItems] = useState([]); // All the Event RSVP’s
+    const [displayedEventRSVPItems, setDisplayedEventRSVPItems] = useState([]); // Paginated display of the Event RSVP’s
+
     // RSVP id’s
     const [rsvps, setRSVPs] = useState(ctx.formValues.rsvp);
 
+    // API handling
     const [isLoaded, setIsLoaded] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
+
+    // Paggination
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage:number = 50;
+    const [totalItems, setTotalItems] = useState(0);
+
+    // Table
+    const itemsTableRef = useRef();
+
+    // DatoCMS build Client
+    const client = buildClient({
+        apiToken: ctx.currentUserAccessToken,
+        environment: ctx.environment
+    });
 
     useEffect(() => {
-        const client = buildClient({
-            apiToken: ctx.currentUserAccessToken,
-            environment: ctx.environment
-        });
-
-
         if(ctx.formValues.events) {
-            console.log(ctx.formValues.events.join(','));
+            setErrorMessage('');
+
             client.items.list({
                 filter: {
                     ids: ctx.formValues.events.join(','),
                     type: 'event'
                 },
-            }).then((response) => {
-                console.log(response);
-            }).catch((error) => {
-                console.log(error);
-            });
-            // doPluginQuery(queries.events, {
-            //     in: ctx.formValues.events
-            // }, {
-            //     environment: ctx.environment,
-            //     key: ctx.currentUserAccessToken
-            // }).then((response) => {
-            //     console.log(response.events);
-            //     setEvents(response.events);
-            // });
-        }
+            }).then((events) => {
+                setEvents(events);
 
-        if(ctx.formValues.rsvp) {
-            // (async () => {
-            //     const values = [];
-            //     let hasAllValues = false;
-            //     let batchIndex = 0;
-            //
-            //     while(!hasAllValues) {
-            //         const batchValues = await doQuery(queries.eventRSVP, { first: 100, skip: 100 * batchIndex, in: ctx.formValues.rsvp }).then(({ eventRSVPS }) => eventRSVPS);
-            //
-            //         values.push(...batchValues);
-            //
-            //         if(batchValues.length < 1) {
-            //             hasAllValues = true;
-            //         }
-            //         else {
-            //             batchIndex++;
-            //         }
-            //     }
-            //     setEventRSVPItems(values);
-            //     setIsLoaded(true);
-            // })();
+                if(ctx.formValues.rsvp) {
+                    loadRsvpEvents(currentPage, () => {
+                        setIsLoaded(true);
+                    });
+
+                    (async () => {
+                        const allItems:any = [];
+
+                        try {
+                            // Load all the items
+                            for await (
+                                const record of client.items.listPagedIterator({
+                                    filter: {
+                                        type: 'event_rsvp',
+                                        fields: {
+                                            event_bundle: {
+                                                eq: ctx.itemId
+                                            }
+                                        },
+                                    },
+                                    order_by: '_createdAt_ASC'
+                                },
+                                {
+                                    concurrency: 10,
+                                    perPage: 100
+                                })) {
+                                allItems.push(record);
+                            }
+
+
+                            console.log(allItems);
+                            setEventRSVPItems(allItems);
+                            setTotalItems(allItems.length);
+                        }
+                        catch {
+                            setErrorMessage('Could not load RSVP');
+                        }
+                    })();
+                }
+            }).catch(() => {
+                setErrorMessage('Could not load RSVP');
+            });
         }
     }, []);
+
+    const loadRsvpEvents:any = (page:number, callback?:any) => {
+        client.items.list({
+            page: {
+                limit: itemsPerPage,
+                offset: (page - 1) * itemsPerPage
+            },
+            filter: {
+                type: 'event_rsvp',
+                fields: {
+                    event_bundle: {
+                        eq: ctx.itemId
+                    }
+                },
+            },
+            order_by: '_createdAt_ASC'
+        }).then((value) => {
+            setDisplayedEventRSVPItems(value);
+            if(callback) {
+                callback();
+            }
+        }).catch(() => {
+            setErrorMessage('Could not load RSVP');
+        });
+    };
 
     const download:any = () : void => {
         if(eventRSVPItems.length > 0) {
@@ -203,14 +246,18 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                 {
                     isLoaded ? <>
                         {
-                            eventRSVPItems.length > 0 ? <>
-                                <div className="ItemsTable">
+                            displayedEventRSVPItems.length > 0 ? <>
+                                <div className="ItemsTable" ref={itemsTableRef}>
                                     <div className="ItemsTable__header-row">
-                                        <div className="ItemsTable__header-cell ItemsTable__header-cell--name">Name</div>
-                                        <div className="ItemsTable__header-cell ItemsTable__header-cell--email">Email</div>
-                                        <div className="ItemsTable__header-cell ItemsTable__header-cell--shareholder">Shareholder</div>
+                                        <div className="ItemsTable__header-cell ItemsTable__header-cell--name">Name
+                                        </div>
+                                        <div className="ItemsTable__header-cell ItemsTable__header-cell--email">Email
+                                        </div>
+                                        <div
+                                            className="ItemsTable__header-cell ItemsTable__header-cell--shareholder">Shareholder
+                                        </div>
                                         {
-                                            events.map((event:IEvent, index:number) => {
+                                            events.map((event: IEvent, index: number) => {
                                                 return <div key={index} className="ItemsTable__header-cell" style={{
                                                     width: `${35 / events.length}%`
                                                 }}>{event.label}</div>;
@@ -222,7 +269,7 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                                     </div>
                                     <div className="ItemsTable__content">
                                         {
-                                            eventRSVPItems.map((item, index: number) => {
+                                            displayedEventRSVPItems.map((item, index: number) => {
                                                 return <div className="ItemsTable__row" key={index}>
                                                     <div className="ItemsTable__cell ItemsTable__cell--name">
                                                         {item.name}
@@ -230,23 +277,27 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                                                     <div className="ItemsTable__cell ItemsTable__cell--email">
                                                         {item.email}
                                                     </div>
-                                                    <div className="ItemsTable__cell ItemsTable__cell--shareholder ItemsTable__cell--center">
+                                                    <div
+                                                        className="ItemsTable__cell ItemsTable__cell--shareholder ItemsTable__cell--center">
                                                         {
-                                                            item.isShareholder && <FontAwesomeIcon icon={faCheck} />
+                                                            item.is_shareholder && <FontAwesomeIcon icon={faCheck}/>
                                                         }
                                                     </div>
                                                     {
-                                                        events.map((event:IEvent, index:number) => {
-                                                            return <div className="ItemsTable__cell ItemsTable__cell--center" style={{
-                                                                width: `${35 / events.length}%`
-                                                            }} key={index}>
+                                                        events.map((event: IEvent, index: number) => {
+                                                            return <div
+                                                                className="ItemsTable__cell ItemsTable__cell--center"
+                                                                style={{
+                                                                    width: `${35 / events.length}%`
+                                                                }} key={index}>
                                                                 {
                                                                     (() => {
-                                                                        const attending = item.eventsAttending.find((eventsAttending) => {
-                                                                            return eventsAttending.id === event.id;
+                                                                        const attending = item.events_attending.find((eventId:string) => {
+                                                                            return eventId === event.id;
                                                                         });
 
-                                                                        return attending && <FontAwesomeIcon icon={faCheck} />;
+                                                                        return attending &&
+                                                                            <FontAwesomeIcon icon={faCheck}/>;
                                                                     })()
                                                                 }
                                                             </div>;
@@ -254,7 +305,7 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                                                     }
                                                     <div className="ItemsTable__cell ItemsTable__cell--edit">
                                                         <Dropdown
-                                                            renderTrigger={({ onClick }) => (
+                                                            renderTrigger={({onClick}) => (
                                                                 <Button
                                                                     buttonType="muted"
                                                                     style={{
@@ -262,7 +313,7 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                                                                     }}
                                                                     onClick={onClick}
                                                                 >
-                                                                    <FontAwesomeIcon icon={faEllipsisVertical} />
+                                                                    <FontAwesomeIcon icon={faEllipsisVertical}/>
                                                                 </Button>
                                                             )}
                                                         >
@@ -270,7 +321,7 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                                                                 <DropdownOption onClick={() => {
                                                                     edit(item.id);
                                                                 }}>Edit</DropdownOption>
-                                                                <DropdownSeparator />
+                                                                <DropdownSeparator/>
                                                                 {/*<DropdownOption red onClick={() => {*/}
                                                                 {/*    remove(item.id);*/}
                                                                 {/*}}>*/}
@@ -284,33 +335,67 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                                         }
                                     </div>
                                 </div>
-                                <div style={{ marginTop: 'var(--spacing-l)' }}>
-                                    <Button buttonType="muted" buttonSize="s" onClick={() => {
-                                        create();
-                                    }}>
-                                        <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon> New RSVP
-                                    </Button>
-                                </div>
-                                <div style={{ marginTop: 'var(--spacing-l)' }}>
-                                    <Button buttonType="primary" buttonSize="s" onClick={download}>
-                                        Download CSV
-                                    </Button>
-                                </div>
                             </> : <div>
-                                <div>
+                                <Alert>
                                     No items…
-                                </div>
-                                <div style={{marginTop: 'var(--spacing-l)'}}>
-                                    <Button buttonType="muted" buttonSize="s" onClick={() => {
-                                        create();
-                                    }}>
-                                        <FontAwesomeIcon icon={faPlus}/> New RSVP
-                                    </Button>
-                                </div>
+                                </Alert>
                             </div>
                         }
+                        {
+                            errorMessage && <Alert variant="error">
+                                {errorMessage}
+                            </Alert>
+                        }
+                        <div style={{marginTop: 'var(--spacing-l)'}}>
+                            <ButtonGroup>
+                                <Button buttonType="muted" buttonSize="s" disabled={currentPage === 1} style={{marginRight: 'var(--spacing-s)'}} onClick={() => {
+                                    const previousPage:number = currentPage - 1;
+                                    loadRsvpEvents(previousPage, () => {
+                                        setCurrentPage(previousPage);
+                                        if(itemsTableRef.current) {
+                                            // @ts-ignore
+                                            itemsTableRef.current.scrollIntoView();
+                                        }
+                                    });
+                                }}>
+                                    Previous
+                                </Button>
+                                <Button buttonType="muted" buttonSize="s" disabled={(currentPage + 1) * itemsPerPage >= totalItems} onClick={() => {
+                                    const nextPage:number = currentPage + 1;
+                                    loadRsvpEvents(nextPage, () => {
+                                        setCurrentPage(nextPage);
+                                        if(itemsTableRef.current) {
+                                            // @ts-ignore
+                                            itemsTableRef.current.scrollIntoView();
+                                        }
+                                    });
+                                }}>
+                                    Next
+                                </Button>
+                            </ButtonGroup>
+                            <div style={{marginTop: 'var(--spacing-s)'}}>
+                                Page {currentPage} of {Math.ceil(totalItems / itemsPerPage)}
+                            </div>
+                        </div>
+                        <div style={{marginTop: 'var(--spacing-l)'}}>
+                            <ButtonGroup>
+                                <Button buttonType="muted" buttonSize="s" style={{marginRight: 'var(--spacing-s)'}} onClick={() => {
+                                    create();
+                                }}>
+                                    <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon> New RSVP
+                                </Button>
+                                {
+                                    eventRSVPItems.length > 0 && <Button buttonType="primary" buttonSize="s" onClick={download}>
+                                        Download CSV
+                                    </Button>
+                                }
+                            </ButtonGroup>
+                        </div>
+
                     </> : <div>
-                        Loading RSVP…
+                        <Alert>
+                            Loading RSVP…
+                        </Alert>
                     </div>
                 }
             </FieldGroup>

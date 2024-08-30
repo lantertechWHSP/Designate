@@ -7,7 +7,7 @@ import { DateTime } from 'luxon';
 
 interface IAnnouncement extends IDatoAnnouncement {
     isClosedCallback:Function;
-};
+}
 
 const Announcement:any = ({ description, display, _publishedAt, isClosedCallback }:IAnnouncement): ReactNode => {
 

@@ -11,4 +11,4 @@ const baseStyle = definePartsStyle({
     },
 });
 
-export const radioTheme = defineMultiStyleConfig({ baseStyle })
+export const radioTheme = defineMultiStyleConfig({ baseStyle });
