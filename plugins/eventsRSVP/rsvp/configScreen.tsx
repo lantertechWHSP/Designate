@@ -227,6 +227,7 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
         const newEventRSVPItems = allEventRSVPItems.filter((eventRSVPItem) => {
             return eventRSVPItem.id !== id;
         });
+
         setAllEventRSVPItems(newEventRSVPItems);
         const newRSVPs = newEventRSVPItems.map((eventRSVPItem) => {
             return eventRSVPItem.id;
@@ -241,6 +242,9 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
 
         // Remove the EventRSVP from the CMS
         await client.items.destroy(id);
+
+        // Reload the display table
+        loadRsvpEvents(currentPage);
     };
 
     return (
@@ -325,11 +329,11 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
                                                                     edit(item.id);
                                                                 }}>Edit</DropdownOption>
                                                                 <DropdownSeparator/>
-                                                                {/*<DropdownOption red onClick={() => {*/}
-                                                                {/*    remove(item.id);*/}
-                                                                {/*}}>*/}
-                                                                {/*    Delete*/}
-                                                                {/*</DropdownOption>*/}
+                                                                <DropdownOption red onClick={() => {
+                                                                    remove(item.id);
+                                                                }}>
+                                                                    Delete
+                                                                </DropdownOption>
                                                             </DropdownMenu>
                                                         </Dropdown>
                                                     </div>
