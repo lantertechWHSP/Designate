@@ -27,7 +27,7 @@ const EventsRSVPConfigScreen:any = ({ ctx }: PropTypes) : any => {
 
     // Paggination
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage:number = 5;
+    const itemsPerPage:number = 50;
     const [totalItems, setTotalItems] = useState(0);
 
     // Table
