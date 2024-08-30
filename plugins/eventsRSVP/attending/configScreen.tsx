@@ -28,25 +28,25 @@ const EventsRSVPAttendingConfigScreen = ({ ctx }: Props) : any => {
 
     useEffect(() => {
         if(eventBundleId) {
-            (async () => {
-                const values = await doQuery(queries.eventBundle, ({ id: eventBundleId })).then(({ eventBundles }) => eventBundles);
-                const events = values[0].events;
-
-                setEvents(events);
-
-                if(ctx.formValues.events_attending) {
-                    setAttending(events.filter((event) => {
-                        return !!ctx.formValues.events_attending.find((attending:string) => {
-                            return event.id === attending;
-                        });
-                    }).map((event) => {
-                        return {
-                            label: event.label,
-                            value: event.id
-                        };
-                    }));
-                }
-            })();
+            // (async () => {
+            //     const values = await doQuery(queries.eventBundle, ({ id: eventBundleId })).then(({ eventBundles }) => eventBundles);
+            //     const events = values[0].events;
+            //
+            //     setEvents(events);
+            //
+            //     if(ctx.formValues.events_attending) {
+            //         setAttending(events.filter((event) => {
+            //             return !!ctx.formValues.events_attending.find((attending:string) => {
+            //                 return event.id === attending;
+            //             });
+            //         }).map((event) => {
+            //             return {
+            //                 label: event.label,
+            //                 value: event.id
+            //             };
+            //         }));
+            //     }
+            // })();
         }
     }, [eventBundleId]);
 

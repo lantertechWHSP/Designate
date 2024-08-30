@@ -4,16 +4,13 @@ import 'datocms-react-ui/styles.css';
 import './configScreen.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faCheck, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
-// import { buildClient } from '@datocms/cma-client-browser';
+import { buildClient } from '@datocms/cma-client-browser';
 import { IEvent } from '~/interfaces/models/event';
-import { doQuery, queries} from "~/dato/api";
+import { doPluginQuery, queries} from "~/dato/api";
 
-// const client = buildClient({
-//     apiToken: process.env.DATO_KEY,
-//     environment: process.env.DATO_ENVIRONMENT
-// });
 
-// @TODO add back delete functionality once concealment is sorted
+
+
 type PropTypes = {
     ctx: any;
 };
@@ -28,35 +25,56 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
     const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
+        const client = buildClient({
+            apiToken: ctx.currentUserAccessToken,
+            environment: ctx.environment
+        });
+
+
         if(ctx.formValues.events) {
-            doQuery(queries.events, {
-                in: ctx.formValues.events
+            console.log(ctx.formValues.events.join(','));
+            client.items.list({
+                filter: {
+                    ids: ctx.formValues.events.join(','),
+                    type: 'event'
+                },
             }).then((response) => {
-                setEvents(response.events);
+                console.log(response);
+            }).catch((error) => {
+                console.log(error);
             });
+            // doPluginQuery(queries.events, {
+            //     in: ctx.formValues.events
+            // }, {
+            //     environment: ctx.environment,
+            //     key: ctx.currentUserAccessToken
+            // }).then((response) => {
+            //     console.log(response.events);
+            //     setEvents(response.events);
+            // });
         }
 
         if(ctx.formValues.rsvp) {
-            (async () => {
-                const values = [];
-                let hasAllValues = false;
-                let batchIndex = 0;
-
-                while(!hasAllValues) {
-                    const batchValues = await doQuery(queries.eventRSVP, { first: 100, skip: 100 * batchIndex, in: ctx.formValues.rsvp }).then(({ eventRSVPS }) => eventRSVPS);
-
-                    values.push(...batchValues);
-
-                    if(batchValues.length < 1) {
-                        hasAllValues = true;
-                    }
-                    else {
-                        batchIndex++;
-                    }
-                }
-                setEventRSVPItems(values);
-                setIsLoaded(true);
-            })();
+            // (async () => {
+            //     const values = [];
+            //     let hasAllValues = false;
+            //     let batchIndex = 0;
+            //
+            //     while(!hasAllValues) {
+            //         const batchValues = await doQuery(queries.eventRSVP, { first: 100, skip: 100 * batchIndex, in: ctx.formValues.rsvp }).then(({ eventRSVPS }) => eventRSVPS);
+            //
+            //         values.push(...batchValues);
+            //
+            //         if(batchValues.length < 1) {
+            //             hasAllValues = true;
+            //         }
+            //         else {
+            //             batchIndex++;
+            //         }
+            //     }
+            //     setEventRSVPItems(values);
+            //     setIsLoaded(true);
+            // })();
         }
     }, []);
 
@@ -158,144 +176,143 @@ const EventsRSVPConfigScreen = ({ ctx }: PropTypes) : any => {
         }
     };
 
-    // const remove:any = async (id:string): Promise<void> => {
-    //     // Remove the RSVP item
-    //     const newEventRSVPItems = eventRSVPItems.filter((eventRSVPItem) => {
-    //         return eventRSVPItem.id !== id;
-    //     });
-    //     setEventRSVPItems(newEventRSVPItems);
-    //     const newRSVPs = newEventRSVPItems.map((eventRSVPItem) => {
-    //         return eventRSVPItem.id;
-    //     });
-    //     setRSVPs(newRSVPs);
-    //
-    //     // Add the RSVP id to the form value
-    //     await ctx.setFieldValue('rsvp', newRSVPs);
-    //
-    //     // Save the record
-    //     await ctx.saveCurrentItem();
-    //
-    //     // Remove the EventRSVP from the CMS
-    //     await client.items.destroy(id);
-    // };
+    const remove:any = async (id:string): Promise<void> => {
+        // Remove the RSVP item
+        const newEventRSVPItems = eventRSVPItems.filter((eventRSVPItem) => {
+            return eventRSVPItem.id !== id;
+        });
+        setEventRSVPItems(newEventRSVPItems);
+        const newRSVPs = newEventRSVPItems.map((eventRSVPItem) => {
+            return eventRSVPItem.id;
+        });
+        setRSVPs(newRSVPs);
+
+        // Add the RSVP id to the form value
+        await ctx.setFieldValue('rsvp', newRSVPs);
+
+        // Save the record
+        await ctx.saveCurrentItem();
+
+        // Remove the EventRSVP from the CMS
+        await client.items.destroy(id);
+    };
 
     return (
         <Canvas ctx={ctx}>
             <FieldGroup>
-                Event RSVP Display Plugin is under maintenance…
-                {/*{*/}
-                {/*    isLoaded ? <>*/}
-                {/*        {*/}
-                {/*            eventRSVPItems.length > 0 ? <>*/}
-                {/*                <div className="ItemsTable">*/}
-                {/*                    <div className="ItemsTable__header-row">*/}
-                {/*                        <div className="ItemsTable__header-cell ItemsTable__header-cell--name">Name</div>*/}
-                {/*                        <div className="ItemsTable__header-cell ItemsTable__header-cell--email">Email</div>*/}
-                {/*                        <div className="ItemsTable__header-cell ItemsTable__header-cell--shareholder">Shareholder</div>*/}
-                {/*                        {*/}
-                {/*                            events.map((event:IEvent, index:number) => {*/}
-                {/*                                return <div key={index} className="ItemsTable__header-cell" style={{*/}
-                {/*                                    width: `${35 / events.length}%`*/}
-                {/*                                }}>{event.label}</div>;*/}
-                {/*                            })*/}
-                {/*                        }*/}
-                {/*                        <div className="ItemsTable__header-cell ItemsTable__header-cell--edit">*/}
-                {/*                            Edit*/}
-                {/*                        </div>*/}
-                {/*                    </div>*/}
-                {/*                    <div className="ItemsTable__content">*/}
-                {/*                        {*/}
-                {/*                            eventRSVPItems.map((item, index: number) => {*/}
-                {/*                                return <div className="ItemsTable__row" key={index}>*/}
-                {/*                                    <div className="ItemsTable__cell ItemsTable__cell--name">*/}
-                {/*                                        {item.name}*/}
-                {/*                                    </div>*/}
-                {/*                                    <div className="ItemsTable__cell ItemsTable__cell--email">*/}
-                {/*                                        {item.email}*/}
-                {/*                                    </div>*/}
-                {/*                                    <div className="ItemsTable__cell ItemsTable__cell--shareholder ItemsTable__cell--center">*/}
-                {/*                                        {*/}
-                {/*                                            item.isShareholder && <FontAwesomeIcon icon={faCheck} />*/}
-                {/*                                        }*/}
-                {/*                                    </div>*/}
-                {/*                                    {*/}
-                {/*                                        events.map((event:IEvent, index:number) => {*/}
-                {/*                                            return <div className="ItemsTable__cell ItemsTable__cell--center" style={{*/}
-                {/*                                                width: `${35 / events.length}%`*/}
-                {/*                                            }} key={index}>*/}
-                {/*                                                {*/}
-                {/*                                                    (() => {*/}
-                {/*                                                        const attending = item.eventsAttending.find((eventsAttending) => {*/}
-                {/*                                                            return eventsAttending.id === event.id;*/}
-                {/*                                                        });*/}
+                {
+                    isLoaded ? <>
+                        {
+                            eventRSVPItems.length > 0 ? <>
+                                <div className="ItemsTable">
+                                    <div className="ItemsTable__header-row">
+                                        <div className="ItemsTable__header-cell ItemsTable__header-cell--name">Name</div>
+                                        <div className="ItemsTable__header-cell ItemsTable__header-cell--email">Email</div>
+                                        <div className="ItemsTable__header-cell ItemsTable__header-cell--shareholder">Shareholder</div>
+                                        {
+                                            events.map((event:IEvent, index:number) => {
+                                                return <div key={index} className="ItemsTable__header-cell" style={{
+                                                    width: `${35 / events.length}%`
+                                                }}>{event.label}</div>;
+                                            })
+                                        }
+                                        <div className="ItemsTable__header-cell ItemsTable__header-cell--edit">
+                                            Edit
+                                        </div>
+                                    </div>
+                                    <div className="ItemsTable__content">
+                                        {
+                                            eventRSVPItems.map((item, index: number) => {
+                                                return <div className="ItemsTable__row" key={index}>
+                                                    <div className="ItemsTable__cell ItemsTable__cell--name">
+                                                        {item.name}
+                                                    </div>
+                                                    <div className="ItemsTable__cell ItemsTable__cell--email">
+                                                        {item.email}
+                                                    </div>
+                                                    <div className="ItemsTable__cell ItemsTable__cell--shareholder ItemsTable__cell--center">
+                                                        {
+                                                            item.isShareholder && <FontAwesomeIcon icon={faCheck} />
+                                                        }
+                                                    </div>
+                                                    {
+                                                        events.map((event:IEvent, index:number) => {
+                                                            return <div className="ItemsTable__cell ItemsTable__cell--center" style={{
+                                                                width: `${35 / events.length}%`
+                                                            }} key={index}>
+                                                                {
+                                                                    (() => {
+                                                                        const attending = item.eventsAttending.find((eventsAttending) => {
+                                                                            return eventsAttending.id === event.id;
+                                                                        });
 
-                {/*                                                        return attending && <FontAwesomeIcon icon={faCheck} />;*/}
-                {/*                                                    })()*/}
-                {/*                                                }*/}
-                {/*                                            </div>;*/}
-                {/*                                        })*/}
-                {/*                                    }*/}
-                {/*                                    <div className="ItemsTable__cell ItemsTable__cell--edit">*/}
-                {/*                                        <Dropdown*/}
-                {/*                                            renderTrigger={({ onClick }) => (*/}
-                {/*                                                <Button*/}
-                {/*                                                    buttonType="muted"*/}
-                {/*                                                    style={{*/}
-                {/*                                                        lineHeight: '16px'*/}
-                {/*                                                    }}*/}
-                {/*                                                    onClick={onClick}*/}
-                {/*                                                >*/}
-                {/*                                                    <FontAwesomeIcon icon={faEllipsisVertical} />*/}
-                {/*                                                </Button>*/}
-                {/*                                            )}*/}
-                {/*                                        >*/}
-                {/*                                            <DropdownMenu alignment="right">*/}
-                {/*                                                <DropdownOption onClick={() => {*/}
-                {/*                                                    edit(item.id);*/}
-                {/*                                                }}>Edit</DropdownOption>*/}
-                {/*                                                <DropdownSeparator />*/}
-                {/*                                                /!*<DropdownOption red onClick={() => {*!/*/}
-                {/*                                                /!*    remove(item.id);*!/*/}
-                {/*                                                /!*}}>*!/*/}
-                {/*                                                /!*    Delete*!/*/}
-                {/*                                                /!*</DropdownOption>*!/*/}
-                {/*                                            </DropdownMenu>*/}
-                {/*                                        </Dropdown>*/}
-                {/*                                    </div>*/}
-                {/*                                </div>;*/}
-                {/*                            })*/}
-                {/*                        }*/}
-                {/*                    </div>*/}
-                {/*                </div>*/}
-                {/*                <div style={{ marginTop: 'var(--spacing-l)' }}>*/}
-                {/*                    <Button buttonType="muted" buttonSize="s" onClick={() => {*/}
-                {/*                        create();*/}
-                {/*                    }}>*/}
-                {/*                        <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon> New RSVP*/}
-                {/*                    </Button>*/}
-                {/*                </div>*/}
-                {/*                <div style={{ marginTop: 'var(--spacing-l)' }}>*/}
-                {/*                    <Button buttonType="primary" buttonSize="s" onClick={download}>*/}
-                {/*                        Download CSV*/}
-                {/*                    </Button>*/}
-                {/*                </div>*/}
-                {/*            </> : <div>*/}
-                {/*                <div>*/}
-                {/*                    No items…*/}
-                {/*                </div>*/}
-                {/*                <div style={{marginTop: 'var(--spacing-l)'}}>*/}
-                {/*                    <Button buttonType="muted" buttonSize="s" onClick={() => {*/}
-                {/*                        create();*/}
-                {/*                    }}>*/}
-                {/*                        <FontAwesomeIcon icon={faPlus}/> New RSVP*/}
-                {/*                    </Button>*/}
-                {/*                </div>*/}
-                {/*            </div>*/}
-                {/*        }*/}
-                {/*    </> : <div>*/}
-                {/*        Loading RSVP…*/}
-                {/*    </div>*/}
-                {/*}*/}
+                                                                        return attending && <FontAwesomeIcon icon={faCheck} />;
+                                                                    })()
+                                                                }
+                                                            </div>;
+                                                        })
+                                                    }
+                                                    <div className="ItemsTable__cell ItemsTable__cell--edit">
+                                                        <Dropdown
+                                                            renderTrigger={({ onClick }) => (
+                                                                <Button
+                                                                    buttonType="muted"
+                                                                    style={{
+                                                                        lineHeight: '16px'
+                                                                    }}
+                                                                    onClick={onClick}
+                                                                >
+                                                                    <FontAwesomeIcon icon={faEllipsisVertical} />
+                                                                </Button>
+                                                            )}
+                                                        >
+                                                            <DropdownMenu alignment="right">
+                                                                <DropdownOption onClick={() => {
+                                                                    edit(item.id);
+                                                                }}>Edit</DropdownOption>
+                                                                <DropdownSeparator />
+                                                                {/*<DropdownOption red onClick={() => {*/}
+                                                                {/*    remove(item.id);*/}
+                                                                {/*}}>*/}
+                                                                {/*    Delete*/}
+                                                                {/*</DropdownOption>*/}
+                                                            </DropdownMenu>
+                                                        </Dropdown>
+                                                    </div>
+                                                </div>;
+                                            })
+                                        }
+                                    </div>
+                                </div>
+                                <div style={{ marginTop: 'var(--spacing-l)' }}>
+                                    <Button buttonType="muted" buttonSize="s" onClick={() => {
+                                        create();
+                                    }}>
+                                        <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon> New RSVP
+                                    </Button>
+                                </div>
+                                <div style={{ marginTop: 'var(--spacing-l)' }}>
+                                    <Button buttonType="primary" buttonSize="s" onClick={download}>
+                                        Download CSV
+                                    </Button>
+                                </div>
+                            </> : <div>
+                                <div>
+                                    No items…
+                                </div>
+                                <div style={{marginTop: 'var(--spacing-l)'}}>
+                                    <Button buttonType="muted" buttonSize="s" onClick={() => {
+                                        create();
+                                    }}>
+                                        <FontAwesomeIcon icon={faPlus}/> New RSVP
+                                    </Button>
+                                </div>
+                            </div>
+                        }
+                    </> : <div>
+                        Loading RSVP…
+                    </div>
+                }
             </FieldGroup>
         </Canvas>
     );
