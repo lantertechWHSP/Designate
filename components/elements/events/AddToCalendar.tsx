@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { google, outlook, office365, yahoo, ics, CalendarEvent } from 'calendar-link';
+import { google, office365, yahoo, ics, CalendarEvent } from 'calendar-link';
 import { Portal, Button, Menu, MenuButton, MenuList, MenuItem, Text } from '@chakra-ui/react';
 import { SectionLinkInner } from '~/components/elements/sectionLink';
 

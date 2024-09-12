@@ -16,7 +16,6 @@ export interface IEvent {
     label?:string;
     startDate?:string;
     endDate?:string;
-    allDay?:boolean;
     isRsvp?:boolean;
     rsvpCutOffDate?:string;
 }
