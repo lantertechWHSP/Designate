@@ -21,7 +21,7 @@ const EventCard:any = ({ title, startDate, endDate, location, isRsvp, rsvpCutOff
     const [endDateOutlook, setEndDateOutlook] = useState(null);
 
     useEffect(() => {
-        setDateFormatted(DateTime.fromISO(startDate, { zone : 'Australia/Melbourne'}).toFormat('MMM d, yyyy') + ' AEST');
+        setDateFormatted(DateTime.fromISO(startDate).toFormat('MMM d, yyyy'));
         setStartDateObject(DateTime.fromISO(startDate, { zone : 'Australia/Melbourne'}).toUTC());
         setStartDateOutlook(DateTime.fromISO(startDate, { zone : 'Australia/Melbourne'}).toFormat('yyyy-MM-dd\'T\'HH:mm:ss'));
 
