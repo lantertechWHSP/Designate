@@ -26,7 +26,8 @@ const EventCard:any = ({ title, allDay, startDate, endDate, location, isRsvp, rs
         setDateFormatted(DateTime.fromISO(startDate).toFormat('MMM d, yyyy'));
         setStartDateObject(DateTime.fromISO(startDate, { zone : 'Australia/Melbourne'}).toUTC());
         setStartDateOutlook(DateTime.fromISO(startDate, { zone : 'Australia/Melbourne'}).toFormat('yyyy-MM-dd\'T\'HH:mm:ss'));
-        setAllDayDate(DateTime.fromISO(startDate, { zone : 'Australia/Melbourne'}).toFormat('yyyy-MM-dd'));
+
+        setAllDayDate(DateTime.fromISO(startDate, { zone : 'Australia/Melbourne'}).toUTC(0, { keepLocalTime: true }).toFormat('yyyy-MM-dd\'T\'HH:mm:ss'));
 
         if(endDate && DateTime.fromISO(endDate) > DateTime.fromISO(startDate)) {
             setEndDateObject(DateTime.fromISO(endDate, {zone: 'Australia/Melbourne'}).toUTC());
@@ -89,14 +90,14 @@ const EventCard:any = ({ title, allDay, startDate, endDate, location, isRsvp, rs
                                 msEvent={{
                                     title: title,
                                     location: location,
-                                    start: allDay ? allDayDate : startDateOutlook,
+                                    start: !allDay ? startDateOutlook : allDayDate,
                                     end: !allDay && (DateTime.fromISO(endDate) > DateTime.fromISO(startDate)) ? endDateOutlook : null,
                                     allDay: allDay || false
                                 }}
                                 event={{
                                     title: title,
                                     location: location,
-                                    start: allDay ? allDayDate : startDateObject,
+                                    start: !allDay ? startDateObject : allDayDate,
                                     end: !allDay && (DateTime.fromISO(endDate) > DateTime.fromISO(startDate)) ? endDateObject : null,
                                     allDay: allDay || false
                                 }}>
