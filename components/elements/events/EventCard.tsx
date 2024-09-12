@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode, useState, useEffect } from 'react';
 import { IEvent } from "~/interfaces/models/event";
 import { Flex, Heading, Text, Box } from '@chakra-ui/react';
 import { DateTime } from 'luxon';
@@ -10,8 +10,30 @@ import { isNil as _isNil } from 'lodash';
 interface IEventDateCard extends IEvent {
 }
 
-const EventCard:any = ({ title, allDay, startDate, endDate, location, isRsvp, rsvpCutOffDate }:IEventDateCard) : ReactNode => {
+const EventCard:any = ({ title, startDate, endDate, location, isRsvp, rsvpCutOffDate }:IEventDateCard) : ReactNode => {
     const [isOpen, setIsOpen] = useState(false);
+    const [dateFormatted, setDateFormatted] = useState('');
+
+    const [startDateObject, setStartDateObject] = useState(null);
+    const [endDateObject, setEndDateObject] = useState(null);
+
+    const [startDateOutlook, setStartDateOutlook] = useState(null);
+    const [endDateOutlook, setEndDateOutlook] = useState(null);
+
+    useEffect(() => {
+        setDateFormatted(DateTime.fromISO(startDate, { zone : 'Australia/Melbourne'}).toFormat('MMM d, yyyy') + ' AEST');
+        setStartDateObject(DateTime.fromISO(startDate, { zone : 'Australia/Melbourne'}).toUTC());
+        setStartDateOutlook(DateTime.fromISO(startDate, { zone : 'Australia/Melbourne'}).toFormat('yyyy-MM-dd\'T\'HH:mm:ss'));
+
+        if(endDate && endDate > startDate) {
+            setEndDateObject(DateTime.fromISO(endDate, { zone : 'Australia/Melbourne'}).toUTC());
+            setEndDateOutlook(DateTime.fromISO(endDate, { zone : 'Australia/Melbourne'}).toFormat('yyyy-MM-dd\'T\'HH:mm:ss'));
+        }
+        else {
+            setEndDateObject(DateTime.fromISO(startDate, { zone : 'Australia/Melbourne'}).plus({ days: 1 }).toUTC());
+            setEndDateOutlook(DateTime.fromISO(startDate, { zone : 'Australia/Melbourne'}).plus({ days: 1 }).toFormat('yyyy-MM-dd\'T\'HH:mm:ss'));
+        }
+    }, []);
 
     return <Flex py={[4, ,'22px']}
         direction={['row']}
@@ -36,7 +58,7 @@ const EventCard:any = ({ title, allDay, startDate, endDate, location, isRsvp, rs
                     <AnimateOverflow><Text
                         variant="listLabel"
                         mb={0}>
-                        {DateTime.fromISO(startDate).toFormat('MMM d, yyyy')}
+                        {dateFormatted}
                     </Text>
                     </AnimateOverflow>
                 </Box>
@@ -65,13 +87,17 @@ const EventCard:any = ({ title, allDay, startDate, endDate, location, isRsvp, rs
                                 onClose={() => {
                                     setIsOpen(false);
                                 }}
+                                msEvent={{
+                                    title: title,
+                                    location: location,
+                                    start: startDateOutlook,
+                                    end: endDateOutlook,
+                                }}
                                 event={{
                                     title: title,
-                                    // description: details,
                                     location: location,
-                                    start: startDate,
-                                    end: endDate !== startDate ? endDate : null,
-                                    allDay: allDay || false
+                                    start: startDateObject,
+                                    end: endDateObject,
                                 }}>
                             </AddToCalendar>
                         </AnimateOverflow>

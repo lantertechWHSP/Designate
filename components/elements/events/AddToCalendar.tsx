@@ -8,9 +8,10 @@ interface IAddToCalendar {
     open?:() => any;
     onClose?:() => any;
     event?:CalendarEvent;
+    msEvent?:CalendarEvent;
 }
 
-const AddToCalendar:any = ({ event, isOpen, open, onClose }:IAddToCalendar) : ReactNode => {
+const AddToCalendar:any = ({ event, msEvent, isOpen, open, onClose }:IAddToCalendar) : ReactNode => {
     if (!event) {
         return null;
     }
@@ -41,8 +42,9 @@ const AddToCalendar:any = ({ event, isOpen, open, onClose }:IAddToCalendar) : Re
                         <MenuList>
                             <CalendarLink href={ics(event)}>Apple</CalendarLink>
                             <CalendarLink href={google(event)}>Google</CalendarLink>
+                            <CalendarLink href={outlook(msEvent)}>Outlook</CalendarLink>
                             <CalendarLink href={yahoo(event)}>Yahoo</CalendarLink>
-                            <CalendarLink href={office365(event)}>Outlook</CalendarLink>
+                            <CalendarLink href={office365(msEvent)}>Office 365</CalendarLink>
                         </MenuList>
                     </Portal>
                 </>
