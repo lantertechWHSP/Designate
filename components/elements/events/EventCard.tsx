@@ -24,10 +24,11 @@ const EventCard:any = ({ title, allDay, startDate, endDate, location, isRsvp, rs
 
     useEffect(() => {
         setDateFormatted(DateTime.fromISO(startDate).toFormat('MMM d, yyyy'));
+
+        setAllDayDate(DateTime.fromISO(startDate, { zone : 'Australia/Melbourne'}).toUTC(0, { keepLocalTime: true }).toFormat('yyyy-MM-dd\'T\'HH:mm:ss'));
         setStartDateObject(DateTime.fromISO(startDate, { zone : 'Australia/Melbourne'}).toUTC());
         setStartDateOutlook(DateTime.fromISO(startDate, { zone : 'Australia/Melbourne'}).toFormat('yyyy-MM-dd\'T\'HH:mm:ss'));
 
-        setAllDayDate(DateTime.fromISO(startDate, { zone : 'Australia/Melbourne'}).toUTC(0, { keepLocalTime: true }).toFormat('yyyy-MM-dd\'T\'HH:mm:ss'));
 
         if(endDate && DateTime.fromISO(endDate) > DateTime.fromISO(startDate)) {
             setEndDateObject(DateTime.fromISO(endDate, {zone: 'Australia/Melbourne'}).toUTC());
