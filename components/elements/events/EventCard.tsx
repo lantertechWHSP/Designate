@@ -68,10 +68,10 @@ const EventCard:any = ({ title, startDate, endDate, location, isRsvp, rsvpCutOff
             justify="flex-end"
             px={4}>
             {
-                DateTime.now() < DateTime.fromISO(startDate) &&
+                DateTime.now() < DateTime.fromISO(startDate, { zone : 'Australia/Melbourne'}) &&
                 <>
                     {
-                        (isRsvp && (_isNil(rsvpCutOffDate) || (!_isNil(rsvpCutOffDate) &&  DateTime.now() < DateTime.fromISO(rsvpCutOffDate)))) && <AnimateOverflow>
+                        (isRsvp && (_isNil(rsvpCutOffDate) || (!_isNil(rsvpCutOffDate) &&  DateTime.now() < DateTime.fromISO(rsvpCutOffDate, { zone : 'Australia/Melbourne'})))) && <AnimateOverflow>
                             <SectionLink href="/investor-centre/key-dates#rsvp" pr={[2, ,4]}>
                                 RSVP
                             </SectionLink>
