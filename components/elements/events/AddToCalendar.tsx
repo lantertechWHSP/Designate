@@ -42,9 +42,8 @@ const AddToCalendar:any = ({ event, msEvent, isOpen, open, onClose }:IAddToCalen
                         <MenuList>
                             <CalendarLink href={ics(event)}>Apple</CalendarLink>
                             <CalendarLink href={google(event)}>Google</CalendarLink>
-                            <CalendarLink href={outlook(msEvent)}>Outlook</CalendarLink>
                             <CalendarLink href={yahoo(event)}>Yahoo</CalendarLink>
-                            <CalendarLink href={office365(msEvent)}>Office 365</CalendarLink>
+                            <CalendarLink href={office365(msEvent)}>Outlook</CalendarLink>
                         </MenuList>
                     </Portal>
                 </>
