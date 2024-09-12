@@ -10,7 +10,7 @@ import { isNil as _isNil } from 'lodash';
 interface IEventDateCard extends IEvent {
 }
 
-const EventCard:any = ({ title, startDate, endDate, location, isRsvp, rsvpCutOffDate }:IEventDateCard) : ReactNode => {
+const EventCard:any = ({ title, allDay, startDate, endDate, location, isRsvp, rsvpCutOffDate }:IEventDateCard) : ReactNode => {
     const [isOpen, setIsOpen] = useState(false);
     const [dateFormatted, setDateFormatted] = useState('');
 
@@ -20,18 +20,17 @@ const EventCard:any = ({ title, startDate, endDate, location, isRsvp, rsvpCutOff
     const [startDateOutlook, setStartDateOutlook] = useState(null);
     const [endDateOutlook, setEndDateOutlook] = useState(null);
 
+    const [allDayDate, setAllDayDate] = useState('');
+
     useEffect(() => {
         setDateFormatted(DateTime.fromISO(startDate).toFormat('MMM d, yyyy'));
         setStartDateObject(DateTime.fromISO(startDate, { zone : 'Australia/Melbourne'}).toUTC());
         setStartDateOutlook(DateTime.fromISO(startDate, { zone : 'Australia/Melbourne'}).toFormat('yyyy-MM-dd\'T\'HH:mm:ss'));
+        setAllDayDate(DateTime.fromISO(startDate, { zone : 'Australia/Melbourne'}).toFormat('yyyy-MM-dd'));
 
-        if(endDate && endDate > startDate) {
-            setEndDateObject(DateTime.fromISO(endDate, { zone : 'Australia/Melbourne'}).toUTC());
-            setEndDateOutlook(DateTime.fromISO(endDate, { zone : 'Australia/Melbourne'}).toFormat('yyyy-MM-dd\'T\'HH:mm:ss'));
-        }
-        else {
-            setEndDateObject(DateTime.fromISO(startDate, { zone : 'Australia/Melbourne'}).plus({ days: 1 }).toUTC());
-            setEndDateOutlook(DateTime.fromISO(startDate, { zone : 'Australia/Melbourne'}).plus({ days: 1 }).toFormat('yyyy-MM-dd\'T\'HH:mm:ss'));
+        if(endDate && DateTime.fromISO(endDate) > DateTime.fromISO(startDate)) {
+            setEndDateObject(DateTime.fromISO(endDate, {zone: 'Australia/Melbourne'}).toUTC());
+            setEndDateOutlook(DateTime.fromISO(endDate, {zone: 'Australia/Melbourne'}).toFormat('yyyy-MM-dd\'T\'HH:mm:ss'));
         }
     }, []);
 
@@ -90,14 +89,16 @@ const EventCard:any = ({ title, startDate, endDate, location, isRsvp, rsvpCutOff
                                 msEvent={{
                                     title: title,
                                     location: location,
-                                    start: startDateOutlook,
-                                    end: endDateOutlook,
+                                    start: allDay ? allDayDate : startDateOutlook,
+                                    end: !allDay && (DateTime.fromISO(endDate) > DateTime.fromISO(startDate)) ? endDateOutlook : null,
+                                    allDay: allDay || false
                                 }}
                                 event={{
                                     title: title,
                                     location: location,
-                                    start: startDateObject,
-                                    end: endDateObject,
+                                    start: allDay ? allDayDate : startDateObject,
+                                    end: !allDay && (DateTime.fromISO(endDate) > DateTime.fromISO(startDate)) ? endDateObject : null,
+                                    allDay: allDay || false
                                 }}>
                             </AddToCalendar>
                         </AnimateOverflow>

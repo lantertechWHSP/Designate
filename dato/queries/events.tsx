@@ -4,6 +4,7 @@ export const events:string = `
             id
             title
             label
+            allDay
             startDate
             endDate
             location
