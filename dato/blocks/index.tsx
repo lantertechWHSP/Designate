@@ -16,6 +16,7 @@ import { latestPostsPanelRecord } from '~/dato/blocks/latestPostsPanel';
 import { contactsPanelRecord } from '~/dato/blocks/contactsPanel';
 import { investorPanelRecord } from '~/dato/blocks/investorPanel';
 import { eventListPanelRecord } from '~/dato/blocks/eventListPanel';
+import { latestEventListPanelRecord } from '~/dato/blocks/latestEventListPanel';
 
 // Home
 import { heroRecord } from '~/dato/blocks/hero';
@@ -117,6 +118,9 @@ export const blocks:string = `
         }
         ... on EventListPanelRecord {
             ${eventListPanelRecord}
+        }
+        ... on LatestEventListPanelRecord {
+            ${latestEventListPanelRecord}
         }
 
         ... on HeroRecord {

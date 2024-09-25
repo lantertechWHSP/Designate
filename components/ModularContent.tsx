@@ -17,6 +17,7 @@ import LatestPostsPanelBlock from '~/components/blocks/LatestPosts/LatestPostsPa
 import ContactsPanelBlock from '~/components/blocks/ContactsPanel/ContactsPanel';
 import InvestorPanelBlock from '~/components/blocks/InvestorPanel';
 import EventListPanelBlock from '~/components/blocks/EventListPanel';
+import LatestEventListPanelBlock from "~/components/blocks/LatestEventsListPanel";
 
 // Home
 import HeroBlock from '~/components/blocks/Hero';
@@ -89,6 +90,7 @@ const blocks:any = {
     ContactsPanelBlock,
     InvestorPanelBlock,
     EventListPanelBlock,
+    LatestEventListPanelBlock,
 
     // Home
     HeroBlock,
