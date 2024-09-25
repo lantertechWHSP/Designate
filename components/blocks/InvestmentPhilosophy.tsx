@@ -36,7 +36,7 @@ const InvestmentPhilosophyBlock:any = ({ title, items, paddingTop, paddingBottom
                         const selectedBackground:BackgroundColor|ResponsiveValue<any>|string = getBackgroundColor(item.background);
 
                         return <Flex px={4} key={index} flex={1}>
-                            <Box background={selectedBackground} color="white" borderTopRightRadius="40px" p={4} pr={7} w="100%" mb={[4, , , ,0]}>
+                            <Box background={selectedBackground} color="white" borderTopRightRadius="40px" p={4} pr={7} w="100%" minHeight={['initial', , , ,'190px']} mb={[4, , , ,0]}>
                                 <Flex>
                                     {
                                         item.icon && <Box mb={2} mr={1}>
