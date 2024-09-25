@@ -1,7 +1,7 @@
 import { useState, ReactNode, useEffect } from 'react';
 import DocumentCard from '~/components/elements/documents/DocumentCard';
 import { Box, Flex, Button, Spinner, Container, Heading, Menu, MenuButton, Portal, MenuList, MenuItem, Alert } from '@chakra-ui/react';
-import { IDocument, IDocumentsFilters, IDocumentBundle } from '~/interfaces/models/document';
+import { IDocument, IDocumentsFilters, IDocumentGroup } from '~/interfaces/models/document';
 import { IDocumentsMeta } from '~/interfaces/models/document';
 import { groupBy as _groupBy, forOwn as _forOwn } from 'lodash';
 import { DateTime } from 'luxon';
@@ -25,7 +25,7 @@ const DocumentReportsList:any = ({ latestDocuments, documentsMeta, documentsFilt
     const [documents, setDocuments] = useState<IDocument[]>(latestDocuments);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [couldNotLoadDocuments, setCouldNotLoadDocuments] = useState<boolean>(false);
-    const [documentBundles, setDocumentBundles] = useState<IDocumentBundle[]>([]);
+    const [documentGroups, setDocumentGroups] = useState<IDocumentGroup[]>([]);
 
     const [tagFilters] = useState<IFilter[]>(documentsFilters.tagFilters);
     const [yearFilters] = useState<IFilter[]>(documentsFilters.yearFilters);
@@ -136,7 +136,7 @@ const DocumentReportsList:any = ({ latestDocuments, documentsMeta, documentsFilt
     };
 
     useEffect(() => {
-        const newSortedDocumentBundles:IDocumentBundle[] = [];
+        const newSortedDocumentBundles:IDocumentGroup[] = [];
 
         _forOwn(_groupBy(documents, (document:IDocument) => {
             return DateTime.fromISO(document.date).toFormat('yyyy');
@@ -147,7 +147,7 @@ const DocumentReportsList:any = ({ latestDocuments, documentsMeta, documentsFilt
             });
         });
 
-        setDocumentBundles(newSortedDocumentBundles.reverse());
+        setDocumentGroups(newSortedDocumentBundles.reverse());
     }, [documents]);
 
     return <Box bg="ghostWhite" pt={['40px', ,'50px', '60px']} pb={['120px']}>
@@ -234,13 +234,13 @@ const DocumentReportsList:any = ({ latestDocuments, documentsMeta, documentsFilt
                     </Box>
                     <Box>
                         {
-                            documentBundles.map((documentBundle:IDocumentBundle, index:number) => {
+                            documentGroups.map((documentGroup:IDocumentGroup, index:number) => {
                                 return <Box key={index} pb={8}>
-                                    <Heading as="h2" variant="sectionHeading" mb={4}>{documentBundle.title}</Heading>
+                                    <Heading as="h2" variant="sectionHeading" mb={4}>{documentGroup.title}</Heading>
                                     {
-                                        (Array.isArray(documentBundle.documents) && documentBundle.documents.length > 0) && <>
+                                        (Array.isArray(documentGroup.documents) && documentGroup.documents.length > 0) && <>
                                             {
-                                                documentBundle.documents.map((document:IDocument, innerIndex:number) => {
+                                                documentGroup.documents.map((document:IDocument, innerIndex:number) => {
                                                     return <Box borderTop="1px solid" borderColor="borderColor" key={innerIndex}>
                                                         <DocumentCard {...document} hideDate={true} />
                                                     </Box>;

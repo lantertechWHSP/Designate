@@ -22,7 +22,7 @@ export interface IDocument {
     slug?:string;
 }
 
-export interface IDocumentBundle {
+export interface IDocumentGroup {
     title:string;
     documents:IDocument[];
 }

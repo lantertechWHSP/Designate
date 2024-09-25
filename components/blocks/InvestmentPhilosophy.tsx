@@ -36,21 +36,31 @@ const InvestmentPhilosophyBlock:any = ({ title, items, paddingTop, paddingBottom
                         const selectedBackground:BackgroundColor|ResponsiveValue<any>|string = getBackgroundColor(item.background);
 
                         return <Flex px={4} key={index} flex={1}>
-                            <Box background={selectedBackground} color="white" borderTopRightRadius="40px" p={4} w="100%" mb={[4, , , ,0]}>
+                            <Box background={selectedBackground} color="white" borderTopRightRadius="40px" p={4} pr={7} w="100%" mb={[4, , , ,0]}>
                                 <Flex>
                                     {
-                                        item.icon && <Box mb={2} mr={4}>
-                                            <InvestmentPhilosophyIcon icon={item.icon} />
+                                        item.icon && <Box mb={2} mr={1}>
+                                            <Box position="relative" left="-2px">
+                                                <AnimateOverflow>
+                                                    <InvestmentPhilosophyIcon icon={item.icon} />
+                                                </AnimateOverflow>
+                                            </Box>
                                         </Box>
                                     }
                                     <Box py={2}>
                                         {
                                             item.title && <Heading as="h3" fontSize="24px" color="white" mb={2}>
-                                                {item.title}
+                                                <AnimateOverflow>
+                                                    {item.title}
+                                                </AnimateOverflow>
                                             </Heading>
                                         }
                                         {
-                                            !isEmptyDocument(item.content) && <StructuredContent content={item.content} />
+                                            !isEmptyDocument(item.content) && <Box>
+                                                <AnimateOverflow>
+                                                    <StructuredContent content={item.content} />
+                                                </AnimateOverflow>
+                                            </Box>
                                         }
                                     </Box>
                                 </Flex>

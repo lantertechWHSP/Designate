@@ -1,36 +1,51 @@
-import { ReactNode } from 'react';
-import { Box, Alert, Flex } from '@chakra-ui/react';
+import { ReactNode, useEffect, useState } from 'react';
+import {Box, Alert, Flex, Heading} from '@chakra-ui/react';
 import EventCard from '~/components/elements/events/EventCard';
-import { IEvent} from '~/interfaces/models/event';
+import { IEvent, IEventGroup } from '~/interfaces/models/event';
 import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
+import { forOwn as _forOwn, groupBy as _groupBy} from 'lodash';
+import { DateTime } from 'luxon';
 
 interface IEventDateList {
     events:IEvent[];
 }
 
 const EventList:any = ({ events }:IEventDateList) : ReactNode => {
+    const [eventGroups, setEventGroups] = useState([]);
+
+    useEffect(() => {
+        const newSortedEventGroups:IEventGroup[] = [];
+
+        _forOwn(_groupBy(events, (event:IEvent) => {
+            return DateTime.fromISO(event.startDate, { zone : 'Australia/Melbourne' }).toFormat('yyyy');
+        }), (document:IEvent[], key:string) => {
+            newSortedEventGroups.push({
+                title: key,
+                events: document
+            });
+        });
+
+        setEventGroups(newSortedEventGroups.reverse());
+    }, [events]);
+    
     return <Box>
         {
             (Array.isArray(events) && events.length > 0) ? <>
-                <Box borderBottom="3px solid" borderColor="borderColor">
-                    <Flex direction={['row']} mx={-4} pb={2} width="100%" fontSize="16px"
-                        lineHeight="22px">
-                        <Box mb={0} px={4} width={['100%', ,'50%']}>
-                            <AnimateOverflow>
-                                Event
-                            </AnimateOverflow>
-                        </Box>
-                        <Box mb={0} px={4} width="50%" display={['none', ,'block']}>
-                            <AnimateOverflow>
-                                Date
-                            </AnimateOverflow>
-                        </Box>
-                    </Flex>
-                </Box>
                 {
-                    events.map((event:IEvent, index:number) => {
-                        return <Box borderBottom="1px solid" borderColor="borderColor" key={index}>
-                            <EventCard {...event} />
+                    eventGroups.map((eventGroup:IEventGroup, index:number) => {
+                        return <Box key={index} pb={8}>
+                            <Heading as="h2" variant="sectionHeading" mb={4}>{eventGroup.title}</Heading>
+                            {
+                                (Array.isArray(eventGroup.events) && eventGroup.events.length > 0) && <>
+                                    {
+                                        eventGroup.events.map((event:IEvent, index:number) => {
+                                            return <Box borderBottom="1px solid" borderColor="borderColor" key={index}>
+                                                <EventCard {...event} />
+                                            </Box>;
+                                        })
+                                    }
+                                </>
+                            }
                         </Box>;
                     })
                 }

@@ -20,3 +20,8 @@ export interface IEvent {
     isRsvp?:boolean;
     rsvpCutOffDate?:string;
 }
+
+export interface IEventGroup {
+    title?:string;
+    events:IEvent[];
+}

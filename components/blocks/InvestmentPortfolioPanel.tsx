@@ -44,19 +44,27 @@ const InvestmentPortfolioPanelBlock:any = ({ title, description, items, paddingT
                     items.map((item:IInvestmentPortfolioItem, index:number) => {
                         return <Box key={index}>
                             {
-                                item.icon && <Box mb={2}>
-                                    <InvestmentPortfolioIcon icon={item.icon} w={60} h={60} />
+                                item.icon && <Box mb={3}>
+                                    <AnimateOverflow>
+                                        <InvestmentPortfolioIcon icon={item.icon} w={60} h={60} />
+                                    </AnimateOverflow>
                                 </Box>
                             }
                             {
-                                item.title && <Heading as="h3" variant="sectionSubheading" color="forest" mb={8}>
-                                    {
-                                        item.title
-                                    }
+                                item.title && <Heading as="h3" variant="sectionSubheading" color="forest" mb={3}>
+                                    <AnimateOverflow>
+                                        {
+                                            item.title
+                                        }
+                                    </AnimateOverflow>
                                 </Heading>
                             }
                             {
-                                !isEmptyDocument(item.description) && <StructuredContent content={item.description} />
+                                !isEmptyDocument(item.description) && <Box mb={8}>
+                                    <AnimateOverflow>
+                                        <StructuredContent content={item.description} />
+                                    </AnimateOverflow>
+                                </Box>
                             }
                         </Box>;
                     })
