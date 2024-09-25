@@ -25,6 +25,7 @@ import AsxAnnouncementsPanelBlock from '~/components/blocks/AsxAnnouncementsPane
 import SeeAlsoPanelBlock from '~/components/blocks/SeeAlsoPanel';
 
 // About/Track Record
+import TimelineBlock from '~/components/blocks/Timeline';
 import TrackRecordTableBlock from '~/components/blocks/TrackRecordTable';
 import TrackRecordChartBlock from '~/components/blocks/TrackRecordChart';
 import TrackRecordDividendBlock from '~/components/blocks/TrackRecordDividend';
@@ -94,6 +95,7 @@ const blocks:any = {
     SeeAlsoPanelBlock,
 
     // About/Track Record
+    TimelineBlock,
     TrackRecordTableBlock,
     TrackRecordChartBlock,
     TrackRecordDividendBlock,

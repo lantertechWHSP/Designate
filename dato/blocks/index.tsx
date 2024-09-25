@@ -63,6 +63,7 @@ import { faqsPanelRecord } from '~/dato/blocks/faqsPanel';
 // People and Governance
 import { profilesPanelRecord } from '~/dato/blocks/profilesPanel';
 import { documentPoliciesListRecord } from '~/dato/blocks/documentPoliciesList';
+import {timelineRecord} from "~/dato/blocks/timeline";
 
 export const blocks:string = `
     blocks {
@@ -129,6 +130,9 @@ export const blocks:string = `
             ${seeAlsoPanelRecord}
         }
 
+        ... on TimelineRecord {
+            ${timelineRecord}
+        }
         ... on TrackRecordTableRecord {
             ${trackRecordTableRecord}
         }
