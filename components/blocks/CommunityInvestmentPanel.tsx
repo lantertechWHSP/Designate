@@ -6,21 +6,21 @@ import { IStructuredText } from '~/interfaces/util/structuredText';
 import { isEmptyDocument } from "datocms-structured-text-utils";
 import StructuredContent from '~/components/StructuredContent';
 import ContentBlock from '~/components/blocks/Content';
-import { InvestmentPortfolioIcon, InvestmentPortfolioIcons } from '~/components/elements/icons/investmentPortfolioIcons/investmentPortfolioIcon';
+import { IImage } from '~/interfaces/util/image';
+import { Image } from '~/components/elements/image';
 
-interface  IInvestmentPortfolioPanelBlock extends IBlock {
+interface  ICommunityInvestmentPanelBlock extends IBlock {
     title?:string;
     description?:IStructuredText;
-    items?:IInvestmentPortfolioItem[];
+    items?:ICommunityInvestmentItem[];
 }
 
-interface IInvestmentPortfolioItem {
-    title?:string;
+interface ICommunityInvestmentItem {
+    image?:IImage;
     description?:IStructuredText;
-    icon?:InvestmentPortfolioIcons;
 }
 
-const InvestmentPortfolioPanelBlock:any = ({ title, description, items, paddingTop, paddingBottom, background }: IInvestmentPortfolioPanelBlock) : ReactNode => {
+const CommunityInvestmentPanelBlock:any = ({ title, description, items, paddingTop, paddingBottom, background }: ICommunityInvestmentPanelBlock) : ReactNode => {
     return (title || (Array.isArray(items) && items.length > 0)) && <ContentBlock background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         {
             title && <Heading as="h2" variant="sectionHeading" mb={[4, ,6, 8]}>
@@ -39,21 +39,14 @@ const InvestmentPortfolioPanelBlock:any = ({ title, description, items, paddingT
             </Box>
         }
         {
-            (Array.isArray(items) && items.length > 0) && <SimpleGrid columns={[1, 2, 3]} spacingX={[8]} spacingY={[6, ,8]}>
+            (Array.isArray(items) && items.length > 0) && <SimpleGrid columns={[1, ,2]} spacingX={[8]} spacingY={[6, ,8]}>
                 {
-                    items.map((item:IInvestmentPortfolioItem, index:number) => {
+                    items.map((item:ICommunityInvestmentItem, index:number) => {
                         return <Box key={index}>
                             {
-                                item.icon && <Box mb={2}>
-                                    <InvestmentPortfolioIcon icon={item.icon} w={60} h={60} />
+                                item.image && <Box width={['240px']} mb={4}>
+                                    <Image image={item.image} />
                                 </Box>
-                            }
-                            {
-                                item.title && <Heading as="h3" variant="sectionSubheading" color="forest" mb={8}>
-                                    {
-                                        item.title
-                                    }
-                                </Heading>
                             }
                             {
                                 !isEmptyDocument(item.description) && <StructuredContent content={item.description} />
@@ -66,4 +59,4 @@ const InvestmentPortfolioPanelBlock:any = ({ title, description, items, paddingT
     </ContentBlock>;
 };
 
-export default InvestmentPortfolioPanelBlock;
+export default CommunityInvestmentPanelBlock;

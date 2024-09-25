@@ -39,6 +39,7 @@ import { portfolioPanelRecord } from "~/dato/blocks/portfolioPanel";
 
 // About/Sustainability
 import { sustainabilityPanelRecord } from '~/dato/blocks/sustainabilityPanel';
+import { communityInvestmentPanelRecord } from '~/dato/blocks/communityInvestmentPanel';
 
 // Investor Center/ ASX Announcements
 import { asxNewsletterFormPanelRecord } from '~/dato/blocks/asxNewsletterFormPanel';
@@ -161,7 +162,10 @@ export const blocks:string = `
         ... on SustainabilityPanelRecord {
             ${sustainabilityPanelRecord}
         }
-        
+        ... on CommunityInvestmentPanelRecord {
+            ${communityInvestmentPanelRecord}
+        }
+
         ... on AsxNewsletterFormPanelRecord {
             ${asxNewsletterFormPanelRecord}
         }

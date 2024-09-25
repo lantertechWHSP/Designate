@@ -40,6 +40,7 @@ import PortfolioPanelBlock from '~/components/blocks/PortfolioPanel';
 
 // About/Sustainability
 import SustainabilityPanelBlock from '~/components/blocks/SustainabilityPanel';
+import CommunityInvestmentPanelBlock from '~/components/blocks/CommunityInvestmentPanel';
 
 // Investor Center/ ASX Announcements
 import AsxNewsletterFormPanelBlock from '~/components/blocks/AsxNewsletterFormPanel';
@@ -111,6 +112,7 @@ const blocks:any = {
 
     // About/Sustainability
     SustainabilityPanelBlock,
+    CommunityInvestmentPanelBlock,
 
     // Investor Center/ ASX Announcements
     AsxNewsletterFormPanelBlock,
