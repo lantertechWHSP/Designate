@@ -39,7 +39,7 @@ const CommunityInvestmentPanelBlock:any = ({ title, description, items, paddingT
             </Box>
         }
         {
-            (Array.isArray(items) && items.length > 0) && <SimpleGrid columns={[1, ,2]} spacingX={[8]} spacingY={[6, ,8]}>
+            (Array.isArray(items) && items.length > 0) && <SimpleGrid columns={[1, 1, ,2]} spacingX={[8]} spacingY={[6, ,8]}>
                 {
                     items.map((item:ICommunityInvestmentItem, index:number) => {
                         return <Box key={index}>
