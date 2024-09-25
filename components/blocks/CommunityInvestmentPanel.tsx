@@ -44,7 +44,7 @@ const CommunityInvestmentPanelBlock:any = ({ title, description, items, paddingT
                     items.map((item:ICommunityInvestmentItem, index:number) => {
                         return <Box key={index}>
                             {
-                                item.image && <Box width={['240px']} mb={4}>
+                                item.image && <Box width={['260px']} mb={4}>
                                     <Image image={item.image} />
                                 </Box>
                             }
