@@ -1,13 +1,16 @@
+import { structuredTextAttrs } from '~/dato/attrs/structuredTextAttrs';
+
 export const companyValuesPanelRecord:string = `
     __typename
     id
     title
     items {
         title
-        icon {
-            url
-            alt
+        description {
+            ${structuredTextAttrs}
         }
+        background
+        icon
     }
     containerWidth
     background
