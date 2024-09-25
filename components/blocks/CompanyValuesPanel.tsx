@@ -33,7 +33,7 @@ const CompanyValuesPanelBlock:any = ({ title, items, containerWidth, background,
                 items.map((item:ICompanyValue, index:number) => {
                     const selectedBackground:BackgroundColor|ResponsiveValue<any>|string = getBackgroundColor(item.background);
                     
-                    return <Flex px={2} key={index}  flex={1}>
+                    return <Flex px={2} key={index} flex={1}>
                         <Box background={selectedBackground} color="white" borderTopRightRadius="40px" p={4} w="100%" mb={[4, ,0]}>
                             {
                                 item.icon && <Box mb={2}>

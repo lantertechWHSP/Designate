@@ -10,6 +10,7 @@ import AccordionBlock from '~/components/blocks/Accordion';
 import CarouselBlock from '~/components/blocks/Carousel';
 import HorizontalRuleBlock from '~/components/blocks/HorizontalRule';
 import AttributesListPanelBlock from '~/components/blocks/AttributesListPanel';
+import InvestmentPhilosophyBlock from "~/components/blocks/InvestmentPhilosophy";
 
 import DocumentHeroPanelBlock from '~/components/blocks/DocumentHeroPanel';
 import CompanyValuesPanelBlock from '~/components/blocks/CompanyValuesPanel';
@@ -80,6 +81,7 @@ const blocks:any = {
     CarouselBlock,
     HorizontalRuleBlock,
     AttributesListPanelBlock,
+    InvestmentPhilosophyBlock,
 
     DocumentHeroPanelBlock,
     CompanyValuesPanelBlock,

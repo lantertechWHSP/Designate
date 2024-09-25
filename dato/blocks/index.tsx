@@ -9,6 +9,7 @@ import { accordionRecord } from '~/dato/blocks/accordion';
 import { carouselRecord } from '~/dato/blocks/carousel';
 import { horizontalRuleRecord } from '~/dato/blocks/horizontalRule';
 import { attributesListPanelRecord } from '~/dato/blocks/attributesListPanel';
+import { investmentPhilosophyRecord } from "~/dato/blocks/investmentPhilosophyRecord";
 
 import { documentHeroPanelRecord } from '~/dato/blocks/documentHeroPanel';
 import { companyValuesPanelRecord } from '~/dato/blocks/companyValuesPanel';
@@ -27,6 +28,7 @@ import { seeAlsoPanelRecord } from '~/dato/blocks/seeAlsoPanel';
 import { trackRecordTableRecord } from '~/dato/blocks/trackRecordTable';
 import { trackRecordChartRecord } from '~/dato/blocks/trackRecordChart';
 import { trackRecordDividendRecord } from '~/dato/blocks/trackRecordDividend';
+import { timelineRecord } from "~/dato/blocks/timeline";
 
 // About/Investment Approach
 import { investmentPortfolioTableRecord } from '~/dato/blocks/investmentPortfolioTable';
@@ -63,7 +65,6 @@ import { faqsPanelRecord } from '~/dato/blocks/faqsPanel';
 // People and Governance
 import { profilesPanelRecord } from '~/dato/blocks/profilesPanel';
 import { documentPoliciesListRecord } from '~/dato/blocks/documentPoliciesList';
-import {timelineRecord} from "~/dato/blocks/timeline";
 
 export const blocks:string = `
     blocks {
@@ -96,6 +97,9 @@ export const blocks:string = `
         }
         ... on AttributesListPanelRecord {
             ${attributesListPanelRecord}
+        }
+        ... on InvestmentPhilosophyRecord {
+            ${investmentPhilosophyRecord}
         }
 
         ... on DocumentHeroPanelRecord {
