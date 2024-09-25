@@ -8,8 +8,7 @@ import { cardPanelRecord } from '~/dato/blocks/cardPanel';
 import { accordionRecord } from '~/dato/blocks/accordion';
 import { carouselRecord } from '~/dato/blocks/carousel';
 import { horizontalRuleRecord } from '~/dato/blocks/horizontalRule';
-import { attributesListPanelRecord } from '~/dato/blocks/attributesListPanel';
-import { investmentPhilosophyRecord } from "~/dato/blocks/investmentPhilosophyRecord";
+import { investmentPhilosophyRecord } from '~/dato/blocks/investmentPhilosophyRecord';
 
 import { documentHeroPanelRecord } from '~/dato/blocks/documentHeroPanel';
 import { companyValuesPanelRecord } from '~/dato/blocks/companyValuesPanel';
@@ -31,6 +30,7 @@ import { trackRecordDividendRecord } from '~/dato/blocks/trackRecordDividend';
 import { timelineRecord } from "~/dato/blocks/timeline";
 
 // About/Investment Approach
+import { investmentPortfolioPanelRecord } from '~/dato/blocks/investmentPortfolioPanel';
 import { investmentPortfolioTableRecord } from '~/dato/blocks/investmentPortfolioTable';
 import { objectivePanelRecord } from '~/dato/blocks/objectivePanel';
 
@@ -95,9 +95,6 @@ export const blocks:string = `
         ... on HorizontalRuleRecord {
             ${horizontalRuleRecord}
         }
-        ... on AttributesListPanelRecord {
-            ${attributesListPanelRecord}
-        }
         ... on InvestmentPhilosophyRecord {
             ${investmentPhilosophyRecord}
         }
@@ -147,6 +144,9 @@ export const blocks:string = `
             ${trackRecordDividendRecord}
         }
 
+        ... on InvestmentPortfolioPanelRecord {
+            ${investmentPortfolioPanelRecord}
+        }
         ... on InvestmentPortfolioTableRecord {
             ${investmentPortfolioTableRecord}
         }

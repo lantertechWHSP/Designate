@@ -4,9 +4,9 @@ import ContentBlock, { BackgroundColor, getBackgroundColor } from '~/components/
 import {Heading, Flex, ResponsiveValue, Box} from '@chakra-ui/react';
 import { AnimateOverflow } from '~/components/elements/animation/AnimateOverflow';
 import { IStructuredText } from '~/interfaces/util/structuredText';
-import { InvestmentPhilosophyIcon, InvestmentPhilosophyIcons } from '~/components/elements/investmentPhilosophyIcons/investmentPhilosophyIcons';
-import { isEmptyDocument } from "datocms-structured-text-utils";
-import StructuredContent from "~/components/StructuredContent";
+import { InvestmentPhilosophyIcons, InvestmentPhilosophyIcon } from '~/components/elements/icons/investmentPhilosophyIcons/investmentPhilosophyIcon';
+import { isEmptyDocument } from 'datocms-structured-text-utils';
+import StructuredContent from '~/components/StructuredContent';
 
 interface  IInvestmentPhilosophyBlock extends IBlock {
     title?:string;

@@ -2,10 +2,10 @@ import { ReactNode } from 'react';
 import { IBlock } from '~/interfaces/util/block';
 import ContentBlock, {BackgroundColor, getBackgroundColor} from '~/components/blocks/Content';
 import { Heading, Box, Flex, ResponsiveValue } from '@chakra-ui/react';
-import { IStructuredText } from "~/interfaces/util/structuredText";
-import {isEmptyDocument} from "datocms-structured-text-utils";
-import StructuredContent from "~/components/StructuredContent";
-import {CompanyIcon, CompanyIcons} from "~/components/elements/companyIcons/companyIcon";
+import { IStructuredText } from '~/interfaces/util/structuredText';
+import { isEmptyDocument } from 'datocms-structured-text-utils';
+import StructuredContent from '~/components/StructuredContent';
+import { CompanyIcon, CompanyIcons } from '~/components/elements/icons/companyIcons/companyIcon';
 
 interface ICompanyValuesPanelBlock extends IBlock {
     title?:string;
@@ -19,9 +19,7 @@ interface ICompanyValue {
     icon?:CompanyIcons;
 }
 
-const CompanyValuesPanelBlock:any = ({ title, items, containerWidth, background, paddingTop, paddingBottom,  }:ICompanyValuesPanelBlock) : ReactNode => {
-    
-    
+const CompanyValuesPanelBlock:any = ({ title, items, containerWidth, background, paddingTop, paddingBottom }:ICompanyValuesPanelBlock) : ReactNode => {
     return ((Array.isArray(items) && items.length > 0) || title) && <ContentBlock containerWidth={containerWidth} background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         {
             title && <Heading as="h3" variant="sectionSubheading" mb={[4, 6, ,8]}>
