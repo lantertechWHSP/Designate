@@ -42,15 +42,15 @@ const TimelineBlock:any = ({ title, description, items, itemsTitle, paddingTop, 
             </Column>
             <Column width={[ColumnWidth.Full, , , ,ColumnWidth.Half]}>
                 {
-                    itemsTitle && <Heading as="h3" variant="h2" mb={4}>
-                        <AnimateOverflow>
-                            {itemsTitle}
-                        </AnimateOverflow>
-                    </Heading>
-                }
-                {
                     Array.isArray(items) && items.length > 0 && <AnimateOpacity>
                         <Box background="olive" color="white" borderTopRightRadius="40px" p={8}>
+                            {
+                                itemsTitle && <Heading as="h3" color="white" variant="sectionSubheading" mb={4}>
+                                    <AnimateOverflow>
+                                        {itemsTitle}
+                                    </AnimateOverflow>
+                                </Heading>
+                            }
                             <Flex height="20px">
                                 <Box width="50px" />
                                 <Box width="50px" position="relative">
