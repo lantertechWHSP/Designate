@@ -4,5 +4,9 @@ export const heroRecord:string = `
     title
     video {
         url
+        video {
+            muxPlaybackId
+            thumbnailUrl
+        }
     }
 `;
