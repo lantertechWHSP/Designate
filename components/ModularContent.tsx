@@ -34,6 +34,7 @@ import TrackRecordDividendBlock from '~/components/blocks/TrackRecordDividend';
 // About/Investment Approach
 import InvestmentPortfolioPanelBlock from '~/components/blocks/InvestmentPortfolioPanel';
 import InvestmentPortfolioTableBlock from '~/components/blocks/InvestmentPortfolioTable';
+import MeasureOfSuccessBlock from "~/components/blocks/MeasureOfSuccess";
 import ObjectivePanelBlock from '~/components/blocks/ObjectivePanel';
 
 // About/Investment Portfolio
@@ -107,6 +108,7 @@ const blocks:any = {
     // About/Investment Approach
     InvestmentPortfolioPanelBlock,
     InvestmentPortfolioTableBlock,
+    MeasureOfSuccessBlock,
     ObjectivePanelBlock,
 
     // About/Investment Portfolio

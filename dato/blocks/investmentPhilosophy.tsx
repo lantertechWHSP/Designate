@@ -1,6 +1,6 @@
 import { structuredTextAttrs } from '~/dato/attrs/structuredTextAttrs';
 
-export const investmentPhilosophyRecord:string = `
+export const investmentPhilosophy:string = `
     __typename
     id
     title

@@ -8,7 +8,8 @@ import { cardPanelRecord } from '~/dato/blocks/cardPanel';
 import { accordionRecord } from '~/dato/blocks/accordion';
 import { carouselRecord } from '~/dato/blocks/carousel';
 import { horizontalRuleRecord } from '~/dato/blocks/horizontalRule';
-import { investmentPhilosophyRecord } from '~/dato/blocks/investmentPhilosophyRecord';
+import { investmentPhilosophy } from '~/dato/blocks/investmentPhilosophy';
+import { measureOfSuccessRecord } from '~/dato/blocks/measureOfSuccess';
 
 import { documentHeroPanelRecord } from '~/dato/blocks/documentHeroPanel';
 import { companyValuesPanelRecord } from '~/dato/blocks/companyValuesPanel';
@@ -98,7 +99,10 @@ export const blocks:string = `
             ${horizontalRuleRecord}
         }
         ... on InvestmentPhilosophyRecord {
-            ${investmentPhilosophyRecord}
+            ${investmentPhilosophy}
+        }
+        ... on MeasureOfSuccessRecord {
+            ${measureOfSuccessRecord}
         }
 
         ... on DocumentHeroPanelRecord {
