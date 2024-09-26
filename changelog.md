@@ -1,5 +1,8 @@
 # Soul Patts Changelog
 
+## v1.1.2
+* Color tweak for Measure of Success Block
+
 ## v1.1.1
 * Implement Measure of Success Block
 

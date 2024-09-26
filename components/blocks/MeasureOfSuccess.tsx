@@ -16,7 +16,7 @@ interface IMeasureOfSuccessItem {
 const MeasureOfSuccessBlock:any = ({ title, items, paddingTop, paddingBottom, background }: IMeasureOfSuccessBlock) : ReactNode => {
     return (title || (Array.isArray(items) && items.length > 0)) && <ContentBlock background={background} paddingTop={paddingTop} paddingBottom={paddingBottom}>
         {
-            title && <Heading as="h2" variant="sectionHeading" color="forest"  mb={[4, ,6, 8]}>
+            title && <Heading as="h2" variant="sectionHeading" mb={[4, ,6, 8]}>
                 <AnimateOverflow>
                     {title}
                 </AnimateOverflow>
