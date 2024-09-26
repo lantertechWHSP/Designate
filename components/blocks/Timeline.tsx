@@ -40,7 +40,7 @@ const TimelineBlock:any = ({ title, description, items, itemsTitle, paddingTop, 
                     </Box>
                 }
             </Column>
-            <Column width={[ColumnWidth.Full, , , ,ColumnWidth.Half]}>
+            <Column width={[ColumnWidth.Full, , , ,ColumnWidth.Half]} justifyContent="center">
                 {
                     Array.isArray(items) && items.length > 0 && <AnimateOpacity>
                         <Box background="olive" color="white" borderTopRightRadius="40px" p={8}>

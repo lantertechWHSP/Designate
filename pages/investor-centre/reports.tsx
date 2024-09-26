@@ -36,7 +36,7 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
         orderBy: DATO_QUERY_VALUES.ORDER_BY,
         filter: {
             category: {
-                eq: DATO_QUERY_VALUES.REPORTS_CATEGORY_ID
+                anyIn: DATO_QUERY_VALUES.REPORTS_CATEGORY_ID
             }
         }
     }, preview).then(
@@ -46,7 +46,7 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
     const doucmentsMeta:IDocumentsMeta = await doQuery(queries.documentsMeta, {
         filter: {
             category: {
-                eq: DATO_QUERY_VALUES.REPORTS_CATEGORY_ID
+                anyIn: DATO_QUERY_VALUES.REPORTS_CATEGORY_ID
             }
         }
     }).then(({ documentsMeta }) => {
@@ -58,7 +58,7 @@ export async function getStaticProps({ preview }:GetStaticPropsContext) : Promis
     const documentsFilters:IDocumentsFilters = await doQuery(queries.documentsFilters, {
         filter: {
             category: {
-                eq: DATO_QUERY_VALUES.REPORTS_CATEGORY_ID
+                anyIn: DATO_QUERY_VALUES.REPORTS_CATEGORY_ID
             }
         }
     }).then(({ firstDate, lastDate, tags }) => {

@@ -37,7 +37,7 @@ const DocumentReportsList:any = ({ latestDocuments, documentsMeta, documentsFilt
     const getDatoFilterObject:any = (tag:IFilter, year:IFilter) : void => {
         const filter:any = {
             category: {
-                eq: DATO_QUERY_VALUES.REPORTS_CATEGORY_ID
+                anyIn: DATO_QUERY_VALUES.REPORTS_CATEGORY_ID
             }
         };
 
@@ -50,7 +50,7 @@ const DocumentReportsList:any = ({ latestDocuments, documentsMeta, documentsFilt
         }
         if(tag.value !== 'none') {
             filter['tags'] = {
-                eq: tag.value
+                anyIn: tag.value
             };
         }
 
