@@ -16,4 +16,5 @@ export const investmentPortfolioPanelRecord:string = `
     }
     paddingTop
     paddingBottom
+    background
 `;
